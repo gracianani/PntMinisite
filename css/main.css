@@ -1,0 +1,733 @@
+/*
+ * HTML5 Boilerplate
+ *
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+body {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+ */
+
+img {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+/* ==========================================================================
+   Chrome Frame prompt
+   ========================================================================== */
+
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+html {
+	background-color: #ffbd32;
+	height: 100%;
+	width: 100%;
+}
+body {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	font-family: "Microsoft Yahei","Yahei",sans-serif;
+}
+
+#logo,#siteTitle,#profile,#navigation,#main,#footer {
+	display: none;
+}
+/*=====================
+footer 
+=====================*/
+#footer {
+	position: fixed;
+	bottom: -25%;
+	left: 0;
+	width: 100%;
+	height: 25%;
+	background: url(../img/bottom.png) center top no-repeat;
+	z-index: 1;
+}
+
+#progress {
+	width: 273px;
+	height: 60px;
+	background: url(../img/progress.png) center top no-repeat;
+	position: absolute;
+	bottom: 20px;
+	left: 50%;
+	margin-left: -137px;
+}
+#progress.step2 {
+	background-position: center -60px;
+}
+#progress.step3 {
+	background-position: center -120px;
+}
+#progress.step4 {
+	background-position: center -180px;
+}
+#progress.step5 {
+	background-position: center -240px;
+}
+#progress.step6 {
+	background-position: center -300px;
+}
+#progress.step7 {
+	background-position: center -360px;
+}
+#progress.step8 {
+	background-position: center -420px;
+}
+#progress.step9 {
+	background-position: center -480px;
+}
+.step {
+	width: 11.1111%;
+	height: 60px;
+	
+	float: left;
+	display: inline-block;
+	
+	cursor: pointer;
+}
+/*=====================
+main 
+=====================*/
+#main {
+	width:960px;
+	height: 450px;
+	position: absolute;
+	top:50%;
+	left: 50%;
+	margin-left:-480px;
+	margin-top:-225px;
+	text-align: center;
+	z-index: 2;
+}
+.scene {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	text-align: center;
+	left: 0;
+	top: 0;
+}
+.scene-diet-content {
+	position: absolute;
+}
+.scene img {
+	max-width: 100%;
+	max-height: 100%;
+}
+/*=====================
+header 
+=====================*/
+#header {
+	position: fixed;
+	top: 10px;
+	left: 0;
+	width: 100%;
+	height: 150px;
+}
+
+#logo {
+	position: absolute;
+	left: -30px;
+	top:0;
+}
+#siteTitle {
+	position: absolute;
+	left: 300px;
+	top:-100px;
+	font-size: 34px;
+	letter-spacing: 1px;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+	font-style: italic;
+	color: #FFF;
+}
+/*=====================
+profile 
+=====================*/
+#profile {
+	position: absolute;
+	top:-100px;
+	right: 20px;
+}
+#profile-avatar, #share {
+	float: right;
+	display: inline-block;
+}
+#profile-avatar {
+	width: 50px;
+	height: 50px;
+	border:5px solid #fff;
+	background-color: #fad949;
+	border-radius: 50%;
+}
+#profile-avatar .avatar {
+	width: 48px;
+	height: 48px;
+	margin: 0 auto;
+}
+#share a {
+	color: #FFF;
+	background: url(../img/share.png) left top no-repeat;
+	width: 48px;
+	height: 48px;
+	display: inline-block;
+	margin-right: 15px;
+	margin-top: 5px;
+}
+#share #wechat:hover {
+	background-position: left -48px;
+}
+#share #weibo {
+	background-position: left -96px;
+}
+
+#share #weibo:hover {
+	background-position: left -144px;
+}
+/*=====================
+navigation 
+=====================*/
+#navigation {
+	z-index: 3;
+}
+.navigator {
+	width: 80px;
+	height: 84px;
+	overflow: hidden;
+	color: #FFF;
+	cursor: pointer;
+	background: url(../img/navigator.png) no-repeat left top;
+	line-height: 84px;
+	text-align: center;
+	font-size: 18px;
+	position: absolute;
+	top:40%;
+	left: 20px;
+}
+.navigator:hover {
+	background-position: left bottom;
+}
+.noPrev #prev {
+	display: none;
+}
+.noNext #next {
+	display: none;
+}
+#next {
+	background-position: right top;
+	right: 20px;
+	left: auto;
+}
+#next:hover {
+	background-position: right bottom;
+}
+
+
+
+/*=====================
+loading 
+=====================*/
+.loading #navigation, .loading #progress{
+	display: none;
+}
+
+#loading {
+	width: 210px;
+	height: 210px;
+	position: absolute;
+	top:50%;
+	left: 50%;
+	margin-left: -105px;
+	margin-top: -105px;
+	background: url(../img/loading-logo.png) no-repeat center center;
+	display: none;
+}
+
+/*=====================
+scenes 
+=====================*/
+/*
+ * scene diet
+ */
+#refrigerator {
+	width: 412px;
+	height: 437px;
+	position: relative;
+}
+#refrigerator-left, #refrigerator-right {
+	width:45.5%;
+	height: 94%;
+	padding: 3% 2%;
+	background-color: #3a3a3a;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	behavior: url(/js/verdor/PIE.htc);
+	position: absolute;
+	top: 0;
+}
+#refrigerator-left {
+	left: 0;
+}
+#refrigerator-right {
+	right: 0;
+}
+#refrigerator-left-content,#refrigerator-right-content {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	background-color: #fff;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	behavior: url(/js/verdor/PIE.htc);
+}
+#refrigerator-fitting1,#refrigerator-fitting2{
+	width: 2%;
+	height: 15%;
+	background: #3a3a3a;
+	position: absolute;
+	left: 50%;
+	margin-left: -5px;
+	
+}
+#refrigerator-fitting1 {
+	top:20%;
+}
+#refrigerator-fitting2 {
+	bottom: 20%;
+}
+.refrigerator-cell  {
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	behavior: url(/js/verdor/PIE.htc);
+	background-color: #f0f0f0;
+	overflow: hidden;
+	position: absolute;
+	left: 3%;
+	cursor: pointer;
+}
+.refrigerator-cell:hover img,.refrigerator-cell.selected img{
+	opacity: 1;
+}
+.refrigerator-cell:hover img{
+	position: absolute;
+	max-width: 120%;
+	max-height: 120%;
+	width: 110%;
+	height: 110%;
+	left: -5%;
+	top: -5%;
+}
+
+
+.refrigerator-cell img {
+	max-width: 100%;
+	margin-right: 100%;
+	opacity: 0.1;
+}
+#refrigerator .width-large {
+	width: 94%;
+}
+#refrigerator .height-medium {
+	height: 17.6%;
+}
+#refrigerator .height-large {
+	height: 37.2%;
+}
+#refrigerator .width-medium {
+	width: 50%;
+}
+#refrigerator .width-small {
+	width: 41%;
+}
+#refrigerator .width-half {
+	width: 46%;
+}
+#fruit {
+	background:#f0f0f0 url(../img/scene/diet-fruit.png) no-repeat left top;
+	background-size:100% auto;
+}
+#taste-spicy:hover, #taste-spicy.selected {
+	background-color: #6e5f57;
+}
+#taste-sweet:hover, #taste-sweet.selected {
+	background-color: #a9ddec;
+}
+#taste-meat:hover, #taste-meat.selected {
+	background-color: #f0e1af;
+}
+#taste-vegetable:hover, #taste-vegetable.selected {
+	background-color: #d4e4ae;
+}
+#taste-mix:hover, #taste-mix.selected {
+	background-color: #c9f2ed;
+}
+#fruit:hover,#fruit.selected {
+	background-color: #fcf0bb;
+}
+#fruit.fruit-degree-0 {
+	background-position: 0 0;
+}
+#fruit.fruit-degree-1 {
+	background-position: 0 -72px;
+}
+#fruit.fruit-degree-2 {
+	background-position: 0 -144px;
+}
+#fruit.fruit-degree-3 {
+	background-position: 0 -216px;
+}
+#drink-coke:hover,#drink-coke.selected {
+	background-color: #b6e7dc;
+}
+#drink-beer:hover,#drink-beer.selected {
+	background-color: #575146;
+}
+#drink-milk:hover,#drink-milk.selected {
+	background-color: #d95633;
+}
+#drink-water:hover,#drink-water.selected {
+	background-color: #336ed9;
+}
+#drink-juice:hover,#drink-juice.selected {
+	background-color: #f0e1af;
+}
+#drink-tea:hover,#drink-tea.selected {
+	background-color: #ddf5ae;
+}
+#drink-coffee:hover,#drink-coffee.selected {
+	background-color: #d8cbbe;
+}
+#hint-taste {
+	bottom: -10px;
+	left: 5%;
+}
+#hint-fruit {
+	right: 5%;
+	top: 22%;
+}
+#hint-drink {
+	right: 5%;
+	bottom: -10px;
+}
+#me {
+	background: url(../img/scene/me.png) no-repeat left top;
+	width: 131px;
+	height: 378px;
+	background-size:100% auto;
+	position: absolute;
+	left: 50%;
+	bottom: 5%;
+}
+#diningTable {
+	width: 340px;
+	height: 128px;
+	background: url(../img/scene/diet-table.png) no-repeat left top;
+	background-size:100% 100%;
+	position: absolute;
+	right: 0;
+	bottom: 5%;
+}
+
+.hint {
+	background-color: #e1471c;
+	border-radius: 5px;
+	padding: 5px 10px;
+	color: #FFF;
+	font-size: 14px;
+	position: absolute;
+	min-width: 60px;
+	display: none;
+}
+#tooltip {
+	background-color: #fad949;
+	border-radius: 60px;
+	border:5px solid #FFF;
+	color: #d83d14;
+	text-align: center;
+	padding: 5px 10px;
+	font-size: 14px;
+	width: auto;
+	min-width: 40px;
+	position: absolute;
+	z-index: 999;
+	display: none;
+}
+#tooltip .caret{
+	position: absolute;
+	background: url(../img/caret.png) no-repeat center top;
+	width: 25px;
+	height: 14px;
+	left: 50%;
+	margin-left: -13px;
+	bottom: -14px;
+	
+}
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Image replacement
+ */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+/*
+ * Hide from both screenreaders and browsers: h5bp.com/u
+ */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element to be focusable
+ * when navigated to via the keyboard: h5bp.com/p
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+/*
+ * Hide visually and from screenreaders, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
