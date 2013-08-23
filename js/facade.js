@@ -3,6 +3,7 @@ window.AppFacade = {
             init : function() {
 	            	
 	            	SM.RegisterState( "diet", DietState );
+	            	SM.RegisterState( "health", HealthState );
 	            	this.initLoading();
 	            		            	
             },
@@ -14,7 +15,7 @@ window.AppFacade = {
             },
             enterDietScene : function() {
 	          
-	          SM.SetStateByName("diet"); 
+	          SM.SetStateByName("health"); 
 	          this.onQuestionReady(); 
             },
             onQuestionReady : function() {

@@ -97,6 +97,7 @@ html {
 	background-color: #ffbd32;
 	height: 100%;
 	width: 100%;
+	overflow: hidden;
 }
 body {
 	width: 100%;
@@ -506,6 +507,72 @@ scenes
 	position: absolute;
 	right: 0;
 	bottom: 5%;
+}
+
+
+/**** health *******/
+.health-degree {
+	width: 12%;
+	height: 80%;
+	min-height: 320px;
+	position: absolute;
+	top: 0;
+	
+}
+#mealCount {
+	left: 0;
+}
+#drinking {
+	left: 20%;
+}
+#smoke {
+	left: 40%;
+}
+#sleep {
+	left: 80%;
+}
+#sunBlock {
+	left: 60%;
+}
+.health-degree-content {
+	background-color: #2470a5;
+	width: 80%;
+	border-radius: 15px;
+	border:8px solid #6994b2;
+	height: 100%;
+}
+.meal ,.smoke,.sleep{
+	height: 25%;
+}
+.drinking {
+	width: 85%;
+	position: absolute;
+	left: 5px;
+	top: 10px;
+}
+.sunBlock {
+	width: 120%;
+	position: absolute;
+	left: -10%;
+	top:0;
+}
+.drinking img,.sunBlock img {
+	height: 100%;
+	width: auto;
+}
+.meal img,.smoke img,.sleep img {
+	height: 100%;
+}
+.health-degree-pin {
+	width: 80px;
+	height: 40px;
+	background: url(../img/scene/health-pin.png) center center no-repeat;
+	background-size:100% 100%;
+	position: absolute;
+	right: -20%;
+	top: 50%;
+	margin-top: -30px;
+	
 }
 
 .hint {
