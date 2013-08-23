@@ -26,8 +26,47 @@ HealthView.prototype = {
 		this.initQuestionHint();
 		this.initAnswerTooltip();
 		
-		//this.initFruit();
 		
+		
+		
+		this.el.find('.health-degree-content').on('click',function(e) {
+			//calculate the degree base on y position
+			var degreeContent = $(this);
+			
+			var degreesCount = parseInt(degreeContent.find('.health-degree-item').size() );
+			var degree = Math.ceil((degreeContent.offset().top + degreeContent.height() - e.pageY) / degreeContent.height() * degreesCount ) ;
+			
+			degree = Math.min(degreesCount,degree);
+			degree = Math.max(1,degree);
+			
+			degreeContent.attr('class','health-degree-content').addClass('onDegree-' + degree);
+			
+			
+			degreeContent.find('.health-degree-hint').html(degreeContent.find('[data-degree="'+degree+'"]').attr('title'));
+			
+		});
+		
+		this.el.find('.health-degree-pin').draggable({ 
+			axis: "y",
+			containment: "parent",
+			stop: function() {
+				
+				//calculate the degree base on y position
+				var degreeContent = $(this).parent();
+				
+				var degreesCount = parseInt(degreeContent.find('.health-degree-item').size() );
+				var degree = Math.ceil((degreeContent.offset().top + degreeContent.height() - $(this).offset().top) / degreeContent.height() * degreesCount ) ;
+				
+				degree = Math.min(degreesCount ,degree);
+				degree = Math.max(1,degree);
+				
+				degreeContent.attr('class','health-degree-content').addClass('onDegree-' + degree);
+				degreeContent.find('.health-degree-hint').html(degreeContent.find('[data-degree="'+degree+'"]').attr('title'));
+				
+				$(this).attr('style','');
+				
+			
+		} });
 		
 		
 	},
@@ -36,6 +75,6 @@ HealthView.prototype = {
 		
 	},
 	initAnswerTooltip : function() {
-		//this.el.find('.drink,.taste,.fruit').tooltip();
+		this.el.find('.health-degree-item').tooltip();
 	}
 }
