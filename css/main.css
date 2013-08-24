@@ -97,6 +97,7 @@ html {
 	background-color: #ffbd32;
 	height: 100%;
 	width: 100%;
+	overflow: hidden;
 }
 body {
 	width: 100%;
@@ -508,6 +509,164 @@ scenes
 	bottom: 5%;
 }
 
+
+/**** health *******/
+.health-degree {
+	width: 12%;
+	height: 80%;
+	min-height: 320px;
+	position: absolute;
+	top: 0;
+	
+}
+#mealCount {
+	left: 0;
+}
+#drinking {
+	left: 20%;
+}
+#smoke {
+	left: 40%;
+}
+#sleep {
+	left: 80%;
+}
+#sunBlock {
+	left: 60%;
+}
+.health-degree-content {
+	background-color: #2470a5;
+	width: 80%;
+	border-radius: 15px;
+	border:8px solid #6994b2;
+	height: 100%;
+	cursor: pointer;
+}
+.meal ,.smoke,.sleep{
+	height: 25%;
+}
+.drinking {
+	width: 85%;
+	position: absolute;
+	left: 5px;
+	top: 10px;
+}
+.sunBlock {
+	width: 120%;
+	position: absolute;
+	left: -10%;
+	top:0;
+}
+.drinking img,.sunBlock img {
+	height: 100%;
+	width: auto;
+}
+.meal img,.smoke img,.sleep img {
+	height: 100%;
+}
+.health-degree-pin {
+	width: 80px;
+	height: 40px;
+	background: url(../img/scene/health-pin.png) center center no-repeat;
+	background-size:100% 100%;
+	position: absolute;
+	right: -20%;
+	top: 50%;
+	margin-top: -30px;
+	cursor: pointer;
+	
+}
+.health-degree-hint {
+	position: absolute;
+	top: 110%;
+	text-align: center;
+	color: #da6025;
+}
+#mealCount .onDegree-4 .health-degree-pin{
+	top:20%;
+}
+#mealCount .onDegree-3 .health-degree-pin{
+	top:45%;
+}
+#mealCount .onDegree-2 .health-degree-pin{
+	top:70%;
+}
+#mealCount .onDegree-1 .health-degree-pin{
+	top:95%;
+}
+#drinking .onDegree-3 .health-degree-pin{
+	top:15%;
+}
+#drinking .onDegree-2 .health-degree-pin{
+	top:58%;
+}
+#drinking .onDegree-1 .health-degree-pin{
+	top:96%;
+}
+#drinking .health-degree-item {
+	display: none;
+}
+#drinking .unselected .defaultShow {
+	display: block;
+}
+#drinking .onDegree-3 #drinking-degree3{
+	display: block;
+}
+#drinking .onDegree-2 #drinking-degree2{
+	display: block;
+}
+#drinking .onDegree-1 #drinking-degree1{
+	display: block;
+}
+#smoke .onDegree-4 .health-degree-pin{
+	top:20%;
+}
+#smoke .onDegree-3 .health-degree-pin{
+	top:45%;
+}
+#smoke .onDegree-2 .health-degree-pin{
+	top:70%;
+}
+#smoke .onDegree-1 .health-degree-pin{
+	top:95%;
+}
+#sunBlock .onDegree-3 .health-degree-pin{
+	top:15%;
+}
+#sunBlock .onDegree-2 .health-degree-pin{
+	top:58%;
+}
+#sunBlock .onDegree-1 .health-degree-pin{
+	top:96%;
+}
+#sunBlock .health-degree-item {
+	display: none;
+}
+#sunBlock .unselected .defaultShow {
+	display: block;
+}
+#sunBlock .onDegree-3 #sunBlock-degree3{
+	display: block;
+}
+#sunBlock .onDegree-2 #sunBlock-degree2{
+	display: block;
+}
+#sunBlock .onDegree-1 #sunBlock-degree1{
+	display: block;
+}
+#sleep .onDegree-4 .health-degree-pin{
+	top:20%;
+}
+#sleep .onDegree-3 .health-degree-pin{
+	top:45%;
+}
+#sleep .onDegree-2 .health-degree-pin{
+	top:70%;
+}
+#sleep .onDegree-1 .health-degree-pin{
+	top:95%;
+}
+/**** hint and tooltips *******/
 .hint {
 	background-color: #e1471c;
 	border-radius: 5px;

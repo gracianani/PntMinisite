@@ -1,0 +1,303 @@
+﻿[
+    {
+        "question_id": 1,
+        "text": "经常亲自下厨做饭吗？",
+        "name": "cooking",
+        "question_type": "single",
+        "answers": [
+            {
+                "answer_id": 1,
+                "text": "每天开启厨神模式"
+            },
+            {
+                "answer_id": 2,
+                "text": "偶尔下厨房"
+            },
+            {
+                "answer_id": 3,
+                "text": "只管吃不管做"
+            },
+            {
+                "answer_id": 4,
+                "text": "整天外卖或者下馆子"
+            }
+        ]
+    },
+    {
+        "question_id": 2,
+        "text": "平时吃饭的口味是？",
+        "name": "taste",
+        "question_type": "multiple",
+        "answers": [
+            {
+                "answer_id": 5,
+                "text": "无辣不欢的重口味",
+                "name": "spicy",
+                "image_url": "img/scene/diet-spicy.png"
+            },
+            {
+                "answer_id": 6,
+                "text": "偏爱甜食",
+                "name": "sweet",
+                "image_url": "img/scene/diet-sweet.png"
+            },
+            {
+                "answer_id": 7,
+                "text": "肉食动物",
+                "name": "meat",
+                "image_url": "img/scene/diet-meat.png"
+            },
+            {
+                "answer_id": 8,
+                "text": "素食主义者",
+                "name": "vegetable",
+                "image_url": "img/scene/diet-vegetable.png"
+            },
+            {
+                "answer_id": 9,
+                "text": "荤素搭配",
+                "name": "mix",
+                "image_url": "img/scene/diet-mix.png"
+            }
+        ]
+    },
+    {
+        "question_id": 3,
+        "text": "平时吃水果的习惯是",
+        "question_type": "single",
+        "name": "fruit",
+        "answers": [
+            {
+                "answer_id": 10,
+                "text": "不爱吃水果"
+            },
+            {
+                "answer_id": 11,
+                "text": "有时间才想起来吃"
+            },
+            {
+                "answer_id": 12,
+                "text": "只吃自己喜欢的那几种"
+            },
+            {
+                "answer_id": 13,
+                "text": "一天不吃水果会死星人"
+            }
+        ]
+    },
+    {
+        "question_id": 4,
+        "text": "平时喜欢喝什么",
+        "question_type": "multiple",
+        "answers": [
+            {
+                "answer_id": 14,
+                "text": "碳酸饮料",
+                "name": "coke",
+                "image_url": "img/scene/diet-coke.png"
+            },
+            {
+                "answer_id": 15,
+                "text": "酒精类",
+                "name": "beer",
+                "image_url": "img/scene/diet-beer.png"
+            },
+            {
+                "answer_id": 16,
+                "text": "牛奶",
+                "name": "milk",
+                "image_url": "img/scene/diet-milk.png"
+            },
+            {
+                "answer_id": 17,
+                "text": "白开水",
+                "name": "water",
+                "image_url": "img/scene/diet-water.png"
+            },
+            {
+                "answer_id": 18,
+                "text": "鲜榨果汁",
+                "name": "juice",
+                "image_url": "img/scene/diet-juice.png"
+            },
+            {
+                "answer_id": 19,
+                "text": "咖啡",
+                "name": "coffee",
+                "image_url": "img/scene/diet-coffee.png"
+            },
+            {
+                "answer_id": 20,
+                "text": "茶",
+                "name": "tea",
+                "image_url": "img/scene/diet-tea.png"
+            }
+        ]
+    },
+	{
+		"question_id" : 5,
+		"text" : "用餐次数",
+		"question_type" : "single",
+		"name" : "mealCount",
+		"answers" : [
+			{
+                "answer_id": 21,
+                "text": "还有夜宵和加餐",
+                "name": "four meals",
+                "image_url": "img/scene/meal-4.png",
+				"degree" : 4
+            },
+			{
+                "answer_id": 22,
+                "text": "一日三餐",
+                "name": "three meals",
+                "image_url": "img/scene/meal-3.png",
+				"degree" : 3
+            },
+			{
+				"answer_id" : 23,
+				"text" : "每天吃两顿",
+				"name" : "two meals",
+				"image_url" : "img/scene/meal-2.png",
+				"degree" : 2
+			},
+			{
+				"answer_id" : 24,
+				"text" : "每天只吃一顿",
+				"name" : "one meal",
+				"image_url" : "img/scene/meal-1.png",
+				"degree" : 1
+			}
+		]
+	},
+	{
+		"question_id" : 6,
+		"text" : "饮酒习惯",
+		"question_type" : "single",
+		"name" : "drinking",
+		"answers" : [
+			{
+                "answer_id": 25,
+                "text": "经常喝",
+                "name": "always drinking",
+                "image_url": "img/scene/drinking-3.png",
+				"degree" : 3
+            },
+			{
+                "answer_id": 26,
+                "text": "偶尔喝一点",
+                "name": "occasionally drinking",
+                "image_url": "img/scene/drinking-2.png",
+				"degree" : 2
+            },
+			{
+				"answer_id" : 27,
+				"text" : "基本不喝",
+				"name" : "never drinking",
+				"image_url" : "img/scene/drinking-1.png",
+				"degree" : 1
+			}
+		]
+	},
+	{
+		"question_id" : 7,
+		"text" : "您抽烟么",
+		"question_type" : "single",
+		"name" : "smoking",
+		"answers" : [
+			{
+                "answer_id": 28,
+                "text": "烟不离手",
+                "name": "always smoking",
+                "image_url": "img/scene/smoke-4.png",
+				"degree" : 4
+            },
+			{
+                "answer_id": 29,
+                "text": "每天半包",
+                "name": "smoking one per two days",
+                "image_url": "img/scene/smoke-3.png",
+				"degree" : 3
+            },
+			{
+				"answer_id" : 30,
+				"text" : "偶尔抽着玩",
+				"name" : "occasionally smoking",
+				"image_url" : "img/scene/smoke-2.png",
+				"degree" : 2
+			},
+			{
+				"answer_id" : 31,
+				"text" : "不会抽",
+				"name" : "never smoking",
+				"image_url" : "img/scene/smoke-1.png",
+				"degree" : 1
+			}
+		]
+	},
+	{
+		"question_id" : 8,
+		"text" : "每天和枕头亲密接触的时间",
+		"question_type" : "single",
+		"name" : "sleep",
+		"answers" : [
+			{
+                "answer_id": 32,
+                "text": "8小时以上",
+                "name": "more than eight hours",
+                "image_url": "img/scene/sleep-4.png",
+				"degree" : 4
+            },
+			{
+                "answer_id": 33,
+                "text": "8小时",
+                "name": "eight hours",
+                "image_url": "img/scene/sleep-3.png",
+				"degree" : 3
+            },
+			{
+				"answer_id" : 34,
+				"text" : "5-7小时",
+				"name" : "five to seven hours",
+				"image_url" : "img/scene/sleep-2.png",
+				"degree" : 2
+			},
+			{
+				"answer_id" : 35,
+				"text" : "少于5小时",
+				"name" : "less than five hours",
+				"image_url" : "img/scene/sleep-1.png",
+				"degree" : 1
+			}
+		]
+	},
+	{
+		"question_id" : 9,
+		"text" : "饮酒习惯",
+		"question_type" : "single",
+		"name" : "drinking",
+		"answers" : [
+			{
+                "answer_id": 36,
+                "text": "经常喝",
+                "name": "always drinking",
+                "image_url": "img/scene/drinking-3.png",
+				"degree" : 3
+            },
+			{
+                "answer_id": 37,
+                "text": "偶尔喝一点",
+                "name": "occasionally drinking",
+                "image_url": "img/scene/drinking-2.png",
+				"degree" : 2
+            },
+			{
+				"answer_id" : 38,
+				"text" : "基本不喝",
+				"name" : "never drinking",
+				"image_url" : "img/scene/drinking-1.png",
+				"degree" : 1
+			}
+		]
+	}
+]
