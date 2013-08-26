@@ -94,3 +94,10 @@ $.prototype.hint = function(id) {
 		hintDiv.hide();
 	});
 }
+
+function verticalAndHorizontalLineToPath(startX, startY, endX, endY) {
+	middleX = startX;
+	middleY = endY;
+	return ("M" + startX + "," + startY + "L"+middleX + "," + middleY + "M" + middleX + "," + middleY + "L"+endX + "," + endY);
+	
+}

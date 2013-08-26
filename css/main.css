@@ -666,6 +666,101 @@ scenes
 #sleep .onDegree-1 .health-degree-pin{
 	top:95%;
 }
+/**** life *******/
+#life-icons,#life-lines {
+	position: absolute;
+	left: 50%;
+	top:50%;
+	margin-top: -225px;
+	margin-left: -300px;
+	width: 600px;
+	height: 450px;
+}
+#life-type {
+	position: absolute;
+	left: 50%;
+	top:50%;
+	width: 120px;
+	height: 60px;
+	margin-left: -100px;
+	text-align: center;
+	padding: 20px 40px;
+	color: #e4600d;
+}
+.life-icon {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	cursor: pointer;
+	
+	margin-left: -50px;
+	margin-top: -50px;
+}
+.life-icon:hover {
+	transform: scale(1.2);
+	-ms-transform: scale(1.2); /* IE 9 */
+	-webkit-transform: scale(1.2); /* Safari and Chrome */
+}
+#life-work-1 {
+	background: url(../img/scene/life-air.png) left top no-repeat;
+	left:35%;
+	top:5%;
+}
+#life-work-2 {
+	background: url(../img/scene/life-books.png) left top no-repeat;
+	left:5%;
+	top:25%;
+}
+#life-work-3 {
+	background: url(../img/scene/life-phone.png) left top no-repeat;
+	left: 0%;
+	top:55%;
+}
+#life-work-4 {
+	background: url(../img/scene/life-desktop.png) left top no-repeat;
+	left:10%;
+	top:80%;
+}
+#life-play-1 {
+	background: url(../img/scene/life-game.png) left top no-repeat;
+	left:65%;
+	top:5%;
+}
+#life-play-2 {
+	background: url(../img/scene/life-movie.png) left top no-repeat;
+	left:92%;
+	top:24%;
+}
+#life-play-3 {
+	background: url(../img/scene/life-party.png) left top no-repeat;
+	left:100%;
+	top:50%;
+}
+#life-play-4 {
+	background: url(../img/scene/life-sport.png) left top no-repeat;
+	left: 90%;
+	top:80%;
+}
+#life-play-5 {
+	background: url(../img/scene/life-food.png) left top no-repeat;
+	left:50%;
+	top:95%;
+}
+#life-icons .life-icon {
+	background-size:100% auto;
+}
+#life-center {
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	margin-left: -100px;
+	margin-top: -100px;
+	left: 50%;
+	top:50%;
+	border-radius: 50%;
+	background-color: #fad949;
+}
+
 /**** hint and tooltips *******/
 .hint {
 	background-color: #e1471c;
@@ -700,6 +795,197 @@ scenes
 	margin-left: -13px;
 	bottom: -14px;
 	
+}
+
+/***************
+Cleaning
+***************/
+.cleaning-shelfContainer {
+	height: 115px;
+	position: relative;
+	padding: 0 20px;
+}
+.cleaning-shelf {
+	height: 12px;
+	width: 100%;
+	
+	background: #FFF;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	border-bottom: 6px solid #c8c9ba;
+}
+.cleaning-shelfSupport-left, .cleaning-shelfSupport-right{
+	width: 12px;
+	height:12px;
+	border-radius: 50%;
+	background-color: #4f5251;
+	border:8px solid #c8c9ba;
+	position: absolute;
+	bottom: -15px;
+}
+.cleaning-shelfSupport-left {
+	left:20%;
+}
+.cleaning-shelfSupport-right {
+	right: 20%;
+}
+#cleaning-care {
+	width: 400px;
+	margin-top: 20px;
+	
+}
+#cleaning-style {
+	width: 300px;
+	left: 155px;
+}
+#cleaning-tool {
+	width: 270px;
+	left: 180px;
+}
+
+.cleaning-style {
+	width: 70px;
+	height: 100px;
+	float: left;
+	display: inline-block;
+	cursor: pointer;
+}
+.cleaning-care {
+	width: 80px;
+	height: 125px;
+	float: left;
+	display: inline-block;
+	cursor: pointer;
+}
+.cleaning-tool {
+	width: 90px;
+	height: 100px;
+	margin-top: 3px;
+	float: left;
+	display: inline-block;
+	cursor: pointer;
+}
+#cleaning-care {
+	height: 140px;
+}
+#cleaning-vax {
+	background: url(../img/scene/cleaning-vax.png) no-repeat center top;
+	background-size: 100px auto;
+	width: 90px;
+}
+#cleaning-spray {
+	background: url(../img/scene/cleaning-spray.png) no-repeat center top;
+	background-size: 100px auto;
+}
+#cleaning-moss {
+	background: url(../img/scene/cleaning-moss.png) no-repeat center top;
+	background-size: 100px auto;
+}
+#cleaning-gel {
+	background: url(../img/scene/cleaning-gel.png) no-repeat center top;
+	background-size: 100px auto;
+	width: 70px;
+}
+#cleaning-shampoo {
+	background: url(../img/scene/cleaning-shampoo.png) no-repeat center top;
+	background-size: 100px auto;
+}
+#cleaning-conditioner {
+	background: url(../img/scene/cleaning-conditioner.png) no-repeat center top;
+	background-size: 100px auto;
+}
+#cleaning-mask {
+	background: url(../img/scene/cleaning-mask.png) no-repeat center top;
+	background-size: 100px auto;
+}
+#cleaning-cream {
+	background: url(../img/scene/cleaning-cream.png) no-repeat center top;
+	background-size: 100px auto;
+}
+#cleaning-inhair {
+	background: url(../img/scene/cleaning-inhair.png) no-repeat center top;
+	background-size: 100px auto;
+}
+
+#cleaning-drier {
+	background: url(../img/scene/cleaning-drier.png) no-repeat center top;
+	background-size: 100px auto;
+}
+#cleaning-curling {
+	background: url(../img/scene/cleaning-curling.png) no-repeat center top;
+	background-size: 100px auto;
+}
+#cleaning-flat {
+	background: url(../img/scene/cleaning-flat.png) no-repeat center top;
+	background-size: 100px auto;
+}
+#cleaning-trash {
+	width: 105px;
+	height: 135px;
+	position: absolute;
+	bottom: 20px;
+	left: 0;
+}
+#cleaning-trash-content {
+	background-image: url(../img/scene/cleaning-trash.png);
+	background-repeat: no-repeat;
+	width: 105px;
+	height: 135px;
+	
+	background-size: 105px auto;
+}
+.trash-unselected {
+	background-position:center top;
+	
+}
+.trash-1 {
+	background-position: center -135px;
+}
+.trash-2 {
+	background-position: center -270px;
+}
+.trash-3 {
+	background-position: center -405px;
+}
+.trash-4 {
+	background-position: center -540px;
+}
+#cleaning-trash-adjust {
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	position: absolute;
+	left: 0;
+	bottom: -30px;
+	font-size: 12px;
+	color: #ff825c;
+}
+.addButton,.removeButton {
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+	color: #FFF;
+	border-radius: 15px;
+	border:5px solid #FFFFFF;
+	position: absolute;
+	cursor: pointer;
+}
+.addButton:hover,.removeButton:hover {
+	transform: scale(1.2);
+	-ms-transform: scale(1.2); /* IE 9 */
+	-webkit-transform: scale(1.2); /* Safari and Chrome */
+}
+.addButton {
+	left: -30px;
+	top: 0;
+	background-color: #ff6536;
+}
+.removeButton {
+	right: -30px;
+	top: 0;
+	background-color: #10486f;
 }
 /* ==========================================================================
    Helper classes

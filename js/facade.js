@@ -2,8 +2,10 @@ window.AppFacade = {
             states: {},
             init : function() {
 	            	
+	            	SM.RegisterState( "life", LifeState );
 	            	SM.RegisterState( "diet", DietState );
 	            	SM.RegisterState( "health", HealthState );
+	            	SM.RegisterState( "cleaning", CleaningState );
 	            	this.initLoading();
 	            	
 	            	$('html').attr('unselectable','on')
@@ -25,7 +27,7 @@ window.AppFacade = {
             },
             enterDietScene : function() {
 	          
-	          SM.SetStateByName("health"); 
+	          SM.SetStateByName("cleaning"); 
 	          this.onQuestionReady(); 
             },
             onQuestionReady : function() {
