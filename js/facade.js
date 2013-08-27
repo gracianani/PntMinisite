@@ -6,6 +6,7 @@ window.AppFacade = {
 	            	SM.RegisterState( "diet", DietState );
 	            	SM.RegisterState( "health", HealthState );
 	            	SM.RegisterState( "cleaning", CleaningState );
+	            	SM.RegisterState( "hairstyle", HairstyleState );
 	            	this.initLoading();
 	            	
 	            	$('html').attr('unselectable','on')
@@ -27,7 +28,7 @@ window.AppFacade = {
             },
             enterDietScene : function() {
 	          
-	          SM.SetStateByName("cleaning"); 
+	          SM.SetStateByName("hairstyle"); 
 	          this.onQuestionReady(); 
             },
             onQuestionReady : function() {

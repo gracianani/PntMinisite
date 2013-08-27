@@ -1144,6 +1144,127 @@ Cleaning
 #water-item-5 {
 	left: 20%;
 }
+
+/******** character ************/
+.character {
+
+	position: relative;
+}
+.fm {
+	width: 423px;
+	height: 1214px;
+}
+.body,.clothes,.head,.bang,.hair,.hand,.face{
+	position: absolute;
+}
+.fm .body {
+	background:url(../img/character/body-fm.png) no-repeat center top;
+	width: 100%;
+	height: 100%;
+}
+.fm .clothes {
+	background:url(../img/character/clothes-fm.png) no-repeat;
+	width: 100%;
+	height: 1214px;
+}
+.fm .hair {
+	background: url(../img/character/hair-fm.png) no-repeat;
+	width: 100%;
+	height: 600px;
+}
+.fm .bang {
+	background: url(../img/character/bang-fm.png) no-repeat;
+	width: 100%;
+	height: 600px;
+}
+.fm .head {
+	background: url(../img/character/head-fm.png) no-repeat;
+	width: 100%;
+	height: 240px;
+}
+.fm .hand {
+	background: url(../img/character/hand-fm.png) no-repeat;
+	height: 718px;
+	width: 100%;
+}
+.fm .face {
+	background: url(../img/character/face-fm.png) no-repeat;
+	width: 100%;
+	height: 240px;
+}
+#hairstyle-mirror {
+	border-radius: 20px;
+	width: 400px;
+	height: 550px;
+	border:2px #b78266 solid;
+	overflow: hidden;
+	background:#d2e9e7 url(../img/scene/mirror-light.png) 115% -15% no-repeat;
+	position: absolute;
+	left: 50%;
+	margin-left: -200px;
+}
+.fm .hair-fm-hair-fm-band{ background-position: 0 0; width: 424px; height: 600px; } 
+.fm .hair-fm-hair-fm-hand{ background-position: 0 -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-hair-fm-l-1{ background-position: 0 -1300px; width: 424px; height: 600px; } 
+.fm .hair-fm-hair-fm-l-2{ background-position: -474px 0; width: 424px; height: 600px; } 
+.fm .hair-fm-hair-fm-l-3{ background-position: -474px -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-hair-fm-l-4{ background-position: -474px -1300px; width: 424px; height: 600px; } 
+.fm .hair-fm-hair-fm-m-1{ background-position: -948px 0; width: 424px; height: 600px; } 
+.fm .hair-fm-hair-fm-m-2{ background-position: -948px -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-hair-fm-m-3{ background-position: -948px -1300px; width: 424px; height: 600px; } 
+.fm .hair-fm-hair-fm-m-4{ background-position: -1422px 0; width: 424px; height: 600px; } 
+.fm .hair-fm-hair-fm-pin{ background-position: -1422px -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-hair-fm-s-1{ background-position: -1422px -1300px; width: 424px; height: 600px; } 
+.fm .hair-fm-hair-fm-s-2{ background-position: -1896px 0; width: 424px; height: 600px; } 
+.fm .hair-fm-hair-fm-s-3{ background-position: -1896px -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-hair-fm-s-4{ background-position: -1896px -1300px; width: 424px; height: 600px; } 
+.fm .hair-fm-hair-fm-s-5{ background-position: -2370px 0; width: 424px; height: 600px; } 
+.fm .hair-fm-hair-fm-xl-1{ background-position: -2370px -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-hair-fm-xl-2{ background-position: -2370px -1300px; width: 424px; height: 600px; } 
+.fm .hair-fm-hair-fm-xl-3{ background-position: -2844px 0; width: 424px; height: 600px; } 
+.fm .hair-fm-hair-fm-xl-4{ background-position: -2844px -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-hair-fm-xs-1{ background-position: -2844px -1300px; width: 424px; height: 600px; } 
+.fm .hair-fm-hair-fm-xs-2{ background-position: -3318px 0; width: 424px; height: 600px; } 
+.fm .hair-fm-hair-fm-xs-3{ background-position: -3318px -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-hair-fm-xs-4{ background-position: -3318px -1300px; width: 424px; height: 600px; }
+
+.fm .bang-fm-band{ background-position: 0 0; width: 424px; height: 600px; } 
+.fm .bang-fm-hand{ background-position: 0 -605px; width: 424px; height: 600px; } 
+.fm .bang-fm-l-1{ background-position: 0 -1210px; width: 424px; height: 600px; } 
+.fm .bang-fm-l-2{ background-position: 0 -1815px; width: 424px; height: 600px; } 
+.fm .bang-fm-l-3{ background-position: -429px 0; width: 424px; height: 600px; } 
+.fm .bang-fm-l-4{ background-position: -429px -605px; width: 424px; height: 600px; } 
+.fm .bang-fm-m-1{ background-position: -429px -1210px; width: 424px; height: 600px; } 
+.fm .bang-fm-m-2{ background-position: -429px -1815px; width: 424px; height: 600px; } 
+.fm .bang-fm-m-3{ background-position: -858px 0; width: 424px; height: 600px; } 
+.fm .bang-fm-m-4{ background-position: -858px -605px; width: 424px; height: 600px; } 
+.fm .bang-fm-pin{ background-position: -858px -1210px; width: 424px; height: 600px; } 
+.fm .bang-fm-s-1{ background-position: -858px -1815px; width: 424px; height: 600px; } 
+.fm .bang-fm-s-2{ background-position: -1287px 0; width: 424px; height: 600px; } 
+.fm .bang-fm-s-3{ background-position: -1287px -605px; width: 424px; height: 600px; } 
+.fm .bang-fm-s-4{ background-position: -1287px -1210px; width: 424px; height: 600px; } 
+.fm .bang-fm-xl-1{ background-position: -1287px -1815px; width: 424px; height: 600px; } 
+.fm .bang-fm-xl-2{ background-position: -1716px 0; width: 424px; height: 600px; } 
+.fm .bang-fm-xl-3{ background-position: -1716px -605px; width: 424px; height: 600px; } 
+.fm .bang-fm-xl-4{ background-position: -1716px -1210px; width: 424px; height: 600px; } 
+.fm .bang-fm-xs-1{ background-position: -1716px -1815px; width: 424px; height: 600px; } 
+.fm .bang-fm-xs-2{ background-position: -2145px 0; width: 424px; height: 600px; } 
+.fm .bang-fm-xs-3{ background-position: -2145px -605px; width: 424px; height: 600px; } 
+.fm .bang-fm-xs-4{ background-position: -2145px -1210px; width: 424px; height: 600px; } 
+
+.fm .face-fm-1{ background-position: 0 0; width: 424px; height: 240px; } 
+.fm .face-fm-2{ background-position: 0 -245px; width: 424px; height: 240px; } 
+.fm .face-fm-3{ background-position: 0 -490px; width: 424px; height: 240px; }  
+
+.fm .clothes-fm-0{ background-position: 0 0; width: 424px; height: 1214px; } 
+.fm .clothes-fm-1{ background-position: 0 -1219px; width: 424px; height: 1214px; } 
+.fm .clothes-fm-2{ background-position: -429px 0; width: 424px; height: 1214px; } 
+.fm .clothes-fm-3{ background-position: -429px -1219px; width: 424px; height: 1214px; } 
+.fm .clothes-fm-4{ background-position: -858px 0; width: 424px; height: 1214px; } 
+.fm .clothes-fm-5{ background-position: -858px -1219px; width: 424px; height: 1214px; } 
+.fm .clothes-fm-6{ background-position: -1287px 0; width: 424px; height: 1214px; } 
+
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
