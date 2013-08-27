@@ -838,18 +838,21 @@ Cleaning
 #cleaning-style {
 	width: 300px;
 	left: 155px;
+	height: 140px;
 }
 #cleaning-tool {
 	width: 270px;
 	left: 180px;
+	margin-top: 10px;
 }
 
 .cleaning-style {
 	width: 70px;
-	height: 100px;
+	height: 125px;
 	float: left;
 	display: inline-block;
 	cursor: pointer;
+	background: url(../img/scene/style-icons.png) no-repeat center top;
 }
 .cleaning-care {
 	width: 80px;
@@ -857,6 +860,7 @@ Cleaning
 	float: left;
 	display: inline-block;
 	cursor: pointer;
+	background: url(../img/scene/care-icons.png) no-repeat center top;
 }
 .cleaning-tool {
 	width: 90px;
@@ -865,66 +869,105 @@ Cleaning
 	float: left;
 	display: inline-block;
 	cursor: pointer;
+	background: url(../img/scene/tool-icons.png) no-repeat center top;
 }
 #cleaning-care {
 	height: 140px;
 }
 #cleaning-vax {
-	background: url(../img/scene/cleaning-vax.png) no-repeat center top;
+	background-position: center -125px;
 	background-size: 100px auto;
 	width: 90px;
 }
 #cleaning-spray {
-	background: url(../img/scene/cleaning-spray.png) no-repeat center top;
+	background-position: center -250px;
 	background-size: 100px auto;
 }
 #cleaning-moss {
-	background: url(../img/scene/cleaning-moss.png) no-repeat center top;
+	background-position: center top;
 	background-size: 100px auto;
 }
 #cleaning-gel {
-	background: url(../img/scene/cleaning-gel.png) no-repeat center top;
+	background-position: center -375px;
 	background-size: 100px auto;
 	width: 70px;
 }
 #cleaning-shampoo {
-	background: url(../img/scene/cleaning-shampoo.png) no-repeat center top;
+	background-position: center top;
 	background-size: 100px auto;
 }
 #cleaning-conditioner {
-	background: url(../img/scene/cleaning-conditioner.png) no-repeat center top;
+	background-position: center -125px;
 	background-size: 100px auto;
 }
 #cleaning-mask {
-	background: url(../img/scene/cleaning-mask.png) no-repeat center top;
+	background-position: center -250px;
 	background-size: 100px auto;
 }
 #cleaning-cream {
-	background: url(../img/scene/cleaning-cream.png) no-repeat center top;
+	background-position: center -375px;
 	background-size: 100px auto;
 }
 #cleaning-inhair {
-	background: url(../img/scene/cleaning-inhair.png) no-repeat center top;
+	background-position: center -500px;
 	background-size: 100px auto;
 }
 
 #cleaning-drier {
-	background: url(../img/scene/cleaning-drier.png) no-repeat center top;
+	background-position: center top;
 	background-size: 100px auto;
 }
 #cleaning-curling {
-	background: url(../img/scene/cleaning-curling.png) no-repeat center top;
+	background-position: center -100px;
 	background-size: 100px auto;
 }
 #cleaning-flat {
-	background: url(../img/scene/cleaning-flat.png) no-repeat center top;
+	background-position: center -200px;
 	background-size: 100px auto;
+}
+#cleaning-vax:hover,#cleaning-vax.selected {
+	background-position: center -625px;
+}
+#cleaning-spray:hover,#cleaning-spray.selected {
+	background-position: center -750px;
+}
+#cleaning-moss:hover,#cleaning-moss.selected {
+	background-position: center -500px;
+}
+#cleaning-gel:hover,#cleaning-gel.selected {
+	background-position: center -875px;
+}
+#cleaning-shampoo:hover,#cleaning-shampoo.selected {
+	background-position: center -625px;
+	background-size: 100px auto;
+}
+#cleaning-conditioner:hover,#cleaning-conditioner.selected {
+	background-position: center -750px;
+}
+#cleaning-mask:hover,#cleaning-mask.selected {
+	background-position: center -875px;
+}
+#cleaning-cream:hover,#cleaning-cream.selected {
+	background-position: center -1000px;
+}
+#cleaning-inhair:hover,#cleaning-inhair.selected {
+	background-position: center -1125px;
+}
+
+#cleaning-drier:hover,#cleaning-drier.selected {
+	background-position: center -300px;
+}
+#cleaning-curling:hover,#cleaning-curling.selected {
+	background-position: center -400px;
+}
+#cleaning-flat:hover,#cleaning-flat.selected {
+	background-position: center -500px;
 }
 #cleaning-trash {
 	width: 105px;
 	height: 135px;
 	position: absolute;
-	bottom: 20px;
+	bottom: 0px;
 	left: 0;
 }
 #cleaning-trash-content {
@@ -932,6 +975,7 @@ Cleaning
 	background-repeat: no-repeat;
 	width: 105px;
 	height: 135px;
+	cursor: pointer;
 	
 	background-size: 105px auto;
 }
@@ -959,7 +1003,7 @@ Cleaning
 	left: 0;
 	bottom: -30px;
 	font-size: 12px;
-	color: #ff825c;
+	color: #333;
 }
 .addButton,.removeButton {
 	width: 20px;
@@ -973,9 +1017,9 @@ Cleaning
 	cursor: pointer;
 }
 .addButton:hover,.removeButton:hover {
-	transform: scale(1.2);
-	-ms-transform: scale(1.2); /* IE 9 */
-	-webkit-transform: scale(1.2); /* Safari and Chrome */
+	transform: scale(1.5);
+	-ms-transform: scale(1.5); /* IE 9 */
+	-webkit-transform: scale(1.5); /* Safari and Chrome */
 }
 .addButton {
 	left: -30px;
@@ -986,6 +1030,119 @@ Cleaning
 	right: -30px;
 	top: 0;
 	background-color: #10486f;
+}
+#shower {
+	position: absolute;
+	top: 5%;
+	width: 40%;
+	right: 10%;
+}
+#shower-head {
+	background:url(../img/scene/shower-head.png) no-repeat center top;
+	width: 90px;
+	height: 70px;
+	background-size: 100% 100%;
+	margin: -20px auto 0;
+}
+#shower-frequency {
+	position: relative;
+	width:160px;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 15px;
+	font-size: 14px;
+	background: #FFF;
+	text-align: center;
+	margin: 0 auto;
+	text-align: center;
+}
+#shower-frequency .addButton {
+	left: 0;
+}
+#shower-frequency .removeButton {
+	right: 0;
+}
+#shower-water {
+	width: 60px;
+	height: 220px;
+	margin: 0 auto;
+	position: relative;
+}
+#shower-time {
+	width: 140px;
+	height: 50px;
+	border-radius: 10px;
+	background: #FFF;
+	margin: 20px auto 0;
+	position: relative;
+}
+.shower-time-icon {
+	width: 40px;
+	height: 40px;
+	border-radius: 30px;
+	border:2px dashed #ffbd32;
+	position: absolute;
+	top:50%;
+	margin-top: -20px;
+	display: block;
+
+}
+
+#shower-time-day {
+	left: 10%;
+	background-color: #ff6536;
+	background-image: url(../img/scene/cleaning-day.png);
+}
+#shower-time-night {
+	right: 10%;
+	background-color: #10486f;
+	background-image: url(../img/scene/cleaning-night.png);
+}
+#shower-time-day:hover {
+	background-color: #ff6536;
+	border:#FFF 2px solid;
+}
+#shower-time-night:hover {
+	background-color: #10486f;
+	border:#FFF 2px solid;
+}
+#shower-time-day.unselected,#shower-time-night.unselected {
+	background-color: #efefef;
+}
+.shower-time-icon {
+	
+	background-repeat: no-repeat;
+	background-position: center center;
+	cursor: pointer;
+}
+.shower-time-icon:hover {
+	transform: scale(1.2);
+	-ms-transform: scale(1.2); /* IE 9 */
+	-webkit-transform: scale(1.2); /* Safari and Chrome */
+}
+.water-item {
+	position: absolute;
+	margin-left: -25px;
+	top: 0;
+	display: none;
+}
+#water-item-0 {
+	left: 40%;
+}
+#water-item-1 {
+	left: 65%;
+}
+#water-item-2 {
+	left: 80%;
+}
+#water-item-3 {
+	left: 30%;
+}
+#water-item-4 {
+	left: 90%;
+}
+#water-item-5 {
+	left: 20%;
 }
 /* ==========================================================================
    Helper classes
