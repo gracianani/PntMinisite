@@ -242,6 +242,7 @@ profile
 	width: 48px;
 	height: 48px;
 	margin: 0 auto;
+	position: relative;
 }
 #share a {
 	color: #FFF;
@@ -1145,10 +1146,127 @@ Cleaning
 	left: 20%;
 }
 
+/******* hair style ***********/
+#hairstyle-length,#hairstyle-curl {
+	position: relative;
+	width: 200px;
+	height: 200px;
+	margin-bottom: 30px;
+}
+.hairstyle-circle {
+	width: 150px;
+	height: 150px;
+	border-radius: 100px;
+	background-color: #fde7b8;
+	border:5px dashed #f39800;
+}
+.hairstyle-circle-dragable {
+	width: 40px;
+	height: 40px;
+	background: #f39800;
+	border:5px solid #bb471e;
+	border-radius: 30px;
+	position: absolute;
+	left:50%;
+	top:0;
+	margin-left: -20px;
+	margin-top:-20px;
+}
+#hairstyle-type {
+	position: absolute;
+	width: 264px;
+	left: 50%;
+	bottom: -20px;
+	margin-left: -127px;
+}
+.hairtype-icon {
+	width: 50px;
+	height: 50px;
+	border-radius: 10px;
+	border:3px #f39800 dashed;
+	background-color: #fde7b8;
+	float: left;
+	display: block;
+	margin-right: 10px;
+}
+#hairstyle-color {
+	position: absolute;
+	left: 70%;
+	top:20%;
+}
+.haircolor {
+	width: 200px;
+	height: 50px;
+	border-radius: 10px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	
+}
+#haircolor-mix {
+	background: #602016;
+	transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+}
+#haircolor-black {
+	background: #000;
+	transform: rotate(-15deg);
+	-ms-transform: rotate(-15deg);
+	-webkit-transform: rotate(-15deg);
+}
+
+#haircolor-gold {
+	background: #d08200;
+	transform: rotate(15deg);
+	-ms-transform: rotate(15deg);
+	-webkit-transform: rotate(15deg);
+}
+#haircolor-red {
+	background: #8b3122;
+	transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+}
+.haircolor-hole {
+	position: absolute;
+	left: 10%;
+	top: 50%;
+	margin-top:-5px;
+	width: 5px;
+	height: 5px;
+	border: 3px solid #FFF;
+	background: #ffbd32;
+	border-radius: 5px;
+}
 /******** character ************/
 .character {
-
+	
 	position: relative;
+
+}
+.character-large-size {
+	transform: scale(0.5);
+	-webkit-transform: scale(0.5);
+	-ms-transform: scale(0.5);
+	zoom: 0.5\9;
+	left:-106px;
+	top:-302px;
+}
+.character-small-size {
+	transform: scale(0.2);
+	-webkit-transform: scale(0.2);
+	-ms-transform: scale(0.2);
+	zoom: 0.2\9;
+	left:-187px;
+	top:-485px;
+}
+#profile-avatar {
+	overflow: hidden;
+}
+.head-only .clothes,.head-only .hand {
+	display: none;
+	background: none;
 }
 .fm {
 	width: 423px;
@@ -1177,6 +1295,24 @@ Cleaning
 	width: 100%;
 	height: 600px;
 }
+.fm .hair-black {
+	background-image: url(../img/character/hair-fm-black.png);
+}
+.fm .hair-gold {
+	background-image: url(../img/character/hair-fm-gold.png);
+}
+.fm .hair-mix {
+	background-image: url(../img/character/hair-fm-mix.png);
+}
+.fm .bang-black {
+	background-image: url(../img/character/bang-fm-black.png);
+}
+.fm .bang-gold {
+	background-image: url(../img/character/bang-fm-gold.png);
+}
+.fm .bang-mix {
+	background-image: url(../img/character/bang-fm-mix.png);
+}
 .fm .head {
 	background: url(../img/character/head-fm.png) no-repeat;
 	width: 100%;
@@ -1192,41 +1328,49 @@ Cleaning
 	width: 100%;
 	height: 240px;
 }
-#hairstyle-mirror {
+.mirror-show {
 	border-radius: 20px;
-	width: 400px;
-	height: 550px;
+	width: 240px;
+	height: 350px;
 	border:2px #b78266 solid;
 	overflow: hidden;
 	background:#d2e9e7 url(../img/scene/mirror-light.png) 115% -15% no-repeat;
 	position: absolute;
 	left: 50%;
-	margin-left: -200px;
+	margin-left: -120px;
+	top:50%;
+	margin-top:-175px;
 }
-.fm .hair-fm-hair-fm-band{ background-position: 0 0; width: 424px; height: 600px; } 
-.fm .hair-fm-hair-fm-hand{ background-position: 0 -650px; width: 424px; height: 600px; } 
-.fm .hair-fm-hair-fm-l-1{ background-position: 0 -1300px; width: 424px; height: 600px; } 
-.fm .hair-fm-hair-fm-l-2{ background-position: -474px 0; width: 424px; height: 600px; } 
-.fm .hair-fm-hair-fm-l-3{ background-position: -474px -650px; width: 424px; height: 600px; } 
-.fm .hair-fm-hair-fm-l-4{ background-position: -474px -1300px; width: 424px; height: 600px; } 
-.fm .hair-fm-hair-fm-m-1{ background-position: -948px 0; width: 424px; height: 600px; } 
-.fm .hair-fm-hair-fm-m-2{ background-position: -948px -650px; width: 424px; height: 600px; } 
-.fm .hair-fm-hair-fm-m-3{ background-position: -948px -1300px; width: 424px; height: 600px; } 
-.fm .hair-fm-hair-fm-m-4{ background-position: -1422px 0; width: 424px; height: 600px; } 
-.fm .hair-fm-hair-fm-pin{ background-position: -1422px -650px; width: 424px; height: 600px; } 
-.fm .hair-fm-hair-fm-s-1{ background-position: -1422px -1300px; width: 424px; height: 600px; } 
-.fm .hair-fm-hair-fm-s-2{ background-position: -1896px 0; width: 424px; height: 600px; } 
-.fm .hair-fm-hair-fm-s-3{ background-position: -1896px -650px; width: 424px; height: 600px; } 
-.fm .hair-fm-hair-fm-s-4{ background-position: -1896px -1300px; width: 424px; height: 600px; } 
-.fm .hair-fm-hair-fm-s-5{ background-position: -2370px 0; width: 424px; height: 600px; } 
-.fm .hair-fm-hair-fm-xl-1{ background-position: -2370px -650px; width: 424px; height: 600px; } 
-.fm .hair-fm-hair-fm-xl-2{ background-position: -2370px -1300px; width: 424px; height: 600px; } 
-.fm .hair-fm-hair-fm-xl-3{ background-position: -2844px 0; width: 424px; height: 600px; } 
-.fm .hair-fm-hair-fm-xl-4{ background-position: -2844px -650px; width: 424px; height: 600px; } 
-.fm .hair-fm-hair-fm-xs-1{ background-position: -2844px -1300px; width: 424px; height: 600px; } 
-.fm .hair-fm-hair-fm-xs-2{ background-position: -3318px 0; width: 424px; height: 600px; } 
-.fm .hair-fm-hair-fm-xs-3{ background-position: -3318px -650px; width: 424px; height: 600px; } 
-.fm .hair-fm-hair-fm-xs-4{ background-position: -3318px -1300px; width: 424px; height: 600px; }
+.mirror-show .character{
+	left:-90px;
+}
+#character-profile {
+	position: absolute;
+}
+.fm .hair-fm-band{ background-position: 0 0; width: 424px; height: 600px; } 
+.fm .hair-fm-hand{ background-position: 0 -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-l-1{ background-position: 0 -1300px; width: 424px; height: 600px; } 
+.fm .hair-fm-l-2{ background-position: -474px 0; width: 424px; height: 600px; } 
+.fm .hair-fm-l-3{ background-position: -474px -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-l-4{ background-position: -474px -1300px; width: 424px; height: 600px; } 
+.fm .hair-fm-m-1{ background-position: -948px 0; width: 424px; height: 600px; } 
+.fm .hair-fm-m-2{ background-position: -948px -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-m-3{ background-position: -948px -1300px; width: 424px; height: 600px; } 
+.fm .hair-fm-m-4{ background-position: -1422px 0; width: 424px; height: 600px; } 
+.fm .hair-fm-pin{ background-position: -1422px -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-s-1{ background-position: -1422px -1300px; width: 424px; height: 600px; } 
+.fm .hair-fm-s-2{ background-position: -1896px 0; width: 424px; height: 600px; } 
+.fm .hair-fm-s-3{ background-position: -1896px -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-s-4{ background-position: -1896px -1300px; width: 424px; height: 600px; } 
+.fm .hair-fm-s-5{ background-position: -2370px 0; width: 424px; height: 600px; } 
+.fm .hair-fm-xl-1{ background-position: -2370px -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-xl-2{ background-position: -2370px -1300px; width: 424px; height: 600px; } 
+.fm .hair-fm-xl-3{ background-position: -2844px 0; width: 424px; height: 600px; } 
+.fm .hair-fm-xl-4{ background-position: -2844px -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-xs-1{ background-position: -2844px -1300px; width: 424px; height: 600px; } 
+.fm .hair-fm-xs-2{ background-position: -3318px 0; width: 424px; height: 600px; } 
+.fm .hair-fm-xs-3{ background-position: -3318px -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-xs-4{ background-position: -3318px -1300px; width: 424px; height: 600px; }
 
 .fm .bang-fm-band{ background-position: 0 0; width: 424px; height: 600px; } 
 .fm .bang-fm-hand{ background-position: 0 -605px; width: 424px; height: 600px; } 
@@ -1263,6 +1407,7 @@ Cleaning
 .fm .clothes-fm-4{ background-position: -858px 0; width: 424px; height: 1214px; } 
 .fm .clothes-fm-5{ background-position: -858px -1219px; width: 424px; height: 1214px; } 
 .fm .clothes-fm-6{ background-position: -1287px 0; width: 424px; height: 1214px; } 
+
 
 
 /* ==========================================================================

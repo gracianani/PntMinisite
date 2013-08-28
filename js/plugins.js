@@ -95,6 +95,8 @@ $.prototype.hint = function(id) {
 	});
 }
 
+
+
 function verticalAndHorizontalLineToPath(startX, startY, endX, endY) {
 	middleX = startX;
 	middleY = endY;
