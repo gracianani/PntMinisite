@@ -16,7 +16,7 @@ HairstyleView.prototype = {
 	animateIn : function() {
 		AnimationHandler.animateIn();
 		
-		$('#character-container').removeClass('hidden');
+		$('#character-container').removeClass('hidden').addClass('mirror-show');;
 	},
 	init : function() {
 		var self = this;
