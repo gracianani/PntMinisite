@@ -45,7 +45,7 @@ window.AppFacade = {
         user_answers.push({ scene_id: '5', user_answers: app.Views.HealthView.model.get("user_answers") });
         user_answers.push({ scene_id: '6', user_answers: app.Views.DietView.model.get("user_answers") });
         user_answers.push({ scene_id: '7', user_answers: app.Views.CleaningView.model.get("user_answers") });
-
+        user_answers.push({ scene_id: '8', user_answers: app.Views.SalonView.model.get("user_answers") });
         return user_answers;
     },
     setUserAnswers: function (user_answers) {
@@ -71,6 +71,9 @@ window.AppFacade = {
             }
             else if (user_answer.scene_id == 7) {
                 app.Views.CleaningView.model.set("user_answers", user_answer.user_answers);
+            }
+            else if (user_answer.scene_id == 8) {
+                app.Views.SalonView.model.set("user_answers", user_answer.user_answers);
             }
         }
     },
@@ -123,6 +126,8 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
                 var healthView = new HealthView({ model: healthScene });
                 var cleaningScene = new Scene(app.SceneSettings.findWhere({ scene_id: 7 }).toJSON());
                 var cleaningView = new CleaningView({ model: cleaningScene });
+                var salonScene = new Scene(app.SceneSettings.findWhere({ scene_id: 8 }).toJSON());
+                var salonView = new SalonView({ model: salonScene });
 
                 app.Views.BasicInfoView = basicInfoView;
                 app.Views.HairStyleView = hairStyleView;
@@ -131,6 +136,7 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
                 app.Views.HealthView = healthView;
                 app.Views.CleaningView = cleaningView;
                 app.Views.LifeView = lifeView;
+                app.Views.SalonView = salonView;
 
                 app.Router = new Router();
                 Backbone.history.start();

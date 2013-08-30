@@ -59,6 +59,6 @@
         "scene_id": 8,
         "scene_name": "salon",
         "scene_title": "沙龙",
-        "question_ids": []
+        "question_ids": [25,26,27]
     }
 ]

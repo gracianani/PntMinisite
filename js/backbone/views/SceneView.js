@@ -576,7 +576,7 @@ var CleaningView = Backbone.View.extend({
         app.Router.navigate("Survey/" + prevView.model.get("scene_id"));
     },
     next: function () {
-        var nextView = app.Views.HealthView;
+        var nextView = app.Views.SalonView;
         AppFacade.setCurrentView(nextView);
         AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
         app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
@@ -1008,6 +1008,10 @@ var HairQualityView = Backbone.View.extend( {
     render: function () {
         this.$el.html(Mustache.render(this.template, this.model));
         app.Views.AvatarView.render();
+        $('.quality-progree-draggable').draggable({
+			axis: "x",
+			containment: "parent"
+		});
         this.trigger("render");
         return this;
     },
@@ -1074,5 +1078,49 @@ var BasicInfoView = Backbone.View.extend( {
         AppFacade.setCurrentView(nextView);
         AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
         app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
+    }
+});
+
+
+var SalonView = Backbone.View.extend( {
+  //... is a list tag.
+    tagName: "div",
+    id: "scene-salon",
+    className: "scene",
+    // Cache the template function for a single item.
+    template: $('#scene-salon-template').html(),
+
+    events: {
+       
+    },
+
+    initialize: function () {
+        this.$el = $('#main');
+        this.on("render", this.postrender);
+        this.on("beginRender", this.render);
+        
+    },
+    animateIn: function () {
+        AnimationHandler.animateIn();
+    },
+    
+    // Re-render the titles of the todo item.
+    render: function () {
+        this.$el.html(Mustache.render(this.template, this.model));
+        this.trigger("render");
+        return this;
+    },
+
+    postrender: function () {
+        AnimationHandler.initialize('#scene-salon-content');
+        this.animateIn();
+    },
+    prev : function() {
+        var prevView = app.Views.CleaningView;
+        AppFacade.setCurrentView(prevView);
+        AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
+        app.Router.navigate("Survey/" + prevView.model.get("scene_id"));
+    },
+    next: function () {
     }
 });

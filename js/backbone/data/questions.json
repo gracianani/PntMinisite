@@ -774,6 +774,87 @@
 				"text" : "赋闲在家"
 			}
 		]
+	},
+	{
+		"question_id" : 25,
+		"text" : "染发前会通过什么途径作为新发型参考",
+		"question_type" : "multiple",
+		"answers" :[
+			{
+				"answer_id" : 113,
+				"text" : "时尚杂志/网站"
+			},
+			{
+				"answer_id" : 114,
+				"text" : "参考名人明星"
+			},
+			{
+				"answer_id" : 115,
+				"text" : "朋友建议"
+			},
+			{
+				"answer_id" : 116,
+				"text" : "美发师指导"
+			},
+			{
+				"answer_id" : 117,
+				"text" : "自己创意"
+			}
+		]
+	},
+	{
+		"question_id" : 26,
+		"text" : "烫染频率",
+		"question_type" : "single",
+		"answers" :[
+			{
+				"answer_id" : 118,
+				"text" : "从不烫染"
+			},
+			{
+				"answer_id" : 119,
+				"text" : "1次/1年"
+			},
+			{
+				"answer_id" : 120,
+				"text" : "1次/半年"
+			},
+			{
+				"answer_id" : 121,
+				"text" : "1次/3个月"
+			},
+			{
+				"answer_id" : 122,
+				"text" : "每个月都折腾"
+			}
+		]
+	},
+	{
+		"question_id" : 27,
+		"text" : "是否会在沙龙做护理,多久一次",
+		"question_type" : "single",
+		"answers" :[
+			{
+				"answer_id" : 123,
+				"text" : "每个月都做"
+			},
+			{
+				"answer_id" : 124,
+				"text" : "1次/3个月"
+			},
+			{
+				"answer_id" : 125,
+				"text" : "1次/半年"
+			},
+			{
+				"answer_id" : 126,
+				"text" : "1次/1到两年"
+			},
+			{
+				"answer_id" : 127,
+				"text" : "从不"
+			}
+		]
 	}
 
 ]
