@@ -52,7 +52,43 @@
         					</div>
         				</div>
 			</div>
-        	<div id="scene-hairstyle" class="scene">
+			<div id="scene-basicinfo" class="scene hidden">
+				<div id="scene-basicinfo-content" class="scene-content">
+					<div id="basicinfo-career" class="item fm">
+						
+						<div id="pole">
+							<div id="pole-left">
+							</div>
+							<div id="pole-cover-left">
+							</div>
+							<div id="pole-cover-right">
+							</div>
+							<div id="pole-right">
+							</div>
+						</div>
+						<div  id="career-clothes" class="character-small-size fm">
+							<div id="" class="clothes clothes-fm-1">
+							</div>
+							
+							<div id="" class="clothes clothes-fm-2" style="left:20%">
+							</div>
+							
+							<div id="" class="clothes clothes-fm-3" style="left:40%">
+							</div>
+							
+							<div id="" class="clothes clothes-fm-4" style="left:60%">
+							</div>
+							
+							<div id="" class="clothes clothes-fm-5" style="left:80%">
+							</div>
+							
+							<div id="" class="clothes clothes-fm-6" style="left:100%">
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        	<div id="scene-hairstyle" class="scene hidden">
         		<div id="scene-hairstyle-content" class="scene-content">
 					<div id="hairstyle-length" class="item">
 						<div class="hairstyle-circle">
@@ -79,7 +115,7 @@
 						<div id="comb" class="hairtype-icon">
 						</div>
 					</div>
-					<div id="hairstyle-color" class="item">
+					<div id="hairstyle-color" class="item  red">
 						
 						<div id="haircolor-mix" class="haircolor">
 							<div class="haircolor-hole">
@@ -109,7 +145,98 @@
 					</div>      			
         		</div>
         	</div><!--hairstyle-->
-        	
+        	<div id="scene-hairquality" class="scene hidden">
+				<div id="scene-hairquality-content" class="scene-content">
+					<div id="magnifier" class="item">
+						<div id="magnifier-glass">
+							<div id="magnifier-glass-content">
+
+								<div id="magnifier-more">
+								</div>
+								<div id="magnifier-normal">
+								</div>
+								<div id="magnifier-less">
+								</div>
+								<div id="magnifier-dry">
+								</div>
+								<div id="magnifier-oil">
+								</div>
+								<div id="magnifier-skin">
+								</div>
+								
+							</div>
+						</div>
+						<div id="magnifier-handler">
+						</div>
+					</div>
+				
+				
+					<div id="quality-quality" class="item quality-progress">
+						<div class="quality-progress-title">
+						<span style="position:relative;top:30%;">发质</span>
+						</div>
+						<div class="quality-progress-bar progress-4-degree">
+							<a class="quality-progress-dot progress-degree-1" title="干性">
+							</a>
+							<a class="quality-progress-dot progress-degree-2" title="中性">
+							</a>
+							<a class="quality-progress-dot progress-degree-3" title="混合">
+							</a>
+							<a class="quality-progress-dot progress-degree-4" title="油性">
+							</a>
+							
+							<a class="quality-progree-draggable on-degree-2">中性</a>
+						</div>
+					</div>
+					<div id="quality-thickness" class="item quality-progress">
+						<div class="quality-progress-title">
+						<span style="position:relative;top:15%;">头发<br />粗细</span>
+						</div>
+						<div class="quality-progress-bar progress-3-degree">
+							<a class="quality-progress-dot progress-degree-1" title="较粗">
+							</a>
+							<a class="quality-progress-dot progress-degree-2" title="正常">
+							</a>
+							<a class="quality-progress-dot progress-degree-3" title="较细">
+							</a>
+							<a class="quality-progree-draggable on-degree-2">正常</a>
+						</div>
+					</div>
+					<div id="quality-volume" class="item quality-progress">
+						<div class="quality-progress-title">
+						<span style="position:relative;top:30%;">发量</span>
+						</div>
+						<div class="quality-progress-bar progress-4-degree">
+							<a class="quality-progress-dot progress-degree-1" title="很多">
+							</a>
+							<a class="quality-progress-dot progress-degree-2" title="正常">
+							</a>
+							<a class="quality-progress-dot progress-degree-3" title="偏少">
+							</a>
+							<a class="quality-progress-dot progress-degree-4" title="稀疏">
+							</a>
+							<a class="quality-progree-draggable on-degree-2">正常</a>
+						</div>
+					</div>
+					
+					<div id="quality-problem" class="item">
+						<div class="problem-item" id="problem-item-1">
+						</div>
+						
+						<div class="problem-item" id="problem-item-2">
+						</div>
+						
+						<div class="problem-item" id="problem-item-3">
+						</div>
+						
+						<div class="problem-item" id="problem-item-4">
+						</div>
+						
+						<div class="problem-item" id="problem-item-5">
+						</div>
+					</div>
+				</div>
+			</div>
         	
         	<div id="scene-life" class="scene hidden">
         		<div id="scene-life-content" class="scene-content">
@@ -135,6 +262,7 @@
 	        			</div>
 	        			<div class="life-icon life-play" id="life-play-5" title="美食美酒">
 	        			</div>
+	        			<a class="quality-progree-draggable"></a>
 	        		</div>
 	        		<div id="life-center" class="item">
 	        		</div>
@@ -516,7 +644,7 @@
         
         <script src="js/State.js"></script>
         
-        
+        <script src="js/Basicinfo.js"></script>
         <script src="js/Model.js"></script>
         <script src="js/View.js"></script>
         <script src="js/Health.js"></script>
@@ -524,6 +652,7 @@
         <script src="js/Life.js"></script>
         <script src="js/Cleaning.js"></script>
         <script src="js/Hairstyle.js"></script>
+        <script src="js/Hairquality.js"></script>
         <script src="js/animationHandler.js"></script>
         
         <script src="js/Facade.js"></script>

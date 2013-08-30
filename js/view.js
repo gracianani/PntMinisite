@@ -20,21 +20,21 @@ BasicFrameView.prototype = {
                     angle: 0
                 },
                 end: {
-                    x: -20,
-                    y: 20,
+                    x: 20,
+                    y: 10,
                     angle: 0,
                     length: 0.25,
                     easing: "easeOutQuint"
                 }
             })}, 800, "easeOutQuint", function() {
-            
-            		$('#siteTitle').show().animate({top:15},500,function(){
+            			$('#siteTitle').show();
+            		//$('#siteTitle').show().animate({top:15},500,function(){
             			$('#profile').show().animate({top:20},500);
             			$('#footer').show().animate({bottom:'0'},500); 
             			$('#progress,#main,#navigation').fadeIn();
             			
             			window.AppFacade.enterDietScene();
-            		});
+            		//});
             		         
 					
 					

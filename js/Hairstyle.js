@@ -117,17 +117,22 @@ HairstyleView.prototype = {
 			})
 		});
 		
+		
 		$('#haircolor-black').click(function(){
+			
 			$('.hair').removeClass('hair-gold').removeClass('hair-mix').addClass('hair-black');
-			$('.bang').removeClass('bang-gold').removeClass('bang-mix').addClass('bang-black');
+			$('.bang').removeClass('bang-gold').removeClass('bang-mix').addClass('bang-black');	
+			$('#hairstyle-color').removeClass('gold mixed red').addClass('black');
 		});
 		$('#haircolor-gold').click(function(){
 			$('.hair').removeClass('hair-black').removeClass('hair-mix').addClass('hair-gold');
 			$('.bang').removeClass('bang-black').removeClass('bang-mix').addClass('bang-gold');
+			$('#hairstyle-color').removeClass('black mixed red').addClass('gold');
 		});
 		$('#haircolor-red').click(function(){
 			$('.hair').removeClass('hair-gold').removeClass('hair-mix').removeClass('hair-black');
 			$('.bang').removeClass('bang-gold').removeClass('bang-mix').removeClass('bang-black');
+			$('#hairstyle-color').removeClass('gold mixed red').addClass('black');
 		});
 		
 		
