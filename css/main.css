@@ -1496,10 +1496,13 @@ Cleaning
 	position: absolute;
 	left: 0;
 }
-#basicinfo-career .clothes {
+.career-clothes-item {
 	width: 212px;
 	position: absolute;
 	margin-left: -156px;
+}
+#basicinfo-career .clothes {
+	background-image: url(../img/character/career-fm.png);
 	
 }
 /******** character ************/
