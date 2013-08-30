@@ -900,6 +900,7 @@ var HairStyleView = Backbone.View.extend( {
     },
 
     setHairGold : function(event) {
+        var item = $(event.currentTarget);
         $('.hair').removeClass('hair-black').removeClass('hair-mix').addClass('hair-gold');
 		$('.bang').removeClass('bang-black').removeClass('bang-mix').addClass('bang-gold');
         this.model.setAnswer(item.parent().data("question-id"), item.data("answer-id"), true);
@@ -956,7 +957,6 @@ var HairStyleView = Backbone.View.extend( {
         app.Views.AvatarView.model.hairCurly = hairData.curl;
         app.Views.AvatarView.model.hairLength = hairData.length;
         app.Views.AvatarView.model.hairColor = hairData.color;
-
         app.Views.AvatarView.render();
         this.initHairCircle();
         this.trigger("render");
@@ -968,9 +968,109 @@ var HairStyleView = Backbone.View.extend( {
         this.animateIn();
     },
     prev : function() {
+        var prevView = app.Views.BasicInfoView;
+        AppFacade.setCurrentView(prevView);
+        AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
+        app.Router.navigate("Survey/" + prevView.model.get("scene_id"));
+    },
+    next: function () {
+        var nextView = app.Views.HairQualityView;
+        AppFacade.setCurrentView(nextView);
+        AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
+        app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
+    }
+});
+
+
+
+var HairQualityView = Backbone.View.extend( {
+  //... is a list tag.
+    tagName: "div",
+    id: "scene-hairquality",
+    className: "scene",
+    // Cache the template function for a single item.
+    template: $('#scene-hairquality-template').html(),
+
+    events: {
+       
+    },
+
+    initialize: function () {
+        this.$el = $('#main');
+        this.on("render", this.postrender);
+        this.on("beginRender", this.render);
+        
+    },
+    animateIn: function () {
+        AnimationHandler.animateIn();
+    },
+    // Re-render the titles of the todo item.
+    render: function () {
+        this.$el.html(Mustache.render(this.template, this.model));
+        app.Views.AvatarView.render();
+        this.trigger("render");
+        return this;
+    },
+
+    postrender: function () {
+        AnimationHandler.initialize('#scene-hairquality-content');
+        
+        this.animateIn();
+    },
+    prev : function() {
+        var prevView = app.Views.HairStyleView;
+        AppFacade.setCurrentView(prevView);
+        AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
+        app.Router.navigate("Survey/" + prevView.model.get("scene_id"));
     },
     next: function () {
         var nextView = app.Views.LifeView;
+        AppFacade.setCurrentView(nextView);
+        AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
+        app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
+    }
+});
+
+
+var BasicInfoView = Backbone.View.extend( {
+  //... is a list tag.
+    tagName: "div",
+    id: "scene-basicinfo",
+    className: "scene",
+    // Cache the template function for a single item.
+    template: $('#scene-basicinfo-template').html(),
+
+    events: {
+       
+    },
+
+    initialize: function () {
+        this.$el = $('#main');
+        this.on("render", this.postrender);
+        this.on("beginRender", this.render);
+        
+    },
+    animateIn: function () {
+        AnimationHandler.animateIn();
+    },
+    
+    // Re-render the titles of the todo item.
+    render: function () {
+        this.$el.html(Mustache.render(this.template, this.model));
+        
+        app.Views.AvatarView.render();
+        this.trigger("render");
+        return this;
+    },
+
+    postrender: function () {
+        AnimationHandler.initialize('#scene-basicinfo-content');
+        this.animateIn();
+    },
+    prev : function() {
+    },
+    next: function () {
+        var nextView = app.Views.HairStyleView;
         AppFacade.setCurrentView(nextView);
         AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
         app.Router.navigate("Survey/" + nextView.model.get("scene_id"));

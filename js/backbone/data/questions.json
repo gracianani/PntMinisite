@@ -598,6 +598,182 @@
 				"degree" : 5
 			}
 		]
+	},
+	{
+		"question_id" : 18,
+		"text" : "头发发质属于",
+		"question_type" : "single",
+		"answers" :[
+			{
+				"answer_id" : 84,
+				"text" : "干性",
+				"degree" : 1
+			},
+			{
+				"answer_id" : 85,
+				"text" : "中性",
+				"degree" : 2
+			},
+			{
+				"answer_id" : 86,
+				"text" : "油性",
+				"degree" : 3
+			},
+			{
+				"answer_id" : 87,
+				"text" : "混合",
+				"degree" : 4
+			}
+		]
+	},
+	{
+		"question_id" : 19,
+		"text" : "头发粗细程度",
+		"question_type" : "single",
+		"answers" :[
+			{
+				"answer_id" : 88,
+				"text" : "干性",
+				"degree" : 1
+			},
+			{
+				"answer_id" : 89,
+				"text" : "中性",
+				"degree" : 2
+			},
+			{
+				"answer_id" : 90,
+				"text" : "油性",
+				"degree" : 3
+			}
+		]
+	},
+	{
+		"question_id" : 20,
+		"text" : "您的发量",
+		"question_type" : "single",
+		"answers" :[
+			{
+				"answer_id" : 91,
+				"text" : "发量很多",
+				"degree" : 4
+			},
+			{
+				"answer_id" : 92,
+				"text" : "正常",
+				"degree" : 3
+			},
+			{
+				"answer_id" : 93,
+				"text" : "发量偏少",
+				"degree" : 2
+			},
+			{
+				"answer_id" : 94,
+				"text" : "暴露头皮",
+				"degree" : 1
+			}
+		]
+	},
+	{
+		"question_id" : 21,
+		"text" : "困扰你的头发问题",
+		"question_type" : "multiple",
+		"answers" :[
+			{
+				"answer_id" : 95,
+				"text" : "头发稀疏"
+			},
+			{
+				"answer_id" : 96,
+				"text" : "头发干枯,分叉,无光泽"
+			},
+			{
+				"answer_id" : 97,
+				"text" : "头发出油,头屑"
+			},
+			{
+				"answer_id" : 98,
+				"text" : "掉发"
+			},
+			{
+				"answer_id" : 99,
+				"text" : "沙发,难打理"
+			}
+		]
+	},
+	{
+		"question_id" : 22,
+		"text" : "您的性别",
+		"question_type" : "single",
+		"answers" :[
+			{
+				"answer_id" : 100,
+				"text" : "男"
+			},
+			{
+				"answer_id" : 101,
+				"text" : "女"
+			}
+		]
+	},
+	{
+		"question_id" : 23,
+		"text" : "您的年龄",
+		"question_type" : "single",
+		"answers" :[
+			{
+				"answer_id" : 102,
+				"text" : "18岁以下"
+			},
+			{
+				"answer_id" : 103,
+				"text" : "18-24岁"
+			},
+			{
+				"answer_id" : 104,
+				"text" : "25-34岁"
+			},
+			{
+				"answer_id" : 105,
+				"text" : "35-44岁"
+			},
+			{
+				"answer_id" : 106,
+				"text" : "45岁以上"
+			}
+		]
+	},
+	{
+		"question_id" : 24,
+		"text" : "您的职业",
+		"question_type" : "single",
+		"answers" :[
+			{
+				"answer_id" : 107,
+				"text" : "学生"
+			},
+			{
+				"answer_id" : 108,
+				"text" : "格子间上班族"
+			},
+			{
+				"answer_id" : 109,
+				"text" : "劳动人民"
+			},
+			{
+				"answer_id" : 110,
+				"text" : "自由职业"
+			},
+			{
+				"answer_id" : 111,
+				"text" : "我是boss,我为自己带盐"
+			},
+			{
+				"answer_id" : 112,
+				"text" : "赋闲在家"
+			}
+		]
 	}
 
 ]

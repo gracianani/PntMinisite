@@ -3,7 +3,7 @@
         "scene_id": 1,
         "scene_name": "basic_info",
         "scene_title": "基本信息",
-        "question_ids": [],
+        "question_ids": [22,23,24],
 		"next_scene_id" : 2
     },
     {
@@ -11,13 +11,15 @@
         "scene_name": "hair_style",
         "scene_title": "发型",
         "question_ids": [13,14,15,16],
-		"next_scene_id" : 4
+		"prev_scene_id" : 1,
+		"next_scene_id" : 3
     },
     {
         "scene_id": 3,
         "scene_name": "hair_quality",
         "scene_title": "发质",
-        "question_ids": [],
+        "question_ids": [18,19,20,21],
+		"prev_scene_id" : 2,
 		"next_scene_id" : 4
 		
     },
@@ -26,7 +28,7 @@
         "scene_name": "life",
         "scene_title": "生活组成",
         "question_ids": [11],
-		"prev_scene_id" : 2,
+		"prev_scene_id" : 3,
 		"next_scene_id" : 5
     },
     {

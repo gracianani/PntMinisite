@@ -38,8 +38,9 @@ window.AppFacade = {
     },
     getUserAnswers: function () {
         var user_answers = [];
-
+        user_answers.push({ scene_id: '1', user_answers: app.Views.BasicInfoView.model.get("user_answers") });
         user_answers.push({ scene_id: '2', user_answers: app.Views.HairStyleView.model.get("user_answers") });
+        user_answers.push({ scene_id: '3', user_answers: app.Views.HairQualityView.model.get("user_answers") });
         user_answers.push({ scene_id: '4', user_answers: app.Views.LifeView.model.get("user_answers") });
         user_answers.push({ scene_id: '5', user_answers: app.Views.HealthView.model.get("user_answers") });
         user_answers.push({ scene_id: '6', user_answers: app.Views.DietView.model.get("user_answers") });
@@ -50,8 +51,14 @@ window.AppFacade = {
     setUserAnswers: function (user_answers) {
         for (var i = 0; i < user_answers.length; i++) {
             var user_answer = user_answers[i];
-            if (user_answer.scene_id == 2) {
+            if (user_answer.scene_id == 1) {
+                app.Views.BasicInfoView.model.set("user_answers", user_answer.user_answers);
+            }
+            else if (user_answer.scene_id == 2) {
                 app.Views.HairStyleView.model.set("user_answers", user_answer.user_answers);
+            } 
+            else if (user_answer.scene_id == 3) {
+                app.Views.HairQualityView.model.set("user_answers", user_answer.user_answers);
             }
             else if (user_answer.scene_id == 4) {
                 app.Views.LifeView.model.set("user_answers", user_answer.user_answers);
@@ -102,8 +109,12 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
                 app.Views.MainView = new MainView();
                 var avatar = new Avatar;
                 app.Views.AvatarView = new AvatarView({ model: avatar });
+                var basicInfoScene = new Scene(app.SceneSettings.findWhere({ scene_id: 1 }).toJSON());
+                var basicInfoView = new BasicInfoView({ model: basicInfoScene });
                 var hairStyleScene = new Scene(app.SceneSettings.findWhere({ scene_id: 2 }).toJSON());
-                var hairStyleView = new  HairStyleView({ model: hairStyleScene });
+                var hairStyleView = new HairStyleView({ model: hairStyleScene });
+                var hairQualityScene = new Scene(app.SceneSettings.findWhere({ scene_id: 3 }).toJSON());
+                var hairQualityView = new HairQualityView({ model: hairQualityScene });
                 var lifeScene = new Scene(app.SceneSettings.findWhere({ scene_id: 4 }).toJSON());
                 var lifeView = new LifeView({ model: lifeScene });
                 var dietScene = new Scene(app.SceneSettings.findWhere({ scene_id: 6 }).toJSON());
@@ -113,7 +124,9 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
                 var cleaningScene = new Scene(app.SceneSettings.findWhere({ scene_id: 7 }).toJSON());
                 var cleaningView = new CleaningView({ model: cleaningScene });
 
+                app.Views.BasicInfoView = basicInfoView;
                 app.Views.HairStyleView = hairStyleView;
+                app.Views.HairQualityView = hairQualityView;
                 app.Views.DietView = dietView;
                 app.Views.HealthView = healthView;
                 app.Views.CleaningView = cleaningView;
@@ -150,7 +163,6 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
                     });
                     AppFacade.loadFromCookie(isCallback);
                 }
-
 
             }
         );
