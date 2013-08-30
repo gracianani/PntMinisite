@@ -1,12 +1,12 @@
 ﻿
 
 var Outfit = {
-    "male": {
+    "m": {
         "worker": "me.png",
         "freelancer": "me.png",
         "boss": "me.png"
     },
-    "female": {
+    "fm": {
         "worker": "me.png",
         "freelancer": "me.png",
         "boss": "me.png"

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * HTML5 Boilerplate
  *
  * What follows is the result of much research on cross-browser styling.
@@ -242,6 +242,7 @@ profile
 	width: 48px;
 	height: 48px;
 	margin: 0 auto;
+	position: relative;
 }
 #share a {
 	color: #FFF;
@@ -666,6 +667,101 @@ scenes
 #sleep .onDegree-1 .health-degree-pin{
 	top:95%;
 }
+/**** life *******/
+#life-icons,#life-lines {
+	position: absolute;
+	left: 50%;
+	top:50%;
+	margin-top: -225px;
+	margin-left: -300px;
+	width: 600px;
+	height: 450px;
+}
+#life-type {
+	position: absolute;
+	left: 50%;
+	top:50%;
+	width: 120px;
+	height: 60px;
+	margin-left: -100px;
+	text-align: center;
+	padding: 20px 40px;
+	color: #e4600d;
+}
+.life-icon {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	cursor: pointer;
+	
+	margin-left: -50px;
+	margin-top: -50px;
+}
+.life-icon:hover {
+	transform: scale(1.2);
+	-ms-transform: scale(1.2); /* IE 9 */
+	-webkit-transform: scale(1.2); /* Safari and Chrome */
+}
+#life-work-1 {
+	background: url(../img/scene/life-air.png) left top no-repeat;
+	left:35%;
+	top:5%;
+}
+#life-work-2 {
+	background: url(../img/scene/life-books.png) left top no-repeat;
+	left:5%;
+	top:25%;
+}
+#life-work-3 {
+	background: url(../img/scene/life-phone.png) left top no-repeat;
+	left: 0%;
+	top:55%;
+}
+#life-work-4 {
+	background: url(../img/scene/life-desktop.png) left top no-repeat;
+	left:10%;
+	top:80%;
+}
+#life-play-1 {
+	background: url(../img/scene/life-game.png) left top no-repeat;
+	left:65%;
+	top:5%;
+}
+#life-play-2 {
+	background: url(../img/scene/life-movie.png) left top no-repeat;
+	left:92%;
+	top:24%;
+}
+#life-play-3 {
+	background: url(../img/scene/life-party.png) left top no-repeat;
+	left:100%;
+	top:50%;
+}
+#life-play-4 {
+	background: url(../img/scene/life-sport.png) left top no-repeat;
+	left: 90%;
+	top:80%;
+}
+#life-play-5 {
+	background: url(../img/scene/life-food.png) left top no-repeat;
+	left:50%;
+	top:95%;
+}
+#life-icons .life-icon {
+	background-size:100% auto;
+}
+#life-center {
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	margin-left: -100px;
+	margin-top: -100px;
+	left: 50%;
+	top:50%;
+	border-radius: 50%;
+	background-color: #fad949;
+}
+
 /**** hint and tooltips *******/
 .hint {
 	background-color: #e1471c;
@@ -701,6 +797,619 @@ scenes
 	bottom: -14px;
 	
 }
+
+/***************
+Cleaning
+***************/
+.cleaning-shelfContainer {
+	height: 115px;
+	position: relative;
+	padding: 0 20px;
+}
+.cleaning-shelf {
+	height: 12px;
+	width: 100%;
+	
+	background: #FFF;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	border-bottom: 6px solid #c8c9ba;
+}
+.cleaning-shelfSupport-left, .cleaning-shelfSupport-right{
+	width: 12px;
+	height:12px;
+	border-radius: 50%;
+	background-color: #4f5251;
+	border:8px solid #c8c9ba;
+	position: absolute;
+	bottom: -15px;
+}
+.cleaning-shelfSupport-left {
+	left:20%;
+}
+.cleaning-shelfSupport-right {
+	right: 20%;
+}
+#cleaning-care {
+	width: 400px;
+	margin-top: 20px;
+	
+}
+#cleaning-style {
+	width: 300px;
+	left: 155px;
+	height: 140px;
+}
+#cleaning-tool {
+	width: 270px;
+	left: 180px;
+	margin-top: 10px;
+}
+
+.cleaning-style {
+	width: 70px;
+	height: 125px;
+	float: left;
+	display: inline-block;
+	cursor: pointer;
+	background: url(../img/scene/style-icons.png) no-repeat center top;
+}
+.cleaning-care {
+	width: 80px;
+	height: 125px;
+	float: left;
+	display: inline-block;
+	cursor: pointer;
+	background: url(../img/scene/care-icons.png) no-repeat center top;
+}
+.cleaning-tool {
+	width: 90px;
+	height: 100px;
+	margin-top: 3px;
+	float: left;
+	display: inline-block;
+	cursor: pointer;
+	background: url(../img/scene/tool-icons.png) no-repeat center top;
+}
+#cleaning-care {
+	height: 140px;
+}
+#cleaning-vax {
+	background-position: center -125px;
+	background-size: 100px auto;
+	width: 90px;
+}
+#cleaning-spray {
+	background-position: center -250px;
+	background-size: 100px auto;
+}
+#cleaning-moss {
+	background-position: center top;
+	background-size: 100px auto;
+}
+#cleaning-gel {
+	background-position: center -375px;
+	background-size: 100px auto;
+	width: 70px;
+}
+#cleaning-shampoo {
+	background-position: center top;
+	background-size: 100px auto;
+}
+#cleaning-conditioner {
+	background-position: center -125px;
+	background-size: 100px auto;
+}
+#cleaning-mask {
+	background-position: center -250px;
+	background-size: 100px auto;
+}
+#cleaning-cream {
+	background-position: center -375px;
+	background-size: 100px auto;
+}
+#cleaning-inhair {
+	background-position: center -500px;
+	background-size: 100px auto;
+}
+
+#cleaning-drier {
+	background-position: center top;
+	background-size: 100px auto;
+}
+#cleaning-curling {
+	background-position: center -100px;
+	background-size: 100px auto;
+}
+#cleaning-flat {
+	background-position: center -200px;
+	background-size: 100px auto;
+}
+#cleaning-vax:hover,#cleaning-vax.selected {
+	background-position: center -625px;
+}
+#cleaning-spray:hover,#cleaning-spray.selected {
+	background-position: center -750px;
+}
+#cleaning-moss:hover,#cleaning-moss.selected {
+	background-position: center -500px;
+}
+#cleaning-gel:hover,#cleaning-gel.selected {
+	background-position: center -875px;
+}
+#cleaning-shampoo:hover,#cleaning-shampoo.selected {
+	background-position: center -625px;
+	background-size: 100px auto;
+}
+#cleaning-conditioner:hover,#cleaning-conditioner.selected {
+	background-position: center -750px;
+}
+#cleaning-mask:hover,#cleaning-mask.selected {
+	background-position: center -875px;
+}
+#cleaning-cream:hover,#cleaning-cream.selected {
+	background-position: center -1000px;
+}
+#cleaning-inhair:hover,#cleaning-inhair.selected {
+	background-position: center -1125px;
+}
+
+#cleaning-drier:hover,#cleaning-drier.selected {
+	background-position: center -300px;
+}
+#cleaning-curling:hover,#cleaning-curling.selected {
+	background-position: center -400px;
+}
+#cleaning-flat:hover,#cleaning-flat.selected {
+	background-position: center -500px;
+}
+#cleaning-trash {
+	width: 105px;
+	height: 135px;
+	position: absolute;
+	bottom: 0px;
+	left: 0;
+}
+#cleaning-trash-content {
+	background-image: url(../img/scene/cleaning-trash.png);
+	background-repeat: no-repeat;
+	width: 105px;
+	height: 135px;
+	cursor: pointer;
+	
+	background-size: 105px auto;
+}
+.trash-unselected {
+	background-position:center top;
+	
+}
+.trash-1 {
+	background-position: center -135px;
+}
+.trash-2 {
+	background-position: center -270px;
+}
+.trash-3 {
+	background-position: center -405px;
+}
+.trash-4 {
+	background-position: center -540px;
+}
+#cleaning-trash-adjust {
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	position: absolute;
+	left: 0;
+	bottom: -30px;
+	font-size: 12px;
+	color: #333;
+}
+.addButton,.removeButton {
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+	color: #FFF;
+	border-radius: 15px;
+	border:5px solid #FFFFFF;
+	position: absolute;
+	cursor: pointer;
+}
+.addButton:hover,.removeButton:hover {
+	transform: scale(1.5);
+	-ms-transform: scale(1.5); /* IE 9 */
+	-webkit-transform: scale(1.5); /* Safari and Chrome */
+}
+.addButton {
+	left: -30px;
+	top: 0;
+	background-color: #ff6536;
+}
+.removeButton {
+	right: -30px;
+	top: 0;
+	background-color: #10486f;
+}
+#shower {
+	position: absolute;
+	top: 5%;
+	width: 40%;
+	right: 10%;
+}
+#shower-head {
+	background:url(../img/scene/shower-head.png) no-repeat center top;
+	width: 90px;
+	height: 70px;
+	background-size: 100% 100%;
+	margin: -20px auto 0;
+}
+#shower-frequency {
+	position: relative;
+	width:160px;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 15px;
+	font-size: 14px;
+	background: #FFF;
+	text-align: center;
+	margin: 0 auto;
+	text-align: center;
+}
+#shower-frequency .addButton {
+	left: 0;
+}
+#shower-frequency .removeButton {
+	right: 0;
+}
+#shower-water {
+	width: 60px;
+	height: 220px;
+	margin: 0 auto;
+	position: relative;
+}
+#shower-time {
+	width: 140px;
+	height: 50px;
+	border-radius: 10px;
+	background: #FFF;
+	margin: 20px auto 0;
+	position: relative;
+}
+.shower-time-icon {
+	width: 40px;
+	height: 40px;
+	border-radius: 30px;
+	border:2px dashed #ffbd32;
+	position: absolute;
+	top:50%;
+	margin-top: -20px;
+	display: block;
+
+}
+
+#shower-time-day {
+	left: 10%;
+	background-color: #ff6536;
+	background-image: url(../img/scene/cleaning-day.png);
+}
+#shower-time-night {
+	right: 10%;
+	background-color: #10486f;
+	background-image: url(../img/scene/cleaning-night.png);
+}
+#shower-time-day:hover {
+	background-color: #ff6536;
+	border:#FFF 2px solid;
+}
+#shower-time-night:hover {
+	background-color: #10486f;
+	border:#FFF 2px solid;
+}
+#shower-time-day.unselected,#shower-time-night.unselected {
+	background-color: #efefef;
+}
+.shower-time-icon {
+	
+	background-repeat: no-repeat;
+	background-position: center center;
+	cursor: pointer;
+}
+.shower-time-icon:hover {
+	transform: scale(1.2);
+	-ms-transform: scale(1.2); /* IE 9 */
+	-webkit-transform: scale(1.2); /* Safari and Chrome */
+}
+.water-item {
+	position: absolute;
+	margin-left: -25px;
+	top: 0;
+	display: none;
+}
+#water-item-0 {
+	left: 40%;
+}
+#water-item-1 {
+	left: 65%;
+}
+#water-item-2 {
+	left: 80%;
+}
+#water-item-3 {
+	left: 30%;
+}
+#water-item-4 {
+	left: 90%;
+}
+#water-item-5 {
+	left: 20%;
+}
+
+/******* hair style ***********/
+#hairstyle-length,#hairstyle-curl {
+	position: relative;
+	width: 200px;
+	height: 200px;
+	margin-bottom: 30px;
+}
+.hairstyle-circle {
+	width: 150px;
+	height: 150px;
+	border-radius: 100px;
+	background-color: #fde7b8;
+	border:5px dashed #f39800;
+}
+.hairstyle-circle-dragable {
+	width: 40px;
+	height: 40px;
+	background: #f39800;
+	border:5px solid #bb471e;
+	border-radius: 30px;
+	position: absolute;
+	left:50%;
+	top:0;
+	margin-left: -20px;
+	margin-top:-20px;
+}
+#hairstyle-type {
+	position: absolute;
+	width: 264px;
+	left: 50%;
+	bottom: -20px;
+	margin-left: -127px;
+}
+.hairtype-icon {
+	width: 50px;
+	height: 50px;
+	border-radius: 10px;
+	border:3px #f39800 dashed;
+	background-color: #fde7b8;
+	float: left;
+	display: block;
+	margin-right: 10px;
+}
+#hairstyle-color {
+	position: absolute;
+	left: 70%;
+	top:20%;
+}
+.haircolor {
+	width: 200px;
+	height: 50px;
+	border-radius: 10px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	
+}
+#haircolor-mix {
+	background: #602016;
+	transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+}
+#haircolor-black {
+	background: #000;
+	transform: rotate(-15deg);
+	-ms-transform: rotate(-15deg);
+	-webkit-transform: rotate(-15deg);
+}
+
+#haircolor-gold {
+	background: #d08200;
+	transform: rotate(15deg);
+	-ms-transform: rotate(15deg);
+	-webkit-transform: rotate(15deg);
+}
+#haircolor-red {
+	background: #8b3122;
+	transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+}
+.haircolor-hole {
+	position: absolute;
+	left: 10%;
+	top: 50%;
+	margin-top:-5px;
+	width: 5px;
+	height: 5px;
+	border: 3px solid #FFF;
+	background: #ffbd32;
+	border-radius: 5px;
+}
+/******** character ************/
+.character {
+	
+	position: relative;
+
+}
+.character-large-size {
+	transform: scale(0.5);
+	-webkit-transform: scale(0.5);
+	-ms-transform: scale(0.5);
+	zoom: 0.5\9;
+	left:-106px;
+	top:-302px;
+}
+.character-small-size {
+	transform: scale(0.2);
+	-webkit-transform: scale(0.2);
+	-ms-transform: scale(0.2);
+	zoom: 0.2\9;
+	left:-187px;
+	top:-485px;
+}
+#profile-avatar {
+	overflow: hidden;
+}
+.head-only .clothes,.head-only .hand {
+	display: none;
+	background: none;
+}
+.fm {
+	width: 423px;
+	height: 1214px;
+}
+.body,.clothes,.head,.bang,.hair,.hand,.face{
+	position: absolute;
+}
+.fm .body {
+	background:url(../img/character/body-fm.png) no-repeat center top;
+	width: 100%;
+	height: 100%;
+}
+.fm .clothes {
+	background:url(../img/character/clothes-fm.png) no-repeat;
+	width: 100%;
+	height: 1214px;
+}
+.fm .hair {
+	background: url(../img/character/hair-fm.png) no-repeat;
+	width: 100%;
+	height: 600px;
+}
+.fm .bang {
+	background: url(../img/character/bang-fm.png) no-repeat;
+	width: 100%;
+	height: 600px;
+}
+.fm .hair-black {
+	background-image: url(../img/character/hair-fm-black.png);
+}
+.fm .hair-gold {
+	background-image: url(../img/character/hair-fm-gold.png);
+}
+.fm .hair-mix {
+	background-image: url(../img/character/hair-fm-mix.png);
+}
+.fm .bang-black {
+	background-image: url(../img/character/bang-fm-black.png);
+}
+.fm .bang-gold {
+	background-image: url(../img/character/bang-fm-gold.png);
+}
+.fm .bang-mix {
+	background-image: url(../img/character/bang-fm-mix.png);
+}
+.fm .head {
+	background: url(../img/character/head-fm.png) no-repeat;
+	width: 100%;
+	height: 240px;
+}
+.fm .hand {
+	background: url(../img/character/hand-fm.png) no-repeat;
+	height: 718px;
+	width: 100%;
+}
+.fm .face {
+	background: url(../img/character/face-fm.png) no-repeat;
+	width: 100%;
+	height: 240px;
+}
+.mirror-show {
+	border-radius: 20px;
+	width: 240px;
+	height: 350px;
+	border:2px #b78266 solid;
+	overflow: hidden;
+	background:#d2e9e7 url(../img/scene/mirror-light.png) 115% -15% no-repeat;
+	position: absolute;
+	left: 50%;
+	margin-left: -120px;
+	top:50%;
+	margin-top:-175px;
+}
+.mirror-show .character{
+	left:-90px;
+}
+#character-profile {
+	position: absolute;
+}
+.fm .hair-fm-band{ background-position: 0 0; width: 424px; height: 600px; } 
+.fm .hair-fm-hand{ background-position: 0 -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-l-1{ background-position: 0 -1300px; width: 424px; height: 600px; } 
+.fm .hair-fm-l-2{ background-position: -474px 0; width: 424px; height: 600px; } 
+.fm .hair-fm-l-3{ background-position: -474px -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-l-4{ background-position: -474px -1300px; width: 424px; height: 600px; } 
+.fm .hair-fm-m-1{ background-position: -948px 0; width: 424px; height: 600px; } 
+.fm .hair-fm-m-2{ background-position: -948px -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-m-3{ background-position: -948px -1300px; width: 424px; height: 600px; } 
+.fm .hair-fm-m-4{ background-position: -1422px 0; width: 424px; height: 600px; } 
+.fm .hair-fm-pin{ background-position: -1422px -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-s-1{ background-position: -1422px -1300px; width: 424px; height: 600px; } 
+.fm .hair-fm-s-2{ background-position: -1896px 0; width: 424px; height: 600px; } 
+.fm .hair-fm-s-3{ background-position: -1896px -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-s-4{ background-position: -1896px -1300px; width: 424px; height: 600px; } 
+.fm .hair-fm-s-5{ background-position: -2370px 0; width: 424px; height: 600px; } 
+.fm .hair-fm-xl-1{ background-position: -2370px -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-xl-2{ background-position: -2370px -1300px; width: 424px; height: 600px; } 
+.fm .hair-fm-xl-3{ background-position: -2844px 0; width: 424px; height: 600px; } 
+.fm .hair-fm-xl-4{ background-position: -2844px -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-xs-1{ background-position: -2844px -1300px; width: 424px; height: 600px; } 
+.fm .hair-fm-xs-2{ background-position: -3318px 0; width: 424px; height: 600px; } 
+.fm .hair-fm-xs-3{ background-position: -3318px -650px; width: 424px; height: 600px; } 
+.fm .hair-fm-xs-4{ background-position: -3318px -1300px; width: 424px; height: 600px; }
+
+.fm .bang-fm-band{ background-position: 0 0; width: 424px; height: 600px; } 
+.fm .bang-fm-hand{ background-position: 0 -605px; width: 424px; height: 600px; } 
+.fm .bang-fm-l-1{ background-position: 0 -1210px; width: 424px; height: 600px; } 
+.fm .bang-fm-l-2{ background-position: 0 -1815px; width: 424px; height: 600px; } 
+.fm .bang-fm-l-3{ background-position: -429px 0; width: 424px; height: 600px; } 
+.fm .bang-fm-l-4{ background-position: -429px -605px; width: 424px; height: 600px; } 
+.fm .bang-fm-m-1{ background-position: -429px -1210px; width: 424px; height: 600px; } 
+.fm .bang-fm-m-2{ background-position: -429px -1815px; width: 424px; height: 600px; } 
+.fm .bang-fm-m-3{ background-position: -858px 0; width: 424px; height: 600px; } 
+.fm .bang-fm-m-4{ background-position: -858px -605px; width: 424px; height: 600px; } 
+.fm .bang-fm-pin{ background-position: -858px -1210px; width: 424px; height: 600px; } 
+.fm .bang-fm-s-1{ background-position: -858px -1815px; width: 424px; height: 600px; } 
+.fm .bang-fm-s-2{ background-position: -1287px 0; width: 424px; height: 600px; } 
+.fm .bang-fm-s-3{ background-position: -1287px -605px; width: 424px; height: 600px; } 
+.fm .bang-fm-s-4{ background-position: -1287px -1210px; width: 424px; height: 600px; } 
+.fm .bang-fm-xl-1{ background-position: -1287px -1815px; width: 424px; height: 600px; } 
+.fm .bang-fm-xl-2{ background-position: -1716px 0; width: 424px; height: 600px; } 
+.fm .bang-fm-xl-3{ background-position: -1716px -605px; width: 424px; height: 600px; } 
+.fm .bang-fm-xl-4{ background-position: -1716px -1210px; width: 424px; height: 600px; } 
+.fm .bang-fm-xs-1{ background-position: -1716px -1815px; width: 424px; height: 600px; } 
+.fm .bang-fm-xs-2{ background-position: -2145px 0; width: 424px; height: 600px; } 
+.fm .bang-fm-xs-3{ background-position: -2145px -605px; width: 424px; height: 600px; } 
+.fm .bang-fm-xs-4{ background-position: -2145px -1210px; width: 424px; height: 600px; } 
+
+.fm .face-fm-1{ background-position: 0 0; width: 424px; height: 240px; } 
+.fm .face-fm-2{ background-position: 0 -245px; width: 424px; height: 240px; } 
+.fm .face-fm-3{ background-position: 0 -490px; width: 424px; height: 240px; }  
+
+.fm .clothes-fm-0{ background-position: 0 0; width: 424px; height: 1214px; } 
+.fm .clothes-fm-1{ background-position: 0 -1219px; width: 424px; height: 1214px; } 
+.fm .clothes-fm-2{ background-position: -429px 0; width: 424px; height: 1214px; } 
+.fm .clothes-fm-3{ background-position: -429px -1219px; width: 424px; height: 1214px; } 
+.fm .clothes-fm-4{ background-position: -858px 0; width: 424px; height: 1214px; } 
+.fm .clothes-fm-5{ background-position: -858px -1219px; width: 424px; height: 1214px; } 
+.fm .clothes-fm-6{ background-position: -1287px 0; width: 424px; height: 1214px; } 
+
+
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */

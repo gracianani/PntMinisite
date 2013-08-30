@@ -8,19 +8,29 @@ var Router = Backbone.Router.extend({
     },
 
     index: function () {
-        window.AppFacade.init();
+        if (getParameterByName('code') == '') {
+            window.AppFacade.init();
+            window.AppFacade.setCurrentView(app.Views.HairStyleView);
+        }
     },
 
     details: function (id) {
-        var basicFrame = new BasicFrameView();
-
-        if (id == 6) {
+        AppFacade.init();
+        if (id == 2) {
+            window.AppFacade.setCurrentView(app.Views.HairStyleView);
+        }
+        else if (id == 4) {
+            window.AppFacade.setCurrentView(app.Views.LifeView);
+        }
+        else if (id == 6) {
             window.AppFacade.setCurrentView(app.Views.DietView);
         }
         else if (id == 5) {
             window.AppFacade.setCurrentView(app.Views.HealthView);
         }
-
+        else if (id == 7) {
+            window.AppFacade.setCurrentView(app.Views.CleaningView);
+        }
 
 
     }

@@ -15,6 +15,47 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <style>
+            #login 
+            {
+                position: absolute;
+                top: 15%;
+                left: 50%;
+                margin-left: -73px;
+                z-index: 1000;
+                width: 584px;
+                background-color: #fff;
+                font-size: 11px;
+                text-align: left;
+                border: solid 5px #e3e3e3;
+                border-radius: 10px;
+                -moz-border-radius: 10px;
+                -webkit-border-radius: 10px;
+                padding: 7px;
+            }
+            #login a
+            {
+                color: #FFF;
+                background: url(img/share.png) left top no-repeat;
+                width: 48px;
+                height: 48px;
+                display: inline-block;
+                margin-right: 15px;
+                margin-top: 5px;
+             }
+             #login .wechat 
+             {
+                 background-position: left -48px;
+             }
+             #login .weibo
+             {
+                 background-position: left -144px;
+             }
+             #share #weibo.authenticated
+             {
+                 background-position: left -144px;
+             }
+        </style>
     </head>
     <body class="loading">
         <!--[if lt IE 7]>
@@ -42,8 +83,8 @@
         		</div>
         	</div>
         	<div id="share">
-        		<a id="wechat"></a>
-        		<a id="weibo"></a>
+        		<a id="wechat" data-toggle="modal" data-target="#login"></a>
+        		<a id="weibo"  data-toggle="modal" data-target="#login"></a>
         	</div>
         </div>
         
@@ -88,7 +129,16 @@
         	<div class="caret"></div>
         </div>
 
-        
+        <div id="login" role="dialog" class=" hidden" >
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3>登陆潘婷实验室</h3>
+              </div>
+              <div class="modal-body">
+                    <a class="wechat" ></a>
+        	        <a class="weibo"></a>
+              </div>
+        </div>
         
         <script src="js/vendor/jquery-1.9.1.min.js"></script>
         <script src="js/vendor/raphael-min.js"></script>
@@ -102,25 +152,33 @@
         <script src="js/vendor/underscore.js"></script>
         <script src="js/vendor/backbone.js"></script>
         <script src="js/vendor/mustache.js"></script>
-        <script src="js/vendor/require.min.js" data-main="js/main"></script>
-
         <script src="js/backbone/utils/paths.js"></script>
         <script src="js/backbone/utils/plugins.js"></script>
-        
         <script src="js/backbone/views/View.js"></script>
-        
         <script src="js/backbone/utils/animationHandler.js"></script>
+        <script src="js/vendor/require.min.js" data-main="js/main"></script>
         
         <script type="text/template" id="me-template">
-        	<div class="me-content {{gender}} {{hairLength}} {{hairStyle}} {{#getOutfit}}{{/getOutfit}}">
-	        	<div class="me-hair"></div>
-	        	<div class="me-head"></div>
-	        	<div class="me-dress"></div>
-	        	<div class="me-body"></div>
-	        	<div class="me-hairback"></div>
-        	</div>
+            <div id="character-container" class="mirror-show ">
+        		<div id="character-inScene" class="character {{gender}} character-large-size">
+        			<div class="hair hair-{{gender}}-{{hairLength}}-{{hairCurly}}  hair-{{hairColor}}">
+        			</div>
+        			<div class="body">
+        			</div>
+        			<div class="head">
+        			</div>
+        			<div class="face">
+        			</div>
+        					
+        			<div class="clothes clothes-{{gender}}-{{career_id}}">
+        			</div>
+        			<div class="hand">
+        			</div>
+        			<div class="bang bang-{{gender}}-{{hairLength}}-{{hairCurly}} bang-{{hairColor}}">
+        			</div>
+        		</div>
+			</div>
         </script>
-        
         <script id="scene-diet-template" type="text/template">
             <div id="scene-diet" class="scene">
         		<div id="scene-diet-content" class="scene-content">
@@ -131,47 +189,47 @@
         			<div id="refrigerator" class="item" >
         				<div id="refrigerator-left">
         					<div id="refrigerator-left-content" data-question-id="2">
-        						<div id="taste-spicy" class="taste refrigerator-cell width-large height-medium" style="top:2%;" data-answer-id="5" data-selected="0"  title="无辣不欢的重口味">
+        						<div id="taste-spicy" class="taste refrigerator-cell width-large height-medium {{#getSelectedClass}}2,5{{/getSelectedClass}}" data-title="+" style="top:2%;" data-answer-id="5" data-selected="{{#getDataSelected}}2,5{{/getDataSelected}}"  title="无辣不欢的重口味">
         							<img src="img/scene/diet-spicy.png" alt="无辣不欢的重口味" />
         						</div>
-        						<div id="taste-sweet" class="taste refrigerator-cell width-large height-medium" style="top:21.6%;" data-answer-id="6" data-selected="0" title="偏爱甜食">
+        						<div id="taste-sweet" class="taste refrigerator-cell width-large height-medium {{#getSelectedClass}}2,6{{/getSelectedClass}}" data-title="+" style="top:21.6%;" data-answer-id="6" data-selected="{{#getDataSelected}}2,6{{/getDataSelected}}" title="偏爱甜食">
         							<img src="img/scene/diet-sweet.png" alt="偏爱甜食" />
         						</div>
-        						<div id="taste-meat" class="taste refrigerator-cell width-large height-medium" style="top:41.2%;" data-answer-id="7" data-selected="0" title="肉食动物">
+        						<div id="taste-meat" class="taste refrigerator-cell width-large height-medium {{#getSelectedClass}}2,7{{/getSelectedClass}}" data-title="+" style="top:41.2%;" data-answer-id="7" data-selected="{{#getDataSelected}}2,7{{/getDataSelected}}" title="肉食动物">
         							<img src="img/scene/diet-meat.png" alt="肉食动物" />
         						</div>
-        						<div id="taste-vegetable" class="taste refrigerator-cell width-large height-medium" style="top:60.8%;" data-answer-id="8" data-selected="0" title="素食主义者">
+        						<div id="taste-vegetable" class="taste refrigerator-cell width-large height-medium {{#getSelectedClass}}2,8{{/getSelectedClass}}" data-title="+" style="top:60.8%;" data-answer-id="8" data-selected="{{#getDataSelected}}2,8{{/getDataSelected}}" title="素食主义者">
         							<img src="img/scene/diet-vegetable.png" alt="素食主义者" />
         						</div>
-        						<div id="taste-mix" class="taste refrigerator-cell width-large height-medium" data-answer-id="9" style="top:80.4%;" data-selected="0"  title="荤素搭配">
+        						<div id="taste-mix" class="taste refrigerator-cell width-large height-medium {{#getSelectedClass}}2,9{{/getSelectedClass}}" data-answer-id="9" data-title="+" style="top:80.4%;" data-selected="{{#getDataSelected}}2,9{{/getDataSelected}}"  title="荤素搭配">
         							<img src="img/scene/diet-mix.png" alt="荤素搭配" />
         						</div>
         					</div><!-/refrigerator-left-content-->
         				</div><!-/refrigerator-left-->
         				<div id="refrigerator-right">
         					<div id="refrigerator-right-content">
-        						<div id="fruit" class="fruit refrigerator-cell width-large height-medium" data-question-id="3" style="top:2%;" data-degree="0">
+        						<div id="fruit" class="fruit refrigerator-cell width-large height-medium {{#getSelectedClass}}3{{/getSelectedClass}} fruit-degree-{{#getDataDegree}}3{{/getDataDegree}}" data-question-id="3" style="top:2%;" data-degree="{{#getDataDegree}}3{{/getDataDegree}}">
         						</div>
                                 <div data-question-id="4">
-        						    <div id="drink-coke" class="drink refrigerator-cell width-half height-medium" style="top:21.6%;" data-answer-id="14" data-selected="0"  title="碳酸饮料">
+        						    <div id="drink-coke" class="drink refrigerator-cell width-half height-medium {{#getSelectedClass}}4,14{{/getSelectedClass}}" style="top:21.6%;" data-answer-id="14" data-selected="{{#getDataSelected}}4,14{{/getDataSelected}}"  title="碳酸饮料">
         							    <img src="img/scene/diet-coke.png" alt="碳酸饮料" />
         						    </div>
-        						    <div id="drink-beer" class="drink refrigerator-cell width-half height-medium" style="top:21.6%;left:51%;" data-answer-id="15" data-selected="0" title="酒精类">
+        						    <div id="drink-beer" class="drink refrigerator-cell width-half height-medium {{#getSelectedClass}}4,15{{/getSelectedClass}}" style="top:21.6%;left:51%;" data-answer-id="15" data-selected="{{#getDataSelected}}4,15{{/getDataSelected}}" title="酒精类">
         							    <img src="img/scene/diet-beer.png" alt="酒精类" />
         						    </div>
-        						    <div id="drink-milk" class="drink refrigerator-cell width-small height-medium" style="top:41.2%;" data-answer-id="16" data-selected="0" title="牛奶">
+        						    <div id="drink-milk" class="drink refrigerator-cell width-small height-medium {{#getSelectedClass}}4,16{{/getSelectedClass}}" style="top:41.2%;" data-answer-id="16" data-selected="{{#getDataSelected}}4,16{{/getDataSelected}}" title="牛奶">
         							    <img src="img/scene/diet-milk.png" alt="牛奶" />
         						    </div>
-        						    <div id="drink-water" class="drink refrigerator-cell width-medium height-medium" style="top:41.2%;left:47%" data-answer-id="17" data-selected="0" title="白开水" >
+        						    <div id="drink-water" class="drink refrigerator-cell width-medium height-medium {{#getSelectedClass}}4,17{{/getSelectedClass}}" style="top:41.2%;left:47%" data-answer-id="17" data-selected="{{#getDataSelected}}4,17{{/getDataSelected}}" title="白开水" >
         							    <img src="img/scene/diet-water.png" alt="白开水" />
         						    </div>
-        						    <div id="drink-juice" class="drink refrigerator-cell width-medium height-large" style="top:60.8%;" data-answer-id="18" data-selected="0" title="鲜榨果汁">
+        						    <div id="drink-juice" class="drink refrigerator-cell width-medium height-large {{#getSelectedClass}}4,18{{/getSelectedClass}}" style="top:60.8%;" data-answer-id="18" data-selected="{{#getDataSelected}}4,18{{/getDataSelected}}" title="鲜榨果汁">
         							    <img src="img/scene/diet-juice.png" alt="果汁" />
         						    </div>
-        						    <div id="drink-coffee" class="drink refrigerator-cell width-small height-medium" style="top:60.8%;left:56%;" data-answer-id="19" data-selected="0" title="咖啡">
+        						    <div id="drink-coffee" class="drink refrigerator-cell width-small height-medium {{#getSelectedClass}}4,19{{/getSelectedClass}}" style="top:60.8%;left:56%;" data-answer-id="19" data-selected="{{#getDataSelected}}4,19{{/getDataSelected}}" title="咖啡">
         							    <img src="img/scene/diet-coffee.png" alt="咖啡" />
         						    </div>
-        						    <div id="drink-tea" class="drink refrigerator-cell width-small height-medium" style="top:80.4%;left:56%;" data-answer-id="20" data-selected="0" title="茶">
+        						    <div id="drink-tea" class="drink refrigerator-cell width-small height-medium {{#getSelectedClass}}4,20{{/getSelectedClass}}" style="top:80.4%;left:56%;" data-answer-id="20" data-selected="{{#getDataSelected}}4,20{{/getDataSelected}}" title="茶">
         							    <img src="img/scene/diet-tea.png" alt="茶" />
         						    </div>
                                 </div>
@@ -200,7 +258,7 @@
             <div id="scene-health" class="scene">
         		<div id="scene-health-content" class="scene-content">
         			<div id="mealCount" class="health-degree item">
-        				<div class="health-degree-content unselected" data-question-id="5" data-degrees="4">
+        				<div class="health-degree-content {{#getUnselectedClass}}5{{/getUnselectedClass}} onDegree-{{#getDataDegree}}5{{/getDataDegree}}" data-question-id="5" data-degrees="4">
 	        				<div id="mealCount-degree4" title="还有夜宵和加餐" data-answer-id="21" class="meal health-degree-item" data-degree="4">
 	        					<img src="img/scene/meal-4.png" />
 	        				</div>
@@ -220,7 +278,7 @@
         				
         			</div>
         			<div id="drinking" class="health-degree item">
-        				<div class="health-degree-content  unselected" data-question-id="6" data-degrees="3">
+        				<div class="health-degree-content  {{#getUnselectedClass}}6{{/getUnselectedClass}} onDegree-{{#getDataDegree}}6{{/getDataDegree}}" data-question-id="6" data-degrees="3">
 	        				<div id="drinking-degree3" title="经常喝" data-answer-id="25" class="drinking health-degree-item" data-degree="3">
 	        					<img src="img/scene/drinking-3.png" />
 	        				</div>
@@ -235,7 +293,7 @@
         				</div>        				
         			</div>
         			<div id="smoke" class="health-degree item">
-        				<div class="health-degree-content unselected" data-question-id="7" data-degrees="4">
+        				<div class="health-degree-content {{#getUnselectedClass}}7{{/getUnselectedClass}} onDegree-{{#getDataDegree}}7{{/getDataDegree}}" data-question-id="7" data-degrees="4">
 	        				<div id="smoke-degree4" title="烟不离手" data-answer-id="28" class="smoke health-degree-item" data-degree="4">
 	        					<img src="img/scene/smoke-4.png" />
 	        				</div>
@@ -255,7 +313,7 @@
         				
         			</div>
         			<div id="sunBlock" class="health-degree item">
-        				<div class="health-degree-content unselected" data-question-id="9" data-degrees="3">
+        				<div class="health-degree-content {{#getUnselectedClass}}9{{/getUnselectedClass}} onDegree-{{#getDataDegree}}9{{/getDataDegree}}" data-question-id="9" data-degrees="3">
 	        				<div id="sunBlock-degree3" title="坚决不晒" data-answer-id="36" class="sunBlock health-degree-item" data-degree="3">
 	        					<img src="img/scene/sunBlock-3.png" />
 	        				</div>
@@ -270,7 +328,7 @@
         				</div>        				
         			</div>
         			<div id="sleep" class="health-degree item">
-        				<div class="health-degree-content unselected" data-question-id="8" data-degrees="4">
+        				<div class="health-degree-content {{#getUnselectedClass}}8{{/getUnselectedClass}} onDegree-{{#getDataDegree}}8{{/getDataDegree}}" data-question-id="8" data-degrees="4">
 	        				<div id="sleep-degree4" title="8小时以上" data-answer-id="32" class="sleep health-degree-item" data-degree="4">
 	        					<img src="img/scene/sleep-4.png" />
 	        				</div>
@@ -291,6 +349,197 @@
         			</div>
         		</div>
         	</div><!--/scene-health-->
+        </script>
+        <script id="scene-life-template" type="text/template">
+            <div id="scene-life" class="scene ">
+        		<div id="scene-life-content" class="scene-content">
+	        		<div id="life-lines" class="item">
+	        		</div>
+	        		
+	        		<div id="life-icons" class="item" data-question-id="11">
+	        			<div class="life-icon life-work {{#getSelectedClass}}11,55{{/getSelectedClass}}" id="life-work-1" data-answer-id="55" data-isselected="{{#getDataSelected}}11,55{{/getDataSelected}}" title="出差">
+	        			</div>
+	        			<div class="life-icon life-work {{#getSelectedClass}}11,56{{/getSelectedClass}}" id="life-work-2" data-answer-id="56" data-isselected="{{#getDataSelected}}11,56{{/getDataSelected}}" title="阅读">
+	        			</div>
+	        			<div class="life-icon life-work {{#getSelectedClass}}11,57{{/getSelectedClass}}" id="life-work-3" data-answer-id="57" data-isselected="{{#getDataSelected}}11,57{{/getDataSelected}}" title="使用手机">
+	        			</div>
+	        			<div class="life-icon life-work {{#getSelectedClass}}11,58{{/getSelectedClass}}" id="life-work-4" data-answer-id="58" data-isselected="{{#getDataSelected}}11,58{{/getDataSelected}}" title="上网">
+	        			</div>
+	        			<div class="life-icon life-play {{#getSelectedClass}}11,59{{/getSelectedClass}}" id="life-play-1" data-answer-id="59" data-isselected="{{#getDataSelected}}11,59{{/getDataSelected}}" title="玩游戏">
+	        			</div>
+	        			<div class="life-icon life-play {{#getSelectedClass}}11,60{{/getSelectedClass}}" id="life-play-2" data-answer-id="60" data-isselected="{{#getDataSelected}}11,60{{/getDataSelected}}" title="电影、音乐">
+	        			</div>
+	        			<div class="life-icon life-play {{#getSelectedClass}}11,61{{/getSelectedClass}}" id="life-play-3" data-answer-id="61" data-isselected="{{#getDataSelected}}11,61{{/getDataSelected}}" title="朋友聚会">
+	        			</div>
+	        			<div class="life-icon life-play {{#getSelectedClass}}11,62{{/getSelectedClass}}" id="life-play-4" data-answer-id="62" data-isselected="{{#getDataSelected}}11,62{{/getDataSelected}}" title="运动">
+	        			</div>
+	        			<div class="life-icon life-play {{#getSelectedClass}}11,63{{/getSelectedClass}}" id="life-play-5" data-answer-id="63" data-isselected="{{#getDataSelected}}11,63{{/getDataSelected}}" title="美食美酒">
+	        			</div>
+	        		</div>
+	        		<div id="life-center" class="item">
+	        		</div>
+	        		<div id="life-type" class="item">
+	        		点亮您生活的组成元素
+	        		</div>
+        		</div><!--/scene-content-->
+        	</div><!--/scene-->
+        </script>
+        <script id="scene-cleaning-template" type="text/template">
+            <div id="scene-cleaning" class="scene">
+        		<div id="scene-cleaning-content" class="scene-content" data-question-id="10">
+        			<div id="cleaning-care" class="item cleaning-shelfContainer" >
+        				<div id="cleaning-shampoo" class="cleaning-care {{#getSelectedClass}}10,39{{/getSelectedClass}}"  title="洗发水" data-answer-id="39">
+        					
+        				</div>
+        				<div id="cleaning-conditioner" class="cleaning-care {{#getSelectedClass}}10,40{{/getSelectedClass}}" title="护发素" data-answer-id="40">
+        					
+        				</div>
+        				<div id="cleaning-mask" class="cleaning-care {{#getSelectedClass}}10,41{{/getSelectedClass}}"  title="发膜" data-answer-id="41">
+        					
+        				</div>
+        				<div id="cleaning-cream" class="cleaning-care {{#getSelectedClass}}10,42{{/getSelectedClass}}"  title="深层护理" data-answer-id="42">
+        					
+        				</div>
+        				<div id="cleaning-inhair" class="cleaning-care {{#getSelectedClass}}10,43{{/getSelectedClass}}"  title="免洗护发" data-answer-id="43">
+        					
+        				</div>
+        				<div class="cleaning-shelfSupport-left"></div>
+	        			<div class="cleaning-shelfSupport-right"></div>
+        				<div class="cleaning-shelf">
+	        				
+        				</div>
+        			</div>
+        			<div id="cleaning-style" class="item cleaning-shelfContainer">
+        				<div id="cleaning-vax" class="cleaning-style {{#getSelectedClass}}10,44{{/getSelectedClass}}"  title="发蜡"  data-answer-id="44">
+        					
+        				</div>
+        				<div id="cleaning-gel" class="cleaning-style {{#getSelectedClass}}10,45{{/getSelectedClass}}"  title="造型着哩"  data-answer-id="45">
+        					
+        				</div>
+        				<div id="cleaning-moss" class="cleaning-style {{#getSelectedClass}}10,46{{/getSelectedClass}}"  title="造型摩丝"  data-answer-id="46">
+        					
+        				</div>
+        				<div id="cleaning-spray" class="cleaning-style {{#getSelectedClass}}10,47{{/getSelectedClass}}"  title="造型喷雾" data-answer-id="47">
+        					
+        				</div>
+        				<div class="cleaning-shelfSupport-left"></div>
+	        			<div class="cleaning-shelfSupport-right"></div>
+        				<div class="cleaning-shelf">
+        				</div>
+        			</div>
+        			<div id="cleaning-tool" class="item cleaning-shelfContainer">
+        				<div id="cleaning-curling" class="cleaning-tool {{#getSelectedClass}}10,48{{/getSelectedClass}}"  title="卷发器" data-answer-id="48">
+        					
+        				</div>
+        				<div id="cleaning-flat" class="cleaning-tool {{#getSelectedClass}}10,49{{/getSelectedClass}}"   title="直发夹" data-answer-id="49">
+        					
+        				</div>
+        				<div id="cleaning-drier" class="cleaning-tool {{#getSelectedClass}}10,50{{/getSelectedClass}}"  title="电吹风" data-answer-id="50">
+        					
+        				</div>
+        				<div class="cleaning-shelfSupport-left"></div>
+	        			<div class="cleaning-shelfSupport-right"></div>
+        				<div class="cleaning-shelf">
+        				</div>
+        			</div>
+        			<div id="cleaning-trash" class="item" data-question-id="12">
+        				<div id="cleaning-trash-content" class="trash-{{#getUnSelectedClass}}12{{/getUnSelectedClass}}{{#getDataDegree}}12{{/getDataDegree}}">
+                            
+        				</div>
+        				<div id="cleaning-trash-adjust">
+        					<div id="cleaning-trash-text">
+                            {{#getDataDegreeText}}12{{/getDataDegreeText}}
+        					</div>
+        				</div>
+        			</div>
+                    <div id="shower" class="item">
+        				<div id="shower-head">
+        				</div>
+        				<div id="shower-water">
+        					<img src="img/scene/cleaning-water.png" class="water-item" id="water-item-0" />
+        					<img src="img/scene/cleaning-water.png" class="water-item" id="water-item-1" />
+        					<img src="img/scene/cleaning-water.png" class="water-item" id="water-item-2" />
+        					<img src="img/scene/cleaning-water.png" class="water-item" id="water-item-3" />
+        					<img src="img/scene/cleaning-water.png" class="water-item" id="water-item-4" />
+        					<img src="img/scene/cleaning-water.png" class="water-item" id="water-item-5" />
+        					
+        				</div>
+        				<div id="shower-frequency" data-question-id="17" data-degree="1">
+	        				<div id="shower-frequency-add" class="addButton">
+	        					＋
+	        				</div>
+	        				<div id="shower-frequency-text">
+        					洗发的频率
+        					</div>
+	        				<div id="shower-frequency-remove" class="removeButton">
+        					    －
+        					</div>
+        				</div>
+        				<div id="shower-time">
+        					<a id="shower-time-day" class="shower-time-icon unselected">
+	        				</a>
+	        				<a id="shower-time-night" class="shower-time-icon unselected">
+        					</a>
+        				</div>
+        			</div>
+        		</div><!--/scene-content-->
+        	</div>
+        </script>
+        <script id="scene-hairstyle-template" type="text/template">
+            <div id="scene-hairstyle" class="scene">
+        		<div id="scene-hairstyle-content" class="scene-content" >
+					<div id="hairstyle-length" class="item" data-question-id="13">
+						<div class="hairstyle-circle" data-degree="{{#getDataDegree}}13{{/getDataDegree}}">
+							<div class="hairstyle-circle-dragable">
+							</div>
+						</div>
+					</div>
+					<div id="hairstyle-curl" class="item" data-question-id="14">
+						<div class="hairstyle-circle" data-degree="{{#getDataDegree}}14{{/getDataDegree}}">
+							<div class="hairstyle-circle-dragable">
+							</div>
+						</div>
+						
+					</div> 
+					<div id="hairstyle-type" class="item" data-question-id="16">
+						<div id="hand" class="hairtype-icon" data-answer-id="77">
+						</div>
+						<div id="pin" class="hairtype-icon" data-answer-id="78">
+						</div>
+						<div id="band" class="hairtype-icon" data-answer-id="79">
+						</div>
+						<div id="comb" class="hairtype-icon" data-answer-id="80">
+						</div>
+					</div>
+					<div id="hairstyle-color" class="item" data-question-id="15">
+						<div id="haircolor-mix" class="haircolor" data-answer-id="73">
+							<div class="haircolor-hole">
+							</div>
+							<div class="haircolor-content">
+							</div>
+						</div>
+						<div id="haircolor-black" class="haircolor" data-answer-id="74">
+							<div class="haircolor-hole">
+							</div>
+							<div class="haircolor-content">
+							</div>
+						</div>
+						
+						<div id="haircolor-gold" class="haircolor" data-answer-id="75">
+							<div class="haircolor-hole">
+							</div>
+							<div class="haircolor-content">
+							</div>
+						</div>
+						<div id="haircolor-red" class="haircolor" data-answer-id="76">
+							<div class="haircolor-hole">
+							</div>
+							<div class="haircolor-content">
+							</div>
+						</div>
+					</div>      			
+        		</div>
+        	</div><!--hairstyle-->
         </script>
     </body>
 </html>

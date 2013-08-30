@@ -9,12 +9,12 @@ var AvatarView = Backbone.View.extend({
     template: $('#me-template').html(),
 
     initialize: function () {
-        this.$el = $('#me');
+        this.$el = $('#main');
     },
 
     // Re-render the titles of the todo item.
     render: function () {
-        this.$el.html(Mustache.render(this.template, this.model.toJSON()));
+        this.$el.prepend(Mustache.render(this.template, this.model));
         return this;
     }
 

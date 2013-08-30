@@ -94,3 +94,58 @@ $.prototype.hint = function(id) {
 		hintDiv.hide();
 	});
 }
+
+$.prototype.setDegree = function (defaultDegree) {
+    var data = $(this).data('dragcircle');
+    var degree, angle;
+    if (data) {
+        if (defaultDegree) {
+            degree = defaultDegree;
+            var angleDegree = defaultDegree - 1 - Math.ceil(data.degree / 2);
+            angle = (angleDegree - 0.5) / data.degree * 2 * Math.PI;
+        } else {
+            degree = Math.ceil(data.angle / (2 * Math.PI / data.degree)),
+			angle = (degree - 0.5) / data.degree * 2 * Math.PI;
+            degree = degree + Math.ceil(data.degree / 2) + 1;
+        }
+        if (degree > data.degree) {
+            degree = 1;
+        }
+        $(this).data('degree', degree);
+        $(this).css({ top: data.centerY + Math.cos(angle) * data.radius,
+            left: data.centerX + Math.sin(angle) * data.radius
+        });
+    }
+}
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+function createCookie(name, value, days) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        var expires = "; expires=" + date.toGMTString();
+    }
+    else var expires = "";
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+function eraseCookie(name) {
+    createCookie(name, "", -1);
+}

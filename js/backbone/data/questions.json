@@ -69,19 +69,23 @@
         "answers": [
             {
                 "answer_id": 10,
-                "text": "不爱吃水果"
+                "text": "不爱吃水果",
+				"degree" : 0
             },
             {
                 "answer_id": 11,
-                "text": "有时间才想起来吃"
+                "text": "有时间才想起来吃",
+				"degree" : 1
             },
             {
                 "answer_id": 12,
-                "text": "只吃自己喜欢的那几种"
+                "text": "只吃自己喜欢的那几种",
+				"degree" : 2
             },
             {
                 "answer_id": 13,
-                "text": "一天不吃水果会死星人"
+                "text": "一天不吃水果会死星人",
+				"degree" : 3
             }
         ]
     },
@@ -299,5 +303,302 @@
 				"degree" : 1
 			}
 		]
+	},
+	{
+		"question_id" : 10,
+		"text" : "洗护用品",
+		"question_type" : "multiple",
+		"name" : "cleaningCare",
+		"answers" : [
+			{
+                "answer_id": 39,
+                "text": "洗发水",
+                "name": "shampoo"
+            },
+			{
+                "answer_id": 40,
+                "text": "护发素",
+                "name": "conditioner"
+            },
+			{
+				"answer_id" : 41,
+				"text" : "发膜",
+				"name" : "mask"
+			},
+			{
+				"answer_id" : 42,
+				"text" : "深层护理",
+				"name" : "cream"
+			},
+			{
+				"answer_id" : 43,
+				"text" : "免洗护发",
+				"name" : "inhair"
+			},
+			{
+                "answer_id": 44,
+                "text": "发蜡",
+                "name": "vax"
+            },
+			{
+				"answer_id" : 45,
+				"text" : "造型着哩",
+				"name" : "gel"
+			},
+			{
+				"answer_id" : 46,
+				"text" : "造型摩丝",
+				"name" : "moss"
+			},
+			{
+				"answer_id" : 47,
+				"text" : "造型喷雾",
+				"name" : "spray"
+			},
+			{
+				"answer_id" : 48,
+				"text" : "卷发器",
+				"name" : "curling"
+			},
+			{
+				"answer_id" : 49,
+				"text" : "直发夹",
+				"name" : "flat"
+			},
+			{
+				"answer_id" : 50,
+				"text" : "电吹风",
+				"name" : "drier"
+			}
+		]
+	},
+	{
+		"question_id" : 12,
+		"text" : "上一次更换品牌",
+		"question_type" : "single",
+		"name" : "cleaningCare",
+		"answers" : [
+			{
+				"answer_id" : 51,
+				"text" : "从不更换品牌",
+				"name" : "never",
+				"degree" : 1
+			},
+			{
+				"answer_id" : 52,
+				"text" : "一年前换品牌",
+				"name" : "annually",
+				"degree" : 2
+			},
+			{
+				"answer_id" : 53,
+				"text" : "半年前换品牌",
+				"name" : "semiannually",
+				"degree" : 3
+			},
+			{
+				"answer_id" : 54,
+				"text" : "三个月前换品牌",
+				"name" : "threemonth",
+				"degree" : 4
+			}
+		]
+	},
+	{
+		"question_id" : 11,
+		"text" : "点亮您生活的组成元素",
+		"question_type" : "multiple",
+		"name" : "lifestyle",
+		"answers" : [
+			{
+				"answer_id" : 55,
+				"text" : "出差"
+			},
+			{
+				"answer_id" : 56,
+				"text" : "阅读"
+			},
+			{
+				"answer_id" : 57,
+				"text" : "使用手机"
+			},
+			{
+				"answer_id" : 58,
+				"text" : "上网"
+			},
+			{
+				"answer_id" : 59,
+				"text" : "玩游戏"
+			},
+			{
+				"answer_id" : 60,
+				"text" : "电影、音乐"
+			},
+			{
+				"answer_id" : 61,
+				"text" : "朋友聚会"
+			},
+			{
+				"answer_id" : 62,
+				"text" : "运动"
+			},
+			{
+				"answer_id" : 63,
+				"text" : "美食美酒"
+			}
+		]
+	},
+	{
+		"question_id" : 13,
+		"text" : "您的头发长度",
+		"question_type" : "single",
+		"name" : "hairstyleLength",
+		"answers" : [
+			{
+				"answer_id" : 64,
+				"text" : "很短",
+				"degree" : 1,
+				"name" : "xs"
+			},
+			{
+				"answer_id" : 65,
+				"text" : "短",
+				"degree" : 2,
+				"name" : "s"
+			},
+			{
+				"answer_id" : 66,
+				"text" : "中",
+				"degree" : 3,
+				"name" : "m"
+			},
+			{
+				"answer_id" : 67,
+				"text" : "长",
+				"degree" : 4,
+				"name" : "l"
+			},
+			{
+				"answer_id" : 68,
+				"text" : "很长",
+				"degree" : 5,
+				"name" : "xl"
+			}
+		]
+	},
+	{
+		"question_id" : 14,
+		"text" : "头发的卷曲度",
+		"question_type" : "single",
+		"name" : "hairstyleCurly",
+		"answers" : [
+			{
+				"answer_id" : 69,
+				"text" : "直发",
+				"degree" : 1
+			},
+			{
+				"answer_id" : 70,
+				"text" : "中卷",
+				"degree" : 2
+			},
+			{
+				"answer_id" : 71,
+				"text" : "大卷",
+				"degree" : 3
+			},
+			{
+				"answer_id" : 72,
+				"text" : "碎卷",
+				"degree" : 4
+			}
+		]
+	},
+	{
+		"question_id" : 15,
+		"text" : "您目前头发的颜色",
+		"question_type" : "single",
+		"name" : "hairstyleColor",
+		"answers" : [
+			{
+				"answer_id" : 73,
+				"text" : "挑染",
+				"name" : "mix"
+			},
+			{
+				"answer_id" : 74,
+				"text" : "黑色",
+				"name" : "black"
+			},
+			{
+				"answer_id" : 75,
+				"text" : "黄色",
+				"name" : "gold"
+			},
+			{
+				"answer_id" : 76,
+				"text" : "红色",
+				"name" : "red"
+			}
+		]
+	},
+	{
+		"question_id" : 16,
+		"text" : "平时的头发状态",
+		"question_type" : "single",
+		"name" : "hairstyleState",
+		"answers" : [
+			{
+				"answer_id" : 77,
+				"text" : "披散"
+			},
+			{
+				"answer_id" : 78,
+				"text" : "捆扎"
+			},
+			{
+				"answer_id" : 79,
+				"text" : "编发"
+			},
+			{
+				"answer_id" : 80,
+				"text" : "盘发"
+			}
+		]
+	},
+	{
+		"question_id" : 17,
+		"text" : "洗发的频率",
+		"question_type" : "single",
+		"name" : "showerFrequency",
+		"answers" :[
+			{
+				"answer_id" : 81,
+				"text" : "1周最多1次",
+				"degree" : 1
+			},
+			{
+				"answer_id" : 82,
+				"text" : "4-6天1次",
+				"degree" : 2
+			},
+			{
+				"answer_id" : 83,
+				"text" : "2-3天1次",
+				"degree" : 3
+			},
+			{
+				"answer_id" : 84,
+				"text" : "1天1次",
+				"degree" : 4
+			},
+			{
+				"answer_id" : 84,
+				"text" : "1天2次",
+				"degree" : 5
+			}
+		]
 	}
+
 ]
+		
