@@ -5,7 +5,7 @@ var Avatar = Backbone.Model.extend({
     defaults: {
         gender: "fm",
         age_id: 3,
-        career_id: 1,
+        career_id: 0,
         hairLength: "l",
         hairCurly: 2,
         hairColor: "red"

@@ -40,6 +40,7 @@ var Router = Backbone.Router.extend({
         else if (id == 8) {
             window.AppFacade.setCurrentView(app.Views.SalonView);
         }
+         
 
     }
 });

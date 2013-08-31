@@ -808,7 +808,7 @@ var HairStyleView = Backbone.View.extend( {
         "click #haircolor-red" : "setHairRed",
         "click #haircolor-gold" : "setHairGold",
         "click #haircolor-black" : "setHairBlack",
-        "click #hand, click #pin, click #band" : "setHairState",
+        "click #hand,#pin,#band" : "setHairState",
         "click #comb" : "setHairLengthAndCurly",
         "click .hairstyle-circle" : "setHairCircle"
     },
@@ -1053,6 +1053,8 @@ var BasicInfoView = Backbone.View.extend( {
         this.on("render", this.postrender);
         this.on("beginRender", this.render);
         
+        $('#prev').hide();
+        
     },
     animateIn: function () {
         AnimationHandler.animateIn();
@@ -1068,6 +1070,7 @@ var BasicInfoView = Backbone.View.extend( {
     },
 
     postrender: function () {
+    	
         AnimationHandler.initialize('#scene-basicinfo-content');
         this.animateIn();
     },
@@ -1078,6 +1081,7 @@ var BasicInfoView = Backbone.View.extend( {
         AppFacade.setCurrentView(nextView);
         AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
         app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
+        $('#prev').fadeIn();
     }
 });
 

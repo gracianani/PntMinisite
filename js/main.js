@@ -17,11 +17,12 @@ var app = {
 
 window.AppFacade = {
     init: function () {
-        if (typeof app.Views.LoadingView == 'undefined') {
-            this.initLoading();
-        }
-        else if (typeof app.Views.BasicFrameView == 'undefined') {
+        if (typeof app.Views.BasicFrameView == 'undefined') {
             this.initBasicFrame();
+            
+        } else {
+	        $('#splash').hide();
+	        $('body').removeClass('loading');	        
         }
     },
     initLoading: function () {
@@ -29,6 +30,7 @@ window.AppFacade = {
     },
     initBasicFrame: function () {
         app.Views.BasicFrameView = new BasicFrameView();
+        
     },
     setCurrentView: function (view) {
         this.currentView = view;

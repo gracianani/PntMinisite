@@ -6,13 +6,9 @@ BasicFrameView.prototype = {
         var self = this;
         this.progressBar = $("#progress");
         this.step = 1;
-
-
-        this.smallAvatar = $("#profile-avatar .avatar");
-        var paper = new Raphael(this.smallAvatar[0]);
-        paper.path(default_avatar_path).attr({ fill: "#FFF", stroke: "none" });
-
-
+		AnimationHandler.initialize('#splash');
+		$('#splash .item').css('visibility','visible');
+		$('#loading').fadeOut();
         $('#logo').show().animate({ path: new $.path.bezier({
             start: {
                 x: -300,
@@ -20,24 +16,36 @@ BasicFrameView.prototype = {
                 angle: 0
             },
             end: {
-                x: -20,
-                y: 20,
+                x: 30,
+                y: 10,
                 angle: 0,
                 length: 0.25,
                 easing: "easeOutQuint"
             }
         })
         }, 800, "easeOutQuint", function () {
-            $('#siteTitle').show().animate({ top: 15 }, 500, function () {
-                $('#profile').show().animate({ top: 20 }, 500);
-                $('#footer').show().animate({ bottom: '0' }, 500);
-                $('#progress,#main,#navigation').fadeIn();
-                window.AppFacade.getCurrentView().render();
-                
-            });
+            $('#siteTitle').show().animate({ top: 10 }, 500, function () {});
 
         });
+        
+        $('.splash-gender-female,.splash-gender-male').click(function(){
+        	$('#splash').fadeOut(function(){
+        		$('#main').show();
+        		window.AppFacade.getCurrentView().render();
+	        	app.Router.navigate("Survey/1");
+	        	self.showControls();
+        	});
+	        
+        });
+        AnimationHandler.animateIn();
+        
+        
 
+    },
+    showControls : function() {
+	    //$('#profile').show().animate({ top: 10 }, 500);
+	    $('#footer').show().animate({ bottom: '0' }, 500);
+	    $('#progress,#main,#navigation').fadeIn();
     }
 };
 
@@ -58,11 +66,11 @@ LoadingView.prototype = {
 		this.body.addClass('loading');
 		this.loading.fadeIn('slow');
 		
-		setTimeout(this.onExitLoading, 3000);
+		setTimeout(this.onExitLoading, 2000);
 		
 	},
 	onExitLoading : function() {
 		$('#loading').fadeOut('slow');
-		window.AppFacade.initBasicFrame();
+		//window.AppFacade.initBasicFrame();
 	}
 };

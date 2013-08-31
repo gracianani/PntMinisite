@@ -106,7 +106,7 @@ body {
 	font-family: "Microsoft Yahei","Yahei",sans-serif;
 }
 
-#logo,#siteTitle,#profile,#navigation,#main,#footer {
+#logo,#siteTitle,#profile,#navigation,#footer {
 	display: none;
 }
 /*=====================
@@ -201,27 +201,29 @@ header
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 80px;
+	height: 60px;
 	background: #000;
+	z-index: 99;
 }
 
 #logo {
 	position: absolute;
-	left: 0;
-	top:0;
-	width: 184px;
-	height: 60px;
-	margin-left: 10px;
+	width: 123px;
+	height: 40px;
 }
-
+#logo img{
+	height: 100%;
+	width: auto;
+}
 #siteTitle {
 	position: absolute;
-	left: 240px;
-	top:20px;
-	font-size: 24px;
+	left: 180px;
+	top:-200px;
+	font-size: 22px;
 	letter-spacing: 1px;
-	
+	font-weight: normal;
 	color: #FFF;
+	margin: 0;
 }
 /*=====================
 profile 
@@ -230,6 +232,7 @@ profile
 	position: absolute;
 	top:-100px;
 	right: 20px;
+	z-index: 100;
 }
 #profile-avatar, #share {
 	float: right;
@@ -323,9 +326,101 @@ loading
 	margin-left: -105px;
 	margin-top: -105px;
 	background: url(../img/loading-logo.png) no-repeat center center;
-	display: none;
+	
 }
 
+/*=====================
+splash 
+=====================*/
+#splash {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	position: fixed;
+	left: 0;
+	top:0;
+	background: #000;
+	color: #FFF;
+	z-index: 3;
+}
+#splash .item {
+	visibility: hidden;
+}
+#splash-intro {
+	width: 240px;
+	height: 280px;
+	position: absolute;
+	right: 67%;
+	top: 50%;
+	margin-top: -140px;
+	color: #e3b644;
+}
+
+#splash-begin {
+	margin-bottom: 20%;
+}
+.splash-subtitle {
+	font-size: 20px;
+	line-height: 1.5em;
+}
+.splash-title {
+	font-weight: normal;
+	font-size: 32px;
+	line-height: 1.2em;
+	margin: 0;
+}
+.splash-weibo,.splash-qq {
+	display: block;
+	width: 48px;
+	height: 48px;
+	border-radius: 25px;
+	background-color: #ffbd32;
+	float: left;
+	margin-right: 20px;
+	margin-top: 20px;
+	background-image: url(../img/share.png);
+	background-repeat: no-repeat;
+}
+.splash-weibo {
+	background-position: center -96px;
+	background-color: #ff6536;
+}
+.splash-qq {
+	background-position: center top;
+	background-color: #0093dd;
+}
+.splash-gender-male,.splash-gender-female {
+	display: block;
+	float: left;
+	cursor: pointer;
+}
+#splash-character {
+	width: 320px;
+	height: 450px;
+	position: absolute;
+	top:50%;
+	margin-top:-225px;
+	left: 40%;
+}
+.splash-gender-male {
+	width: 118px;
+	height: 442px;
+	background: url(../img/character/gender-male.png) no-repeat left bottom;
+	
+}
+.splash-gender-male:hover,.splash-gender-male:active {
+	background-position: -118px bottom;
+}
+.splash-gender-female {
+	width: 142px;
+	height: 442px;
+	padding-top: 6px;
+	background: url(../img/character/gender-female.png) no-repeat left bottom;
+	margin-right: 50px;
+}
+.splash-gender-female:hover,.splash-gender-female:active {
+	background-position: -142px bottom;
+}
 /*=====================
 scenes 
 =====================*/
@@ -1496,10 +1591,13 @@ Cleaning
 	position: absolute;
 	left: 0;
 }
-#basicinfo-career .clothes {
+.career-clothes-item {
 	width: 212px;
 	position: absolute;
 	margin-left: -156px;
+}
+#basicinfo-career .clothes {
+	background-image: url(../img/character/career-fm.png);
 	
 }
 /******** character ************/
