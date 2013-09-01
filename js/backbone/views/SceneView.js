@@ -815,14 +815,26 @@ var HairStyleView = Backbone.View.extend( {
 
     initHairCircle : function() {
         var self = this;
-        $('#hairstyle-length .hairstyle-circle-dragable').data('dragcircle',{
+        var length = $('#hairstyle-length .hairstyle-circle-dragable');
+        var curl = $('#hairstyle-curl .hairstyle-circle-dragable');
+        
+        defaultLength = parseInt(length.parent().attr('data-degree'));
+        defaultCurl = parseInt(curl.parent().attr('data-degree'));
+        
+        if (!defaultLength) {
+	        defaultLength = 4;
+        }
+        if (!defaultCurl) {
+	        defaultLength = 2;
+        }
+        length.data('dragcircle',{
 			$circle: $('#hairstyle-length .hairstyle-circle'),
             degree:5
-		}).data('degree', 1);
-		$('#hairstyle-curl .hairstyle-circle-dragable').data('dragcircle',{
+		}).setDegree(defaultLength);
+		curl.data('dragcircle',{
 			$circle: $('#hairstyle-curl .hairstyle-circle'),
             degree:4
-		}).data('degree', 1);
+		}).setDegree(defaultCurl);
 		
 		$('#hairstyle-length .hairstyle-circle-dragable,#hairstyle-curl .hairstyle-circle-dragable').draggable({
 			start: function(event,ui){
@@ -868,14 +880,17 @@ var HairStyleView = Backbone.View.extend( {
             data.centerX = data.$circle.position().left + data.radius;
             data.centerY = data.$circle.position().top + data.radius;
                         
-            $circle.find('.hairstyle-circle-dragable').data('dragcircle', data );
+            
                         
         }
         angle = Math.atan2( event.pageX - data.centerX - data.startX, event.pageY - data.centerY - data.startY );
         data.angle = angle;
-
+		$circle.find('.hairstyle-circle-dragable').data('dragcircle', data );
         $circle.find('.hairstyle-circle-dragable').setDegree();
-		   
+        
+        
+
+		this.model.setAnswerByDegree(parseInt($circle.parent().data("question-id")), parseInt($circle.find('.hairstyle-circle-dragable').data('degree')), true);
 		this.setHairStyle({
 				length:$('#hairstyle-length .hairstyle-circle-dragable').data('degree'),
 				curl:$('#hairstyle-curl .hairstyle-circle-dragable').data('degree')
@@ -964,20 +979,25 @@ var HairStyleView = Backbone.View.extend( {
     },
 
     postrender: function () {
+    	 $("#character-container").fadeIn();
         AnimationHandler.initialize('#scene-hairstyle-content');
         this.animateIn();
     },
     prev : function() {
         var prevView = app.Views.BasicInfoView;
         AppFacade.setCurrentView(prevView);
-        AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
         app.Router.navigate("Survey/" + prevView.model.get("scene_id"));
+        this.onexit();
     },
     next: function () {
         var nextView = app.Views.HairQualityView;
         AppFacade.setCurrentView(nextView);
-        AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
         app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
+        this.onexit();
+    },
+    onexit : function() {
+	    $("#character-container").fadeOut();
+	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
     }
 });
 
@@ -1024,14 +1044,18 @@ var HairQualityView = Backbone.View.extend( {
     prev : function() {
         var prevView = app.Views.HairStyleView;
         AppFacade.setCurrentView(prevView);
-        AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
         app.Router.navigate("Survey/" + prevView.model.get("scene_id"));
+        this.onexit();
     },
     next: function () {
         var nextView = app.Views.LifeView;
         AppFacade.setCurrentView(nextView);
-        AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
         app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
+        this.onexit();
+    },
+    onexit : function() {
+	    $("#character-container").fadeOut();
+	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
     }
 });
 
@@ -1045,7 +1069,10 @@ var BasicInfoView = Backbone.View.extend( {
     template: $('#scene-basicinfo-template').html(),
 
     events: {
-       
+        "mouseup #basicinfo-career .clothes" : "setCareer",
+        "click .age-item" : "setAge",
+        "mouseenter #basicinfo-age" : "mouseEnterAge",
+        "mouseleave #basicinfo-age" : "mouseLeaveAge"
     },
 
     initialize: function () {
@@ -1053,10 +1080,11 @@ var BasicInfoView = Backbone.View.extend( {
         this.on("render", this.postrender);
         this.on("beginRender", this.render);
         
-        $('#prev').hide();
+        
         
     },
     animateIn: function () {
+    	
         AnimationHandler.animateIn();
     },
     
@@ -1070,18 +1098,53 @@ var BasicInfoView = Backbone.View.extend( {
     },
 
     postrender: function () {
-    	
+    	$('#prev').fadeOut();
         AnimationHandler.initialize('#scene-basicinfo-content');
         this.animateIn();
+        
+        this.$el.find('#basicinfo-career .clothes').draggable({
+	        revert:true
+        });
     },
     prev : function() {
+    },
+    onexit : function() {
+	    $("#character-container").fadeOut();
+	    $('#prev').fadeIn();
+	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
     },
     next: function () {
         var nextView = app.Views.HairStyleView;
         AppFacade.setCurrentView(nextView);
-        AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
         app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
-        $('#prev').fadeIn();
+        this.onexit();
+        
+    },
+    setCareer : function(event) {
+    	this.$el.find('#basicinfo-career .clothes:hidden').show();
+	    
+	    var career = $(event.currentTarget).hide();
+	    var careerId = career.attr('data-id');
+	    
+	    $('.character .clothes').attr('class','clothes clothes-fm-'+careerId);
+	    
+	    var question = career.parent().attr('data-question-id');
+	    var answer = career.attr('data-answer-id');
+	    this.model.setAnswer(parseInt(question), parseInt(answer), true);
+    },
+    setAge : function(event) {
+	    var age = this.$el.find("#basicinfo-age");
+	    var gender = "fm";
+	    var degree = $(event.currentTarget).attr('data-degree');
+	    age.attr('class', 'item '+ gender + ' on-degree-' + degree );
+	    
+	    this.model.setAnswerByDegree( parseInt(age.attr('data-question-id')), parseInt(degree), true);
+    },
+    mouseEnterAge : function(event) {
+	    $(event.currentTarget).addClass('mouseEnterAge');
+    },
+    mouseLeaveAge : function(event) {
+	    $(event.currentTarget).removeClass('mouseEnterAge');
     }
 });
 

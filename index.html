@@ -77,13 +77,25 @@
         	
         </div>
         <div id="splash">
-        	<div id="splash-intro" class="item">
-        		<div id="splash-begin">
-        			<div class="splash-subtitle">请选择您的角色 </div>
-        			<h2 class="splash-title">潘婷为您揭示<br />秀发的秘密 &rarr;</h2>
-        		</div>
-        		
-        		<div id="splash-login">
+        	<div id="splash-begin" class="item">
+        			<div class="splash-logo">
+        				<img src="img/loading-logo.png" alt="潘婷" />
+        				<img src="img/lab-logo-large.png" alt="护发实验室" />
+        			</div>
+        			
+        			 
+        			<h2 class="splash-title">为您解开秀发的秘密 </h2>
+        			<div class="splash-subtitle">请选择您的角色 &rarr;</div> 
+        			      		
+        	</div>
+        	<div id="splash-character" class="item">
+        		<a class="splash-gender-female">
+        		</a>
+        		<a class="splash-gender-male">
+        		</a>
+        	</div>
+        	
+        	<div id="splash-login" class="item">
         			<div class="splash-subtitle">已经测试过？</div>
         			<div class="splash-subtitle">登陆查看专属报告</div>
         			<div id="splash-loginBtn">
@@ -92,13 +104,6 @@
         				<a class="splash-qq" title="QQ登陆">
         				</a>
         			</div>
-        		</div>
-        	</div>
-        	<div id="splash-character" class="item">
-        		<a class="splash-gender-female">
-        		</a>
-        		<a class="splash-gender-male">
-        		</a>
         	</div>
         </div>
         
@@ -185,7 +190,7 @@
         
         <script type="text/template" id="me-template">
             <div id="character-container" class="{{#getAvatarScene}}{{/getAvatarScene}}">
-        		<div id="character-inScene" class="character {{gender}} character-large-size">
+        		<div id="character-inScene" class="character {{gender}} character-{{#getAvatarSize}}{{/getAvatarSize}}-size">
         			<div class="hair hair-{{gender}}-{{hairLength}}-{{hairCurly}}  hair-{{hairColor}}">
         			</div>
         			<div class="body">
@@ -663,6 +668,33 @@
         <script id="scene-basicinfo-template" type="text/template">
             <div id="scene-basicinfo" class="scene">
                 <div id="scene-basicinfo-content" class="scene-content">
+                	<div id="basicinfo-age" class="item fm on-degree-{{#getDataDegree}}23{{/getDataDegree}}" data-question-id="23">
+							<div id="age-item-1" class="age-item" data-degree="1"  data-answer-id="102">
+								<div class="age-item-text">
+									18岁以下
+								</div>
+							</div>
+							<div id="age-item-2" class="age-item"  data-degree="2"   data-answer-id="103">
+								<div class="age-item-text">
+									18－24岁
+								</div>
+							</div>
+							<div id="age-item-3" class="age-item"  data-degree="3"   data-answer-id="103">
+								<div class="age-item-text">
+									25－34岁
+								</div>
+							</div>
+							<div id="age-item-4" class="age-item"  data-degree="4"   data-answer-id="103">
+								<div class="age-item-text">
+									35－44岁
+								</div>
+							</div>
+							<div id="age-item-5" class="age-item"  data-degree="5"   data-answer-id="103">
+								<div class="age-item-text">
+									45岁以上
+								</div>
+							</div>
+					</div>
 					<div id="basicinfo-career" class="item fm">
 						<div id="pole">
 							<div id="pole-left">
@@ -674,24 +706,24 @@
 							<div id="pole-right">
 							</div>
 						</div>
-						<div  id="career-clothes" class="character-small-size fm">
+						<div  id="career-clothes" class="character-small-size fm" data-question-id="24">
 							
-							<div id="" class="clothes clothes-fm-1">
+							<div id="" class="clothes clothes-fm-2 {{#getSelectedClass}}24,107{{/getSelectedClass}}" data-id="2" data-answer-id="107">
 							</div>
 							
-							<div id="" class="clothes clothes-fm-2" style="left:20%">
+							<div id="" class="clothes clothes-fm-1 {{#getSelectedClass}}24,108{{/getSelectedClass}}" data-id="1" style="left:20%" data-answer-id="108">
 							</div>
 							
-							<div id="" class="clothes clothes-fm-3" style="left:40%">
+							<div id="" class="clothes clothes-fm-4 {{#getSelectedClass}}24,109{{/getSelectedClass}}" data-id="4" style="left:40%" data-answer-id="109">
 							</div>
 							
-							<div id="" class="clothes clothes-fm-4" style="left:60%">
+							<div id="" class="clothes clothes-fm-6 {{#getSelectedClass}}24,110{{/getSelectedClass}}" data-id="6" style="left:60%" data-answer-id="110">
 							</div>
 							
-							<div id="" class="clothes clothes-fm-5" style="left:80%">
+							<div id="" class="clothes clothes-fm-3 {{#getSelectedClass}}24,112{{/getSelectedClass}}" data-id="3" style="left:80%" data-answer-id="112">
 							</div>
 							
-							<div id="" class="clothes clothes-fm-6" style="left:100%">
+							<div id="" class="clothes clothes-fm-5 {{#getSelectedClass}}24,111{{/getSelectedClass}}" data-id="5" style="left:100%" data-answer-id="111">
 						</div>
 						</div>
 					</div>

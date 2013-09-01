@@ -99,6 +99,15 @@ $.prototype.setDegree = function (defaultDegree) {
     var data = $(this).data('dragcircle');
     var degree, angle;
     if (data) {
+        if ( ! data.radius ) 
+                {
+					data.radius = data.$circle.height() / 2;
+					data.startX =  data.$circle.offset().left;
+					data.startY =  data.$circle.offset().top;
+                    data.centerX = data.$circle.position().left + data.radius;
+                    data.centerY = data.$circle.position().top + data.radius;
+                    $( this ).data('dragcircle', data );
+        }
         if (defaultDegree) {
             degree = defaultDegree;
             var angleDegree = defaultDegree - 1 - Math.ceil(data.degree / 2);
@@ -109,15 +118,25 @@ $.prototype.setDegree = function (defaultDegree) {
             degree = degree + Math.ceil(data.degree / 2) + 1;
         }
         if (degree > data.degree) {
-            degree = 1;
+            degree = degree - data.degree;
         }
         $(this).data('degree', degree);
+        console.log(degree);
         $(this).css({ top: data.centerY + Math.cos(angle) * data.radius,
             left: data.centerX + Math.sin(angle) * data.radius
-        });
+        }).rotate(angle);
     }
 }
-
+$.prototype.rotate = function(angle) {
+	var deg = 180 - angle * 180 / Math.PI + 'deg';
+	console.log(deg);
+	$(this).css({
+		'transform':'rotate('+deg+')',
+		'-webkit-transform':'rotate('+deg+')',
+		'-ms-transform':'rotate('+deg+')'
+	});
+	
+}
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),

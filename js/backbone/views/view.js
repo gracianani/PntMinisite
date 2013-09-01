@@ -6,8 +6,7 @@ BasicFrameView.prototype = {
         var self = this;
         this.progressBar = $("#progress");
         this.step = 1;
-		AnimationHandler.initialize('#splash');
-		$('#splash .item').css('visibility','visible');
+		
 		$('#loading').fadeOut();
         $('#logo').show().animate({ path: new $.path.bezier({
             start: {
@@ -24,36 +23,52 @@ BasicFrameView.prototype = {
             }
         })
         }, 800, "easeOutQuint", function () {
-            $('#siteTitle').show().animate({ top: 10 }, 500, function () {});
-
+           
+        	window.AppFacade.getCurrentView().render();
+        	self.showControls();
         });
         
-        $('.splash-gender-female,.splash-gender-male').click(function(){
-        	$('#splash').fadeOut(function(){
-        		$('#main').show();
-        		window.AppFacade.getCurrentView().render();
-	        	app.Router.navigate("Survey/1");
-	        	self.showControls();
-        	});
-	        
-        });
-        AnimationHandler.animateIn();
+        
         
         
 
     },
     showControls : function() {
 	    //$('#profile').show().animate({ top: 10 }, 500);
+	    $('#siteTitle').show().animate({ top: 10 }, 500, function () {});
 	    $('#footer').show().animate({ bottom: '0' }, 500);
 	    $('#progress,#main,#navigation').fadeIn();
     }
 };
 
+var SplashView = function() {
+	this.init();	
+};
 
+SplashView.prototype = {
+	init: function() {
+		var self = this;
+		this.splash = $('#splash');
+		AnimationHandler.initialize('#splash');
+		this.splash.find('.item').css('visibility','visible');
+		
+		this.splash.find('.splash-gender-female,.splash-gender-male').click(function(){
+        	self.splash.fadeOut(function(){
+        		self.onExitSplash();
+	        	//app.Router.navigate("Survey/1");
+	        	//
+        	});
+	        
+        });
+        AnimationHandler.animateIn();
+	},
+	onExitSplash : function() {
+		$('#main').show();
+		window.AppFacade.initBasicFrame();
+	}
+};
 var LoadingView = function(){
 	this.init();
-	this.loading;
-	this.body;
 };
 LoadingView.prototype = {
 	init : function() {
@@ -61,16 +76,17 @@ LoadingView.prototype = {
 		this.loading = $('#loading');
 		this.body = $('body');
 		
-		spinner(this.loading[0], 100, 105, 36, 3, "#FFFFFF");
+		spinner(this.loading[0], 105, 120, 36, 3, "#FFFFFF");
 		
 		this.body.addClass('loading');
-		this.loading.fadeIn('slow');
+		this.loading.fadeIn('slow',function(){
+			self.onExitLoading();
+		});
 		
-		setTimeout(this.onExitLoading, 2000);
 		
 	},
 	onExitLoading : function() {
 		$('#loading').fadeOut('slow');
-		//window.AppFacade.initBasicFrame();
+		window.AppFacade.initSplash();
 	}
 };

@@ -27,12 +27,10 @@ var Scene = Backbone.Model.extend({
             return question.text;
         }
     },
-
     getUserAnswerByQuestionId: function (question_id) {
         var question = $.grep(this.get("user_answers"), function (e) { return e.question_id == question_id });
         return question[0];
     },
-
     getDataSelected: function () {
         return function (str_question_id_answer_id) {
             var array = str_question_id_answer_id.split(',');
@@ -177,7 +175,7 @@ var Scene = Backbone.Model.extend({
         var answer_id = $.grep(question.get("answers"), function (e) { return e.degree == answer_degree })[0].answer_id;
         this.setAnswer(question_id, answer_id, isSelected);
     },
-
+	
     getAnswerDegree : function (question_id) {
         var question = app.QuestionRepo.findWhere({ question_id: question_id });
         if (this.isAnswered(question_id)) {
@@ -195,8 +193,7 @@ var Scene = Backbone.Model.extend({
         else {
             return 0;
         }
-    }, 
-
+    },
     getAnswerName : function(question_id) {
         var question = app.QuestionRepo.findWhere({ question_id: question_id });
         if (this.isAnswered(question_id)) {

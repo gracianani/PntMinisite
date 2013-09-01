@@ -724,23 +724,28 @@
 		"answers" :[
 			{
 				"answer_id" : 102,
-				"text" : "18岁以下"
+				"text" : "18岁以下",
+				"degree" : 1
 			},
 			{
 				"answer_id" : 103,
-				"text" : "18-24岁"
+				"text" : "18-24岁",
+				"degree" : 2
 			},
 			{
 				"answer_id" : 104,
-				"text" : "25-34岁"
+				"text" : "25-34岁",
+				"degree" : 3
 			},
 			{
 				"answer_id" : 105,
-				"text" : "35-44岁"
+				"text" : "35-44岁",
+				"degree" : 4
 			},
 			{
 				"answer_id" : 106,
-				"text" : "45岁以上"
+				"text" : "45岁以上",
+				"degree" : 5
 			}
 		]
 	},
@@ -751,27 +756,33 @@
 		"answers" :[
 			{
 				"answer_id" : 107,
-				"text" : "学生"
+				"text" : "学生",
+				"name" : "2"
 			},
 			{
 				"answer_id" : 108,
-				"text" : "格子间上班族"
+				"text" : "格子间上班族",
+				"name" : "1"
 			},
 			{
 				"answer_id" : 109,
-				"text" : "劳动人民"
+				"text" : "劳动人民",
+				"name" : "4"
 			},
 			{
 				"answer_id" : 110,
-				"text" : "自由职业"
+				"text" : "自由职业",
+				"name" : "6"
 			},
 			{
 				"answer_id" : 111,
-				"text" : "我是boss,我为自己带盐"
+				"text" : "我是boss,我为自己带盐",
+				"name" : "5"
 			},
 			{
 				"answer_id" : 112,
-				"text" : "赋闲在家"
+				"text" : "赋闲在家",
+				"name" : "3"
 			}
 		]
 	},

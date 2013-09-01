@@ -18,6 +18,8 @@ var AvatarView = Backbone.View.extend({
         this.model.hairCurly = hairData.curl;
         this.model.hairLength = hairData.length;
         this.hairColor = hairData.color;
+        
+        this.model.career_id = app.Views.AvatarView.model.getCareer();
 
         this.$el.prepend(Mustache.render(this.template, this.model));
         return this;

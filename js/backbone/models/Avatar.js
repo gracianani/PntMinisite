@@ -21,7 +21,7 @@ var Avatar = Backbone.Model.extend({
     getAvatarScene: function () {
         return function () {
             if (AppFacade.getCurrentView().model.get("scene_id") == 1) {
-                return "";
+                return "basicinfo-scene";
             }
             else if (AppFacade.getCurrentView().model.get("scene_id") == 3) {
                 return "mirror-show quality-scene";
@@ -30,6 +30,19 @@ var Avatar = Backbone.Model.extend({
                 return "mirror-show";
             }
         }
+    },
+    getAvatarSize : function() {
+	    return function() {
+		    if (AppFacade.getCurrentView().model.get("scene_id") == 1) {
+                return "large";
+            }
+            else if (AppFacade.getCurrentView().model.get("scene_id") == 3) {
+                return "large";
+            }
+            else {
+                return "large";
+            }
+	    }
     },
     getHairData: function () {
         var hairData = {
@@ -47,6 +60,14 @@ var Avatar = Backbone.Model.extend({
             hairData.color = 'red';
         }
         return hairData;
+    },
+    getCareer: function() {
+    	var user_career = app.Views.BasicInfoView.model.getAnswerName(24);
+    	if( !user_career ) {
+	    	user_career = "0";
+    	}
+    	console.log(user_career);
+    	return parseInt(user_career);
     }
 });
 

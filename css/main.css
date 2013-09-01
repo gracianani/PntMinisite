@@ -318,14 +318,16 @@ loading
 }
 
 #loading {
-	width: 210px;
-	height: 210px;
+	width: 240px;
+	height: 240px;
+	border-radius: 120px;
 	position: absolute;
 	top:50%;
 	left: 50%;
-	margin-left: -105px;
-	margin-top: -105px;
+	margin-left: -120px;
+	margin-top: -120px;
 	background: url(../img/loading-logo.png) no-repeat center center;
+	z-index: 4;
 	
 }
 
@@ -346,28 +348,33 @@ splash
 #splash .item {
 	visibility: hidden;
 }
-#splash-intro {
+
+
+#splash-begin {
 	width: 240px;
 	height: 280px;
 	position: absolute;
-	right: 67%;
-	top: 50%;
-	margin-top: -140px;
+	left: 10%;
+	top: 15%;
 	color: #e3b644;
 }
-
-#splash-begin {
-	margin-bottom: 20%;
+#splash-login {
+	width: 240px;
+	height: 240px;
+	position: absolute;
+	right: 10%;
+	bottom: 0;
+	color: #e3b644;
 }
 .splash-subtitle {
 	font-size: 20px;
 	line-height: 1.5em;
 }
 .splash-title {
-	font-weight: normal;
-	font-size: 32px;
+	font-weight: normal!important;
+	font-size: 24px;
 	line-height: 1.2em;
-	margin: 0;
+	margin: 10px 0 0;
 }
 .splash-weibo,.splash-qq {
 	display: block;
@@ -400,7 +407,8 @@ splash
 	position: absolute;
 	top:50%;
 	margin-top:-225px;
-	left: 40%;
+	left: 50%;
+	margin-left: -160px;
 }
 .splash-gender-male {
 	width: 118px;
@@ -1247,82 +1255,100 @@ Cleaning
 
 /******* hair style ***********/
 #hairstyle-length,#hairstyle-curl {
-	position: relative;
+	position: absolute;
 	width: 200px;
 	height: 200px;
 	margin-bottom: 30px;
+	
+}
+#hairstyle-length {
+	right: 68%;
+	top: 5%;
+}
+#hairstyle-curl {
+	left: 72%;
+	top: 5%;
 }
 .hairstyle-circle {
 	width: 150px;
 	height: 150px;
 	border-radius: 100px;
 	background-color: #fde7b8;
-	border:5px dashed #f39800;
+	border:5px dashed #d55b1c;
 }
 .hairstyle-circle-dragable {
 	width: 40px;
 	height: 40px;
-	background: #f39800;
-	border:5px solid #bb471e;
+	background: #d55b1c url(../img/draggable-arrow.png) no-repeat center top;
+	border:5px solid #d55b1c;
 	border-radius: 30px;
 	position: absolute;
 	left:50%;
 	top:0;
 	margin-left: -20px;
 	margin-top:-20px;
+	cursor: pointer;
+}
+.hairstyle-circle-dragable:hover {
+	background-position: center bottom;
 }
 #hairstyle-type {
 	position: absolute;
-	width: 264px;
-	left: 50%;
-	bottom: -20px;
-	margin-left: -127px;
+	width:180px;
+	height: 200px;
+	right: 65%;
+	bottom: 0%;
 }
 .hairtype-icon {
 	width: 50px;
 	height: 50px;
-	border-radius: 10px;
-	border:3px #f39800 dashed;
+	border-radius: 30px;
+	border:3px #d55b1c dashed;
 	background-color: #fde7b8;
 	float: left;
-	display: block;
+	display: inline-block;
 	margin-right: 10px;
+	margin-bottom: 10px;
 }
 #hairstyle-color {
 	position: absolute;
-	left: 70%;
-	top:20%;
+	left: 68%;
+	bottom:0%;
+	width: 200px;
+	height: 160px;
 }
 .haircolor {
-	width: 200px;
-	height: 50px;
+	width:160px;
+	height: 40px;
 	border-radius: 10px;
 	position: absolute;
 	left: 0;
 	top: 0;
-	
+	background-color: #fde7b8;
+	border: 2px #ffbd32 solid;
+	cursor: pointer;
+}
+.haircolor:hover {
+	z-index: 3;
+	border-color:#d55b1c;
 }
 #haircolor-mix {
-	background: #602016;
 	transform: rotate(-45deg);
 	-ms-transform: rotate(-45deg);
 	-webkit-transform: rotate(-45deg);
 }
 #haircolor-black {
-	background: #000;
 	transform: rotate(-15deg);
 	-ms-transform: rotate(-15deg);
 	-webkit-transform: rotate(-15deg);
 }
 
 #haircolor-gold {
-	background: #d08200;
 	transform: rotate(15deg);
 	-ms-transform: rotate(15deg);
 	-webkit-transform: rotate(15deg);
 }
 #haircolor-red {
-	background: #8b3122;
 	transform: rotate(45deg);
 	-ms-transform: rotate(45deg);
 	-webkit-transform: rotate(45deg);
@@ -1334,11 +1360,28 @@ Cleaning
 	margin-top:-5px;
 	width: 5px;
 	height: 5px;
-	border: 3px solid #FFF;
+	border: 1px #f39800 solid;
 	background: #ffbd32;
 	border-radius: 5px;
 }
-
+.haircolor-content {
+	width: 67%;
+	height: 100%;
+	float: right;
+	border-radius: 0 10px 10px 0;
+}
+#haircolor-mix .haircolor-content{
+	background: #602016;
+}
+#haircolor-black .haircolor-content{
+	background: #000;
+}
+#haircolor-gold .haircolor-content{
+	background: #d08200;
+}
+#haircolor-red .haircolor-content{
+	background: #8b3122;
+}
 /******** hair quality *********/
 #magnifier {
 	position: absolute;
@@ -1544,9 +1587,11 @@ Cleaning
 
 /********basicinfo******/
 #basicinfo-career {
-	width: 60%;
+	width: 65%;
 	position: absolute;
-	left: 30%;
+	right: -5%;
+	top: 20%;
+	
 	
 }
 #pole {
@@ -1587,19 +1632,202 @@ Cleaning
 	right: -10px;
 }
 #career-clothes {
-	width: 100%;
+	width: 115%;
 	position: absolute;
-	left: 0;
+	left: -100px;
+	top: -140px;
+
 }
 .career-clothes-item {
 	width: 212px;
 	position: absolute;
 	margin-left: -156px;
+	
 }
 #basicinfo-career .clothes {
 	background-image: url(../img/character/career-fm.png);
+	cursor: pointer;
+}
+#basicinfo-career .selected {
+	display: none;
+}
+#basicinfo-career .clothes:hover {
+	transform: rotate(-10deg);
+	-webkit-transform: rotate(-10deg);
+	-ms-transform: rotate(-10deg);
+}
+#basicinfo-age {
+	width: 200px;
+	height: 300px;
+	position: absolute;
+	left: 0;
+	top: 20%;
+}
+.fm .age-item {
+	background-image: url(../img/character/fm-age.png);
+	background-repeat: no-repeat;
+}
+.age-item {
+	width: 60px;
+	height: 80px;
+	border-radius: 5px;
+	border:3px dashed #d55b1c;
+	background-color: rgba(255,255,255,0.2);
+	font-size: 12px;
+	position: absolute;
+	color: #d55b1c;
+	cursor: pointer;
+	background-position: center 100px;
 	
 }
+.age-item-text {
+	padding-top: 30px;
+	line-height: 20px;
+}
+#age-item-1 {
+	top:0;
+	left: 0;
+	
+}
+#age-item-2 {
+	top:20px;
+	left: 90px;
+	
+}
+#age-item-3 {
+	top:110px;
+	left: 0;
+}
+#age-item-4 {
+	top:130px;
+	left: 90px;
+	height: 60px;
+	width: 80px;
+	
+}
+#age-item-4 .age-item-text {
+	padding-top: 20px;
+}
+#age-item-5 {
+	top: 220px;
+	left: 0;
+	width: 80px;
+	height: 60px;
+}
+#age-item-5 .age-item-text {
+	padding-top: 20px;
+}
+
+.on-degree-1 #age-item-1,
+.on-degree-2 #age-item-1,
+.on-degree-3 #age-item-1,
+.on-degree-4 #age-item-1,
+.on-degree-5 #age-item-1,
+#age-item-1:hover {
+	border-color: #FFF;
+	border-width: 5px;
+	border-style: solid;
+	background-color: #d55b1c;
+	background-position: center top;
+}
+.on-degree-1 #age-item-1 .age-item-text,
+.on-degree-2 #age-item-1 .age-item-text,
+.on-degree-3 #age-item-1 .age-item-text,
+.on-degree-4 #age-item-1 .age-item-text,
+.on-degree-5 #age-item-1 .age-item-text,
+#age-item-1:hover .age-item-text
+{
+	display: none;
+}
+.on-degree-2 #age-item-2,
+.on-degree-3 #age-item-2,
+.on-degree-4 #age-item-2,
+.on-degree-5 #age-item-2,
+#age-item-2:hover {
+	border-color: #FFF;
+	border-width: 5px;
+	border-style: solid;
+	background-color: #94c2b4;
+	background-position: center -80px;
+}
+.on-degree-2 #age-item-2 .age-item-text,
+.on-degree-3 #age-item-2 .age-item-text,
+.on-degree-4 #age-item-2 .age-item-text,
+.on-degree-5 #age-item-2 .age-item-text,
+#age-item-2:hover .age-item-text
+{
+	display: none;
+}
+.on-degree-3 #age-item-3,
+.on-degree-4 #age-item-3,
+.on-degree-5 #age-item-3,
+#age-item-3:hover {
+	border-color: #FFF;
+	border-style: solid;
+	border-width: 5px;
+	background-color: #6fc280;
+	background-position: center -160px;
+}
+.on-degree-3 #age-item-3 .age-item-text,
+.on-degree-4 #age-item-3 .age-item-text,
+.on-degree-5 #age-item-3 .age-item-text,
+#age-item-3:hover .age-item-text
+{
+	display: none;
+}
+.on-degree-4 #age-item-4,
+.on-degree-5 #age-item-4,
+#age-item-4:hover {
+	border-color: #FFF;
+	border-style: solid;
+	border-width: 5px;
+	background-color: #ffbd32;
+	background-position: center -260px;
+}
+.on-degree-4 #age-item-4 .age-item-text,
+.on-degree-5 #age-item-4 .age-item-text,
+#age-item-4:hover .age-item-text
+{
+	display: none;
+}
+.on-degree-5 #age-item-5,
+#age-item-5:hover {
+	border-color: #FFF;
+	border-style: solid;
+	border-width: 5px;
+	background-color: #d55b1c;
+	background-position: center -340px;
+}
+.on-degree-5 #age-item-5 .age-item-text,
+#age-item-5:hover .age-item-text
+{
+	display: none;
+}
+.on-degree-1 #age-item-2,.on-degree-1 #age-item-3,.on-degree-1 #age-item-4,.on-degree-1 #age-item-5 {
+	display:none;
+}
+.on-degree-2 #age-item-3,
+.on-degree-2 #age-item-4,
+.on-degree-2 #age-item-5 {
+	display:none;
+}
+.on-degree-3 #age-item-4,
+.on-degree-3 #age-item-5 {
+	display:none;
+}
+.on-degree-4 #age-item-5 {
+	display:none;
+}
+.mouseEnterAge .age-item {
+	display: block!important;
+	border:3px dashed #FFF!important;
+	background-color: rgba(255,255,255,0.2)!important;
+	background-position: 0 100px!important;
+}
+.mouseEnterAge .age-item .age-item-text {
+	display: block!important;
+}
+
 /******** character ************/
 .character {
 	
@@ -1694,7 +1922,7 @@ Cleaning
 	position: absolute;
 	left: 50%;
 	margin-left: -120px;
-	top:50%;
+	top:45%;
 	margin-top:-175px;
 }
 .mirror-show .character{
@@ -1771,7 +1999,12 @@ Cleaning
 	top:0;
 	margin-top: 0;
 }
-
+.basicinfo-scene {
+	left: 20%;
+	top: 0;
+	margin-top: 0;
+	position: absolute;
+}
 /* ==========================================================================
    Helper classes
    ========================================================================== */

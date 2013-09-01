@@ -18,7 +18,7 @@ var app = {
 window.AppFacade = {
     init: function () {
         if (typeof app.Views.BasicFrameView == 'undefined') {
-            this.initBasicFrame();
+            this.initLoading();
             
         } else {
 	        $('#splash').hide();
@@ -27,6 +27,9 @@ window.AppFacade = {
     },
     initLoading: function () {
         app.Views.LoadingView = new LoadingView();
+    },
+    initSplash: function() {
+	  	app.Views.SplashView = new SplashView();  
     },
     initBasicFrame: function () {
         app.Views.BasicFrameView = new BasicFrameView();
