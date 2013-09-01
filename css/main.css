@@ -444,7 +444,7 @@ scenes
 	width:45.5%;
 	height: 94%;
 	padding: 3% 2%;
-	background-color: #3a3a3a;
+	background-color: #111;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
@@ -471,7 +471,7 @@ scenes
 #refrigerator-fitting1,#refrigerator-fitting2{
 	width: 2%;
 	height: 15%;
-	background: #3a3a3a;
+	background: #111;
 	position: absolute;
 	left: 50%;
 	margin-left: -5px;
@@ -491,8 +491,9 @@ scenes
 	background-color: #f0f0f0;
 	overflow: hidden;
 	position: absolute;
-	left: 3%;
+	left: 2%;
 	cursor: pointer;
+	border:1px dashed #d45a1b;
 }
 .refrigerator-cell:hover img,.refrigerator-cell.selected img{
 	opacity: 1;
@@ -511,7 +512,7 @@ scenes
 .refrigerator-cell img {
 	max-width: 100%;
 	margin-right: 100%;
-	opacity: 0.1;
+	opacity: 0;
 }
 #refrigerator .width-large {
 	width: 94%;
@@ -532,24 +533,26 @@ scenes
 	width: 46%;
 }
 #fruit {
-	background:#f0f0f0 url(../img/scene/diet-fruit.png) no-repeat left top;
+	background:#fff2d8 url(../img/scene/diet-fruit.png) no-repeat left top;
 	background-size:100% auto;
+	border-color:#fad949;
 }
-#taste-spicy:hover, #taste-spicy.selected {
+ #taste-spicy.selected {
 	background-color: #6e5f57;
 }
-#taste-sweet:hover, #taste-sweet.selected {
+ #taste-sweet.selected {
 	background-color: #a9ddec;
 }
-#taste-meat:hover, #taste-meat.selected {
+#taste-meat.selected {
 	background-color: #f0e1af;
 }
-#taste-vegetable:hover, #taste-vegetable.selected {
+#taste-vegetable.selected {
 	background-color: #d4e4ae;
 }
-#taste-mix:hover, #taste-mix.selected {
+ #taste-mix.selected {
 	background-color: #c9f2ed;
 }
+
 #fruit:hover,#fruit.selected {
 	background-color: #fcf0bb;
 }
@@ -565,25 +568,29 @@ scenes
 #fruit.fruit-degree-3 {
 	background-position: 0 -216px;
 }
-#drink-coke:hover,#drink-coke.selected {
+.drink {
+	border-color: #a0a0a0;
+	background-color: #f0f0f0;
+}
+#drink-coke.selected {
 	background-color: #b6e7dc;
 }
-#drink-beer:hover,#drink-beer.selected {
+#drink-beer.selected {
 	background-color: #575146;
 }
-#drink-milk:hover,#drink-milk.selected {
+#drink-milk.selected {
 	background-color: #d95633;
 }
-#drink-water:hover,#drink-water.selected {
+#drink-water.selected {
 	background-color: #336ed9;
 }
-#drink-juice:hover,#drink-juice.selected {
+#drink-juice.selected {
 	background-color: #f0e1af;
 }
-#drink-tea:hover,#drink-tea.selected {
+#drink-tea.selected {
 	background-color: #ddf5ae;
 }
-#drink-coffee:hover,#drink-coffee.selected {
+#drink-coffee.selected {
 	background-color: #d8cbbe;
 }
 #hint-taste {
