@@ -26,6 +26,9 @@ var Avatar = Backbone.Model.extend({
             else if (AppFacade.getCurrentView().model.get("scene_id") == 3) {
                 return "mirror-show quality-scene";
             }
+            else if (AppFacade.getCurrentView().model.get("scene_id") == 6) {
+                return "diet-scene";
+            }
             else {
                 return "mirror-show";
             }

@@ -168,3 +168,11 @@ function readCookie(name) {
 function eraseCookie(name) {
     createCookie(name, "", -1);
 }
+
+function geDegreeByXPosition( left, parentWidth, degreeCount ) {
+	var stepLength = parentWidth / ( (degreeCount - 1) * 2);
+	
+	var step = Math.floor( left / stepLength ) + 1;
+	var degree = Math.floor(step / 2 ) + 1;
+	return degree;
+}

@@ -212,8 +212,6 @@
         <script id="scene-diet-template" type="text/template">
             <div id="scene-diet" class="scene">
         		<div id="scene-diet-content" class="scene-content">
-        			<div id="me" class="item">
-        			</div>
         			<div id="diningTable" class="item">
         			</div>
         			<div id="refrigerator" class="item" >
@@ -575,7 +573,7 @@
             <div id="scene-hairquality" class="scene ">
 				<div id="scene-hairquality-content" class="scene-content">
 					<div id="magnifier" class="item">
-						<div id="magnifier-glass">
+						<div id="magnifier-glass" class="quality-{{#getDataDegree}}18{{/getDataDegree}} thickness-{{#getDataDegree}}19{{/getDataDegree}} volume-{{#getDataDegree}}20{{/getDataDegree}}">
 							<div id="magnifier-glass-content">
 
 								<div id="magnifier-more">
@@ -600,9 +598,9 @@
 				
 					<div id="quality-quality" class="item quality-progress">
 						<div class="quality-progress-title">
-						<span style="position:relative;top:30%;">发质</span>
+						<span style="position:relative;top:35%;">发质</span>
 						</div>
-						<div class="quality-progress-bar progress-4-degree">
+						<div class="quality-progress-bar progress-4-degree" data-question-id="18" data-degree-count="{{#getDataDegreeCount}}18{{/getDataDegreeCount}}">
 							<a class="quality-progress-dot progress-degree-1" title="干性">
 							</a>
 							<a class="quality-progress-dot progress-degree-2" title="中性">
@@ -612,28 +610,28 @@
 							<a class="quality-progress-dot progress-degree-4" title="油性">
 							</a>
 							
-							<a class="quality-progree-draggable on-degree-2">中性</a>
+							<a class="quality-progree-draggable on-degree-{{#getDataDegree}}18{{/getDataDegree}}">请选择</a>
 						</div>
 					</div>
 					<div id="quality-thickness" class="item quality-progress">
 						<div class="quality-progress-title">
-						<span style="position:relative;top:15%;">头发<br />粗细</span>
+						<span style="position:relative;top:20%;">头发<br />粗细</span>
 						</div>
-						<div class="quality-progress-bar progress-3-degree">
+						<div class="quality-progress-bar progress-3-degree"  data-question-id="19" data-degree-count="{{#getDataDegreeCount}}19{{/getDataDegreeCount}}">
 							<a class="quality-progress-dot progress-degree-1" title="较粗">
 							</a>
 							<a class="quality-progress-dot progress-degree-2" title="正常">
 							</a>
 							<a class="quality-progress-dot progress-degree-3" title="较细">
 							</a>
-							<a class="quality-progree-draggable on-degree-2">正常</a>
+							<a class="quality-progree-draggable on-degree-{{#getDataDegree}}19{{/getDataDegree}}">请选择</a>
 						</div>
 					</div>
 					<div id="quality-volume" class="item quality-progress">
 						<div class="quality-progress-title">
-						<span style="position:relative;top:30%;">发量</span>
+						<span style="position:relative;top:35%;">发量</span>
 						</div>
-						<div class="quality-progress-bar progress-4-degree">
+						<div class="quality-progress-bar progress-4-degree"  data-question-id="20" data-degree-count="{{#getDataDegreeCount}}20{{/getDataDegreeCount}}">
 							<a class="quality-progress-dot progress-degree-1" title="很多">
 							</a>
 							<a class="quality-progress-dot progress-degree-2" title="正常">
@@ -642,24 +640,24 @@
 							</a>
 							<a class="quality-progress-dot progress-degree-4" title="稀疏">
 							</a>
-							<a class="quality-progree-draggable on-degree-2">正常</a>
+							<a class="quality-progree-draggable on-degree-{{#getDataDegree}}20{{/getDataDegree}}">请选择</a>
 						</div>
 					</div>
 					
-					<div id="quality-problem" class="item">
-						<div class="problem-item" id="problem-item-1">
+					<div id="quality-problem" class="item" data-question-id="21">
+						<div class="problem-item hairproblem-1-{{#getSelectedClass}}21,95{{/getSelectedClass}}" id="problem-item-1" data-answer-id="95">
 						</div>
 						
-						<div class="problem-item" id="problem-item-2">
+						<div class="problem-item hairproblem-2-{{#getSelectedClass}}21,96{{/getSelectedClass}}" id="problem-item-2"  data-answer-id="96">
 						</div>
 						
-						<div class="problem-item" id="problem-item-3">
+						<div class="problem-item hairproblem-3-{{#getSelectedClass}}21,97{{/getSelectedClass}}" id="problem-item-3"  data-answer-id="97">
 						</div>
 						
-						<div class="problem-item" id="problem-item-4">
+						<div class="problem-item hairproblem-4-{{#getSelectedClass}}21,98{{/getSelectedClass}}" id="problem-item-4" data-answer-id="98">
 						</div>
 						
-						<div class="problem-item" id="problem-item-5">
+						<div class="problem-item hairproblem-5-{{#getSelectedClass}}21,99{{/getSelectedClass}}" id="problem-item-5" data-answer-id="99">
 						</div>
 					</div>
 				</div>
