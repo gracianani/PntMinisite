@@ -687,7 +687,8 @@ var DietView = Backbone.View.extend({
     events: {
         "click .taste": "answerTasteQuestion",
         "click .drink": "answerDrinkQuestion",
-        "click #fruit": "answerFruitQuestion"
+        "click #fruit": "answerFruitQuestion",
+        "click .cooking": "answerCookingQuestion"
     },
 
     animateIn: function () {
@@ -728,6 +729,46 @@ var DietView = Backbone.View.extend({
         } else {
             $(item).attr('data-selected', 1);
         }
+    },
+    answerCookingQuestion : function(event) {
+	  	var item = $(event.currentTarget);  
+	  	item.toggleClass('selected');
+	  	item.siblings().removeClass('selected');
+	  	var id = parseInt(item.attr("data-answer-id"));
+	  	var isSelected = item.hasClass('selected');
+	  	this.model.setAnswer(parseInt(item.parent().attr("data-question-id")),id, isSelected);
+	  	
+	  	if ( isSelected ) {
+		  	switch(id) {
+			  	case 1:
+			  		$("#takeaway,#homemade").removeClass("selected");
+			  		item.flyToAndHide($("#character-container"),function(){
+				  		
+			  		});
+			  	break;
+			  	case 2:
+			  		$("#takeaway,#homemade").removeClass("selected");
+			  		item.flyToAndHide($("#character-container"),function(){
+				  		
+			  		});
+			  	break;
+			  	case 3:
+			  		item.flyToAndHide($("#homemade"),function(){
+				  		$("#homemade").addClass("selected");
+				  		$("#takeaway").removeClass("selected");
+			  		});
+			  	break;
+			  	case 4:
+			  		item.flyToAndHide($("#takeaway"),function(){
+				  		$("#takeaway").addClass("selected");
+				  		$("#homemade").removeClass("selected");
+			  		});
+			  	break;
+			  	default:
+			  	break;
+		  	}
+	  	}
+	  	
     },
 
     initQuestionHint: function () {
@@ -1080,7 +1121,6 @@ var HairQualityView = Backbone.View.extend( {
 	    
 	    var node = $(e.currentTarget);
 	    var degree = node.parent().children().index(node) + 1;
-	    console.log(degree);
 	    this.setDegree( node.parent(), degree);
 
     },
@@ -1094,6 +1134,9 @@ var HairQualityView = Backbone.View.extend( {
 	    if ( problem.data('selected') || problem.hasClass("problem-item hairproblem-" + problemIndex + "-selected") ) {
 		    problem.data('selected',false);
 		    problem.attr("class", "problem-item hairproblem-" + problemIndex + "-");
+		    
+		    
+		    
 		    this.model.setAnswer(question_id, answer_id, false);
 	    } else {
 		    problem.data('selected',true);
@@ -1111,14 +1154,15 @@ var HairQualityView = Backbone.View.extend( {
 				    count++;
 			    }
 		    }, 150);
-	    }
+		    app.Views.AvatarView.sad();
+		}
 	    
 
     },
     setDegree : function(barEl, degree) {
 	    var draggable = barEl.find(".quality-progree-draggable");
 	    var node = $(barEl.children().get(degree - 1));
-	    draggable.css("left", node.position().left);
+	    draggable.animate({"left": node.position().left},500);
 	    draggable.removeClass("on-degree-").removeClass("on-degree-0");
 		draggable.text(node.attr("title"));
 		this.model.setAnswerByDegree(parseInt(barEl.attr("data-question-id")), degree, true);

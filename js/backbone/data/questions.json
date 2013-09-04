@@ -709,11 +709,13 @@
 		"answers" :[
 			{
 				"answer_id" : 100,
-				"text" : "男"
+				"text" : "男",
+				"name" : "m"
 			},
 			{
 				"answer_id" : 101,
-				"text" : "女"
+				"text" : "女",
+				"name" : "fm"
 			}
 		]
 	},
