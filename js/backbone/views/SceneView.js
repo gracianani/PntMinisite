@@ -6,7 +6,7 @@ var MainView = Backbone.View.extend({
         "click #next": "processToNextQuestion",
         "click #prev" : "processToPrevQuestion",
         "click #weibo, click #wechat" : "showLogin",
-        "click .weibo, click .wechat" : "authorize",
+        "click .weibo,.wechat,.splash-weibo,.splash-qq" : "authorize",
         "click #login .close" : "closeLogin"
     },
     initialize: function () {
@@ -397,7 +397,7 @@ var LifeView = Backbone.View.extend({
        
     },
     prev : function() {
-        var prevView = app.Views.HairStyleView;
+        var prevView = app.Views.HairQualityView;
         AppFacade.setCurrentView(prevView);
         AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
         app.Router.navigate("Survey/" + prevView.model.get("scene_id"));
@@ -688,7 +688,8 @@ var DietView = Backbone.View.extend({
     events: {
         "click .taste": "answerTasteQuestion",
         "click .drink": "answerDrinkQuestion",
-        "click #fruit": "answerFruitQuestion"
+        "click #fruit": "answerFruitQuestion",
+        "click .cooking": "answerCookingQuestion"
     },
 
     animateIn: function () {
@@ -730,6 +731,46 @@ var DietView = Backbone.View.extend({
             $(item).attr('data-selected', 1);
         }
     },
+    answerCookingQuestion : function(event) {
+	  	var item = $(event.currentTarget);  
+	  	item.toggleClass('selected');
+	  	item.siblings().removeClass('selected');
+	  	var id = parseInt(item.attr("data-answer-id"));
+	  	var isSelected = item.hasClass('selected');
+	  	this.model.setAnswer(parseInt(item.parent().attr("data-question-id")),id, isSelected);
+	  	
+	  	if ( isSelected ) {
+		  	switch(id) {
+			  	case 1:
+			  		$("#takeaway,#homemade").removeClass("selected");
+			  		item.flyToAndHide($("#character-container"),function(){
+				  		
+			  		});
+			  	break;
+			  	case 2:
+			  		$("#takeaway,#homemade").removeClass("selected");
+			  		item.flyToAndHide($("#character-container"),function(){
+				  		
+			  		});
+			  	break;
+			  	case 3:
+			  		item.flyToAndHide($("#homemade"),function(){
+				  		$("#homemade").addClass("selected");
+				  		$("#takeaway").removeClass("selected");
+			  		});
+			  	break;
+			  	case 4:
+			  		item.flyToAndHide($("#takeaway"),function(){
+				  		$("#takeaway").addClass("selected");
+				  		$("#homemade").removeClass("selected");
+			  		});
+			  	break;
+			  	default:
+			  	break;
+		  	}
+	  	}
+	  	
+    },
 
     initQuestionHint: function () {
         this.$el.find('.drink').hint('#hint-drink');
@@ -769,11 +810,11 @@ var DietView = Backbone.View.extend({
     // Re-render the titles of the todo item.
     render: function () {
         this.$el.html(Mustache.render(this.template, this.model));
-
+		app.Views.AvatarView.render();
         this.initQuestionHint();
         this.initAnswerTooltip();
         this.initFruit();
-
+		
         this.trigger("render");
         return this;
     },
@@ -1013,7 +1054,9 @@ var HairQualityView = Backbone.View.extend( {
     template: $('#scene-hairquality-template').html(),
 
     events: {
-       
+       "click .quality-progress-dot": "onClickProgressDot",
+       "click .quality-progress-bar": "onClickProgressBar",
+       "click .problem-item": "onClickProblem"
     },
 
     initialize: function () {
@@ -1027,11 +1070,21 @@ var HairQualityView = Backbone.View.extend( {
     },
     // Re-render the titles of the todo item.
     render: function () {
+    	var self = this;
         this.$el.html(Mustache.render(this.template, this.model));
         app.Views.AvatarView.render();
         $('.quality-progree-draggable').draggable({
 			axis: "x",
-			containment: "parent"
+			containment: "parent",
+			stop : function(event, ui) {
+				var draggable = $(this);
+				var bar = draggable.parent();
+
+				var degree = geDegreeByXPosition( draggable.position().left, bar.width() , parseInt(bar.attr("data-degree-count")) );
+				
+				self.setDegree(bar, degree);
+				
+			}
 		});
         this.trigger("render");
         return this;
@@ -1057,6 +1110,72 @@ var HairQualityView = Backbone.View.extend( {
     onexit : function() {
 	    $("#character-container").fadeOut();
 	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
+    },
+    onClickProgressBar : function(e) {
+	  var bar = $(e.currentTarget);
+	  var left = e.pageX - bar.offset().left;
+	  var degree =   geDegreeByXPosition( left, bar.width() , parseInt(bar.attr("data-degree-count")) );
+
+	   this.setDegree( bar, degree);
+    },
+    onClickProgressDot : function(e) {
+	    
+	    var node = $(e.currentTarget);
+	    var degree = node.parent().children().index(node) + 1;
+	    this.setDegree( node.parent(), degree);
+
+    },
+    onClickProblem : function(e) {
+	    var problem = $(e.currentTarget);
+	    var problemIndex = problem.parent().children().index(problem) + 1;
+	    
+	    var question_id = parseInt(problem.parent().attr("data-question-id"));
+	    var answer_id = parseInt(problem.attr("data-answer-id"));
+	    
+	    if ( problem.data('selected') || problem.hasClass("problem-item hairproblem-" + problemIndex + "-selected") ) {
+		    problem.data('selected',false);
+		    problem.attr("class", "problem-item hairproblem-" + problemIndex + "-");
+		    
+		    
+		    
+		    this.model.setAnswer(question_id, answer_id, false);
+	    } else {
+		    problem.data('selected',true);
+		    problem.attr("class", "problem-item hairproblem-" + problemIndex + "-selected");
+		    this.model.setAnswer(question_id, answer_id, true);
+		    
+		    var count = 2;
+		    var originClass = problem.attr('class');
+		    var timer = setInterval(function(){
+			    if ( count == 6 ) {
+				 	problem.attr('class', originClass );
+				 	clearInterval(timer);
+			    } else {
+				    problem.attr('class', originClass + " hairproblem-" + problemIndex + "-" + count);
+				    count++;
+			    }
+		    }, 150);
+		    app.Views.AvatarView.sad();
+		}
+	    
+
+    },
+    setDegree : function(barEl, degree) {
+	    var draggable = barEl.find(".quality-progree-draggable");
+	    var node = $(barEl.children().get(degree - 1));
+	    draggable.animate({"left": node.position().left},500);
+	    draggable.removeClass("on-degree-").removeClass("on-degree-0");
+		draggable.text(node.attr("title"));
+		this.model.setAnswerByDegree(parseInt(barEl.attr("data-question-id")), degree, true);
+		
+		this.setMagnifierClass();
+    },
+    setMagnifierClass : function() {
+	    var qualityDegree = this.model.getAnswerDegree(18); 
+	    var thicknessDegree = this.model.getAnswerDegree(19); 
+	    var volumeDegree = this.model.getAnswerDegree(20);
+	    var classStr = "quality-" + qualityDegree + " thickness-" + thicknessDegree + " volume-" + volumeDegree;
+	    this.$el.find('#magnifier-glass').attr('class', classStr);
     }
 });
 
@@ -1183,11 +1302,14 @@ var SalonView = Backbone.View.extend( {
         AnimationHandler.initialize('#scene-salon-content');
         this.animateIn();
     },
-    prev : function() {
+    prev: function () {
         var prevView = app.Views.CleaningView;
         AppFacade.setCurrentView(prevView);
-        AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
         app.Router.navigate("Survey/" + prevView.model.get("scene_id"));
+        this.onexit();
+    },
+    onexit : function() {
+	    AnimationHandler.animateOut("prev", function () { AppFacade.getCurrentView().render(); });
     },
     next: function () {
     }

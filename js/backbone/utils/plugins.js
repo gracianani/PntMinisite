@@ -137,6 +137,23 @@ $.prototype.rotate = function(angle) {
 	});
 	
 }
+$.prototype.flyToAndHide = function(target, callback) {
+	var item = $(this).show().css("visibility","visible");
+	var originPosition = item.position();
+	var originOffset = item.offset();
+	var targetOffset = target.offset();
+	var deltaX = targetOffset.left - originOffset.left + originPosition.left;
+	var deltaY = targetOffset.top - originOffset.top + originPosition.top;
+	
+	item.animate({
+		"left":deltaX,
+		"top":deltaY,
+		"opacity":0
+	},1000, function(){
+		$(this).attr("style","");
+		callback.apply();
+	});
+}
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -167,4 +184,12 @@ function readCookie(name) {
 
 function eraseCookie(name) {
     createCookie(name, "", -1);
+}
+
+function geDegreeByXPosition( left, parentWidth, degreeCount ) {
+	var stepLength = parentWidth / ( (degreeCount - 1) * 2);
+	
+	var step = Math.floor( left / stepLength ) + 1;
+	var degree = Math.floor(step / 2 ) + 1;
+	return degree;
 }

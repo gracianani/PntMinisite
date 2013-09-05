@@ -128,8 +128,7 @@ footer
 	background: url(../img/progress.png) center top no-repeat;
 	position: absolute;
 	bottom: 20px;
-	left: 50%;
-	margin-left: -137px;
+	right: 5%;
 }
 #progress.step2 {
 	background-position: center -60px;
@@ -174,7 +173,7 @@ main
 	top:50%;
 	left: 50%;
 	margin-left:-480px;
-	margin-top:-225px;
+	margin-top:-210px;
 	text-align: center;
 	z-index: 2;
 }
@@ -202,8 +201,8 @@ header
 	left: 0;
 	width: 100%;
 	height: 60px;
-	background: #000;
-	z-index: 99;
+	background: #000 url(../img/headerbottom.png) repeat-x left bottom;
+	padding-bottom: 15px;
 }
 
 #logo {
@@ -444,7 +443,7 @@ scenes
 	width:45.5%;
 	height: 94%;
 	padding: 3% 2%;
-	background-color: #3a3a3a;
+	background-color: #111;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
@@ -471,7 +470,7 @@ scenes
 #refrigerator-fitting1,#refrigerator-fitting2{
 	width: 2%;
 	height: 15%;
-	background: #3a3a3a;
+	background: #111;
 	position: absolute;
 	left: 50%;
 	margin-left: -5px;
@@ -491,8 +490,9 @@ scenes
 	background-color: #f0f0f0;
 	overflow: hidden;
 	position: absolute;
-	left: 3%;
+	left: 2%;
 	cursor: pointer;
+	border:1px dashed #d45a1b;
 }
 .refrigerator-cell:hover img,.refrigerator-cell.selected img{
 	opacity: 1;
@@ -511,7 +511,7 @@ scenes
 .refrigerator-cell img {
 	max-width: 100%;
 	margin-right: 100%;
-	opacity: 0.1;
+	opacity: 0;
 }
 #refrigerator .width-large {
 	width: 94%;
@@ -532,24 +532,26 @@ scenes
 	width: 46%;
 }
 #fruit {
-	background:#f0f0f0 url(../img/scene/diet-fruit.png) no-repeat left top;
+	background:#fff2d8 url(../img/scene/diet-fruit.png) no-repeat left top;
 	background-size:100% auto;
+	border-color:#fad949;
 }
-#taste-spicy:hover, #taste-spicy.selected {
+ #taste-spicy.selected {
 	background-color: #6e5f57;
 }
-#taste-sweet:hover, #taste-sweet.selected {
+ #taste-sweet.selected {
 	background-color: #a9ddec;
 }
-#taste-meat:hover, #taste-meat.selected {
+#taste-meat.selected {
 	background-color: #f0e1af;
 }
-#taste-vegetable:hover, #taste-vegetable.selected {
+#taste-vegetable.selected {
 	background-color: #d4e4ae;
 }
-#taste-mix:hover, #taste-mix.selected {
+ #taste-mix.selected {
 	background-color: #c9f2ed;
 }
+
 #fruit:hover,#fruit.selected {
 	background-color: #fcf0bb;
 }
@@ -565,25 +567,29 @@ scenes
 #fruit.fruit-degree-3 {
 	background-position: 0 -216px;
 }
-#drink-coke:hover,#drink-coke.selected {
+.drink {
+	border-color: #a0a0a0;
+	background-color: #f0f0f0;
+}
+#drink-coke.selected {
 	background-color: #b6e7dc;
 }
-#drink-beer:hover,#drink-beer.selected {
+#drink-beer.selected {
 	background-color: #575146;
 }
-#drink-milk:hover,#drink-milk.selected {
+#drink-milk.selected {
 	background-color: #d95633;
 }
-#drink-water:hover,#drink-water.selected {
+#drink-water.selected {
 	background-color: #336ed9;
 }
-#drink-juice:hover,#drink-juice.selected {
+#drink-juice.selected {
 	background-color: #f0e1af;
 }
-#drink-tea:hover,#drink-tea.selected {
+#drink-tea.selected {
 	background-color: #ddf5ae;
 }
-#drink-coffee:hover,#drink-coffee.selected {
+#drink-coffee.selected {
 	background-color: #d8cbbe;
 }
 #hint-taste {
@@ -616,8 +622,99 @@ scenes
 	right: 0;
 	bottom: 5%;
 }
+#diet-cooking {
+	position: absolute;
+	width: 35%;
+	right: 0;
+	height: 10px;
+	background-color: #000;
+	top:10%;
+}
+#diet-cooking .selected {
+	visibility: hidden;
+}
+#cooking-pole-left,#cooking-pole-right {
+	height: 30px;
+	width: 10px;
+	background-color: #000;
+	border-radius: 5px;
+	position: absolute;
+	top: -10px;
 
-
+}
+#cooking-pole-left {
+	left: -5px;
+}
+#cooking-pole-right {
+	right: -5px;
+}
+.cooking-pole-dot {
+	width: 16px;
+	height: 16px;
+	border-radius: 8px;
+	background-color: #d55b1c;
+	position: absolute;
+	top:-3px;
+	margin-left: -8px;
+}
+.cooking {
+	position: absolute;
+	top: 0;
+	background: url(../img/scene/diet-cooking.png) no-repeat;
+	cursor: pointer;
+}
+.cooking:hover {
+	top:-10px;
+}
+#cooking-master {
+	width: 91px;
+	height: 76px;
+	margin-left: -45px;
+	background-position: -69px top;
+	left: 10%;
+}
+#cooking-diy {
+	width: 69px;
+	height: 264px;
+	margin-left:-35px;
+	background-position: left top;
+	left: 40%;
+}
+#cooking-homemade {
+	width: 55px;
+	height: 149px;
+	margin-left:-35px;
+	background-position: -160px top;
+	left: 65%;
+}
+#cooking-takeaway {
+	width: 90px;
+	height: 109px;
+	margin-left: -25px;
+	background-position: -231px top;
+	left: 90%;
+}
+#homemade,#takeaway {
+	position: absolute;
+	background: url(../img/scene/diet-dishes.png) no-repeat left bottom;
+	visibility: hidden;
+}
+#homemade {
+	width: 90px;
+	height: 85px;
+	top:-83px;
+	left: 50%;
+}
+#takeaway {
+	width: 83px;
+	height: 107px;
+	top:-105px;
+	left: 50%;
+	background-position: right bottom;
+}
+#diningTable .selected {
+	visibility: visible!important;
+}
 /**** health *******/
 .health-degree {
 	width: 12%;
@@ -1422,6 +1519,7 @@ Cleaning
 	position: absolute;
 	left: 0px;
 	top: 0px;
+	border-radius: 50%;
 }
 #magnifier-less {
 	background-position:  center top;
@@ -1431,17 +1529,72 @@ Cleaning
 }
 #magnifier-more {
 	background-position:  center -200px;
+	display: none;
 }
 #magnifier-dry {
 	background-position:  center -300px;
+	display: none;
 }
 #magnifier-oil {
 	background-position:  center -400px;
+	display: none;
 }
 #magnifier-skin {
 	background-position:  center -500px;
+	display: none;
 }
-
+.thickness-1 #magnifier-less,
+.thickness-1 #magnifier-normal,
+.thickness-1 #magnifier-more {
+	background-size: 120px 600px;
+}
+.thickness-3 #magnifier-less,
+.thickness-3 #magnifier-normal,
+.thickness-3 #magnifier-more {
+	background-size: 80px 600px;;
+}
+.volume-1 #magnifier-skin{
+	display: none;
+}
+.volume-1 #magnifier-more,.volume-1 #magnifier-less,.volume-1 #magnifier-normal {
+	display: block;
+}
+.volume-2 #magnifier-more,.volume-2 #magnifier-skin{
+	display: none;
+}
+.volume-2 #magnifier-less,.volume-2 #magnifier-normal {
+	display: block;
+}
+.volume-3 #magnifier-normal,.volume-3 #magnifier-more,.volume-3 #magnifier-skin{
+	display: none;
+}
+.volume-3 #magnifier-less {
+	display: block;
+}
+.volume-4 #magnifier-normal,.volume-4 #magnifier-more{
+	display: none;
+}
+.volume-4 #magnifier-less,.volume-4 #magnifier-skin {
+	display: block;
+}
+.quality-1 #magnifier-oil {
+	display: none;
+}
+.quality-1 #magnifier-dry {
+	display: block;
+}
+.quality-2 #magnifier-oil,.quality-2 #magnifier-dry  {
+	display: none;
+}
+.quality-3 #magnifier-oil,.quality-3 #magnifier-dry{
+	display: block;
+}
+.quality-4 #magnifier-dry {
+	display: none;
+}
+.quality-4 #magnifier-oil {
+	display: block;
+}
 #scene-hairquality-content {
 	width: 100%;
 	height: 100%;
@@ -1449,7 +1602,7 @@ Cleaning
 }
 .quality-progress {
 	width:50%;
-	height: 20%;
+	height: 80px;
 	background: #ffe579;
 	border-radius: 10px;
 	position: absolute;
@@ -1458,20 +1611,20 @@ Cleaning
 	
 }
 #quality-thickness {
-	top:29%;
+	top:120px;
 }
 #quality-volume {
-	top:58%;
+	top:240px;
 }
 .quality-progress-title {
-	width: 20%;
+	width: 17%;
 	height: 100%;
 	border-radius: 10px 0 0 10px;
 	background:url(../img/hairqualitybartitle.png) no-repeat right center;
-	color: #fff;
-	font-size: 20px;
+	color: #94d0e4;
+	font-size: 16px;
 	text-align: center;
-	padding-right: 5%;
+	padding-right: 7%;
 }
 .quality-progress-bar {
 	background-color: #ffffff;
@@ -1495,6 +1648,15 @@ Cleaning
 	top:50%;
 	margin-left: -15px;
 	background-color: #ffbd32;
+	cursor: pointer;
+}
+.quality-progress-dot:hover {
+	background-color: #d55b1c;
+	width: 20px;
+	height: 20px;
+	border-radius: 20px;
+	margin-top:-20px;
+	margin-left: -20px;
 }
 .progress-degree-1{
 	left: 0;
@@ -1516,17 +1678,26 @@ Cleaning
 .quality-progree-draggable {
 	position: absolute;
 	background-color: #d55b1c;
-	width: 60px;
-	height: 60px;
+	width: 50px;
+	height: 50px;
 	border-radius: 30px;
-	margin-top: -30px;
+	margin-top: -25px;
 	top: 50%;
 	left: 0;
-	margin-left: -30px;
+	margin-left: -25px;
 	display: block;
 	color: #fff;
-	line-height: 60px;
+	line-height: 50px;
+	cursor: pointer;
+	font-size: 12px;
 	
+}
+.quality-progress .on-degree-,.quality-progress .on-degree-0 {
+	background: #efefef;
+	border:2px dashed #d55b1c;
+	color: #d55b1c;
+	margin-left: -27px;
+	margin-top: -27px;
 }
 .on-degree-1 {
 	left: 0;
@@ -1548,10 +1719,9 @@ Cleaning
 	left: 100%;
 }
 #quality-problem {
-
 	position: absolute;
 	width: 700px;
-	bottom: -5%;
+	bottom:10px;
 	left: 50%;
 	height: 90px;
 	margin-left: -350px;
@@ -1559,10 +1729,11 @@ Cleaning
 .problem-item {
 	width: 90px;
 	height: 90px;
-	background: #FFF;
 	position: absolute;
 	border-radius: 10px;
-	border-bottom: 5px solid #CCC;
+	
+	background: url(../img/scene/hairproblem.png) no-repeat top left;
+	cursor: pointer;
 }
 #problem-item-1 {
 	left: 0;
@@ -1584,6 +1755,37 @@ Cleaning
 	right: 0;
 	margin-right: -45px;
 }
+
+.hairproblem-1-{ background-position: 0 0; width: 90px; height: 90px; } 
+.hairproblem-1-selected{ background-position: 0 -92px; width: 90px; height: 90px; } 
+.hairproblem-1-2{ background-position: 0 -184px; width: 90px; height: 90px; } 
+.hairproblem-1-3{ background-position: 0 -276px; width: 90px; height: 90px; } 
+.hairproblem-1-4{ background-position: 0 -368px; width: 90px; height: 90px; } 
+.hairproblem-1-5{ background-position: 0 -460px; width: 90px; height: 90px; } 
+.hairproblem-2-{ background-position: 0 -552px; width: 90px; height: 90px; } 
+.hairproblem-2-selected{ background-position: 0 -644px; width: 90px; height: 90px; } 
+.hairproblem-2-2{ background-position: 0 -736px; width: 90px; height: 90px; } 
+.hairproblem-2-3{ background-position: 0 -828px; width: 90px; height: 90px; } 
+.hairproblem-2-4{ background-position: 0 -920px; width: 90px; height: 90px; } 
+.hairproblem-2-5{ background-position: 0 -1012px; width: 90px; height: 90px; } 
+.hairproblem-3-{ background-position: 0 -1104px; width: 90px; height: 90px; } 
+.hairproblem-3-selected{ background-position: 0 -1196px; width: 90px; height: 90px; } 
+.hairproblem-3-2{ background-position: 0 -1288px; width: 90px; height: 90px; } 
+.hairproblem-3-3{ background-position: 0 -1380px; width: 90px; height: 90px; } 
+.hairproblem-3-4{ background-position: 0 -1472px; width: 90px; height: 90px; } 
+.hairproblem-3-5{ background-position: 0 -1564px; width: 90px; height: 90px; } 
+.hairproblem-4-{ background-position: 0 -1656px; width: 90px; height: 90px; } 
+.hairproblem-4-selected{ background-position: 0 -1748px; width: 90px; height: 90px; } 
+.hairproblem-4-2{ background-position: 0 -1840px; width: 90px; height: 90px; } 
+.hairproblem-4-3{ background-position: 0 -1932px; width: 90px; height: 90px; } 
+.hairproblem-4-4{ background-position: -92px 0; width: 90px; height: 90px; } 
+.hairproblem-4-5{ background-position: -92px -92px; width: 90px; height: 90px; } 
+.hairproblem-5-{ background-position: -92px -184px; width: 90px; height: 90px; } 
+.hairproblem-5-selected{ background-position: -92px -276px; width: 90px; height: 90px; } 
+.hairproblem-5-2{ background-position: -92px -368px; width: 90px; height: 90px; } 
+.hairproblem-5-3{ background-position: -92px -460px; width: 90px; height: 90px; } 
+.hairproblem-5-4{ background-position: -92px -552px; width: 90px; height: 90px; } 
+.hairproblem-5-5{ background-position: -92px -644px; width: 90px; height: 90px; } 
 
 /********basicinfo******/
 #basicinfo-career {
@@ -1998,9 +2200,16 @@ Cleaning
 	left: 80%;
 	top:0;
 	margin-top: 0;
+	height: 320px;
 }
 .basicinfo-scene {
 	left: 20%;
+	top: 0;
+	margin-top: 0;
+	position: absolute;
+}
+.diet-scene {
+	left: 40%;
 	top: 0;
 	margin-top: 0;
 	position: absolute;

@@ -26,6 +26,9 @@ var Avatar = Backbone.Model.extend({
             else if (AppFacade.getCurrentView().model.get("scene_id") == 3) {
                 return "mirror-show quality-scene";
             }
+            else if (AppFacade.getCurrentView().model.get("scene_id") == 6) {
+                return "diet-scene";
+            }
             else {
                 return "mirror-show";
             }
@@ -66,8 +69,14 @@ var Avatar = Backbone.Model.extend({
     	if( !user_career ) {
 	    	user_career = "0";
     	}
-    	console.log(user_career);
     	return parseInt(user_career);
+    },
+    getGender: function() {
+	    var user_gender = app.Views.BasicInfoView.model.getAnswerName(22);
+	    if( !user_gender ) {
+		    user_gender = "fm";
+	    }
+	    return user_gender;
     }
 });
 

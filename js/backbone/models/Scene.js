@@ -82,7 +82,14 @@ var Scene = Backbone.Model.extend({
 
         }
     },
-
+	getDataDegreeCount: function() {
+		return function(str_question_id) {
+			var question_id = parseInt(str_question_id);
+			var question = app.QuestionRepo.findWhere({ question_id: question_id });
+			console.log(question.get("answers").length);
+			return question.get("answers").length + '';
+		}	
+	},
     getUnselectedClass: function () {
         return function (str_question_id_answer_id) {
             var array = str_question_id_answer_id.split(',');
