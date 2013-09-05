@@ -170,12 +170,12 @@ var LifeView = Backbone.View.extend({
          });
 		
 		
-		stressHighText = lifeCenter.text(0,38,"压力山大")
+		stressHighText = lifeCenter.text(32,50,"压力山大")
         .attr({
 	        "font-size":"10px",
 	        "fill":"#FFF",
 	        "cursor":"pointer",
-	        "transform":"r-60 0 38"
+	        "transform":"r-60 32 50"
         }).click(function () {
             stressPin.animate({
             	transform:"r-60 100 100"
@@ -208,12 +208,12 @@ var LifeView = Backbone.View.extend({
             	"fill":"#e4600d"
             });
          });;
-        stressLowText = lifeCenter.text(200,38,"轻轻松松")
+        stressLowText = lifeCenter.text(168,50,"轻轻松松")
         .attr({
 	        "font-size":"10px",
 	        "cursor":"pointer",
 	        "fill":"#fff",
-	        "transform":"r60 200 38"
+	        "transform":"r60 168 50"
         }).click(function () {
             stressPin.animate({
             	"transform":"r60 100 100"
@@ -560,6 +560,7 @@ var CleaningView = Backbone.View.extend({
         this.$el.find('.cleaning-tool,.cleaning-style,.cleaning-care').tooltip();
     },
     render: function () {
+        console.log('cleaning');
         this.$el.html(Mustache.render(this.template, this.model));
         this.initAnswerTooltip();
         this.trigger("render");

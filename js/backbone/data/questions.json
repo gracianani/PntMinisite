@@ -277,28 +277,28 @@
 	},
 	{
 		"question_id" : 9,
-		"text" : "饮酒习惯",
+		"text" : "出门是否注意防晒?",
 		"question_type" : "single",
 		"name" : "drinking",
 		"answers" : [
 			{
                 "answer_id": 36,
-                "text": "经常喝",
-                "name": "always drinking",
+                "text": "坚决不晒",
+                "name": "never burn",
                 "image_url": "img/scene/drinking-3.png",
 				"degree" : 3
             },
 			{
                 "answer_id": 37,
-                "text": "偶尔喝一点",
-                "name": "occasionally drinking",
+                "text": "偶尔晒晒也健康",
+                "name": "occasionally block",
                 "image_url": "img/scene/drinking-2.png",
 				"degree" : 2
             },
 			{
 				"answer_id" : 38,
-				"text" : "基本不喝",
-				"name" : "never drinking",
+				"text" : "啥叫防晒?",
+				"name" : "never block",
 				"image_url" : "img/scene/drinking-1.png",
 				"degree" : 1
 			}
