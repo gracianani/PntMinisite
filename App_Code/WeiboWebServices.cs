@@ -7,6 +7,7 @@ using System.Net;
 using System.Text;
 using System.IO;
 using System.Web.Script.Services;
+using System.Web.Script.Serialization;
 
 /// <summary>
 /// Summary description for WeiboWebServices
@@ -23,13 +24,21 @@ public class WeiboWebServices : System.Web.Services.WebService {
         //InitializeComponent(); 
     }
 
-    [WebMethod]
-    public string HelloWorld() {
-        return "Hello World";
+    class UserAnswer
+    {
+        int question_id;
+        int[] answer_ids;
     }
 
     [WebMethod]
-    
+    [ScriptMethod(UseHttpGet = false)]
+    public string SubmitAnswer( string user_answers ) {
+        JavaScriptSerializer serializer = new JavaScriptSerializer();
+        var userAnswer = serializer.Deserialize<UserAnswer>(user_answers);
+        return "";
+    }
+
+    [WebMethod]
     [ScriptMethod(UseHttpGet = false)]
     public string GetUserInfo( string client_id , string client_secret, string grant_type, string code, string redirect_uri)
     {

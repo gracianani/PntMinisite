@@ -58,7 +58,12 @@
                 "text": "荤素搭配",
                 "name": "mix",
                 "image_url": "img/scene/diet-mix.png"
-            }
+            },
+			{
+				"answer_id" : 132,
+				"text" : "小清新",
+				"name" : "refreshing"
+			}
         ]
     },
     {
@@ -593,7 +598,7 @@
 				"degree" : 4
 			},
 			{
-				"answer_id" : 84,
+				"answer_id" : 85,
 				"text" : "1天2次",
 				"degree" : 5
 			}
@@ -605,22 +610,22 @@
 		"question_type" : "single",
 		"answers" :[
 			{
-				"answer_id" : 84,
+				"answer_id" : 86,
 				"text" : "干性",
 				"degree" : 1
 			},
 			{
-				"answer_id" : 85,
+				"answer_id" : 87,
 				"text" : "中性",
 				"degree" : 2
 			},
 			{
-				"answer_id" : 86,
+				"answer_id" : 88,
 				"text" : "油性",
 				"degree" : 3
 			},
 			{
-				"answer_id" : 87,
+				"answer_id" : 89,
 				"text" : "混合",
 				"degree" : 4
 			}
@@ -632,19 +637,29 @@
 		"question_type" : "single",
 		"answers" :[
 			{
-				"answer_id" : 88,
-				"text" : "干性",
+				"answer_id" : 90,
+				"text" : "很细",
 				"degree" : 1
 			},
 			{
-				"answer_id" : 89,
-				"text" : "中性",
+				"answer_id" : 91,
+				"text" : "较细",
 				"degree" : 2
 			},
 			{
-				"answer_id" : 90,
-				"text" : "油性",
+				"answer_id" : 92,
+				"text" : "一般",
 				"degree" : 3
+			},
+			{
+				"answer_id" : 93,
+				"text" : "较粗",
+				"degree" : 4
+			},
+			{
+				"answer_id" : 94,
+				"text" : "很粗",
+				"degree" : 5
 			}
 		]
 	},
@@ -654,22 +669,22 @@
 		"question_type" : "single",
 		"answers" :[
 			{
-				"answer_id" : 91,
+				"answer_id" : 95,
 				"text" : "发量很多",
 				"degree" : 4
 			},
 			{
-				"answer_id" : 92,
+				"answer_id" : 96,
 				"text" : "正常",
 				"degree" : 3
 			},
 			{
-				"answer_id" : 93,
+				"answer_id" : 97,
 				"text" : "发量偏少",
 				"degree" : 2
 			},
 			{
-				"answer_id" : 94,
+				"answer_id" : 98,
 				"text" : "暴露头皮",
 				"degree" : 1
 			}
@@ -681,23 +696,23 @@
 		"question_type" : "multiple",
 		"answers" :[
 			{
-				"answer_id" : 95,
+				"answer_id" : 99,
 				"text" : "头发稀疏"
 			},
 			{
-				"answer_id" : 96,
+				"answer_id" : 100,
 				"text" : "头发干枯,分叉,无光泽"
 			},
 			{
-				"answer_id" : 97,
+				"answer_id" : 101,
 				"text" : "头发出油,头屑"
 			},
 			{
-				"answer_id" : 98,
+				"answer_id" : 102,
 				"text" : "掉发"
 			},
 			{
-				"answer_id" : 99,
+				"answer_id" : 103,
 				"text" : "沙发,难打理"
 			}
 		]
@@ -708,12 +723,12 @@
 		"question_type" : "single",
 		"answers" :[
 			{
-				"answer_id" : 100,
+				"answer_id" : 104,
 				"text" : "男",
 				"name" : "m"
 			},
 			{
-				"answer_id" : 101,
+				"answer_id" : 105,
 				"text" : "女",
 				"name" : "fm"
 			}
@@ -725,27 +740,27 @@
 		"question_type" : "single",
 		"answers" :[
 			{
-				"answer_id" : 102,
+				"answer_id" : 106,
 				"text" : "18岁以下",
 				"degree" : 1
 			},
 			{
-				"answer_id" : 103,
+				"answer_id" : 107,
 				"text" : "18-24岁",
 				"degree" : 2
 			},
 			{
-				"answer_id" : 104,
+				"answer_id" : 108,
 				"text" : "25-34岁",
 				"degree" : 3
 			},
 			{
-				"answer_id" : 105,
+				"answer_id" : 109,
 				"text" : "35-44岁",
 				"degree" : 4
 			},
 			{
-				"answer_id" : 106,
+				"answer_id" : 110,
 				"text" : "45岁以上",
 				"degree" : 5
 			}
@@ -757,32 +772,32 @@
 		"question_type" : "single",
 		"answers" :[
 			{
-				"answer_id" : 107,
+				"answer_id" : 111,
 				"text" : "学生",
 				"name" : "2"
 			},
 			{
-				"answer_id" : 108,
+				"answer_id" : 112,
 				"text" : "格子间上班族",
 				"name" : "1"
 			},
 			{
-				"answer_id" : 109,
+				"answer_id" : 113,
 				"text" : "劳动人民",
 				"name" : "4"
 			},
 			{
-				"answer_id" : 110,
+				"answer_id" : 114,
 				"text" : "自由职业",
 				"name" : "6"
 			},
 			{
-				"answer_id" : 111,
+				"answer_id" : 115,
 				"text" : "我是boss,我为自己带盐",
 				"name" : "5"
 			},
 			{
-				"answer_id" : 112,
+				"answer_id" : 116,
 				"text" : "赋闲在家",
 				"name" : "3"
 			}
@@ -794,23 +809,23 @@
 		"question_type" : "multiple",
 		"answers" :[
 			{
-				"answer_id" : 113,
+				"answer_id" : 117,
 				"text" : "时尚杂志/网站"
 			},
 			{
-				"answer_id" : 114,
+				"answer_id" : 118,
 				"text" : "参考名人明星"
 			},
 			{
-				"answer_id" : 115,
+				"answer_id" : 119,
 				"text" : "朋友建议"
 			},
 			{
-				"answer_id" : 116,
+				"answer_id" : 120,
 				"text" : "美发师指导"
 			},
 			{
-				"answer_id" : 117,
+				"answer_id" : 121,
 				"text" : "自己创意"
 			}
 		]
@@ -821,23 +836,23 @@
 		"question_type" : "single",
 		"answers" :[
 			{
-				"answer_id" : 118,
+				"answer_id" : 122,
 				"text" : "从不烫染"
 			},
 			{
-				"answer_id" : 119,
+				"answer_id" : 123,
 				"text" : "1次/1年"
 			},
 			{
-				"answer_id" : 120,
+				"answer_id" : 124,
 				"text" : "1次/半年"
 			},
 			{
-				"answer_id" : 121,
+				"answer_id" : 125,
 				"text" : "1次/3个月"
 			},
 			{
-				"answer_id" : 122,
+				"answer_id" : 126,
 				"text" : "每个月都折腾"
 			}
 		]
@@ -848,24 +863,64 @@
 		"question_type" : "single",
 		"answers" :[
 			{
-				"answer_id" : 123,
+				"answer_id" : 127,
 				"text" : "每个月都做"
 			},
 			{
-				"answer_id" : 124,
+				"answer_id" : 128,
 				"text" : "1次/3个月"
 			},
 			{
-				"answer_id" : 125,
+				"answer_id" : 129,
 				"text" : "1次/半年"
 			},
 			{
-				"answer_id" : 126,
+				"answer_id" : 130,
 				"text" : "1次/1到两年"
 			},
 			{
-				"answer_id" : 127,
+				"answer_id" : 131,
 				"text" : "从不"
+			}
+		]
+	}
+	,
+	{
+		"question_id" : 28,
+		"text" : "您觉得自己的生活与工作平衡吗？",
+		"question_type" : "single",
+		"answers" :[
+			{
+				"answer_id" : 134,
+				"text" : "不平衡，工作鸭梨山大，睡眠不足"
+			},
+			{
+				"answer_id" : 135,
+				"text" : "朝九晚五，多数时间泡网上"
+			},
+			{
+				"answer_id" : 136,
+				"text" : "自己把控得刚刚好，很满意"
+			}
+		]
+	}
+	,
+	{
+		"question_id" : 29,
+		"text" : "一般选择在一天的哪个时间段洗发？",
+		"question_type" : "single",
+		"answers" :[
+			{
+				"answer_id" : 137,
+				"text" : "白天"
+			},
+			{
+				"answer_id" : 138,
+				"text" : "晚上"
+			},
+			{
+				"answer_id" : 139,
+				"text" : "早晚都洗"
 			}
 		]
 	}

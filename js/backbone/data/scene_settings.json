@@ -27,7 +27,7 @@
         "scene_id": 4,
         "scene_name": "life",
         "scene_title": "生活组成",
-        "question_ids": [11],
+        "question_ids": [11,28],
 		"prev_scene_id" : 3,
 		"next_scene_id" : 5
     },
@@ -51,7 +51,7 @@
         "scene_id": 7,
         "scene_name": "hair_care",
         "scene_title": "洗护",
-        "question_ids": [10,12],
+        "question_ids": [10,12, 29],
 		"next_scene_id" : 8,
 		"prev_scene_id" : 6
     },
