@@ -97,13 +97,14 @@ html {
 	background-color: #ffbd32;
 	height: 100%;
 	width: 100%;
-	overflow: hidden;
 }
 body {
 	width: 100%;
 	height: 100%;
 	position: relative;
 	font-family: "Microsoft Yahei","Yahei",sans-serif;
+	overflow: hidden;
+
 }
 
 #logo,#siteTitle,#profile,#navigation,#footer {
@@ -2286,6 +2287,7 @@ Cleaning
 	margin:10px auto;
 	color: #000;
 	padding-top: 80px;
+	position: relative;
 }
 #report h2 {
 	color: #AC7C37;
@@ -2299,7 +2301,8 @@ Cleaning
 	display: inline-block;
 	-webkit-border-radius: 50%;
 	-moz-border-radius:  50%;
-	border-radius:  50%;	
+	border-radius:  50%;
+	margin-right: 30px;	
 }
 .score-inside {
 	width: 160px;
@@ -2317,6 +2320,7 @@ Cleaning
 	font-size: 18px;
 	line-height: 30px;
 	text-align: center;
+	color: #333;
 }
 #report-score-number {
 	width: 100%;
@@ -2330,15 +2334,110 @@ Cleaning
 }
 #report-score.score-low {
 	background: #df4521;
-	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#df4521), to(#9f1e00));
-	background: -webkit-linear-gradient(#df4521, #9f1e00);
-	background: -moz-linear-gradient(#df4521, #9f1e00);
-	background: -ms-linear-gradient(#df4521, #9f1e00);
-	background: -o-linear-gradient(#df4521, #9f1e00);
-	background: linear-gradient(#df4521, #9f1e00);
-	-pie-background: linear-gradient(#df4521, #9f1e00);
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#df4521), to(#c03919));
+	background: -webkit-linear-gradient(#df4521, #c03919);
+	background: -moz-linear-gradient(#df4521, #c03919);
+	background: -ms-linear-gradient(#df4521, #c03919);
+	background: -o-linear-gradient(#df4521, #c03919);
+	background: linear-gradient(#df4521, #c03919);
+	-pie-background: linear-gradient(#df4521, #c03919);
 	behavior: url(/pie/PIE.htc);
 
+}
+#report-header {
+	zoom: 1;
+	clear: both;
+	float: none;
+	height: 220px;
+	width: 720px;
+}
+#report-header p {
+	font-size: 14px;
+	line-height: 24px;
+	margin-top: 20px;
+}
+#report h2.score-low {
+	color: #df4521;
+	font-size: 36px;
+	line-height: 40px;
+	padding-top: 20px;
+	margin: 0;
+}
+#report-result {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 720px;
+	margin-left: 30px;
+}
+#report-result>li {
+	float: none;
+	clear: both;
+	zoom: 1;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+	margin-bottom: 20px;
+
+}
+.report-result-icon {
+	width: 180px;
+	min-height: 140px;
+	padding-bottom: 20px;
+	float: left;
+	background: url(../img/scene/reporthairicon.png) no-repeat left top;
+	height: 100%;
+}
+.report-result-body {
+	float: left;
+	width: 490px;
+	background: #FFF;
+	border-radius: 10px;
+	min-height: 100px;
+	padding: 20px;
+	border: #dfb65e 2px solid;
+}
+#report-avatar {
+	width: 212px;
+	position: absolute;
+	right: 0;
+	top:100px;
+}
+#report-result-cleaning .report-result-icon {
+	background: url(../img/scene/reportcareicon.png) no-repeat left top;
+}
+
+#report-result-life .report-result-icon {
+	background: url(../img/scene/reportlifeicon.png) no-repeat left top;
+}
+#hair-advice-tag {
+	color: #ae6a10;
+	font-size: 24px;
+}
+#hair-advice-tag span {
+	background: #dfb65e;
+	color: #FFF;
+	font-size: 14px;
+	display: block;
+	padding: 2px 10px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+.report-result-body>ul,.report-result-body li {
+	margin: 0;
+	padding: 0;
+	
+}
+.report-result-body>ul {
+	margin-top: 10px;
+	list-style: none;
+}
+.report-result-body li {
+	margin-bottom: 10px;
+	list-style: disc;
+	margin-left: 20px;
+	color: #666;
 }
 /* ==========================================================================
    Helper classes
