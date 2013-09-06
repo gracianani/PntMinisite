@@ -2214,6 +2214,132 @@ Cleaning
 	margin-top: 0;
 	position: absolute;
 }
+
+
+/****** salon *********/
+#salon-character {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+#salon-mirror {
+	width: 100px;
+	height: 282px;
+	background: url(../img/scene/mirror.png) center center no-repeat;
+	position: absolute;
+	left: -20px;
+	top: 0;
+}
+.character-fm {
+	width: 322px;
+	height: 350px;
+	background: url(../img/scene/salon-fm.png) center center no-repeat;
+	
+}
+.character-m {
+	width: 240px;
+	height: 344px;
+	background: url(../img/scene/salon-m.png) center center no-repeat;
+}
+
+#salon-counselor {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+.counselor-fm {
+	width: 183px;
+	height: 450px;
+	background: url(../img/scene/counselor-fm.png) center center no-repeat;
+}
+.counselor-m {
+	width: 180px;
+	height: 378px;
+	background: url(../img/scene/counselor-m.png) center center no-repeat;
+}
+/* ==========================================================================
+   report
+   ========================================================================== */
+.report #logo {
+	left: 20px;
+	top: 10px;
+	display: block;
+	
+}
+.report #siteTitle {
+	top:10px;
+	display: block;
+}
+.report {
+	background: #f3e8d2;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#f3e8d2), to(#ffffff));
+	background: -webkit-linear-gradient(#f3e8d2, #ffffff);
+	background: -moz-linear-gradient(#f3e8d2, #ffffff);
+	background: -ms-linear-gradient(#f3e8d2, #ffffff);
+	background: -o-linear-gradient(#f3e8d2, #ffffff);
+	background: linear-gradient(#f3e8d2, #ffffff);
+	-pie-background: linear-gradient(#f3e8d2, #ffffff);
+	behavior: url(/pie/PIE.htc);
+}
+#report {
+	width: 960px;
+	margin:10px auto;
+	color: #000;
+	padding-top: 80px;
+}
+#report h2 {
+	color: #AC7C37;
+	font-weight: normal;
+}
+#report-score {
+	width: 200px;
+	height: 200px;
+	position: relative;
+	float: left;
+	display: inline-block;
+	-webkit-border-radius: 50%;
+	-moz-border-radius:  50%;
+	border-radius:  50%;	
+}
+.score-inside {
+	width: 160px;
+	height: 160px;
+	border-radius: 50%;
+	background-color: #FFF;
+	position: absolute;
+	top: 20px;
+	left: 20px;
+}
+#report-score-title {
+	position: absolute;
+	width: 100%;
+	top:40px;
+	font-size: 18px;
+	line-height: 30px;
+	text-align: center;
+}
+#report-score-number {
+	width: 100%;
+	position: absolute;
+	top:55px;
+	text-align: center;
+	font-size: 80px;
+}
+.score-low #report-score-number {
+	color: #df4521;
+}
+#report-score.score-low {
+	background: #df4521;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#df4521), to(#9f1e00));
+	background: -webkit-linear-gradient(#df4521, #9f1e00);
+	background: -moz-linear-gradient(#df4521, #9f1e00);
+	background: -ms-linear-gradient(#df4521, #9f1e00);
+	background: -o-linear-gradient(#df4521, #9f1e00);
+	background: linear-gradient(#df4521, #9f1e00);
+	-pie-background: linear-gradient(#df4521, #9f1e00);
+	behavior: url(/pie/PIE.htc);
+
+}
 /* ==========================================================================
    Helper classes
    ========================================================================== */
