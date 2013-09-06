@@ -9,8 +9,8 @@ var app = {
     User: {},
     weiboApp: {
         authorize_uri: 'https://api.weibo.com/oauth2/authorize',
-        app_id: '695724734',
-        app_secret: '826f57c0da924e1a2cc7b90c7c26b56a',
+        app_id: '3695496477',
+        app_secret: '942214d88b57723ad419854c67d3c49c',
         redirect_uri: 'http://localhost:59884/PntMinisite/index.html'
     }
 };
