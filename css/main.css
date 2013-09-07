@@ -1793,7 +1793,7 @@ Cleaning
 	width: 65%;
 	position: absolute;
 	right: -5%;
-	top: 20%;
+	top: 25%;
 	
 	
 }
@@ -1835,10 +1835,10 @@ Cleaning
 	right: -10px;
 }
 #career-clothes {
-	width: 115%;
+	width: 60%;
 	position: absolute;
-	left: -100px;
-	top: -140px;
+	left: 20%;
+	top: -20%;
 
 }
 .career-clothes-item {
@@ -1847,9 +1847,11 @@ Cleaning
 	margin-left: -156px;
 	
 }
-#basicinfo-career .clothes {
-	background-image: url(../img/character/career-fm.png);
+#basicinfo-career .fm .clothes {
+	background-image: url(../img/character/career-fm.png)!important;
 	cursor: pointer;
+	margin-left: -53px;
+	margin-top:-50px;
 }
 #basicinfo-career .selected {
 	display: none;
@@ -1874,8 +1876,8 @@ Cleaning
 	width: 60px;
 	height: 80px;
 	border-radius: 5px;
-	border:3px dashed #d55b1c;
-	background-color: rgba(255,255,255,0.2);
+	border:1px dashed #d55b1c;
+	background-color: rgba(255,255,255,0.4);
 	font-size: 12px;
 	position: absolute;
 	color: #d55b1c;
@@ -1926,9 +1928,10 @@ Cleaning
 .on-degree-3 #age-item-1,
 .on-degree-4 #age-item-1,
 .on-degree-5 #age-item-1,
-#age-item-1:hover {
-	border-color: #FFF;
-	border-width: 5px;
+#age-item-1:hover,
+.mouseEnterAge #age-item-1:hover {
+	border-color: #fff;
+	border-width: 2px;
 	border-style: solid;
 	background-color: #d55b1c;
 	background-position: center top;
@@ -1938,7 +1941,8 @@ Cleaning
 .on-degree-3 #age-item-1 .age-item-text,
 .on-degree-4 #age-item-1 .age-item-text,
 .on-degree-5 #age-item-1 .age-item-text,
-#age-item-1:hover .age-item-text
+#age-item-1:hover .age-item-text,
+.mouseEnterAge #age-item-1:hover .age-item-text
 {
 	display: none;
 }
@@ -1946,9 +1950,10 @@ Cleaning
 .on-degree-3 #age-item-2,
 .on-degree-4 #age-item-2,
 .on-degree-5 #age-item-2,
-#age-item-2:hover {
+#age-item-2:hover,
+.mouseEnterAge #age-item-2:hover {
 	border-color: #FFF;
-	border-width: 5px;
+	border-width: 2px;
 	border-style: solid;
 	background-color: #94c2b4;
 	background-position: center -80px;
@@ -1957,78 +1962,86 @@ Cleaning
 .on-degree-3 #age-item-2 .age-item-text,
 .on-degree-4 #age-item-2 .age-item-text,
 .on-degree-5 #age-item-2 .age-item-text,
-#age-item-2:hover .age-item-text
+#age-item-2:hover .age-item-text,
+.mouseEnterAge #age-item-2:hover .age-item-text
 {
 	display: none;
 }
 .on-degree-3 #age-item-3,
 .on-degree-4 #age-item-3,
 .on-degree-5 #age-item-3,
-#age-item-3:hover {
+#age-item-3:hover,
+.mouseEnterAge #age-item-3:hover {
 	border-color: #FFF;
 	border-style: solid;
-	border-width: 5px;
+	border-width: 2px;
 	background-color: #6fc280;
 	background-position: center -160px;
 }
 .on-degree-3 #age-item-3 .age-item-text,
 .on-degree-4 #age-item-3 .age-item-text,
 .on-degree-5 #age-item-3 .age-item-text,
-#age-item-3:hover .age-item-text
+#age-item-3:hover .age-item-text,
+.mouseEnterAge #age-item-3:hover .age-item-text
 {
 	display: none;
 }
 .on-degree-4 #age-item-4,
 .on-degree-5 #age-item-4,
-#age-item-4:hover {
+#age-item-4:hover,
+.mouseEnterAge #age-item-4:hover {
 	border-color: #FFF;
 	border-style: solid;
-	border-width: 5px;
+	border-width: 2px;
 	background-color: #ffbd32;
 	background-position: center -260px;
 }
 .on-degree-4 #age-item-4 .age-item-text,
 .on-degree-5 #age-item-4 .age-item-text,
-#age-item-4:hover .age-item-text
+#age-item-4:hover .age-item-text,
+.mouseEnterAge #age-item-4:hover .age-item-text
 {
 	display: none;
 }
 .on-degree-5 #age-item-5,
-#age-item-5:hover {
+#age-item-5:hover,
+.mouseEnterAge #age-item-5:hover
+ {
 	border-color: #FFF;
 	border-style: solid;
-	border-width: 5px;
+	border-width: 2px;
 	background-color: #d55b1c;
 	background-position: center -340px;
 }
 .on-degree-5 #age-item-5 .age-item-text,
-#age-item-5:hover .age-item-text
+#age-item-5:hover .age-item-text,
+.mouseEnterAge #age-item-5:hover .age-item-text
 {
 	display: none;
 }
 .on-degree-1 #age-item-2,.on-degree-1 #age-item-3,.on-degree-1 #age-item-4,.on-degree-1 #age-item-5 {
-	display:none;
+	display:block;
 }
 .on-degree-2 #age-item-3,
 .on-degree-2 #age-item-4,
 .on-degree-2 #age-item-5 {
-	display:none;
+	display:block;
 }
 .on-degree-3 #age-item-4,
 .on-degree-3 #age-item-5 {
-	display:none;
+	display:block;
 }
 .on-degree-4 #age-item-5 {
-	display:none;
+	display:block;
 }
 .mouseEnterAge .age-item {
-	display: block!important;
-	border:3px dashed #FFF!important;
-	background-color: rgba(255,255,255,0.2)!important;
-	background-position: 0 100px!important;
+	display: block;
+	border:1px dashed #FFF;
+	background-color: rgba(255,255,255,0.6);
+	background-position: 0 100px;
 }
 .mouseEnterAge .age-item .age-item-text {
-	display: block!important;
+	display: block;
 }
 
 /******** character ************/
@@ -2037,16 +2050,9 @@ Cleaning
 	position: relative;
 
 }
-.character-large-size {
 
-}
 .character-small-size {
-	transform: scale(0.5);
-	-webkit-transform: scale(0.5);
-	-ms-transform: scale(0.5);
-	zoom: 0.2\9;
-	left:-80px;
-	top:-150px;
+	
 }
 #profile-avatar {
 	overflow: hidden;
@@ -2055,66 +2061,327 @@ Cleaning
 	display: none;
 	background: none;
 }
-.fm {
-	width: 212px;
-	height: 607px;
-}
 .body,.clothes,.head,.bang,.hair,.hand,.face{
 	position: absolute;
 }
-.fm .body {
+.fm.character-large-size {
+	width: 212px;
+	height: 607px;
+}
+.fm.character-large-size .body {
 	background:url(../img/character/body-fm.png) no-repeat center top;
 	width: 100%;
 	height: 100%;
 }
-.fm .clothes {
+.fm.character-large-size .clothes {
 	background:url(../img/character/clothes-fm.png) no-repeat;
 	width: 100%;
 	height: 607px;
 }
-.fm .hair {
+.fm.character-large-size .hair {
 	background: url(../img/character/hair-fm.png) no-repeat;
 	width: 100%;
 	height: 300px;
 }
-.fm .bang {
+.fm.character-large-size .bang {
 	background: url(../img/character/bang-fm.png) no-repeat;
 	width: 100%;
 	height: 300px;
 }
-.fm .hair-black {
+.fm.character-large-size .hair-black {
 	background-image: url(../img/character/hair-fm-black.png);
 }
-.fm .hair-gold {
+.fm.character-large-size .hair-gold {
 	background-image: url(../img/character/hair-fm-gold.png);
 }
-.fm .hair-mix {
+.fm.character-large-size .hair-mix {
 	background-image: url(../img/character/hair-fm-mix.png);
 }
-.fm .bang-black {
+.fm.character-large-size .bang-black {
 	background-image: url(../img/character/bang-fm-black.png);
 }
-.fm .bang-gold {
+.fm.character-large-size .bang-gold {
 	background-image: url(../img/character/bang-fm-gold.png);
 }
-.fm .bang-mix {
+.fm.character-large-size .bang-mix {
 	background-image: url(../img/character/bang-fm-mix.png);
 }
-.fm .head {
+.fm.character-large-size .head {
 	background: url(../img/character/head-fm.png) no-repeat;
 	width: 100%;
 	height: 120px;
 }
-.fm .hand {
+.fm.character-large-size .hand {
 	background: url(../img/character/hand-fm.png) no-repeat;
 	height: 359px;
 	width: 100%;
 }
-.fm .face {
+.fm.character-large-size .face {
 	background: url(../img/character/face-fm.png) no-repeat;
 	width: 100%;
 	height: 120px;
 }
+.fm.character-small-size {
+	width: 148px;
+	height: 425px;
+}
+.fm.character-small-size .body {
+	background:url(../img/character/body-fm-small.png) no-repeat center top;
+	width: 100%;
+	height: 100%;
+}
+.fm.character-small-size .clothes {
+	background:url(../img/character/clothes-fm-small.png) no-repeat;
+	width: 148px;
+	height: 425px;
+}
+.fm.character-small-size .hair {
+	background: url(../img/character/hair-fm-small.png) no-repeat;
+	width: 100%;
+	height: 210px;
+}
+.fm.character-small-size .bang {
+	background: url(../img/character/bang-fm-small.png) no-repeat;
+	width: 100%;
+	height: 210px;
+}
+.fm.character-small-size .hair-black {
+	background-image: url(../img/character/hair-fm-small-black.png);
+}
+.fm.character-small-size .hair-gold {
+	background-image: url(../img/character/hair-fm-small-gold.png);
+}
+.fm.character-small-size .hair-mix {
+	background-image: url(../img/character/hair-fm-small-mix.png);
+}
+.fm.character-small-size .bang-black {
+	background-image: url(../img/character/bang-fm-small-black.png);
+}
+.fm.character-small-size .bang-gold {
+	background-image: url(../img/character/bang-fm-small-gold.png);
+}
+.fm.character-small-size .bang-mix {
+	background-image: url(../img/character/bang-fm-small-mix.png);
+}
+.fm.character-small-size .head {
+	background: url(../img/character/head-fm-small.png) no-repeat;
+	width: 100%;
+	height: 84px;
+}
+.fm.character-small-size .hand {
+	background: url(../img/character/hand-fm-small.png) no-repeat;
+	height: 240px;
+	width: 100%;
+}
+.fm.character-small-size .face {
+	background: url(../img/character/face-fm-small.png) no-repeat;
+	width: 100%;
+	height: 84px;
+}
+/********* male *********/
+.m.character-large-size {
+	width: 173px;
+	height: 642px;
+}
+.m.character-large-size .body {
+	background:url(../img/character/body-m.png) no-repeat center top;
+	width: 100%;
+	height: 100%;
+}
+.m.character-large-size .clothes {
+	background:url(../img/character/clothes-m.png) no-repeat;
+	width: 100%;
+	height: 642px;
+}
+.m.character-large-size .hair {
+	background: url(../img/character/hair-m.png) no-repeat;
+	width: 100%;
+	height: 300px;
+}
+.m.character-large-size .bang {
+	background: url(../img/character/hair-m.png) no-repeat;
+	width: 100%;
+	height: 300px;
+}
+.m.character-large-size .hair-black {
+	background-image: url(../img/character/hair-m-black.png);
+}
+.m.character-large-size .hair-gold {
+	background-image: url(../img/character/hair-m-gold.png);
+}
+.m.character-large-size .hair-mix {
+	background-image: url(../img/character/hair-m-mix.png);
+}
+.m.character-large-size .bang-black {
+	background-image: url(../img/character/hair-m-black.png);
+}
+.m.character-large-size .bang-gold {
+	background-image: url(../img/character/hair-m-gold.png);
+}
+.m.character-large-size .bang-mix {
+	background-image: url(../img/character/hair-m-mix.png);
+}
+.m.character-large-size .head {
+	background: url(../img/character/head-m.png) no-repeat;
+	width: 100%;
+	height: 112px;
+}
+.m.character-large-size .hand {
+	background: url(../img/character/hand-m.png) no-repeat;
+	height: 378px;
+	width: 100%;
+}
+.m.character-large-size .face {
+	background: url(../img/character/face-m.png) no-repeat;
+	width: 100%;
+	height: 112px;
+}
+.m.character-small-size {
+	width: 121px;
+	height: 449px;
+}
+.m.character-small-size .body {
+	background:url(../img/character/body-m-small.png) no-repeat center top;
+	width: 100%;
+	height: 100%;
+}
+.m.character-small-size .clothes {
+	background:url(../img/character/clothes-m-small.png) no-repeat;
+	width: 121px;
+	height: 449px;
+}
+.m.character-small-size .hair {
+	background: url(../img/character/hair-m-small.png) no-repeat;
+	width: 100%;
+	height: 210px;
+}
+.fm.character-small-size .bang {
+	background: url(../img/character/hair-m-small.png) no-repeat;
+	width: 100%;
+	height: 210px;
+}
+.m.character-small-size .hair-black {
+	background-image: url(../img/character/hair-m-small-black.png);
+}
+.m.character-small-size .hair-gold {
+	background-image: url(../img/character/hair-m-small-gold.png);
+}
+.m.character-small-size .hair-mix {
+	background-image: url(../img/character/hair-m-small-mix.png);
+}
+.m.character-small-size .bang-black {
+	background-image: url(../img/character/hair-m-small-black.png);
+}
+.m.character-small-size .bang-gold {
+	background-image: url(../img/character/hair-m-small-gold.png);
+}
+.m.character-small-size .bang-mix {
+	background-image: url(../img/character/hair-m-small-mix.png);
+}
+.m.character-small-size .head {
+	background: url(../img/character/head-fm-small.png) no-repeat;
+	width: 100%;
+	height: 84px;
+}
+.m.character-small-size .hand {
+	background: url(../img/character/hand-fm-small.png) no-repeat;
+	height: 265px;
+	width: 100%;
+}
+.m.character-small-size .face {
+	background: url(../img/character/face-fm-small.png) no-repeat;
+	width: 100%;
+	height: 84px;
+}
+.m.character-large-size .bang-m-band{ background-position: 0 0; width: 173px; height: 262px; } 
+.m.character-large-size .bang-m-hand{ background-position: 0 -264px; width: 173px; height: 262px; } 
+.m.character-large-size .bang-m-l-1{ background-position: 0 -528px; width: 173px; height: 262px; } 
+.m.character-large-size .bang-m-l-2{ background-position: 0 -792px; width: 173px; height: 262px; } 
+.m.character-large-size .bang-m-l-3{ background-position: 0 -1056px; width: 173px; height: 262px; } 
+.m.character-large-size .bang-m-l-4{ background-position: 0 -1320px; width: 173px; height: 262px; } 
+.m.character-large-size .bang-m-m-1{ background-position: 0 -1584px; width: 173px; height: 262px; } 
+.m.character-large-size .bang-m-m-2{ background-position: 0 -1848px; width: 173px; height: 262px; } 
+.m.character-large-size .bang-m-m-3{ background-position: -175px 0; width: 173px; height: 262px; } 
+.m.character-large-size .bang-m-m-4{ background-position: -175px -264px; width: 173px; height: 262px; } 
+.m.character-large-size .bang-m-pin{ background-position: -175px -528px; width: 173px; height: 262px; } 
+.m.character-large-size .bang-m-s-1{ background-position: -175px -792px; width: 173px; height: 262px; } 
+.m.character-large-size .bang-m-s-2{ background-position: -175px -1056px; width: 173px; height: 262px; } 
+.m.character-large-size .bang-m-s-3{ background-position: -175px -1320px; width: 173px; height: 262px; } 
+.m.character-large-size .bang-m-s-4{ background-position: -175px -1584px; width: 173px; height: 262px; } 
+.m.character-large-size .bang-m-xl-1{ background-position: -175px -1848px; width: 173px; height: 262px; } 
+.m.character-large-size .bang-m-xl-2{ background-position: -350px 0; width: 173px; height: 262px; } 
+.m.character-large-size .bang-m-xl-3{ background-position: -350px -264px; width: 173px; height: 262px; } 
+.m.character-large-size .bang-m-xl-4{ background-position: -350px -528px; width: 173px; height: 262px; } 
+.m.character-large-size .bang-m-xs-1{ background-position: -350px -792px; width: 173px; height: 262px; } 
+.m.character-large-size .bang-m-xs-2{ background-position: -350px -1056px; width: 173px; height: 262px; } 
+.m.character-large-size .bang-m-xs-3{ background-position: -350px -1320px; width: 173px; height: 262px; } 
+.m.character-large-size .bang-m-xs-4{ background-position: -350px -1584px; width: 173px; height: 262px; } 
+.m.character-large-size .body-m-small{ background-position: -350px -1848px; width: 61px; height: 225px; } 
+.m.character-large-size .hair-m-l-1{ background-position: -525px 0; width: 173px; height: 262px; } 
+.m.character-large-size .hair-m-l-2{ background-position: -525px -264px; width: 173px; height: 262px; } 
+.m.character-large-size .hair-m-l-3{ background-position: -525px -528px; width: 173px; height: 262px; } 
+.m.character-large-size .hair-m-l-4{ background-position: -525px -792px; width: 173px; height: 262px; } 
+.m.character-large-size .hair-m-m-1{ background-position: -525px -1056px; width: 173px; height: 262px; } 
+.m.character-large-size .hair-m-m-2{ background-position: -525px -1320px; width: 173px; height: 262px; } 
+.m.character-large-size .hair-m-m-3{ background-position: -525px -1584px; width: 173px; height: 262px; } 
+.m.character-large-size .hair-m-m-4{ background-position: -525px -1848px; width: 173px; height: 262px; } 
+.m.character-large-size .hair-m-xl-1{ background-position: -700px 0; width: 173px; height: 262px; } 
+.m.character-large-size .hair-m-xl-2{ background-position: -700px -264px; width: 173px; height: 262px; } 
+.m.character-large-size .hair-m-xl-3{ background-position: -700px -528px; width: 173px; height: 262px; } 
+.m.character-large-size .hair-m-xl-4{ background-position: -700px -792px; width: 173px; height: 262px; } 
+.m.character-small-size .bang-m-band{ background-position: 0 0; width: 121px; height: 183px; } 
+.m.character-small-size .bang-m-hand{ background-position: 0 -184px; width: 121px; height: 183px; } 
+.m.character-small-size .bang-m-l-1{ background-position: 0 -368px; width: 121px; height: 183px; } 
+.m.character-small-size .bang-m-l-2{ background-position: 0 -552px; width: 121px; height: 183px; } 
+.m.character-small-size .bang-m-l-3{ background-position: 0 -736px; width: 121px; height: 183px; } 
+.m.character-small-size .bang-m-l-4{ background-position: 0 -920px; width: 121px; height: 183px; } 
+.m.character-small-size .bang-m-m-1{ background-position: 0 -1104px; width: 121px; height: 183px; } 
+.m.character-small-size .bang-m-m-2{ background-position: 0 -1288px; width: 121px; height: 183px; } 
+.m.character-small-size .bang-m-m-3{ background-position: 0 -1472px; width: 121px; height: 183px; } 
+.m.character-small-size .bang-m-m-4{ background-position: 0 -1656px; width: 121px; height: 183px; } 
+.m.character-small-size .bang-m-pin{ background-position: 0 -1840px; width: 121px; height: 183px; } 
+.m.character-small-size .bang-m-s-1{ background-position: -122px 0; width: 121px; height: 183px; } 
+.m.character-small-size .bang-m-s-2{ background-position: -122px -184px; width: 121px; height: 183px; } 
+.m.character-small-size .bang-m-s-3{ background-position: -122px -368px; width: 121px; height: 183px; } 
+.m.character-small-size .bang-m-s-4{ background-position: -122px -552px; width: 121px; height: 183px; } 
+.m.character-small-size .bang-m-xl-1{ background-position: -122px -736px; width: 121px; height: 183px; } 
+.m.character-small-size .bang-m-xl-2{ background-position: -122px -920px; width: 121px; height: 183px; } 
+.m.character-small-size .bang-m-xl-3{ background-position: -122px -1104px; width: 121px; height: 183px; } 
+.m.character-small-size .bang-m-xl-4{ background-position: -122px -1288px; width: 121px; height: 183px; } 
+.m.character-small-size .bang-m-xs-1{ background-position: -122px -1472px; width: 121px; height: 183px; } 
+.m.character-small-size .bang-m-xs-2{ background-position: -122px -1656px; width: 121px; height: 183px; } 
+.m.character-small-size .bang-m-xs-3{ background-position: -122px -1840px; width: 121px; height: 183px; } 
+.m.character-small-size .bang-m-xs-4{ background-position: -244px 0; width: 121px; height: 183px; } 
+.m.character-small-size .body-m-small{ background-position: -244px -184px; width: 42px; height: 157px; } 
+.m.character-small-size .hair-m-l-1{ background-position: -244px -342px; width: 121px; height: 183px; } 
+.m.character-small-size .hair-m-l-2{ background-position: -244px -526px; width: 121px; height: 183px; } 
+.m.character-small-size .hair-m-l-3{ background-position: -244px -710px; width: 121px; height: 183px; } 
+.m.character-small-size .hair-m-l-4{ background-position: -244px -894px; width: 121px; height: 183px; } 
+.m.character-small-size .hair-m-m-1{ background-position: -244px -1078px; width: 121px; height: 183px; } 
+.m.character-small-size .hair-m-m-2{ background-position: -244px -1262px; width: 121px; height: 183px; } 
+.m.character-small-size .hair-m-m-3{ background-position: -244px -1446px; width: 121px; height: 183px; } 
+.m.character-small-size .hair-m-m-4{ background-position: -244px -1630px; width: 121px; height: 183px; } 
+.m.character-small-size .hair-m-xl-1{ background-position: -244px -1814px; width: 121px; height: 183px; } 
+.m.character-small-size .hair-m-xl-2{ background-position: -244px -1998px; width: 121px; height: 183px; } 
+.m.character-small-size .hair-m-xl-3{ background-position: -366px 0; width: 121px; height: 183px; } 
+.m.character-small-size .hair-m-xl-4{ background-position: -366px -184px; width: 121px; height: 183px; } 
+
+
+.m.character-small-size .clothes-m-1{ background-position: 0 0; width: 121px; height: 449px; } 
+.m.character-small-size .clothes-m-2{ background-position: 0 -450px; width: 121px; height: 449px; } 
+.m.character-small-size .clothes-m-3{ background-position: 0 -900px; width: 121px; height: 449px; } 
+.m.character-small-size .clothes-m-4{ background-position: 0 -1350px; width: 121px; height: 449px; } 
+.m.character-small-size .clothes-m-5{ background-position: 0 -1800px; width: 121px; height: 449px; } 
+.m.character-small-size .clothes-m-6{ background-position: -122px 0; width: 121px; height: 449px; } 
+
+.m.character-large-size .clothes-m-1{ background-position: 0 0; width: 173px; height: 642px; } 
+.m.character-large-size .clothes-m-2{ background-position: 0 -643px; width: 173px; height: 642px; } 
+.m.character-large-size .clothes-m-3{ background-position: 0 -1286px; width: 173px; height: 642px; } 
+.m.character-large-size .clothes-m-4{ background-position: 0 -1929px; width: 173px; height: 642px; } 
+.m.character-large-size .clothes-m-5{ background-position: -174px 0; width: 173px; height: 642px; } 
+.m.character-large-size .clothes-m-6{ background-position: -174px -643px; width: 173px; height: 642px; } 
+
+
 .mirror-show {
 	border-radius: 20px;
 	width: 240px;
@@ -2134,68 +2401,143 @@ Cleaning
 #character-profile {
 	position: absolute;
 }
-.fm .hair-fm-band{ background-position: 0 0; width: 212px; height: 300px; } 
-.fm .hair-fm-hand{ background-position: 0 -301px; width: 212px; height: 300px; } 
-.fm .hair-fm-l-1{ background-position: 0 -602px; width: 212px; height: 300px; } 
-.fm .hair-fm-l-2{ background-position: 0 -903px; width: 212px; height: 300px; } 
-.fm .hair-fm-l-3{ background-position: 0 -1204px; width: 212px; height: 300px; } 
-.fm .hair-fm-l-4{ background-position: 0 -1505px; width: 212px; height: 300px; } 
-.fm .hair-fm-m-1{ background-position: 0 -1806px; width: 212px; height: 300px; } 
-.fm .hair-fm-m-2{ background-position: -213px 0; width: 212px; height: 300px; } 
-.fm .hair-fm-m-3{ background-position: -213px -301px; width: 212px; height: 300px; } 
-.fm .hair-fm-m-4{ background-position: -213px -602px; width: 212px; height: 300px; } 
-.fm .hair-fm-pin{ background-position: -213px -903px; width: 212px; height: 300px; } 
-.fm .hair-fm-s-1{ background-position: -213px -1204px; width: 212px; height: 300px; } 
-.fm .hair-fm-s-2{ background-position: -213px -1505px; width: 212px; height: 300px; } 
-.fm .hair-fm-s-3{ background-position: -213px -1806px; width: 212px; height: 300px; } 
-.fm .hair-fm-s-4{ background-position: -426px 0; width: 212px; height: 300px; } 
-.fm .hair-fm-s-5{ background-position: -426px -301px; width: 212px; height: 300px; } 
-.fm .hair-fm-xl-1{ background-position: -426px -602px; width: 212px; height: 300px; } 
-.fm .hair-fm-xl-2{ background-position: -426px -903px; width: 212px; height: 300px; } 
-.fm .hair-fm-xl-3{ background-position: -426px -1204px; width: 212px; height: 300px; } 
-.fm .hair-fm-xl-4{ background-position: -426px -1505px; width: 212px; height: 300px; } 
-.fm .hair-fm-xs-1{ background-position: -426px -1806px; width: 212px; height: 300px; } 
-.fm .hair-fm-xs-2{ background-position: -639px 0; width: 212px; height: 300px; } 
-.fm .hair-fm-xs-3{ background-position: -639px -301px; width: 212px; height: 300px; } 
-.fm .hair-fm-xs-4{ background-position: -639px -602px; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-band{ background-position: 0 0; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-hand{ background-position: 0 -301px; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-l-1{ background-position: 0 -602px; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-l-2{ background-position: 0 -903px; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-l-3{ background-position: 0 -1204px; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-l-4{ background-position: 0 -1505px; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-m-1{ background-position: 0 -1806px; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-m-2{ background-position: -213px 0; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-m-3{ background-position: -213px -301px; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-m-4{ background-position: -213px -602px; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-pin{ background-position: -213px -903px; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-s-1{ background-position: -213px -1204px; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-s-2{ background-position: -213px -1505px; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-s-3{ background-position: -213px -1806px; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-s-4{ background-position: -426px 0; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-s-5{ background-position: -426px -301px; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-xl-1{ background-position: -426px -602px; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-xl-2{ background-position: -426px -903px; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-xl-3{ background-position: -426px -1204px; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-xl-4{ background-position: -426px -1505px; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-xs-1{ background-position: -426px -1806px; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-xs-2{ background-position: -639px 0; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-xs-3{ background-position: -639px -301px; width: 212px; height: 300px; } 
+.fm.character-large-size .hair-fm-xs-4{ background-position: -639px -602px; width: 212px; height: 300px; } 
 
-.fm .bang-fm-l-1{ background-position: 0 0; width: 212px; height: 300px; } 
-.fm .bang-fm-l-2{ background-position: 0 -301px; width: 212px; height: 300px; } 
-.fm .bang-fm-l-3{ background-position: 0 -602px; width: 212px; height: 300px; } 
-.fm .bang-fm-l-4{ background-position: 0 -903px; width: 212px; height: 300px; } 
-.fm .bang-fm-m-1{ background-position: 0 -1204px; width: 212px; height: 300px; } 
-.fm .bang-fm-m-2{ background-position: 0 -1505px; width: 212px; height: 300px; } 
-.fm .bang-fm-m-3{ background-position: 0 -1806px; width: 212px; height: 300px; } 
-.fm .bang-fm-m-4{ background-position: -213px 0; width: 212px; height: 300px; } 
-.fm .bang-fm-s-1{ background-position: -213px -301px; width: 212px; height: 300px; } 
-.fm .bang-fm-s-2{ background-position: -213px -602px; width: 212px; height: 300px; } 
-.fm .bang-fm-s-3{ background-position: -213px -903px; width: 212px; height: 300px; } 
-.fm .bang-fm-s-4{ background-position: -213px -1204px; width: 212px; height: 300px; } 
-.fm .bang-fm-xl-1{ background-position: -213px -1505px; width: 212px; height: 300px; } 
-.fm .bang-fm-xl-2{ background-position: -213px -1806px; width: 212px; height: 300px; } 
-.fm .bang-fm-xl-3{ background-position: -426px 0; width: 212px; height: 300px; } 
-.fm .bang-fm-xl-4{ background-position: -426px -301px; width: 212px; height: 300px; } 
-.fm .bang-fm-xs-1{ background-position: -426px -602px; width: 212px; height: 300px; } 
-.fm .bang-fm-xs-2{ background-position: -426px -903px; width: 212px; height: 300px; } 
-.fm .bang-fm-xs-3{ background-position: -426px -1204px; width: 212px; height: 300px; } 
-.fm .bang-fm-xs-4{ background-position: -426px -1505px; width: 212px; height: 300px; } 
-.fm .bang-fm-band{ background-position: -426px -1806px; width: 212px; height: 300px; } 
-.fm .bang-fm-hand{ background-position: -639px 0; width: 212px; height: 300px; } 
-.fm .bang-fm-pin{ background-position: -639px -301px; width: 212px; height: 300px; } 
-
-
-.fm .face-fm-1{ background-position: 0 0; width: 212px; height: 120px; } 
-.fm .face-fm-2{ background-position: 0 -121px; width: 212px; height: 120px; } 
-.fm .face-fm-3{ background-position: 0 -242px; width: 212px; height: 120px; } 
+.fm.character-large-size .bang-fm-l-1{ background-position: 0 0; width: 212px; height: 300px; } 
+.fm.character-large-size .bang-fm-l-2{ background-position: 0 -301px; width: 212px; height: 300px; } 
+.fm.character-large-size .bang-fm-l-3{ background-position: 0 -602px; width: 212px; height: 300px; } 
+.fm.character-large-size .bang-fm-l-4{ background-position: 0 -903px; width: 212px; height: 300px; } 
+.fm.character-large-size .bang-fm-m-1{ background-position: 0 -1204px; width: 212px; height: 300px; } 
+.fm.character-large-size .bang-fm-m-2{ background-position: 0 -1505px; width: 212px; height: 300px; } 
+.fm.character-large-size .bang-fm-m-3{ background-position: 0 -1806px; width: 212px; height: 300px; } 
+.fm.character-large-size .bang-fm-m-4{ background-position: -213px 0; width: 212px; height: 300px; } 
+.fm.character-large-size .bang-fm-s-1{ background-position: -213px -301px; width: 212px; height: 300px; } 
+.fm.character-large-size .bang-fm-s-2{ background-position: -213px -602px; width: 212px; height: 300px; } 
+.fm.character-large-size .bang-fm-s-3{ background-position: -213px -903px; width: 212px; height: 300px; } 
+.fm.character-large-size .bang-fm-s-4{ background-position: -213px -1204px; width: 212px; height: 300px; } 
+.fm.character-large-size .bang-fm-xl-1{ background-position: -213px -1505px; width: 212px; height: 300px; } 
+.fm.character-large-size .bang-fm-xl-2{ background-position: -213px -1806px; width: 212px; height: 300px; } 
+.fm.character-large-size .bang-fm-xl-3{ background-position: -426px 0; width: 212px; height: 300px; } 
+.fm.character-large-size .bang-fm-xl-4{ background-position: -426px -301px; width: 212px; height: 300px; } 
+.fm.character-large-size .bang-fm-xs-1{ background-position: -426px -602px; width: 212px; height: 300px; } 
+.fm.character-large-size .bang-fm-xs-2{ background-position: -426px -903px; width: 212px; height: 300px; } 
+.fm.character-large-size .bang-fm-xs-3{ background-position: -426px -1204px; width: 212px; height: 300px; } 
+.fm.character-large-size .bang-fm-xs-4{ background-position: -426px -1505px; width: 212px; height: 300px; } 
+.fm.character-large-size .bang-fm-band{ background-position: -426px -1806px; width: 212px; height: 300px; } 
+.fm.character-large-size .bang-fm-hand{ background-position: -639px 0; width: 212px; height: 300px; } 
+.fm.character-large-size .bang-fm-pin{ background-position: -639px -301px; width: 212px; height: 300px; } 
 
 
-.fm .clothes-fm-0{ background-position: 0 0; width: 212px; height: 607px; } 
-.fm .clothes-fm-1{ background-position: 0 -608px; width: 212px; height: 607px; } 
-.fm .clothes-fm-2{ background-position: 0 -1216px; width: 212px; height: 607px; } 
-.fm .clothes-fm-3{ background-position: 0 -1824px; width: 212px; height: 607px; } 
-.fm .clothes-fm-4{ background-position: -213px 0; width: 212px; height: 607px; } 
-.fm .clothes-fm-5{ background-position: -213px -608px; width: 212px; height: 607px; } 
-.fm .clothes-fm-6{ background-position: -213px -1216px; width: 212px; height: 607px; } 
+.fm.character-large-size .face-fm-1{ background-position: 0 0; width: 212px; height: 120px; } 
+.fm.character-large-size .face-fm-2{ background-position: 0 -121px; width: 212px; height: 120px; } 
+.fm.character-large-size .face-fm-3{ background-position: 0 -242px; width: 212px; height: 120px; } 
+
+
+.fm.character-large-size .clothes-fm-0{ background-position: 0 0; width: 212px; height: 607px; } 
+.fm.character-large-size .clothes-fm-1{ background-position: 0 -609px; width: 212px; height: 607px; } 
+.fm.character-large-size .clothes-fm-2{ background-position: 0 -1218px; width: 212px; height: 607px; } 
+.fm.character-large-size .clothes-fm-3{ background-position: 0 -1827px; width: 212px; height: 607px; } 
+.fm.character-large-size .clothes-fm-4{ background-position: -214px 0; width: 212px; height: 607px; } 
+.fm.character-large-size .clothes-fm-5{ background-position: -214px -609px; width: 212px; height: 607px; } 
+.fm.character-large-size .clothes-fm-6{ background-position: -214px -1218px; width: 212px; height: 607px; } 
+
+
+.fm.character-small-size .bang-fm-band{ background-position: 0 0; width: 148px; height: 210px; } 
+.fm.character-small-size .bang-fm-hand{ background-position: 0 -211px; width: 148px; height: 210px; } 
+.fm.character-small-size .bang-fm-l-1{ background-position: 0 -422px; width: 148px; height: 210px; } 
+.fm.character-small-size .bang-fm-l-2{ background-position: 0 -633px; width: 148px; height: 210px; } 
+.fm.character-small-size .bang-fm-l-3{ background-position: 0 -844px; width: 148px; height: 210px; } 
+.fm.character-small-size .bang-fm-l-4{ background-position: 0 -1055px; width: 148px; height: 210px; } 
+.fm.character-small-size .bang-fm-m-1{ background-position: 0 -1266px; width: 148px; height: 210px; } 
+.fm.character-small-size .bang-fm-m-2{ background-position: 0 -1477px; width: 148px; height: 210px; } 
+.fm.character-small-size .bang-fm-m-3{ background-position: 0 -1688px; width: 148px; height: 210px; } 
+.fm.character-small-size .bang-fm-m-4{ background-position: 0 -1899px; width: 148px; height: 210px; } 
+.fm.character-small-size .bang-fm-pin{ background-position: -149px 0; width: 148px; height: 210px; } 
+.fm.character-small-size .bang-fm-s-1{ background-position: -149px -211px; width: 148px; height: 210px; } 
+.fm.character-small-size .bang-fm-s-2{ background-position: -149px -422px; width: 148px; height: 210px; } 
+.fm.character-small-size .bang-fm-s-3{ background-position: -149px -633px; width: 148px; height: 210px; } 
+.fm.character-small-size .bang-fm-s-4{ background-position: -149px -844px; width: 148px; height: 210px; } 
+.fm.character-small-size .bang-fm-xl-1{ background-position: -149px -1055px; width: 148px; height: 210px; } 
+.fm.character-small-size .bang-fm-xl-2{ background-position: -149px -1266px; width: 148px; height: 210px; } 
+.fm.character-small-size .bang-fm-xl-3{ background-position: -149px -1477px; width: 148px; height: 210px; } 
+.fm.character-small-size .bang-fm-xl-4{ background-position: -149px -1688px; width: 148px; height: 210px; } 
+.fm.character-small-size .bang-fm-xs-1{ background-position: -149px -1899px; width: 148px; height: 210px; } 
+.fm.character-small-size .bang-fm-xs-2{ background-position: -298px 0; width: 148px; height: 210px; } 
+.fm.character-small-size .bang-fm-xs-3{ background-position: -298px -211px; width: 148px; height: 210px; } 
+.fm.character-small-size .bang-fm-xs-4{ background-position: -298px -422px; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-band{ background-position: 0 0; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-hand{ background-position: 0 -211px; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-l-1{ background-position: 0 -422px; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-l-2{ background-position: 0 -633px; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-l-3{ background-position: 0 -844px; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-l-4{ background-position: 0 -1055px; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-m-1{ background-position: 0 -1266px; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-m-2{ background-position: 0 -1477px; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-m-3{ background-position: 0 -1688px; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-m-4{ background-position: 0 -1899px; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-pin{ background-position: -149px 0; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-s-1{ background-position: -149px -211px; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-s-2{ background-position: -149px -422px; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-s-3{ background-position: -149px -633px; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-s-4{ background-position: -149px -844px; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-s-5{ background-position: -149px -1055px; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-xl-1{ background-position: -149px -1266px; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-xl-2{ background-position: -149px -1477px; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-xl-3{ background-position: -149px -1688px; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-xl-4{ background-position: -149px -1899px; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-xs-1{ background-position: -298px 0; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-xs-2{ background-position: -298px -211px; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-xs-3{ background-position: -298px -422px; width: 148px; height: 210px; } 
+.fm.character-small-size .hair-fm-xs-4{ background-position: -298px -633px; width: 148px; height: 210px; } 
+
+.fm.character-small-size .face-fm-1{ background-position: 0 0; width: 148px; height: 84px; } 
+.fm.character-small-size .face-fm-2{ background-position: 0 -85px; width: 148px; height: 84px; } 
+.fm.character-small-size .face-fm-3{ background-position: 0 -170px; width: 148px; height: 84px; } 
+
+
+.fm.character-small-size .clothes-fm-0{ background-position: 0 0; width: 148px; height: 425px; } 
+.fm.character-small-size .clothes-fm-1{ background-position: 0 -426px; width: 148px; height: 425px; } 
+.fm.character-small-size .clothes-fm-2{ background-position: 0 -852px; width: 148px; height: 425px; } 
+.fm.character-small-size .clothes-fm-3{ background-position: 0 -1278px; width: 148px; height: 425px; } 
+.fm.character-small-size .clothes-fm-4{ background-position: 0 -1704px; width: 148px; height: 425px; } 
+.fm.character-small-size .clothes-fm-5{ background-position: -149px 0; width: 148px; height: 425px; } 
+.fm.character-small-size .clothes-fm-6{ background-position: -149px -426px; width: 148px; height: 425px; } 
+
+#career-clothes .clothes {
+	width: 106px;
+	height: 304px;
+}
+#basicinfo-career .fm.character-small-size .clothes-fm-0{ background-position: 0 0; width: 106px; height: 304px; } 
+#basicinfo-career .fm.character-small-size .clothes-fm-1{ background-position: 0 -305px; width: 106px; height: 304px; } 
+#basicinfo-career .fm.character-small-size .clothes-fm-2{ background-position: 0 -610px; width: 106px; height: 304px; } 
+#basicinfo-career .fm.character-small-size .clothes-fm-3{ background-position: 0 -915px; width: 106px; height: 304px; } 
+#basicinfo-career .fm.character-small-size .clothes-fm-4{ background-position: 0 -1220px; width: 106px; height: 304px; } 
+#basicinfo-career .fm.character-small-size .clothes-fm-5{ background-position: 0 -1525px; width: 106px; height: 304px; } 
+#basicinfo-career .fm.character-small-size .clothes-fm-6{ background-position: 0 -1830px; width: 106px; height: 304px; } 
+
 
 .quality-scene {
 	left: 80%;

@@ -36,11 +36,8 @@ var Avatar = Backbone.Model.extend({
     },
     getAvatarSize : function() {
 	    return function() {
-		    if (AppFacade.getCurrentView().model.get("scene_id") == 1) {
-                return "large";
-            }
-            else if (AppFacade.getCurrentView().model.get("scene_id") == 3) {
-                return "large";
+		    if (AppFacade.getCurrentView().model.get("scene_id") == 6) {
+                return "small";
             }
             else {
                 return "large";

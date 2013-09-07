@@ -1188,7 +1188,7 @@ var BasicInfoView = Backbone.View.extend( {
     template: $('#scene-basicinfo-template').html(),
 
     events: {
-        "mouseup #basicinfo-career .clothes" : "setCareer",
+        "click #basicinfo-career .clothes" : "setCareer",
         "click .age-item" : "setAge",
         "mouseenter #basicinfo-age" : "mouseEnterAge",
         "mouseleave #basicinfo-age" : "mouseLeaveAge"
@@ -1217,12 +1217,24 @@ var BasicInfoView = Backbone.View.extend( {
     },
 
     postrender: function () {
+    	var self = this;
     	$('#prev').fadeOut();
         AnimationHandler.initialize('#scene-basicinfo-content');
         this.animateIn();
-        
+        this.initAnswerTooltip();
         this.$el.find('#basicinfo-career .clothes').draggable({
-	        revert:true
+	        start:function(){
+		        $(this).data('originLeft',$(this).css('left'));
+	        },
+	        stop:function(){
+		        $(this).css({
+			       'left':$(this).data('originLeft'),
+			       'top':0 
+		        });
+		        var event ={};
+		        event.currentTarget = this;
+		        self.setCareer(event); 
+	        }
         });
     },
     prev : function() {
@@ -1264,6 +1276,12 @@ var BasicInfoView = Backbone.View.extend( {
     },
     mouseLeaveAge : function(event) {
 	    $(event.currentTarget).removeClass('mouseEnterAge');
+    }, 
+    initQuestionHint: function () {
+
+    },
+    initAnswerTooltip: function () {
+        this.$el.find('.clothes').tooltip();
     }
 });
 
