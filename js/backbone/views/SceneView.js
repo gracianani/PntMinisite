@@ -846,11 +846,8 @@ var HairStyleView = Backbone.View.extend( {
     template: $('#scene-hairstyle-template').html(),
 
     events: {
-        "click #haircolor-red" : "setHairRed",
-        "click #haircolor-gold" : "setHairGold",
-        "click #haircolor-black" : "setHairBlack",
-        "click #hand,#pin,#band" : "setHairState",
-        "click #comb" : "setHairLengthAndCurly",
+        "click #haircolor-red,#haircolor-gold,#haircolor-black,#haircolor-mixed" : "setHairColor",
+        "click #hand,#pin,#band,#comb" : "setHairState",
         "click .hairstyle-circle" : "setHairCircle"
     },
 
@@ -900,10 +897,7 @@ var HairStyleView = Backbone.View.extend( {
 			stop: function(event,ui){
 				$(this).setDegree();
                 self.model.setAnswerByDegree(parseInt($(this).parent().parent().data("question-id")), parseInt($(this).data('degree')), true);
-				self.setHairStyle({
-					length:$('#hairstyle-length .hairstyle-circle-dragable').data('degree'),
-					curl:$('#hairstyle-curl .hairstyle-circle-dragable').data('degree')
-				})
+				self.setHairStyle();
 			}
 			
 		});
@@ -932,46 +926,25 @@ var HairStyleView = Backbone.View.extend( {
         
 
 		this.model.setAnswerByDegree(parseInt($circle.parent().data("question-id")), parseInt($circle.find('.hairstyle-circle-dragable').data('degree')), true);
-		this.setHairStyle({
-				length:$('#hairstyle-length .hairstyle-circle-dragable').data('degree'),
-				curl:$('#hairstyle-curl .hairstyle-circle-dragable').data('degree')
-		});
-    },
-    setHairLengthAndCurly : function(event) {
-        this.setHairStyle({
-			length:$('#hairstyle-length .hairstyle-circle-dragable').data('degree'),
-			curl:$('#hairstyle-curl .hairstyle-circle-dragable').data('degree')
-		});
+		this.setHairStyle();
     },
     setHairState : function(event) {
         var item = $(event.currentTarget);
         this.model.setAnswer(item.parent().data("question-id"), item.data("answer-id"), true);
-        this.setHairStyle({ type: item.attr('id') });
-    },
-    setHairBlack : function(event) {
-        var item = $(event.currentTarget);
-        $('.hair').removeClass('hair-gold').removeClass('hair-mix').addClass('hair-black');
-		$('.bang').removeClass('bang-gold').removeClass('bang-mix').addClass('bang-black');
-        this.model.setAnswer(item.parent().data("question-id"), item.data("answer-id"), true);
-    },
+        this.setHairStyle();
 
-    setHairGold : function(event) {
-        var item = $(event.currentTarget);
-        $('.hair').removeClass('hair-black').removeClass('hair-mix').addClass('hair-gold');
-		$('.bang').removeClass('bang-black').removeClass('bang-mix').addClass('bang-gold');
-        this.model.setAnswer(item.parent().data("question-id"), item.data("answer-id"), true);
     },
-
-    setHairRed : function(event) {
-        $('.hair').removeClass('hair-gold').removeClass('hair-mix').removeClass('hair-black');
-		$('.bang').removeClass('bang-gold').removeClass('bang-mix').removeClass('bang-black');
-        this.model.setAnswer(item.parent().data("question-id"), item.data("answer-id"), true);
+    setHairColor : function(event) {
+        var item = $(event.currentTarget);
+        this.model.setAnswer(parseInt(item.parent().data("question-id")), parseInt(item.data("answer-id")), true);
+        this.setHairStyle();
     },
     getHairData: function() {
         var hairData = {
 			length : this.model.getAnswerName(13),
 			curl : this.model.getAnswerDegree(14),
-            color:  this.model.getAnswerName(15)
+            color:  this.model.getAnswerName(15),
+            type: this.model.getAnswerName(16)
 		};
         if (typeof hairData.length === 'undefined' || hairData.length == '') {
             hairData.length = 'l';
@@ -984,17 +957,15 @@ var HairStyleView = Backbone.View.extend( {
         }
         return hairData;
     },
-	setHairStyle : function(obj) {
+	setHairStyle : function() {
 		var hairData = this.getHairData();
-       
-		if (obj.type ) {
-			$('.hair').attr('class',"hair hair-fm-" + obj.type);
-			$('.bang').attr('class',"bang bang-fm-" + obj.type);
-			return;
-		}
-		var str = hairData.length + "-" + hairData.curl;
-		$('.hair').attr('class',"hair hair-fm-"+str + " hair-" + hairData.color);
-		$('.bang').attr('class',"bang bang-fm-"+str + " bang-" + hairData.color);
+		var gender = app.Views.AvatarView.model.gender;
+		
+		var hairStr = 'hair hair-' + gender + '-' + hairData.type + ' hair-' + hairData.color + ' hair-' + gender +'-' +  hairData.length + "-" + hairData.curl;
+		var bangStr = 'bang bang-' + gender + '-' + hairData.type + ' bang-' + hairData.color + ' bang-' + gender +'-' +  hairData.length + "-" + hairData.curl;
+		
+		$('.hair').attr('class',hairStr);
+		$('.bang').attr('class',bangStr);
 	}, 
 
     initialize: function () {
@@ -1256,8 +1227,9 @@ var BasicInfoView = Backbone.View.extend( {
 	    
 	    var career = $(event.currentTarget).hide();
 	    var careerId = career.attr('data-id');
+	    var gender = this.model.getAnswerName(22);
 	    
-	    $('.character .clothes').attr('class','clothes clothes-fm-'+careerId);
+	    $('.character .clothes').attr('class','clothes clothes-'+gender+'-'+careerId);
 	    
 	    var question = career.parent().attr('data-question-id');
 	    var answer = career.attr('data-answer-id');
@@ -1265,7 +1237,7 @@ var BasicInfoView = Backbone.View.extend( {
     },
     setAge : function(event) {
 	    var age = this.$el.find("#basicinfo-age");
-	    var gender = "fm";
+	    var gender = this.model.getAnswerName(22);
 	    var degree = $(event.currentTarget).attr('data-degree');
 	    age.attr('class', 'item '+ gender + ' on-degree-' + degree );
 	    
@@ -1295,7 +1267,8 @@ var SalonView = Backbone.View.extend( {
     template: $('#scene-salon-template').html(),
 
     events: {
-       
+       "click #character-chat-1 .chat-icon" : "onClickChatIcon",
+       "click #character-chat-2 .chat-icon" : "onClickChatDegree"
     },
 
     initialize: function () {
@@ -1310,6 +1283,7 @@ var SalonView = Backbone.View.extend( {
     
     // Re-render the titles of the todo item.
     render: function () {
+    	this.model.gender = app.Views.AvatarView.model.gender;
         this.$el.html(Mustache.render(this.template, this.model));
         this.trigger("render");
         return this;
@@ -1318,6 +1292,10 @@ var SalonView = Backbone.View.extend( {
     postrender: function () {
         AnimationHandler.initialize('#scene-salon-content');
         this.animateIn();
+        
+        	$('#counselor-chat-1').delay(2000).fadeIn(function(){
+				$('#character-chat-1').fadeIn();
+			});
     },
     prev: function () {
         var prevView = app.Views.CleaningView;
@@ -1326,8 +1304,43 @@ var SalonView = Backbone.View.extend( {
         this.onexit();
     },
     onexit : function() {
-	    AnimationHandler.animateOut("prev", function () { AppFacade.getCurrentView().render(); });
+	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
     },
     next: function () {
+    },
+    onClickChatIcon: function(event) {
+	    var icon = $(event.currentTarget);
+	    var isSelected = icon.hasClass('selected');
+	    icon.toggleClass('selected');
+	    
+	    
+	    this.model.setAnswer( parseInt(icon.parent().attr('data-question-id')), parseInt(icon.attr('data-answer-id')),!isSelected);
+	    
+	    if ( $('#counselor-chat-2').is(':hidden') ) {
+		    $('#counselor-chat-2').delay(1000).fadeIn(function(){
+				$('#character-chat-2').fadeIn();
+			});
+	    }
+    },
+    onClickChatDegree: function(event) {
+    	var icon = $(event.currentTarget);
+    	var question_id = parseInt(icon.attr('data-question-id'));
+    	
+    	var degree = this.model.getAnswerDegree(question_id);
+    	
+    	if (degree == 5) {
+	    	degree = 1;
+    	} else {
+	    	degree = degree + 1;
+    	}
+    	
+       	this.model.setAnswerByDegree(question_id, degree, true);
+    	
+    	icon.attr('class','chat-icon on-degree-' + degree);
+    	icon.find('.chat-icon-text').html(this.model.getAnswerTextByDegree(question_id,degree));
+	    if ( $('#counselor-chat-3').is(':hidden') ) {
+		    $('#counselor-chat-3').delay(2000).fadeIn(function(){
+			});
+	    }
     }
 });

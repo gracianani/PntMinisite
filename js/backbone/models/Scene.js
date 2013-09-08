@@ -90,6 +90,12 @@ var Scene = Backbone.Model.extend({
 			return question.get("answers").length + '';
 		}	
 	},
+	getUserAnswerName: function () {
+        return function (str_question_id) {
+            var question_id = parseInt(str_question_id);
+            return this.getAnswerName(question_id);
+        }
+    },
     getUnselectedClass: function () {
         return function (str_question_id_answer_id) {
             var array = str_question_id_answer_id.split(',');
