@@ -4,7 +4,8 @@ var app = app || {};
 var Router = Backbone.Router.extend({
     routes: {
         "Survey/:id": "details",
-        "": "index"
+        "": "index",
+        "Report/:quizId" : "report"
     },
 
     index: function () {
@@ -12,6 +13,10 @@ var Router = Backbone.Router.extend({
             window.AppFacade.init();
             window.AppFacade.setCurrentView(app.Views.BasicInfoView);
         }
+    },
+
+    report: function (quizId) {
+        
     },
 
     details: function (id) {
