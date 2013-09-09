@@ -555,19 +555,23 @@
 		"answers" : [
 			{
 				"answer_id" : 77,
-				"text" : "披散"
+				"text" : "披散",
+				"name" : ""
 			},
 			{
 				"answer_id" : 78,
-				"text" : "捆扎"
+				"text" : "捆扎",
+				"name" : "band"
 			},
 			{
 				"answer_id" : 79,
-				"text" : "编发"
+				"text" : "编发",
+				"name" : "hand"
 			},
 			{
 				"answer_id" : 80,
-				"text" : "盘发"
+				"text" : "盘发",
+				"name" : "pin"
 			}
 		]
 	},

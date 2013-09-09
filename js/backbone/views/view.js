@@ -45,16 +45,25 @@ var SplashView = function() {
 
 SplashView.prototype = {
 	init: function() {
+	
+		var model = app.Views.BasicInfoView.model;
+		if ( model.isAnswered(22) ) {
+			self.onExitSplash();
+			return;
+		}
 		var self = this;
 		this.splash = $('#splash');
 		AnimationHandler.initialize('#splash');
 		this.splash.find('.item').css('visibility','visible');
 		
-		this.splash.find('.splash-gender-female,.splash-gender-male').click(function(){
+		this.splash.find('.splash-gender-female,.splash-gender-male').on("click",function(){
+			var answerId = parseInt($(this).attr('data-answer-id'));
+			model.setAnswer(22, answerId, true);
+			app.Views.AvatarView.model.setGender();
+			
         	self.splash.fadeOut(function(){
         		self.onExitSplash();
-	        	//app.Router.navigate("Survey/1");
-	        	//
+				
         	});
 	        
         });

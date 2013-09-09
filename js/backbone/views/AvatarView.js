@@ -14,13 +14,10 @@ var AvatarView = Backbone.View.extend({
 
     // Re-render the titles of the todo item.
     render: function () {
-        var hairData = this.model.getHairData();
-        this.model.hairCurly = hairData.curl;
-        this.model.hairLength = hairData.length;
-        this.hairColor = hairData.color;
-        
-        this.model.career_id = app.Views.AvatarView.model.getCareer();
-        this.model.gender = this.model.getGender();
+
+        this.model.setHairData();
+        this.model.setCareer();
+        this.model.setGender();
 
         this.$el.prepend(Mustache.render(this.template, this.model));
         
