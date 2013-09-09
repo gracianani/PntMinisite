@@ -841,23 +841,28 @@
 		"answers" :[
 			{
 				"answer_id" : 122,
-				"text" : "从不烫染"
+				"text" : "从不烫染",
+				"degree" : 1
 			},
 			{
 				"answer_id" : 123,
-				"text" : "1次/1年"
+				"text" : "1次/1年",
+				"degree" : 2
 			},
 			{
 				"answer_id" : 124,
-				"text" : "1次/半年"
+				"text" : "1次/半年",
+				"degree" : 3
 			},
 			{
 				"answer_id" : 125,
-				"text" : "1次/3个月"
+				"text" : "1次/3个月",
+				"degree" : 4
 			},
 			{
 				"answer_id" : 126,
-				"text" : "每个月都折腾"
+				"text" : "每个月都折腾",
+				"degree" : 5
 			}
 		]
 	},
@@ -868,23 +873,28 @@
 		"answers" :[
 			{
 				"answer_id" : 127,
-				"text" : "每个月都做"
+				"text" : "每个月都做",
+				"degree" : 5
 			},
 			{
 				"answer_id" : 128,
-				"text" : "1次/3个月"
+				"text" : "1次/3个月",
+				"degree" : 4
 			},
 			{
 				"answer_id" : 129,
-				"text" : "1次/半年"
+				"text" : "1次/半年",
+				"degree" : 3
 			},
 			{
 				"answer_id" : 130,
-				"text" : "1次/1到两年"
+				"text" : "1次/1到两年",
+				"degree" : 2
 			},
 			{
 				"answer_id" : 131,
-				"text" : "从不"
+				"text" : "从不",
+				"degree" : 1
 			}
 		]
 	}

@@ -85,9 +85,9 @@
         			      		
         	</div>
         	<div id="splash-character" class="item">
-        		<a class="splash-gender-female" data-answer-id="101">
+        		<a class="splash-gender-female" data-answer-id="104">
         		</a>
-        		<a class="splash-gender-male" data-answer-id="100">
+        		<a class="splash-gender-male" data-answer-id="105">
         		</a>
         	</div>
         	
@@ -686,13 +686,9 @@
         <script id="scene-basicinfo-template" type="text/template">
             <div id="scene-basicinfo" class="scene">
                 <div id="scene-basicinfo-content" class="scene-content">
-<<<<<<< HEAD
-                	<div id="basicinfo-age" class="item fm on-degree-{{#getDataDegree}}23{{/getDataDegree}}" data-question-id="23">
-							<div id="age-item-1" class="age-item" data-degree="1"  data-answer-id="106">
-=======
+
                 	<div id="basicinfo-age" class="item {{#getUserAnswerName}}22{{/getUserAnswerName}} on-degree-{{#getDataDegree}}23{{/getDataDegree}}" data-question-id="23">
-							<div id="age-item-1" class="age-item" data-degree="1"  data-answer-id="102">
->>>>>>> 17a92adae6cc4959abda3eff74c5599eaa55ba34
+							<div id="age-item-1" class="age-item" data-degree="1"  data-answer-id="106">
 								<div class="age-item-text">
 									18岁以下
 								</div>
@@ -730,43 +726,24 @@
 							</div>
 						</div>
 						<div  id="career-clothes" class="character-small-size {{#getUserAnswerName}}22{{/getUserAnswerName}}" data-question-id="24">
-							
-<<<<<<< HEAD
-							<div id="" class="clothes clothes-fm-2 {{#getSelectedClass}}24,111{{/getSelectedClass}}" data-id="2" data-answer-id="111">
+
+							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-2 {{#getSelectedClass}}24,111{{/getSelectedClass}}" data-id="2" data-answer-id="111" title="学生">
 							</div>
 							
-							<div id="" class="clothes clothes-fm-1 {{#getSelectedClass}}24,112{{/getSelectedClass}}" data-id="1" style="left:20%" data-answer-id="112">
+							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-1 {{#getSelectedClass}}24,112{{/getSelectedClass}}" data-id="1" style="left:20%" data-answer-id="112" title="格子间上班族">
 							</div>
 							
-							<div id="" class="clothes clothes-fm-4 {{#getSelectedClass}}24,113{{/getSelectedClass}}" data-id="4" style="left:40%" data-answer-id="113">
+							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-4 {{#getSelectedClass}}24,113{{/getSelectedClass}}" data-id="4" style="left:40%" data-answer-id="113" title="劳动人民">
 							</div>
 							
-							<div id="" class="clothes clothes-fm-6 {{#getSelectedClass}}24,114{{/getSelectedClass}}" data-id="6" style="left:60%" data-answer-id="114">
+							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-6 {{#getSelectedClass}}24,114{{/getSelectedClass}}" data-id="6" style="left:60%" data-answer-id="114" title="自由职业">
 							</div>
 							
-							<div id="" class="clothes clothes-fm-3 {{#getSelectedClass}}24,115{{/getSelectedClass}}" data-id="3" style="left:80%" data-answer-id="115">
-							</div>
-							
-							<div id="" class="clothes clothes-fm-5 {{#getSelectedClass}}24,116{{/getSelectedClass}}" data-id="5" style="left:100%" data-answer-id="116">
-=======
-							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-2 {{#getSelectedClass}}24,107{{/getSelectedClass}}" data-id="2" data-answer-id="107" title="学生">
-							</div>
-							
-							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-1 {{#getSelectedClass}}24,108{{/getSelectedClass}}" data-id="1" style="left:20%" data-answer-id="108" title="格子间上班族">
-							</div>
-							
-							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-4 {{#getSelectedClass}}24,109{{/getSelectedClass}}" data-id="4" style="left:40%" data-answer-id="109" title="劳动人民">
-							</div>
-							
-							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-6 {{#getSelectedClass}}24,110{{/getSelectedClass}}" data-id="6" style="left:60%" data-answer-id="110" title="自由职业">
-							</div>
-							
-							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-3 {{#getSelectedClass}}24,112{{/getSelectedClass}}" data-id="3" style="left:80%" data-answer-id="112"  title="赋闲在家">
+							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-3 {{#getSelectedClass}}24,115{{/getSelectedClass}}" data-id="3" style="left:80%" data-answer-id="115"  title="赋闲在家">
 								
 							</div>
 							
-							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-5 {{#getSelectedClass}}24,111{{/getSelectedClass}}" data-id="5" style="left:100%" data-answer-id="111"  title="我是boss我为自己代言">
->>>>>>> 17a92adae6cc4959abda3eff74c5599eaa55ba34
+							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-5 {{#getSelectedClass}}24,116{{/getSelectedClass}}" data-id="5" style="left:100%" data-answer-id="116"  title="我是boss我为自己代言">
 						</div>
 						</div>
 					</div>
@@ -786,19 +763,19 @@
 	                    	当您选择新发型时，会参考哪些方式呢？
                     	</div>
                     	<div id="character-chat-1" class="character-chat" data-question-id="25">
-	                    	<div id="chat-icon-magzine" class="chat-icon {{#getSelectedClass}}25,113{{/getSelectedClass}}" data-answer-id="113">
+	                    	<div id="chat-icon-magzine" class="chat-icon {{#getSelectedClass}}25,117{{/getSelectedClass}}" data-answer-id="117">
 	                    		<div class="chat-icon-text">杂志/网站</div>
 	                    	</div>
-	                    	<div id="chat-icon-star" class="chat-icon {{#getSelectedClass}}25,114{{/getSelectedClass}}" data-answer-id="114">
+	                    	<div id="chat-icon-star" class="chat-icon {{#getSelectedClass}}25,118{{/getSelectedClass}}" data-answer-id="118">
 	                    		<div class="chat-icon-text">参考名人明星</div>
 	                    	</div>
-	                    	<div id="chat-icon-friend" class="chat-icon {{#getSelectedClass}}25,115{{/getSelectedClass}}" data-answer-id="115">
+	                    	<div id="chat-icon-friend" class="chat-icon {{#getSelectedClass}}25,119{{/getSelectedClass}}" data-answer-id="119">
 	                    		<div class="chat-icon-text">朋友建议</div>
 	                    	</div>
-	                    	<div id="chat-icon-cut" class="chat-icon {{#getSelectedClass}}25,116{{/getSelectedClass}}" data-answer-id="116">
+	                    	<div id="chat-icon-cut" class="chat-icon {{#getSelectedClass}}25,120{{/getSelectedClass}}" data-answer-id="120">
 	                    		<div class="chat-icon-text">美发师指导</div>
 	                    	</div>
-	                    	<div id="chat-icon-self" class="chat-icon {{#getSelectedClass}}25,117{{/getSelectedClass}}" data-answer-id="117">
+	                    	<div id="chat-icon-self" class="chat-icon {{#getSelectedClass}}25,121{{/getSelectedClass}}" data-answer-id="121">
 	                    		<div class="chat-icon-text">自己创意</div>
 	                    	</div>
                     	</div>
