@@ -550,19 +550,23 @@
 		"answers" : [
 			{
 				"answer_id" : 77,
-				"text" : "披散"
+				"text" : "披散",
+				"name" : ""
 			},
 			{
 				"answer_id" : 78,
-				"text" : "捆扎"
+				"text" : "捆扎",
+				"name" : "band"
 			},
 			{
 				"answer_id" : 79,
-				"text" : "编发"
+				"text" : "编发",
+				"name" : "hand"
 			},
 			{
 				"answer_id" : 80,
-				"text" : "盘发"
+				"text" : "盘发",
+				"name" : "pin"
 			}
 		]
 	},
@@ -822,23 +826,28 @@
 		"answers" :[
 			{
 				"answer_id" : 118,
-				"text" : "从不烫染"
+				"text" : "从不烫染",
+				"degree":1
 			},
 			{
 				"answer_id" : 119,
-				"text" : "1次/1年"
+				"text" : "1次/1年",
+				"degree":2
 			},
 			{
 				"answer_id" : 120,
-				"text" : "1次/半年"
+				"text" : "1次/半年",
+				"degree":3
 			},
 			{
 				"answer_id" : 121,
-				"text" : "1次/3个月"
+				"text" : "1次/3个月",
+				"degree":4
 			},
 			{
 				"answer_id" : 122,
-				"text" : "每个月都折腾"
+				"text" : "每个月都折腾",
+				"degree":5
 			}
 		]
 	},
@@ -849,23 +858,28 @@
 		"answers" :[
 			{
 				"answer_id" : 123,
-				"text" : "每个月都做"
+				"text" : "每个月都做",
+				"degree":5
 			},
 			{
 				"answer_id" : 124,
-				"text" : "1次/3个月"
+				"text" : "1次/3个月",
+				"degree":4
 			},
 			{
 				"answer_id" : 125,
-				"text" : "1次/半年"
+				"text" : "1次/半年",
+				"degree":3
 			},
 			{
 				"answer_id" : 126,
-				"text" : "1次/1到两年"
+				"text" : "1次/1到两年",
+				"degree":2
 			},
 			{
 				"answer_id" : 127,
-				"text" : "从不"
+				"text" : "从不",
+				"degree":1
 			}
 		]
 	}

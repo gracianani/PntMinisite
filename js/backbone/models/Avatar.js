@@ -8,7 +8,8 @@ var Avatar = Backbone.Model.extend({
         career_id: 0,
         hairLength: "l",
         hairCurly: 2,
-        hairColor: "red"
+        hairColor: "red",
+        hairType:""
     },
 
     initialize: function (option) {
@@ -17,6 +18,7 @@ var Avatar = Backbone.Model.extend({
         this.career_id = this.defaults.career_id;
         this.hairCurly = this.hairCurly;
         this.hairColor = this.defaults.hairColor;
+        this.hairType = this.defaults.hairType;
     },
     getAvatarScene: function () {
         return function () {
@@ -36,11 +38,8 @@ var Avatar = Backbone.Model.extend({
     },
     getAvatarSize : function() {
 	    return function() {
-		    if (AppFacade.getCurrentView().model.get("scene_id") == 1) {
-                return "large";
-            }
-            else if (AppFacade.getCurrentView().model.get("scene_id") == 3) {
-                return "large";
+		    if (AppFacade.getCurrentView().model.get("scene_id") == 6) {
+                return "small";
             }
             else {
                 return "large";
@@ -51,17 +50,30 @@ var Avatar = Backbone.Model.extend({
         var hairData = {
             length: app.Views.HairStyleView.model.getAnswerName(13),
             curl: app.Views.HairStyleView.model.getAnswerDegree(14),
-            color: app.Views.HairStyleView.model.getAnswerName(15)
+            color: app.Views.HairStyleView.model.getAnswerName(15),
+            type: app.Views.HairStyleView.model.getAnswerName(16)
         };
+        var isMale = ("m" == app.Views.BasicInfoView.model.getAnswerName(22));
+        
         if (typeof hairData.length === 'undefined' || hairData.length == '') {
-            hairData.length = 'l';
+            if ( isMale ) {
+	            hairData.length = 's';
+            } else {
+	            hairData.length = 'l';
+            }
+            
         }
         if (hairData.curl == 0) {
-            hairData.curl = 2;
+            if ( isMale ) {
+            	hairData.curl = 1;
+            } else {
+	            hairData.curl = 2;
+            }
         }
         if (hairData.color == '') {
             hairData.color = 'red';
         }
+        
         return hairData;
     },
     getCareer: function() {
@@ -76,7 +88,21 @@ var Avatar = Backbone.Model.extend({
 	    if( !user_gender ) {
 		    user_gender = "fm";
 	    }
+	    
 	    return user_gender;
+    },
+    setGender: function() {
+	    this.gender = this.getGender();
+    },
+    setCareer: function() {
+	    this.career_id = this.getCareer();
+    },
+    setHairData: function() {
+	 	var hairData = this.getHairData();
+	 	this.hairCurly = hairData.curl;
+	 	this.hairLength = hairData.length;
+	 	this.hairColor = hairData.color;
+	 	this.hairType = hairData.type;
     }
 });
 

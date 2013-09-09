@@ -90,9 +90,9 @@
         			      		
         	</div>
         	<div id="splash-character" class="item">
-        		<a class="splash-gender-female">
+        		<a class="splash-gender-female" data-answer-id="101">
         		</a>
-        		<a class="splash-gender-male">
+        		<a class="splash-gender-male" data-answer-id="100">
         		</a>
         	</div>
         	
@@ -192,7 +192,7 @@
         <script type="text/template" id="me-template">
             <div id="character-container" class="{{#getAvatarScene}}{{/getAvatarScene}}">
         		<div id="character-inScene" class="character {{gender}} character-{{#getAvatarSize}}{{/getAvatarSize}}-size">
-        			<div class="hair hair-{{gender}}-{{hairLength}}-{{hairCurly}}  hair-{{hairColor}}">
+        			<div class="hair hair-{{gender}}-{{hairLength}}-{{hairCurly}}  hair-{{gender}}-{{hairType}}  hair-{{hairColor}}">
         			</div>
         			<div class="body">
         			</div>
@@ -205,7 +205,7 @@
         			</div>
         			<div class="hand">
         			</div>
-        			<div class="bang bang-{{gender}}-{{hairLength}}-{{hairCurly}} bang-{{hairColor}}">
+        			<div class="bang bang-{{gender}}-{{hairType}} bang-{{gender}}-{{hairLength}}-{{hairCurly}} bang-{{hairColor}}">
         			</div>
         		</div>
 			</div>
@@ -685,7 +685,7 @@
         <script id="scene-basicinfo-template" type="text/template">
             <div id="scene-basicinfo" class="scene">
                 <div id="scene-basicinfo-content" class="scene-content">
-                	<div id="basicinfo-age" class="item fm on-degree-{{#getDataDegree}}23{{/getDataDegree}}" data-question-id="23">
+                	<div id="basicinfo-age" class="item {{#getUserAnswerName}}22{{/getUserAnswerName}} on-degree-{{#getDataDegree}}23{{/getDataDegree}}" data-question-id="23">
 							<div id="age-item-1" class="age-item" data-degree="1"  data-answer-id="102">
 								<div class="age-item-text">
 									18岁以下
@@ -712,7 +712,7 @@
 								</div>
 							</div>
 					</div>
-					<div id="basicinfo-career" class="item fm">
+					<div id="basicinfo-career" class="item {{#getUserAnswerName}}22{{/getUserAnswerName}}">
 						<div id="pole">
 							<div id="pole-left">
 							</div>
@@ -723,24 +723,25 @@
 							<div id="pole-right">
 							</div>
 						</div>
-						<div  id="career-clothes" class="character-small-size fm" data-question-id="24">
+						<div  id="career-clothes" class="character-small-size {{#getUserAnswerName}}22{{/getUserAnswerName}}" data-question-id="24">
 							
-							<div id="" class="clothes clothes-fm-2 {{#getSelectedClass}}24,107{{/getSelectedClass}}" data-id="2" data-answer-id="107">
+							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-2 {{#getSelectedClass}}24,107{{/getSelectedClass}}" data-id="2" data-answer-id="107" title="学生">
 							</div>
 							
-							<div id="" class="clothes clothes-fm-1 {{#getSelectedClass}}24,108{{/getSelectedClass}}" data-id="1" style="left:20%" data-answer-id="108">
+							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-1 {{#getSelectedClass}}24,108{{/getSelectedClass}}" data-id="1" style="left:20%" data-answer-id="108" title="格子间上班族">
 							</div>
 							
-							<div id="" class="clothes clothes-fm-4 {{#getSelectedClass}}24,109{{/getSelectedClass}}" data-id="4" style="left:40%" data-answer-id="109">
+							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-4 {{#getSelectedClass}}24,109{{/getSelectedClass}}" data-id="4" style="left:40%" data-answer-id="109" title="劳动人民">
 							</div>
 							
-							<div id="" class="clothes clothes-fm-6 {{#getSelectedClass}}24,110{{/getSelectedClass}}" data-id="6" style="left:60%" data-answer-id="110">
+							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-6 {{#getSelectedClass}}24,110{{/getSelectedClass}}" data-id="6" style="left:60%" data-answer-id="110" title="自由职业">
 							</div>
 							
-							<div id="" class="clothes clothes-fm-3 {{#getSelectedClass}}24,112{{/getSelectedClass}}" data-id="3" style="left:80%" data-answer-id="112">
+							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-3 {{#getSelectedClass}}24,112{{/getSelectedClass}}" data-id="3" style="left:80%" data-answer-id="112"  title="赋闲在家">
+								
 							</div>
 							
-							<div id="" class="clothes clothes-fm-5 {{#getSelectedClass}}24,111{{/getSelectedClass}}" data-id="5" style="left:100%" data-answer-id="111">
+							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-5 {{#getSelectedClass}}24,111{{/getSelectedClass}}" data-id="5" style="left:100%" data-answer-id="111"  title="我是boss我为自己代言">
 						</div>
 						</div>
 					</div>
@@ -752,20 +753,48 @@
                 <div id="scene-salon-content" class="scene-content">
                     <div id="salon-mirror" class="item">
                     </div>
-                    <div id="salon-character" class="item character-fm">
+                    <div id="salon-character" class="item character-{{gender}}">
                     </div>
-                    <div id="salon-chat">
+                    <div id="salon-chat" class="item">
                     	<div id="counselor-chat-1" class="counselor-chat">
-	                    	您做新发型
+	                    	您的秀发健康报告就快完成了:)<br />
+	                    	当您选择新发型时，会参考哪些方式呢？
+                    	</div>
+                    	<div id="character-chat-1" class="character-chat" data-question-id="25">
+	                    	<div id="chat-icon-magzine" class="chat-icon {{#getSelectedClass}}25,113{{/getSelectedClass}}" data-answer-id="113">
+	                    		<div class="chat-icon-text">杂志/网站</div>
+	                    	</div>
+	                    	<div id="chat-icon-star" class="chat-icon {{#getSelectedClass}}25,114{{/getSelectedClass}}" data-answer-id="114">
+	                    		<div class="chat-icon-text">参考名人明星</div>
+	                    	</div>
+	                    	<div id="chat-icon-friend" class="chat-icon {{#getSelectedClass}}25,115{{/getSelectedClass}}" data-answer-id="115">
+	                    		<div class="chat-icon-text">朋友建议</div>
+	                    	</div>
+	                    	<div id="chat-icon-cut" class="chat-icon {{#getSelectedClass}}25,116{{/getSelectedClass}}" data-answer-id="116">
+	                    		<div class="chat-icon-text">美发师指导</div>
+	                    	</div>
+	                    	<div id="chat-icon-self" class="chat-icon {{#getSelectedClass}}25,117{{/getSelectedClass}}" data-answer-id="117">
+	                    		<div class="chat-icon-text">自己创意</div>
+	                    	</div>
                     	</div>
                     	<div id="counselor-chat-2" class="counselor-chat">
-	                    	剪发频率
+	                    	您在沙龙做染烫、护理的频率？
+                    	</div>
+                    	<div id="character-chat-2" class="character-chat">
+	                    	<div id="chat-icon-perm" class="chat-icon on-degree-{{#getDataDegree}}26{{/getDataDegree}}" data-question-id="26">
+		                    	<div class="chat-icon-degree-mask"></div>
+	                    		<div class="chat-icon-text">染烫频率</div>
+	                    	</div>
+	                    	<div id="chat-icon-care" class="chat-icon on-degree-{{#getDataDegree}}27{{/getDataDegree}}" data-question-id="27">
+	                    		<div class="chat-icon-degree-mask"></div>
+	                    		<div class="chat-icon-text">护理频率</div>
+	                    	</div>
                     	</div>
                     	<div id="counselor-chat-3" class="counselor-chat">
-	                    	染烫频率？
+	                    	非常感谢您的耐心，报告已经准备好了！快去看看吧！
                     	</div>
                     </div>
-                    <div id="salon-counselor" class="item counselor-fm">
+                    <div id="salon-counselor" class="item counselor-{{gender}}">
                     </div>
                 </div>
             </div>
