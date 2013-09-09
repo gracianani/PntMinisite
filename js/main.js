@@ -104,11 +104,15 @@ window.AppFacade = {
 }
 
 // Start the main app logic.
-requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone/utils/Utils', '../backbone/views/AvatarView', , '../backbone/views/SceneView', '../backbone/Router'],
+requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone/models/Report', '../backbone/utils/Utils', '../backbone/views/AvatarView', '../backbone/views/ReportView' , '../backbone/views/SceneView', '../backbone/Router'],
     function (avatar, scene, utils, avatarView, sceneView, router) {
         var questions = new QuestionsCollection;
         questions.fetch();
         app.QuestionRepo = questions;
+        app.SuggestionRepo = new SuggestionsCollection;
+        app.SuggestionRepo.fetch();
+        app.ProductRepo = new ProductsCollection;
+        app.ProductRepo.fetch();
         app.SceneSettings = new SceneSettingsCollection;
         app.SceneSettings.fetch().done(
             function () {
@@ -133,6 +137,9 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
                 var cleaningView = new CleaningView({ model: cleaningScene });
                 var salonScene = new Scene(app.SceneSettings.findWhere({ scene_id: 8 }).toJSON());
                 var salonView = new SalonView({ model: salonScene });
+                var report = new Report;
+                var reportView = new ReportView({ model: report });
+                app.Report = report;
 
                 app.Views.BasicInfoView = basicInfoView;
                 app.Views.HairStyleView = hairStyleView;
@@ -142,6 +149,7 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
                 app.Views.CleaningView = cleaningView;
                 app.Views.LifeView = lifeView;
                 app.Views.SalonView = salonView;
+                app.Views.ReportView = reportView;
 
                 app.Router = new Router();
                 Backbone.history.start();

@@ -1,0 +1,38 @@
+﻿[	
+	{
+		"product_id" : 1,
+		"product_name" : "潘婷植物精萃系列"
+	},
+	{
+		"product_id" : 2,
+		"product_name" : "潘婷乳液修复系列"
+	},
+	{
+		"product_id" : 3,
+		"product_name" : "潘婷乳液修复去屑系列"
+	},
+	{
+		"product_id" : 4,
+		"product_name" : "潘婷强韧防掉发系列"
+	},
+	{
+		"product_id" : 5,
+		"product_name" : "潘婷垂顺直发系列"
+	},
+	{
+		"product_id" : 6,
+		"product_name" : "潘婷丝质顺滑去屑系列"
+	},
+	{
+		"product_id" : 7,
+		"product_name" : "潘婷莹彩修护系列"
+	},
+	{
+		"product_id" : 8,
+		"product_name" : "潘婷弹性卷发系列"
+	},
+	{
+		"product_id" : 9,
+		"product_name" : "潘婷乌黑莹亮系列"
+	}
+]

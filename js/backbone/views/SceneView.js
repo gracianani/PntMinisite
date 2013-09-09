@@ -170,12 +170,12 @@ var LifeView = Backbone.View.extend({
          });
 		
 		
-		stressHighText = lifeCenter.text(0,38,"压力山大")
+		stressHighText = lifeCenter.text(32,50,"压力山大")
         .attr({
 	        "font-size":"10px",
 	        "fill":"#FFF",
 	        "cursor":"pointer",
-	        "transform":"r-60 0 38"
+	        "transform":"r-60 32 50"
         }).click(function () {
             stressPin.animate({
             	transform:"r-60 100 100"
@@ -208,12 +208,12 @@ var LifeView = Backbone.View.extend({
             	"fill":"#e4600d"
             });
          });;
-        stressLowText = lifeCenter.text(200,38,"轻轻松松")
+        stressLowText = lifeCenter.text(168,50,"轻轻松松")
         .attr({
 	        "font-size":"10px",
 	        "cursor":"pointer",
 	        "fill":"#fff",
-	        "transform":"r60 200 38"
+	        "transform":"r60 168 50"
         }).click(function () {
             stressPin.animate({
             	"transform":"r60 100 100"
@@ -560,6 +560,7 @@ var CleaningView = Backbone.View.extend({
         this.$el.find('.cleaning-tool,.cleaning-style,.cleaning-care').tooltip();
     },
     render: function () {
+        console.log('cleaning');
         this.$el.html(Mustache.render(this.template, this.model));
         this.initAnswerTooltip();
         this.trigger("render");
@@ -1265,22 +1266,19 @@ var SalonView = Backbone.View.extend( {
     className: "scene",
     // Cache the template function for a single item.
     template: $('#scene-salon-template').html(),
-
     events: {
        "click #character-chat-1 .chat-icon" : "onClickChatIcon",
        "click #character-chat-2 .chat-icon" : "onClickChatDegree"
     },
-
     initialize: function () {
         this.$el = $('#main');
-        this.on("render", this.postrender);
+        this.on("finishLoading", this.postrender);
         this.on("beginRender", this.render);
         
     },
     animateIn: function () {
         AnimationHandler.animateIn();
     },
-    
     // Re-render the titles of the todo item.
     render: function () {
     	this.model.gender = app.Views.AvatarView.model.gender;
@@ -1288,11 +1286,9 @@ var SalonView = Backbone.View.extend( {
         this.trigger("render");
         return this;
     },
-
     postrender: function () {
         AnimationHandler.initialize('#scene-salon-content');
         this.animateIn();
-        
         	$('#counselor-chat-1').delay(2000).fadeIn(function(){
 				$('#character-chat-1').fadeIn();
 			});
@@ -1307,15 +1303,13 @@ var SalonView = Backbone.View.extend( {
 	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
     },
     next: function () {
+        app.Report.getReport();
     },
     onClickChatIcon: function(event) {
 	    var icon = $(event.currentTarget);
 	    var isSelected = icon.hasClass('selected');
 	    icon.toggleClass('selected');
-	    
-	    
 	    this.model.setAnswer( parseInt(icon.parent().attr('data-question-id')), parseInt(icon.attr('data-answer-id')),!isSelected);
-	    
 	    if ( $('#counselor-chat-2').is(':hidden') ) {
 		    $('#counselor-chat-2').delay(1000).fadeIn(function(){
 				$('#character-chat-2').fadeIn();
@@ -1325,17 +1319,13 @@ var SalonView = Backbone.View.extend( {
     onClickChatDegree: function(event) {
     	var icon = $(event.currentTarget);
     	var question_id = parseInt(icon.attr('data-question-id'));
-    	
     	var degree = this.model.getAnswerDegree(question_id);
-    	
     	if (degree == 5) {
 	    	degree = 1;
     	} else {
 	    	degree = degree + 1;
     	}
-    	
        	this.model.setAnswerByDegree(question_id, degree, true);
-    	
     	icon.attr('class','chat-icon on-degree-' + degree);
     	icon.find('.chat-icon-text').html(this.model.getAnswerTextByDegree(question_id,degree));
 	    if ( $('#counselor-chat-3').is(':hidden') ) {
