@@ -1283,7 +1283,7 @@ var SalonView = Backbone.View.extend( {
 
     initialize: function () {
         this.$el = $('#main');
-        this.on("render", this.postrender);
+        this.on("finishLoading", this.postrender);
         this.on("beginRender", this.render);
         
     },
@@ -1312,20 +1312,6 @@ var SalonView = Backbone.View.extend( {
 	    AnimationHandler.animateOut("prev", function () { AppFacade.getCurrentView().render(); });
     },
     next: function () {
-        var requestData = '{'
-            + 'user_answers : ' + '\"' + JSON.stringify(AppFacade.getUserAnswers()) + '\"'
-            + '}';
-        console.log(requestData);
-        $.ajax({
-            type: "POST",
-            url: 'WeiboWebServices.asmx/SubmitAnswer',
-            timeout: 5000,
-            data: requestData,
-            datatType: "json",
-            contentType: "application/json;charset=utf-8",
-            success: function (data) {
-                
-            }
-        });
+        app.Report.getReport();
     }
 });

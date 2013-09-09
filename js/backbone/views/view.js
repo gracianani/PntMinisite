@@ -6,8 +6,8 @@ BasicFrameView.prototype = {
         var self = this;
         this.progressBar = $("#progress");
         this.step = 1;
-		
-		$('#loading').fadeOut();
+
+        $('#loading').fadeOut();
         $('#logo').show().animate({ path: new $.path.bezier({
             start: {
                 x: -300,
@@ -23,21 +23,19 @@ BasicFrameView.prototype = {
             }
         })
         }, 800, "easeOutQuint", function () {
-           
-        	window.AppFacade.getCurrentView().render();
-        	self.showControls();
-        });
-        
-        
-        
-        
 
+            window.AppFacade.getCurrentView().render();
+            self.showControls();
+        });
     },
-    showControls : function() {
-	    //$('#profile').show().animate({ top: 10 }, 500);
-	    $('#siteTitle').show().animate({ top: 10 }, 500, function () {});
-	    $('#footer').show().animate({ bottom: '0' }, 500);
-	    $('#progress,#main,#navigation').fadeIn();
+    showControls: function () {
+        //$('#profile').show().animate({ top: 10 }, 500);
+        $('#siteTitle').show().animate({ top: 10 }, 500, function () { });
+        $('#footer').show().animate({ bottom: '0' }, 500);
+        $('#progress,#main,#navigation').fadeIn();
+    },
+    showReport: function () {
+        $('#progress,#main,#navigation,#footer').fadeOut();
     }
 };
 

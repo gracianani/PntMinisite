@@ -8,6 +8,9 @@ using System.Text;
 using System.IO;
 using System.Web.Script.Services;
 using System.Web.Script.Serialization;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Data;
 
 /// <summary>
 /// Summary description for WeiboWebServices
@@ -23,19 +26,83 @@ public class WeiboWebServices : System.Web.Services.WebService {
         //Uncomment the following line if using designed components 
         //InitializeComponent(); 
     }
+    class SceneUserAnswer
+    {
+        public int scene_id;
+        public UserAnswer[] user_answers;
+    }
 
     class UserAnswer
     {
-        int question_id;
-        int[] answer_ids;
+        public int question_id;
+        public int[] answer_ids;
     }
 
     [WebMethod]
     [ScriptMethod(UseHttpGet = false)]
     public string SubmitAnswer( string user_answers ) {
         JavaScriptSerializer serializer = new JavaScriptSerializer();
-        var userAnswer = serializer.Deserialize<UserAnswer>(user_answers);
-        return "";
+        var sceneUserAnswers = serializer.Deserialize<SceneUserAnswer[]>(user_answers);
+        var userAnswerIds = new List<int>();
+        var suggestionIds = new Dictionary<int, List<int>>() { 
+            {1, new List<int>()}, 
+            {2, new List<int>()},
+            {3, new List<int>()}
+        };
+        var productIds = new List<int>();
+
+        foreach (SceneUserAnswer sceneUserAnswer in sceneUserAnswers)
+        {
+            var answer_ids = sceneUserAnswer.user_answers.Select(i => i.answer_ids).ToList();
+            foreach (var answer_id in answer_ids)
+            {
+                userAnswerIds.AddRange(answer_id);
+            }
+            
+        }
+
+        DataTable answerIdTable = new DataTable("AnswersTableType");
+        // Create a DataColumn and set various properties. 
+        DataColumn column = new DataColumn();
+        column.DataType = System.Type.GetType("System.Int32");
+        column.AllowDBNull = false;
+        column.ColumnName = "answerId";
+
+        answerIdTable.Columns.Add(column);
+
+        foreach (var userAnswerId in userAnswerIds)
+        {
+            DataRow answerIdRow = answerIdTable.NewRow();
+            answerIdRow["answerId"] = userAnswerId;
+            answerIdTable.Rows.Add(answerIdRow);
+        }
+        
+        string connStr = ConfigurationManager.ConnectionStrings["pnt"].ConnectionString;
+        using (var conn = new SqlConnection(connStr))
+        {
+            using( var command = new SqlCommand("FetchSuggestions", conn)) {
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("Answers", answerIdTable );
+                conn.Open();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var groupId = reader.GetInt32(reader.GetOrdinal("suggestionGroupId"));
+                        suggestionIds[groupId].Add(reader.GetInt32(reader.GetOrdinal("suggestionId")));
+                    }
+
+                    if (reader.NextResult())
+                    {
+                        while (reader.Read())
+                        {
+                            productIds.Add(reader.GetInt32(reader.GetOrdinal("productId")));
+                        }
+                    }
+                }
+            }
+        }
+        return string.Format("{{ \"lifestyle_suggestions\": \"{0}\" , \"haircare_suggestions\" : \"{2}\", \"hairsituation_suggestions\" : \"{3}\",  \"suggested_products\" : \"{1}\" }}", string.Join(",", suggestionIds[1]), string.Join(",", productIds), string.Join(",", suggestionIds[2]), string.Join(",", suggestionIds[3]));
     }
 
     [WebMethod]

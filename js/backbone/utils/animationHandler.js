@@ -129,7 +129,12 @@ var AnimationHandler = {
                 if (count == items.length) {
                     if (type == "next") {
                         postAnimateOut();
-                    } else {
+                    }
+                    else if (type == "report") {
+                        app.Views.BasicFrameView.showReport();
+                        postAnimateOut();
+                    }
+                    else {
                     }
                 }
             });
