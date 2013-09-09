@@ -1274,7 +1274,7 @@ var SalonView = Backbone.View.extend( {
         this.$el = $('#main');
         this.on("finishLoading", this.postrender);
         this.on("beginRender", this.render);
-        
+        this.on("render", this.postrender);
     },
     animateIn: function () {
         AnimationHandler.animateIn();
