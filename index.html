@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html xmlns:wb=“http://open.weibo.com/wb”>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -16,46 +16,9 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
         <style>
-            #login 
-            {
-                position: absolute;
-                top: 15%;
-                left: 50%;
-                margin-left: -73px;
-                z-index: 1000;
-                width: 584px;
-                background-color: #fff;
-                font-size: 11px;
-                text-align: left;
-                border: solid 5px #e3e3e3;
-                border-radius: 10px;
-                -moz-border-radius: 10px;
-                -webkit-border-radius: 10px;
-                padding: 7px;
-            }
-            #login a
-            {
-                color: #FFF;
-                background: url(img/share.png) left top no-repeat;
-                width: 48px;
-                height: 48px;
-                display: inline-block;
-                margin-right: 15px;
-                margin-top: 5px;
-             }
-             #login .wechat 
-             {
-                 background-position: left -48px;
-             }
-             #login .weibo
-             {
-                 background-position: left -144px;
-             }
-             #share #weibo.authenticated
-             {
-                 background-position: left -144px;
-             }
+
         </style>
     </head>
     <body class="loading">
@@ -74,17 +37,17 @@
         </div>
         <div id="splash">
         	<div id="splash-begin" class="item">
-        			<div class="splash-logo">
+        			<div id="splash-logo">
         				<img src="img/loading-logo.png" alt="潘婷" />
         				<img src="img/lab-logo-large.png" alt="护发实验室" />
         			</div>
-        			
+        			<div class="splash-subtitle">请选择您的角色,<br />立即开始秀发揭秘之旅</div> 
         			 
-        			<h2 class="splash-title">为您解开秀发的秘密 </h2>
-        			<div class="splash-subtitle">请选择您的角色 &rarr;</div> 
+         			
         			      		
         	</div>
         	<div id="splash-character" class="item">
+        	
         		<a class="splash-gender-female" data-answer-id="105">
         		</a>
         		<a class="splash-gender-male" data-answer-id="104">
@@ -110,16 +73,7 @@
         
         <div id="report" style="display:none"></div>
 
-        <div id="profile">
-        	<div id="profile-avatar">
-        		<div class="avatar head-only avatar-48">
-        		</div>
-        	</div>
-        	<div id="share">
-        		<a id="wechat" data-toggle="modal" data-target="#login"></a>
-        		<a id="weibo"  data-toggle="modal" data-target="#login"></a>
-        	</div>
-        </div>
+
         
         <div id="footer">
         	<div id="progress">
@@ -166,13 +120,33 @@
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3>登陆潘婷实验室</h3>
+                <p>登录以后，可以保存你的报告结果哦！</p>
               </div>
               <div class="modal-body">
-                    <a class="wechat" ></a>
-        	        <a class="weibo"></a>
+                    <a class="weibologin" ><img src="img/wbloginbtnlarge.png" /></a>
+        	        <a class="qqlogin"><img src="img/qqloginbtnlarge.png" /></a>
               </div>
         </div>
-        
+                <div id="profile">
+        	<div id="profile-avatar" data-toggle="modal" data-target="#login">
+        		<div class="avatar head-only avatar-48">
+        		</div>
+        	</div>
+        	<div id="share">
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32">
+<span id="share-text">分享到</span>
+<a class="jiathis_button_weixin"></a>
+<a class="jiathis_button_tsina"></a>
+<a class="jiathis_button_cqq"></a>
+<a class="jiathis_button_qzone"></a>
+<a class="jiathis_button_douban"></a>
+
+</div>
+
+<!-- JiaThis Button END -->
+        	</div>
+        </div>
         <script src="js/vendor/jquery-1.9.1.min.js"></script>
         <script src="js/vendor/raphael-min.js"></script>
         <script src="js/vendor/g.raphael-min.js"></script>
@@ -190,7 +164,27 @@
         <script src="js/backbone/views/View.js"></script>
         <script src="js/backbone/utils/animationHandler.js"></script>
         <script src="js/vendor/require.min.js" data-main="js/main"></script>
-        
+        <!-- JiaThis Button BEGIN -->
+		<script type="text/javascript" >
+		var jiathis_config={
+			data_track_clickback:true,
+			url:"http://pantene.app.sociail-touch.com/",
+			summary:"家庭主妇？",
+			title:"Pantene护发实验室 #Pantene护发实验室#",
+			pic:"http://pantene.app.sociail-touch.com/img/logo.png",
+			ralateuid:{
+				"tsina":"潘婷Pantene"
+			},
+			appkey:{
+				"tsina":"3695496477",
+				"tqq":"6b346735b25a53425c4eda8e41553e96"
+			},
+			shortUrl:false,
+			hideMore:true
+		}
+		</script>
+		<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1838321" charset="utf-8"></script>
+		<!-- JiaThis Button END -->
         <script type="text/template" id="me-template">
             <div id="character-container" class="{{#getAvatarScene}}{{/getAvatarScene}}">
         		<div id="character-inScene" class="character {{gender}} character-{{#getAvatarSize}}{{/getAvatarSize}}-size">

@@ -5,8 +5,8 @@ var MainView = Backbone.View.extend({
     events: {
         "click #next": "processToNextQuestion",
         "click #prev" : "processToPrevQuestion",
-        "click #weibo, click #wechat" : "showLogin",
-        "click .weibo,.wechat,.splash-weibo,.splash-qq" : "authorize",
+        "click #profile-avatar" : "showLogin",
+        "click .splash-weibo,.splash-qq,.weibologin,.qqlogin" : "authorize",
         "click #login .close" : "closeLogin"
     },
     initialize: function () {

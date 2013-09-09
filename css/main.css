@@ -107,7 +107,7 @@ body {
 
 }
 
-#logo,#siteTitle,#profile,#navigation,#footer {
+#logo,#siteTitle,#navigation,#footer {
 	display: none;
 }
 /*=====================
@@ -201,15 +201,15 @@ header
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 60px;
+	height: 70px;
 	background: #000 url(../img/headerbottom.png) repeat-x left bottom;
 	padding-bottom: 15px;
 }
 
 #logo {
 	position: absolute;
-	width: 123px;
-	height: 40px;
+	width: 166px;
+	height: 54px;
 }
 #logo img{
 	height: 100%;
@@ -217,7 +217,7 @@ header
 }
 #siteTitle {
 	position: absolute;
-	left: 180px;
+	left: 210px;
 	top:-200px;
 	font-size: 22px;
 	letter-spacing: 1px;
@@ -226,17 +226,67 @@ header
 	margin: 0;
 }
 /*=====================
+login 
+=====================*/
+#login {
+	width: 400px;
+	height: 400px;
+	background: #FFF;
+	box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
+	position: absolute;
+	left: 50%;
+	top:50%;
+	margin-top:-200px;
+	margin-left: -200px;
+	z-index: 999;
+	border-radius: 10px;
+	
+}
+.modal-header,.modal-body {
+	padding: 10px;
+	text-align: center;
+}
+.modal-header h3 {
+	font-weight: normal;
+	color: #c18628;
+}
+.modal-header button {
+	position: absolute;
+	background: #000;
+	border-radius: 50%;
+	width: 32px;
+	height: 32px;
+	right: -16px;
+	top:-16px;
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+	border:none;
+	color: #fff;
+}
+#login a {
+	
+	width: auto;
+	margin: 0 auto 15px;
+	display: inline-block;
+	cursor: pointer;
+}
+/*=====================
 profile 
 =====================*/
 #profile {
 	position: absolute;
-	top:-100px;
+	top:10px;
 	right: 20px;
-	z-index: 100;
 }
 #profile-avatar, #share {
 	float: right;
 	display: inline-block;
+}
+#share {
+	padding-top: 5px;
+	padding-right: 15px;
+}
+#share iframe {
+	height: 30px!important;
 }
 #profile-avatar {
 	width: 60px;
@@ -251,14 +301,16 @@ profile
 	margin: 0 auto;
 	position: relative;
 }
+#share-text {
+	color: #fad949;
+	line-height: 32px;
+	float: left;
+	padding-right: 10px;
+	font-size: 14px;
+}
 #share a {
-	color: #FFF;
-	background: url(../img/share.png) left top no-repeat;
-	width: 48px;
-	height: 48px;
-	display: inline-block;
-	margin-right: 15px;
-	margin-top: 5px;
+	color: #cc9336;
+	
 }
 #share #wechat:hover {
 	background-position: left -48px;
@@ -269,6 +321,46 @@ profile
 
 #share #weibo:hover {
 	background-position: left -144px;
+}
+#share .jiathis_style_32x32 .jtico {
+	background: url(../img/share.png) no-repeat left top;
+	margin-left: 10px;
+	border-radius: 50%;
+	width: 32px;
+	height: 32px;
+	padding-left: 0!important;
+}
+#share .jiathis_style_32x32 .jtico:hover {
+	opacity: 1;
+	background-color: #2f94e1;
+}
+#share .jiathis_style_32x32 .jtico_weixin {
+	background-position: center -32px;
+}
+#share .jiathis_style_32x32 .jtico_weixin:hover {
+	background-color:#0bcb27;
+	
+}
+#share .jiathis_style_32x32 .jtico_tsina {
+	background-position: center -64px;
+}
+#share .jiathis_style_32x32 .jtico_tsina:hover {
+	background-color:#cc1600;
+	
+}
+#share .jiathis_style_32x32 .jtico_douban {
+	background-position: center -96px;
+}
+#share .jiathis_style_32x32 .jtico_douban:hover {
+	background-color:#148825;
+	
+}
+#share .jiathis_style_32x32 .jtico_qzone {
+	background-position: center -128px;
+}
+#share .jiathis_style_32x32 .jtico_qzone:hover {
+	background-color:#f4b23c;
+	
 }
 /*=====================
 navigation 
@@ -349,25 +441,31 @@ splash
 	visibility: hidden;
 }
 
-
+#splash-logo {
+	margin-bottom: 20px;
+	text-align: left;
+}
 #splash-begin {
 	width: 240px;
 	height: 280px;
 	position: absolute;
-	left: 10%;
-	top: 15%;
-	color: #e3b644;
+	right: 60%;
+	top: 50%;
+	margin-top:-300px;
+	color: #FFF;
+	text-align: left;
 }
 #splash-login {
 	width: 240px;
 	height: 240px;
 	position: absolute;
-	right: 10%;
-	bottom: 0;
+	right: 60%;
+	top: 50%;
+	margin-top:60px;
 	color: #e3b644;
 }
 .splash-subtitle {
-	font-size: 20px;
+	font-size: 16px;
 	line-height: 1.5em;
 }
 .splash-title {
@@ -378,23 +476,21 @@ splash
 }
 .splash-weibo,.splash-qq {
 	display: block;
-	width: 48px;
-	height: 48px;
-	border-radius: 25px;
-	background-color: #ffbd32;
+	width: 170px;
+	height: 32px;
 	float: left;
-	margin-right: 20px;
-	margin-top: 20px;
-	background-image: url(../img/share.png);
+	cursor: pointer;
+	
 	background-repeat: no-repeat;
 }
 .splash-weibo {
-	background-position: center -96px;
-	background-color: #ff6536;
+
+	background-image: url(../img/wbloginbtn.png);
+	margin-top: 20px;
 }
 .splash-qq {
-	background-position: center top;
-	background-color: #0093dd;
+	background-image: url(../img/qqloginbtn.png);
+	margin-top: 10px;
 }
 .splash-gender-male,.splash-gender-female {
 	display: block;
@@ -407,7 +503,7 @@ splash
 	position: absolute;
 	top:50%;
 	margin-top:-225px;
-	left: 50%;
+	left: 55%;
 	margin-left: -160px;
 }
 .splash-gender-male {
@@ -2062,6 +2158,7 @@ Cleaning
 }
 #profile-avatar {
 	overflow: hidden;
+	cursor: pointer;
 }
 .head-only .clothes,.head-only .hand {
 	display: none;

@@ -16,7 +16,7 @@ BasicFrameView.prototype = {
             },
             end: {
                 x: 30,
-                y: 10,
+                y: 5,
                 angle: 0,
                 length: 0.25,
                 easing: "easeOutQuint"
@@ -30,7 +30,7 @@ BasicFrameView.prototype = {
     },
     showControls: function () {
         //$('#profile').show().animate({ top: 10 }, 500);
-        $('#siteTitle').show().animate({ top: 10 }, 500, function () { });
+        $('#siteTitle').show().animate({ top: 15 }, 500, function () { });
         $('#footer').show().animate({ bottom: '0' }, 500);
         $('#progress,#main,#navigation').fadeIn();
     },
