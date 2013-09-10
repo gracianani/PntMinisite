@@ -11,7 +11,7 @@ var app = {
         authorize_uri: 'https://api.weibo.com/oauth2/authorize',
         app_id: '3695496477',
         app_secret: '942214d88b57723ad419854c67d3c49c',
-        redirect_uri: 'http://localhost:59884/PntMinisite/index.html'
+        redirect_uri: 'http://pantene.app.social-touch.com/'
     }
 };
 
@@ -20,10 +20,23 @@ window.AppFacade = {
         if (typeof app.Views.BasicFrameView == 'undefined') {
             this.initLoading();
             
-        } else {
-	        $('#splash').hide();
-	        $('body').removeClass('loading');	        
         }
+    },
+    setStartView: function() {
+      var isStartFromSplash = false;
+	  if ( this.currentView == undefined ) {
+	  	isStartFromSplash = true;
+	  	console.log('here');
+		  
+	  } else if ( app.Views.BasicInfoView.model.getAnswerName(22) == '' ) {
+		isStartFromSplash = true;
+		console.log(app.Views.BasicInfoView.model.isAnswered(22));
+	  }
+	  if ( isStartFromSplash ) {
+		  this.initSplash();
+	  } else {
+		  this.initBasicFrame();
+	  }
     },
     initLoading: function () {
         app.Views.LoadingView = new LoadingView();
@@ -94,12 +107,19 @@ window.AppFacade = {
     },
     loadFromCookie: function (isTrigger) {
         var str_user_answers = readCookie("user_answers");
-        this.setUserAnswers($.parseJSON(str_user_answers));
-        var current_scene_id = readCookie("current_scene_id");
-        var str_user_info = readCookie("user_info");
-        var user_info = $.parseJSON(str_user_info);
-        app.User = user_info;
-        app.Router.navigate("Survey/" + current_scene_id, { trigger: isTrigger });
+        
+        if ( str_user_answers ) {
+	        this.setUserAnswers($.parseJSON(str_user_answers));
+	        var current_scene_id = readCookie("current_scene_id");
+	        var str_user_info = readCookie("user_info");
+	        var user_info = $.parseJSON(str_user_info);
+
+	        app.User = user_info;
+	        app.Router.navigate("Survey/" + current_scene_id, { trigger: isTrigger });
+        } else {
+	        app.Router.navigate("", true);
+        }
+        
     }
 }
 
@@ -180,8 +200,10 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
                             $("#weibo").addClass("authenticated");
                         }
                     });
-                    AppFacade.loadFromCookie(isCallback);
+                    
                 }
+                AppFacade.loadFromCookie(isCallback);
+                AppFacade.init();
 
             }
         );

@@ -10,11 +10,11 @@ var Scene = Backbone.Model.extend({
     initialize: function () {
         var question_ids = this.get("question_ids");
         var user_answers = [];
-        console.log(question_ids);
+        //console.log(question_ids);
         for (var index in question_ids) {
             user_answers.push({ "question_id": question_ids[index], "answer_ids": [] });
         }
-        console.log(user_answers);
+        //console.log(user_answers);
         this.set({ user_answers: user_answers });
     },
     getAnswerTextByDegree: function (question_id, degree) {

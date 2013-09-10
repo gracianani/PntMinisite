@@ -282,7 +282,7 @@ profile
 	display: inline-block;
 }
 #share {
-	padding-top: 5px;
+	padding-top: 0px;
 	padding-right: 15px;
 }
 #share iframe {
@@ -408,8 +408,19 @@ loading
 .loading #navigation, .loading #progress{
 	display: none;
 }
-
+.loading {
+	background: #000;
+}
 #loading {
+	position: absolute;
+	position: fixed;
+	left: 0;
+	top:0;
+	width: 100%;
+	height: 100%;
+	background: #000;
+}
+#loading-content {
 	width: 240px;
 	height: 240px;
 	border-radius: 120px;
@@ -436,6 +447,7 @@ splash
 	background: #000;
 	color: #FFF;
 	z-index: 3;
+	display: none;
 }
 #splash .item {
 	visibility: hidden;
