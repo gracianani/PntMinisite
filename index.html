@@ -16,7 +16,8 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-        <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=3695496477" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="100516646" data-redirecturi="http://pantene.app.social-touch.com/qc_callback.html" charset="utf-8"></script>
         <style>
 
         </style>
@@ -58,9 +59,9 @@
         			<div class="splash-subtitle">已经测试过？</div>
         			<div class="splash-subtitle">登陆查看专属报告</div>
         			<div id="splash-loginBtn">
-        				<a class="splash-weibo" title="微博登陆">
+        				<a id="splash-weibo" class="splash-weibo" title="微博登陆">
         				</a>
-        				<a class="splash-qq" title="QQ登陆">
+        				<a id="splash-qq" class="splash-qq" title="QQ登陆">
         				</a>
         			</div>
         	</div>
@@ -99,7 +100,6 @@
         </div>
         
         
-        
         <div id="navigation" class="">
         	<div id="prev" class="navigator">
         		上一题
@@ -109,7 +109,11 @@
         	</div>
         </div>
         
-        
+        <div id="about">
+        <div id="about-logo"><img src="img/logo.png" alt="潘婷 如此健康 焕发光彩" /></div>
+        <div id="about-link"><a href="http://www.pantene.com.cn">潘婷官方主页</a><a href="http://weibo.com/pantene/">潘婷官方微博：@Pantene潘婷</a><div id="about-copyright"> P&G @ 宝洁（中国）有限公司版权所有2013</div></div>
+        <div id="about-support">运营支持：<a href="http://social-touch.com/">时趣科技</a>  京ICP备06006585号-2<br />技术支持：<a href="http://seemeloo.com/">Seemeloo Studio</a></div>
+        </div>
         <div id="tooltip">
         	<div class="content"></div>
         	<div class="caret"></div>
@@ -122,28 +126,28 @@
                 <p>登录以后，可以保存你的报告结果哦！</p>
               </div>
               <div class="modal-body">
-                    <a class="weibologin" ><img src="img/wbloginbtnlarge.png" /></a>
-        	        <a class="qqlogin"><img src="img/qqloginbtnlarge.png" /></a>
+                    <a id="weibologin" class="weibologin" ><img src="img/wbloginbtnlarge.png" /></a>
+        	        <a id="qqlogin" class="qqlogin"><img src="img/qqloginbtnlarge.png" /></a>
               </div>
         </div>
         <div id="profile">
-        	<div id="profile-avatar" data-toggle="modal" data-target="#login">
-        		<div class="avatar head-only avatar-48">
-        		</div>
+        	<div id="prifile-login">
+        	<a id="saveReport">登陆保存报告</a>
         	</div>
+
         	<div id="share">
-<!-- JiaThis Button BEGIN -->
-<div class="jiathis_style_32x32">
-<span id="share-text">分享到</span>
-<a class="jiathis_button_weixin"></a>
-<a class="jiathis_button_tsina"></a>
-<a class="jiathis_button_cqq"></a>
-<a class="jiathis_button_qzone"></a>
-<a class="jiathis_button_douban"></a>
-
-</div>
-
-<!-- JiaThis Button END -->
+				<!-- JiaThis Button BEGIN -->
+				<div class="jiathis_style_32x32">
+				<span id="share-text">分享到</span>
+				<a class="jiathis_button_weixin"></a>
+				<a class="jiathis_button_tsina"></a>
+				<a class="jiathis_button_cqq"></a>
+				<a class="jiathis_button_qzone"></a>
+				<a class="jiathis_button_douban"></a>
+				
+				</div>
+				<!-- JiaThis Button END -->
+				
         	</div>
         </div>
 		<div id="loading">
@@ -626,18 +630,23 @@
 					
 					<div id="quality-problem" class="item" data-question-id="21">
 						<div class="problem-item hairproblem-1-{{#getSelectedClass}}21,99{{/getSelectedClass}}" id="problem-item-1" data-answer-id="99">
+							<div class="problem-text">头发稀疏</div>
 						</div>
 						
 						<div class="problem-item hairproblem-2-{{#getSelectedClass}}21,100{{/getSelectedClass}}" id="problem-item-2"  data-answer-id="100">
+							<div class="problem-text">头发干枯,分叉,无光泽</div>
 						</div>
 						
 						<div class="problem-item hairproblem-3-{{#getSelectedClass}}21,101{{/getSelectedClass}}" id="problem-item-3"  data-answer-id="101">
+							<div class="problem-text">出油，头屑</div>
 						</div>
 						
 						<div class="problem-item hairproblem-4-{{#getSelectedClass}}21,102{{/getSelectedClass}}" id="problem-item-4" data-answer-id="102">
+							<div class="problem-text">掉发</div>
 						</div>
 						
 						<div class="problem-item hairproblem-5-{{#getSelectedClass}}21,103{{/getSelectedClass}}" id="problem-item-5" data-answer-id="103">
+							<div class="problem-text">沙发,难打理</div>
 						</div>
 					</div>
 				</div>
@@ -839,7 +848,7 @@
         	</div>
         	
         </script>
-                <script src="js/vendor/jquery-1.9.1.min.js"></script>
+        <script src="js/vendor/jquery-1.9.1.min.js"></script>
         <script src="js/vendor/raphael-min.js"></script>
         <script src="js/vendor/g.raphael-min.js"></script>
         <script src="js/vendor/jquery.cookie.js"></script>
@@ -853,27 +862,27 @@
         <script src="js/vendor/mustache.js"></script>
         <script src="js/backbone/utils/paths.js"></script>
         <script src="js/backbone/utils/plugins.js"></script>
-        <script src="js/backbone/views/View.js"></script>
+        <script src="js/backbone/views/view.js"></script>
         <script src="js/backbone/utils/animationHandler.js"></script>
         <script src="js/vendor/require.min.js" data-main="js/main"></script>
         <!-- JiaThis Button BEGIN -->
 		<script type="text/javascript" >
-		var jiathis_config={
-			data_track_clickback:true,
-			url:"http://pantene.app.sociail-touch.com/",
-			summary:"家庭主妇？",
-			title:"Pantene护发实验室 #Pantene护发实验室#",
-			pic:"http://pantene.app.sociail-touch.com/img/logo.png",
-			ralateuid:{
-				"tsina":"潘婷Pantene"
-			},
-			appkey:{
-				"tsina":"3695496477",
-				"tqq":"6b346735b25a53425c4eda8e41553e96"
-			},
-			shortUrl:false,
-			hideMore:true
-		}
+				var jiathis_config={
+					data_track_clickback:true,
+					url:"http://pantene.app.sociail-touch.com/",
+					summary:"家庭主妇？",
+					title:"Pantene护发实验室 #Pantene护发实验室#",
+					pic:"http://pantene.app.sociail-touch.com/img/logo.png",
+					ralateuid:{
+						"tsina":"潘婷Pantene"
+					},
+					appkey:{
+						"tsina":"3695496477",
+						"tqq":"6b346735b25a53425c4eda8e41553e96"
+					},
+					shortUrl:false,
+					hideMore:true
+				}
 		</script>
 		<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1838321" charset="utf-8"></script>
 		<!-- JiaThis Button END -->

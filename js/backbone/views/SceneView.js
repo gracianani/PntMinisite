@@ -5,12 +5,14 @@ var MainView = Backbone.View.extend({
     events: {
         "click #next": "processToNextQuestion",
         "click #prev" : "processToPrevQuestion",
-        "click #profile-avatar" : "showLogin",
-        "click .splash-weibo,.splash-qq,.weibologin,.qqlogin" : "authorize",
+        "click #saveReport" : "showLogin",
+        "click #splash-weibo,#weibologin" : "authorize",
         "click #login .close" : "closeLogin"
     },
     initialize: function () {
         this.$el = $('body');
+        
+        
     },
     processToNextQuestion: function () {
         AppFacade.getCurrentView().next();
@@ -1099,13 +1101,15 @@ var HairQualityView = Backbone.View.extend( {
 	   this.setDegree( bar, degree);
     },
     onClickProgressDot : function(e) {
-	    
+	    e.preventDefault();
+    	e.stopPropagation();
 	    var node = $(e.currentTarget);
 	    var degree = node.parent().children().index(node) + 1;
 	    this.setDegree( node.parent(), degree);
 
     },
     onClickProblem : function(e) {
+    	
 	    var problem = $(e.currentTarget);
 	    var problemIndex = problem.parent().children().index(problem) + 1;
 	    

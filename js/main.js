@@ -12,6 +12,12 @@ var app = {
         app_id: '3695496477',
         app_secret: '942214d88b57723ad419854c67d3c49c',
         redirect_uri: 'http://pantene.app.social-touch.com/'
+    },
+    qqApp: {
+    	authorize_uri: 'https://api.weibo.com/oauth2/authorize',
+	    app_id:'100516646',
+	    app_key:'6b346735b25a53425c4eda8e41553e96',
+	    redirect_uri: 'http://pantene.app.social-touch.com/qc_callback.html'
     }
 };
 
@@ -113,15 +119,45 @@ window.AppFacade = {
 	        var current_scene_id = readCookie("current_scene_id");
 	        var str_user_info = readCookie("user_info");
 	        var user_info = $.parseJSON(str_user_info);
-
-	        app.User = user_info;
+			if ( user_info ) {
+				app.User = user_info;
+			}
+	        
 	        app.Router.navigate("Survey/" + current_scene_id, { trigger: isTrigger });
         } else {
-        	app.User = {};
 	        app.Router.navigate("", true);
         }
         
-    }
+    },
+    initQQLogin: function() {
+	    
+    },
+    onQQLoginSuccess: function(reqData, opts){
+		var dom = document.getElementById(opts['btnId']),
+		_logoutTemplate=[
+				            '<span class="profile-avatar"><img src="{figureurl}" class="{size_key}"/></span>',
+				            '<span class="profile-nickname">{nickname}</span>',
+				            '<span class="profile-logout"><a href="javascript:QC.Login.signOut();">退出</a></span>'    
+		].join("");
+		$('#prifile-login').html(
+				       QC.String.format(_logoutTemplate, {
+				           nickname : QC.String.escHTML(reqData.nickname), //做xss过滤
+				           figureurl : reqData.figureurl
+				       })
+		);
+		$("#login").addClass("hidden");
+		$("#splash-qq,#splash-weibo").hide();
+				       
+		QC.Login.getMe(function(openId, accessToken){
+					       self.app.User.openId = openId;
+					       self.app.User.accessToken = accessToken;
+		});
+	},
+    onQQLogoutSuccess: function(opts){//注销成功
+		alert('QQ登录 注销成功');
+		$('#prifile-login').html('<a id="saveReport">登陆保存报告</a>');
+		$("#splash-qq,#splash-weibo").show();
+	}
 }
 
 // Start the main app logic.
@@ -203,8 +239,25 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
                     });
                     
                 }
+                console.log('here');
                 AppFacade.loadFromCookie(isCallback);
+                console.log('here');
                 AppFacade.init();
+
+				var self = window;
+				
+				
+				QC.Login({//按默认样式插入QQ登录按钮
+					btnId:"qqlogin",
+					size: "A_XL"
+					},
+					window.AppFacade.onQQLoginSuccess, window.AppFacade.onQQLogoutSuccess);
+				QC.Login({//按默认样式插入QQ登录按钮
+					btnId:"splash-qq",
+					size: "A_L"
+					},
+					window.AppFacade.onQQLoginSuccess, window.AppFacade.onQQLogoutSuccess);
+
 
             }
         );
