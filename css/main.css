@@ -1045,12 +1045,12 @@ scenes
 }
 .life-icon {
 	position: absolute;
-	width: 100px;
-	height: 100px;
+	width: 130px;
+	height: 130px;
 	cursor: pointer;
 	
-	margin-left: -50px;
-	margin-top: -50px;
+	margin-left: -65px;
+	margin-top: -65px;
 }
 .life-icon:hover {
 	transform: scale(1.2);
@@ -1517,12 +1517,44 @@ Cleaning
 	left: 72%;
 	top: 5%;
 }
+
+.hairstyle-icon {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	left: 25px;
+	top: 25px;
+	
+
+	background: url(../img/character/hairicon.png) no-repeat;
+}
+.curl-1{ background-position: 0 0; width: 100px; height: 100px; } 
+.curl-3{ background-position: 0 -101px; width: 100px; height: 100px; } 
+.curl-2{ background-position: 0 -202px; width: 100px; height: 100px; } 
+.curl-4{ background-position: 0 -303px; width: 100px; height: 100px; } 
+.len-xs{ background-position: 0 -404px; width: 100px; height: 100px; } 
+.len-s{ background-position: 0 -505px; width: 100px; height: 100px; } 
+.len-m{ background-position: 0 -606px; width: 100px; height: 100px; } 
+.len-l{ background-position: 0 -707px; width: 100px; height: 100px; } 
+.len-xl{ background-position: 0 -808px; width: 100px; height: 100px; } 
+
+
+.hairstyle-text {
+	position: absolute;
+	bottom: 20px;
+	left: 0;
+	text-align: center;
+	width: 100%;
+	line-height: 20px;
+	font-size: 14px;
+}
 .hairstyle-circle {
 	width: 150px;
 	height: 150px;
 	border-radius: 100px;
 	background-color: #fde7b8;
 	border:5px dashed #d55b1c;
+	position: relative;
 }
 .hairstyle-circle-dragable {
 	width: 40px;
@@ -1551,12 +1583,35 @@ Cleaning
 	width: 50px;
 	height: 50px;
 	border-radius: 30px;
-	border:3px #d55b1c dashed;
-	background-color: #fde7b8;
+	border:3px #2470a5 dashed;
+	background-color: #2470a5;
+	background-image:url(../img/scene/hairstyle-icon.png);
+	background-repeat: no-repeat;
 	float: left;
 	display: inline-block;
 	margin-right: 10px;
 	margin-bottom: 10px;
+	cursor: pointer;
+}
+.hairtype-icon:hover {
+	background-color: #d55b1c;
+	border-color: #ffe579;
+}
+.hairtype-icon.selected {
+	background-color: #d55b1c;
+	border-color: #d55b1c;
+}
+#comb {
+	background-position: left -150px;
+}
+#band {
+	background-position: left top;
+}
+#hand {
+	background-position: left -50px;
+}
+#pin {
+	background-position: left -100px;
 }
 #hairstyle-color {
 	position: absolute;
@@ -1579,6 +1634,9 @@ Cleaning
 .haircolor:hover {
 	z-index: 3;
 	border-color:#d55b1c;
+}
+.haircolor.selected {
+	z-index: 2;
 }
 #haircolor-mix {
 	transform: rotate(-45deg);
@@ -1617,18 +1675,21 @@ Cleaning
 	height: 100%;
 	float: right;
 	border-radius: 0 10px 10px 0;
+	background: url(../img/scene/colorcard.png) no-repeat left top;
 }
 #haircolor-mix .haircolor-content{
-	background: #602016;
+	background-color: #602016;
+	background-position: 0 -40px;
 }
 #haircolor-black .haircolor-content{
-	background: #000;
+	background-color: #000;
+	background-position: 0 -80px;
 }
 #haircolor-gold .haircolor-content{
-	background: #d08200;
+	background-color: #d08200;
 }
 #haircolor-red .haircolor-content{
-	background: #8b3122;
+	background-color: #8b3122;
 }
 /******** hair quality *********/
 #magnifier {
@@ -2132,6 +2193,7 @@ Cleaning
 	border-width: 2px;
 	border-style: solid;
 	background-color: #94c2b4;
+	background-color: #ffbd32;
 	background-position: center -80px;
 }
 .on-degree-2 #age-item-2 .age-item-text,
@@ -2152,6 +2214,7 @@ Cleaning
 	border-style: solid;
 	border-width: 2px;
 	background-color: #6fc280;
+	background-color: #2470a5;
 	background-position: center -160px;
 }
 .on-degree-3 #age-item-3 .age-item-text,

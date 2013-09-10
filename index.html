@@ -502,48 +502,52 @@
         		<div id="scene-hairstyle-content" class="scene-content" >
 					<div id="hairstyle-length" class="item" data-question-id="13">
 						<div class="hairstyle-circle" data-degree="{{#getDataDegree}}13{{/getDataDegree}}">
+						<div class="hairstyle-icon len-{{#getUserAnswerName}}13{{/getUserAnswerName}}"></div>
+						<div class="hairstyle-text">{{#getDataDegreeText}}13{{/getDataDegreeText}}</div>
 							<div class="hairstyle-circle-dragable">
 							</div>
 						</div>
 					</div>
 					<div id="hairstyle-curl" class="item" data-question-id="14">
 						<div class="hairstyle-circle" data-degree="{{#getDataDegree}}14{{/getDataDegree}}">
+							<div class="hairstyle-icon curl-{{#getDataDegree}}14{{/getDataDegree}}"></div>
+							<div class="hairstyle-text">{{#getDataDegreeText}}14{{/getDataDegreeText}}</div>
 							<div class="hairstyle-circle-dragable">
 							</div>
 						</div>
 						
 					</div> 
 					<div id="hairstyle-type" class="item" data-question-id="16">
-						<div id="hand" class="hairtype-icon" data-answer-id="77">
+						<div id="comb" class="hairtype-icon {{#getSelectedClass}}16,77{{/getSelectedClass}}" data-answer-id="77" title="头发散开">
 						</div>
-						<div id="pin" class="hairtype-icon" data-answer-id="78">
+						<div id="band" class="hairtype-icon {{#getSelectedClass}}16,78{{/getSelectedClass}}" data-answer-id="78" title="扎马尾">
 						</div>
-						<div id="band" class="hairtype-icon" data-answer-id="79">
+						<div id="pin" class="hairtype-icon {{#getSelectedClass}}16,79{{/getSelectedClass}}" data-answer-id="79" title="盘发">
 						</div>
-						<div id="comb" class="hairtype-icon" data-answer-id="80">
+						<div id="hand" class="hairtype-icon {{#getSelectedClass}}16,80{{/getSelectedClass}}" data-answer-id="80" title="编辫子">
 						</div>
 					</div>
 					<div id="hairstyle-color" class="item" data-question-id="15">
-						<div id="haircolor-mix" class="haircolor" data-answer-id="73">
+						<div id="haircolor-mix" class="haircolor {{#getSelectedClass}}15,73{{/getSelectedClass}}" data-answer-id="73" title="挑染">
 							<div class="haircolor-hole">
 							</div>
 							<div class="haircolor-content">
 							</div>
 						</div>
-						<div id="haircolor-black" class="haircolor" data-answer-id="74">
+						<div id="haircolor-black" class="haircolor {{#getSelectedClass}}15,74{{/getSelectedClass}}" data-answer-id="74"  title="未染发">
 							<div class="haircolor-hole">
 							</div>
 							<div class="haircolor-content">
 							</div>
 						</div>
 						
-						<div id="haircolor-gold" class="haircolor" data-answer-id="75">
+						<div id="haircolor-gold" class="haircolor {{#getSelectedClass}}15,75{{/getSelectedClass}}" data-answer-id="75" title="金色系">
 							<div class="haircolor-hole">
 							</div>
 							<div class="haircolor-content">
 							</div>
 						</div>
-						<div id="haircolor-red" class="haircolor" data-answer-id="76">
+						<div id="haircolor-red" class="haircolor {{#getSelectedClass}}15,76{{/getSelectedClass}}" data-answer-id="76" title="红色系">
 							<div class="haircolor-hole">
 							</div>
 							<div class="haircolor-content">
