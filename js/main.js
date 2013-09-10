@@ -117,6 +117,7 @@ window.AppFacade = {
 	        app.User = user_info;
 	        app.Router.navigate("Survey/" + current_scene_id, { trigger: isTrigger });
         } else {
+        	app.User = {};
 	        app.Router.navigate("", true);
         }
         

@@ -19,9 +19,7 @@ var MainView = Backbone.View.extend({
         AppFacade.getCurrentView().prev();
     },
     showLogin : function() {
-        if(typeof app.User.uid == 'undefined') {
-            $("#login").removeClass("hidden");
-        }
+        $("#login").removeClass("hidden");
     },
     closeLogin : function() {
         $("#login").addClass("hidden");
