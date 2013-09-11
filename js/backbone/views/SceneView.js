@@ -9,18 +9,40 @@ var MainView = Backbone.View.extend({
         "click #weibologin" : "authorize",
         "click #login .close" : "closeLogin",
         "click #nologin" : "showReport",
-        "click #eraseCookie" : "eraseCookie"
+        "click #eraseCookie" : "eraseCookie",
+        "click .step": "onCLickStep"
     },
     initialize: function () {
         this.$el = $('body');
-        
+        $('.step').tooltip();
         
     },
     processToNextQuestion: function () {
         AppFacade.getCurrentView().next();
+        this.setProgressBar();
     },
     processToPrevQuestion: function() {
         AppFacade.getCurrentView().prev();
+        this.setProgressBar();
+    },
+    setProgressBar: function() {
+	    var stepid = AppFacade.getCurrentView().model.get("scene_id");
+	    $('#progress').attr('class','step'+stepid);
+    },
+    onCLickStep: function(e) {
+	  	var item = $(e.currentTarget);
+	  	var step = parseInt(item.attr("data-step"));
+	  	var currentView = AppFacade.getCurrentView();
+	  	var currentStep = parseInt(currentView.model.get("scene_id"));
+	  	
+	  	if ( step < currentStep ) {
+		  	var nextView = app.SceneViews[step-1];
+		  	AppFacade.setCurrentView(nextView);
+		  	app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
+		  	currentView.onexit();
+		  	this.setProgressBar();
+	  	}
+	  	
     },
     showLogin : function() {
         $("#login").removeClass("hidden");
@@ -900,6 +922,7 @@ var DietView = Backbone.View.extend({
     prev : function() {
         var prevView = app.Views.HealthView;
         AppFacade.setCurrentView(prevView);
+        app.Router.navigate("Survey/" + prevView.model.get("scene_id"));
         this.onexit();
     },
     next: function () {
@@ -910,6 +933,7 @@ var DietView = Backbone.View.extend({
     	}
         var nextView = app.Views.CleaningView;
         AppFacade.setCurrentView(nextView);
+        app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
         this.onexit();
     },
     onexit : function() {
