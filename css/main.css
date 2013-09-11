@@ -95,15 +95,15 @@ textarea {
 
 html {
 	background-color: #ffbd32;
-	height: 100%;
 	width: 100%;
+	min-height: 100%;
 }
 body {
 	width: 100%;
-	height: 100%;
 	position: relative;
 	font-family: "Microsoft Yahei","Yahei",sans-serif;
 	overflow: hidden;
+	min-height: 100%;
 
 }
 
@@ -114,13 +114,12 @@ body {
 footer 
 =====================*/
 #footer {
-	position: fixed;
-	bottom: -25%;
-	left: 0;
 	width: 100%;
 	height: 25%;
+	min-height: 180px;
+	position: relative;
 	background: url(../img/bottom.png) center top no-repeat;
-	z-index: 1;
+	padding-bottom: 85px;
 }
 
 #progress {
@@ -128,8 +127,9 @@ footer
 	height: 60px;
 	background: url(../img/progress.png) center top no-repeat;
 	position: absolute;
-	bottom: 20px;
-	right: 5%;
+	bottom: 105px;
+	left: 50%;
+	margin-left: -136px;
 }
 #progress.step2 {
 	background-position: center -60px;
@@ -170,12 +170,10 @@ main
 #main {
 	width:960px;
 	height: 450px;
-	position: absolute;
-	top:50%;
-	left: 50%;
-	margin-left:-480px;
-	margin-top:-210px;
+	position: relative;
+	top:50px;
 	text-align: center;
+	margin: 0 auto 0;
 	z-index: 2;
 }
 .scene {
@@ -197,9 +195,7 @@ main
 header 
 =====================*/
 #header {
-	position: fixed;
-	top: 0;
-	left: 0;
+	position: relative;
 	width: 100%;
 	height: 70px;
 	background: #000 url(../img/headerbottom.png) repeat-x left bottom;
@@ -282,7 +278,7 @@ profile
 	display: inline-block;
 }
 #share {
-	padding-top: 5px;
+	padding-top: 0px;
 	padding-right: 15px;
 }
 #share iframe {
@@ -300,6 +296,51 @@ profile
 	height: 60px;
 	margin: 0 auto;
 	position: relative;
+	display: inline-block;
+	float: left;
+}
+#profile .profile-avatar{
+	border-radius: 18px;
+	width: 30px;
+	height: 30px;
+	overflow: hidden;
+	display: inline-block;
+	float: left;
+	border:2px solid #fff;
+	margin-right: 5px;
+}
+#profile .profile-nickname {
+	color: #FFF;
+	display: inline-block;
+	float: left;
+	line-height: 34px;
+	margin-right: 5px;
+}
+#profile .profile-logout {
+	line-height: 34px;
+	display: inline-block;
+	float: left;
+	margin-right: 5px;
+}
+#profile .profile-logout a {
+	color: #fad949;
+	text-decoration: none;
+}
+#prifile-login {
+	float: right;
+}
+#share {
+	float: right;
+}
+#saveReport {
+	color: #fad949;
+	line-height: 32px;
+	cursor: pointer;
+}
+#saveReport {
+	float: left;
+	display: inline-block;
+	margin-right: 5px;
 }
 #share-text {
 	color: #fad949;
@@ -408,8 +449,20 @@ loading
 .loading #navigation, .loading #progress{
 	display: none;
 }
-
+.loading {
+	background: #000;
+	height: 100%;
+}
 #loading {
+	position: absolute;
+	position: fixed;
+	left: 0;
+	top:0;
+	width: 100%;
+	height: 100%;
+	background: #000;
+}
+#loading-content {
 	width: 240px;
 	height: 240px;
 	border-radius: 120px;
@@ -436,6 +489,7 @@ splash
 	background: #000;
 	color: #FFF;
 	z-index: 3;
+	display: none;
 }
 #splash .item {
 	visibility: hidden;
@@ -991,12 +1045,12 @@ scenes
 }
 .life-icon {
 	position: absolute;
-	width: 100px;
-	height: 100px;
+	width: 130px;
+	height: 130px;
 	cursor: pointer;
 	
-	margin-left: -50px;
-	margin-top: -50px;
+	margin-left: -65px;
+	margin-top: -65px;
 }
 .life-icon:hover {
 	transform: scale(1.2);
@@ -1463,12 +1517,44 @@ Cleaning
 	left: 72%;
 	top: 5%;
 }
+
+.hairstyle-icon {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	left: 25px;
+	top: 25px;
+	
+
+	background: url(../img/character/hairicon.png) no-repeat;
+}
+.curl-1{ background-position: 0 0; width: 100px; height: 100px; } 
+.curl-3{ background-position: 0 -101px; width: 100px; height: 100px; } 
+.curl-2{ background-position: 0 -202px; width: 100px; height: 100px; } 
+.curl-4{ background-position: 0 -303px; width: 100px; height: 100px; } 
+.len-xs{ background-position: 0 -404px; width: 100px; height: 100px; } 
+.len-s{ background-position: 0 -505px; width: 100px; height: 100px; } 
+.len-m{ background-position: 0 -606px; width: 100px; height: 100px; } 
+.len-l{ background-position: 0 -707px; width: 100px; height: 100px; } 
+.len-xl{ background-position: 0 -808px; width: 100px; height: 100px; } 
+
+
+.hairstyle-text {
+	position: absolute;
+	bottom: 20px;
+	left: 0;
+	text-align: center;
+	width: 100%;
+	line-height: 20px;
+	font-size: 14px;
+}
 .hairstyle-circle {
 	width: 150px;
 	height: 150px;
 	border-radius: 100px;
 	background-color: #fde7b8;
 	border:5px dashed #d55b1c;
+	position: relative;
 }
 .hairstyle-circle-dragable {
 	width: 40px;
@@ -1497,12 +1583,35 @@ Cleaning
 	width: 50px;
 	height: 50px;
 	border-radius: 30px;
-	border:3px #d55b1c dashed;
-	background-color: #fde7b8;
+	border:3px #2470a5 dashed;
+	background-color: #2470a5;
+	background-image:url(../img/scene/hairstyle-icon.png);
+	background-repeat: no-repeat;
 	float: left;
 	display: inline-block;
 	margin-right: 10px;
 	margin-bottom: 10px;
+	cursor: pointer;
+}
+.hairtype-icon:hover {
+	background-color: #d55b1c;
+	border-color: #ffe579;
+}
+.hairtype-icon.selected {
+	background-color: #d55b1c;
+	border-color: #d55b1c;
+}
+#comb {
+	background-position: left -150px;
+}
+#band {
+	background-position: left top;
+}
+#hand {
+	background-position: left -50px;
+}
+#pin {
+	background-position: left -100px;
 }
 #hairstyle-color {
 	position: absolute;
@@ -1525,6 +1634,9 @@ Cleaning
 .haircolor:hover {
 	z-index: 3;
 	border-color:#d55b1c;
+}
+.haircolor.selected {
+	z-index: 2;
 }
 #haircolor-mix {
 	transform: rotate(-45deg);
@@ -1563,18 +1675,21 @@ Cleaning
 	height: 100%;
 	float: right;
 	border-radius: 0 10px 10px 0;
+	background: url(../img/scene/colorcard.png) no-repeat left top;
 }
 #haircolor-mix .haircolor-content{
-	background: #602016;
+	background-color: #602016;
+	background-position: 0 -40px;
 }
 #haircolor-black .haircolor-content{
-	background: #000;
+	background-color: #000;
+	background-position: 0 -80px;
 }
 #haircolor-gold .haircolor-content{
-	background: #d08200;
+	background-color: #d08200;
 }
 #haircolor-red .haircolor-content{
-	background: #8b3122;
+	background-color: #8b3122;
 }
 /******** hair quality *********/
 #magnifier {
@@ -1832,6 +1947,22 @@ Cleaning
 	background: url(../img/scene/hairproblem.png) no-repeat top left;
 	cursor: pointer;
 }
+.problem-item:hover .problem-text{
+	background: #d55b1c;
+	color: #fff;
+}
+.problem-text {
+	position: absolute;
+	top: 105%;
+	border-radius: 5px;
+	padding: 5px 10%;
+	font-size: 12px;
+	line-height: 18px;
+	text-align: center;
+	width: 80%;
+	color: #666;
+	
+}
 #problem-item-1 {
 	left: 0;
 	margin-left: -45px;
@@ -1974,6 +2105,10 @@ Cleaning
 	background-image: url(../img/character/fm-age.png);
 	background-repeat: no-repeat;
 }
+.m .age-item {
+	background-image: url(../img/character/m-age.png);
+	background-repeat: no-repeat;
+}
 .age-item {
 	width: 60px;
 	height: 80px;
@@ -2058,6 +2193,7 @@ Cleaning
 	border-width: 2px;
 	border-style: solid;
 	background-color: #94c2b4;
+	background-color: #ffbd32;
 	background-position: center -80px;
 }
 .on-degree-2 #age-item-2 .age-item-text,
@@ -2078,6 +2214,7 @@ Cleaning
 	border-style: solid;
 	border-width: 2px;
 	background-color: #6fc280;
+	background-color: #2470a5;
 	background-position: center -160px;
 }
 .on-degree-3 #age-item-3 .age-item-text,
@@ -2528,8 +2665,17 @@ Cleaning
 	top:45%;
 	margin-top:-175px;
 }
-.mirror-show .character{
-
+.mirror-show .fm{
+	position: absolute;
+	left: 50%;
+	margin-left:-106px;
+	top:5px;
+}
+.mirror-show .m{
+	position: absolute;
+	left: 50%;
+	margin-left:-86px;
+	top:5px;
 }
 #character-profile {
 	position: absolute;
@@ -3045,6 +3191,40 @@ Cleaning
 	list-style: disc;
 	margin-left: 20px;
 	color: #666;
+}
+
+/****about **/
+#about {
+	width: 90%;
+	line-height: 20px;
+	padding: 20px 5% 25px;
+	background: #000;
+	color: #666;
+	font-size: 12px;
+	z-index: 2;
+	position: absolute;
+	bottom: 0;
+}
+#about a {
+	color: #ffbd32;
+	display: inline-block;
+	padding-right: 10px;
+	text-decoration: none;
+}
+#about-logo {
+	float: left;
+	display: inline-block;
+	padding-right: 15px;
+}
+#about-logo img {
+	width: 100px;
+}
+#about-link {
+	float: left;
+	display: inline-block;
+}
+#about-support {
+	float: right;
 }
 /* ==========================================================================
    Helper classes

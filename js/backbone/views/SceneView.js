@@ -5,12 +5,14 @@ var MainView = Backbone.View.extend({
     events: {
         "click #next": "processToNextQuestion",
         "click #prev" : "processToPrevQuestion",
-        "click #profile-avatar" : "showLogin",
-        "click .splash-weibo,.splash-qq,.weibologin,.qqlogin" : "authorize",
+        "click #saveReport" : "showLogin",
+        "click #splash-weibo,#weibologin" : "authorize",
         "click #login .close" : "closeLogin"
     },
     initialize: function () {
         this.$el = $('body');
+        
+        
     },
     processToNextQuestion: function () {
         AppFacade.getCurrentView().next();
@@ -19,9 +21,7 @@ var MainView = Backbone.View.extend({
         AppFacade.getCurrentView().prev();
     },
     showLogin : function() {
-        if(typeof app.User.uid == 'undefined') {
-            $("#login").removeClass("hidden");
-        }
+        $("#login").removeClass("hidden");
     },
     closeLogin : function() {
         $("#login").addClass("hidden");
@@ -392,19 +392,21 @@ var LifeView = Backbone.View.extend({
     next: function () {
         var nextView = app.Views.HealthView;
         AppFacade.setCurrentView(nextView);
-        AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
-        app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
+        this.onexit();
        
     },
     prev : function() {
         var prevView = app.Views.HairQualityView;
         AppFacade.setCurrentView(prevView);
-        AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
-        app.Router.navigate("Survey/" + prevView.model.get("scene_id"));
+        this.onexit();
     },
     postrender: function () {
         AnimationHandler.initialize('#scene-life-content');
         this.animateIn();
+    },
+    onexit : function() {
+	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
+	    AppFacade.saveToCookie();
     }
 });
 
@@ -573,14 +575,16 @@ var CleaningView = Backbone.View.extend({
     prev : function() {
         var prevView = app.Views.DietView;
         AppFacade.setCurrentView(prevView);
-        AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
-        app.Router.navigate("Survey/" + prevView.model.get("scene_id"));
+        this.onexit();
     },
     next: function () {
         var nextView = app.Views.SalonView;
         AppFacade.setCurrentView(nextView);
-        AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
-        app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
+        this.onexit();
+    },
+    onexit : function() {
+	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
+	    AppFacade.saveToCookie();
     }
 });
 
@@ -665,14 +669,16 @@ var HealthView = Backbone.View.extend({
     prev : function() {
         var prevView = app.Views.LifeView;
         AppFacade.setCurrentView(prevView);
-        AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
-        app.Router.navigate("Survey/" + prevView.model.get("scene_id"));
+        this.onexit();
     },
     next: function () {
         var nextView = app.Views.DietView;
         AppFacade.setCurrentView(nextView);
-        AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
-        app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
+        this.onexit();
+    },
+    onexit : function() {
+	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
+	    AppFacade.saveToCookie();
     }
 });
 
@@ -826,14 +832,17 @@ var DietView = Backbone.View.extend({
     prev : function() {
         var prevView = app.Views.HealthView;
         AppFacade.setCurrentView(prevView);
-        AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
-        app.Router.navigate("Survey/" + prevView.model.get("scene_id"));
+        this.onexit();
     },
     next: function () {
         var nextView = app.Views.CleaningView;
         AppFacade.setCurrentView(nextView);
-        AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
-        app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
+        this.onexit();
+    },
+    onexit : function() {
+	    $("#character-container").fadeOut();
+	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
+	    AppFacade.saveToCookie();
     }
 
 });
@@ -897,7 +906,13 @@ var HairStyleView = Backbone.View.extend( {
 			},
 			stop: function(event,ui){
 				$(this).setDegree();
-                self.model.setAnswerByDegree(parseInt($(this).parent().parent().data("question-id")), parseInt($(this).data('degree')), true);
+				
+				var question_id = parseInt($(this).parent().parent().data("question-id"));
+				var degree = parseInt($(this).data('degree'));
+				
+                self.model.setAnswerByDegree(question_id, degree, true);
+                $(this).parent().find('.hairstyle-text').html(self.model.getAnswerTextByDegree(question_id, degree));
+                
 				self.setHairStyle();
 			}
 			
@@ -924,19 +939,26 @@ var HairStyleView = Backbone.View.extend( {
 		$circle.find('.hairstyle-circle-dragable').data('dragcircle', data );
         $circle.find('.hairstyle-circle-dragable').setDegree();
         
-        
-
-		this.model.setAnswerByDegree(parseInt($circle.parent().data("question-id")), parseInt($circle.find('.hairstyle-circle-dragable').data('degree')), true);
+        var question_id = parseInt($circle.parent().data("question-id"));
+		var degree = parseInt($circle.find('.hairstyle-circle-dragable').data('degree'));
+		console.log(question_id);
+				
+        this.model.setAnswerByDegree(question_id, degree, true);
+        $circle.find('.hairstyle-text').html(this.model.getAnswerTextByDegree(question_id, degree));
 		this.setHairStyle();
     },
     setHairState : function(event) {
         var item = $(event.currentTarget);
+        item.siblings().removeClass('selected');
+        item.addClass('selected');
         this.model.setAnswer(item.parent().data("question-id"), item.data("answer-id"), true);
         this.setHairStyle();
 
     },
     setHairColor : function(event) {
         var item = $(event.currentTarget);
+        item.siblings().removeClass('selected');
+        item.addClass('selected');
         this.model.setAnswer(parseInt(item.parent().data("question-id")), parseInt(item.data("answer-id")), true);
         this.setHairStyle();
     },
@@ -967,6 +989,9 @@ var HairStyleView = Backbone.View.extend( {
 		
 		$('.hair').attr('class',hairStr);
 		$('.bang').attr('class',bangStr);
+		
+		$('#hairstyle-length .hairstyle-icon').attr('class','hairstyle-icon len-'+hairData.length);
+		$('#hairstyle-curl .hairstyle-icon').attr('class','hairstyle-icon curl-'+hairData.curl);
 	}, 
 
     initialize: function () {
@@ -995,6 +1020,7 @@ var HairStyleView = Backbone.View.extend( {
     	 $("#character-container").fadeIn();
         AnimationHandler.initialize('#scene-hairstyle-content');
         this.animateIn();
+        this.initAnswerTooltip();
     },
     prev : function() {
         var prevView = app.Views.BasicInfoView;
@@ -1011,6 +1037,10 @@ var HairStyleView = Backbone.View.extend( {
     onexit : function() {
 	    $("#character-container").fadeOut();
 	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
+	    AppFacade.saveToCookie();
+    },
+    initAnswerTooltip: function(){
+	    $('.hairtype-icon,.haircolor').tooltip();
     }
 });
 
@@ -1081,6 +1111,7 @@ var HairQualityView = Backbone.View.extend( {
     onexit : function() {
 	    $("#character-container").fadeOut();
 	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
+	    AppFacade.saveToCookie();
     },
     onClickProgressBar : function(e) {
 	  var bar = $(e.currentTarget);
@@ -1090,13 +1121,15 @@ var HairQualityView = Backbone.View.extend( {
 	   this.setDegree( bar, degree);
     },
     onClickProgressDot : function(e) {
-	    
+	    e.preventDefault();
+    	e.stopPropagation();
 	    var node = $(e.currentTarget);
 	    var degree = node.parent().children().index(node) + 1;
 	    this.setDegree( node.parent(), degree);
 
     },
     onClickProblem : function(e) {
+    	
 	    var problem = $(e.currentTarget);
 	    var problemIndex = problem.parent().children().index(problem) + 1;
 	    
@@ -1182,7 +1215,6 @@ var BasicInfoView = Backbone.View.extend( {
     // Re-render the titles of the todo item.
     render: function () {
         this.$el.html(Mustache.render(this.template, this.model));
-        
         app.Views.AvatarView.render();
         this.trigger("render");
         return this;
@@ -1215,6 +1247,7 @@ var BasicInfoView = Backbone.View.extend( {
 	    $("#character-container").fadeOut();
 	    $('#prev').fadeIn();
 	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
+	    AppFacade.saveToCookie();
     },
     next: function () {
         var nextView = app.Views.HairStyleView;
@@ -1301,6 +1334,7 @@ var SalonView = Backbone.View.extend( {
     },
     onexit : function() {
 	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
+	    AppFacade.saveToCookie();
     },
     next: function () {
         app.Report.getReport();
