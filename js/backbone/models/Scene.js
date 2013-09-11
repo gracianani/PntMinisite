@@ -228,6 +228,24 @@ var Scene = Backbone.Model.extend({
             return '';
         }
     },
+    getAnswerText: function (question_id) {
+        var question = app.QuestionRepo.findWhere({ question_id: question_id });
+        if (this.isAnswered(question_id)) {
+            var user_question = this.getUserAnswerByQuestionId(question_id);
+            var user_answer = user_question.answer_ids[0];
+            if (typeof user_answer !== 'undefined') {
+                var answer_id = user_answer;
+                var degree = $.grep(question.get("answers"), function (e) { return e.answer_id == answer_id })[0].text;
+                return degree;
+            }
+            else {
+                return '';
+            }
+        }
+        else {
+            return '';
+        }
+    },
 
     isQuestionFinished: function (question_id) {
         var question = app.QuestionRepo.findWhere({ question_id: question_id }).toJSON();

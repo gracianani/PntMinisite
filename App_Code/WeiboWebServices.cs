@@ -50,7 +50,8 @@ public class WeiboWebServices : System.Web.Services.WebService {
             {3, new List<int>()}
         };
         var productIds = new List<int>();
-
+        var score = 0.0m;
+        var quizId = 0;
         foreach (SceneUserAnswer sceneUserAnswer in sceneUserAnswers)
         {
             var answer_ids = sceneUserAnswer.user_answers.Select(i => i.answer_ids).ToList();
@@ -80,10 +81,10 @@ public class WeiboWebServices : System.Web.Services.WebService {
         string connStr = ConfigurationManager.ConnectionStrings["pnt"].ConnectionString;
         using (var conn = new SqlConnection(connStr))
         {
+            conn.Open();
             using( var command = new SqlCommand("FetchSuggestions", conn)) {
                 command.CommandType = System.Data.CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("Answers", answerIdTable );
-                conn.Open();
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -99,10 +100,25 @@ public class WeiboWebServices : System.Web.Services.WebService {
                             productIds.Add(reader.GetInt32(reader.GetOrdinal("productId")));
                         }
                     }
+
+                    if (reader.NextResult())
+                    {
+                        if (reader.Read())
+                        {
+                            score = reader.GetDecimal(0);
+                        }
+                    }
                 }
             }
+
+            using (var command = new SqlCommand("LogUserAnswers", conn))
+            {
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("Answers", answerIdTable);
+                quizId = Convert.ToInt32(command.ExecuteScalar());
+            }
         }
-        return string.Format("{{ \"lifestyle_suggestions\": \"{0}\" , \"haircare_suggestions\" : \"{2}\", \"hairsituation_suggestions\" : \"{3}\",  \"suggested_products\" : \"{1}\" }}", string.Join(",", suggestionIds[1]), string.Join(",", productIds), string.Join(",", suggestionIds[2]), string.Join(",", suggestionIds[3]));
+        return string.Format("{{ \"lifestyle_suggestions\": \"{0}\" , \"haircare_suggestions\" : \"{2}\", \"hairsituation_suggestions\" : \"{3}\",  \"suggested_products\" : \"{1}\", \"score\" : {4}, \"quizId\" : \"{5}\" }}", string.Join(",", suggestionIds[1]), string.Join(",", productIds), string.Join(",", suggestionIds[2]), string.Join(",", suggestionIds[3]), Convert.ToInt32(score/3) , quizId);
     }
 
     [WebMethod]

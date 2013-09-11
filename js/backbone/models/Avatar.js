@@ -9,7 +9,7 @@ var Avatar = Backbone.Model.extend({
         hairLength: "l",
         hairCurly: 2,
         hairColor: "red",
-        hairType:""
+        hairType: ""
     },
 
     initialize: function (option) {
@@ -31,20 +31,23 @@ var Avatar = Backbone.Model.extend({
             else if (AppFacade.getCurrentView().model.get("scene_id") == 6) {
                 return "diet-scene";
             }
+            else if (AppFacade.getCurrentView().id == "report") {
+                return "";
+            }
             else {
                 return "mirror-show";
             }
         }
     },
-    getAvatarSize : function() {
-	    return function() {
-		    if (AppFacade.getCurrentView().model.get("scene_id") == 6) {
+    getAvatarSize: function () {
+        return function () {
+            if (AppFacade.getCurrentView().model.get("scene_id") == 6) {
                 return "small";
             }
             else {
                 return "large";
             }
-	    }
+        }
     },
     getHairData: function () {
         var hairData = {
@@ -54,55 +57,55 @@ var Avatar = Backbone.Model.extend({
             type: app.Views.HairStyleView.model.getAnswerName(16)
         };
         var isMale = ("m" == app.Views.BasicInfoView.model.getAnswerName(22));
-        
+
         if (typeof hairData.length === 'undefined' || hairData.length == '') {
-            if ( isMale ) {
-	            hairData.length = 's';
+            if (isMale) {
+                hairData.length = 's';
             } else {
-	            hairData.length = 'l';
+                hairData.length = 'l';
             }
-            
+
         }
         if (hairData.curl == 0) {
-            if ( isMale ) {
-            	hairData.curl = 1;
+            if (isMale) {
+                hairData.curl = 1;
             } else {
-	            hairData.curl = 2;
+                hairData.curl = 2;
             }
         }
         if (hairData.color == '') {
             hairData.color = 'red';
         }
-        
+
         return hairData;
     },
-    getCareer: function() {
-    	var user_career = app.Views.BasicInfoView.model.getAnswerName(24);
-    	if( !user_career ) {
-	    	user_career = "0";
-    	}
-    	return parseInt(user_career);
+    getCareer: function () {
+        var user_career = app.Views.BasicInfoView.model.getAnswerName(24);
+        if (!user_career) {
+            user_career = "0";
+        }
+        return parseInt(user_career);
     },
-    getGender: function() {
-	    var user_gender = app.Views.BasicInfoView.model.getAnswerName(22);
-	    if( !user_gender ) {
-		    user_gender = "fm";
-	    }
-	    
-	    return user_gender;
+    getGender: function () {
+        var user_gender = app.Views.BasicInfoView.model.getAnswerName(22);
+        if (!user_gender) {
+            user_gender = "fm";
+        }
+
+        return user_gender;
     },
-    setGender: function() {
-	    this.gender = this.getGender();
+    setGender: function () {
+        this.gender = this.getGender();
     },
-    setCareer: function() {
-	    this.career_id = this.getCareer();
+    setCareer: function () {
+        this.career_id = this.getCareer();
     },
-    setHairData: function() {
-	 	var hairData = this.getHairData();
-	 	this.hairCurly = hairData.curl;
-	 	this.hairLength = hairData.length;
-	 	this.hairColor = hairData.color;
-	 	this.hairType = hairData.type;
+    setHairData: function () {
+        var hairData = this.getHairData();
+        this.hairCurly = hairData.curl;
+        this.hairLength = hairData.length;
+        this.hairColor = hairData.color;
+        this.hairType = hairData.type;
     }
 });
 
