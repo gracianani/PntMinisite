@@ -104,7 +104,7 @@ window.AppFacade = {
 }
 
 // Start the main app logic.
-requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone/models/Report', '../backbone/utils/Utils', '../backbone/views/AvatarView', '../backbone/views/ReportView' , '../backbone/views/SceneView', '../backbone/Router'],
+requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone/models/Report', '../backbone/utils/Utils', '../backbone/views/AvatarView', '../backbone/views/ReportView', '../backbone/views/SceneView', '../backbone/Router'],
     function (avatar, scene, utils, avatarView, sceneView, router) {
         var questions = new QuestionsCollection;
         questions.fetch();
@@ -113,6 +113,8 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
         app.SuggestionRepo.fetch();
         app.ProductRepo = new ProductsCollection;
         app.ProductRepo.fetch();
+        app.GeneralSuggestionRepo = new GeneralSuggestionsCollection;
+        app.GeneralSuggestionRepo.fetch();
         app.SceneSettings = new SceneSettingsCollection;
         app.SceneSettings.fetch().done(
             function () {

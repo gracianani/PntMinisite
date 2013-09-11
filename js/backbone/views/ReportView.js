@@ -21,7 +21,8 @@ var ReportView = Backbone.View.extend({
     // Re-render the titles of the todo item.
     render: function () {
         this.$el.html(Mustache.render(this.template, this.model));
-        setTimeout(this.trigger("render"), 1000);
+        app.Views.AvatarView.render();
+        this.trigger("render");
         return this;
     },
     postRender: function () {

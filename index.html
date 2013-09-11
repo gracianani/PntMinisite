@@ -808,10 +808,10 @@
         		<div id="report-score" class="score-low">
         			<div class="score-inside"></div>
         			<div id="report-score-title">秀发健康指数</div>
-        			<div id="report-score-number">60</div>
+        			<div id="report-score-number">{{Score}}</div>
         		</div>
-        		<h2 class="score-low">严重受损发质</h2>
-        		<p>你的头发已经存在了一些问题，如不及时护理将影响你的魅力哦！潘婷建议你从日常生活习惯入手，减少刺激性食物/甜腻食物的摄入，及时调整不规律的生活习惯；同时要养成健康的洗护习惯，注意挑选适合的日常洗护产品，帮助你有效修护受损发质，轻松拥有健康秀发，从头绽放迷人光彩！</p>
+        		<h2 class="score-low">{{ScoreTitle}}</h2>
+        		<p>{{#ScoreSuggestions}}{{.}}{{/ScoreSuggestions}}</p>
         	</div>
         	<div id="report-body">
 				<ul id="report-result">
@@ -819,7 +819,7 @@
 						<div class="report-result-icon">
 						</div>
 						<div class="report-result-body">
-							<div id="hair-advice-tag">大卷 全头染色 干枯 掉发</div>
+							<div id="hair-advice-tag">{{#HairProblems}} {{.}} {{/HairProblems}}</div>
 							<ul id="hair-advice">
                                 {{#HairSituationSuggestions}}
                                 <li>{{suggestion_text}}</li>

@@ -19,39 +19,43 @@ var AvatarView = Backbone.View.extend({
         this.model.setCareer();
         this.model.setGender();
 
-        this.$el.prepend(Mustache.render(this.template, this.model));
-        
-        if ( !this.blinkTimer ) {
-	        this.startBlink();
+        if (AppFacade.getCurrentView().id == "report") {
+            $("#report-avatar").html(Mustache.render(this.template, this.model));
         }
-        
+        else {
+            this.$el.prepend(Mustache.render(this.template, this.model));
+        }
+        if (!this.blinkTimer) {
+            this.startBlink();
+        }
+
         return this;
     },
-    sad: function() {
-	    this.$el.find('.face').attr('class','face face-' +  this.model.gender + '-3');
+    sad: function () {
+        this.$el.find('.face').attr('class', 'face face-' + this.model.gender + '-3');
     },
-    smile: function() {
-	    this.$el.find('.face').attr('class','face');
+    smile: function () {
+        this.$el.find('.face').attr('class', 'face');
     },
-    blink: function() {
-    	var self = this;
-    	this.$el.find('.face').attr('class','face face-' +  this.model.gender + '-2');
-    	var timer = setTimeout(function() {
-    		self.smile();
-    		clearTimeout(timer);
-    	}, 500);
-    	
+    blink: function () {
+        var self = this;
+        this.$el.find('.face').attr('class', 'face face-' + this.model.gender + '-2');
+        var timer = setTimeout(function () {
+            self.smile();
+            clearTimeout(timer);
+        }, 500);
+
     },
-    startBlink: function() {
-	    var self = this;
-	    this.blinkTimer = setInterval(function(){
-		    self.blink();
-	    }, 3000);
+    startBlink: function () {
+        var self = this;
+        this.blinkTimer = setInterval(function () {
+            self.blink();
+        }, 3000);
     },
-    stopBlink: function() {
-    	if ( this.blinkTimer ) {
-	    	clearInterval(this.blinkTimer);
-    	}
+    stopBlink: function () {
+        if (this.blinkTimer) {
+            clearInterval(this.blinkTimer);
+        }
     }
 
 });
