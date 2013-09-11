@@ -11,7 +11,13 @@ var app = {
         authorize_uri: 'https://api.weibo.com/oauth2/authorize',
         app_id: '3695496477',
         app_secret: '942214d88b57723ad419854c67d3c49c',
-        redirect_uri: 'http://localhost:59884/PntMinisite/index.html'
+        redirect_uri: 'http://pantene.app.social-touch.com/'
+    },
+    qqApp: {
+    	authorize_uri: 'https://api.weibo.com/oauth2/authorize',
+	    app_id:'100516646',
+	    app_key:'6b346735b25a53425c4eda8e41553e96',
+	    redirect_uri: 'http://pantene.app.social-touch.com/qc_callback.html'
     }
 };
 
@@ -20,10 +26,23 @@ window.AppFacade = {
         if (typeof app.Views.BasicFrameView == 'undefined') {
             this.initLoading();
             
-        } else {
-	        $('#splash').hide();
-	        $('body').removeClass('loading');	        
         }
+    },
+    setStartView: function() {
+      var isStartFromSplash = false;
+	  //console.log(app.Views.BasicInfoView.model.isAnswered(22));
+	  if ( this.currentView == undefined ) {
+	  	isStartFromSplash = true;
+	  	
+		  
+	  } else if ( !app.Views.BasicInfoView.model.isAnswered(22) ) {
+		isStartFromSplash = true;
+	  }
+	  if ( isStartFromSplash ) {
+		  this.initSplash();
+	  } else {
+		  this.initBasicFrame();
+	  }
     },
     initLoading: function () {
         app.Views.LoadingView = new LoadingView();
@@ -94,13 +113,167 @@ window.AppFacade = {
     },
     loadFromCookie: function (isTrigger) {
         var str_user_answers = readCookie("user_answers");
-        this.setUserAnswers($.parseJSON(str_user_answers));
-        var current_scene_id = readCookie("current_scene_id");
-        var str_user_info = readCookie("user_info");
-        var user_info = $.parseJSON(str_user_info);
-        app.User = user_info;
-        app.Router.navigate("Survey/" + current_scene_id, { trigger: isTrigger });
-    }
+        
+        if ( str_user_answers ) {
+	        this.setUserAnswers($.parseJSON(str_user_answers));
+	        var current_scene_id = readCookie("current_scene_id");
+	        var str_user_info = readCookie("user_info");
+	        var user_info = $.parseJSON(str_user_info);
+			if ( user_info ) {
+				app.User = user_info;
+			}
+	        
+	        app.Router.navigate("Survey/" + current_scene_id, { trigger: isTrigger });
+        } else {
+	        app.Router.navigate("", true);
+        }
+        
+    },
+    initQQLogin: function() {
+	    QC.Login({//按默认样式插入QQ登录按钮
+					btnId:"qqlogin",
+					size: "A_XL"
+					},
+					window.AppFacade.onQQLoginSuccess, window.AppFacade.onQQLogoutSuccess);
+		QC.Login({//按默认样式插入QQ登录按钮
+					btnId:"splash-qq",
+					size: "A_L"
+					},
+					window.AppFacade.onQQLoginSuccess, window.AppFacade.onQQLogoutSuccess);
+    },
+    onQQLoginSuccess: function(reqData, opts){
+		_logoutTemplate=[
+				            '<span class="profile-avatar"><img src="{figureurl}" class="{size_key}"/></span>',
+				            '<span class="profile-nickname">{nickname}</span>',
+				            '<span class="profile-logout"><a href="javascript:QC.Login.signOut();">退出</a></span>'    
+		].join("");
+		$('#prifile-login').html(
+				       QC.String.format(_logoutTemplate, {
+				           nickname : QC.String.escHTML(reqData.nickname), //做xss过滤
+				           figureurl : reqData.figureurl
+				       })
+		);
+		$("#login").addClass("hidden");
+		$("#splash-login").hide();
+		console.log(reqData);
+		var self = this;				       
+		QC.Login.getMe(function(openId, accessToken){
+					       app.User.qqUid = openId;
+					       app.User.qqToken = accessToken;
+		});
+		this.askForReport();
+	},
+    onQQLogoutSuccess: function(opts){//注销成功
+		alert('QQ登录 注销成功');
+		$('#prifile-login').html('');
+		$("#splash-login").show();
+	},
+	initWbLogin: function() {
+		WB2.anyWhere(function(W){
+		    W.widget.connectButton({
+		        id: "splash-weibo",
+		        type: '2,2',
+		        callback : {
+		            login:window.AppFacade.onWbLoginSuccess,
+		            logout:window.AppFacade.onWbLooutSuccess
+		        }
+		    });
+		});
+		
+
+		WB2.anyWhere(function(W){
+		    W.widget.connectButton({
+		        id: "wb_connect_btn",
+		        type: '1,1',
+		        callback : {
+		            login:window.AppFacade.onWbLoginSuccess,
+		            logout:window.AppFacade.onWbLooutSuccess
+		        }
+		    });
+		});
+		
+
+	},
+	weiboLogout: function(){
+		WB2.logout(function(){
+			window.AppFacade.onWbLogoutSuccess();
+			WB2.anyWhere(function(W){
+		    W.widget.connectButton({
+		        id: "wb_connect_btn",
+		        type: '1,1',
+		        callback : {
+		            login:window.AppFacade.onWbLoginSuccess,
+		            logout:window.AppFacade.onWbLooutSuccess
+		        }
+		    });
+		});
+		});
+
+	},
+	onWbLoginSuccess: function(o) {
+
+		_logoutTemplate=[
+				            '<span class="profile-avatar"><img src="{{figureurl}}" class="{size_key}"/></span>',
+				            '<span class="profile-nickname">{{nickname}}</span>',
+				            '<span class="profile-logout"><a onclick="window.AppFacade.weiboLogout();">退出</a></span>'    
+		].join("");
+		
+		$('#prifile-login').html(Mustache.render(_logoutTemplate, {
+				           nickname : o.screen_name, 
+				           figureurl : o.profile_image_url
+				       })
+		);
+		
+		$("#login").addClass("hidden");
+		$("#splash-login").hide();
+		$("#login").addClass("hidden");
+		
+		app.User.wbUid = o.id;
+		
+		var tokencookiename = "weibojs_"+app.weiboApp.app_id;
+		var tokencookie = readCookie(tokencookiename);
+
+		if ( tokencookie ) {
+			var param = tokencookie.split("%26");
+			var token = param[0].split("%3D")[1];
+			app.User.wbToken = token;
+			
+
+		}
+		this.askForReport();
+	},
+	onWbLogoutSuccess: function() {
+		alert('微博登陆退 出成功');
+		$('#prifile-login').html('');
+		$("#splash-login").show();
+	},
+	isLogin : function() {
+		return (app.User.wbUid || app.User.qqUid );
+	},
+	isQuizFinish : function() {
+		var isFinished = true;
+		
+		for ( var index in app.SceneViews ) {
+			if ( app.SceneViews[index].model ) {
+				console.log(app.SceneViews[index].model);
+				if ( app.SceneViews[index].model.isSceneFinished().length > 0 ) {
+					isFinished = false;
+				}
+			}
+		}
+		return isFinished;
+	},
+	askForReport : function() {
+		if ( this.isQuizFinish() ) {
+			app.Report.getReport();
+		} else {
+			alert("您还有未完成的题目，请仔细检查一下哦！");
+		}
+		
+	},
+	showHelp : function(unfinishedQuestions) {
+		alert("您还没有回答完全部问题哦");
+	}
 }
 
 // Start the main app logic.
@@ -153,6 +326,17 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
                 app.Views.SalonView = salonView;
                 app.Views.ReportView = reportView;
 
+				app.SceneViews = [
+				app.Views.BasicInfoView,
+				app.Views.HairStyleView,
+				app.Views.HairQualityView,
+				app.Views.DietView,
+				app.Views.HealthView,
+				app.Views.CleaningView,
+				app.Views.LifeView,
+				app.Views.SalonView
+				];
+				app.SceneViews.push()
                 app.Router = new Router();
                 Backbone.history.start();
 
@@ -182,8 +366,17 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
                             $("#weibo").addClass("authenticated");
                         }
                     });
-                    AppFacade.loadFromCookie(isCallback);
+                    
                 }
+                AppFacade.loadFromCookie(isCallback);
+                
+                AppFacade.init();
+				
+				AppFacade.initQQLogin();
+				AppFacade.initWbLogin();
+				
+				
+
 
             }
         );

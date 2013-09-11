@@ -10,11 +10,11 @@ var Scene = Backbone.Model.extend({
     initialize: function () {
         var question_ids = this.get("question_ids");
         var user_answers = [];
-        console.log(question_ids);
+        //console.log(question_ids);
         for (var index in question_ids) {
             user_answers.push({ "question_id": question_ids[index], "answer_ids": [] });
         }
-        console.log(user_answers);
+        //console.log(user_answers);
         this.set({ user_answers: user_answers });
     },
     getAnswerTextByDegree: function (question_id, degree) {
@@ -260,14 +260,18 @@ var Scene = Backbone.Model.extend({
 
     isSceneFinished: function () {
         var scene_questions = this.get("question_ids");
+        var unfinishedQuestion = [];
         for (var question_id in scene_questions) {
             if (this.isQuestionFinished(scene_questions[question_id])) {
                 console.log(scene_questions[question_id] + "finished");
             }
             else {
                 console.log(scene_questions[question_id] + "unfinished");
+                unfinishedQuestion.push("unfinished");
             }
         }
+        
+        return unfinishedQuestion;
     }
 });
 

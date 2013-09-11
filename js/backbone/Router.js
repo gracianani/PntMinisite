@@ -10,7 +10,7 @@ var Router = Backbone.Router.extend({
 
     index: function () {
         if (getParameterByName('code') == '') {
-            window.AppFacade.init();
+           
             window.AppFacade.setCurrentView(app.Views.BasicInfoView);
         }
     },
@@ -20,7 +20,7 @@ var Router = Backbone.Router.extend({
     },
 
     details: function (id) {
-        AppFacade.init();
+       
         if (id == 1) {
             window.AppFacade.setCurrentView(app.Views.BasicInfoView);
         }
@@ -45,7 +45,6 @@ var Router = Backbone.Router.extend({
         else if (id == 8) {
             window.AppFacade.setCurrentView(app.Views.SalonView);
         }
-         
 
     }
 });

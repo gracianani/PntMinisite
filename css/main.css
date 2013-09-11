@@ -95,32 +95,31 @@ textarea {
 
 html {
 	background-color: #ffbd32;
-	height: 100%;
 	width: 100%;
+	min-height: 100%;
 }
 body {
 	width: 100%;
-	height: 100%;
 	position: relative;
 	font-family: "Microsoft Yahei","Yahei",sans-serif;
 	overflow: hidden;
+	min-height: 100%;
 
 }
 
-#logo,#siteTitle,#profile,#navigation,#footer {
+#logo,#siteTitle,#navigation,#footer {
 	display: none;
 }
 /*=====================
 footer 
 =====================*/
 #footer {
-	position: fixed;
-	bottom: -25%;
-	left: 0;
 	width: 100%;
 	height: 25%;
+	min-height: 180px;
+	position: relative;
 	background: url(../img/bottom.png) center top no-repeat;
-	z-index: 1;
+	padding-bottom: 85px;
 }
 
 #progress {
@@ -128,8 +127,9 @@ footer
 	height: 60px;
 	background: url(../img/progress.png) center top no-repeat;
 	position: absolute;
-	bottom: 20px;
-	right: 5%;
+	bottom: 105px;
+	left: 50%;
+	margin-left: -136px;
 }
 #progress.step2 {
 	background-position: center -60px;
@@ -170,12 +170,10 @@ main
 #main {
 	width:960px;
 	height: 450px;
-	position: absolute;
-	top:50%;
-	left: 50%;
-	margin-left:-480px;
-	margin-top:-210px;
+	position: relative;
+	top:50px;
 	text-align: center;
+	margin: 0 auto 0;
 	z-index: 2;
 }
 .scene {
@@ -197,19 +195,17 @@ main
 header 
 =====================*/
 #header {
-	position: fixed;
-	top: 0;
-	left: 0;
+	position: relative;
 	width: 100%;
-	height: 60px;
+	height: 70px;
 	background: #000 url(../img/headerbottom.png) repeat-x left bottom;
 	padding-bottom: 15px;
 }
 
 #logo {
 	position: absolute;
-	width: 123px;
-	height: 40px;
+	width: 166px;
+	height: 54px;
 }
 #logo img{
 	height: 100%;
@@ -217,7 +213,7 @@ header
 }
 #siteTitle {
 	position: absolute;
-	left: 180px;
+	left: 210px;
 	top:-200px;
 	font-size: 22px;
 	letter-spacing: 1px;
@@ -226,17 +222,67 @@ header
 	margin: 0;
 }
 /*=====================
+login 
+=====================*/
+#login {
+	width: 400px;
+	height: 400px;
+	background: #FFF;
+	box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
+	position: absolute;
+	left: 50%;
+	top:50%;
+	margin-top:-200px;
+	margin-left: -200px;
+	z-index: 999;
+	border-radius: 10px;
+	
+}
+.modal-header,.modal-body {
+	padding: 10px;
+	text-align: center;
+}
+.modal-header h3 {
+	font-weight: normal;
+	color: #c18628;
+}
+.modal-header button {
+	position: absolute;
+	background: #000;
+	border-radius: 50%;
+	width: 32px;
+	height: 32px;
+	right: -16px;
+	top:-16px;
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+	border:none;
+	color: #fff;
+}
+#login a {
+	
+	width: auto;
+	margin: 0 auto 15px;
+	display: inline-block;
+	cursor: pointer;
+}
+/*=====================
 profile 
 =====================*/
 #profile {
 	position: absolute;
-	top:-100px;
+	top:10px;
 	right: 20px;
-	z-index: 100;
 }
 #profile-avatar, #share {
 	float: right;
 	display: inline-block;
+}
+#share {
+	padding-top: 0px;
+	padding-right: 15px;
+}
+#share iframe {
+	height: 30px!important;
 }
 #profile-avatar {
 	width: 60px;
@@ -250,15 +296,63 @@ profile
 	height: 60px;
 	margin: 0 auto;
 	position: relative;
+	display: inline-block;
+	float: left;
+}
+#profile .profile-avatar{
+	border-radius: 18px;
+	width: 30px;
+	height: 30px;
+	overflow: hidden;
+	display: inline-block;
+	float: left;
+	border:2px solid #fff;
+	margin-right: 5px;
+}
+#profile .profile-nickname {
+	color: #FFF;
+	display: inline-block;
+	float: left;
+	line-height: 34px;
+	margin-right: 5px;
+}
+#profile .profile-logout {
+	line-height: 34px;
+	display: inline-block;
+	float: left;
+	margin-right: 5px;
+}
+#profile .profile-logout a {
+	color: #fad949;
+	text-decoration: none;
+	cursor: pointer;
+}
+#prifile-login {
+	float: right;
+}
+#share {
+	float: right;
+}
+#saveReport {
+	color: #fad949;
+	line-height: 32px;
+	cursor: pointer;
+}
+#saveReport {
+	float: left;
+	display: inline-block;
+	margin-right: 5px;
+}
+#share-text {
+	color: #fad949;
+	line-height: 32px;
+	float: left;
+	padding-right: 10px;
+	font-size: 14px;
 }
 #share a {
-	color: #FFF;
-	background: url(../img/share.png) left top no-repeat;
-	width: 48px;
-	height: 48px;
-	display: inline-block;
-	margin-right: 15px;
-	margin-top: 5px;
+	color: #cc9336;
+	
 }
 #share #wechat:hover {
 	background-position: left -48px;
@@ -269,6 +363,46 @@ profile
 
 #share #weibo:hover {
 	background-position: left -144px;
+}
+#share .jiathis_style_32x32 .jtico {
+	background: url(../img/share.png) no-repeat left top;
+	margin-left: 10px;
+	border-radius: 50%;
+	width: 32px;
+	height: 32px;
+	padding-left: 0!important;
+}
+#share .jiathis_style_32x32 .jtico:hover {
+	opacity: 1;
+	background-color: #2f94e1;
+}
+#share .jiathis_style_32x32 .jtico_weixin {
+	background-position: center -32px;
+}
+#share .jiathis_style_32x32 .jtico_weixin:hover {
+	background-color:#0bcb27;
+	
+}
+#share .jiathis_style_32x32 .jtico_tsina {
+	background-position: center -64px;
+}
+#share .jiathis_style_32x32 .jtico_tsina:hover {
+	background-color:#cc1600;
+	
+}
+#share .jiathis_style_32x32 .jtico_douban {
+	background-position: center -96px;
+}
+#share .jiathis_style_32x32 .jtico_douban:hover {
+	background-color:#148825;
+	
+}
+#share .jiathis_style_32x32 .jtico_qzone {
+	background-position: center -128px;
+}
+#share .jiathis_style_32x32 .jtico_qzone:hover {
+	background-color:#f4b23c;
+	
 }
 /*=====================
 navigation 
@@ -316,8 +450,20 @@ loading
 .loading #navigation, .loading #progress{
 	display: none;
 }
-
+.loading {
+	background: #000;
+	height: 100%;
+}
 #loading {
+	position: absolute;
+	position: fixed;
+	left: 0;
+	top:0;
+	width: 100%;
+	height: 100%;
+	background: #000;
+}
+#loading-content {
 	width: 240px;
 	height: 240px;
 	border-radius: 120px;
@@ -344,30 +490,37 @@ splash
 	background: #000;
 	color: #FFF;
 	z-index: 3;
+	display: none;
 }
 #splash .item {
 	visibility: hidden;
 }
 
-
+#splash-logo {
+	margin-bottom: 20px;
+	text-align: left;
+}
 #splash-begin {
 	width: 240px;
 	height: 280px;
 	position: absolute;
-	left: 10%;
-	top: 15%;
-	color: #e3b644;
+	right: 60%;
+	top: 50%;
+	margin-top:-300px;
+	color: #FFF;
+	text-align: left;
 }
 #splash-login {
 	width: 240px;
 	height: 240px;
 	position: absolute;
-	right: 10%;
-	bottom: 0;
+	right: 60%;
+	top: 50%;
+	margin-top:60px;
 	color: #e3b644;
 }
 .splash-subtitle {
-	font-size: 20px;
+	font-size: 16px;
 	line-height: 1.5em;
 }
 .splash-title {
@@ -378,23 +531,20 @@ splash
 }
 .splash-weibo,.splash-qq {
 	display: block;
-	width: 48px;
-	height: 48px;
-	border-radius: 25px;
-	background-color: #ffbd32;
+	width: 170px;
+	height: 32px;
 	float: left;
-	margin-right: 20px;
-	margin-top: 20px;
-	background-image: url(../img/share.png);
+	cursor: pointer;
+	
 	background-repeat: no-repeat;
 }
 .splash-weibo {
-	background-position: center -96px;
-	background-color: #ff6536;
+
+	margin-top: 20px;
 }
 .splash-qq {
-	background-position: center top;
-	background-color: #0093dd;
+	background-image: url(../img/qqloginbtn.png);
+	margin-top: 10px;
 }
 .splash-gender-male,.splash-gender-female {
 	display: block;
@@ -407,7 +557,7 @@ splash
 	position: absolute;
 	top:50%;
 	margin-top:-225px;
-	left: 50%;
+	left: 55%;
 	margin-left: -160px;
 }
 .splash-gender-male {
@@ -622,6 +772,7 @@ scenes
 	position: absolute;
 	right: 0;
 	bottom: 5%;
+	visibility: hidden;
 }
 #diet-cooking {
 	position: absolute;
@@ -712,6 +863,9 @@ scenes
 	top:-105px;
 	left: 50%;
 	background-position: right bottom;
+}
+#diningTable.selected {
+	visibility: visible!important;
 }
 #diningTable .selected {
 	visibility: visible!important;
@@ -895,12 +1049,12 @@ scenes
 }
 .life-icon {
 	position: absolute;
-	width: 100px;
-	height: 100px;
+	width: 130px;
+	height: 130px;
 	cursor: pointer;
 	
-	margin-left: -50px;
-	margin-top: -50px;
+	margin-left: -65px;
+	margin-top: -65px;
 }
 .life-icon:hover {
 	transform: scale(1.2);
@@ -1131,42 +1285,42 @@ Cleaning
 	background-position: center -200px;
 	background-size: 100px auto;
 }
-#cleaning-vax:hover,#cleaning-vax.selected {
+#cleaning-vax.selected {
 	background-position: center -625px;
 }
-#cleaning-spray:hover,#cleaning-spray.selected {
+#cleaning-spray.selected {
 	background-position: center -750px;
 }
-#cleaning-moss:hover,#cleaning-moss.selected {
+#cleaning-moss.selected {
 	background-position: center -500px;
 }
-#cleaning-gel:hover,#cleaning-gel.selected {
+#cleaning-gel.selected {
 	background-position: center -875px;
 }
-#cleaning-shampoo:hover,#cleaning-shampoo.selected {
+#cleaning-shampoo.selected {
 	background-position: center -625px;
 	background-size: 100px auto;
 }
-#cleaning-conditioner:hover,#cleaning-conditioner.selected {
+#cleaning-conditioner.selected {
 	background-position: center -750px;
 }
-#cleaning-mask:hover,#cleaning-mask.selected {
+#cleaning-mask.selected {
 	background-position: center -875px;
 }
-#cleaning-cream:hover,#cleaning-cream.selected {
+#cleaning-cream.selected {
 	background-position: center -1000px;
 }
-#cleaning-inhair:hover,#cleaning-inhair.selected {
+#cleaning-inhair.selected {
 	background-position: center -1125px;
 }
 
-#cleaning-drier:hover,#cleaning-drier.selected {
+#cleaning-drier.selected {
 	background-position: center -300px;
 }
-#cleaning-curling:hover,#cleaning-curling.selected {
+#cleaning-curling.selected {
 	background-position: center -400px;
 }
-#cleaning-flat:hover,#cleaning-flat.selected {
+#cleaning-flat.selected {
 	background-position: center -500px;
 }
 #cleaning-trash {
@@ -1291,29 +1445,27 @@ Cleaning
 	top:50%;
 	margin-top: -20px;
 	display: block;
+	background-color: #efefef;
 
 }
 
 #shower-time-day {
 	left: 10%;
-	background-color: #ff6536;
 	background-image: url(../img/scene/cleaning-day.png);
 }
 #shower-time-night {
 	right: 10%;
-	background-color: #10486f;
 	background-image: url(../img/scene/cleaning-night.png);
 }
-#shower-time-day:hover {
+
+.shower-time-icon.selected {
+	border: none;
+}
+#shower-time-day.selected {
 	background-color: #ff6536;
-	border:#FFF 2px solid;
 }
-#shower-time-night:hover {
+#shower-time-night.selected {
 	background-color: #10486f;
-	border:#FFF 2px solid;
-}
-#shower-time-day.unselected,#shower-time-night.unselected {
-	background-color: #efefef;
 }
 .shower-time-icon {
 	
@@ -1367,12 +1519,44 @@ Cleaning
 	left: 72%;
 	top: 5%;
 }
+
+.hairstyle-icon {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	left: 25px;
+	top: 25px;
+	
+
+	background: url(../img/character/hairicon.png) no-repeat;
+}
+.curl-1{ background-position: 0 0; width: 100px; height: 100px; } 
+.curl-3{ background-position: 0 -101px; width: 100px; height: 100px; } 
+.curl-2{ background-position: 0 -202px; width: 100px; height: 100px; } 
+.curl-4{ background-position: 0 -303px; width: 100px; height: 100px; } 
+.len-xs{ background-position: 0 -404px; width: 100px; height: 100px; } 
+.len-s{ background-position: 0 -505px; width: 100px; height: 100px; } 
+.len-m{ background-position: 0 -606px; width: 100px; height: 100px; } 
+.len-l{ background-position: 0 -707px; width: 100px; height: 100px; } 
+.len-xl{ background-position: 0 -808px; width: 100px; height: 100px; } 
+
+
+.hairstyle-text {
+	position: absolute;
+	bottom: 20px;
+	left: 0;
+	text-align: center;
+	width: 100%;
+	line-height: 20px;
+	font-size: 14px;
+}
 .hairstyle-circle {
 	width: 150px;
 	height: 150px;
 	border-radius: 100px;
 	background-color: #fde7b8;
 	border:5px dashed #d55b1c;
+	position: relative;
 }
 .hairstyle-circle-dragable {
 	width: 40px;
@@ -1401,12 +1585,35 @@ Cleaning
 	width: 50px;
 	height: 50px;
 	border-radius: 30px;
-	border:3px #d55b1c dashed;
-	background-color: #fde7b8;
+	border:3px #2470a5 dashed;
+	background-color: #2470a5;
+	background-image:url(../img/scene/hairstyle-icon.png);
+	background-repeat: no-repeat;
 	float: left;
 	display: inline-block;
 	margin-right: 10px;
 	margin-bottom: 10px;
+	cursor: pointer;
+}
+.hairtype-icon:hover {
+	background-color: #d55b1c;
+	border-color: #ffe579;
+}
+.hairtype-icon.selected {
+	background-color: #d55b1c;
+	border-color: #d55b1c;
+}
+#comb {
+	background-position: left -150px;
+}
+#band {
+	background-position: left top;
+}
+#hand {
+	background-position: left -50px;
+}
+#pin {
+	background-position: left -100px;
 }
 #hairstyle-color {
 	position: absolute;
@@ -1429,6 +1636,9 @@ Cleaning
 .haircolor:hover {
 	z-index: 3;
 	border-color:#d55b1c;
+}
+.haircolor.selected {
+	z-index: 2;
 }
 #haircolor-mix {
 	transform: rotate(-45deg);
@@ -1467,18 +1677,21 @@ Cleaning
 	height: 100%;
 	float: right;
 	border-radius: 0 10px 10px 0;
+	background: url(../img/scene/colorcard.png) no-repeat left top;
 }
 #haircolor-mix .haircolor-content{
-	background: #602016;
+	background-color: #602016;
+	background-position: 0 -40px;
 }
 #haircolor-black .haircolor-content{
-	background: #000;
+	background-color: #000;
+	background-position: 0 -80px;
 }
 #haircolor-gold .haircolor-content{
-	background: #d08200;
+	background-color: #d08200;
 }
 #haircolor-red .haircolor-content{
-	background: #8b3122;
+	background-color: #8b3122;
 }
 /******** hair quality *********/
 #magnifier {
@@ -1736,6 +1949,22 @@ Cleaning
 	background: url(../img/scene/hairproblem.png) no-repeat top left;
 	cursor: pointer;
 }
+.problem-item:hover .problem-text{
+	background: #d55b1c;
+	color: #fff;
+}
+.problem-text {
+	position: absolute;
+	top: 105%;
+	border-radius: 5px;
+	padding: 5px 10%;
+	font-size: 12px;
+	line-height: 18px;
+	text-align: center;
+	width: 80%;
+	color: #666;
+	
+}
 #problem-item-1 {
 	left: 0;
 	margin-left: -45px;
@@ -1878,6 +2107,10 @@ Cleaning
 	background-image: url(../img/character/fm-age.png);
 	background-repeat: no-repeat;
 }
+.m .age-item {
+	background-image: url(../img/character/m-age.png);
+	background-repeat: no-repeat;
+}
 .age-item {
 	width: 60px;
 	height: 80px;
@@ -1962,6 +2195,7 @@ Cleaning
 	border-width: 2px;
 	border-style: solid;
 	background-color: #94c2b4;
+	background-color: #ffbd32;
 	background-position: center -80px;
 }
 .on-degree-2 #age-item-2 .age-item-text,
@@ -1982,6 +2216,7 @@ Cleaning
 	border-style: solid;
 	border-width: 2px;
 	background-color: #6fc280;
+	background-color: #2470a5;
 	background-position: center -160px;
 }
 .on-degree-3 #age-item-3 .age-item-text,
@@ -2062,6 +2297,7 @@ Cleaning
 }
 #profile-avatar {
 	overflow: hidden;
+	cursor: pointer;
 }
 .head-only .clothes,.head-only .hand {
 	display: none;
@@ -2431,8 +2667,17 @@ Cleaning
 	top:45%;
 	margin-top:-175px;
 }
-.mirror-show .character{
-
+.mirror-show .fm{
+	position: absolute;
+	left: 50%;
+	margin-left:-106px;
+	top:5px;
+}
+.mirror-show .m{
+	position: absolute;
+	left: 50%;
+	margin-left:-86px;
+	top:5px;
 }
 #character-profile {
 	position: absolute;
@@ -2948,6 +3193,40 @@ Cleaning
 	list-style: disc;
 	margin-left: 20px;
 	color: #666;
+}
+
+/****about **/
+#about {
+	width: 90%;
+	line-height: 20px;
+	padding: 20px 5% 25px;
+	background: #000;
+	color: #666;
+	font-size: 12px;
+	z-index: 2;
+	position: absolute;
+	bottom: 0;
+}
+#about a {
+	color: #ffbd32;
+	display: inline-block;
+	padding-right: 10px;
+	text-decoration: none;
+}
+#about-logo {
+	float: left;
+	display: inline-block;
+	padding-right: 15px;
+}
+#about-logo img {
+	width: 100px;
+}
+#about-link {
+	float: left;
+	display: inline-block;
+}
+#about-support {
+	float: right;
 }
 /* ==========================================================================
    Helper classes
