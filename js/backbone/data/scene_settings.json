@@ -51,7 +51,7 @@
         "scene_id": 7,
         "scene_name": "hair_care",
         "scene_title": "洗护",
-        "question_ids": [10,12, 29],
+        "question_ids": [10,12,29,17],
 		"next_scene_id" : 8,
 		"prev_scene_id" : 6
     },
