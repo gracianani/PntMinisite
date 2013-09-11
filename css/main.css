@@ -325,6 +325,7 @@ profile
 #profile .profile-logout a {
 	color: #fad949;
 	text-decoration: none;
+	cursor: pointer;
 }
 #prifile-login {
 	float: right;
@@ -539,7 +540,6 @@ splash
 }
 .splash-weibo {
 
-	background-image: url(../img/wbloginbtn.png);
 	margin-top: 20px;
 }
 .splash-qq {
@@ -772,6 +772,7 @@ scenes
 	position: absolute;
 	right: 0;
 	bottom: 5%;
+	visibility: hidden;
 }
 #diet-cooking {
 	position: absolute;
@@ -862,6 +863,9 @@ scenes
 	top:-105px;
 	left: 50%;
 	background-position: right bottom;
+}
+#diningTable.selected {
+	visibility: visible!important;
 }
 #diningTable .selected {
 	visibility: visible!important;
@@ -1281,42 +1285,42 @@ Cleaning
 	background-position: center -200px;
 	background-size: 100px auto;
 }
-#cleaning-vax:hover,#cleaning-vax.selected {
+#cleaning-vax.selected {
 	background-position: center -625px;
 }
-#cleaning-spray:hover,#cleaning-spray.selected {
+#cleaning-spray.selected {
 	background-position: center -750px;
 }
-#cleaning-moss:hover,#cleaning-moss.selected {
+#cleaning-moss.selected {
 	background-position: center -500px;
 }
-#cleaning-gel:hover,#cleaning-gel.selected {
+#cleaning-gel.selected {
 	background-position: center -875px;
 }
-#cleaning-shampoo:hover,#cleaning-shampoo.selected {
+#cleaning-shampoo.selected {
 	background-position: center -625px;
 	background-size: 100px auto;
 }
-#cleaning-conditioner:hover,#cleaning-conditioner.selected {
+#cleaning-conditioner.selected {
 	background-position: center -750px;
 }
-#cleaning-mask:hover,#cleaning-mask.selected {
+#cleaning-mask.selected {
 	background-position: center -875px;
 }
-#cleaning-cream:hover,#cleaning-cream.selected {
+#cleaning-cream.selected {
 	background-position: center -1000px;
 }
-#cleaning-inhair:hover,#cleaning-inhair.selected {
+#cleaning-inhair.selected {
 	background-position: center -1125px;
 }
 
-#cleaning-drier:hover,#cleaning-drier.selected {
+#cleaning-drier.selected {
 	background-position: center -300px;
 }
-#cleaning-curling:hover,#cleaning-curling.selected {
+#cleaning-curling.selected {
 	background-position: center -400px;
 }
-#cleaning-flat:hover,#cleaning-flat.selected {
+#cleaning-flat.selected {
 	background-position: center -500px;
 }
 #cleaning-trash {
@@ -1441,29 +1445,27 @@ Cleaning
 	top:50%;
 	margin-top: -20px;
 	display: block;
+	background-color: #efefef;
 
 }
 
 #shower-time-day {
 	left: 10%;
-	background-color: #ff6536;
 	background-image: url(../img/scene/cleaning-day.png);
 }
 #shower-time-night {
 	right: 10%;
-	background-color: #10486f;
 	background-image: url(../img/scene/cleaning-night.png);
 }
-#shower-time-day:hover {
+
+.shower-time-icon.selected {
+	border: none;
+}
+#shower-time-day.selected {
 	background-color: #ff6536;
-	border:#FFF 2px solid;
 }
-#shower-time-night:hover {
+#shower-time-night.selected {
 	background-color: #10486f;
-	border:#FFF 2px solid;
-}
-#shower-time-day.unselected,#shower-time-night.unselected {
-	background-color: #efefef;
 }
 .shower-time-icon {
 	

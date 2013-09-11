@@ -112,7 +112,7 @@
         <div id="about">
         <div id="about-logo"><img src="img/logo.png" alt="潘婷 如此健康 焕发光彩" /></div>
         <div id="about-link"><a href="http://www.pantene.com.cn">潘婷官方主页</a><a href="http://weibo.com/pantene/">潘婷官方微博：@Pantene潘婷</a><div id="about-copyright"> P&G @ 宝洁（中国）有限公司版权所有2013</div></div>
-        <div id="about-support">运营支持：<a href="http://social-touch.com/">时趣科技</a>  京ICP备06006585号-2<br />技术支持：<a href="http://seemeloo.com/">Seemeloo Studio</a></div>
+        <div id="about-support">运营支持：<a href="http://social-touch.com/">时趣科技</a>  京ICP备06006585号-2<br />技术支持：<a href="http://seemeloo.com/">Seemeloo Studio</a>   <a href="javascript:void(0)" id="eraseCookie">清除答题记录</a></div>
         </div>
         <div id="tooltip">
         	<div class="content"></div>
@@ -122,17 +122,19 @@
         <div id="login" role="dialog" class=" hidden" >
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h3>登陆潘婷实验室</h3>
+
                 <p>登录以后，可以保存你的报告结果哦！</p>
               </div>
               <div class="modal-body">
-                    <a id="weibologin" class="weibologin" ><img src="img/wbloginbtnlarge.png" /></a>
-        	        <a id="qqlogin" class="qqlogin"><img src="img/qqloginbtnlarge.png" /></a>
+                    <a id="wb_connect_btn" class="weibologin" ></a>
+        	        <a id="qqlogin" class="qqlogin"></a>
+        	        
+        	        <a id="nologin">我不想登陆，直接查看报告</a>
               </div>
         </div>
         <div id="profile">
         	<div id="prifile-login">
-        	<a id="saveReport">登陆保存报告</a>
+        	
         	</div>
 
         	<div id="share">
@@ -194,9 +196,9 @@
         					<div id="cooking-homemade" class="cooking {{#getSelectedClass}}1,3{{/getSelectedClass}}" data-answer-id="3"></div>
         					<div id="cooking-takeaway" class="cooking {{#getSelectedClass}}1,4{{/getSelectedClass}}"  data-answer-id="4"></div>
         			</div>
-        			<div id="diningTable" class="item">
-        				<div id="homemade"></div>
-        				<div id="takeaway"></div>
+        			<div id="diningTable" class="item  {{#getSelectedClass}}1,3{{/getSelectedClass}} {{#getSelectedClass}}1,4{{/getSelectedClass}}">
+        				<div id="homemade" class="{{#getSelectedClass}}1,3{{/getSelectedClass}} "></div>
+        				<div id="takeaway" class="{{#getSelectedClass}}1,4{{/getSelectedClass}}"></div>
         			</div>
         			<div id="refrigerator" class="item" >
         				<div id="refrigerator-left">
@@ -487,10 +489,10 @@
         					    －
         					</div>
         				</div>
-        				<div id="shower-time">
-        					<a id="shower-time-day" class="shower-time-icon unselected">
+        				<div id="shower-time" data-question-id="29">
+        					<a id="shower-time-day" class="shower-time-icon {{#getSelectedClass}}29,137{{/getSelectedClass}} {{#getSelectedClass}}29,139{{/getSelectedClass}}" title="白天洗头发">
 	        				</a>
-	        				<a id="shower-time-night" class="shower-time-icon unselected">
+	        				<a id="shower-time-night" class="shower-time-icon {{#getSelectedClass}}29,138{{/getSelectedClass}}  {{#getSelectedClass}}29,139{{/getSelectedClass}}" title="晚上洗头发">
         					</a>
         				</div>
         			</div>
@@ -852,7 +854,7 @@
         	</div>
         	
         </script>
-        <script src="js/vendor/jquery-1.9.1.min.js"></script>
+        <script src="js/vendor/jquery-1.10.2.min.js"></script>
         <script src="js/vendor/raphael-min.js"></script>
         <script src="js/vendor/g.raphael-min.js"></script>
         <script src="js/vendor/jquery.cookie.js"></script>
@@ -860,7 +862,7 @@
         <script src="js/vendor/jquery.easing.1.3.js"></script>
         <script src="js/vendor/jquery.path.js"></script>
         <script src="js/vendor/jquery-ui-draggable.js"></script>
-        <script src="js/vendor/location-map.js"></script>
+
         <script src="js/vendor/underscore.js"></script>
         <script src="js/vendor/backbone.js"></script>
         <script src="js/vendor/mustache.js"></script>

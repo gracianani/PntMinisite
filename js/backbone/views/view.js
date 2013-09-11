@@ -94,6 +94,7 @@ LoadingView.prototype = {
 		this.loading.fadeOut('slow');
 		
 	    $('body').removeClass('loading');
+	   
 		window.AppFacade.setStartView();
 	}
 };

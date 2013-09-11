@@ -6,8 +6,10 @@ var MainView = Backbone.View.extend({
         "click #next": "processToNextQuestion",
         "click #prev" : "processToPrevQuestion",
         "click #saveReport" : "showLogin",
-        "click #splash-weibo,#weibologin" : "authorize",
-        "click #login .close" : "closeLogin"
+        "click #weibologin" : "authorize",
+        "click #login .close" : "closeLogin",
+        "click #nologin" : "showReport",
+        "click #eraseCookie" : "eraseCookie"
     },
     initialize: function () {
         this.$el = $('body');
@@ -32,6 +34,16 @@ var MainView = Backbone.View.extend({
             AppFacade.saveToCookie();
             window.location = requestUri;
         }
+    },
+    showReport : function() {
+    	AppFacade.askForReport();
+    },
+    eraseCookie : function() {
+    	if(confirm("删除本地答题记录？")) {
+	    	eraseCookie("user_answers");
+	    	window.location.reload();
+    	}
+	    
     }
 });
 
@@ -94,6 +106,7 @@ var LifeView = Backbone.View.extend({
 		    };
 		};
         var stressHigh,stressMedium,stressLow,stressPin,stressPinRoot,stressHighText,stressMediumText,stressLowText;
+        var self = this;
 		lifeCenter.path().attr({
 		    "fill": "#FFF",
 		    arc: [100, 100, -2, 3, 6, 90]
@@ -127,6 +140,7 @@ var LifeView = Backbone.View.extend({
             stressPinRoot.attr({
             	"fill":"#e4600d"
             });
+            self.model.setAnswer(28,134);
          });
          
         
@@ -149,6 +163,8 @@ var LifeView = Backbone.View.extend({
             stressPinRoot.attr({
             	"fill":"#e4600d"
             });
+            
+            self.model.setAnswer(28,135);
          });
 		stressLow = lifeCenter.path().attr({
 		    "stroke": "#8cd03c",
@@ -167,6 +183,8 @@ var LifeView = Backbone.View.extend({
             stressPinRoot.attr({
             	"fill":"#e4600d"
             });
+            
+            self.model.setAnswer(28,136);
          });
 		
 		
@@ -188,7 +206,8 @@ var LifeView = Backbone.View.extend({
             stressPinRoot.attr({
             	"fill":"#e4600d"
             });
-         });;
+            self.model.setAnswer(28,134);
+         });
         stressMediumText = lifeCenter.text(100,10,"压力适中")
         .attr({
 	        "font-size":"10px",
@@ -207,7 +226,9 @@ var LifeView = Backbone.View.extend({
             stressPinRoot.attr({
             	"fill":"#e4600d"
             });
-         });;
+            
+            self.model.setAnswer(28,135);
+         });
         stressLowText = lifeCenter.text(168,50,"轻轻松松")
         .attr({
 	        "font-size":"10px",
@@ -226,7 +247,8 @@ var LifeView = Backbone.View.extend({
             stressPinRoot.attr({
             	"fill":"#e4600d"
             });
-         });;
+            self.model.setAnswer(28,136);
+         });
         
 		stressPin = lifeCenter.path("M100 100L100 20").attr({
 			 "stroke": "#ccc",
@@ -390,6 +412,11 @@ var LifeView = Backbone.View.extend({
         return this;
     },
     next: function () {
+    	var unfinishedQuestion = this.model.isSceneFinished();
+    	if ( unfinishedQuestion.length > 0  ) {
+    		AppFacade.showHelp(unfinishedQuestion);
+	    	return;
+    	}
         var nextView = app.Views.HealthView;
         AppFacade.setCurrentView(nextView);
         this.onexit();
@@ -463,6 +490,10 @@ var CleaningView = Backbone.View.extend({
 
     toggleCleaningProduct : function(event) {
         var item = $(event.currentTarget);
+        if (item.attr('data-answer-id') == '39') {
+	        // is shampoo
+	        return;
+        }
         item.toggleClass('selected');
         this.model.setAnswer(parseInt(item.parent().parent().data("question-id")), parseInt(item.data("answer-id") ), true);
     },
@@ -471,21 +502,33 @@ var CleaningView = Backbone.View.extend({
     },
     dayShower : function(event) {
         var item = $(event.currentTarget);
-        item.css('border','none');
-		item.toggleClass('unselected');
-		if ( $('#shower-time-night').hasClass('unselected') ) {
-			$('body').css('background-color','transparent');
-		} 
+		item.toggleClass('selected');
+		if( $('.shower-time-icon.selected').size() < 1 ) {
+			console.log('here');
+			item.siblings().addClass('selected');
+		}
+		this.setShowerTimeAnswer();
+		
     },
     nightShower : function(event) {
         var item = $(event.currentTarget);
-        item.css('border','none');
-		item.toggleClass('unselected');
-		if ( item.hasClass('unselected')) { 	
-			$('body').css('background-color','transparent');
-		} else {
-			$('body').css('background-color','#1a5b88');
+		item.toggleClass('selected');
+		if( $('.shower-time-icon.selected').size() < 1 ) {
+			item.siblings().addClass('selected');
 		}
+		this.setShowerTimeAnswer();
+    },
+    setShowerTimeAnswer : function() {
+	    var isShowerAtDay =  $('#shower-time-day').hasClass('selected');
+	    var isShowerAtNight = $('#shower-time-night').hasClass('selected');
+	    
+	    if ( isShowerAtDay && isShowerAtNight ) {
+		    this.model.setAnswer(29,139,true);
+	    } else if (isShowerAtDay){
+		    this.model.setAnswer(29,137,true);
+	    } else if ( isShowerAtNight ) {
+		    this.model.setAnswer(29,138,true);
+	    }
     },
     increaseFreq: function () {
         var trash = $('#cleaning-trash-content');
@@ -562,7 +605,9 @@ var CleaningView = Backbone.View.extend({
         this.$el.find('.cleaning-tool,.cleaning-style,.cleaning-care').tooltip();
     },
     render: function () {
-        console.log('cleaning');
+    	//default select shampoo
+        this.model.setAnswer(10,39,true);
+        
         this.$el.html(Mustache.render(this.template, this.model));
         this.initAnswerTooltip();
         this.trigger("render");
@@ -578,6 +623,11 @@ var CleaningView = Backbone.View.extend({
         this.onexit();
     },
     next: function () {
+    	var unfinishedQuestion = this.model.isSceneFinished();
+    	if ( unfinishedQuestion.length > 0  ) {
+    		AppFacade.showHelp(unfinishedQuestion);
+	    	return;
+    	}
         var nextView = app.Views.SalonView;
         AppFacade.setCurrentView(nextView);
         this.onexit();
@@ -672,6 +722,11 @@ var HealthView = Backbone.View.extend({
         this.onexit();
     },
     next: function () {
+    	var unfinishedQuestion = this.model.isSceneFinished();
+    	if ( unfinishedQuestion.length > 0  ) {
+    		AppFacade.showHelp(unfinishedQuestion);
+	    	return;
+    	}
         var nextView = app.Views.DietView;
         AppFacade.setCurrentView(nextView);
         this.onexit();
@@ -835,6 +890,11 @@ var DietView = Backbone.View.extend({
         this.onexit();
     },
     next: function () {
+    	var unfinishedQuestion = this.model.isSceneFinished();
+    	if ( unfinishedQuestion.length > 0  ) {
+    		AppFacade.showHelp(unfinishedQuestion);
+	    	return;
+    	}
         var nextView = app.Views.CleaningView;
         AppFacade.setCurrentView(nextView);
         this.onexit();
@@ -1029,6 +1089,11 @@ var HairStyleView = Backbone.View.extend( {
         this.onexit();
     },
     next: function () {
+    	var unfinishedQuestion = this.model.isSceneFinished();
+    	if ( unfinishedQuestion.length > 0  ) {
+    		AppFacade.showHelp(unfinishedQuestion);
+	    	return;
+    	}
         var nextView = app.Views.HairQualityView;
         AppFacade.setCurrentView(nextView);
         app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
@@ -1103,6 +1168,11 @@ var HairQualityView = Backbone.View.extend( {
         this.onexit();
     },
     next: function () {
+    	var unfinishedQuestion = this.model.isSceneFinished();
+    	if ( unfinishedQuestion.length > 0  ) {
+    		AppFacade.showHelp(unfinishedQuestion);
+	    	return;
+    	}
         var nextView = app.Views.LifeView;
         AppFacade.setCurrentView(nextView);
         app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
@@ -1222,7 +1292,6 @@ var BasicInfoView = Backbone.View.extend( {
 
     postrender: function () {
     	var self = this;
-    	$('#prev').fadeOut();
         AnimationHandler.initialize('#scene-basicinfo-content');
         this.animateIn();
         this.initAnswerTooltip();
@@ -1242,14 +1311,23 @@ var BasicInfoView = Backbone.View.extend( {
         });
     },
     prev : function() {
+    	$("#character-container").fadeOut();
+    	AnimationHandler.animateOut("next", function () { AppFacade.initSplash(); });
+    	
     },
     onexit : function() {
+    	
 	    $("#character-container").fadeOut();
 	    $('#prev').fadeIn();
 	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
 	    AppFacade.saveToCookie();
     },
     next: function () {
+    	var unfinishedQuestion = this.model.isSceneFinished();
+    	if ( unfinishedQuestion.length > 0  ) {
+    		AppFacade.showHelp(unfinishedQuestion);
+	    	return;
+    	}
         var nextView = app.Views.HairStyleView;
         AppFacade.setCurrentView(nextView);
         app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
@@ -1321,10 +1399,23 @@ var SalonView = Backbone.View.extend( {
     },
     postrender: function () {
         AnimationHandler.initialize('#scene-salon-content');
+        
+       
         this.animateIn();
-        	$('#counselor-chat-1').delay(2000).fadeIn(function(){
+        
+		if ( this.model.isAnswered(25) ) {
+			 $('#counselor-chat-1,#character-chat-1').fadeIn();
+		 } else {
+			 $('#counselor-chat-1').delay(2000).fadeIn(function(){
 				$('#character-chat-1').fadeIn();
 			});
+		 }
+		 if ( this.model.isAnswered(26) ) {
+			 $('#counselor-chat-2,#character-chat-2').fadeIn();
+		 }
+		 if ( this.model.isAnswered(27) ) {
+			 $('#counselor-chat-3').fadeIn();
+		 }
     },
     prev: function () {
         var prevView = app.Views.CleaningView;
@@ -1333,11 +1424,22 @@ var SalonView = Backbone.View.extend( {
         this.onexit();
     },
     onexit : function() {
-	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
+	    AnimationHandler.animateOut("next", function () 		{ AppFacade.getCurrentView().render(); });
 	    AppFacade.saveToCookie();
     },
     next: function () {
-        app.Report.getReport();
+    	var unfinishedQuestion = this.model.isSceneFinished();
+    	if ( unfinishedQuestion.length > 0  ) {
+    		AppFacade.showHelp(unfinishedQuestion);
+	    	return;
+    	}
+    	AppFacade.saveToCookie();
+    	if ( AppFacade.isLogin() ) {
+			AppFacade.askForReport();
+		} else {
+			$("#login").removeClass("hidden");
+		}
+        
     },
     onClickChatIcon: function(event) {
 	    var icon = $(event.currentTarget);
