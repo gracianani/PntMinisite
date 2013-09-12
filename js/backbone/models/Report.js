@@ -114,7 +114,7 @@ var Report = Backbone.Model.extend({
         });
     },
 
-    getReportByReportId
+    //getReportByReportId
 });
 
 var Suggestion = Backbone.Model.extend({
