@@ -9,12 +9,16 @@ var MainView = Backbone.View.extend({
         "click #weibologin" : "authorize",
         "click #login .close" : "closeLogin",
         "click #nologin" : "showReport",
-        "click #eraseCookie" : "eraseCookie"
+        "click #eraseCookie" : "eraseCookie",
+        "click .jiathis_button_tsina" : "shareWeibo"
     },
     initialize: function () {
         this.$el = $('body');
         
         
+    },
+    shareWeibo : function() {
+        app.Report.shareReport();
     },
     processToNextQuestion: function () {
         AppFacade.getCurrentView().next();

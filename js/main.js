@@ -327,14 +327,14 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
                 app.Views.ReportView = reportView;
 
 				app.SceneViews = [
-				app.Views.BasicInfoView,
-				app.Views.HairStyleView,
-				app.Views.HairQualityView,
-				app.Views.DietView,
-				app.Views.HealthView,
-				app.Views.CleaningView,
-				app.Views.LifeView,
-				app.Views.SalonView
+				    app.Views.BasicInfoView,
+				    app.Views.HairStyleView,
+				    app.Views.HairQualityView,
+				    app.Views.DietView,
+				    app.Views.HealthView,
+				    app.Views.CleaningView,
+				    app.Views.LifeView,
+				    app.Views.SalonView
 				];
 				app.SceneViews.push()
                 app.Router = new Router();
@@ -374,9 +374,6 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
 				
 				AppFacade.initQQLogin();
 				AppFacade.initWbLogin();
-				
-				
-
 
             }
         );
