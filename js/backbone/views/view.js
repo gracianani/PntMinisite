@@ -64,6 +64,7 @@ SplashView.prototype = {
 	        
         });
         AnimationHandler.animateIn();
+        _hmt.push(['_trackPageview', '/splash']);
 	},
 	onExitSplash : function() {
 		$('#main').show();
@@ -87,6 +88,7 @@ LoadingView.prototype = {
 		this.loading.fadeIn('slow',function(){
 			self.onExitLoading();
 		});
+		_hmt.push(['_trackPageview', '/loading']);
 		
 		
 	},

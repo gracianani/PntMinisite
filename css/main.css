@@ -94,7 +94,7 @@ textarea {
    ========================================================================== */
 
 html {
-	background-color: #ffbd32;
+	background-color: #000;
 	width: 100%;
 	min-height: 100%;
 }
@@ -104,6 +104,7 @@ body {
 	font-family: "Microsoft Yahei","Yahei",sans-serif;
 	overflow: hidden;
 	min-height: 100%;
+	background: #ffbd32;
 
 }
 
@@ -3041,8 +3042,9 @@ Cleaning
 	width: 960px;
 	margin:10px auto;
 	color: #000;
-	padding-top: 80px;
+	padding-top: 50px;
 	position: relative;
+	padding-bottom: 150px;
 }
 #report h2 {
 	color: #AC7C37;
@@ -3103,8 +3105,68 @@ Cleaning
 	zoom: 1;
 	clear: both;
 	float: none;
-	height: 220px;
+	height: 200px;
 	width: 720px;
+}
+#report-body {
+	overflow: hidden;
+}
+#report-share {
+	position: absolute;
+	top:350px;
+	left: 50%;
+	display: none;
+}
+#report-share a {
+	color: #cc9336;
+	
+}
+#report-share span{
+	float: left;
+	display: inline-block;
+	color: #a16908;
+	line-height: 32px;
+}
+#report-share .jiathis_style_32x32 .jtico {
+	background: url(../img/share.png) no-repeat left top;
+	margin-left: 10px;
+	border-radius: 50%;
+	width: 32px;
+	height: 32px;
+	padding-left: 0!important;
+	background-color: #2a82a6;
+}
+#report-share .jiathis_style_32x32 .jtico:hover {
+	opacity: 1;
+	background-color: #2f94e1;
+}
+#report-share .jiathis_style_32x32 .jtico_weixin {
+	background-position: center -32px;
+}
+#report-share .jiathis_style_32x32 .jtico_weixin:hover {
+	background-color:#0bcb27;
+	
+}
+#report-share .jiathis_style_32x32 .jtico_tsina {
+	background-position: center -64px;
+}
+#report-share .jiathis_style_32x32 .jtico_tsina:hover {
+	background-color:#cc1600;
+	
+}
+#report-share .jiathis_style_32x32 .jtico_douban {
+	background-position: center -96px;
+}
+#report-share .jiathis_style_32x32 .jtico_douban:hover {
+	background-color:#148825;
+	
+}
+#report-share .jiathis_style_32x32 .jtico_qzone {
+	background-position: center -128px;
+}
+#report-share .jiathis_style_32x32 .jtico_qzone:hover {
+	background-color:#f4b23c;
+	
 }
 #report-header p {
 	font-size: 14px;
@@ -3115,7 +3177,7 @@ Cleaning
 	color: #df4521;
 	font-size: 36px;
 	line-height: 40px;
-	padding-top: 20px;
+	padding-top: 40px;
 	margin: 0;
 }
 #report-result {
@@ -3125,6 +3187,29 @@ Cleaning
 	width: 720px;
 	margin-left: 30px;
 }
+#report-opt {
+	margin-left: 220px;
+	height: 40px;
+	margin-bottom: 30px;
+}
+#restartQuiz,#saveQuiz {
+	display: inline-block;
+	padding: 10px 20px;
+	margin-right: 10px;
+	color: #FFF;
+	background-color: #2a82a6;
+	border-radius: 10px;
+	line-height: 20px;
+	font-size: 16px;	
+	text-decoration: none;
+}
+#restartQuiz {
+	position: absolute;
+	top:90px;
+	right: 215px;
+	background: #d55b1c;
+}
+
 #report-result>li {
 	float: none;
 	clear: both;
@@ -3142,7 +3227,8 @@ Cleaning
 	padding-bottom: 20px;
 	float: left;
 	background: url(../img/scene/reporthairicon.png) no-repeat left top;
-	height: 100%;
+	margin-bottom: -999px;
+	padding-bottom: 999px;
 }
 .report-result-body {
 	float: left;
@@ -3151,13 +3237,14 @@ Cleaning
 	border-radius: 10px;
 	min-height: 100px;
 	padding: 20px;
-	border: #dfb65e 2px solid;
+	border: #de9a0a 2px solid;
 }
+
 #report-avatar {
 	width: 212px;
 	position: absolute;
 	right: 0;
-	top:100px;
+	top:80px;
 }
 #report-result-cleaning .report-result-icon {
 	background: url(../img/scene/reportcareicon.png) no-repeat left top;
@@ -3165,6 +3252,8 @@ Cleaning
 
 #report-result-life .report-result-icon {
 	background: url(../img/scene/reportlifeicon.png) no-repeat left top;
+	margin-bottom: 0;
+	padding-bottom: 10px;
 }
 #hair-advice-tag {
 	color: #ae6a10;
@@ -3194,7 +3283,55 @@ Cleaning
 	margin-left: 20px;
 	color: #666;
 }
-
+#report-product-basic {
+	height: 327px;
+	border-radius: 10px;
+	overflow: hidden;
+	width: 708px;
+	border: 5px dashed #ffe579;
+	border-radius: 10px;
+	position: relative;
+	margin-left: 25px;
+}
+#report-product-list,.report-product-item {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.report-product-item {
+	height: 327px;
+	width: 100%;
+	border-radius: 10px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: none;
+}
+#report-product-list .current {
+	display: block;
+}
+#report-products {
+	position: relative;
+}
+#report-product-title {
+	color: #a16908;
+	color: 16px;
+	margin-left: 25px;
+	margin-bottom: 10px;
+	margin-top: 20px;
+}
+#report-product-more {
+	position: absolute;
+	left: 600px;
+	bottom: -10px;
+	background: #d55b1c;
+	border-radius: 10px;
+	color: #FFF;
+	cursor: pointer;
+	padding: 10px 20px;
+	font-size: 16px;
+	z-index: 3;
+}
 /****about **/
 #about {
 	width: 90%;

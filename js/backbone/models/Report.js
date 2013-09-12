@@ -10,7 +10,23 @@ var Report = Backbone.Model.extend({
     QuizId: 0,
     ScoreSuggestions: [],
     HairProblems: [],
+    ProductSuggestions: [],
+    ShareText:"",
+    clearSuggestions: function() {
+	    this.LifeStyleSuggestions= [];
+		this.HairCareSuggestions=[];
+		this.HairSituationSuggestions=[]
+		this.Score=0;
+		this.ScoreTitle="";
+		this.QuizId=0;
+		this.ScoreSuggestions=[];
+		this.HairProblems=[];
+		this.ProductSuggestions = [];
+		this.ShareText = "";
+    },
     loadSuggestions: function (suggestions) {
+    	this.clearSuggestions();
+    	
         var lifestyleIds = suggestions.lifestyle_suggestions.split(",");
         for (var i = 0; i < lifestyleIds.length; i++) {
             var suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(lifestyleIds[i]) });
@@ -34,22 +50,35 @@ var Report = Backbone.Model.extend({
         }
         this.Score = suggestions.score;
         var gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 1 });
-        if (suggestions.score > 50 && suggestions.score > 80) {
+        
+        if (suggestions.score > 50 && suggestions.score < 80) {
             gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 2 });
         }
         else if (suggestions.score > 80) {
             gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 3 });
         }
-
+		this.ShareText = gSuggestion.get("share_text_begin_with");
         this.ScoreTitle = gSuggestion.get("suggestion_title");
         this.ScoreSuggestions.push(gSuggestion.get("suggestion_text"));
         this.QuizId = suggestions.quizId;
         this.HairProblems.push(app.Views.HairQualityView.model.getAnswerText(21));
         this.HairProblems.push(app.Views.HairStyleView.model.getAnswerText(14));
+        
+        var productIds = suggestions.suggested_products.split(",");
+        for (var i=0; i < productIds.length; i++ ) {
+	        var suggestion = app.ProductRepo.findWhere( {
+	        product_id: parseInt(productIds[i]) 
+	        });
+	        if ( typeof suggestion !== 'undefined' ) {
+		        this.ProductSuggestions.push(suggestion.toJSON());
+	        }
+        }
+        
 
         AppFacade.setCurrentView(app.Views.ReportView);
         app.Router.navigate("Report/" + this.QuizId);
         app.Views.ReportView.trigger("finishloading");
+		
 
         
         console.log(suggestions);

@@ -273,6 +273,25 @@ window.AppFacade = {
 	},
 	showHelp : function(unfinishedQuestions) {
 		alert("您还没有回答完全部问题哦");
+	},
+	gotoScene : function(step) {
+
+	  	var currentView = this.getCurrentView();
+	  	
+	  	var currentStep = parseInt(currentView.model.get("scene_id"));
+	  	
+	  	if ( !currentStep ) {
+		  	currentStep = 9;
+	  	}
+	  	console.log(currentStep);
+	  	console.log(step);
+	  	if ( step < currentStep ) {
+		  	var nextView = app.SceneViews[step-1];
+		  	this.setCurrentView(nextView);
+		  	app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
+		  	currentView.onexit();
+		  	app.Views.MainView.setProgressBar();
+	  	}
 	}
 }
 
@@ -336,7 +355,8 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
 				app.Views.LifeView,
 				app.Views.SalonView
 				];
-				app.SceneViews.push()
+
+				
                 app.Router = new Router();
                 Backbone.history.start();
 
@@ -369,6 +389,9 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
                     
                 }
                 AppFacade.loadFromCookie(isCallback);
+                
+                
+                
                 
                 AppFacade.init();
 				

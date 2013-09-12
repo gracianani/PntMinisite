@@ -1,38 +1,62 @@
 ﻿[	
 	{
 		"product_id" : 1,
-		"product_name" : "潘婷植物精萃系列"
+		"product_name" : "潘婷植物精萃系列",
+		"url":"http://pantene.com.cn/hair-care-collections/plant-essence-series.aspx",
+		"img":"Product-collectionkv10.jpg"
 	},
 	{
 		"product_id" : 2,
-		"product_name" : "潘婷乳液修复系列"
+		"product_name" : "潘婷乳液修复系列",
+		"url":"http://pantene.com.cn/Pages/hair-care-products.aspx",
+		"img":"Product-collectionkv1.jpg"
 	},
 	{
 		"product_id" : 3,
-		"product_name" : "潘婷乳液修复去屑系列"
+		"product_name" : "潘婷乳液修复去屑系列",
+		"url":"http://pantene.com.cn/hair-care-collections/emulsion-repair-dandruff-series.aspx",
+		"img":"Product-collectionkv4.jpg"
 	},
 	{
 		"product_id" : 4,
-		"product_name" : "潘婷强韧防掉发系列"
+		"product_name" : "潘婷强韧防掉发系列",
+		"url":"http://pantene.com.cn/hair-care-collections/jiang-tough-anti-hair-series.aspx",
+		"img":"Product-collectionkv6.jpg"
 	},
 	{
 		"product_id" : 5,
-		"product_name" : "潘婷垂顺直发系列"
+		"product_name" : "潘婷垂顺直发系列",
+		"url":"http://pantene.com.cn/hair-care-collections/straight-hair-series.aspx",
+		"img":"Product-collectionkv7.jpg"
 	},
 	{
 		"product_id" : 6,
-		"product_name" : "潘婷丝质顺滑去屑系列"
+		"product_name" : "潘婷丝质顺滑去屑系列",
+		"url":"http://pantene.com.cn/hair-care-collections/silky-smooth-dandruff-series.aspx",
+		"img":"Product-collectionkv6.jpg"
 	},
 	{
 		"product_id" : 7,
-		"product_name" : "潘婷莹彩修护系列"
+		"product_name" : "潘婷莹彩修护系列",
+		"url":"http://pantene.com.cn/hair-care-collections/ying-cai-repair-series.aspx",
+		"img":"Product-collectionkv5.jpg"
 	},
 	{
 		"product_id" : 8,
-		"product_name" : "潘婷弹性卷发系列"
+		"product_name" : "潘婷弹性卷发系列",
+		"url":"http://pantene.com.cn/hair-care-collections/flexible-curls-series.aspx",
+		"img":"Product-collectionkv8.jpg"
 	},
 	{
 		"product_id" : 9,
-		"product_name" : "潘婷乌黑莹亮系列"
+		"product_name" : "潘婷乌黑莹亮系列",
+		"url":"http://pantene.com.cn/hair-care-collections/black-sparkling-series.aspx",
+		"img":"Product-collectionkv9.jpg"
+	},
+	{
+		"product_id" : 10,
+		"product_name" : "潘婷丝质顺滑系列",
+		"url":"http://pantene.com.cn/hair-care-collections/silky-smooth-series.aspx",
+		"img":"Product-collectionkv3.jpg"
 	}
 ]

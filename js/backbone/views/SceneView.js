@@ -32,16 +32,7 @@ var MainView = Backbone.View.extend({
     onCLickStep: function(e) {
 	  	var item = $(e.currentTarget);
 	  	var step = parseInt(item.attr("data-step"));
-	  	var currentView = AppFacade.getCurrentView();
-	  	var currentStep = parseInt(currentView.model.get("scene_id"));
-	  	
-	  	if ( step < currentStep ) {
-		  	var nextView = app.SceneViews[step-1];
-		  	AppFacade.setCurrentView(nextView);
-		  	app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
-		  	currentView.onexit();
-		  	this.setProgressBar();
-	  	}
+	  	AppFacade.gotoScene(step);
 	  	
     },
     showLogin : function() {
@@ -405,6 +396,7 @@ var LifeView = Backbone.View.extend({
         this.$el.html(Mustache.render(this.template, this.model));
         
         this.trigger("render");
+         _hmt.push(['_trackPageview', '/Survey/4']);
         return this;
     },
     next: function () {
@@ -639,6 +631,7 @@ var CleaningView = Backbone.View.extend({
         
         this.$el.html(Mustache.render(this.template, this.model));
         this.initAnswerTooltip();
+        _hmt.push(['_trackPageview', '/Survey/7']);
         this.trigger("render");
         return this;
     },
@@ -740,6 +733,7 @@ var HealthView = Backbone.View.extend({
         this.$el.html(Mustache.render(this.template, this.model));
         this.initAnswerTooltip();
         this.initHealthQuestions();
+        _hmt.push(['_trackPageview', '/Survey/5']);
         this.trigger("render");
         return this;
     },
@@ -910,7 +904,7 @@ var DietView = Backbone.View.extend({
         this.initQuestionHint();
         this.initAnswerTooltip();
         this.initFruit();
-		
+		_hmt.push(['_trackPageview', '/Survey/6']);
         this.trigger("render");
         return this;
     },
@@ -1109,6 +1103,7 @@ var HairStyleView = Backbone.View.extend( {
         app.Views.AvatarView.model.hairColor = hairData.color;
         app.Views.AvatarView.render();
         this.initHairCircle();
+        _hmt.push(['_trackPageview', '/Survey/2']);
         this.trigger("render");
         return this;
     },
@@ -1189,6 +1184,7 @@ var HairQualityView = Backbone.View.extend( {
 				
 			}
 		});
+		_hmt.push(['_trackPageview', '/Survey/3']);
         this.trigger("render");
         return this;
     },
@@ -1323,6 +1319,7 @@ var BasicInfoView = Backbone.View.extend( {
     render: function () {
         this.$el.html(Mustache.render(this.template, this.model));
         app.Views.AvatarView.render();
+        _hmt.push(['_trackPageview', '/Survey/1']);
         this.trigger("render");
         return this;
     },
@@ -1431,6 +1428,7 @@ var SalonView = Backbone.View.extend( {
     render: function () {
     	this.model.gender = app.Views.AvatarView.model.gender;
         this.$el.html(Mustache.render(this.template, this.model));
+        _hmt.push(['_trackPageview', '/Survey/8']);
         this.trigger("render");
         return this;
     },
