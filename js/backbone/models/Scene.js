@@ -149,6 +149,7 @@ var Scene = Backbone.Model.extend({
     isAnswered: function (question_id, answer_id) {
         var answers = this.get("user_answers");
         var user_question = this.getUserAnswerByQuestionId(question_id);
+
         if (typeof answer_id !== 'undefined') {
             return user_question.answer_ids.indexOf(answer_id) > -1;
         }
@@ -191,6 +192,7 @@ var Scene = Backbone.Model.extend({
 	
     getAnswerDegree : function (question_id) {
         var question = app.QuestionRepo.findWhere({ question_id: question_id });
+       
         if (this.isAnswered(question_id)) {
             var user_question = this.getUserAnswerByQuestionId(question_id);
             var user_answer = user_question.answer_ids[0];

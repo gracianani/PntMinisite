@@ -10,11 +10,12 @@ var MainView = Backbone.View.extend({
         "click #login .close" : "closeLogin",
         "click #nologin" : "showReport",
         "click #eraseCookie" : "eraseCookie",
-        "click .jiathis_button_tsina" : "shareWeibo"
+        "click .jiathis_button_tsina" : "shareWeibo",
+        "click .step": "onCLickStep"
     },
     initialize: function () {
         this.$el = $('body');
-        
+        $('.step').tooltip();
         
     },
     shareWeibo : function() {
@@ -22,9 +23,30 @@ var MainView = Backbone.View.extend({
     },
     processToNextQuestion: function () {
         AppFacade.getCurrentView().next();
+        this.setProgressBar();
     },
     processToPrevQuestion: function() {
         AppFacade.getCurrentView().prev();
+        this.setProgressBar();
+    },
+    setProgressBar: function() {
+	    var stepid = AppFacade.getCurrentView().model.get("scene_id");
+	    $('#progress').attr('class','step'+stepid);
+    },
+    onCLickStep: function(e) {
+	  	var item = $(e.currentTarget);
+	  	var step = parseInt(item.attr("data-step"));
+	  	var currentView = AppFacade.getCurrentView();
+	  	var currentStep = parseInt(currentView.model.get("scene_id"));
+	  	
+	  	if ( step < currentStep ) {
+		  	var nextView = app.SceneViews[step-1];
+		  	AppFacade.setCurrentView(nextView);
+		  	app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
+		  	currentView.onexit();
+		  	this.setProgressBar();
+	  	}
+	  	
     },
     showLogin : function() {
         $("#login").removeClass("hidden");
@@ -82,6 +104,52 @@ var LifeView = Backbone.View.extend({
             this.drawLifeLine({currentTarget: $('div[data-answer-id=' + answers[i] + ']')});
         }
     },
+   setStressPin: function(stress) {
+	   if ( stress == 'medium' ) {
+		   this.stressPin.animate({
+            	transform:""
+            }, 500, 'back-out')
+            .attr({
+	            
+            	"stroke":"#e4600d",
+            	"stroke-dasharray":""
+            });
+            
+            this.stressPinRoot.attr({
+            	"fill":"#e4600d"
+            });
+            
+            this.model.setAnswer(28,135);
+	   } else if ( stress == 'high' ) {
+		   this.stressPin.animate({
+            	transform:"r-60 100 100"
+            }, 500, 'back-out')
+            .attr({
+            	"stroke":"#e4600d",
+            	"stroke-dasharray":""
+            });
+            
+            this.stressPinRoot.attr({
+            	"fill":"#e4600d"
+            });
+            this.model.setAnswer(28,134);
+	   } else {
+		   this.stressPin.animate({
+            	"transform":"r60 100 100"
+            }, 500, 'back-out')
+            .attr({
+            	"stroke":"#e4600d",
+            	"stroke-dasharray":"",
+            });
+            
+            this.stressPinRoot.attr({
+            	"fill":"#e4600d"
+            });
+            
+            this.model.setAnswer(28,136);
+	   }
+	   
+   },
     initStress : function() {
         var lifeCenter = Raphael("life-center", 200, 200);
 		lifeCenter.customAttributes.arc = function (xloc, yloc,start, value, total, R) {
@@ -133,18 +201,7 @@ var LifeView = Backbone.View.extend({
 		    "cursor":"pointer",
 		    arc: [100, 100, -2, 1, 6, 85]
 		}).click(function () {
-            stressPin.animate({
-            	transform:"r-60 100 100"
-            }, 500, 'back-out')
-            .attr({
-            	"stroke":"#e4600d",
-            	"stroke-dasharray":""
-            });
-            
-            stressPinRoot.attr({
-            	"fill":"#e4600d"
-            });
-            self.model.setAnswer(28,134);
+            self.setStressPin('high');
          });
          
         
@@ -155,20 +212,7 @@ var LifeView = Backbone.View.extend({
 		    "cursor":"pointer",
 		    arc: [100, 100, -1, 1, 6, 85]
 		}).click(function () {
-            stressPin.animate({
-            	transform:""
-            }, 500, 'back-out')
-            .attr({
-	            
-            	"stroke":"#e4600d",
-            	"stroke-dasharray":""
-            });
-            
-            stressPinRoot.attr({
-            	"fill":"#e4600d"
-            });
-            
-            self.model.setAnswer(28,135);
+            self.setStressPin('medium');
          });
 		stressLow = lifeCenter.path().attr({
 		    "stroke": "#8cd03c",
@@ -176,19 +220,7 @@ var LifeView = Backbone.View.extend({
 		    "cursor":"pointer",
 		    arc: [100, 100, 0, 1, 6, 85]
 		}).click(function () {
-            stressPin.animate({
-            	"transform":"r60 100 100"
-            }, 500, 'back-out')
-            .attr({
-            	"stroke":"#e4600d",
-            	"stroke-dasharray":"",
-            });
-            
-            stressPinRoot.attr({
-            	"fill":"#e4600d"
-            });
-            
-            self.model.setAnswer(28,136);
+            self.setStressPin('low');
          });
 		
 		
@@ -199,18 +231,7 @@ var LifeView = Backbone.View.extend({
 	        "cursor":"pointer",
 	        "transform":"r-60 32 50"
         }).click(function () {
-            stressPin.animate({
-            	transform:"r-60 100 100"
-            }, 500, 'back-out')
-            .attr({
-            	"stroke":"#e4600d",
-            	"stroke-dasharray":""
-            });
-            
-            stressPinRoot.attr({
-            	"fill":"#e4600d"
-            });
-            self.model.setAnswer(28,134);
+            self.setStressPin('high');
          });
         stressMediumText = lifeCenter.text(100,10,"压力适中")
         .attr({
@@ -218,20 +239,7 @@ var LifeView = Backbone.View.extend({
 	        "cursor":"pointer",
 	        "fill":"#FFF"
         }).click(function () {
-            stressPin.animate({
-            	transform:""
-            }, 500, 'back-out')
-            .attr({
-	            
-            	"stroke":"#e4600d",
-            	"stroke-dasharray":""
-            });
-            
-            stressPinRoot.attr({
-            	"fill":"#e4600d"
-            });
-            
-            self.model.setAnswer(28,135);
+            self.setStressPin('medium');
          });
         stressLowText = lifeCenter.text(168,50,"轻轻松松")
         .attr({
@@ -240,30 +248,30 @@ var LifeView = Backbone.View.extend({
 	        "fill":"#fff",
 	        "transform":"r60 168 50"
         }).click(function () {
-            stressPin.animate({
-            	"transform":"r60 100 100"
-            }, 500, 'back-out')
-            .attr({
-            	"stroke":"#e4600d",
-            	"stroke-dasharray":"",
-            });
-            
-            stressPinRoot.attr({
-            	"fill":"#e4600d"
-            });
-            self.model.setAnswer(28,136);
+            self.setStressPin('low');
          });
         
-		stressPin = lifeCenter.path("M100 100L100 20").attr({
+		this.stressPin = lifeCenter.path("M100 100L100 20").attr({
 			 "stroke": "#ccc",
 			 "stroke-width": 5,
 			 "stroke-dasharray":"-",
 			 "arrow-end":"classic"
 		});
-		stressPinRoot = lifeCenter.circle(100,100,6).attr({
+		this.stressPinRoot = lifeCenter.circle(100,100,6).attr({
 			"fill": "#ccc",
 			"stroke-width":0
 		});
+		
+		if ( this.model.isAnswered(28) ) {
+			var stressAnswer = this.model.getAnswerDegree(28);
+			if ( stressAnswer == 1 ) {
+				this.setStressPin('high');
+			} else if ( stressAnswer == 2 ) {
+				this.setStressPin('medium');
+			} else {
+				this.setStressPin('low');
+			}
+		}
     },
 
     drawLifeLine : function(event) {
@@ -373,13 +381,18 @@ var LifeView = Backbone.View.extend({
 		if ( workIconCount > 0 || playIconCount > 0 ) {
 			if ( workIconCount > playIconCount ) {
 				$('#life-type').html("专业工作狂");
+				
+				this.setStressPin('high');
 			} else if ( workIconCount < playIconCount )  {
 				$('#life-type').html("天生爱玩客");
+				this.setStressPin('low');
 			} else {
 				$('#life-type').html("平衡生活家");
+				this.setStressPin('medium');
 			}
 		} else {
 			$('#life-type').html("无聊的生活");
+			this.setStressPin('medium');
 		}
 		var isSelected = icon.data('isselected') == "1" ;
         this.model.setAnswer( icon.parent().data("question-id"), icon.data("answer-id"), !isSelected);
@@ -394,24 +407,7 @@ var LifeView = Backbone.View.extend({
     },
     render: function () {
         this.$el.html(Mustache.render(this.template, this.model));
-        this.initAnswerTooltip();
-        this.initQuestionHint();
-		this.initAnswerTooltip();
-        this.initStress();
-        var linesPaper = Raphael("life-lines", $(this.linesEl).width(), $(this.linesEl).height());
-        var linesCount = $('.life-icon').size();
-        this.lines = [];
-		for ( var i = 0 ; i < linesCount; i++ ) {
-			var line = linesPaper.path()
-			.attr({
-			"stroke":"#e4600d",
-			"stroke-width":4,
-			"stroke-linejoin":"round"
-			});
-			this.lines.push(line);
-		}
-
-        this.initLife();
+        
         this.trigger("render");
         return this;
     },
@@ -434,6 +430,24 @@ var LifeView = Backbone.View.extend({
     postrender: function () {
         AnimationHandler.initialize('#scene-life-content');
         this.animateIn();
+        this.initAnswerTooltip();
+        this.initQuestionHint();
+		this.initAnswerTooltip();
+        this.initStress();
+        var linesPaper = Raphael("life-lines", $(this.linesEl).width(), $(this.linesEl).height());
+        var linesCount = $('.life-icon').size();
+        this.lines = [];
+		for ( var i = 0 ; i < linesCount; i++ ) {
+			var line = linesPaper.path()
+			.attr({
+			"stroke":"#e4600d",
+			"stroke-width":4,
+			"stroke-linejoin":"round"
+			});
+			this.lines.push(line);
+		}
+
+        this.initLife();
     },
     onexit : function() {
 	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
@@ -608,6 +622,21 @@ var CleaningView = Backbone.View.extend({
     initAnswerTooltip: function () {
         this.$el.find('.cleaning-tool,.cleaning-style,.cleaning-care').tooltip();
     },
+    initShowerFreq: function() {
+	    var item = $('#shower-frequency');
+	    var questionId = parseInt(item.attr('data-question-id'));
+	    var degree = this.model.getAnswerDegree(questionId);
+	    console.log(degree);
+	    if ( degree > 0 ) {
+		    item.data('degree',degree);
+		    item.attr('data-degree',degree+'');
+		    
+		    item.find('#shower-frequency-text').text(this.model.getAnswerTextByDegree(questionId,degree));
+		    this.showShowerWater(degree);
+		    
+	    }
+	    
+    },
     render: function () {
     	//default select shampoo
         this.model.setAnswer(10,39,true);
@@ -620,6 +649,9 @@ var CleaningView = Backbone.View.extend({
     postrender: function () {
         AnimationHandler.initialize('#scene-cleaning-content');
         this.animateIn();
+        
+        //set shower freq
+        this.initShowerFreq();
     },
     prev : function() {
         var prevView = app.Views.DietView;
@@ -807,13 +839,14 @@ var DietView = Backbone.View.extend({
 	  	if ( isSelected ) {
 		  	switch(id) {
 			  	case 1:
-			  		$("#takeaway,#homemade").removeClass("selected");
+			  		$("#takeaway,#homemade,#diningTable").removeClass("selected");
+			  		
 			  		item.flyToAndHide($("#character-container"),function(){
 				  		
 			  		});
 			  	break;
 			  	case 2:
-			  		$("#takeaway,#homemade").removeClass("selected");
+			  		$("#takeaway,#homemade,#diningTable").removeClass("selected");
 			  		item.flyToAndHide($("#character-container"),function(){
 				  		
 			  		});
@@ -822,12 +855,14 @@ var DietView = Backbone.View.extend({
 			  		item.flyToAndHide($("#homemade"),function(){
 				  		$("#homemade").addClass("selected");
 				  		$("#takeaway").removeClass("selected");
+				  		$("#diningTable").addClass("selected");
 			  		});
 			  	break;
 			  	case 4:
 			  		item.flyToAndHide($("#takeaway"),function(){
 				  		$("#takeaway").addClass("selected");
 				  		$("#homemade").removeClass("selected");
+				  		$("#diningTable").addClass("selected");
 			  		});
 			  	break;
 			  	default:
@@ -891,6 +926,7 @@ var DietView = Backbone.View.extend({
     prev : function() {
         var prevView = app.Views.HealthView;
         AppFacade.setCurrentView(prevView);
+        app.Router.navigate("Survey/" + prevView.model.get("scene_id"));
         this.onexit();
     },
     next: function () {
@@ -901,6 +937,7 @@ var DietView = Backbone.View.extend({
     	}
         var nextView = app.Views.CleaningView;
         AppFacade.setCurrentView(nextView);
+        app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
         this.onexit();
     },
     onexit : function() {
