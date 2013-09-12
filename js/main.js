@@ -158,8 +158,8 @@ window.AppFacade = {
 		console.log(reqData);
 		var self = this;				       
 		QC.Login.getMe(function(openId, accessToken){
-					       app.User.qqUid = openId;
-					       app.User.qqToken = accessToken;
+					       app.User.qq_uid = openId;
+					       app.User.qq_token = accessToken;
 		});
 		this.askForReport();
 	},
@@ -228,7 +228,7 @@ window.AppFacade = {
 		$("#splash-login").hide();
 		$("#login").addClass("hidden");
 		
-		app.User.wbUid = o.id;
+		app.User.weibo_uid = o.id;
 		
 		var tokencookiename = "weibojs_"+app.weiboApp.app_id;
 		var tokencookie = readCookie(tokencookiename);
@@ -236,7 +236,7 @@ window.AppFacade = {
 		if ( tokencookie ) {
 			var param = tokencookie.split("%26");
 			var token = param[0].split("%3D")[1];
-			app.User.wbToken = token;
+			app.User.weibo_token = token;
 			
 
 		}
@@ -248,7 +248,7 @@ window.AppFacade = {
 		$("#splash-login").show();
 	},
 	isLogin : function() {
-		return (app.User.wbUid || app.User.qqUid );
+		return (app.User.weibo_uid || app.User.qq_uid );
 	},
 	isQuizFinish : function() {
 		var isFinished = true;
