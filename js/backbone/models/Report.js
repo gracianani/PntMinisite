@@ -80,7 +80,7 @@ var Report = Backbone.Model.extend({
         app.Views.ReportView.trigger("finishloading");
 		
 
-        
+
         console.log(suggestions);
     },
 
@@ -99,7 +99,22 @@ var Report = Backbone.Model.extend({
                 self.loadSuggestions($.parseJSON(data.d));
             }
         });
-    }
+    },
+
+    shareReport: function () {
+        $.ajax({
+            type: "POST",
+            url: 'WeiboWebServices.asmx/Share',
+            timeout: 5000,
+            data: '{ report_id : 8 }',
+            datatType: "json",
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+            }
+        });
+    },
+
+    getReportByReportId
 });
 
 var Suggestion = Backbone.Model.extend({
