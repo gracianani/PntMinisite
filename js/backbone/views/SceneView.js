@@ -955,9 +955,93 @@ var HairStyleView = Backbone.View.extend( {
         "click #hand,#pin,#band,#comb" : "setHairState",
         "click .hairstyle-circle" : "setHairCircle"
     },
-
+	drawHairCircleArc: function() {
+		var lengthPaper = Raphael("hairstyle-length-control", 160, 160);
+		lengthPaper.customAttributes.arc = drawArc;
+		var curlPaper = Raphael("hairstyle-curl-control", 160, 160);
+		curlPaper.customAttributes.arc = drawArc;
+		
+		
+		lengthPaper.path().attr({
+		    "stroke": "#38a4ee",
+		    "stroke-width": 20,
+		    "cursor":"pointer",
+		    arc: [80, 80, 0, 1, 5, 70]
+		}).click(function () {
+            
+         });
+         lengthPaper.path().attr({
+		    "stroke": "#073351",
+		    "stroke-width": 20,
+		    "cursor":"pointer",
+		    arc: [80, 80, 1, 1, 5, 70]
+		}).click(function () {
+            
+         });
+         lengthPaper.path().attr({
+		    "stroke": "#0b4d7b",
+		    "stroke-width": 20,
+		    "cursor":"pointer",
+		    arc: [80, 80, 2, 1, 5, 70]
+		}).click(function () {
+            
+         });
+         lengthPaper.path().attr({
+		    "stroke": "#165986",
+		    "stroke-width": 20,
+		    "cursor":"pointer",
+		    arc: [80, 80, 3, 1, 5, 70]
+		}).click(function () {
+            
+         });
+         lengthPaper.path().attr({
+		    "stroke": "#2470a4",
+		    "stroke-width": 20,
+		    "cursor":"pointer",
+		    arc: [80, 80, 4, 1, 5, 70]
+		}).click(function () {
+            
+         });
+         
+         curlPaper.path().attr({
+		    "stroke": "#ffe579",
+		    "stroke-width": 20,
+		    "cursor":"pointer",
+		    arc: [80, 80, 0.8, 1, 4, 70]
+		}).click(function () {
+            
+         });
+         curlPaper.path().attr({
+		    "stroke": "#ffcc61",
+		    "stroke-width": 20,
+		    "cursor":"pointer",
+		    arc: [80, 80, 1.8, 1, 4, 70]
+		}).click(function () {
+            
+         });
+         curlPaper.path().attr({
+		    "stroke": "#fbad09",
+		    "stroke-width": 20,
+		    "cursor":"pointer",
+		    arc: [80, 80, 2.8, 1, 4, 70]
+		}).click(function () {
+            
+         });
+         curlPaper.path().attr({
+		    "stroke": "#e49b02",
+		    "stroke-width": 20,
+		    "cursor":"pointer",
+		    arc: [80, 80, 3.8, 1, 4, 70]
+		}).click(function () {
+            
+         });
+	
+	},
     initHairCircle : function() {
         var self = this;
+        
+        this.drawHairCircleArc();
+        
         var length = $('#hairstyle-length .hairstyle-circle-dragable');
         var curl = $('#hairstyle-curl .hairstyle-circle-dragable');
         
@@ -979,18 +1063,12 @@ var HairStyleView = Backbone.View.extend( {
             degree:4
 		}).setDegree(defaultCurl);
 		
+		
+		
+		
 		$('#hairstyle-length .hairstyle-circle-dragable,#hairstyle-curl .hairstyle-circle-dragable').draggable({
 			start: function(event,ui){
-				var data = $( this ).data('dragcircle');
-                if ( ! data.radius ) 
-                {
-					data.radius = data.$circle.height() / 2;
-					data.startX =  data.$circle.offset().left;
-					data.startY =  data.$circle.offset().top;
-                    data.centerX = data.$circle.position().left + data.radius;
-                    data.centerY = data.$circle.position().top + data.radius;
-                    $( this ).data('dragcircle', data );
-               }
+
 			},
 			drag: function(event,ui) {
 				var data = $( this ).data('dragcircle'),
@@ -1017,18 +1095,7 @@ var HairStyleView = Backbone.View.extend( {
         var $circle = $(event.currentTarget);
 		var data = $circle.find('.hairstyle-circle-dragable').data('dragcircle');
 			
-		if ( ! data.radius ) 
-        {
-                	
-			data.radius = data.$circle.height() / 2;
-			data.startX =  data.$circle.offset().left;
-			data.startY =  data.$circle.offset().top;
-            data.centerX = data.$circle.position().left + data.radius;
-            data.centerY = data.$circle.position().top + data.radius;
-                        
-            
-                        
-        }
+
         angle = Math.atan2( event.pageX - data.centerX - data.startX, event.pageY - data.centerY - data.startY );
         data.angle = angle;
 		$circle.find('.hairstyle-circle-dragable').data('dragcircle', data );
@@ -1036,7 +1103,6 @@ var HairStyleView = Backbone.View.extend( {
         
         var question_id = parseInt($circle.parent().data("question-id"));
 		var degree = parseInt($circle.find('.hairstyle-circle-dragable').data('degree'));
-		console.log(question_id);
 				
         this.model.setAnswerByDegree(question_id, degree, true);
         $circle.find('.hairstyle-text').html(this.model.getAnswerTextByDegree(question_id, degree));

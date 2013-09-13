@@ -108,6 +108,8 @@ $.prototype.setDegree = function (defaultDegree) {
                     data.centerY = data.$circle.position().top + data.radius;
                     $( this ).data('dragcircle', data );
         }
+        console.log(data);
+
         if (defaultDegree) {
             degree = defaultDegree;
             var angleDegree = defaultDegree - 1 - Math.ceil(data.degree / 2);
@@ -121,7 +123,7 @@ $.prototype.setDegree = function (defaultDegree) {
             degree = degree - data.degree;
         }
         $(this).data('degree', degree);
-        console.log(degree);
+
         $(this).css({ top: data.centerY + Math.cos(angle) * data.radius,
             left: data.centerX + Math.sin(angle) * data.radius
         }).rotate(angle);
@@ -193,3 +195,29 @@ function geDegreeByXPosition( left, parentWidth, degreeCount ) {
 	var degree = Math.floor(step / 2 ) + 1;
 	return degree;
 }
+
+function drawArc(xloc, yloc,start, value, total, R) {
+		    	var alpha = 360 / total * start,
+		    	beta = 360/total * value,
+		        a = (60 - alpha) * Math.PI / 180,
+		        b = (60 - beta - alpha ) * Math.PI / 180,
+		        xa = xloc + R * Math.cos(a),
+		        ya = xloc - R * Math.sin(a),
+		        xb = xloc + R * Math.cos(b),
+		        yb = yloc - R * Math.sin(b),
+		        path;
+		    if (total == value) {
+		        path = [
+		            ["M", xloc, yloc - R],
+		            ["A", R, R, 0, 1, 1, xloc - 0.01, yloc - R]
+		        ];
+		    } else {
+		        path = [
+		            ["M", xa, ya],
+		            ["A", R, R, 0, +(beta > 180), 1, xb, yb]
+		        ];
+		    }
+		    return {
+		        path: path
+		    };
+};
