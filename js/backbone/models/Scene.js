@@ -301,5 +301,5 @@ var QuestionsCollection = Backbone.Collection.extend({
 
 var SceneSettingsCollection = Backbone.Collection.extend({
     model: SceneSetting,
-    url: "js/backbone/data/scene_settings.json?v"
+    url: "js/backbone/data/scene_settings.json?W"
 });

@@ -15,6 +15,7 @@ var AnimationHandler = {
 
         self.items = jQuery(self.contentID + " .item").length;
         var count = 0;
+
         jQuery(self.contentID + " .item").each(function (i) {
 
             //var left = parseInt(jQuery(this).css('left')),
@@ -123,22 +124,28 @@ var AnimationHandler = {
         var self = this;
         var count = 0;
         var items = jQuery(self.contentID + " .item");
-        items.each(function (i) {
-            jQuery(this).animate({ path: new jQuery.path.bezier(jQuery(this).data().out) }, 1200, "easeInQuint", function () {
-                count++;
-                if (count == items.length) {
-                    if (type == "next") {
-                        postAnimateOut();
+        if (items.length > 0) {
+            items.each(function (i) {
+                jQuery(this).animate({ path: new jQuery.path.bezier(jQuery(this).data().out) }, 1200, "easeInQuint", function () {
+                    count++;
+                    if (count == items.length) {
+                        if (type == "next") {
+                            postAnimateOut();
+                        }
+                        else if (type == "report") {
+                            app.Views.BasicFrameView.showReport();
+                            postAnimateOut();
+                        }
+                        else {
+                        }
                     }
-                    else if (type == "report") {
-                        app.Views.BasicFrameView.showReport();
-                        postAnimateOut();
-                    }
-                    else {
-                    }
-                }
+                });
             });
-        });
+
+        }
+        else {
+            postAnimateOut();
+        }
 
 
     },

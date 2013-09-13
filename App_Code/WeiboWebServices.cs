@@ -86,6 +86,7 @@ public class WeiboWebServices : System.Web.Services.WebService {
             // Thread 
             var m_thread = new Thread(_Generate);
             m_thread.SetApartmentState(ApartmentState.STA);
+            
             m_thread.Start();
             m_thread.Join();
             return m_Bitmap;
@@ -93,11 +94,12 @@ public class WeiboWebServices : System.Web.Services.WebService {
 
         private void _Generate()
         {
-            var browser = new WebBrowser { ScrollBarsEnabled = false };
-            browser.Navigate(m_Url);
+            var browser = new WebBrowser { ScrollBarsEnabled = false , ScriptErrorsSuppressed = true};
+            browser.Navigate(m_Url );
             browser.DocumentCompleted += WebBrowser_DocumentCompleted;
 
-            while (browser.ReadyState != WebBrowserReadyState.Complete)
+            while (browser.ReadyState != WebBrowserReadyState.Complete || browser.Document == null || browser.Document.GetElementById("report") == null ||
+                string.IsNullOrEmpty(browser.Document.GetElementById("report").InnerHtml) )
             {
                 System.Windows.Forms.Application.DoEvents();
             }
@@ -109,8 +111,10 @@ public class WeiboWebServices : System.Web.Services.WebService {
         {
             // Capture 
             var browser = (WebBrowser)sender;
-            browser.ClientSize = new Size(browser.Document.Body.ScrollRectangle.Width, browser.Document.Body.ScrollRectangle.Bottom);
+           // browser.ClientSize = new Size(browser.Document.Body.ScrollRectangle.Width, browser.Document.Body.ScrollRectangle.Bottom);
             browser.ScrollBarsEnabled = false;
+            browser.SetBounds(0, 10,browser.Document.Body.ScrollRectangle.Width, browser.Document.Body.ScrollRectangle.Bottom-20);
+
             m_Bitmap = new Bitmap(browser.Document.Body.ScrollRectangle.Width, browser.Document.Body.ScrollRectangle.Bottom);
             browser.BringToFront();
             browser.DrawToBitmap(m_Bitmap, browser.Bounds);
@@ -124,23 +128,31 @@ public class WeiboWebServices : System.Web.Services.WebService {
         }
     }
 
-    
-
     class SceneUserAnswer
     {
         public int scene_id;
-        public UserAnswer[] user_answers;
+        public List<UserAnswer> user_answers;
     }
 
     class UserAnswer
     {
         public int question_id;
-        public int[] answer_ids;
+        public List<int> answer_ids;
+    }
+
+    class QuizResponse
+    {
+        public int quizId;
+        public int score;
+        public string suggested_products;
+        public string hairsituation_suggestions;
+        public string haircare_suggestions;
+        public string lifestyle_suggestions;
     }
 
     [WebMethod]
     [ScriptMethod(UseHttpGet = false)]
-    public string SubmitAnswer( string user_answers ) {
+    public string SubmitAnswer( string user_answers, int quizId = 0) {
         JavaScriptSerializer serializer = new JavaScriptSerializer();
         var sceneUserAnswers = serializer.Deserialize<SceneUserAnswer[]>(user_answers);
         var userAnswerIds = new List<int>();
@@ -151,7 +163,6 @@ public class WeiboWebServices : System.Web.Services.WebService {
         };
         var productIds = new List<int>();
         var score = 0.0m;
-        var quizId = 0;
         foreach (SceneUserAnswer sceneUserAnswer in sceneUserAnswers)
         {
             var answer_ids = sceneUserAnswer.user_answers.Select(i => i.answer_ids).ToList();
@@ -210,12 +221,14 @@ public class WeiboWebServices : System.Web.Services.WebService {
                     }
                 }
             }
-
-            using (var command = new SqlCommand("LogUserAnswers", conn))
+            if (quizId == 0)
             {
-                command.CommandType = System.Data.CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("Answers", answerIdTable);
-                quizId = Convert.ToInt32(command.ExecuteScalar());
+                using (var command = new SqlCommand("LogUserAnswers", conn))
+                {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("Answers", answerIdTable);
+                    quizId = Convert.ToInt32(command.ExecuteScalar());
+                }
             }
         }
         return string.Format("{{ \"lifestyle_suggestions\": \"{0}\" , \"haircare_suggestions\" : \"{2}\", \"hairsituation_suggestions\" : \"{3}\",  \"suggested_products\" : \"{1}\", \"score\" : {4}, \"quizId\" : \"{5}\" }}", string.Join(",", suggestionIds[1]), string.Join(",", productIds), string.Join(",", suggestionIds[2]), string.Join(",", suggestionIds[3]), Convert.ToInt32(score/3) , quizId);
@@ -256,8 +269,62 @@ public class WeiboWebServices : System.Web.Services.WebService {
     [WebMethod]
     public bool Share(int report_id)
     {
-        WebsiteToImage websiteToImage = new WebsiteToImage("http://pantene.app.social-touch.com", string.Format("C:\\test\\report{0}.jpg",report_id) );
+        WebsiteToImage websiteToImage = new WebsiteToImage("http://localhost:59884/PntMinisite/index.html#Report/" + report_id, string.Format("C:\\test\\report{0}.jpg", report_id));
         websiteToImage.Generate();
         return true;
+    }
+
+    [WebMethod]
+    public string FetchReport(int report_id)
+    {
+        var userAnswers = new List<SceneUserAnswer>();
+        string connStr = ConfigurationManager.ConnectionStrings["pnt"].ConnectionString;
+        using (var conn = new SqlConnection(connStr))
+        {
+            conn.Open();
+            using (var command = new SqlCommand("FetchAnswersByQuizId", conn))
+            {
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("QuizId", report_id);
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var sceneId = reader.GetInt32(reader.GetOrdinal("sceneId"));
+                        var questionId = reader.GetInt32(reader.GetOrdinal("questionId"));
+                        var answerId = reader.GetInt32(reader.GetOrdinal("answerId"));
+                        SceneUserAnswer sceneUserAnswer;
+                        if (!userAnswers.Exists(i=>i.scene_id == sceneId))
+                        {
+                            sceneUserAnswer = new SceneUserAnswer();
+                            sceneUserAnswer.scene_id = sceneId;
+                            sceneUserAnswer.user_answers = new List<UserAnswer>();
+                            userAnswers.Add(sceneUserAnswer);
+                        }
+                        else {
+                            sceneUserAnswer = userAnswers.Single(i=>i.scene_id == sceneId);
+                        }
+                        UserAnswer userAnswer;
+                        if(!sceneUserAnswer.user_answers.Exists(i=>i.question_id == questionId)) {
+                            userAnswer = new UserAnswer();
+                            userAnswer.question_id = questionId;
+                            userAnswer.answer_ids = new List<int>();
+                            sceneUserAnswer.user_answers.Add(userAnswer);
+                        }
+                        else {
+                            userAnswer = sceneUserAnswer.user_answers.First(i=>i.question_id == questionId);
+                        }
+                        userAnswer.answer_ids.Add(answerId);
+                    }
+                }
+            }
+
+        }
+
+        JavaScriptSerializer serializer = new JavaScriptSerializer();
+        var sceneUserAnswers = serializer.Serialize(userAnswers);
+
+        var suggestions = SubmitAnswer(sceneUserAnswers, report_id);
+        return string.Format("{{ \"user_answers\" : {0}, \"suggestions\" : {1} }}", sceneUserAnswers, suggestions);
     }
 }
