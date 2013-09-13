@@ -62,7 +62,7 @@
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
-
+        
         <!-- Add your site or application content here -->
         <div id="header">
         	<div id="logo">
@@ -72,17 +72,22 @@
         	<img src="img/title.png" alt="潘婷护发实验室" />
         	</h1>
         </div>
+
+        <div id="report" ></div>
         
-        
-        <div id="report" class="container">
-        	<div id="report-header">
+        <script id="report-template" type="text/template">
+            <div id="report-header">
         		<div id="report-score" class="score-low">
         			<div class="score-inside"></div>
         			<div id="report-score-title">秀发健康指数</div>
-        			<div id="report-score-number">60</div>
+        			<div id="report-score-number">{{Score}}</div>
         		</div>
-        		<h2 class="score-low">严重受损发质</h2>
-        		<p>你的头发已经存在了一些问题，如不及时护理将影响你的魅力哦！潘婷建议你从日常生活习惯入手，减少刺激性食物/甜腻食物的摄入，及时调整不规律的生活习惯；同时要养成健康的洗护习惯，注意挑选适合的日常洗护产品，帮助你有效修护受损发质，轻松拥有健康秀发，从头绽放迷人光彩！</p>
+        		<h2 class="score-low">{{ScoreTitle}}</h2>
+        		<p>{{#ScoreSuggestions}}{{.}}{{/ScoreSuggestions}}</p>
+        	</div>
+        	<div id="report-opt">
+        		<a id="restartQuiz" href="javascript:void(0)"><i class="icon-refresh"></i> 重新测试</a>
+        		<a id="saveQuiz" href="javascript:void(0)"><i class="icon-download-alt"></i> 下载报告图片</a>
         	</div>
         	<div id="report-body">
 				<ul id="report-result">
@@ -90,10 +95,11 @@
 						<div class="report-result-icon">
 						</div>
 						<div class="report-result-body">
-							<div id="hair-advice-tag">大卷 全头染色 干枯 掉发</div>
+							<div id="hair-advice-tag">{{#HairProblems}} {{.}} {{/HairProblems}}</div>
 							<ul id="hair-advice">
-								<li>潘婷 强韧防掉发 系列产品很适合您！ 强韧+发根到发梢，显著减少掉发。</li>
-								<li>潘婷 强韧防掉发 系列产品很适合您！ 强韧+发根到发梢，显著减少掉发。</li>
+                                {{#HairSituationSuggestions}}
+                                <li>{{suggestion_text}}</li>
+                                {{/HairSituationSuggestions}}
 							</ul>
 						</div>
 					</li>
@@ -102,8 +108,9 @@
 						</div>
 						<div class="report-result-body">
 							<ul id="cleaning-advice">
-								<li>您的烫染频率太高啦，您的秀发吃不消了！</li>
-								<li>您的烫染频率太高啦，您的秀发吃不消了！</li>
+								{{#HairCareSuggestions}}
+                                <li>{{suggestion_text}}</li>
+                                {{/HairCareSuggestions}}
 							</ul>
 						</div>
 					</li>
@@ -112,24 +119,36 @@
 						</div>
 						<div class="report-result-body">
 							<ul id="life-advice">
-								<li>您的烫染频率太高啦，您的秀发吃不消了！</li>
-								<li>您的烫染频率太高啦，您的秀发吃不消了！</li>
+								{{#LifeStyleSuggestions}}
+                                <li>{{suggestion_text}}</li>
+                                {{/LifeStyleSuggestions}}
 							</ul>
 						</div>
 					</li>
 				</ul>
         	</div>
         	<div id="report-products">
+        		<div id="report-product-title">
+        			最适合您的潘婷系列
+        		</div>
 				<div id="report-product-basic">
-				基础产品ID
+					<ul id="report-product-list">
+						{{#ProductSuggestions}}
+						<li class="report-product-item">
+							<a href="{{url}}">
+							<img src="../img/product/{{img}}" title="{{product_name}}" />
+							</a>
+						</li>
+						{{/ProductSuggestions}}
+					</ul>
 				</div>
-				<div id="report-product-mask">
-				深层产品
-				</div>
+				<div id="report-product-more">
+        			看看其他推荐
+        		</div>
         	</div>
         	<div id="report-avatar">
-        		<div id="character" class="character fm character-large-size">
-        			<div class="hair hair-fm-l-1  hair-red">
+        		<div id="character" class="character {{gender}} character-large-size">
+        			<div class="hair hair-{{gender}}-{{hairLength}}-{{hairCurly}} hair-{{gender}}-{{hairType}}  hair-{{hairColor}}">
         			</div>
         			<div class="body">
         			</div>
@@ -138,19 +157,21 @@
         			<div class="face">
         			</div>
         					
-        			<div class="clothes clothes-fm-6">
+        			<div class="clothes clothes-{{gender}}-{{career_id}}">
         			</div>
         			<div class="hand">
         			</div>
-        			<div class="bang bang-fm-l-1 bang-red">
+        			<div class="bang bang-{{gender}}-{{hairType}} bang-{{gender}}-{{hairLength}}-{{hairCurly}} bang-{{hairColor}}">
         			</div>
         		</div>
         	</div>
-        	
-        </div>
+        </script>
 
-
-        
         <script src="js/vendor/jquery-1.9.1.min.js"></script>
+        <script src="js/vendor/underscore.js" type="text/javascript"></script>
+        <script src="js/vendor/backbone.js" type="text/javascript"></script>
+        <script src="js/vendor/mustache.js" type="text/javascript"></script>
+        <script src="js/vendor/require.min.js" data-main="js/plain-report"></script>
+
     </body>
 </html>

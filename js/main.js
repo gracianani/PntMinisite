@@ -73,7 +73,7 @@ window.AppFacade = {
     },
     setUserAnswers: function (user_answers) {
         console.log(user_answers);
-        for (var i = 0; i < user_answers.length ; i++) {
+        for (var i = 0; i < user_answers.length; i++) {
             var user_answer = user_answers[i];
             if (user_answer.scene_id == 1) {
                 app.Views.BasicInfoView.model.set("user_answers", user_answer.user_answers);
@@ -153,66 +153,67 @@ window.AppFacade = {
 				           figureurl: reqData.figureurl
 				       })
 		);
-		$("#login").addClass("hidden");
-		$("#splash-login").hide();
-		console.log(reqData);
-		var self = this;				       
-		QC.Login.getMe(function(openId, accessToken){
-					       app.User.qq_uid = openId;
-					       app.User.qq_token = accessToken;
-		});
-		this.askForReport();
-	},
-    onQQLogoutSuccess: function(opts){//注销成功
-		alert('QQ登录 注销成功');
-		$('#prifile-login').html('');
-		$("#splash-login").show();
-	},
-	initWbLogin: function() {
-		WB2.anyWhere(function(W){
-		    W.widget.connectButton({
-		        id: "splash-weibo",
-		        type: '2,2',
-		        callback : {
-		            login:window.AppFacade.onWbLoginSuccess,
-		            logout:window.AppFacade.onWbLooutSuccess
-		        }
-		    });
-		});
-		
+        $("#login").addClass("hidden");
+        $("#splash-login").hide();
 
-		WB2.anyWhere(function(W){
-		    W.widget.connectButton({
-		        id: "wb_connect_btn",
-		        type: '1,1',
-		        callback : {
-		            login:window.AppFacade.onWbLoginSuccess,
-		            logout:window.AppFacade.onWbLooutSuccess
-		        }
-		    });
-		});
-		
+        var self = this;
+        console.log(this);
+        QC.Login.getMe(function (openId, accessToken) {
+            app.User.qq_uid = openId;
+            app.User.qq_token = accessToken;
+        });
+        AppFacade.askForReport();
+    },
+    onQQLogoutSuccess: function (opts) {//注销成功
+        alert('QQ登录 注销成功');
+        $('#prifile-login').html('');
+        $("#splash-login").show();
+    },
+    initWbLogin: function () {
+        WB2.anyWhere(function (W) {
+            W.widget.connectButton({
+                id: "splash-weibo",
+                type: '2,2',
+                callback: {
+                    login: window.AppFacade.onWbLoginSuccess,
+                    logout: window.AppFacade.onWbLooutSuccess
+                }
+            });
+        });
 
-	},
-	weiboLogout: function(){
-		WB2.logout(function(){
-			window.AppFacade.onWbLogoutSuccess();
-			WB2.anyWhere(function(W){
-		    W.widget.connectButton({
-		        id: "wb_connect_btn",
-		        type: '1,1',
-		        callback : {
-		            login:window.AppFacade.onWbLoginSuccess,
-		            logout:window.AppFacade.onWbLooutSuccess
-		        }
-		    });
-		});
-		});
 
-	},
-	onWbLoginSuccess: function(o) {
+        WB2.anyWhere(function (W) {
+            W.widget.connectButton({
+                id: "wb_connect_btn",
+                type: '1,1',
+                callback: {
+                    login: window.AppFacade.onWbLoginSuccess,
+                    logout: window.AppFacade.onWbLooutSuccess
+                }
+            });
+        });
 
-		_logoutTemplate=[
+
+    },
+    weiboLogout: function () {
+        WB2.logout(function () {
+            window.AppFacade.onWbLogoutSuccess();
+            WB2.anyWhere(function (W) {
+                W.widget.connectButton({
+                    id: "wb_connect_btn",
+                    type: '1,1',
+                    callback: {
+                        login: window.AppFacade.onWbLoginSuccess,
+                        logout: window.AppFacade.onWbLooutSuccess
+                    }
+                });
+            });
+        });
+
+    },
+    onWbLoginSuccess: function (o) {
+
+        _logoutTemplate = [
 				            '<span class="profile-avatar"><img src="{{figureurl}}" class="{size_key}"/></span>',
 				            '<span class="profile-nickname">{{nickname}}</span>',
 				            '<span class="profile-logout"><a onclick="window.AppFacade.weiboLogout();">退出</a></span>'
@@ -224,76 +225,76 @@ window.AppFacade = {
         })
 		);
 
-		
-		$("#login").addClass("hidden");
-		$("#splash-login").hide();
-		$("#login").addClass("hidden");
-		
-		app.User.weibo_uid = o.id;
-		
-		var tokencookiename = "weibojs_"+app.weiboApp.app_id;
-		var tokencookie = readCookie(tokencookiename);
 
-		if ( tokencookie ) {
-			var param = tokencookie.split("%26");
-			var token = param[0].split("%3D")[1];
-			app.User.weibo_token = token;
-			
+        $("#login").addClass("hidden");
+        $("#splash-login").hide();
+        $("#login").addClass("hidden");
 
-		}
-		this.askForReport();
-	},
-	onWbLogoutSuccess: function() {
-		alert('微博登陆退 出成功');
-		$('#prifile-login').html('');
-		$("#splash-login").show();
-	},
-	isLogin : function() {
-		return (app.User.weibo_uid || app.User.qq_uid );
-	},
-	isQuizFinish : function() {
-		var isFinished = true;
-		
-		for ( var index in app.SceneViews ) {
-			if ( app.SceneViews[index].model ) {
-				console.log(app.SceneViews[index].model);
-				if ( app.SceneViews[index].model.isSceneFinished().length > 0 ) {
-					isFinished = false;
-				}
-			}
-		}
-		return isFinished;
-	},
-	askForReport : function() {
-		if ( this.isQuizFinish() ) {
-			app.Report.getReport();
-		} else {
-			alert("您还有未完成的题目，请仔细检查一下哦！");
-		}
-		
-	},
-	showHelp : function(unfinishedQuestions) {
-		alert("您还没有回答完全部问题哦");
-	},
-	gotoScene : function(step) {
+        app.User.weibo_uid = o.id;
 
-	  	var currentView = this.getCurrentView();
-	  	
-	  	var currentStep = parseInt(currentView.model.get("scene_id"));
-	  	
-	  	if ( !currentStep ) {
-		  	currentStep = 9;
-	  	}
-	  	console.log(currentStep);
-	  	console.log(step);
-	  	if ( step < currentStep ) {
-		  	var nextView = app.SceneViews[step-1];
-		  	this.setCurrentView(nextView);
-		  	app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
-		  	currentView.onexit();
-		  	app.Views.MainView.setProgressBar();
-	  	}
-	}
+        var tokencookiename = "weibojs_" + app.weiboApp.app_id;
+        var tokencookie = readCookie(tokencookiename);
+
+        if (tokencookie) {
+            var param = tokencookie.split("%26");
+            var token = param[0].split("%3D")[1];
+            app.User.weibo_token = token;
+
+
+        }
+        this.askForReport();
+    },
+    onWbLogoutSuccess: function () {
+        alert('微博登陆退 出成功');
+        $('#prifile-login').html('');
+        $("#splash-login").show();
+    },
+    isLogin: function () {
+        return (app.User.weibo_uid || app.User.qq_uid);
+    },
+    isQuizFinish: function () {
+        var isFinished = true;
+
+        for (var index in app.SceneViews) {
+            if (app.SceneViews[index].model) {
+                console.log(app.SceneViews[index].model);
+                if (app.SceneViews[index].model.isSceneFinished().length > 0) {
+                    isFinished = false;
+                }
+            }
+        }
+        return isFinished;
+    },
+    askForReport: function () {
+        if (this.isQuizFinish()) {
+            app.Report.getReport();
+        } else {
+            alert("您还有未完成的题目，请仔细检查一下哦！");
+        }
+
+    },
+    showHelp: function (unfinishedQuestions) {
+        alert("您还没有回答完全部问题哦");
+    },
+    gotoScene: function (step) {
+
+        var currentView = this.getCurrentView();
+
+        var currentStep = parseInt(currentView.model.get("scene_id"));
+
+        if (!currentStep) {
+            currentStep = 9;
+        }
+        console.log(currentStep);
+        console.log(step);
+        if (step < currentStep) {
+            var nextView = app.SceneViews[step - 1];
+            this.setCurrentView(nextView);
+            app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
+            currentView.onexit();
+            app.Views.MainView.setProgressBar();
+        }
+    }
 }
 
 // Start the main app logic.
@@ -356,6 +357,9 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
 				    app.Views.LifeView,
 				    app.Views.SalonView
 				];
+
+                
+
                 app.Router = new Router();
                 Backbone.history.start();
                 AppFacade.init();
