@@ -23,8 +23,11 @@ BasicFrameView.prototype = {
             }
         })
         }, 800, "easeOutQuint", function () {
-            window.AppFacade.getCurrentView().render();
-            self.showControls();
+            if ( AppFacade.getCurrentView() != app.Views.ReportView ) {
+                window.AppFacade.getCurrentView().render();
+                self.showControls();
+            }
+            
         });
     },
     showControls: function () {

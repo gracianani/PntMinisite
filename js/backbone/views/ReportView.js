@@ -33,8 +33,8 @@ var ReportView = Backbone.View.extend({
         AnimationHandler.animateOut("report", function () {
             $("#main").fadeOut(function () { $('#report').fadeIn(
             	function(){
-	            			$('#report-share').show();
-	            			$('.report-product-item:first').addClass('current');
+	            	$('#report-share').show();
+	            	$('.report-product-item:first').addClass('current');
             	}
             
             ); });

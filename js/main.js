@@ -25,34 +25,33 @@ window.AppFacade = {
     init: function () {
         if (typeof app.Views.BasicFrameView == 'undefined') {
             this.initLoading();
-            
+
         }
     },
-    setStartView: function() {
-      var isStartFromSplash = false;
-	  //console.log(app.Views.BasicInfoView.model.isAnswered(22));
-	  if ( this.currentView == undefined ) {
-	  	isStartFromSplash = true;
-	  	
-		  
-	  } else if ( !app.Views.BasicInfoView.model.isAnswered(22) ) {
-		isStartFromSplash = true;
-	  }
-	  if ( isStartFromSplash ) {
-		  this.initSplash();
-	  } else {
-		  this.initBasicFrame();
-	  }
+    setStartView: function () {
+        var isStartFromSplash = false;
+        if (this.currentView == undefined) {
+            isStartFromSplash = true;
+
+
+        } else if (!app.Views.BasicInfoView.model.isAnswered(22) && typeof (app.ReportId) == 'undefined') {
+            isStartFromSplash = true;
+        }
+        if (isStartFromSplash) {
+            this.initSplash();
+        } else {
+            this.initBasicFrame();
+        }
     },
     initLoading: function () {
         app.Views.LoadingView = new LoadingView();
     },
-    initSplash: function() {
-	  	app.Views.SplashView = new SplashView();  
+    initSplash: function () {
+        app.Views.SplashView = new SplashView();
     },
     initBasicFrame: function () {
         app.Views.BasicFrameView = new BasicFrameView();
-        
+
     },
     setCurrentView: function (view) {
         this.currentView = view;
@@ -73,14 +72,15 @@ window.AppFacade = {
         return user_answers;
     },
     setUserAnswers: function (user_answers) {
-        for (var i = 0; i < user_answers.length; i++) {
+        console.log(user_answers);
+        for (var i = 0; i < user_answers.length ; i++) {
             var user_answer = user_answers[i];
             if (user_answer.scene_id == 1) {
                 app.Views.BasicInfoView.model.set("user_answers", user_answer.user_answers);
             }
             else if (user_answer.scene_id == 2) {
                 app.Views.HairStyleView.model.set("user_answers", user_answer.user_answers);
-            } 
+            }
             else if (user_answer.scene_id == 3) {
                 app.Views.HairQualityView.model.set("user_answers", user_answer.user_answers);
             }
@@ -113,44 +113,44 @@ window.AppFacade = {
     },
     loadFromCookie: function (isTrigger) {
         var str_user_answers = readCookie("user_answers");
-        
-        if ( str_user_answers ) {
-	        this.setUserAnswers($.parseJSON(str_user_answers));
-	        var current_scene_id = readCookie("current_scene_id");
-	        var str_user_info = readCookie("user_info");
-	        var user_info = $.parseJSON(str_user_info);
-			if ( user_info ) {
-				app.User = user_info;
-			}
-	        
-	        app.Router.navigate("Survey/" + current_scene_id, { trigger: isTrigger });
+
+        if (str_user_answers) {
+            this.setUserAnswers($.parseJSON(str_user_answers));
+            var current_scene_id = readCookie("current_scene_id");
+            var str_user_info = readCookie("user_info");
+            var user_info = $.parseJSON(str_user_info);
+            if (user_info) {
+                app.User = user_info;
+            }
+
+            app.Router.navigate("Survey/" + current_scene_id, { trigger: isTrigger });
         } else {
-	        app.Router.navigate("", true);
+            app.Router.navigate("", true);
         }
-        
+
     },
-    initQQLogin: function() {
-	    QC.Login({//按默认样式插入QQ登录按钮
-					btnId:"qqlogin",
-					size: "A_XL"
-					},
+    initQQLogin: function () {
+        QC.Login({//按默认样式插入QQ登录按钮
+            btnId: "qqlogin",
+            size: "A_XL"
+        },
 					window.AppFacade.onQQLoginSuccess, window.AppFacade.onQQLogoutSuccess);
-		QC.Login({//按默认样式插入QQ登录按钮
-					btnId:"splash-qq",
-					size: "A_L"
-					},
+        QC.Login({//按默认样式插入QQ登录按钮
+            btnId: "splash-qq",
+            size: "A_L"
+        },
 					window.AppFacade.onQQLoginSuccess, window.AppFacade.onQQLogoutSuccess);
     },
-    onQQLoginSuccess: function(reqData, opts){
-		_logoutTemplate=[
+    onQQLoginSuccess: function (reqData, opts) {
+        _logoutTemplate = [
 				            '<span class="profile-avatar"><img src="{figureurl}" class="{size_key}"/></span>',
 				            '<span class="profile-nickname">{nickname}</span>',
-				            '<span class="profile-logout"><a href="javascript:QC.Login.signOut();">退出</a></span>'    
+				            '<span class="profile-logout"><a href="javascript:QC.Login.signOut();">退出</a></span>'
 		].join("");
-		$('#prifile-login').html(
+        $('#prifile-login').html(
 				       QC.String.format(_logoutTemplate, {
-				           nickname : QC.String.escHTML(reqData.nickname), //做xss过滤
-				           figureurl : reqData.figureurl
+				           nickname: QC.String.escHTML(reqData.nickname), //做xss过滤
+				           figureurl: reqData.figureurl
 				       })
 		);
 		$("#login").addClass("hidden");
@@ -215,14 +215,15 @@ window.AppFacade = {
 		_logoutTemplate=[
 				            '<span class="profile-avatar"><img src="{{figureurl}}" class="{size_key}"/></span>',
 				            '<span class="profile-nickname">{{nickname}}</span>',
-				            '<span class="profile-logout"><a onclick="window.AppFacade.weiboLogout();">退出</a></span>'    
+				            '<span class="profile-logout"><a onclick="window.AppFacade.weiboLogout();">退出</a></span>'
 		].join("");
-		
-		$('#prifile-login').html(Mustache.render(_logoutTemplate, {
-				           nickname : o.screen_name, 
-				           figureurl : o.profile_image_url
-				       })
+
+        $('#prifile-login').html(Mustache.render(_logoutTemplate, {
+            nickname: o.screen_name,
+            figureurl: o.profile_image_url
+        })
 		);
+
 		
 		$("#login").addClass("hidden");
 		$("#splash-login").hide();
@@ -345,7 +346,7 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
                 app.Views.SalonView = salonView;
                 app.Views.ReportView = reportView;
 
-				app.SceneViews = [
+                app.SceneViews = [
 				    app.Views.BasicInfoView,
 				    app.Views.HairStyleView,
 				    app.Views.HairQualityView,
@@ -355,49 +356,16 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
 				    app.Views.LifeView,
 				    app.Views.SalonView
 				];
-
-				
                 app.Router = new Router();
                 Backbone.history.start();
-
-                var code = getParameterByName("code");
-                var isCallback = code == '';
-                // handle callback from weibo
-                if (code != '' && typeof app.User.access_token == 'undefined') {
-                    var requestData = '{'
-                                + 'client_id : ' + '\"' + app.weiboApp.app_id + '\",'
-                                + 'client_secret : ' + '\"' + app.weiboApp.app_secret + '\",'
-                                + 'grant_type : ' + '\"authorization_code\", '
-                                + 'code : ' + '\"' + app.User.code + '\", '
-                                + 'redirect_uri : ' + '\"' + app.weiboApp.redirect_uri + '\"'
-                                + '}';
-                    $.ajax({
-                        type: "POST",
-                        url: 'WeiboWebServices.asmx/GetUserInfo',
-                        timeout: 5000,
-                        data: requestData,
-                        datatType: "json",
-                        contentType: "application/json;charset=utf-8",
-                        success: function (data) {
-                            var json = $.parseJSON(data.d);
-                            app.User.access_token = json.access_token;
-                            app.User.uid = json.uid;
-                            app.User.code = code;
-                            $("#weibo").addClass("authenticated");
-                        }
-                    });
-                    
-                }
-                AppFacade.loadFromCookie(isCallback);
-                
-                
-                
-                
                 AppFacade.init();
-				
-				AppFacade.initQQLogin();
-				AppFacade.initWbLogin();
+                AppFacade.initQQLogin();
+                AppFacade.initWbLogin();
 
+                var isTrigger = typeof (app.ReportId) == 'undefined';
+                if (isTrigger) {
+                    AppFacade.loadFromCookie(true);
+                }
             }
         );
 
