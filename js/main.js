@@ -153,6 +153,7 @@ window.AppFacade = {
 				           figureurl: reqData.figureurl
 				       })
 		);
+
         $("#login").addClass("hidden");
         $("#splash-login").hide();
 
@@ -193,7 +194,6 @@ window.AppFacade = {
             });
         });
 
-
     },
     weiboLogout: function () {
         WB2.logout(function () {
@@ -224,7 +224,6 @@ window.AppFacade = {
             figureurl: o.profile_image_url
         })
 		);
-
 
         $("#login").addClass("hidden");
         $("#splash-login").hide();
@@ -295,6 +294,7 @@ window.AppFacade = {
             app.Views.MainView.setProgressBar();
         }
     }
+
 }
 
 // Start the main app logic.

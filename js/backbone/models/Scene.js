@@ -253,7 +253,7 @@ var Scene = Backbone.Model.extend({
             if (question.question_type == "single" && userAnswer.answer_ids.length == 1) {
                 return true;
             }
-            else if (question.question_type == "multiple" && userAnswer.answer_ids.length >= 1) {
+            else if (question.question_type == "multiple") {
                 return true;
             }
         }

@@ -832,30 +832,30 @@ var DietView = Backbone.View.extend({
 	  	
 	  	if ( isSelected ) {
 		  	switch(id) {
-			  	case 1:
-			  		$("#takeaway,#homemade,#diningTable").removeClass("selected");
-			  		
+			  	case 1:			  		
 			  		item.flyToAndHide($("#character-container"),function(){
-				  		
+				  		$("#cooking-hat").addClass("selected");
+				  		$("#takeaway,#homemade,#diningTable,#cooking-apron").removeClass("selected");
 			  		});
 			  	break;
 			  	case 2:
-			  		$("#takeaway,#homemade,#diningTable").removeClass("selected");
+			  		
 			  		item.flyToAndHide($("#character-container"),function(){
-				  		
+				  		$("#cooking-apron").addClass("selected");
+				  		$("#takeaway,#homemade,#diningTable,#cooking-hat").removeClass("selected");
 			  		});
 			  	break;
 			  	case 3:
 			  		item.flyToAndHide($("#homemade"),function(){
 				  		$("#homemade").addClass("selected");
-				  		$("#takeaway").removeClass("selected");
+				  		$("#takeaway,#cooking-apron,#cooking-hat").removeClass("selected");
 				  		$("#diningTable").addClass("selected");
 			  		});
 			  	break;
 			  	case 4:
 			  		item.flyToAndHide($("#takeaway"),function(){
 				  		$("#takeaway").addClass("selected");
-				  		$("#homemade").removeClass("selected");
+				  		$("#homemade,#cooking-apron,#cooking-hat").removeClass("selected");
 				  		$("#diningTable").addClass("selected");
 			  		});
 			  	break;
@@ -872,7 +872,7 @@ var DietView = Backbone.View.extend({
         this.$el.find('.fruit').hint('#hint-fruit');
     },
     initAnswerTooltip: function () {
-        this.$el.find('.drink,.taste,.fruit').tooltip();
+        this.$el.find('.drink,.taste,.fruit,.cooking').tooltip();
     },
     initFruit: function () {
         var self = this;
@@ -903,6 +903,8 @@ var DietView = Backbone.View.extend({
 
     // Re-render the titles of the todo item.
     render: function () {
+    	
+    	this.model.gender = app.Views.AvatarView.model.getGender();
         this.$el.html(Mustache.render(this.template, this.model));
 		app.Views.AvatarView.render();
         this.initQuestionHint();
@@ -936,6 +938,7 @@ var DietView = Backbone.View.extend({
     },
     onexit : function() {
 	    $("#character-container").fadeOut();
+	    $("#cooking-apron,#cooking-hat").hide();
 	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
 	    AppFacade.saveToCookie();
     }
@@ -956,9 +959,9 @@ var HairStyleView = Backbone.View.extend( {
         "click .hairstyle-circle" : "setHairCircle"
     },
 	drawHairCircleArc: function() {
-		var lengthPaper = Raphael("hairstyle-length-control", 160, 160);
+		var lengthPaper = Raphael("hairstyle-length-control", 200, 200);
 		lengthPaper.customAttributes.arc = drawArc;
-		var curlPaper = Raphael("hairstyle-curl-control", 160, 160);
+		var curlPaper = Raphael("hairstyle-curl-control", 200, 200);
 		curlPaper.customAttributes.arc = drawArc;
 		
 		
@@ -966,7 +969,7 @@ var HairStyleView = Backbone.View.extend( {
 		    "stroke": "#38a4ee",
 		    "stroke-width": 20,
 		    "cursor":"pointer",
-		    arc: [80, 80, 0, 1, 5, 70]
+		    arc: [100, 100, 0, 1, 5, 85]
 		}).click(function () {
             
          });
@@ -974,7 +977,7 @@ var HairStyleView = Backbone.View.extend( {
 		    "stroke": "#073351",
 		    "stroke-width": 20,
 		    "cursor":"pointer",
-		    arc: [80, 80, 1, 1, 5, 70]
+		    arc: [100, 100, 1, 1, 5, 85]
 		}).click(function () {
             
          });
@@ -982,7 +985,7 @@ var HairStyleView = Backbone.View.extend( {
 		    "stroke": "#0b4d7b",
 		    "stroke-width": 20,
 		    "cursor":"pointer",
-		    arc: [80, 80, 2, 1, 5, 70]
+		    arc: [100, 100, 2, 1, 5, 85]
 		}).click(function () {
             
          });
@@ -990,7 +993,7 @@ var HairStyleView = Backbone.View.extend( {
 		    "stroke": "#165986",
 		    "stroke-width": 20,
 		    "cursor":"pointer",
-		    arc: [80, 80, 3, 1, 5, 70]
+		    arc: [100, 100, 3, 1, 5, 85]
 		}).click(function () {
             
          });
@@ -998,7 +1001,7 @@ var HairStyleView = Backbone.View.extend( {
 		    "stroke": "#2470a4",
 		    "stroke-width": 20,
 		    "cursor":"pointer",
-		    arc: [80, 80, 4, 1, 5, 70]
+		    arc: [100, 100, 4, 1, 5, 85]
 		}).click(function () {
             
          });
@@ -1007,7 +1010,7 @@ var HairStyleView = Backbone.View.extend( {
 		    "stroke": "#ffe579",
 		    "stroke-width": 20,
 		    "cursor":"pointer",
-		    arc: [80, 80, 0.8, 1, 4, 70]
+		    arc: [100, 100, 0.8, 1, 4, 85]
 		}).click(function () {
             
          });
@@ -1015,7 +1018,7 @@ var HairStyleView = Backbone.View.extend( {
 		    "stroke": "#ffcc61",
 		    "stroke-width": 20,
 		    "cursor":"pointer",
-		    arc: [80, 80, 1.8, 1, 4, 70]
+		    arc: [100, 100, 1.8, 1, 4, 85]
 		}).click(function () {
             
          });
@@ -1023,7 +1026,7 @@ var HairStyleView = Backbone.View.extend( {
 		    "stroke": "#fbad09",
 		    "stroke-width": 20,
 		    "cursor":"pointer",
-		    arc: [80, 80, 2.8, 1, 4, 70]
+		    arc: [100, 100, 2.8, 1, 4, 85]
 		}).click(function () {
             
          });
@@ -1031,7 +1034,7 @@ var HairStyleView = Backbone.View.extend( {
 		    "stroke": "#e49b02",
 		    "stroke-width": 20,
 		    "cursor":"pointer",
-		    arc: [80, 80, 3.8, 1, 4, 70]
+		    arc: [100, 100, 3.8, 1, 4, 85]
 		}).click(function () {
             
          });
@@ -1064,6 +1067,15 @@ var HairStyleView = Backbone.View.extend( {
 		}).setDegree(defaultCurl);
 		
 		
+
+		if ( !this.model.isAnswered(13) ) {
+			length.parent().find('.hairstyle-text').html('请选择');
+		}
+		if ( !this.model.isAnswered(14) ) {
+			curl.parent().find('.hairstyle-text').html('请选择');
+		}
+		
+
 		
 		
 		$('#hairstyle-length .hairstyle-circle-dragable,#hairstyle-curl .hairstyle-circle-dragable').draggable({
@@ -1076,6 +1088,7 @@ var HairStyleView = Backbone.View.extend( {
                 data.angle = angle;
                 ui.position.top = data.centerY + Math.cos( angle )*data.radius;
                 ui.position.left = data.centerX + Math.sin( angle )*data.radius;
+                $(this).rotate(angle);
 			},
 			stop: function(event,ui){
 				$(this).setDegree();
@@ -1103,7 +1116,6 @@ var HairStyleView = Backbone.View.extend( {
         
         var question_id = parseInt($circle.parent().data("question-id"));
 		var degree = parseInt($circle.find('.hairstyle-circle-dragable').data('degree'));
-				
         this.model.setAnswerByDegree(question_id, degree, true);
         $circle.find('.hairstyle-text').html(this.model.getAnswerTextByDegree(question_id, degree));
 		this.setHairStyle();
@@ -1261,7 +1273,16 @@ var HairQualityView = Backbone.View.extend( {
 
     postrender: function () {
         AnimationHandler.initialize('#scene-hairquality-content');
+        var self = this;
         
+        $('.quality-progree-draggable').each(
+        	function(){
+	        	var question = parseInt($(this).parent().attr('data-question-id'));
+	        	if ( ! self.model.isAnswered(question) ) {
+		        	$(this).html('请选择');
+	        	}
+        	}
+        );
         this.animateIn();
     },
     prev : function() {
@@ -1290,7 +1311,7 @@ var HairQualityView = Backbone.View.extend( {
 	  var bar = $(e.currentTarget);
 	  var left = e.pageX - bar.offset().left;
 	  var degree =   geDegreeByXPosition( left, bar.width() , parseInt(bar.attr("data-degree-count")) );
-
+	  console.log(degree);
 	   this.setDegree( bar, degree);
     },
     onClickProgressDot : function(e) {

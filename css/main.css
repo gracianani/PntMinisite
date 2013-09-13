@@ -644,22 +644,26 @@ scenes
 	position: absolute;
 	left: 2%;
 	cursor: pointer;
-	border:1px dashed #d45a1b;
+	border:1px dashed #e49b02;
 }
 .refrigerator-cell:hover img,.refrigerator-cell.selected img{
 	opacity: 1;
+	
 }
-.refrigerator-cell:hover img{
-	position: absolute;
-	max-width: 120%;
-	max-height: 120%;
-	width: 110%;
-	height: 110%;
-	left: -5%;
-	top: -5%;
+.refrigerator-cell:hover {
+	background-image: none;
+}
+.refrigerator-cell.selected{
+	border-color:#FFF;
+	border-style:solid;
+	background-image: none;
 }
 
-
+.taste {
+	background-image:url(../img/scene/tastebg.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
 .refrigerator-cell img {
 	max-width: 100%;
 	margin-right: 100%;
@@ -684,12 +688,14 @@ scenes
 	width: 46%;
 }
 #fruit {
-	background:#fff2d8 url(../img/scene/diet-fruit.png) no-repeat left top;
+	background:#f0f0f0 url(../img/scene/diet-fruit.png) no-repeat 0 -288px;
 	background-size:100% auto;
 	border-color:#fad949;
+	
 }
  #taste-spicy.selected {
 	background-color: #6e5f57;
+
 }
  #taste-sweet.selected {
 	background-color: #a9ddec;
@@ -720,11 +726,14 @@ scenes
 	background-position: 0 -216px;
 }
 .drink {
-	border-color: #a0a0a0;
+	border-color: #86c2da;
 	background-color: #f0f0f0;
+	background-image:url(../img/scene/drinkbg.png);
+	background-repeat: no-repeat;
+	background-position: center center;
 }
 #drink-coke.selected {
-	background-color: #b6e7dc;
+	background-color: #cbf0fa;
 }
 #drink-beer.selected {
 	background-color: #575146;
@@ -733,7 +742,7 @@ scenes
 	background-color: #d95633;
 }
 #drink-water.selected {
-	background-color: #336ed9;
+	background-color: #cbf0fa;
 }
 #drink-juice.selected {
 	background-color: #f0e1af;
@@ -818,6 +827,50 @@ scenes
 }
 .cooking:hover {
 	top:-10px;
+}
+#cooking-hat {
+	width: 62px;
+	height: 134px;
+	background: url(../img/scene/diet-chef.png) no-repeat;
+	position: absolute;
+	display: none;
+}
+#cooking-hat.selected {
+	display: block;
+}
+#cooking-hat.fm {
+	left:50%;
+	margin-left: -50px;
+	top: -34px;
+}
+#cooking-hat.m {
+	left:50%;
+	margin-left: -65px;
+	top: -36px;
+}
+#cooking-apron {
+	background: url(../img/scene/diet-cook.png) no-repeat;
+	position: absolute;
+	display: none;
+}
+#cooking-apron.selected {
+	display: block;
+}
+#cooking-apron.fm {
+	width: 82px;
+	height: 170px;
+	background-position: left top;
+	left: 50%;
+	margin-left:-53px;
+	top:57px;
+}
+#cooking-apron.m {
+	background-position: right top;
+	width: 95px;
+	height: 181px;
+	left: 50%;
+	top:81px;
+	margin-left:-85px;
 }
 #cooking-master {
 	width: 91px;
@@ -1513,11 +1566,11 @@ Cleaning
 	
 }
 #hairstyle-length {
-	right: 68%;
+	right: 70%;
 	top: 5%;
 }
 #hairstyle-curl {
-	left: 72%;
+	left: 70%;
 	top: 5%;
 }
 
@@ -1525,15 +1578,15 @@ Cleaning
 	position: absolute;
 	width: 100px;
 	height: 100px;
-	left: 25px;
-	top: 25px;
+	left: 50px;
+	top: 40px;
 	
 
 	background: url(../img/character/hairicon.png) no-repeat;
 }
 .curl-1{ background-position: 0 0; width: 100px; height: 100px; } 
-.curl-3{ background-position: 0 -101px; width: 100px; height: 100px; } 
-.curl-2{ background-position: 0 -202px; width: 100px; height: 100px; } 
+.curl-2{ background-position: 0 -101px; width: 100px; height: 100px; } 
+.curl-3{ background-position: 0 -202px; width: 100px; height: 100px; } 
 .curl-4{ background-position: 0 -303px; width: 100px; height: 100px; } 
 .len-xs{ background-position: 0 -404px; width: 100px; height: 100px; } 
 .len-s{ background-position: 0 -505px; width: 100px; height: 100px; } 
@@ -1544,16 +1597,23 @@ Cleaning
 
 .hairstyle-text {
 	position: absolute;
-	bottom: 20px;
+	bottom: 35px;
 	left: 0;
 	text-align: center;
 	width: 100%;
 	line-height: 20px;
 	font-size: 14px;
+	
+}
+#hairstyle-length .hairstyle-text {
+	color: #2470a4;
+}
+#hairstyle-curl .hairstyle-text {
+	color: #e49b02;
 }
 .hairstyle-circle {
-	width: 160px;
-	height: 160px;
+	width: 200px;
+	height: 200px;
 	border-radius: 100px;
 	background-color: #fde7b8;
 	position: absolute;
@@ -1569,20 +1629,27 @@ Cleaning
 	height: 100%;
 }
 .hairstyle-circle-dragable {
-	width: 40px;
-	height: 40px;
-	background: #d55b1c url(../img/draggable-arrow.png) no-repeat center top;
-	border:5px solid #d55b1c;
-	border-radius: 30px;
+	width: 26px;
+	height: 90px;
+	background: url(../img/scene/haircirclepin.png) no-repeat left bottom;
 	position: absolute;
 	left:50%;
 	top:0;
-	margin-left: -20px;
-	margin-top:-20px;
+	margin-left: -13px;
+	margin-top:-45px;
 	cursor: pointer;
 }
-.hairstyle-circle-dragable:hover {
-	background-position: center bottom;
+#hairstyle-length .hairstyle-circle-dragable.on-degree-{
+	background-position: -29px bottom;
+}
+#hairstyle-length .hairstyle-circle-dragable {
+	background-position: left bottom;
+}
+#hairstyle-curl .hairstyle-circle-dragable.on-degree-{
+	background-position: -87px bottom;
+}
+#hairstyle-curl .hairstyle-circle-dragable {
+	background-position: -58px bottom;
 }
 #hairstyle-type {
 	position: absolute;
