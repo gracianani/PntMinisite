@@ -62,6 +62,7 @@ public class WeiboWebServices : System.Web.Services.WebService {
         //Uncomment the following line if using designed components 
         //InitializeComponent(); 
     }
+
     public class WebsiteToImage
     {
         private Bitmap m_Bitmap;
@@ -111,7 +112,7 @@ public class WeiboWebServices : System.Web.Services.WebService {
         {
             // Capture 
             var browser = (WebBrowser)sender;
-           // browser.ClientSize = new Size(browser.Document.Body.ScrollRectangle.Width, browser.Document.Body.ScrollRectangle.Bottom);
+            browser.ClientSize = new Size(browser.Document.Body.ScrollRectangle.Width, browser.Document.Body.ScrollRectangle.Bottom);
             browser.ScrollBarsEnabled = false;
             browser.SetBounds(0, 10,browser.Document.Body.ScrollRectangle.Width, browser.Document.Body.ScrollRectangle.Bottom-20);
 

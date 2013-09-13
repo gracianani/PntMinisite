@@ -109,7 +109,7 @@ var Report = Backbone.Model.extend({
             success: function (data) {
             }
         });
-    },
+    }
 
     getReportByReportId: function (reportId) {
         var self = this;

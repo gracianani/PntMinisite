@@ -153,66 +153,66 @@ window.AppFacade = {
 				           figureurl: reqData.figureurl
 				       })
 		);
-        $("#login").addClass("hidden");
-        $("#splash-login").hide();
-        console.log(reqData);
-        var self = this;
-        QC.Login.getMe(function (openId, accessToken) {
-            app.User.qqUid = openId;
-            app.User.qqToken = accessToken;
-        });
-        this.askForReport();
-    },
-    onQQLogoutSuccess: function (opts) {//注销成功
-        alert('QQ登录 注销成功');
-        $('#prifile-login').html('');
-        $("#splash-login").show();
-    },
-    initWbLogin: function () {
-        WB2.anyWhere(function (W) {
-            W.widget.connectButton({
-                id: "splash-weibo",
-                type: '2,2',
-                callback: {
-                    login: window.AppFacade.onWbLoginSuccess,
-                    logout: window.AppFacade.onWbLooutSuccess
-                }
-            });
-        });
+		$("#login").addClass("hidden");
+		$("#splash-login").hide();
+		console.log(reqData);
+		var self = this;				       
+		QC.Login.getMe(function(openId, accessToken){
+					       app.User.qq_uid = openId;
+					       app.User.qq_token = accessToken;
+		});
+		this.askForReport();
+	},
+    onQQLogoutSuccess: function(opts){//注销成功
+		alert('QQ登录 注销成功');
+		$('#prifile-login').html('');
+		$("#splash-login").show();
+	},
+	initWbLogin: function() {
+		WB2.anyWhere(function(W){
+		    W.widget.connectButton({
+		        id: "splash-weibo",
+		        type: '2,2',
+		        callback : {
+		            login:window.AppFacade.onWbLoginSuccess,
+		            logout:window.AppFacade.onWbLooutSuccess
+		        }
+		    });
+		});
+		
 
+		WB2.anyWhere(function(W){
+		    W.widget.connectButton({
+		        id: "wb_connect_btn",
+		        type: '1,1',
+		        callback : {
+		            login:window.AppFacade.onWbLoginSuccess,
+		            logout:window.AppFacade.onWbLooutSuccess
+		        }
+		    });
+		});
+		
 
-        WB2.anyWhere(function (W) {
-            W.widget.connectButton({
-                id: "wb_connect_btn",
-                type: '1,1',
-                callback: {
-                    login: window.AppFacade.onWbLoginSuccess,
-                    logout: window.AppFacade.onWbLooutSuccess
-                }
-            });
-        });
+	},
+	weiboLogout: function(){
+		WB2.logout(function(){
+			window.AppFacade.onWbLogoutSuccess();
+			WB2.anyWhere(function(W){
+		    W.widget.connectButton({
+		        id: "wb_connect_btn",
+		        type: '1,1',
+		        callback : {
+		            login:window.AppFacade.onWbLoginSuccess,
+		            logout:window.AppFacade.onWbLooutSuccess
+		        }
+		    });
+		});
+		});
 
+	},
+	onWbLoginSuccess: function(o) {
 
-    },
-    weiboLogout: function () {
-        WB2.logout(function () {
-            window.AppFacade.onWbLogoutSuccess();
-            WB2.anyWhere(function (W) {
-                W.widget.connectButton({
-                    id: "wb_connect_btn",
-                    type: '1,1',
-                    callback: {
-                        login: window.AppFacade.onWbLoginSuccess,
-                        logout: window.AppFacade.onWbLooutSuccess
-                    }
-                });
-            });
-        });
-
-    },
-    onWbLoginSuccess: function (o) {
-
-        _logoutTemplate = [
+		_logoutTemplate=[
 				            '<span class="profile-avatar"><img src="{{figureurl}}" class="{size_key}"/></span>',
 				            '<span class="profile-nickname">{{nickname}}</span>',
 				            '<span class="profile-logout"><a onclick="window.AppFacade.weiboLogout();">退出</a></span>'
@@ -224,75 +224,76 @@ window.AppFacade = {
         })
 		);
 
-        $("#login").addClass("hidden");
-        $("#splash-login").hide();
-        $("#login").addClass("hidden");
+		
+		$("#login").addClass("hidden");
+		$("#splash-login").hide();
+		$("#login").addClass("hidden");
+		
+		app.User.weibo_uid = o.id;
+		
+		var tokencookiename = "weibojs_"+app.weiboApp.app_id;
+		var tokencookie = readCookie(tokencookiename);
 
-        app.User.wbUid = o.id;
+		if ( tokencookie ) {
+			var param = tokencookie.split("%26");
+			var token = param[0].split("%3D")[1];
+			app.User.weibo_token = token;
+			
 
-        var tokencookiename = "weibojs_" + app.weiboApp.app_id;
-        var tokencookie = readCookie(tokencookiename);
+		}
+		this.askForReport();
+	},
+	onWbLogoutSuccess: function() {
+		alert('微博登陆退 出成功');
+		$('#prifile-login').html('');
+		$("#splash-login").show();
+	},
+	isLogin : function() {
+		return (app.User.weibo_uid || app.User.qq_uid );
+	},
+	isQuizFinish : function() {
+		var isFinished = true;
+		
+		for ( var index in app.SceneViews ) {
+			if ( app.SceneViews[index].model ) {
+				console.log(app.SceneViews[index].model);
+				if ( app.SceneViews[index].model.isSceneFinished().length > 0 ) {
+					isFinished = false;
+				}
+			}
+		}
+		return isFinished;
+	},
+	askForReport : function() {
+		if ( this.isQuizFinish() ) {
+			app.Report.getReport();
+		} else {
+			alert("您还有未完成的题目，请仔细检查一下哦！");
+		}
+		
+	},
+	showHelp : function(unfinishedQuestions) {
+		alert("您还没有回答完全部问题哦");
+	},
+	gotoScene : function(step) {
 
-        if (tokencookie) {
-            var param = tokencookie.split("%26");
-            var token = param[0].split("%3D")[1];
-            app.User.wbToken = token;
-
-
-        }
-        this.askForReport();
-    },
-    onWbLogoutSuccess: function () {
-        alert('微博登陆退 出成功');
-        $('#prifile-login').html('');
-        $("#splash-login").show();
-    },
-    isLogin: function () {
-        return (app.User.wbUid || app.User.qqUid);
-    },
-    isQuizFinish: function () {
-        var isFinished = true;
-
-        for (var index in app.SceneViews) {
-            if (app.SceneViews[index].model) {
-                console.log(app.SceneViews[index].model);
-                if (app.SceneViews[index].model.isSceneFinished().length > 0) {
-                    isFinished = false;
-                }
-            }
-        }
-        return isFinished;
-    },
-    askForReport: function () {
-        if (this.isQuizFinish()) {
-            app.Report.getReport();
-        } else {
-            alert("您还有未完成的题目，请仔细检查一下哦！");
-        }
-
-    },
-    showHelp: function (unfinishedQuestions) {
-        alert("您还没有回答完全部问题哦");
-    },
-    gotoScene: function (step) {
-
-        var currentView = this.getCurrentView();
-
-        var currentStep = parseInt(currentView.model.get("scene_id"));
-
-        if (!currentStep) {
-            currentStep = 9;
-        }
-        console.log(currentStep);
-        console.log(step);
-        if (step < currentStep) {
-            var nextView = app.SceneViews[step - 1];
-            this.setCurrentView(nextView);
-            app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
-            currentView.onexit();
-            app.Views.MainView.setProgressBar();
-        }
-    }
+	  	var currentView = this.getCurrentView();
+	  	
+	  	var currentStep = parseInt(currentView.model.get("scene_id"));
+	  	
+	  	if ( !currentStep ) {
+		  	currentStep = 9;
+	  	}
+	  	console.log(currentStep);
+	  	console.log(step);
+	  	if ( step < currentStep ) {
+		  	var nextView = app.SceneViews[step-1];
+		  	this.setCurrentView(nextView);
+		  	app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
+		  	currentView.onexit();
+		  	app.Views.MainView.setProgressBar();
+	  	}
+	}
 }
 
 // Start the main app logic.
