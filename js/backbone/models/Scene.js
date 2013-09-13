@@ -298,7 +298,6 @@ var QuestionsCollection = Backbone.Collection.extend({
     url: "js/backbone/data/questions.json?u"
 });
 
-
 var SceneSettingsCollection = Backbone.Collection.extend({
     model: SceneSetting,
     url: "js/backbone/data/scene_settings.json?W"

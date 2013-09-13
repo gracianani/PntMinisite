@@ -62,7 +62,15 @@ public class WeiboWebServices : System.Web.Services.WebService {
         //Uncomment the following line if using designed components 
         //InitializeComponent(); 
     }
-
+    public static class QuestionHelper
+    {
+        public static  int Gender = 22;
+        public static  int HairLength = 13;
+        public static  int HairColor = 15;
+        public static  int HairCurly = 14;
+        public static  int HairState = 16;
+        public static  int Career = 24;
+    }
     public class WebsiteToImage
     {
         private Bitmap m_Bitmap;
@@ -97,34 +105,25 @@ public class WeiboWebServices : System.Web.Services.WebService {
         {
             var browser = new WebBrowser { ScrollBarsEnabled = false , ScriptErrorsSuppressed = true};
             browser.Navigate(m_Url );
-            browser.DocumentCompleted += WebBrowser_DocumentCompleted;
-
             while (browser.ReadyState != WebBrowserReadyState.Complete || browser.Document == null || browser.Document.GetElementById("report") == null ||
                 string.IsNullOrEmpty(browser.Document.GetElementById("report").InnerHtml) )
             {
                 System.Windows.Forms.Application.DoEvents();
             }
-
+            System.Threading.Thread.Sleep(10000);
+            SaveImage(browser, m_FileName);
             browser.Dispose();
         }
 
-        private void WebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        public static void  SaveImage(WebBrowser browser, string fileName)
         {
-            // Capture 
-            var browser = (WebBrowser)sender;
             browser.ClientSize = new Size(browser.Document.Body.ScrollRectangle.Width, browser.Document.Body.ScrollRectangle.Bottom);
-            browser.ScrollBarsEnabled = false;
-            browser.SetBounds(0, 10,browser.Document.Body.ScrollRectangle.Width, browser.Document.Body.ScrollRectangle.Bottom-20);
-
-            m_Bitmap = new Bitmap(browser.Document.Body.ScrollRectangle.Width, browser.Document.Body.ScrollRectangle.Bottom);
+            var bitmap = new Bitmap(browser.Document.Body.ScrollRectangle.Width, browser.Document.Body.ScrollRectangle.Bottom);
             browser.BringToFront();
-            browser.DrawToBitmap(m_Bitmap, browser.Bounds);
-
-            // Save as file? 
-            if (m_FileName.Length > 0)
+            browser.DrawToBitmap(bitmap, browser.Bounds);
+            if (fileName.Length > 0)
             {
-                // Save 
-                m_Bitmap.SaveJPG100(m_FileName);
+                bitmap.SaveJPG100(fileName);
             }
         }
     }
@@ -149,13 +148,29 @@ public class WeiboWebServices : System.Web.Services.WebService {
         public string hairsituation_suggestions;
         public string haircare_suggestions;
         public string lifestyle_suggestions;
+    
     }
-
+    class Avatar {
+        public string gender;
+        public string hairLength;
+        public string career_id;
+        public string hairCurly;
+        public string hairColor;
+        public string hairType;
+    }
+    class User
+    {
+        public string qq_uid;
+        public string qq_token;
+        public string weibo_uid;
+        public string weibo_token;
+    }
     [WebMethod]
     [ScriptMethod(UseHttpGet = false)]
-    public string SubmitAnswer( string user_answers, int quizId = 0) {
+    public string SubmitAnswer( string user_answers, int quizId, string str_user) {
         JavaScriptSerializer serializer = new JavaScriptSerializer();
         var sceneUserAnswers = serializer.Deserialize<SceneUserAnswer[]>(user_answers);
+        var user = serializer.Deserialize<User>(str_user);
         var userAnswerIds = new List<int>();
         var suggestionIds = new Dictionary<int, List<int>>() { 
             {1, new List<int>()}, 
@@ -228,6 +243,13 @@ public class WeiboWebServices : System.Web.Services.WebService {
                 {
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("Answers", answerIdTable);
+                    if (!string.IsNullOrEmpty(user.qq_uid))
+                    {
+                        command.Parameters.AddWithValue("QQUID", user.qq_uid);
+                    }
+                    if(!string.IsNullOrEmpty(user.weibo_uid)) {
+                        command.Parameters.AddWithValue("WeiboUID", user.weibo_uid);
+                    }
                     quizId = Convert.ToInt32(command.ExecuteScalar());
                 }
             }
@@ -270,7 +292,7 @@ public class WeiboWebServices : System.Web.Services.WebService {
     [WebMethod]
     public bool Share(int report_id)
     {
-        WebsiteToImage websiteToImage = new WebsiteToImage("http://localhost:59884/PntMinisite/index.html#Report/" + report_id, string.Format("C:\\test\\report{0}.jpg", report_id));
+        WebsiteToImage websiteToImage = new WebsiteToImage( ConfigurationManager.AppSettings["BaseUrl"] + "report.html?reportId=" + report_id, string.Format( Server.MapPath("reports")+"\\report_{0}.jpg", report_id));
         websiteToImage.Generate();
         return true;
     }
@@ -279,6 +301,7 @@ public class WeiboWebServices : System.Web.Services.WebService {
     public string FetchReport(int report_id)
     {
         var userAnswers = new List<SceneUserAnswer>();
+        var avatar = new Avatar();
         string connStr = ConfigurationManager.ConnectionStrings["pnt"].ConnectionString;
         using (var conn = new SqlConnection(connStr))
         {
@@ -317,6 +340,39 @@ public class WeiboWebServices : System.Web.Services.WebService {
                         }
                         userAnswer.answer_ids.Add(answerId);
                     }
+
+                    if (reader.NextResult())
+                    {
+                        while (reader.Read())
+                        {
+                            var questionId = reader.GetInt32(reader.GetOrdinal("questionId"));
+                            var answerName = reader.GetString(reader.GetOrdinal("answerName"));
+                            if (questionId == QuestionHelper.Career)
+                            {
+                                avatar.career_id = answerName;
+                            }
+                            else if (questionId == QuestionHelper.Gender)
+                            {
+                                avatar.gender = answerName;
+                            }
+                            else if (questionId == QuestionHelper.HairColor)
+                            {
+                                avatar.hairColor = answerName;
+                            }
+                            else if (questionId == QuestionHelper.HairState)
+                            {
+                                avatar.hairType = answerName;
+                            }
+                            else if (questionId == QuestionHelper.HairLength)
+                            {
+                                avatar.hairLength = answerName;
+                            }
+                            else if (questionId == QuestionHelper.HairCurly)
+                            {
+                                avatar.hairCurly = answerName;
+                            }
+                        }
+                    }
                 }
             }
 
@@ -324,8 +380,8 @@ public class WeiboWebServices : System.Web.Services.WebService {
 
         JavaScriptSerializer serializer = new JavaScriptSerializer();
         var sceneUserAnswers = serializer.Serialize(userAnswers);
-
-        var suggestions = SubmitAnswer(sceneUserAnswers, report_id);
-        return string.Format("{{ \"user_answers\" : {0}, \"suggestions\" : {1} }}", sceneUserAnswers, suggestions);
+        var str_avatar = serializer.Serialize(avatar);
+        var suggestions = SubmitAnswer(sceneUserAnswers, report_id, "");
+        return string.Format("{{ \"user_answers\" : {0}, \"suggestions\" : {1}, \"avatar\" : {2} }}", sceneUserAnswers, suggestions, str_avatar);
     }
 }

@@ -15,10 +15,11 @@ var Router = Backbone.Router.extend({
     },
 
     report: function (quizId) {
+        quizId = quizId.replace(/\D/g, '')
         app.ReportId = quizId;
         window.AppFacade.setCurrentView(app.Views.ReportView);
         app.Report.getReportByReportId(quizId);
-        
+
     },
 
     details: function (id) {

@@ -77,12 +77,13 @@ var Report = Backbone.Model.extend({
 
         AppFacade.setCurrentView(app.Views.ReportView);
         app.Router.navigate("Report/" + this.QuizId);
+        app.ReportId = this.QuizId;
         app.Views.ReportView.trigger("finishloading");
 
     },
 
     getReport: function () {
-        var requestData = '{ user_answers : ' + '\"' + JSON.stringify(AppFacade.getUserAnswers()).replace(/"/g, '\'') + '\", quizId : 0 }';
+        var requestData = '{ user_answers : \"' + JSON.stringify(AppFacade.getUserAnswers()).replace(/"/g, '\'') + '\", quizId : 0, str_user : \"' + JSON.stringify(app.User).replace(/"/g, '\'') + ' \" }';
         var self = this;
 
         $.ajax({
