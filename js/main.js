@@ -165,8 +165,7 @@ window.AppFacade = {
 	},
     onQQLogoutSuccess: function(opts){//注销成功
 		alert('QQ登录 注销成功');
-		$('#prifile-login').html('');
-		$("#splash-login").show();
+		this.logout();
 	},
 	initWbLogin: function() {
 		WB2.anyWhere(function(W){
@@ -245,11 +244,16 @@ window.AppFacade = {
 	},
 	onWbLogoutSuccess: function() {
 		alert('微博登陆退 出成功');
-		$('#prifile-login').html('');
-		$("#splash-login").show();
+		this.logout();
 	},
 	isLogin : function() {
 		return (app.User.weibo_uid || app.User.qq_uid );
+	},
+	logout: function() {
+		$('#prifile-login').html('');
+		$("#splash-login").show();
+		app.User.weibo_uid = 0;
+		app.User.qq_uid = 0;
 	},
 	isQuizFinish : function() {
 		var isFinished = true;

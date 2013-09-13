@@ -504,12 +504,12 @@
 			},
 			{
 				"answer_id" : 70,
-				"text" : "中卷",
+				"text" : "大卷",
 				"degree" : 2
 			},
 			{
 				"answer_id" : 71,
-				"text" : "大卷",
+				"text" : "中卷",
 				"degree" : 3
 			},
 			{
@@ -642,28 +642,18 @@
 		"answers" :[
 			{
 				"answer_id" : 90,
-				"text" : "很细",
+				"text" : "较粗",
 				"degree" : 1
 			},
 			{
 				"answer_id" : 91,
-				"text" : "较细",
+				"text" : "一般",
 				"degree" : 2
 			},
 			{
 				"answer_id" : 92,
-				"text" : "一般",
+				"text" : "较细",
 				"degree" : 3
-			},
-			{
-				"answer_id" : 93,
-				"text" : "较粗",
-				"degree" : 4
-			},
-			{
-				"answer_id" : 94,
-				"text" : "很粗",
-				"degree" : 5
 			}
 		]
 	},
@@ -674,23 +664,23 @@
 		"answers" :[
 			{
 				"answer_id" : 95,
-				"text" : "发量很多",
-				"degree" : 4
+				"text" : "很多",
+				"degree" : 1
 			},
 			{
 				"answer_id" : 96,
 				"text" : "正常",
-				"degree" : 3
+				"degree" : 2
 			},
 			{
 				"answer_id" : 97,
-				"text" : "发量偏少",
-				"degree" : 2
+				"text" : "偏少",
+				"degree" : 3
 			},
 			{
 				"answer_id" : 98,
 				"text" : "暴露头皮",
-				"degree" : 1
+				"degree" : 4
 			}
 		]
 	},
