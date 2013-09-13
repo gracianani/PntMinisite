@@ -933,6 +933,11 @@ scenes
 	top: 0;
 	
 }
+#scene-health-content {
+	position: relative;
+	height: 100%;
+	left: 4%;
+}
 #mealCount {
 	left: 0;
 }
@@ -995,6 +1000,7 @@ scenes
 	top: 110%;
 	text-align: center;
 	color: #da6025;
+	width: 80%;
 }
 #mealCount .onDegree-4 .health-degree-pin{
 	top:20%;
@@ -3547,7 +3553,116 @@ Cleaning
    These examples override the primary ('mobile first') styles.
    Modify as content requires.
    ========================================================================== */
-
+@media only screen and (min-width: 1570px) {
+    /* Style adjustments for viewports that meet the condition */
+    #main {
+	    width: 1440px;
+	    height: 500px;
+    }
+    .basicinfo-scene {
+	    left: 30%;
+	    top:-5%;
+    }
+    #basicinfo-age {
+	    left: 10%;
+    }
+    #basicinfo-career {
+	    width: 50%;
+	    right: 5%;
+    }
+    .mirror-show {
+	    width: 350px;
+	    height: 400px;
+	    margin-top: -175px;
+	    margin-left: -200px;
+    }
+    #hairstyle-length, #hairstyle-curl {
+	    top:10%;
+    }
+    .quality-scene {
+	    margin-top: 0;
+    }
+    .quality-progress {
+	    width: 50%;
+	    left: 10%;
+	    height: 100px;
+    }
+    #quality-quality {
+	    top: 10px;
+    }
+    #quality-thickness {
+	    top:150px;
+    }
+    #quality-volume {
+	    top:280px;
+    }
+    #magnifier {
+	    right:350px;
+	    left: auto;
+    }
+    .quality-progree-draggable {
+	    width: 60px;
+	    height: 60px;
+	    margin-top: -30px;
+	    margin-left: -30px;
+	    line-height: 60px;
+	    font-size: 14px;
+    }
+    .quality-progress-title {
+	    font-size: 20px;
+    }
+    .quality-progress-bar {
+	    width: 65%;
+	    left: 27%;
+	    height: 20px;
+	    margin-top: -10px;
+    }
+    .quality-progress-dot {
+	    width: 16px;
+	    height: 16px;
+	    margin-top:-20px;
+	    margin-left:-20px;
+	    border-radius: 21px;
+    }
+    #quality-problem {
+	    width: 800px;
+	    margin-left: -400px;
+    }
+    #life-icons, #life-lines {
+	    width: 900px;
+	    height: 100%;
+	    margin-left: -450px;
+	    margin-top:-250px;
+    }
+    
+    #cooking-hat.fm {
+	    top:53px;
+	    margin-left: -6px;
+    }
+    #cooking-apron.fm {
+	    margin-left: -8px;
+	    top:144px
+    }
+	#refrigerator {
+		left: 15%;
+		top:80px;
+	}
+    .diet-scene {
+	    top:85px;
+	    left: 46.5%;
+    }
+    #diet-cooking {
+	    top:25%;
+	    right: 5%;
+	    width: 30%;
+    }
+    #diningTable {
+	    bottom: 0;
+    }
+    .navigator {
+	    z-index: 99;
+    }
+}
 @media only screen and (min-width: 35em) {
     /* Style adjustments for viewports that meet the condition */
 }
