@@ -102,7 +102,6 @@ body {
 	width: 100%;
 	position: relative;
 	font-family: "Microsoft Yahei","Yahei",sans-serif;
-	overflow: hidden;
 	min-height: 100%;
 	background: #ffbd32;
 
@@ -404,6 +403,32 @@ profile
 #share .jiathis_style_32x32 .jtico_qzone:hover {
 	background-color:#f4b23c;
 	
+}
+/* plain report */
+
+.plain-report #report-header {
+	margin-bottom: 20px;
+}
+.plain-report #report-score {
+	width: 180px;
+	height: 180px;
+}
+.plain-report .score-inside {
+	width: 150px;
+	height: 150px;
+	left: 15px;
+	top:15px;
+}
+.plain-report #report-score-title {
+	top: 35px;
+	font-size: 18px;
+	line-height: 24px;
+}
+.plain-report #report-score-number {
+	top:50px;
+}
+.plain-report #report h2 {
+	padding-top: 10px;
 }
 /*=====================
 navigation 
@@ -1092,8 +1117,8 @@ scenes
 	left: 50%;
 	top:50%;
 	margin-top: -225px;
-	margin-left: -300px;
-	width: 600px;
+	margin-left: -400px;
+	width: 800px;
 	height: 450px;
 }
 #life-type {
@@ -1253,16 +1278,17 @@ Cleaning
 #cleaning-care {
 	width: 400px;
 	margin-top: 20px;
+	left: 10%;
 	
 }
 #cleaning-style {
 	width: 300px;
-	left: 155px;
+	left: 25%;
 	height: 140px;
 }
 #cleaning-tool {
 	width: 270px;
-	left: 180px;
+	left: 25%;
 	margin-top: 10px;
 }
 
@@ -1388,7 +1414,7 @@ Cleaning
 	height: 135px;
 	position: absolute;
 	bottom: 0px;
-	left: 0;
+	left: 5%;
 }
 #cleaning-trash-content {
 	background-image: url(../img/scene/cleaning-trash.png);
@@ -1455,7 +1481,7 @@ Cleaning
 	position: absolute;
 	top: 5%;
 	width: 40%;
-	right: 10%;
+	right: 5%;
 }
 #shower-head {
 	background:url(../img/scene/shower-head.png) no-repeat center top;
@@ -3257,6 +3283,9 @@ Cleaning
 }
 #report h2.score-low {
 	color: #df4521;
+
+}
+#report h2 {
 	font-size: 36px;
 	line-height: 40px;
 	padding-top: 40px;

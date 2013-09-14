@@ -15,50 +15,9 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-        <style>
-            #login 
-            {
-                position: absolute;
-                top: 15%;
-                left: 50%;
-                margin-left: -73px;
-                z-index: 1000;
-                width: 584px;
-                background-color: #fff;
-                font-size: 11px;
-                text-align: left;
-                border: solid 5px #e3e3e3;
-                border-radius: 10px;
-                -moz-border-radius: 10px;
-                -webkit-border-radius: 10px;
-                padding: 7px;
-            }
-            #login a
-            {
-                color: #FFF;
-                background: url(img/share.png) left top no-repeat;
-                width: 48px;
-                height: 48px;
-                display: inline-block;
-                margin-right: 15px;
-                margin-top: 5px;
-             }
-             #login .wechat 
-             {
-                 background-position: left -48px;
-             }
-             #login .weibo
-             {
-                 background-position: left -144px;
-             }
-             #share #weibo.authenticated
-             {
-                 background-position: left -144px;
-             }
-        </style>
+        
     </head>
-    <body class="report">
+    <body class="plain-report">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
@@ -85,10 +44,7 @@
         		<h2 class="score-low">{{ScoreTitle}}</h2>
         		<p>{{#ScoreSuggestions}}{{.}}{{/ScoreSuggestions}}</p>
         	</div>
-        	<div id="report-opt">
-        		<a id="restartQuiz" href="javascript:void(0)"><i class="icon-refresh"></i> 重新测试</a>
-        		<a id="saveQuiz" href="javascript:void(0)"><i class="icon-download-alt"></i> 下载报告图片</a>
-        	</div>
+
         	<div id="report-body">
 				<ul id="report-result">
 					<li id="report-result-hair" class="clearfix">
@@ -133,21 +89,16 @@
         		</div>
 				<div id="report-product-basic">
 					<ul id="report-product-list">
-						{{#ProductSuggestions}}
-						<li class="report-product-item">
-							<a href="{{url}}">
-							<img src="../img/product/{{img}}" title="{{product_name}}" />
-							</a>
+						{{#BestProduct}}
+						<li class="report-product-item current">
+							<img src="img/product/{{img}}" width="708" height="327" />
 						</li>
-						{{/ProductSuggestions}}
+						{{/BestProduct}}
 					</ul>
 				</div>
-				<div id="report-product-more">
-        			看看其他推荐
-        		</div>
         	</div>
         	<div id="report-avatar">
-        		<div id="character" class="character {{gender}} character-large-size">
+        		<div id="character" class="character {{gender}} character-small-size">
         			<div class="hair hair-{{gender}}-{{hairLength}}-{{hairCurly}} hair-{{gender}}-{{hairType}}  hair-{{hairColor}}">
         			</div>
         			<div class="body">
@@ -167,11 +118,14 @@
         	</div>
         </script>
 
-        <script src="js/vendor/jquery-1.9.1.min.js"></script>
+		<script src="js/vendor/jquery-1.10.2.min.js"></script>
+        
+         <script src="js/backbone/utils/plugins.js" type="text/javascript"></script>
         <script src="js/vendor/underscore.js" type="text/javascript"></script>
         <script src="js/vendor/backbone.js" type="text/javascript"></script>
         <script src="js/vendor/mustache.js" type="text/javascript"></script>
-        <script src="js/vendor/require.min.js" data-main="js/plain-report"></script>
+        
+        <script src="js/vendor/require.min.js" data-main="js/plain-report.js"></script>
 
     </body>
 </html>

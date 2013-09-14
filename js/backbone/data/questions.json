@@ -385,25 +385,25 @@
 		"answers" : [
 			{
 				"answer_id" : 51,
-				"text" : "从不更换品牌",
+				"text" : "从不换品牌",
 				"name" : "never",
 				"degree" : 1
 			},
 			{
 				"answer_id" : 52,
-				"text" : "一年前换品牌",
+				"text" : "一年换一次",
 				"name" : "annually",
 				"degree" : 2
 			},
 			{
 				"answer_id" : 53,
-				"text" : "半年前换品牌",
+				"text" : "半年换一次",
 				"name" : "semiannually",
 				"degree" : 3
 			},
 			{
 				"answer_id" : 54,
-				"text" : "三个月前换品牌",
+				"text" : "最近刚换品牌",
 				"name" : "threemonth",
 				"degree" : 4
 			}

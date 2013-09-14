@@ -26,7 +26,7 @@ var Report = Backbone.Model.extend({
     },
     loadSuggestions: function (suggestions) {
         this.clearSuggestions();
-
+		console.log(suggestions);
         var lifestyleIds = suggestions.lifestyle_suggestions.split(",");
         for (var i = 0; i < lifestyleIds.length; i++) {
             var suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(lifestyleIds[i]) });
@@ -61,7 +61,11 @@ var Report = Backbone.Model.extend({
         this.ScoreTitle = gSuggestion.get("suggestion_title");
         this.ScoreSuggestions.push(gSuggestion.get("suggestion_text"));
         this.QuizId = suggestions.quizId;
-        this.HairProblems.push(app.Views.HairQualityView.model.getAnswerText(21));
+        var problem = app.Views.HairQualityView.model.getMultipleAnswerText(21);
+        if ( problem.length > 0 ) {
+	        this.HairProblems.push(problem);
+        }
+        
         this.HairProblems.push(app.Views.HairStyleView.model.getAnswerText(14));
 
         var productIds = suggestions.suggested_products.split(",");
@@ -73,6 +77,7 @@ var Report = Backbone.Model.extend({
                 this.ProductSuggestions.push(suggestion.toJSON());
             }
         }
+        
 
 
         AppFacade.setCurrentView(app.Views.ReportView);
@@ -100,14 +105,27 @@ var Report = Backbone.Model.extend({
     },
 
     shareReport: function () {
+    	var avatar = app.Views.AvatarView.model;
+    	gender = avatar.gender;
+    	color = avatar.hairColor;
         $.ajax({
             type: "POST",
             url: 'WeiboWebServices.asmx/Share',
-            timeout: 5000,
+            timeout: 15000,
             data: '{ report_id :' + app.ReportId + '}',
             datatType: "json",
             contentType: "application/json;charset=utf-8",
             success: function (data) {
+            	alert("生成成功");
+            },
+            timeout: function() {
+	            alert('超时');
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+	            console.log(errorThrown);
+            },
+            complete: function(e){
+	            console.log('complete');
             }
         });
     },

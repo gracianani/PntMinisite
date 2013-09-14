@@ -9,16 +9,14 @@ var Router = Backbone.Router.extend({
     },
 
     index: function () {
-        if (getParameterByName('code') == '') {
-            window.AppFacade.setCurrentView(app.Views.BasicInfoView);
-        }
+        window.AppFacade.setCurrentView(app.Views.BasicInfoView);
     },
 
     report: function (quizId) {
         quizId = quizId.replace(/\D/g, '')
         app.ReportId = quizId;
-        window.AppFacade.setCurrentView(app.Views.ReportView);
         app.Report.getReportByReportId(quizId);
+        window.AppFacade.setCurrentView(app.Views.ReportView);
 
     },
 

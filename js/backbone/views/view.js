@@ -26,6 +26,7 @@ BasicFrameView.prototype = {
             if ( AppFacade.getCurrentView() != app.Views.ReportView ) {
                 window.AppFacade.getCurrentView().render();
                 self.showControls();
+                app.Views.MainView.setProgressBar();
             }
             
         });
@@ -88,9 +89,7 @@ LoadingView.prototype = {
 		spinner(this.content[0], 105, 120, 36, 3, "#FFFFFF");
 		
 		this.body.addClass('loading');
-		this.loading.fadeIn('slow',function(){
-			self.onExitLoading();
-		});
+		this.loading.fadeIn('slow');
 		_hmt.push(['_trackPageview', '/loading']);
 		
 		
@@ -101,5 +100,7 @@ LoadingView.prototype = {
 	    $('body').removeClass('loading');
 	   
 		window.AppFacade.setStartView();
+		window.AppFacade.initQQLogin();
+        window.AppFacade.initWbLogin();
 	}
 };

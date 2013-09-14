@@ -24,7 +24,7 @@ var AnimationHandler = {
             //I'm not sure but i think we can just use position and not css
             // if(isNaN(left) || isNaN(top)) {
             var position = $(this).position();
-            console.log(position.left);
+            //console.log(position.left);
             var left = position.left;
             var top = position.top;
             //}

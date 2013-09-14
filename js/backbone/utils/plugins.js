@@ -220,4 +220,4 @@ function drawArc(xloc, yloc,start, value, total, R) {
 		    return {
 		        path: path
 		    };
-};
+}
