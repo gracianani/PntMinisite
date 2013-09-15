@@ -236,9 +236,9 @@ header
 login 
 =====================*/
 #login {
-	width: 400px;
-	height: 400px;
-	background: #FFF;
+	width: 380px;
+	height: 300px;
+	background: #ffe579;
 	box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
 	position: absolute;
 	left: 50%;
@@ -246,35 +246,54 @@ login
 	margin-top:-200px;
 	margin-left: -200px;
 	z-index: 999;
-	border-radius: 10px;
-	
+	border-radius: 15px;
+	border:10px solid #FFF;
 }
+
 .modal-header,.modal-body {
-	padding: 10px;
+	padding: 10px 20px;
+	text-align: center;
+	text-align: left;
+}
+.modal-body {
 	text-align: center;
 }
 .modal-header h3 {
 	font-weight: normal;
-	color: #c18628;
+	color: #d55b1c;
+	margin: 5px 0 10px;
 }
 .modal-header button {
 	position: absolute;
-	background: #000;
+	background: #d55b1c;
 	border-radius: 50%;
-	width: 32px;
-	height: 32px;
-	right: -16px;
-	top:-16px;
-	box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+	width: 40px;
+	height: 40px;
+	right: -20px;
+	top:-20px;
 	border:none;
 	color: #fff;
 }
+.modal-header p {
+	margin: 0;
+	font-size: 12px;
+}
 #login a {
 	
-	width: auto;
-	margin: 0 auto 15px;
+	margin-bottom: 10px;
 	display: inline-block;
 	cursor: pointer;
+
+}
+#noLogin {
+	background: #d55b1c;
+	color: #FFF;
+	padding: 10px 15px;
+	border-radius: 5px;
+	width: 200px;
+}
+#noLogin:hover {
+	background-color: #2470a4;
 }
 /*=====================
 profile 
@@ -2462,9 +2481,12 @@ Cleaning
 	background:#2470a4 url(../img/helpicon.png) no-repeat right bottom;
 	cursor: pointer;
 	border:5px solid #ffe579;
+	display: none;
+	z-index: 99;
 }
 #help-switch:hover {
 	background-color: #d75b04;
+	
 }
 
 #help-length {
@@ -2901,6 +2923,12 @@ Cleaning
 .m.character-large-size .face-m-2{ background-position: 0 -113px; width: 173px; height: 112px; } 
 .m.character-large-size .face-m-3{ background-position: 0 -226px; width: 173px; height: 112px; } 
 
+.m.character-large-size .bang-m-pin {
+	top:-15px;
+}
+.m.character-small-size .bang-m-pin {
+	top:-10px;
+}
 #career-clothes .m.character-small-size .clothes {
 	width: 87px;
 	height: 321px;
@@ -3146,9 +3174,9 @@ Cleaning
 	background: url(../img/scene/counselor-m.png) center center no-repeat;
 }
 .counselor-chat {
-	background-color: #FFF;
+	background-color: #f7f2e4;
 	color: #333;
-	border-radius: 15px;
+	border-radius: 5px;
 	width: 280px;
 	text-align: center;
 	padding: 10px;
@@ -3161,6 +3189,7 @@ Cleaning
 	left: 0;
 	display: none;
 }
+
 #character-chat-1 {
 	top: 80px;
 }
@@ -3177,6 +3206,15 @@ Cleaning
 	font-size: 14px;
 	line-height: 20px;
 	color: #666;
+}
+.chat-caret {
+	position: absolute;
+	right: -15px;
+	top:15px;
+	border-left: 10px solid #f7f2e4;
+	width: 10px;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
 }
 .chat-icon {
 	width: 75px;
@@ -3195,7 +3233,7 @@ Cleaning
 	background-color: #f7f2e4;
 }
 .chat-icon-text {
-	background: #d34222;
+	background: #d55b1c;
 	border-radius: 3px;
 	color: #fff;
 	text-align: center;
@@ -3223,16 +3261,18 @@ Cleaning
 }
 #character-chat-2 .on-degree-5 .chat-icon-degree-mask {
 	height: 100%;
+	border-radius: 10px 10px 0 0;
 }
 
 .chat-icon-degree-mask {
-	background-color: #ffe886;
+	background-color: #2470a4;
 	height: 0;
 	line-height: 0;
 	position: absolute;
 	width: 100%;
 	bottom: 0;
-	left: 0;	
+	left: 0;
+	border-radius: 2px 2px 0 0;
 }
 #character-chat-2 .chat-icon-text {
 	top:110%;
@@ -3241,7 +3281,7 @@ Cleaning
 	display: none;
 }
 .chat-icon.selected {
-	background-color: #ffe886;
+	background-color: #d55b1c;
 }
 .chat-icon.selected .chat-icon-text {
 	display: none;
@@ -3249,22 +3289,51 @@ Cleaning
 .chat-icon.unselected .chat-icon-text {
 	background-color: #a8998b;
 }
+#counselor-chat-1 {
+	right: -40px;
+}
 #counselor-chat-2 {
 	top:180px;
+	width: 240px;
 }
 #counselor-chat-3 {
 	top:320px;
+	background-color: #d55b1c;
+	color: #FFF;
+	cursor: pointer;
 }
-#chat-icon-care{ background-position: 0 0; width: 75px; height: 75px; } 
-#chat-icon-care{ background-position: 0 -76px; width: 75px; height: 75px; } 
+#counselor-chat-3 .chat-caret {
+	border-left-color: #d55b1c;
+}
+#chat-icon-care,#chat-icon-perm{
+	width: 75px;
+	height: 75px;
+	float: left;
+	display: block;
+	margin: 0 10px;
+	border-radius: 10px 10px 0 0;
+	position: relative;
+	background-color: #f7f2e4;
+	position: relative;
+}
+
+#chat-icon-care .chat-icon{ background-position: 0 -76px; } 
+#chat-icon-perm .chat-icon{ background-position: 0 -684px; } 
+#chat-icon-care .chat-icon,#chat-icon-perm .chat-icon{
+	width: 75px; height: 75px;background-color: transparent;margin:0;
+	overflow: hidden;
+}
+#chat-icon-care .chat-icon-text,#chat-icon-perm .chat-icon-text{
+	background-color: #2470a4;
+	font-size: 12px;
+	}
 #chat-icon-cut{ background-position: 0 -152px; width: 75px; height: 75px; } 
 #chat-icon-cut.selected,#chat-icon-cut:hover{ background-position: 0 -228px; width: 75px; height: 75px; } 
 #chat-icon-friend.selected,#chat-icon-friend:hover{ background-position: 0 -304px; width: 75px; height: 75px; } 
 #chat-icon-friend{ background-position: 0 -380px; width: 75px; height: 75px; } 
 #chat-icon-magzine{ background-position: 0 -456px; width: 75px; height: 75px; } 
 #chat-icon-magzine.selected,#chat-icon-magzine:hover{ background-position: 0 -532px; width: 75px; height: 75px; } 
-#chat-icon-perm{ background-position: 0 -608px; width: 75px; height: 75px; } 
-#chat-icon-perm{ background-position: 0 -684px; width: 75px; height: 75px; } 
+
 #chat-icon-salon{ background-position: 0 -760px; width: 75px; height: 75px; } 
 #chat-icon-salon.selected,#chat-icon-salon:hover{ background-position: 0 -836px; width: 75px; height: 75px; } 
 #chat-icon-self{ background-position: 0 -912px; width: 75px; height: 75px; } 
@@ -3878,7 +3947,14 @@ Cleaning
 	    margin-left: -450px;
 	    margin-top:-250px;
     }
-    
+    #cooking-hat.m {
+	    top:49px;
+	    margin-left: -19px;
+    }
+    #cooking-apron.m {
+	    margin-left: -40px;
+	    top:167px
+    }
     #cooking-hat.fm {
 	    top:53px;
 	    margin-left: -6px;
@@ -3905,6 +3981,112 @@ Cleaning
     }
     .navigator {
 	    z-index: 99;
+    }
+}
+@media only screen and (max-width: 1180px){
+    /* Style adjustments for viewports that meet the condition */
+    * {
+	    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    }
+    body {
+	    min-width: 1020px;
+    }
+    #main {
+	    width: 800px;
+	    height: 450px;
+	    top:30px;
+    }
+
+   
+    .mirror-show {
+	    width: 200px;
+	    height: 300px;
+	    margin-top: -100px;
+	    margin-left: -150px;
+	    left: 55%;
+	    top: 30%;
+    }
+
+    #hairstyle-length, #hairstyle-curl {
+	    top:0%;
+    }
+    .quality-scene {
+	    margin-top: 0;
+	    top:0;
+	    right: 0;
+	    left: auto;
+    }
+	.quality-progress {
+		width: 60%;
+		height: 70px;
+		right: 30%;
+	}
+    #magnifier {
+	    right:120px;
+	    left: auto;
+    }
+    #quality-problem {
+	    width: 500px;
+	    margin-left: -250px;
+	    bottom: 20px;
+    }
+    #life-icons, #life-lines {
+	    width: 680px;
+	    height: 100%;
+	    margin-left: -340px;
+	    margin-top:-225px;
+    }
+    
+    #cooking-hat.fm {
+	    top:-12px;
+	    margin-left: 5px;
+    }
+    #cooking-hat.m {
+	    margin-left:11px;
+	    top: -25px;
+    }
+    #cooking-apron.fm {
+	    top:78px;
+	    left: 50%;
+	    margin-left: 0;
+    }
+    #cooking-apron.m {
+	    top:91px;
+	    margin-left: -10px;
+    }
+	#refrigerator {
+		top:10px;
+	}
+    .diet-scene {
+	    top:20px;
+	    left: 45%;
+    }
+    .diet-scene .m {
+	    left: 20px;
+	    top: -10px;
+    }
+    #diet-cooking {
+	    top:5%;
+	    right: 0;
+	    width: 30%;
+    }
+    #cleaning-style {
+	    left: 18%;
+    }
+    #diningTable {
+	    bottom: 0;
+    }
+    .navigator {
+	    z-index: 99;
+    }
+    #counselor-chat-1 {
+	    right: -30px;
+    }
+    #character-chat-2 {
+	    top:230px;
+    }
+    #counselor-chat-3 {
+	    top: 340px;
     }
 }
 @media only screen and (min-width: 35em) {

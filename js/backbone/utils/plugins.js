@@ -69,24 +69,39 @@ var sectorsCount = count || 12,
 $.prototype.tooltip = function() {
 	var self = this;
 	var tooltipDiv = $('#tooltip');
+	var isMob = isMobile();
+	var startEv = 'mouseenter';
+	var endEv = 'mouseleave';
 	
+	if ( isMob ) {
+		startEv = 'touchstart';
+	}
 	
-	$(this).on('mouseenter', function() {
+	$(this).on(startEv, function(e) {
 		tooltipDiv.show();
 		tooltipDiv.find('.content').html($(this).attr('title'));
 		var offset = $(this).offset();
 		tooltipDiv.css('left',offset.left - 20).css('top',offset.top - tooltipDiv.height()-20);
+		e.stopPropagation();
 	});
-	$(this).on('mouseleave', function() {
-		tooltipDiv.hide();
-		tooltipDiv.find('.content').html("");
-	});
+	if ( !isMob ) {
+		$(this).on(endEv, function() {
+			tooltipDiv.hide();
+			tooltipDiv.find('.content').html("");
+		});
+	} else {
+		$('body').on(startEv, function() {
+			tooltipDiv.hide();
+			tooltipDiv.find('.content').html("");
+		});
+	}
+	
 }
 
 $.prototype.hint = function(id) {
 	var self = this;
 	var hintDiv = $(id);
-	
+	var isMob = isMobile();
 	$(this).on('mouseenter', function() {
 		hintDiv.show();
 	});
@@ -221,3 +236,28 @@ function drawArc(xloc, yloc,start, value, total, R) {
 		        path: path
 		    };
 }
+function isMobile() {
+	// Detect touch support
+	$.support.touch = 'ontouchend' in document;
+	return $.support.touch;
+}
+jQuery.fn.disableTextSelect = function() {
+	return this.each(function() {
+		$(this).css({
+			'MozUserSelect':'none',
+			'webkitUserSelect':'none'
+		}).attr('unselectable','on').bind('selectstart', function(event) {
+			event.preventDefault();
+			return false;
+		});
+	});
+};
+ 
+jQuery.fn.enableTextSelect = function() {
+	return this.each(function() {
+		$(this).css({
+			'MozUserSelect':'',
+			'webkitUserSelect':''
+		}).attr('unselectable','off').unbind('selectstart');
+	});
+};

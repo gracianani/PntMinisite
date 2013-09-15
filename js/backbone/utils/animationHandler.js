@@ -11,7 +11,7 @@ var AnimationHandler = {
         self.DISTANCE = 500;
         self.containerWidth = (self.el.width() / 2 - 300);
         self.containerHeight = (self.el.height() / 2);
-        //jQuery('#main').css('overflow', 'hidden');
+        jQuery('body').css('overflow', 'hidden');
 
         self.items = jQuery(self.contentID + " .item").length;
         var count = 0;
@@ -105,6 +105,7 @@ var AnimationHandler = {
     animateIn: function () {
         var self = this,
     			count = 0;
+    	jQuery('body').css('overflow', 'hidden');
         jQuery(self.contentID + " .item").each(function (i) {
             var obj_data = jQuery(this).data();
             if (obj_data.visible) {
@@ -115,7 +116,7 @@ var AnimationHandler = {
                 count++;
                 if (count == self.items) {
                     self.callBack();
-                    //jQuery('#main').css('overflow', 'visible');
+                    jQuery('body').css('overflow', 'visible');
                 }
             });
         });
@@ -123,12 +124,14 @@ var AnimationHandler = {
     animateOut: function (type, postAnimateOut) {
         var self = this;
         var count = 0;
+        jQuery('body').css('overflow', 'hidden');
         var items = jQuery(self.contentID + " .item");
         if (items.length > 0) {
             items.each(function (i) {
                 jQuery(this).animate({ path: new jQuery.path.bezier(jQuery(this).data().out) }, 1200, "easeInQuint", function () {
                     count++;
                     if (count == items.length) {
+                    	jQuery('body').css('overflow', 'visible');
                         if (type == "next") {
                             postAnimateOut();
                         }

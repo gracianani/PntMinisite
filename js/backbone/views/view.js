@@ -35,10 +35,10 @@ BasicFrameView.prototype = {
         //$('#profile').show().animate({ top: 10 }, 500);
         $('#siteTitle').show().animate({ top: 15 }, 500, function () { });
         $('#footer').show().animate({ bottom: '0' }, 500);
-        $('#progress,#main,#navigation').fadeIn();
+        $('#progress,#main,#navigation,#help-switch').fadeIn();
     },
     showReport: function () {
-        $('#progress,#main,#navigation,#footer').fadeOut();
+        $('#progress,#main,#navigation,#footer,#help-switch').fadeOut();
     }
 };
 

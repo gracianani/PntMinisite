@@ -49,7 +49,7 @@ var ReportView = Backbone.View.extend({
         $('#report-share').hide();
         $('#report').fadeOut(function () {
             $('#main').fadeIn(function () {
-                $('#progress,#main,#navigation,#footer').fadeIn();
+                $('#progress,#main,#navigation,#footer,#help-switch').fadeIn();
                 AppFacade.getCurrentView().render();
             });
 

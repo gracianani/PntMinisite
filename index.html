@@ -8,7 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title></title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1,user-scalable=no">
 		<meta property="wb:webmaster" content="c94c6c6e36324195" />
 		<meta property="qc:admins" content="24447220164565610063731145475306375" />
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -35,7 +35,7 @@
 		})();
 		</script>
     </head>
-    <body class="loading">
+    <body class="loading ui-disableSelection">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
@@ -80,7 +80,7 @@
         	</div>
         </div>
         
-        <div id="main">
+        <div id="main" class="ui-disableSelection">
         	
         </div>
         
@@ -136,7 +136,7 @@
         <div id="login" role="dialog" class=" hidden" >
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-
+				<h3>只差一小步...</h3>
                 <p>登录以后，可以保存你的报告结果哦！</p>
               </div>
               <div class="modal-body">
@@ -933,6 +933,7 @@
                     	<div id="counselor-chat-1" class="counselor-chat">
 	                    	您的秀发健康报告就快完成了:)<br />
 	                    	当您选择新发型时，会参考哪些方式呢？
+	                    	<div class="chat-caret"></div>
                     	</div>
                     	<div id="character-chat-1" class="character-chat" data-question-id="25">
 	                    	<div id="chat-icon-magzine" class="chat-icon {{#getSelectedClass}}25,117{{/getSelectedClass}}" data-answer-id="117">
@@ -953,19 +954,23 @@
                     	</div>
                     	<div id="counselor-chat-2" class="counselor-chat">
 	                    	您在沙龙做染烫、护理的频率？
+	                    	<div class="chat-caret"></div>
                     	</div>
                     	<div id="character-chat-2" class="character-chat">
-	                    	<div id="chat-icon-perm" class="chat-icon on-degree-{{#getDataDegree}}26{{/getDataDegree}}" data-question-id="26">
+	                    	<div id="chat-icon-perm" class="on-degree-{{#getDataDegree}}26{{/getDataDegree}}" data-question-id="26">
 		                    	<div class="chat-icon-degree-mask"></div>
+		                    	<div class="chat-icon"></div>
 	                    		<div class="chat-icon-text">染烫频率</div>
 	                    	</div>
-	                    	<div id="chat-icon-care" class="chat-icon on-degree-{{#getDataDegree}}27{{/getDataDegree}}" data-question-id="27">
+	                    	<div id="chat-icon-care" class="on-degree-{{#getDataDegree}}27{{/getDataDegree}}" data-question-id="27">
 	                    		<div class="chat-icon-degree-mask"></div>
+	                    		<div class="chat-icon"></div>
 	                    		<div class="chat-icon-text">护理频率</div>
 	                    	</div>
                     	</div>
                     	<div id="counselor-chat-3" class="counselor-chat">
-	                    	非常感谢您的耐心，报告已经准备好了！快去看看吧！
+	                    	非常感谢您的耐心，<br />报告已经准备好了！快去看看吧！
+	                    	<div class="chat-caret"></div>
                     	</div>
                     </div>
                     <div id="salon-counselor" class="item counselor-{{gender}}">
@@ -1080,16 +1085,14 @@
         <script src="js/vendor/jquery-1.10.2.min.js"></script>
         <script src="js/vendor/raphael-min.js"></script>
         <script src="js/vendor/g.raphael-min.js"></script>
-        <script src="js/vendor/jquery.cookie.js"></script>
-        <script src="js/vendor/jquery.jsoncookie.js"></script>
         <script src="js/vendor/jquery.easing.1.3.js"></script>
         <script src="js/vendor/jquery.path.js"></script>
         <script src="js/vendor/jquery-ui-draggable.js"></script>
-
+		<script src="js/vendor/jquery.ui.touch-punch.min.js"></script>
         <script src="js/vendor/underscore.js"></script>
         <script src="js/vendor/backbone.js"></script>
+        <script src="js/vendor/backbone.touch.min.js"></script>
         <script src="js/vendor/mustache.js"></script>
-        <script src="js/backbone/utils/paths.js"></script>
         <script src="js/backbone/utils/plugins.js"></script>
         <script src="js/backbone/views/view.js"></script>
         <script src="js/backbone/utils/animationHandler.js"></script>
