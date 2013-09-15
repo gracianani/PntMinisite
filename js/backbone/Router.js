@@ -21,7 +21,6 @@ var Router = Backbone.Router.extend({
     },
 
     details: function (id) {
-
         if (id == 1) {
             window.AppFacade.setCurrentView(app.Views.BasicInfoView);
         }

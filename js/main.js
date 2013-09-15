@@ -312,6 +312,9 @@ window.AppFacade = {
         } else {
 	        alert("您还没有答完前面的题目哦");
         }
+    },
+    handleError: function(type) {
+	 	window.location.href="/";   
     }
 
 };
@@ -385,8 +388,9 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
                 var isTrigger = typeof (app.ReportId) == 'undefined';
                 if (isTrigger) {
                     AppFacade.loadFromCookie(true);
+                    AppFacade.exitLoading();
                 }
-                AppFacade.exitLoading();
+                
                 
 
             }

@@ -61,7 +61,7 @@ var PlainReport = Backbone.Model.extend({
         else if (suggestions.score > 80) {
             gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 3 });
         } else {
-	        app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 1 });
+	        gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 1 });
         }
         console.log(app.GeneralSuggestionRepo);
         this.ScoreTitle = gSuggestion.get("suggestion_title");
@@ -103,6 +103,7 @@ var PlainReport = Backbone.Model.extend({
                 self.fillSuggestions($.parseJSON(data.d).suggestions);
                 self.fillAvatar($.parseJSON(data.d).avatar);
                 $("#report").html(Mustache.render($('#report-template').html(), self));
+                $("#report").append("<div id='loadCompleteFlag'></div>");
                 window.external.callMe();
             }
         });
@@ -111,7 +112,7 @@ var PlainReport = Backbone.Model.extend({
 
 requirejs(['backbone/models/Avatar',  'backbone/models/Report'],
     function (avatar, report) {
-
+		console.log('here');
 		app.SuggestionRepo = new SuggestionsCollection;
 		app.SuggestionRepo.fetch();
 		app.ProductRepo = new ProductsCollection;
@@ -125,33 +126,5 @@ requirejs(['backbone/models/Avatar',  'backbone/models/Report'],
         }
 });
 
-	        function preload(arrayOfImages) {
-			    $(arrayOfImages).each(function(){
-			        $('<img/>')[0].src = this;
-			    });
-			}
-			preload(
-			['img/scene/reportcareicon.png',
-			'img/scene/reporthairicon.png',
-			'img/scene/reportlifeicon.png',
-			'img/character/body-m-small.png',
-			'img/character/hair-m-small.png',
-			'img/character/face-m-small.png',
-			'img/character/hand-m-small.png',
-			'img/character/clothes-m-small.png',
-			'img/character/head-m-small.png',
-			'img/character/body-fm-small.png',
-			'img/character/hair-fm-small.png',
-			'img/character/bang-fm-small.png',
-			'img/character/hair-fm-small-black.png',
-			'img/character/bang-fm-small-black.png',
-			'img/character/hair-fm-small-gold.png',
-			'img/character/bang-fm-small-gold.png',
-			'img/character/face-fm-small.png',
-			'img/character/hand-fm-small.png',
-			'img/character/clothes-fm-small.png',
-			'img/character/head-fm-small.png'
-			]
-			);
    
         

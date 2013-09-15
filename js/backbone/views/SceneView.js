@@ -30,7 +30,7 @@ var MainView = Backbone.View.extend({
         this.setProgressBar();
     },
     setProgressBar: function() {
-	    var stepid = AppFacade.getCurrentView().model.get("scene_id");
+	    var stepid = AppFacade.getMaxFinishedSceneId();
 	    $('#progress').attr('class','step'+stepid);
     },
     onCLickStep: function(e) {
@@ -1434,7 +1434,7 @@ var BasicInfoView = Backbone.View.extend( {
     },
     prev : function() {
     	$("#character-container").fadeOut();
-    	
+    	$('#navigation').hide();
     	AnimationHandler.animateOut("next", function () { AppFacade.initSplash(); });
     	
     },

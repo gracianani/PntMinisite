@@ -111,7 +111,7 @@ var Report = Backbone.Model.extend({
         $.ajax({
             type: "POST",
             url: 'WeiboWebServices.asmx/Share',
-            timeout: 15000,
+            timeout: 20000,
             data: '{ report_id :' + app.ReportId + '}',
             datatType: "json",
             contentType: "application/json;charset=utf-8",
@@ -145,6 +145,14 @@ var Report = Backbone.Model.extend({
                 AppFacade.setUserAnswers($.parseJSON(data.d).user_answers);
                 AppFacade.saveToCookie();
                 self.loadSuggestions(response.suggestions);
+            },
+            timeout: function() {
+	            alert("请求超时，请稍后再试");
+	            AppFacade.handleError("timeout");
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+	            alert("没有您想找的测试报告，现在带您进入实验室");
+	            AppFacade.handleError("notfound");
             }
         });
     }

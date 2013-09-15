@@ -52,9 +52,12 @@ SplashView.prototype = {
 
 		var self = this;
 		this.splash = $('#splash');
-		this.splash.show();
-		AnimationHandler.initialize('#splash');
-		this.splash.find('.item').css('visibility','visible');
+		this.splash.fadeIn('fast', function(){
+			AnimationHandler.initialize('#splash');
+			self.splash.find('.item').css('visibility','visible');
+			AnimationHandler.animateIn();
+		});
+		
 		
 		this.splash.find('.splash-gender-female,.splash-gender-male').on("click",function(){
 			var answerId = parseInt($(this).attr('data-answer-id'));
@@ -67,7 +70,7 @@ SplashView.prototype = {
         	});
 	        
         });
-        AnimationHandler.animateIn();
+        
         _hmt.push(['_trackPageview', '/splash']);
 	},
 	onExitSplash : function() {
