@@ -2923,6 +2923,12 @@ Cleaning
 .m.character-large-size .face-m-2{ background-position: 0 -113px; width: 173px; height: 112px; } 
 .m.character-large-size .face-m-3{ background-position: 0 -226px; width: 173px; height: 112px; } 
 
+.m.character-large-size .bang-m-pin {
+	top:-15px;
+}
+.m.character-small-size .bang-m-pin {
+	top:-10px;
+}
 #career-clothes .m.character-small-size .clothes {
 	width: 87px;
 	height: 321px;
@@ -3941,7 +3947,14 @@ Cleaning
 	    margin-left: -450px;
 	    margin-top:-250px;
     }
-    
+    #cooking-hat.m {
+	    top:49px;
+	    margin-left: -19px;
+    }
+    #cooking-apron.m {
+	    margin-left: -40px;
+	    top:167px
+    }
     #cooking-hat.fm {
 	    top:53px;
 	    margin-left: -6px;
@@ -4028,10 +4041,18 @@ Cleaning
 	    top:-12px;
 	    margin-left: 5px;
     }
+    #cooking-hat.m {
+	    margin-left:11px;
+	    top: -25px;
+    }
     #cooking-apron.fm {
 	    top:78px;
 	    left: 50%;
 	    margin-left: 0;
+    }
+    #cooking-apron.m {
+	    top:91px;
+	    margin-left: -10px;
     }
 	#refrigerator {
 		top:10px;
@@ -4039,6 +4060,10 @@ Cleaning
     .diet-scene {
 	    top:20px;
 	    left: 45%;
+    }
+    .diet-scene .m {
+	    left: 20px;
+	    top: -10px;
     }
     #diet-cooking {
 	    top:5%;

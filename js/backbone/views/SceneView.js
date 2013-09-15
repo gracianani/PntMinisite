@@ -969,7 +969,7 @@ var HairStyleView = Backbone.View.extend( {
     template: $('#scene-hairstyle-template').html(),
 
     events: {
-        "click #haircolor-red,#haircolor-gold,#haircolor-black,#haircolor-mixed" : "setHairColor",
+        "click #haircolor-red,#haircolor-gold,#haircolor-black,#haircolor-mix" : "setHairColor",
         "click #hand,#pin,#band,#comb" : "setHairState",
         "click .hairstyle-circle" : "setHairCircle"
     },
