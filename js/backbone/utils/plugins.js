@@ -77,14 +77,20 @@ $.prototype.tooltip = function() {
 		startEv = 'touchstart';
 	}
 	
-	$(this).on(startEv, function() {
+	$(this).on(startEv, function(e) {
 		tooltipDiv.show();
 		tooltipDiv.find('.content').html($(this).attr('title'));
 		var offset = $(this).offset();
 		tooltipDiv.css('left',offset.left - 20).css('top',offset.top - tooltipDiv.height()-20);
+		e.stopPropagation();
 	});
 	if ( !isMob ) {
 		$(this).on(endEv, function() {
+			tooltipDiv.hide();
+			tooltipDiv.find('.content').html("");
+		});
+	} else {
+		$('body').on(startEv, function() {
 			tooltipDiv.hide();
 			tooltipDiv.find('.content').html("");
 		});
@@ -242,7 +248,6 @@ jQuery.fn.disableTextSelect = function() {
 			'webkitUserSelect':'none'
 		}).attr('unselectable','on').bind('selectstart', function(event) {
 			event.preventDefault();
-			alert('here');
 			return false;
 		});
 	});
