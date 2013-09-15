@@ -129,6 +129,28 @@ var Report = Backbone.Model.extend({
                 self.loadSuggestions(response.suggestions);
             }
         });
+    },
+
+    getReportByUserId: function (user) {
+        var self = this;
+        if (typeof (user) == 'undefined') {
+            user = app.User;
+        }
+        $.ajax({
+            type: "POST",
+            url: 'WeiboWebServices.asmx/FetchReportByUser',
+            timeout: 5000,
+            data: '{ str_user : \"' + JSON.stringify(user).replace(/"/g, '\'')  + ' \" }',
+            datatType: "json",
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+
+                var response = $.parseJSON(data.d);
+                AppFacade.setUserAnswers($.parseJSON(data.d).user_answers);
+                AppFacade.saveToCookie();
+                self.loadSuggestions(response.suggestions);
+            }
+        });
     }
 });
 

@@ -298,6 +298,117 @@ public class WeiboWebServices : System.Web.Services.WebService {
     }
 
     [WebMethod]
+    public string FetchReportByUser(string str_user)
+    {
+        JavaScriptSerializer serializer = new JavaScriptSerializer();
+        var user = serializer.Deserialize<User>(str_user);
+        var userAnswers = new List<SceneUserAnswer>();
+        var avatar = new Avatar();
+        var reportId = 0;
+        string connStr = ConfigurationManager.ConnectionStrings["pnt"].ConnectionString;
+        using (var conn = new SqlConnection(connStr))
+        {
+            conn.Open();
+            using (var command = new SqlCommand("LOGIN", conn))
+            {
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                if (!string.IsNullOrEmpty(user.weibo_uid))
+                {
+                    command.Parameters.AddWithValue("WeiboUID", user.weibo_uid);
+                }
+                if(!string.IsNullOrEmpty(user.qq_uid)) {
+                    command.Parameters.AddWithValue("QQUid", user.qq_uid);
+                }
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var sceneId = reader.GetInt32(reader.GetOrdinal("sceneId"));
+                        var questionId = reader.GetInt32(reader.GetOrdinal("questionId"));
+                        var answerId = reader.GetInt32(reader.GetOrdinal("answerId"));
+                        SceneUserAnswer sceneUserAnswer;
+                        if (!userAnswers.Exists(i => i.scene_id == sceneId))
+                        {
+                            sceneUserAnswer = new SceneUserAnswer();
+                            sceneUserAnswer.scene_id = sceneId;
+                            sceneUserAnswer.user_answers = new List<UserAnswer>();
+                            userAnswers.Add(sceneUserAnswer);
+                        }
+                        else
+                        {
+                            sceneUserAnswer = userAnswers.Single(i => i.scene_id == sceneId);
+                        }
+                        UserAnswer userAnswer;
+                        if (!sceneUserAnswer.user_answers.Exists(i => i.question_id == questionId))
+                        {
+                            userAnswer = new UserAnswer();
+                            userAnswer.question_id = questionId;
+                            userAnswer.answer_ids = new List<int>();
+                            sceneUserAnswer.user_answers.Add(userAnswer);
+                        }
+                        else
+                        {
+                            userAnswer = sceneUserAnswer.user_answers.First(i => i.question_id == questionId);
+                        }
+                        userAnswer.answer_ids.Add(answerId);
+                    }
+
+                    if (reader.NextResult())
+                    {
+                        while (reader.Read())
+                        {
+                            var questionId = reader.GetInt32(reader.GetOrdinal("questionId"));
+                            var answerName = reader.GetString(reader.GetOrdinal("answerName"));
+                            if (questionId == QuestionHelper.Career)
+                            {
+                                avatar.career_id = answerName;
+                            }
+                            else if (questionId == QuestionHelper.Gender)
+                            {
+                                avatar.gender = answerName;
+                            }
+                            else if (questionId == QuestionHelper.HairColor)
+                            {
+                                avatar.hairColor = answerName;
+                            }
+                            else if (questionId == QuestionHelper.HairState)
+                            {
+                                avatar.hairType = answerName;
+                            }
+                            else if (questionId == QuestionHelper.HairLength)
+                            {
+                                avatar.hairLength = answerName;
+                            }
+                            else if (questionId == QuestionHelper.HairCurly)
+                            {
+                                avatar.hairCurly = answerName;
+                            }
+                        }
+                    }
+                    if (reader.NextResult())
+                    {
+                        while (reader.Read())
+                        {
+                            reportId = reader.GetInt32(reader.GetOrdinal("reportId"));
+                        }
+                    }
+                }
+            }
+
+        }
+
+        
+        var sceneUserAnswers = serializer.Serialize(userAnswers);
+        var str_avatar = serializer.Serialize(avatar);
+        var suggestions = "";
+        if (reportId != 0)
+        {
+            suggestions = SubmitAnswer(sceneUserAnswers, reportId, "");
+        }
+        return string.Format("{{ \"user_answers\" : {0}, \"suggestions\" : {1}, \"avatar\" : {2} }}", sceneUserAnswers, suggestions, str_avatar);
+    }
+
+    [WebMethod]
     public string FetchReport(int report_id)
     {
         var userAnswers = new List<SceneUserAnswer>();
