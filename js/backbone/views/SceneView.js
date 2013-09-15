@@ -10,12 +10,15 @@ var MainView = Backbone.View.extend({
         "click #login .close" : "closeLogin",
         "click #nologin" : "showReport",
         "click #eraseCookie" : "eraseCookie",
-        "click .step": "onCLickStep"
+        "click .step": "onCLickStep",
+        "click #logo,#siteTitle" : "onClickLogo",
+        "click .help" : "onClickHelpLayer",
+        "click #help-switch" : "onClickHelpSwitch"
     },
     initialize: function () {
         this.$el = $('body');
         $('.step').tooltip();
-        
+        this.$el.disableSelection();
     },
     processToNextQuestion: function () {
         AppFacade.getCurrentView().next();
@@ -62,7 +65,17 @@ var MainView = Backbone.View.extend({
 	    	window.location.reload();
     	}
 	    
-    }
+    },
+    onClickLogo : function() {
+	    window.location.href="";
+    },
+    onClickHelpLayer : function(e){
+	    $(e.currentTarget).hide();
+	    $('#help-switch').show();
+    },
+    onClickHelpSwitch : function(e) {
+	    $('.help').toggle();
+    }	
 });
 
 var LifeView = Backbone.View.extend({
@@ -445,6 +458,7 @@ var LifeView = Backbone.View.extend({
         this.initLife();
     },
     onexit : function() {
+    	$('.help').hide();
 	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
 	    AppFacade.saveToCookie();
     }
@@ -667,6 +681,7 @@ var CleaningView = Backbone.View.extend({
         this.onexit();
     },
     onexit : function() {
+    	$('.help').hide();
 	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
 	    AppFacade.saveToCookie();
     }
@@ -769,6 +784,7 @@ var HealthView = Backbone.View.extend({
         this.onexit();
     },
     onexit : function() {
+    	$('.help').hide();
 	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
 	    AppFacade.saveToCookie();
     }
@@ -935,6 +951,7 @@ var DietView = Backbone.View.extend({
     },
     onexit : function() {
 	    $("#character-container").fadeOut();
+	    $('.help').hide();
 	    $("#cooking-apron,#cooking-hat").hide();
 	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
 	    AppFacade.saveToCookie();
@@ -1212,6 +1229,7 @@ var HairStyleView = Backbone.View.extend( {
     },
     onexit : function() {
 	    $("#character-container").fadeOut();
+	    $('.help').hide();
 	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
 	    AppFacade.saveToCookie();
     },
@@ -1301,6 +1319,7 @@ var HairQualityView = Backbone.View.extend( {
     },
     onexit : function() {
 	    $("#character-container").fadeOut();
+	    $('.help').hide();
 	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
 	    AppFacade.saveToCookie();
     },
@@ -1439,7 +1458,7 @@ var BasicInfoView = Backbone.View.extend( {
     	
     },
     onexit : function() {
-    	
+    	$('.help').hide();
 	    $("#character-container").fadeOut();
 	    $('#prev').fadeIn();
 	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
@@ -1548,6 +1567,7 @@ var SalonView = Backbone.View.extend( {
         this.onexit();
     },
     onexit : function() {
+    	$('.help').hide();
 	    AnimationHandler.animateOut("next", function () 		{ AppFacade.getCurrentView().render(); });
 	    AppFacade.saveToCookie();
     },

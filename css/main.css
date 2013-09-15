@@ -30,12 +30,12 @@ body {
  */
 
 ::-moz-selection {
-    background: #b3d4fc;
+    background: none;
     text-shadow: none;
 }
 
 ::selection {
-    background: #b3d4fc;
+    background: none;
     text-shadow: none;
 }
 
@@ -94,14 +94,23 @@ textarea {
    ========================================================================== */
 
 html {
-	background-color: #000;
-	width: 100%;
-	min-width: 1024px;
+	background-color: #000;	
 	min-height: 100%;
 	overflow: scroll;
+   -moz-user-select: none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+
+   /*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+   -ms-user-select: none;
+   user-select: none;
 }
 body {
 	width: 100%;
+	min-width: 1024px;
 	position: relative;
 	font-family: "Microsoft Yahei","Yahei",sans-serif;
 	min-height: 100%;
@@ -987,14 +996,16 @@ scenes
 .health-degree-pin {
 	width: 80px;
 	height: 40px;
-	background: url(../img/scene/health-pin.png) center center no-repeat;
-	background-size:100% 100%;
+	background: url(../img/scene/health-pin.png) center bottom no-repeat;
 	position: absolute;
 	right: -20%;
 	top: 50%;
 	margin-top: -30px;
 	cursor: pointer;
 	
+}
+.onDegree- .health-degree-pin {
+	background-position: center top;
 }
 .health-degree-hint {
 	position: absolute;
@@ -1724,6 +1735,8 @@ Cleaning
 }
 .haircolor.selected {
 	z-index: 2;
+	background-color: #FFF;
+	border-color:#d55b1c;
 }
 #haircolor-mix {
 	transform: rotate(-45deg);
@@ -2369,7 +2382,167 @@ Cleaning
 .mouseEnterAge .age-item .age-item-text {
 	display: block;
 }
+/******** help ************/
+.help {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+.help-item {
+	position: absolute;
+	color: #fff;
+	font-size: 14px;
+	line-height: 20px;
+}
+.help-arrow {
+	background: url(../img/helpicon.png) no-repeat left top;
+}
+.help-text {
+	position: absolute;
+	width: 150px;
+	text-align: left;
+	text-shadow: 1px 1px 1px #936400;
+}
+.help-rightup .help-text {
+	left: 30px;
+	top: 50px;
+}
+.help-rightup .help-arrow{
+	height: 65px;
+	width: 40px;
+	background-position: -40px -70px;
+}
+.help-leftdown .help-text {
+	left: 40px;
+	top: 0px;
+}
+.help-leftdown .help-arrow{
+	height: 65px;
+	width: 40px;
+	background-position: -85px -70px;
+}
+.help-rightdown .help-text {
+	left: -140px;
+	top: 10px;
+	text-align: right;
+}
+.help-rightdown .help-arrow{
+	height: 65px;
+	width: 40px;
+	background-position: 0px -130px;
+}
+.help-leftup .help-text {
+	left: 20px;
+	top: 50px;
+	text-align: left;
+}
+.help-leftup .help-arrow{
+	height: 65px;
+	width: 40px;
+	background-position: -40px -70px;
+}
+#help-age {
+	left: 10px;
+	top:40px;
+}
+#help-career {
+	right: 20px;
+	top: 40px;
+}
+#help-switch {
+	width: 45px;
+	height: 45px;
+	position: absolute;
+	right: 100px;
+	top: 500px;
+	border-radius: 50%;
+	background:#2470a4 url(../img/helpicon.png) no-repeat right bottom;
+	cursor: pointer;
+	border:5px solid #ffe579;
+}
+#help-switch:hover {
+	background-color: #d75b04;
+}
 
+#help-length {
+	left: 15%;
+	top: 0;
+}
+#help-curl {
+	right: 15%;
+	top: 0%;
+}
+#help-hairstate {
+	left: 18%;
+	top:45%;
+}
+#help-haircolor {
+	right: 18%;
+	top:45%;
+}
+#help-quality {
+	left: 5%;
+	top:8%;
+}
+#help-thickness {
+	left: 5%;
+	top:35%;
+}
+#help-volume {
+	left: 5%;
+	top:60%;
+}
+#help-problem {
+	left: 60%;
+	top:70%;
+}
+#help-life {
+	left: 10%;
+	top: 60%;
+}
+#help-stress {
+	left: 55%;
+	top: 15%;
+}
+#help-health {
+	left: 30%;
+	top: 42%;
+}
+#help-taste {
+	left: 2%;
+	top: 5%;
+}
+#help-drink {
+	left: 25%;
+	top: 60%;
+}
+#help-fruit {
+	left: 25%;
+	top: 15%;
+}
+#help-cook {
+	left: 60%;
+	top: 30%;
+}
+#help-trash {
+	left: 2%;
+	top: 60%;
+}
+#help-showerfreq {
+	left: 65%;
+	top: 40%;
+}
+#help-haircare {
+	left: 25%;
+	top: 26%;
+}
+#help-salon {
+	left: 25%;
+	top: 0;
+}
 /******** character ************/
 .character {
 	
@@ -3481,6 +3654,9 @@ Cleaning
 .plain-report .container #siteTitle {
 	top: 10px;
 	left: 190px;
+}
+.plain-report {
+	min-height: 900px;
 }
 /****about **/
 #about {

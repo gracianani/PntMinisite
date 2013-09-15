@@ -303,6 +303,7 @@ window.AppFacade = {
     },
     showHelp: function (unfinishedQuestions) {
         alert("您还没有回答完全部问题哦");
+        $('.help').show();
     },
     gotoScene: function (step) {
         if (step <  (this.getMaxFinishedSceneId()+1)) {
