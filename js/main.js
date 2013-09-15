@@ -323,6 +323,7 @@ window.AppFacade = {
 // Start the main app logic.
 requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone/models/Report', '../backbone/utils/Utils', '../backbone/views/AvatarView', '../backbone/views/ReportView', '../backbone/views/SceneView', '../backbone/Router'],
     function (avatar, scene, utils, avatarView, sceneView, router) {
+    	AppFacade.init();
         var questions = new QuestionsCollection;
         questions.fetch();
         app.QuestionRepo = questions;
@@ -336,7 +337,7 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
         app.SceneSettings.fetch().done(
             function () {
                 // initialize scenes and avatar
-				AppFacade.init();
+				
                 app.Views.MainView = new MainView();
                 var avatar = new Avatar;
                 app.Views.AvatarView = new AvatarView({ model: avatar });

@@ -18,7 +18,7 @@ var MainView = Backbone.View.extend({
     initialize: function () {
         this.$el = $('body');
         $('.step').tooltip();
-        this.$el.disableSelection();
+        $('body').disableTextSelect();
     },
     processToNextQuestion: function () {
         AppFacade.getCurrentView().next();
@@ -57,6 +57,7 @@ var MainView = Backbone.View.extend({
         }
     },
     showReport : function() {
+    	this.closeLogin();
     	AppFacade.askForReport();
     },
     eraseCookie : function() {
@@ -1453,7 +1454,7 @@ var BasicInfoView = Backbone.View.extend( {
     },
     prev : function() {
     	$("#character-container").fadeOut();
-    	$('#navigation').hide();
+    	$('#navigation,#help-switch').hide();
     	AnimationHandler.animateOut("next", function () { AppFacade.initSplash(); });
     	
     },
@@ -1521,7 +1522,8 @@ var SalonView = Backbone.View.extend( {
     template: $('#scene-salon-template').html(),
     events: {
        "click #character-chat-1 .chat-icon" : "onClickChatIcon",
-       "click #character-chat-2 .chat-icon" : "onClickChatDegree"
+       "click #character-chat-2 .chat-icon" : "onClickChatDegree",
+       "click #counselor-chat-3" : "next"
     },
     initialize: function () {
         this.$el = $('#main');
@@ -1597,7 +1599,7 @@ var SalonView = Backbone.View.extend( {
 	    }
     },
     onClickChatDegree: function(event) {
-    	var icon = $(event.currentTarget);
+    	var icon = $(event.currentTarget).parent();
     	var question_id = parseInt(icon.attr('data-question-id'));
     	var degree = this.model.getAnswerDegree(question_id);
     	if (degree == 5) {
@@ -1606,7 +1608,7 @@ var SalonView = Backbone.View.extend( {
 	    	degree = degree + 1;
     	}
        	this.model.setAnswerByDegree(question_id, degree, true);
-    	icon.attr('class','chat-icon on-degree-' + degree);
+    	icon.attr('class','on-degree-' + degree);
     	icon.find('.chat-icon-text').html(this.model.getAnswerTextByDegree(question_id,degree));
 	    if ( $('#counselor-chat-3').is(':hidden') ) {
 		    $('#counselor-chat-3').delay(2000).fadeIn(function(){
