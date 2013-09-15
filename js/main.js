@@ -1,6 +1,6 @@
 requirejs.config({
     //By default load any module IDs from js/lib
-    baseUrl: 'js/vendor'
+    'baseUrl': 'js/vendor'
 });
 
 var app = {
@@ -22,11 +22,13 @@ var app = {
 };
 
 window.AppFacade = {
+	maxSceneId :0,
     init: function () {
         if (typeof app.Views.BasicFrameView == 'undefined') {
             this.initLoading();
 
         }
+        
     },
     setStartView: function () {
         var isStartFromSplash = false;
@@ -34,7 +36,7 @@ window.AppFacade = {
             isStartFromSplash = true;
 
 
-        } else if (!app.Views.BasicInfoView.model.isAnswered(22) && typeof (app.ReportId) == 'undefined') {
+        } else if ( typeof (app.ReportId) == 'undefined' && !app.Views.BasicInfoView.model.isAnswered(22)) {
             isStartFromSplash = true;
         }
         if (isStartFromSplash) {
@@ -52,6 +54,34 @@ window.AppFacade = {
     initBasicFrame: function () {
         app.Views.BasicFrameView = new BasicFrameView();
 
+    },
+    exitLoading: function() {
+	  	app.Views.LoadingView.onExitLoading();  
+    },
+    getMaxFinishedSceneId: function(){
+    	if ( this.maxSceneId > 0 ) {
+	    	return this.maxSceneId;
+    	}
+    	
+    	var index;
+	    for ( index in app.SceneViews) {
+	    	
+            if (app.SceneViews[index].model) {
+                if (app.SceneViews[index].model.isSceneFinished().length > 0) {
+                	this.maxSceneId = parseInt(index);
+                   return this.maxSceneId;                  
+                }
+            }
+        }
+        this.maxSceneId = parseInt(index) + 1;
+        return this.maxSceneId;
+    },
+    getCurrentSceneId: function(){
+	    var id = 0;
+       if ( this.getCurrentView().model && this.getCurrentView().model.get('scene_id') ) {
+	       id = parseInt(this.getCurrentView().model.get('scene_id'));
+      }
+      return id;
     },
     setCurrentView: function (view) {
         this.currentView = view;
@@ -72,7 +102,7 @@ window.AppFacade = {
         return user_answers;
     },
     setUserAnswers: function (user_answers) {
-        console.log(user_answers);
+        //console.log(user_answers);
         for (var i = 0; i < user_answers.length; i++) {
             var user_answer = user_answers[i];
             if (user_answer.scene_id == 1) {
@@ -122,10 +152,15 @@ window.AppFacade = {
             if (user_info) {
                 app.User = user_info;
             }
-
-            app.Router.navigate("Survey/" + current_scene_id, { trigger: isTrigger });
+            var startScene = this.getCurrentSceneId();
+            this.maxScene = this.getMaxFinishedSceneId();
+            console.log(this.maxScene);
+            if ( startScene > this.maxScene ) {
+	             app.Router.navigate("Survey/" + current_scene_id, { trigger: isTrigger });
+            }
+           
         } else {
-            app.Router.navigate("", true);
+            app.Router.navigate("", { trigger: isTrigger });
         }
 
     },
@@ -252,17 +287,11 @@ window.AppFacade = {
         return (app.User.weibo_uid || app.User.qq_uid);
     },
     isQuizFinish: function () {
-        var isFinished = true;
-
-        for (var index in app.SceneViews) {
-            if (app.SceneViews[index].model) {
-                console.log(app.SceneViews[index].model);
-                if (app.SceneViews[index].model.isSceneFinished().length > 0) {
-                    isFinished = false;
-                }
-            }
+        if ( this.getMaxFinishedSceneId() < app.SceneViews.length - 1 ) {
+	        return false;
+        } else {
+	        return true;
         }
-        return isFinished;
     },
     askForReport: function () {
         if (this.isQuizFinish()) {
@@ -276,26 +305,19 @@ window.AppFacade = {
         alert("您还没有回答完全部问题哦");
     },
     gotoScene: function (step) {
-
-        var currentView = this.getCurrentView();
-
-        var currentStep = parseInt(currentView.model.get("scene_id"));
-
-        if (!currentStep) {
-            currentStep = 9;
-        }
-        console.log(currentStep);
-        console.log(step);
-        if (step < currentStep) {
-            var nextView = app.SceneViews[step - 1];
-            this.setCurrentView(nextView);
-            app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
+        if (step <  (this.getMaxFinishedSceneId()+1)) {
+        	var currentView = this.getCurrentView();
+            app.Router.navigate("Survey/" + step, { "trigger":true});
             currentView.onexit();
-            app.Views.MainView.setProgressBar();
+        } else {
+	        alert("您还没有答完前面的题目哦");
         }
+    },
+    handleError: function(type) {
+	 	window.location.href="/";   
     }
 
-}
+};
 
 // Start the main app logic.
 requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone/models/Report', '../backbone/utils/Utils', '../backbone/views/AvatarView', '../backbone/views/ReportView', '../backbone/views/SceneView', '../backbone/Router'],
@@ -313,7 +335,7 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
         app.SceneSettings.fetch().done(
             function () {
                 // initialize scenes and avatar
-
+				AppFacade.init();
                 app.Views.MainView = new MainView();
                 var avatar = new Avatar;
                 app.Views.AvatarView = new AvatarView({ model: avatar });
@@ -351,10 +373,10 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
 				    app.Views.BasicInfoView,
 				    app.Views.HairStyleView,
 				    app.Views.HairQualityView,
-				    app.Views.DietView,
-				    app.Views.HealthView,
-				    app.Views.CleaningView,
 				    app.Views.LifeView,
+				    app.Views.HealthView,
+				    app.Views.DietView,
+				    app.Views.CleaningView,
 				    app.Views.SalonView
 				];
 
@@ -362,14 +384,15 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
 
                 app.Router = new Router();
                 Backbone.history.start();
-                AppFacade.init();
-                AppFacade.initQQLogin();
-                AppFacade.initWbLogin();
-
+                
                 var isTrigger = typeof (app.ReportId) == 'undefined';
                 if (isTrigger) {
                     AppFacade.loadFromCookie(true);
+                    AppFacade.exitLoading();
                 }
+                
+                
+
             }
         );
 

@@ -15,22 +15,7 @@
         redirect_uri: 'http://pantene.app.social-touch.com/qc_callback.html'
     }
 };
-
-requirejs(['backbone/models/Avatar', 'backbone/models/Report', 'backbone/utils/plugins'],
-    function (avatar, report) {
-        app.SuggestionRepo = new SuggestionsCollection;
-        app.SuggestionRepo.fetch();
-        app.ProductRepo = new ProductsCollection;
-        app.ProductRepo.fetch();
-        app.GeneralSuggestionRepo = new GeneralSuggestionsCollection;
-        app.GeneralSuggestionRepo.fetch();
-        app.PlainReport = new PlainReport;
-        var reportId = getParameterByName("reportId");
-        if (reportId != "") {
-            app.PlainReport.saveReportImage(reportId);
-        }
-    }
- )
+    
 
 var PlainReport = Backbone.Model.extend({
     LifeStyleSuggestions: [],
@@ -43,8 +28,9 @@ var PlainReport = Backbone.Model.extend({
     HairProblems: [],
     ProductSuggestions: [],
     ShareText: "",
+    BestProduct:[],
     fillSuggestions: function (suggestions) {
-
+		console.log(suggestions);
         var lifestyleIds = suggestions.lifestyle_suggestions.split(",");
         for (var i = 0; i < lifestyleIds.length; i++) {
             var suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(lifestyleIds[i]) });
@@ -67,20 +53,21 @@ var PlainReport = Backbone.Model.extend({
             }
         }
         this.Score = suggestions.score;
-        var gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 1 });
+        var gSuggestion; 
 
         if (suggestions.score > 50 && suggestions.score < 80) {
             gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 2 });
         }
         else if (suggestions.score > 80) {
             gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 3 });
+        } else {
+	        gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 1 });
         }
-        this.ShareText = gSuggestion.get("share_text_begin_with");
+        console.log(app.GeneralSuggestionRepo);
         this.ScoreTitle = gSuggestion.get("suggestion_title");
         this.ScoreSuggestions.push(gSuggestion.get("suggestion_text"));
         this.QuizId = suggestions.quizId;
-     //   this.HairProblems.push(app.Views.HairQualityView.model.getAnswerText(21));
-     //   this.HairProblems.push(app.Views.HairStyleView.model.getAnswerText(14));
+
 
         var productIds = suggestions.suggested_products.split(",");
         for (var i = 0; i < productIds.length; i++) {
@@ -91,6 +78,8 @@ var PlainReport = Backbone.Model.extend({
                 this.ProductSuggestions.push(suggestion.toJSON());
             }
         }
+        this.BestProduct.push(this.ProductSuggestions[0]);
+        console.log(this.BestProduct);
     },
     fillAvatar : function(options)
     {
@@ -100,7 +89,6 @@ var PlainReport = Backbone.Model.extend({
         this.hairCurly = options.hairCurly;
         this.hairColor = options.hairColor;
         this.hairType = options.hairType;
-        console.log(options)
     },
     saveReportImage: function (reportId) {
         var self = this;
@@ -115,8 +103,28 @@ var PlainReport = Backbone.Model.extend({
                 self.fillSuggestions($.parseJSON(data.d).suggestions);
                 self.fillAvatar($.parseJSON(data.d).avatar);
                 $("#report").html(Mustache.render($('#report-template').html(), self));
+                $("#report").append("<div id='loadCompleteFlag'></div>");
                 window.external.callMe();
             }
         });
     }
 });
+
+requirejs(['backbone/models/Avatar',  'backbone/models/Report'],
+    function (avatar, report) {
+		console.log('here');
+		app.SuggestionRepo = new SuggestionsCollection;
+		app.SuggestionRepo.fetch();
+		app.ProductRepo = new ProductsCollection;
+        app.ProductRepo.fetch();
+        app.GeneralSuggestionRepo = new GeneralSuggestionsCollection;
+        app.GeneralSuggestionRepo.fetch();
+        app.PlainReport = new PlainReport;
+        var reportId = getParameterByName("reportId");
+        if (reportId != "") {
+            app.PlainReport.saveReportImage(reportId);
+        }
+});
+
+   
+        

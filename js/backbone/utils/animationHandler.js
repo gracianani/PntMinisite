@@ -11,7 +11,7 @@ var AnimationHandler = {
         self.DISTANCE = 500;
         self.containerWidth = (self.el.width() / 2 - 300);
         self.containerHeight = (self.el.height() / 2);
-        jQuery('body').css('overflow', 'hidden');
+        //jQuery('#main').css('overflow', 'hidden');
 
         self.items = jQuery(self.contentID + " .item").length;
         var count = 0;
@@ -24,7 +24,7 @@ var AnimationHandler = {
             //I'm not sure but i think we can just use position and not css
             // if(isNaN(left) || isNaN(top)) {
             var position = $(this).position();
-            console.log(position.left);
+            //console.log(position.left);
             var left = position.left;
             var top = position.top;
             //}
@@ -115,7 +115,7 @@ var AnimationHandler = {
                 count++;
                 if (count == self.items) {
                     self.callBack();
-                    jQuery('body').css('overflow', 'visible');
+                    //jQuery('#main').css('overflow', 'visible');
                 }
             });
         });

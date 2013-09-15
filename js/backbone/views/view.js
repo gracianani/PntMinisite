@@ -26,6 +26,7 @@ BasicFrameView.prototype = {
             if ( AppFacade.getCurrentView() != app.Views.ReportView ) {
                 window.AppFacade.getCurrentView().render();
                 self.showControls();
+                app.Views.MainView.setProgressBar();
             }
             
         });
@@ -51,9 +52,12 @@ SplashView.prototype = {
 
 		var self = this;
 		this.splash = $('#splash');
-		this.splash.show();
-		AnimationHandler.initialize('#splash');
-		this.splash.find('.item').css('visibility','visible');
+		this.splash.fadeIn('fast', function(){
+			AnimationHandler.initialize('#splash');
+			self.splash.find('.item').css('visibility','visible');
+			AnimationHandler.animateIn();
+		});
+		
 		
 		this.splash.find('.splash-gender-female,.splash-gender-male').on("click",function(){
 			var answerId = parseInt($(this).attr('data-answer-id'));
@@ -66,7 +70,7 @@ SplashView.prototype = {
         	});
 	        
         });
-        AnimationHandler.animateIn();
+        
         _hmt.push(['_trackPageview', '/splash']);
 	},
 	onExitSplash : function() {
@@ -88,9 +92,7 @@ LoadingView.prototype = {
 		spinner(this.content[0], 105, 120, 36, 3, "#FFFFFF");
 		
 		this.body.addClass('loading');
-		this.loading.fadeIn('slow',function(){
-			self.onExitLoading();
-		});
+		this.loading.fadeIn('slow');
 		_hmt.push(['_trackPageview', '/loading']);
 		
 		
@@ -101,5 +103,7 @@ LoadingView.prototype = {
 	    $('body').removeClass('loading');
 	   
 		window.AppFacade.setStartView();
+		window.AppFacade.initQQLogin();
+        window.AppFacade.initWbLogin();
 	}
 };

@@ -10,7 +10,6 @@ var MainView = Backbone.View.extend({
         "click #login .close" : "closeLogin",
         "click #nologin" : "showReport",
         "click #eraseCookie" : "eraseCookie",
-        "click .jiathis_button_tsina" : "shareWeibo",
         "click .step": "onCLickStep"
     },
     initialize: function () {
@@ -18,25 +17,27 @@ var MainView = Backbone.View.extend({
         $('.step').tooltip();
         
     },
-    shareWeibo : function() {
-        app.Report.shareReport();
-    },
     processToNextQuestion: function () {
         AppFacade.getCurrentView().next();
         this.setProgressBar();
+        var currentSceneId = AppFacade.getCurrentSceneId();
+        if ( currentSceneId > AppFacade.getMaxFinishedSceneId() ) {
+	        AppFacade.maxSceneId = currentSceneId;
+        }
     },
     processToPrevQuestion: function() {
         AppFacade.getCurrentView().prev();
         this.setProgressBar();
     },
     setProgressBar: function() {
-	    var stepid = AppFacade.getCurrentView().model.get("scene_id");
+	    var stepid = AppFacade.getMaxFinishedSceneId();
 	    $('#progress').attr('class','step'+stepid);
     },
     onCLickStep: function(e) {
 	  	var item = $(e.currentTarget);
 	  	var step = parseInt(item.attr("data-step"));
 	  	AppFacade.gotoScene(step);
+	  	this.setProgressBar();
 	  	
     },
     showLogin : function() {
@@ -411,12 +412,14 @@ var LifeView = Backbone.View.extend({
     	}
         var nextView = app.Views.HealthView;
         AppFacade.setCurrentView(nextView);
+        app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
         this.onexit();
        
     },
     prev : function() {
         var prevView = app.Views.HairQualityView;
         AppFacade.setCurrentView(prevView);
+        app.Router.navigate("Survey/" + prevView.model.get("scene_id"));
         this.onexit();
     },
     postrender: function () {
@@ -505,7 +508,7 @@ var CleaningView = Backbone.View.extend({
 	        return;
         }
         item.toggleClass('selected');
-        this.model.setAnswer(parseInt(item.parent().parent().data("question-id")), parseInt(item.data("answer-id") ), true);
+        this.model.setAnswer(parseInt(item.parent().parent().data("question-id")), parseInt(item.data("answer-id") ), item.hasClass('selected'));
     },
     animateIn: function () {
         AnimationHandler.animateIn();
@@ -649,6 +652,7 @@ var CleaningView = Backbone.View.extend({
     prev : function() {
         var prevView = app.Views.DietView;
         AppFacade.setCurrentView(prevView);
+        app.Router.navigate("Survey/" + prevView.model.get("scene_id"));
         this.onexit();
     },
     next: function () {
@@ -659,6 +663,7 @@ var CleaningView = Backbone.View.extend({
     	}
         var nextView = app.Views.SalonView;
         AppFacade.setCurrentView(nextView);
+        app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
         this.onexit();
     },
     onexit : function() {
@@ -749,6 +754,7 @@ var HealthView = Backbone.View.extend({
     prev : function() {
         var prevView = app.Views.LifeView;
         AppFacade.setCurrentView(prevView);
+        app.Router.navigate("Survey/" + prevView.model.get("scene_id"));
         this.onexit();
     },
     next: function () {
@@ -759,6 +765,7 @@ var HealthView = Backbone.View.extend({
     	}
         var nextView = app.Views.DietView;
         AppFacade.setCurrentView(nextView);
+        app.Router.navigate("Survey/" + nextView.model.get("scene_id"));
         this.onexit();
     },
     onexit : function() {
@@ -788,17 +795,12 @@ var DietView = Backbone.View.extend({
     },
 
     answerTasteQuestion: function (event) {
-        var item = event.currentTarget;
-        $(item).toggleClass('selected');
-        var isSelected = $(item).attr('data-selected');
+        var item = $(event.currentTarget);
+        item.toggleClass('selected');
 
-        this.model.setAnswer(parseInt($(item).parent().attr("data-question-id")), parseInt($(item).attr("data-answer-id")), isSelected);
+        this.model.setAnswer(parseInt(item.parent().attr("data-question-id")), parseInt(item.attr("data-answer-id")), item.hasClass('selected'));
 
-        if (isSelected) {
-            $(item).attr('data-selected', 0);
-        } else {
-            $(item).attr('data-selected', 1);
-        }
+
 
     },
 
@@ -812,15 +814,10 @@ var DietView = Backbone.View.extend({
     },
 
     answerDrinkQuestion: function (event) {
-        var item = event.currentTarget;
-        $(item).toggleClass('selected');
-        var isSelected = $(item).attr('data-selected');
-        this.model.setAnswer(parseInt($(item).parent().attr("data-question-id")),parseInt($(item).attr("data-answer-id")), isSelected);
-        if (isSelected) {
-            $(item).attr('data-selected', 0);
-        } else {
-            $(item).attr('data-selected', 1);
-        }
+        var item = $(event.currentTarget);
+        item.toggleClass('selected');
+        this.model.setAnswer(parseInt(item.parent().attr("data-question-id")), parseInt(item.attr("data-answer-id")), item.hasClass('selected'));
+
     },
     answerCookingQuestion : function(event) {
 	  	var item = $(event.currentTarget);  
@@ -1437,6 +1434,7 @@ var BasicInfoView = Backbone.View.extend( {
     },
     prev : function() {
     	$("#character-container").fadeOut();
+    	$('#navigation').hide();
     	AnimationHandler.animateOut("next", function () { AppFacade.initSplash(); });
     	
     },

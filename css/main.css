@@ -96,13 +96,14 @@ textarea {
 html {
 	background-color: #000;
 	width: 100%;
+	min-width: 1024px;
 	min-height: 100%;
+	overflow: scroll;
 }
 body {
 	width: 100%;
 	position: relative;
 	font-family: "Microsoft Yahei","Yahei",sans-serif;
-	overflow: hidden;
 	min-height: 100%;
 	background: #ffbd32;
 
@@ -409,7 +410,7 @@ profile
 navigation 
 =====================*/
 #navigation {
-	z-index: 3;
+	z-index: 99;
 }
 .navigator {
 	width: 80px;
@@ -488,7 +489,7 @@ splash
 	position: fixed;
 	left: 0;
 	top:0;
-	background: #000;
+	background: #000  url(../img/hairbg.jpg) center center;
 	color: #FFF;
 	z-index: 3;
 	display: none;
@@ -933,6 +934,11 @@ scenes
 	top: 0;
 	
 }
+#scene-health-content {
+	position: relative;
+	height: 100%;
+	left: 4%;
+}
 #mealCount {
 	left: 0;
 }
@@ -995,6 +1001,7 @@ scenes
 	top: 110%;
 	text-align: center;
 	color: #da6025;
+	width: 80%;
 }
 #mealCount .onDegree-4 .health-degree-pin{
 	top:20%;
@@ -1086,8 +1093,8 @@ scenes
 	left: 50%;
 	top:50%;
 	margin-top: -225px;
-	margin-left: -300px;
-	width: 600px;
+	margin-left: -400px;
+	width: 800px;
 	height: 450px;
 }
 #life-type {
@@ -1247,16 +1254,17 @@ Cleaning
 #cleaning-care {
 	width: 400px;
 	margin-top: 20px;
+	left: 10%;
 	
 }
 #cleaning-style {
 	width: 300px;
-	left: 155px;
+	left: 25%;
 	height: 140px;
 }
 #cleaning-tool {
 	width: 270px;
-	left: 180px;
+	left: 25%;
 	margin-top: 10px;
 }
 
@@ -1382,7 +1390,7 @@ Cleaning
 	height: 135px;
 	position: absolute;
 	bottom: 0px;
-	left: 0;
+	left: 5%;
 }
 #cleaning-trash-content {
 	background-image: url(../img/scene/cleaning-trash.png);
@@ -1449,7 +1457,7 @@ Cleaning
 	position: absolute;
 	top: 5%;
 	width: 40%;
-	right: 10%;
+	right: 5%;
 }
 #shower-head {
 	background:url(../img/scene/shower-head.png) no-repeat center top;
@@ -3114,11 +3122,12 @@ Cleaning
 	-pie-background: linear-gradient(#f3e8d2, #ffffff);
 	behavior: url(/pie/PIE.htc);
 }
+
 #report {
 	width: 960px;
 	margin:10px auto;
 	color: #000;
-	padding-top: 50px;
+	padding-top: 10px;
 	position: relative;
 	padding-bottom: 150px;
 }
@@ -3189,7 +3198,7 @@ Cleaning
 }
 #report-share {
 	position: absolute;
-	top:350px;
+	top:310px;
 	left: 50%;
 	display: none;
 }
@@ -3251,9 +3260,12 @@ Cleaning
 }
 #report h2.score-low {
 	color: #df4521;
+
+}
+#report h2 {
 	font-size: 36px;
 	line-height: 40px;
-	padding-top: 40px;
+	padding-top: 20px;
 	margin: 0;
 }
 #report-result {
@@ -3281,7 +3293,7 @@ Cleaning
 }
 #restartQuiz {
 	position: absolute;
-	top:90px;
+	top:30px;
 	right: 215px;
 	background: #d55b1c;
 }
@@ -3320,7 +3332,7 @@ Cleaning
 	width: 212px;
 	position: absolute;
 	right: 0;
-	top:80px;
+	top:20px;
 }
 #report-result-cleaning .report-result-icon {
 	background: url(../img/scene/reportcareicon.png) no-repeat left top;
@@ -3407,6 +3419,68 @@ Cleaning
 	padding: 10px 20px;
 	font-size: 16px;
 	z-index: 3;
+}
+/* plain report */
+
+.plain-report #report-header {
+	margin-bottom: 0px;
+}
+.plain-report #report-score {
+	width: 180px;
+	height: 180px;
+}
+.plain-report .score-inside {
+	width: 150px;
+	height: 150px;
+	left: 15px;
+	top:15px;
+}
+.plain-report #report-score-title {
+	top: 35px;
+	font-size: 18px;
+	line-height: 24px;
+}
+.plain-report #report-score-number {
+	top:50px;
+}
+.plain-report #report h2 {
+	padding-top: 10px;
+}
+.plain-report #report {
+	width: 800px;
+	padding-top: 20px;
+}
+.plain-report #report-avatar {
+	top:10px;
+	right: -10px;
+}
+.plain-report #report-header {
+	width: 600px;
+}
+.plain-report #hair-advice {
+	padding-right: 120px;
+	line-height: 24px;
+}
+.plain-report #preloader {
+	position: absolute;
+	left: -9999px;
+	top:  -9999px;
+}
+.plain-report .container {
+	width: 800px;
+	margin: 0 auto;
+	position: relative;
+}
+.plain-report .container #logo, .plain-report .container #siteTitle {
+	display: block;
+}
+.plain-report .container #logo {
+	left: 10px;
+	top: 5px;
+}
+.plain-report .container #siteTitle {
+	top: 10px;
+	left: 190px;
 }
 /****about **/
 #about {
@@ -3547,7 +3621,116 @@ Cleaning
    These examples override the primary ('mobile first') styles.
    Modify as content requires.
    ========================================================================== */
-
+@media only screen and (min-width: 1570px) {
+    /* Style adjustments for viewports that meet the condition */
+    #main {
+	    width: 1440px;
+	    height: 500px;
+    }
+    .basicinfo-scene {
+	    left: 30%;
+	    top:-5%;
+    }
+    #basicinfo-age {
+	    left: 10%;
+    }
+    #basicinfo-career {
+	    width: 50%;
+	    right: 5%;
+    }
+    .mirror-show {
+	    width: 350px;
+	    height: 400px;
+	    margin-top: -175px;
+	    margin-left: -200px;
+    }
+    #hairstyle-length, #hairstyle-curl {
+	    top:10%;
+    }
+    .quality-scene {
+	    margin-top: 0;
+    }
+    .quality-progress {
+	    width: 50%;
+	    left: 10%;
+	    height: 100px;
+    }
+    #quality-quality {
+	    top: 10px;
+    }
+    #quality-thickness {
+	    top:150px;
+    }
+    #quality-volume {
+	    top:280px;
+    }
+    #magnifier {
+	    right:350px;
+	    left: auto;
+    }
+    .quality-progree-draggable {
+	    width: 60px;
+	    height: 60px;
+	    margin-top: -30px;
+	    margin-left: -30px;
+	    line-height: 60px;
+	    font-size: 14px;
+    }
+    .quality-progress-title {
+	    font-size: 20px;
+    }
+    .quality-progress-bar {
+	    width: 65%;
+	    left: 27%;
+	    height: 20px;
+	    margin-top: -10px;
+    }
+    .quality-progress-dot {
+	    width: 16px;
+	    height: 16px;
+	    margin-top:-20px;
+	    margin-left:-20px;
+	    border-radius: 21px;
+    }
+    #quality-problem {
+	    width: 800px;
+	    margin-left: -400px;
+    }
+    #life-icons, #life-lines {
+	    width: 900px;
+	    height: 100%;
+	    margin-left: -450px;
+	    margin-top:-250px;
+    }
+    
+    #cooking-hat.fm {
+	    top:53px;
+	    margin-left: -6px;
+    }
+    #cooking-apron.fm {
+	    margin-left: -8px;
+	    top:144px
+    }
+	#refrigerator {
+		left: 15%;
+		top:80px;
+	}
+    .diet-scene {
+	    top:85px;
+	    left: 46.5%;
+    }
+    #diet-cooking {
+	    top:25%;
+	    right: 5%;
+	    width: 30%;
+    }
+    #diningTable {
+	    bottom: 0;
+    }
+    .navigator {
+	    z-index: 99;
+    }
+}
 @media only screen and (min-width: 35em) {
     /* Style adjustments for viewports that meet the condition */
 }

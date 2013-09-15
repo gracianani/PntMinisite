@@ -86,7 +86,7 @@ var Scene = Backbone.Model.extend({
 		return function(str_question_id) {
 			var question_id = parseInt(str_question_id);
 			var question = app.QuestionRepo.findWhere({ question_id: question_id });
-			console.log(question.get("answers").length);
+			//console.log(question.get("answers").length);
 			return question.get("answers").length + '';
 		}	
 	},
@@ -150,6 +150,9 @@ var Scene = Backbone.Model.extend({
         var answers = this.get("user_answers");
         var user_question = this.getUserAnswerByQuestionId(question_id);
 
+		if ( ! user_question ) {
+			return false;
+		}
         if (typeof answer_id !== 'undefined') {
             return user_question.answer_ids.indexOf(answer_id) > -1;
         }
@@ -245,15 +248,37 @@ var Scene = Backbone.Model.extend({
             return '';
         }
     },
+    getMultipleAnswerText: function(question_id) {
+	    var question = app.QuestionRepo.findWhere({ question_id: question_id });
+	    if (this.isAnswered(question_id)) {
+            var user_question = this.getUserAnswerByQuestionId(question_id);
+			var answers = user_question.answer_ids;
+			var textStr = '';
+			if ( answers.length > 0 ) {
+				for ( index in answers ) {
+					var answer_id = answers[index];
+					textStr += ' ' + $.grep(question.get("answers"), function (e) { return e.answer_id == answer_id })[0].text;
+				}
+				return textStr;
+				
+			} else {
+				return '';
+			}
+            
+        }
+        else {
+            return '';
+        }
+    },
 
     isQuestionFinished: function (question_id) {
         var question = app.QuestionRepo.findWhere({ question_id: question_id }).toJSON();
+        if (question.question_type == "multiple") {
+                return true;
+        }
         var userAnswer = this.getUserAnswerByQuestionId(question_id);
         if (question != null && userAnswer != null) {
             if (question.question_type == "single" && userAnswer.answer_ids.length == 1) {
-                return true;
-            }
-            else if (question.question_type == "multiple") {
                 return true;
             }
         }
@@ -265,7 +290,7 @@ var Scene = Backbone.Model.extend({
         var unfinishedQuestion = [];
         for (var question_id in scene_questions) {
             if (this.isQuestionFinished(scene_questions[question_id])) {
-                console.log(scene_questions[question_id] + "finished");
+               // console.log(scene_questions[question_id] + "finished");
             }
             else {
                 console.log(scene_questions[question_id] + "unfinished");

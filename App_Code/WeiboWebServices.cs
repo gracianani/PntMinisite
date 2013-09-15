@@ -32,6 +32,11 @@ public static class BitmapExtensions
         bmp.Save(stream, GetEncoder(ImageFormat.Jpeg), encoderParameters);
     }
 
+    public static void SavePng(this Bitmap bmp, string filename)
+    {
+	bmp.Save(filename, System.Drawing.Imaging.ImageFormat.Png);
+    }
+
     public static ImageCodecInfo GetEncoder(ImageFormat format)
     {
         var codecs = ImageCodecInfo.GetImageDecoders();
@@ -93,7 +98,7 @@ public class WeiboWebServices : System.Web.Services.WebService {
         public Bitmap Generate()
         {
             // Thread 
-            var m_thread = new Thread(_Generate);
+            var m_thread = new Thread(new ThreadStart(_Generate));
             m_thread.SetApartmentState(ApartmentState.STA);
             
             m_thread.Start();
@@ -103,29 +108,44 @@ public class WeiboWebServices : System.Web.Services.WebService {
 
         private void _Generate()
         {
-            var browser = new WebBrowser { ScrollBarsEnabled = false , ScriptErrorsSuppressed = true};
+            var browser = new WebBrowser();
+	    browser.ScrollBarsEnabled = false;
+	    browser.ScriptErrorsSuppressed = true;
             browser.Navigate(m_Url );
-            while (browser.ReadyState != WebBrowserReadyState.Complete || browser.Document == null || browser.Document.GetElementById("report") == null ||
-                string.IsNullOrEmpty(browser.Document.GetElementById("report").InnerHtml) )
+	    //browser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(WebBrowser_DocumentCompleted);
+            while (browser.IsBusy ||
+		   browser.ReadyState != WebBrowserReadyState.Complete || 
+		   browser.Document == null || 
+		   browser.Document.GetElementById("report") == null ||
+               	   string.IsNullOrEmpty(browser.Document.GetElementById("report").InnerHtml) )
             {
                 System.Windows.Forms.Application.DoEvents();
             }
-            System.Threading.Thread.Sleep(10000);
-            SaveImage(browser, m_FileName);
+            System.Threading.Thread.Sleep(5000);
+            SaveImage(browser);
             browser.Dispose();
         }
 
-        public static void  SaveImage(WebBrowser browser, string fileName)
-        {
+	private void WebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+	{
+	    WebBrowser browser = (WebBrowser)sender;
+	    SaveImage(browser);
+	}
+
+	private void SaveImage(WebBrowser browser)
+	{
             browser.ClientSize = new Size(browser.Document.Body.ScrollRectangle.Width, browser.Document.Body.ScrollRectangle.Bottom);
-            var bitmap = new Bitmap(browser.Document.Body.ScrollRectangle.Width, browser.Document.Body.ScrollRectangle.Bottom);
+            m_Bitmap = new Bitmap(browser.Document.Body.ScrollRectangle.Width, browser.Document.Body.ScrollRectangle.Bottom);
             browser.BringToFront();
-            browser.DrawToBitmap(bitmap, browser.Bounds);
-            if (fileName.Length > 0)
+	    Rectangle rec = browser.Bounds;
+	    rec.Width -= 18;
+	    rec.Height -= 18;
+            browser.DrawToBitmap(m_Bitmap, rec);
+            if (m_FileName.Length > 0)
             {
-                bitmap.SaveJPG100(fileName);
+		m_Bitmap.SavePng(m_FileName);
             }
-        }
+	}
     }
 
     class SceneUserAnswer
@@ -292,7 +312,7 @@ public class WeiboWebServices : System.Web.Services.WebService {
     [WebMethod]
     public bool Share(int report_id)
     {
-        WebsiteToImage websiteToImage = new WebsiteToImage( ConfigurationManager.AppSettings["BaseUrl"] + "report.html?reportId=" + report_id, string.Format( Server.MapPath("reports")+"\\report_{0}.jpg", report_id));
+        WebsiteToImage websiteToImage = new WebsiteToImage( ConfigurationManager.AppSettings["BaseUrl"] + "report.html?reportId=" + report_id, string.Format( Server.MapPath("reports")+"\\report_{0}.png", report_id));
         websiteToImage.Generate();
         return true;
     }
