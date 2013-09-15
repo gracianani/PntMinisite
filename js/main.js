@@ -22,13 +22,13 @@ var app = {
 };
 
 window.AppFacade = {
-	maxSceneId :0,
+    maxSceneId: 0,
     init: function () {
         if (typeof app.Views.BasicFrameView == 'undefined') {
             this.initLoading();
 
         }
-        
+
     },
     setStartView: function () {
         var isStartFromSplash = false;
@@ -36,7 +36,7 @@ window.AppFacade = {
             isStartFromSplash = true;
 
 
-        } else if ( typeof (app.ReportId) == 'undefined' && !app.Views.BasicInfoView.model.isAnswered(22)) {
+        } else if (typeof (app.ReportId) == 'undefined' && !app.Views.BasicInfoView.model.isAnswered(22)) {
             isStartFromSplash = true;
         }
         if (isStartFromSplash) {
@@ -55,33 +55,33 @@ window.AppFacade = {
         app.Views.BasicFrameView = new BasicFrameView();
 
     },
-    exitLoading: function() {
-	  	app.Views.LoadingView.onExitLoading();  
+    exitLoading: function () {
+        app.Views.LoadingView.onExitLoading();
     },
-    getMaxFinishedSceneId: function(){
-    	if ( this.maxSceneId > 0 ) {
-	    	return this.maxSceneId;
-    	}
-    	
-    	var index;
-	    for ( index in app.SceneViews) {
-	    	
+    getMaxFinishedSceneId: function () {
+        if (this.maxSceneId > 0) {
+            return this.maxSceneId;
+        }
+
+        var index = 0;
+        for (index in app.SceneViews) {
+
             if (app.SceneViews[index].model) {
                 if (app.SceneViews[index].model.isSceneFinished().length > 0) {
-                	this.maxSceneId = parseInt(index);
-                   return this.maxSceneId;                  
+                    this.maxSceneId = parseInt(index);
+                    return this.maxSceneId;
                 }
             }
         }
         this.maxSceneId = parseInt(index) + 1;
         return this.maxSceneId;
     },
-    getCurrentSceneId: function(){
-	    var id = 0;
-       if ( this.getCurrentView().model && this.getCurrentView().model.get('scene_id') ) {
-	       id = parseInt(this.getCurrentView().model.get('scene_id'));
-      }
-      return id;
+    getCurrentSceneId: function () {
+        var id = 1;
+        if (typeof (this.getCurrentView()) !== 'undefined' && this.getCurrentView().model && this.getCurrentView().model.get('scene_id')) {
+            id = parseInt(this.getCurrentView().model.get('scene_id'));
+        }
+        return id;
     },
     setCurrentView: function (view) {
         this.currentView = view;
@@ -154,11 +154,12 @@ window.AppFacade = {
             }
             var startScene = this.getCurrentSceneId();
             this.maxScene = this.getMaxFinishedSceneId();
+            console.log(this.startScene);
             console.log(this.maxScene);
-            if ( startScene > this.maxScene ) {
-	             app.Router.navigate("Survey/" + current_scene_id, { trigger: isTrigger });
+            if (startScene > this.maxScene) {
+                app.Router.navigate("Survey/" + current_scene_id, { trigger: isTrigger });
             }
-           
+
         } else {
             app.Router.navigate("", { trigger: isTrigger });
         }
@@ -193,12 +194,15 @@ window.AppFacade = {
         $("#splash-login").hide();
 
         var self = this;
-        console.log(this);
+        //    console.log(this);
         QC.Login.getMe(function (openId, accessToken) {
             app.User.qq_uid = openId;
             app.User.qq_token = accessToken;
+            if (typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
+                app.Report.getReportByUserId();
+            }
         });
-        AppFacade.askForReport();
+
     },
     onQQLogoutSuccess: function (opts) {//注销成功
         alert('QQ登录 注销成功');
@@ -273,10 +277,10 @@ window.AppFacade = {
             var param = tokencookie.split("%26");
             var token = param[0].split("%3D")[1];
             app.User.weibo_token = token;
-
-
         }
-        this.askForReport();
+        if (typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
+            app.Report.getReportByUserId();
+        }
     },
     onWbLogoutSuccess: function () {
         alert('微博登陆退 出成功');
@@ -287,10 +291,10 @@ window.AppFacade = {
         return (app.User.weibo_uid || app.User.qq_uid);
     },
     isQuizFinish: function () {
-        if ( this.getMaxFinishedSceneId() < app.SceneViews.length - 1 ) {
-	        return false;
+        if (this.getMaxFinishedSceneId() < app.SceneViews.length - 1) {
+            return false;
         } else {
-	        return true;
+            return true;
         }
     },
     askForReport: function () {
@@ -299,23 +303,22 @@ window.AppFacade = {
         } else {
             alert("您还有未完成的题目，请仔细检查一下哦！");
         }
-
     },
     showHelp: function (unfinishedQuestions) {
         alert("您还没有回答完全部问题哦");
         $('.help').show();
     },
     gotoScene: function (step) {
-        if (step <  (this.getMaxFinishedSceneId()+1)) {
-        	var currentView = this.getCurrentView();
-            app.Router.navigate("Survey/" + step, { "trigger":true});
+        if (step < (this.getMaxFinishedSceneId() + 1)) {
+            var currentView = this.getCurrentView();
+            app.Router.navigate("Survey/" + step, { "trigger": true });
             currentView.onexit();
         } else {
-	        alert("您还没有答完前面的题目哦");
+            alert("您还没有答完前面的题目哦");
         }
     },
-    handleError: function(type) {
-	 	window.location.href="/";   
+    handleError: function (type) {
+        window.location.href = "/";
     }
 
 };

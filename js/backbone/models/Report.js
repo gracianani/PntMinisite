@@ -26,7 +26,7 @@ var Report = Backbone.Model.extend({
     },
     loadSuggestions: function (suggestions) {
         this.clearSuggestions();
-		console.log(suggestions);
+        console.log(suggestions);
         var lifestyleIds = suggestions.lifestyle_suggestions.split(",");
         for (var i = 0; i < lifestyleIds.length; i++) {
             var suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(lifestyleIds[i]) });
@@ -62,10 +62,10 @@ var Report = Backbone.Model.extend({
         this.ScoreSuggestions.push(gSuggestion.get("suggestion_text"));
         this.QuizId = suggestions.quizId;
         var problem = app.Views.HairQualityView.model.getMultipleAnswerText(21);
-        if ( problem.length > 0 ) {
-	        this.HairProblems.push(problem);
+        if (problem.length > 0) {
+            this.HairProblems.push(problem);
         }
-        
+
         this.HairProblems.push(app.Views.HairStyleView.model.getAnswerText(14));
 
         var productIds = suggestions.suggested_products.split(",");
@@ -77,7 +77,7 @@ var Report = Backbone.Model.extend({
                 this.ProductSuggestions.push(suggestion.toJSON());
             }
         }
-        
+
 
 
         AppFacade.setCurrentView(app.Views.ReportView);
@@ -105,9 +105,9 @@ var Report = Backbone.Model.extend({
     },
 
     shareReport: function () {
-    	var avatar = app.Views.AvatarView.model;
-    	gender = avatar.gender;
-    	color = avatar.hairColor;
+        var avatar = app.Views.AvatarView.model;
+        gender = avatar.gender;
+        color = avatar.hairColor;
         $.ajax({
             type: "POST",
             url: 'WeiboWebServices.asmx/Share',
@@ -116,16 +116,16 @@ var Report = Backbone.Model.extend({
             datatType: "json",
             contentType: "application/json;charset=utf-8",
             success: function (data) {
-            	alert("生成成功");
+                alert("生成成功");
             },
-            timeout: function() {
-	            alert('超时');
+            timeout: function () {
+                alert('超时');
             },
-            error: function(XMLHttpRequest, textStatus, errorThrown){
-	            console.log(errorThrown);
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log(errorThrown);
             },
-            complete: function(e){
-	            console.log('complete');
+            complete: function (e) {
+                console.log('complete');
             }
         });
     },
@@ -146,13 +146,13 @@ var Report = Backbone.Model.extend({
                 AppFacade.saveToCookie();
                 self.loadSuggestions(response.suggestions);
             },
-            timeout: function() {
-	            alert("请求超时，请稍后再试");
-	            AppFacade.handleError("timeout");
+            timeout: function () {
+                alert("请求超时，请稍后再试");
+                AppFacade.handleError("timeout");
             },
-            error: function(XMLHttpRequest, textStatus, errorThrown){
-	            alert("没有您想找的测试报告，现在带您进入实验室");
-	            AppFacade.handleError("notfound");
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("没有您想找的测试报告，现在带您进入实验室");
+                AppFacade.handleError("notfound");
             }
         });
     },
@@ -166,15 +166,23 @@ var Report = Backbone.Model.extend({
             type: "POST",
             url: 'WeiboWebServices.asmx/FetchReportByUser',
             timeout: 5000,
-            data: '{ str_user : \"' + JSON.stringify(user).replace(/"/g, '\'')  + ' \" }',
+            data: '{ str_user : \"' + JSON.stringify(user).replace(/"/g, '\'') + ' \" }',
             datatType: "json",
             contentType: "application/json;charset=utf-8",
             success: function (data) {
-
                 var response = $.parseJSON(data.d);
+                app.ReportId = response.report_id;
                 AppFacade.setUserAnswers($.parseJSON(data.d).user_answers);
                 AppFacade.saveToCookie();
                 self.loadSuggestions(response.suggestions);
+            },
+            timeout: function () {
+                alert("请求超时，请稍后再试");
+                AppFacade.handleError("timeout");
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("没有您想找的测试报告，现在带您进入实验室");
+                AppFacade.handleError("notfound");
             }
         });
     }

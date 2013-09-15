@@ -11,7 +11,7 @@ var ReportView = Backbone.View.extend({
     events: {
         "click #restartQuiz": "onClickRestart",
         "click #report-product-more": "onClickMoreProduct",
-        "click #saveQuiz" : "onClickSaveQuiz"
+        "click #saveQuiz": "onClickSaveQuiz"
     },
 
     initialize: function () {
@@ -23,7 +23,7 @@ var ReportView = Backbone.View.extend({
 
     // Re-render the titles of the todo item.
     render: function () {
-    	AppFacade.exitLoading();
+        AppFacade.exitLoading();
         this.$el.html(Mustache.render(this.template, this.model));
         app.Views.AvatarView.render();
         this.trigger("render");
@@ -34,13 +34,13 @@ var ReportView = Backbone.View.extend({
     postRender: function () {
         AnimationHandler.animateOut("report", function () {
             $("#main").fadeOut(function () {
-                $('#report').fadeIn(
-            	function () {
-            	    $('#report-share').show();
-            	    $('.report-product-item:first').addClass('current');
-            	}
-
-            );
+                $("#splash").fadeOut(function () {
+                    $('#report').fadeIn(
+            	    function () {
+            	        $('#report-share').show();
+            	        $('.report-product-item:first').addClass('current');
+            	    });
+                });
             });
         });
     },
@@ -59,8 +59,8 @@ var ReportView = Backbone.View.extend({
     onClickRestart: function () {
         AppFacade.gotoScene(1);
     },
-    onClickSaveQuiz: function(e) {
-    	alert('here');
+    onClickSaveQuiz: function (e) {
+        alert('here');
         this.model.shareReport();
     },
     onClickMoreProduct: function () {
@@ -81,7 +81,7 @@ var ReportView = Backbone.View.extend({
     	"，" + this.model.ScoreTitle +
     	"！" + "你的头发能得几分？";
 
-         var shareimg = "http://pantene.app.social-touch.com/reports/report_" + app.ReportId + ".png";
+        var shareimg = "http://pantene.app.social-touch.com/reports/report_" + app.ReportId + ".png";
         //var shareimg = "http://localhost:59884/PntMinisite/reports/report_" + app.ReportId + ".jpg";
         jiathis_config = {
             data_track_clickback: true,

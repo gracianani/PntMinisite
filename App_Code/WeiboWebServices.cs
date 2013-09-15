@@ -409,7 +409,7 @@ public class WeiboWebServices : System.Web.Services.WebService {
                     {
                         while (reader.Read())
                         {
-                            reportId = reader.GetInt32(reader.GetOrdinal("reportId"));
+                            reportId = reader.GetInt32(reader.GetOrdinal("quizId"));
                         }
                     }
                 }
@@ -425,7 +425,7 @@ public class WeiboWebServices : System.Web.Services.WebService {
         {
             suggestions = SubmitAnswer(sceneUserAnswers, reportId, "");
         }
-        return string.Format("{{ \"user_answers\" : {0}, \"suggestions\" : {1}, \"avatar\" : {2} }}", sceneUserAnswers, suggestions, str_avatar);
+        return string.Format("{{ \"user_answers\" : {0}, \"suggestions\" : {1}, \"avatar\" : {2}, \"report_id\" : {3} }}", sceneUserAnswers, suggestions, str_avatar, reportId);
     }
 
     [WebMethod]
