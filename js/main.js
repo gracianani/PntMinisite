@@ -102,7 +102,6 @@ window.AppFacade = {
         return user_answers;
     },
     setUserAnswers: function (user_answers) {
-        //console.log(user_answers);
         for (var i = 0; i < user_answers.length; i++) {
             var user_answer = user_answers[i];
             if (user_answer.scene_id == 1) {
@@ -154,8 +153,6 @@ window.AppFacade = {
             }
             var startScene = this.getCurrentSceneId();
             this.maxScene = this.getMaxFinishedSceneId();
-            console.log(this.startScene);
-            console.log(this.maxScene);
             if (startScene > this.maxScene) {
                 app.Router.navigate("Survey/" + current_scene_id, { trigger: isTrigger });
             }
@@ -232,7 +229,7 @@ window.AppFacade = {
                 id: "wb_connect_btn",
                 type: '1,1',
                 callback: {
-                    login: window.AppFacade.onWbLoginSuccess,
+                    login: window.AppFacade.onWbReportLoginSuccess,
                     logout: window.AppFacade.onWbLooutSuccess
                 }
             });
@@ -283,10 +280,40 @@ window.AppFacade = {
             var token = param[0].split("%3D")[1];
             app.User.weibo_token = token;
         }
-        if (opts.btnId == "splash-weibo" && typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
+        if (typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
             app.Report.getReportByUserId();
         }
-        else if (opts.btnId == "wb_connect_btn" && AppFacade.getCurrentView().id == 'scene-salon' && typeof (app.ReportId) == 'undefined') {
+        
+    },
+    onWbReportLoginSuccess: function (o) {
+
+        _logoutTemplate = [
+				            '<span class="profile-avatar"><img src="{{figureurl}}" class="{size_key}"/></span>',
+				            '<span class="profile-nickname">{{nickname}}</span>',
+				            '<span class="profile-logout"><a onclick="window.AppFacade.weiboLogout();">退出</a></span>'
+		].join("");
+
+        $('#prifile-login').html(Mustache.render(_logoutTemplate, {
+            nickname: o.screen_name,
+            figureurl: o.profile_image_url
+        })
+		);
+
+        $("#login").addClass("hidden");
+        $("#splash-login").hide();
+        $("#login").addClass("hidden");
+
+        app.User.weibo_uid = o.id;
+
+        var tokencookiename = "weibojs_" + app.weiboApp.app_id;
+        var tokencookie = readCookie(tokencookiename);
+
+        if (tokencookie) {
+            var param = tokencookie.split("%26");
+            var token = param[0].split("%3D")[1];
+            app.User.weibo_token = token;
+        }
+        if (AppFacade.getCurrentView().id == 'scene-salon' && typeof (app.ReportId) == 'undefined') {
             app.ReportId = 0;
             AppFacade.askForReport();
         }

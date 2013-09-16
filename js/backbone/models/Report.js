@@ -26,7 +26,6 @@ var Report = Backbone.Model.extend({
     },
     loadSuggestions: function (suggestions) {
         this.clearSuggestions();
-        console.log(suggestions);
         var lifestyleIds = suggestions.lifestyle_suggestions.split(",");
         for (var i = 0; i < lifestyleIds.length; i++) {
             var suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(lifestyleIds[i]) });
@@ -122,10 +121,8 @@ var Report = Backbone.Model.extend({
                 alert('超时');
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-                console.log(errorThrown);
             },
             complete: function (e) {
-                console.log('complete');
             }
         });
     },

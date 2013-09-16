@@ -123,7 +123,6 @@ $.prototype.setDegree = function (defaultDegree) {
                     data.centerY = data.$circle.position().top + data.radius;
                     $( this ).data('dragcircle', data );
         }
-        //console.log(data);
 
         if (defaultDegree) {
             degree = defaultDegree;
@@ -146,7 +145,6 @@ $.prototype.setDegree = function (defaultDegree) {
 }
 $.prototype.rotate = function(angle) {
 	var deg = 180 - angle * 180 / Math.PI + 'deg';
-	//console.log(deg);
 	$(this).css({
 		'transform':'rotate('+deg+')',
 		'-webkit-transform':'rotate('+deg+')',
