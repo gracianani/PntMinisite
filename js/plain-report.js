@@ -29,8 +29,8 @@ var PlainReport = Backbone.Model.extend({
     ProductSuggestions: [],
     ShareText: "",
     BestProduct:[],
+    level:"medium",
     fillSuggestions: function (suggestions) {
-		console.log(suggestions);
         var lifestyleIds = suggestions.lifestyle_suggestions.split(",");
         for (var i = 0; i < lifestyleIds.length; i++) {
             var suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(lifestyleIds[i]) });
@@ -63,7 +63,7 @@ var PlainReport = Backbone.Model.extend({
         } else {
 	        gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 1 });
         }
-        console.log(app.GeneralSuggestionRepo);
+        this.level = gSuggestion.get("g_level");
         this.ScoreTitle = gSuggestion.get("suggestion_title");
         this.ScoreSuggestions.push(gSuggestion.get("suggestion_text"));
         this.QuizId = suggestions.quizId;
@@ -79,7 +79,6 @@ var PlainReport = Backbone.Model.extend({
             }
         }
         this.BestProduct.push(this.ProductSuggestions[0]);
-        console.log(this.BestProduct);
     },
     fillAvatar : function(options)
     {
@@ -112,7 +111,6 @@ var PlainReport = Backbone.Model.extend({
 
 requirejs(['backbone/models/Avatar',  'backbone/models/Report'],
     function (avatar, report) {
-		console.log('here');
 		app.SuggestionRepo = new SuggestionsCollection;
 		app.SuggestionRepo.fetch();
 		app.ProductRepo = new ProductsCollection;

@@ -60,8 +60,8 @@ var MainView = Backbone.View.extend({
     	this.closeLogin();
     	AppFacade.askForReport();
     },
-    eraseCookie : function() {
-    	if(confirm("删除本地答题记录？")) {
+    eraseCookie : function(   ) {
+    	if( confirm("删除本地答题记录？") ) {
 	    	eraseCookie("user_answers");
 	    	window.location.reload();
     	}
@@ -532,7 +532,6 @@ var CleaningView = Backbone.View.extend({
         var item = $(event.currentTarget);
 		item.toggleClass('selected');
 		if( $('.shower-time-icon.selected').size() < 1 ) {
-			console.log('here');
 			item.siblings().addClass('selected');
 		}
 		this.setShowerTimeAnswer();
@@ -636,7 +635,6 @@ var CleaningView = Backbone.View.extend({
 	    var item = $('#shower-frequency');
 	    var questionId = parseInt(item.attr('data-question-id'));
 	    var degree = this.model.getAnswerDegree(questionId);
-	    console.log(degree);
 	    if ( degree > 0 ) {
 		    item.data('degree',degree);
 		    item.attr('data-degree',degree+'');
@@ -1328,7 +1326,6 @@ var HairQualityView = Backbone.View.extend( {
 	  var bar = $(e.currentTarget);
 	  var left = e.pageX - bar.offset().left;
 	  var degree =   geDegreeByXPosition( left, bar.width() , parseInt(bar.attr("data-degree-count")) );
-	  console.log(degree);
 	   this.setDegree( bar, degree);
     },
     onClickProgressDot : function(e) {

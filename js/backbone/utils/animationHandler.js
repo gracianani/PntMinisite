@@ -18,16 +18,9 @@ var AnimationHandler = {
 
         jQuery(self.contentID + " .item").each(function (i) {
 
-            //var left = parseInt(jQuery(this).css('left')),
-            //   top = parseInt(jQuery(this).css('top'));
-
-            //I'm not sure but i think we can just use position and not css
-            // if(isNaN(left) || isNaN(top)) {
             var position = $(this).position();
-            //console.log(position.left);
             var left = position.left;
             var top = position.top;
-            //}
 
             var pointWidth = left - self.containerWidth;
             var pointHeight = top - self.containerHeight;

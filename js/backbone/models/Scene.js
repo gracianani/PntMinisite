@@ -10,11 +10,9 @@ var Scene = Backbone.Model.extend({
     initialize: function () {
         var question_ids = this.get("question_ids");
         var user_answers = [];
-        //console.log(question_ids);
         for (var index in question_ids) {
             user_answers.push({ "question_id": question_ids[index], "answer_ids": [] });
         }
-        //console.log(user_answers);
         this.set({ user_answers: user_answers });
     },
     getAnswerTextByDegree: function (question_id, degree) {
@@ -86,7 +84,6 @@ var Scene = Backbone.Model.extend({
         return function (str_question_id) {
             var question_id = parseInt(str_question_id);
             var question = app.QuestionRepo.findWhere({ question_id: question_id });
-            //console.log(question.get("answers").length);
             return question.get("answers").length + '';
         }
     },
@@ -293,10 +290,8 @@ var Scene = Backbone.Model.extend({
         var unfinishedQuestion = [];
         for (var question_id in scene_questions) {
             if (this.isQuestionFinished(scene_questions[question_id])) {
-                // console.log(scene_questions[question_id] + "finished");
             }
             else {
-                console.log(scene_questions[question_id] + "unfinished");
                 unfinishedQuestion.push("unfinished");
             }
         }
