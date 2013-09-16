@@ -207,6 +207,8 @@ window.AppFacade = {
         alert('QQ登录 注销成功');
         $('#prifile-login').html('');
         $("#splash-login").show();
+        eraseCookie("user_answers");
+        window.location.reload();
     },
     initWbLogin: function () {
         WB2.anyWhere(function (W) {
@@ -277,7 +279,7 @@ window.AppFacade = {
             var token = param[0].split("%3D")[1];
             app.User.weibo_token = token;
         }
-        if (typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
+        if (opts.btnId == "splash-weibo" && typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
             app.Report.getReportByUserId();
         }
     },
@@ -285,6 +287,8 @@ window.AppFacade = {
         alert('微博登陆退 出成功');
         $('#prifile-login').html('');
         $("#splash-login").show();
+        eraseCookie("user_answers");
+        window.location.reload();
     },
     isLogin: function () {
         return (app.User.weibo_uid || app.User.qq_uid);
@@ -325,80 +329,79 @@ window.AppFacade = {
 // Start the main app logic.
 requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone/models/Report', '../backbone/utils/Utils', '../backbone/views/AvatarView', '../backbone/views/ReportView', '../backbone/views/SceneView', '../backbone/Router'],
     function (avatar, scene, utils, avatarView, sceneView, router) {
-    	AppFacade.init();
-        var questions = new QuestionsCollection;
-        questions.fetch();
-        app.QuestionRepo = questions;
-        app.SuggestionRepo = new SuggestionsCollection;
-        app.SuggestionRepo.fetch();
-        app.ProductRepo = new ProductsCollection;
-        app.ProductRepo.fetch();
-        app.GeneralSuggestionRepo = new GeneralSuggestionsCollection;
-        app.GeneralSuggestionRepo.fetch();
-        app.SceneSettings = new SceneSettingsCollection;
-        app.SceneSettings.fetch().done(
+        AppFacade.init();
+        app.QuestionRepo = new QuestionsCollection;
+        app.QuestionRepo.fetch().done(
             function () {
-                // initialize scenes and avatar
-				
-                app.Views.MainView = new MainView();
-                var avatar = new Avatar;
-                app.Views.AvatarView = new AvatarView({ model: avatar });
-                var basicInfoScene = new Scene(app.SceneSettings.findWhere({ scene_id: 1 }).toJSON());
-                var basicInfoView = new BasicInfoView({ model: basicInfoScene });
-                var hairStyleScene = new Scene(app.SceneSettings.findWhere({ scene_id: 2 }).toJSON());
-                var hairStyleView = new HairStyleView({ model: hairStyleScene });
-                var hairQualityScene = new Scene(app.SceneSettings.findWhere({ scene_id: 3 }).toJSON());
-                var hairQualityView = new HairQualityView({ model: hairQualityScene });
-                var lifeScene = new Scene(app.SceneSettings.findWhere({ scene_id: 4 }).toJSON());
-                var lifeView = new LifeView({ model: lifeScene });
-                var dietScene = new Scene(app.SceneSettings.findWhere({ scene_id: 6 }).toJSON());
-                var dietView = new DietView({ model: dietScene });
-                var healthScene = new Scene(app.SceneSettings.findWhere({ scene_id: 5 }).toJSON());
-                var healthView = new HealthView({ model: healthScene });
-                var cleaningScene = new Scene(app.SceneSettings.findWhere({ scene_id: 7 }).toJSON());
-                var cleaningView = new CleaningView({ model: cleaningScene });
-                var salonScene = new Scene(app.SceneSettings.findWhere({ scene_id: 8 }).toJSON());
-                var salonView = new SalonView({ model: salonScene });
-                var report = new Report;
-                var reportView = new ReportView({ model: report });
-                app.Report = report;
+                app.SuggestionRepo = new SuggestionsCollection;
+                app.SuggestionRepo.fetch().done(function () {
+                    app.ProductRepo = new ProductsCollection;
+                    app.ProductRepo.fetch();
+                    app.GeneralSuggestionRepo = new GeneralSuggestionsCollection;
+                    app.GeneralSuggestionRepo.fetch();
+                    app.SceneSettings = new SceneSettingsCollection;
+                    app.SceneSettings.fetch().done(
+                    function () {
 
-                app.Views.BasicInfoView = basicInfoView;
-                app.Views.HairStyleView = hairStyleView;
-                app.Views.HairQualityView = hairQualityView;
-                app.Views.DietView = dietView;
-                app.Views.HealthView = healthView;
-                app.Views.CleaningView = cleaningView;
-                app.Views.LifeView = lifeView;
-                app.Views.SalonView = salonView;
-                app.Views.ReportView = reportView;
+                        app.Views.MainView = new MainView();
+                        var avatar = new Avatar;
+                        app.Views.AvatarView = new AvatarView({ model: avatar });
+                        var basicInfoScene = new Scene(app.SceneSettings.findWhere({ scene_id: 1 }).toJSON());
+                        var basicInfoView = new BasicInfoView({ model: basicInfoScene });
+                        var hairStyleScene = new Scene(app.SceneSettings.findWhere({ scene_id: 2 }).toJSON());
+                        var hairStyleView = new HairStyleView({ model: hairStyleScene });
+                        var hairQualityScene = new Scene(app.SceneSettings.findWhere({ scene_id: 3 }).toJSON());
+                        var hairQualityView = new HairQualityView({ model: hairQualityScene });
+                        var lifeScene = new Scene(app.SceneSettings.findWhere({ scene_id: 4 }).toJSON());
+                        var lifeView = new LifeView({ model: lifeScene });
+                        var dietScene = new Scene(app.SceneSettings.findWhere({ scene_id: 6 }).toJSON());
+                        var dietView = new DietView({ model: dietScene });
+                        var healthScene = new Scene(app.SceneSettings.findWhere({ scene_id: 5 }).toJSON());
+                        var healthView = new HealthView({ model: healthScene });
+                        var cleaningScene = new Scene(app.SceneSettings.findWhere({ scene_id: 7 }).toJSON());
+                        var cleaningView = new CleaningView({ model: cleaningScene });
+                        var salonScene = new Scene(app.SceneSettings.findWhere({ scene_id: 8 }).toJSON());
+                        var salonView = new SalonView({ model: salonScene });
+                        var report = new Report;
+                        var reportView = new ReportView({ model: report });
+                        app.Report = report;
 
-                app.SceneViews = [
-				    app.Views.BasicInfoView,
-				    app.Views.HairStyleView,
-				    app.Views.HairQualityView,
-				    app.Views.LifeView,
-				    app.Views.HealthView,
-				    app.Views.DietView,
-				    app.Views.CleaningView,
-				    app.Views.SalonView
-				];
+                        app.Views.BasicInfoView = basicInfoView;
+                        app.Views.HairStyleView = hairStyleView;
+                        app.Views.HairQualityView = hairQualityView;
+                        app.Views.DietView = dietView;
+                        app.Views.HealthView = healthView;
+                        app.Views.CleaningView = cleaningView;
+                        app.Views.LifeView = lifeView;
+                        app.Views.SalonView = salonView;
+                        app.Views.ReportView = reportView;
 
+                        app.SceneViews = [
+				            app.Views.BasicInfoView,
+				            app.Views.HairStyleView,
+				            app.Views.HairQualityView,
+				            app.Views.LifeView,
+				            app.Views.HealthView,
+				            app.Views.DietView,
+				            app.Views.CleaningView,
+				            app.Views.SalonView
+				        ];
+
+
+
+                        app.Router = new Router();
+                        Backbone.history.start();
+
+                        var isTrigger = typeof (app.ReportId) == 'undefined';
+                        if (isTrigger) {
+                            AppFacade.loadFromCookie(true);
+                            AppFacade.exitLoading();
+                        }
+                    }); //end scenesettings fetch
                 
-
-                app.Router = new Router();
-                Backbone.history.start();
+                });
                 
-                var isTrigger = typeof (app.ReportId) == 'undefined';
-                if (isTrigger) {
-                    AppFacade.loadFromCookie(true);
-                    AppFacade.exitLoading();
-                }
-                
-                
-
-            }
-        );
+        });
 
     }
 );

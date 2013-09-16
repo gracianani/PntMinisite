@@ -60,8 +60,8 @@ var MainView = Backbone.View.extend({
     	this.closeLogin();
     	AppFacade.askForReport();
     },
-    eraseCookie : function() {
-    	if(confirm("删除本地答题记录？")) {
+    eraseCookie : function(   ) {
+    	if( confirm("删除本地答题记录？") ) {
 	    	eraseCookie("user_answers");
 	    	window.location.reload();
     	}

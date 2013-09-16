@@ -82,7 +82,6 @@ var ReportView = Backbone.View.extend({
     	"！" + "你的头发能得几分？";
 
         var shareimg = "http://pantene.app.social-touch.com/reports/report_" + app.ReportId + ".png";
-        //var shareimg = "http://localhost:59884/PntMinisite/reports/report_" + app.ReportId + ".jpg";
         jiathis_config = {
             data_track_clickback: true,
             summary: summary,
