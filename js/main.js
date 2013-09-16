@@ -194,11 +194,10 @@ window.AppFacade = {
         $("#splash-login").hide();
 
         var self = this;
-        //    console.log(this);
         QC.Login.getMe(function (openId, accessToken) {
             app.User.qq_uid = openId;
             app.User.qq_token = accessToken;
-            if (typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
+            if (opts.btnId == "qqlogin" && typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
                 app.Report.getReportByUserId();
             }
         });
