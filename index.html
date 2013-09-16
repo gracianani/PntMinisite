@@ -992,17 +992,20 @@
         <script id="report-template" type="text/template">
 
         	<div id="report-header">
-        		<div id="report-score" class="score-low">
+        		<div id="report-score" class="score-{{level}}">
         			<div class="score-inside"></div>
         			<div id="report-score-title">秀发健康指数</div>
         			<div id="report-score-number">{{Score}}</div>
         		</div>
-        		<h2 class="score-low">{{ScoreTitle}}</h2>
+        		<h2 class="score-{{level}}">{{ScoreTitle}}</h2>
         		<p>{{#ScoreSuggestions}}{{.}}{{/ScoreSuggestions}}</p>
         	</div>
         	<div id="report-opt">
         		<a id="restartQuiz" href="javascript:void(0)"><i class="icon-refresh"></i> 重新测试</a>
-        		<a id="saveQuiz" href="javascript:void(0)"><i class="icon-download-alt"></i> 下载报告图片</a>
+        		<div id="progressbar"><div class="progress-label">大约需要30秒时间，请耐心等待...</div></div>
+        		<a id="saveQuiz" href="javascript:void(0)"><i class="icon-save"></i> 生成报告图片</a>
+        		<span id="downloadQuizText">生成以后，可以带图分享哦！</span>
+        		<a id="downloadQuizImg" href="javascript:void(0)" target="_blank"><i class="icon-download-alt"></i> 下载报告图片</a>
         	</div>
         	<div id="report-body">
 				<ul id="report-result">
@@ -1088,6 +1091,7 @@
         <script src="js/vendor/jquery.easing.1.3.js"></script>
         <script src="js/vendor/jquery.path.js"></script>
         <script src="js/vendor/jquery-ui-draggable.js"></script>
+        <script src="js/vendor/jquery.ui.progressbar.js"></script>
 		<script src="js/vendor/jquery.ui.touch-punch.min.js"></script>
         <script src="js/vendor/underscore.js"></script>
         <script src="js/vendor/backbone.js"></script>

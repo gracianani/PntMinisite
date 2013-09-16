@@ -17,6 +17,7 @@ var ReportView = Backbone.View.extend({
     initialize: function () {
         this.$el = $('#report');
         this.on("finishloading", this.render);
+        this.on("saveReportComplete", this.onSaveReportComplete);
         this.on("render", this.postRender);
 
     },
@@ -39,6 +40,8 @@ var ReportView = Backbone.View.extend({
             	    function () {
             	        $('#report-share').show();
             	        $('.report-product-item:first').addClass('current');
+            	        
+            	        
             	    });
                 });
             });
@@ -60,8 +63,41 @@ var ReportView = Backbone.View.extend({
         AppFacade.gotoScene(1);
     },
     onClickSaveQuiz: function (e) {
-        alert('here');
-        this.model.shareReport();
+    	this.model.shareReport();
+        $(e.currentTarget).hide();
+        var progressbar = $('#progressbar');
+        var progressLabel = $('#progressbar .progress-label');
+        progressbar.show();
+        progressbar.progressbar({
+			value: 0,
+			change: function() {
+		        progressLabel.text('大约需要30秒时间，请耐心等待' );
+		     },
+		     complete: function() {
+			    progressLabel.text('服务器在努力中，请不要离开' ); 
+		     }
+		});
+		var counter = 0;
+		var timer = setInterval(function(){
+			counter ++ ;
+			progressbar.progressbar( "value", counter);
+			if (counter == 100 ) {
+				clearInterval(timer);
+			}
+		}, 300);
+		
+        
+    },
+    onSaveReportComplete: function() {
+	    $('#progressbar').hide();
+	    $('#downloadQuizImg').show();
+	    $('#downloadQuizText').hide();
+	    var shareImg = "http://pantene.app.social-touch.com/reports/report_" + app.ReportId + ".png";
+	    $('#downloadQuizImg').attr('href',shareImg);
+	    jiathis_config.pic = shareImg;
+    },
+    onClickDownload: function(e) {
+	    
     },
     onClickMoreProduct: function () {
         var current = this.$el.find('#report-product-list .current');
@@ -82,7 +118,6 @@ var ReportView = Backbone.View.extend({
     	"！" + "你的头发能得几分？";
 
         var shareimg = "http://pantene.app.social-touch.com/reports/report_" + app.ReportId + ".png";
-        //var shareimg = "http://localhost:59884/PntMinisite/reports/report_" + app.ReportId + ".jpg";
         jiathis_config = {
             data_track_clickback: true,
             summary: summary,

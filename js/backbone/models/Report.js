@@ -12,6 +12,7 @@ var Report = Backbone.Model.extend({
     HairProblems: [],
     ProductSuggestions: [],
     ShareText: "",
+    level:"medium",
     clearSuggestions: function () {
         this.LifeStyleSuggestions = [];
         this.HairCareSuggestions = [];
@@ -23,6 +24,7 @@ var Report = Backbone.Model.extend({
         this.HairProblems = [];
         this.ProductSuggestions = [];
         this.ShareText = "";
+        this.level="medium";
     },
     loadSuggestions: function (suggestions) {
         this.clearSuggestions();
@@ -58,6 +60,7 @@ var Report = Backbone.Model.extend({
             gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 3 });
         }
         this.ShareText = gSuggestion.get("share_text_begin_with");
+        this.level = gSuggestion.get("g_level");
         this.ScoreTitle = gSuggestion.get("suggestion_title");
         this.ScoreSuggestions.push(gSuggestion.get("suggestion_text"));
         this.QuizId = suggestions.quizId;
@@ -116,16 +119,15 @@ var Report = Backbone.Model.extend({
             datatType: "json",
             contentType: "application/json;charset=utf-8",
             success: function (data) {
-                alert("生成成功");
+                app.Views.ReportView.trigger("saveReportComplete");
             },
             timeout: function () {
-                alert('超时');
+                alert("请求超时，请稍后再试");
+                window.location.reload();
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-                console.log(errorThrown);
-            },
-            complete: function (e) {
-                console.log('complete');
+                alert("很抱歉，生成请求失败了");
+                window.location.reload();
             }
         });
     },

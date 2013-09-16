@@ -373,6 +373,7 @@ profile
 	display: inline-block;
 	margin-right: 5px;
 }
+
 #share-text {
 	color: #fad949;
 	line-height: 32px;
@@ -2617,7 +2618,7 @@ Cleaning
 	background-image: url(../img/character/hair-fm-gold.png);
 }
 .fm.character-large-size .hair-mix {
-	background-image: url(../img/character/hair-fm-mix.png);
+	background-image: url(../img/character/hair-fm.png);
 }
 .fm.character-large-size .bang-black {
 	background-image: url(../img/character/bang-fm-black.png);
@@ -2674,7 +2675,7 @@ Cleaning
 	background-image: url(../img/character/hair-fm-small-gold.png);
 }
 .fm.character-small-size .hair-mix {
-	background-image: url(../img/character/hair-fm-small-mix.png);
+	background-image: url(../img/character/hair-fm-small.png);
 }
 .fm.character-small-size .bang-black {
 	background-image: url(../img/character/bang-fm-small-black.png);
@@ -3378,8 +3379,8 @@ Cleaning
 	font-weight: normal;
 }
 #report-score {
-	width: 200px;
-	height: 200px;
+	width: 180px;
+	height: 180px;
 	position: relative;
 	float: left;
 	display: inline-block;
@@ -3387,12 +3388,12 @@ Cleaning
 	-moz-border-radius:  50%;
 	border-radius:  50%;
 	margin-right: 30px;	
+	box-shadow:5px 5px 0 rgba(0,0,0,0.3);
 }
 .score-inside {
 	width: 160px;
 	height: 160px;
 	border-radius: 50%;
-	background-color: #FFF;
 	position: absolute;
 	top: 20px;
 	left: 20px;
@@ -3400,32 +3401,41 @@ Cleaning
 #report-score-title {
 	position: absolute;
 	width: 100%;
-	top:40px;
+	top:30px;
 	font-size: 18px;
 	line-height: 30px;
 	text-align: center;
-	color: #333;
+	color: #fff;
 }
 #report-score-number {
 	width: 100%;
 	position: absolute;
-	top:55px;
+	top:45px;
 	text-align: center;
 	font-size: 80px;
+	
+	text-shadow:2px 2px 0 rgba(0,0,0,0.3);
 }
+/*
 .score-low #report-score-number {
-	color: #df4521;
+	color: #d55b1c;
 }
+.score-medium #report-score-number {
+	color: #3cb893;
+}
+.score-high #report-score-number {
+	color: #ae6a10;
+}
+*/
 #report-score.score-low {
-	background: #df4521;
-	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#df4521), to(#c03919));
-	background: -webkit-linear-gradient(#df4521, #c03919);
-	background: -moz-linear-gradient(#df4521, #c03919);
-	background: -ms-linear-gradient(#df4521, #c03919);
-	background: -o-linear-gradient(#df4521, #c03919);
-	background: linear-gradient(#df4521, #c03919);
-	-pie-background: linear-gradient(#df4521, #c03919);
-	behavior: url(/pie/PIE.htc);
+	background: #d55b1c;
+}
+#report-score.score-high {
+	background: #3cb893;
+
+}
+#report-score.score-medium {
+	background: #ae6a10;
 
 }
 #report-header {
@@ -3440,9 +3450,24 @@ Cleaning
 }
 #report-share {
 	position: absolute;
-	top:310px;
-	left: 50%;
+	top:360px;
+	left: 55%;
 	display: none;
+}
+#downloadQuizText {
+	color: #a16908;
+	font-size: 12px;
+}
+.progress-label {
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	color: #fff;
+	font-size: 12px;
+	line-height: 30px;
 }
 #report-share a {
 	color: #cc9336;
@@ -3500,8 +3525,16 @@ Cleaning
 	line-height: 24px;
 	margin-top: 20px;
 }
+#report h2.score-high {
+	color: #3cb893;
+
+}
+#report h2.score-medium {
+	color: #ae6a10;
+
+}
 #report h2.score-low {
-	color: #df4521;
+	color: #d55b1c;
 
 }
 #report h2 {
@@ -3516,13 +3549,14 @@ Cleaning
 	padding: 0;
 	width: 720px;
 	margin-left: 30px;
+	text-shadow:2px 2px 0 rgba(255,255,255,0.3);
 }
 #report-opt {
 	margin-left: 220px;
-	height: 40px;
+	height: 80px;
 	margin-bottom: 30px;
 }
-#restartQuiz,#saveQuiz {
+#restartQuiz,#saveQuiz,#downloadQuizImg {
 	display: inline-block;
 	padding: 10px 20px;
 	margin-right: 10px;
@@ -3532,6 +3566,23 @@ Cleaning
 	line-height: 20px;
 	font-size: 16px;	
 	text-decoration: none;
+}
+#downloadQuizImg {
+	display: none;
+}
+#progressbar {
+	background: #de9a0a;
+	height: 30px;
+	width: 500px;
+	margin-left: 0px;
+	border-radius: 5px;
+	display: none;
+	position: relative;
+}
+.ui-progressbar-value {
+	height: 100%;
+	background-color: #2a82a6;
+	border-radius: 5px;
 }
 #restartQuiz {
 	position: absolute;

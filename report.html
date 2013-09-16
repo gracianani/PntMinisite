@@ -59,12 +59,12 @@
 		</div>        
         <script id="report-template" type="text/template">
             <div id="report-header">
-        		<div id="report-score" class="score-low">
+        		<div id="report-score" class="score-{{level}}">
         			<div class="score-inside"></div>
         			<div id="report-score-title">秀发健康指数</div>
         			<div id="report-score-number">{{Score}}</div>
         		</div>
-        		<h2 class="score-low">{{ScoreTitle}}</h2>
+        		<h2 class="score-{{level}}">{{ScoreTitle}}</h2>
         		<p>{{#ScoreSuggestions}}{{.}}{{/ScoreSuggestions}}</p>
         	</div>
 
