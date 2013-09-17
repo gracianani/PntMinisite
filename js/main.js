@@ -167,14 +167,63 @@ window.AppFacade = {
             btnId: "qqlogin",
             size: "A_XL"
         },
-					window.AppFacade.onQQLoginSuccess, window.AppFacade.onQQLogoutSuccess);
+			window.AppFacade.onQQReportLoginSuccess, window.AppFacade.onQQLogoutSuccess);
         QC.Login({//按默认样式插入QQ登录按钮
             btnId: "splash-qq",
             size: "A_L"
         },
-					window.AppFacade.onQQLoginSuccess, window.AppFacade.onQQLogoutSuccess);
+			window.AppFacade.onQQLoginSuccess, window.AppFacade.onQQLogoutSuccess);
+        QC.Login({//按默认样式插入QQ登录按钮
+            btnId: "inquiz_qqlogin",
+            size: "A_L"
+        },
+		window.AppFacade.onInQuizQQLoginSuccess, window.AppFacade.onQQLogoutSuccess);
     },
     onQQLoginSuccess: function (reqData, opts) {
+        _logoutTemplate = [
+				            '<span class="profile-avatar"><img src="{figureurl}" class="{size_key}"/></span>',
+				            '<span class="profile-nickname">{nickname}</span>',
+				            '<span class="profile-logout"><a href="javascript:QC.Login.signOut();">退出</a></span>'
+		].join("");
+        $('#prifile-login').html(
+				QC.String.format(_logoutTemplate, {
+				    nickname: QC.String.escHTML(reqData.nickname), //做xss过滤
+				    figureurl: reqData.figureurl
+				})
+		);
+        $("#social_login").hide();
+        $("#splash-login").hide();
+        var self = this;
+        QC.Login.getMe(function (openId, accessToken) {
+            app.User.qq_uid = openId;
+            app.User.qq_token = accessToken;
+            if (opts.btnId == "splash-qq" && typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
+                // 在开始页面 login by qq
+                app.Report.getReportByUserId();
+            }
+        });
+    },
+    onInQuizQQLoginSuccess: function (reqData, opts) {
+        _logoutTemplate = [
+				            '<span class="profile-avatar"><img src="{figureurl}" class="{size_key}"/></span>',
+				            '<span class="profile-nickname">{nickname}</span>',
+				            '<span class="profile-logout"><a href="javascript:QC.Login.signOut();">退出</a></span>'
+		].join("");
+        $('#prifile-login').html(
+				QC.String.format(_logoutTemplate, {
+				    nickname: QC.String.escHTML(reqData.nickname), //做xss过滤
+				    figureurl: reqData.figureurl
+				})
+		);
+        $("#social_login").hide();
+        $("#inquiz-login").hide();
+        var self = this;
+        QC.Login.getMe(function (openId, accessToken) {
+            app.User.qq_uid = openId;
+            app.User.qq_token = accessToken;
+        });
+    },
+    onQQReportLoginSuccess: function (reqData, opts) {
         _logoutTemplate = [
 				            '<span class="profile-avatar"><img src="{figureurl}" class="{size_key}"/></span>',
 				            '<span class="profile-nickname">{nickname}</span>',
@@ -186,24 +235,18 @@ window.AppFacade = {
 				           figureurl: reqData.figureurl
 				       })
 		);
-
+        $("#social_login").hide();
         $("#login").addClass("hidden");
-        $("#splash-login").hide();
 
         var self = this;
         QC.Login.getMe(function (openId, accessToken) {
             app.User.qq_uid = openId;
             app.User.qq_token = accessToken;
-            if (opts.btnId == "splash-qq" && typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
-                // 在开始页面 login by qq
-                app.Report.getReportByUserId();
-            } else if (opts.btnId == "qqlogin" && AppFacade.getCurrentView().id == 'scene-salon' && typeof (app.ReportId) == 'undefined') {
-                // 在最后一页login by qq
+            if (opts.btnId == "qqlogin" && AppFacade.getCurrentView().id == 'scene-salon' && typeof (app.ReportId) == 'undefined') {
                 app.ReportId = 0;
                 AppFacade.askForReport();
             }
         });
-
     },
     onQQLogoutSuccess: function (opts) {//注销成功
         $('#prifile-login').html('');
@@ -235,6 +278,16 @@ window.AppFacade = {
             });
         });
 
+        WB2.anyWhere(function (W) {
+            W.widget.connectButton({
+                id: "inquiz_wb_connection_btn",
+                type: '1,1',
+                callback: {
+                    login: window.AppFacade.onWbInQuizLoginSuccess,
+                    logout: window.AppFacade.onWbLooutSuccess
+                }
+            });
+        });
     },
     weiboLogout: function () {
         WB2.logout(function () {
@@ -283,7 +336,35 @@ window.AppFacade = {
         if (typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
             app.Report.getReportByUserId();
         }
-        
+
+    },
+    onWbInQuizLoginSuccess: function (o) {
+
+        _logoutTemplate = [
+				            '<span class="profile-avatar"><img src="{{figureurl}}" class="{size_key}"/></span>',
+				            '<span class="profile-nickname">{{nickname}}</span>',
+				            '<span class="profile-logout"><a onclick="window.AppFacade.weiboLogout();">退出</a></span>'
+		].join("");
+
+        $('#prifile-login').html(Mustache.render(_logoutTemplate, {
+            nickname: o.screen_name,
+            figureurl: o.profile_image_url
+        })
+		);
+
+        $("#inquiz-login").addClass("hidden");
+        $("#social_login").hide();
+
+        app.User.weibo_uid = o.id;
+
+        var tokencookiename = "weibojs_" + app.weiboApp.app_id;
+        var tokencookie = readCookie(tokencookiename);
+
+        if (tokencookie) {
+            var param = tokencookie.split("%26");
+            var token = param[0].split("%3D")[1];
+            app.User.weibo_token = token;
+        }
     },
     onWbReportLoginSuccess: function (o) {
 

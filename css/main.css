@@ -235,7 +235,7 @@ header
 /*=====================
 login 
 =====================*/
-#login {
+#login,#inquiz-login {
 	width: 380px;
 	height: 300px;
 	background: #ffe579;
