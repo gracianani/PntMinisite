@@ -1402,9 +1402,7 @@ var BasicInfoView = Backbone.View.extend( {
 
     events: {
         "click #basicinfo-career .clothes" : "setCareer",
-        "click .age-item" : "setAge",
-        "mouseenter #basicinfo-age" : "mouseEnterAge",
-        "mouseleave #basicinfo-age" : "mouseLeaveAge"
+        "click .age-item" : "setAge"
     },
 
     initialize: function () {

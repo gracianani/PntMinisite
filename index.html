@@ -79,7 +79,6 @@
         			</div>
         	</div>
         </div>
-        
         <div id="main" class="ui-disableSelection">
         	
         </div>
@@ -125,8 +124,8 @@
         
         <div id="about">
         <div id="about-logo"><img src="img/logo.png" alt="潘婷 如此健康 焕发光彩" /></div>
-        <div id="about-link"><a href="http://www.pantene.com.cn">潘婷官方主页</a><a href="http://weibo.com/pantene/">潘婷官方微博：@Pantene潘婷</a><div id="about-copyright"> P&G @ 宝洁（中国）有限公司版权所有2013</div></div>
-        <div id="about-support">运营支持：<a href="http://social-touch.com/">时趣科技</a>  京ICP备06006585号-2<br />技术支持：<a href="http://seemeloo.com/">Seemeloo Studio</a>   <a href="javascript:void(0)" id="eraseCookie">清除答题记录</a></div>
+        <div id="about-link"><a href="http://www.pantene.com.cn" target="_blank">潘婷官方主页</a><a href="http://weibo.com/pantene/" target="_blank">潘婷官方微博：@Pantene潘婷</a><div id="about-copyright">宝洁（中国）有限公司版权所有 2013</div></div>
+        <div id="about-support">运营支持：<a class="darkLink" target="_blank" href="http://social-touch.com/">时趣科技</a>  京ICP备06006585号-2<br />技术支持：<a class="darkLink" target="_blank" href="http://seemeloo.com/">Seemeloo Studio</a>   <a href="javascript:void(0)" id="eraseCookie">清除答题记录</a></div>
         </div>
         <div id="tooltip">
         	<div class="content"></div>
@@ -288,7 +287,7 @@
         				</div>
         			</div><!-/refrigerator-->
         			<div id="diet-help" class="help">
-						<div id="help-taste" class="help-item help-leftdown ">
+						<div id="help-taste" class="help-item help-leftdown "  data-help-id="2">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
@@ -296,21 +295,21 @@
 							</div>
 						</div>
 						
-						<div id="help-drink" class="help-item help-leftdown ">
+						<div id="help-drink" class="help-item help-rightup "   data-help-id="4">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
 							点击选择您常喝的饮料
 							</div>
 						</div>
-						<div id="help-fruit" class="help-item help-leftup ">
+						<div id="help-fruit" class="help-item help-rightdown "  data-help-id="3">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
 							多次点击，选择您吃水果的习惯
 							</div>
 						</div>
-						<div id="help-cook" class="help-item help-rightup ">
+						<div id="help-cook" class="help-item help-rightup " data-help-id="1">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
@@ -417,14 +416,41 @@
         				
         			</div>
         			<div id="health-help" class="help">
-						<div id="help-health" class="help-item help-leftup ">
+						<div id="help-mealCount" class="help-item help-leftup" data-help-id="5">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
-							移动游标，选择适合您的健康描述，<br />5个都要选哦
+							移动游标，选择用餐次数
 							</div>
 						</div>
-						
+						<div id="help-drinkDegree" class="help-item help-leftup" data-help-id="6">
+							<div class="help-arrow">
+							</div>
+							<div class="help-text">
+							移动游标，选择饮酒习惯
+							</div>
+						</div>
+						<div id="help-smoke" class="help-item help-leftup" data-help-id="7">
+							<div class="help-arrow">
+							</div>
+							<div class="help-text">
+							移动游标，选择吸烟习惯
+							</div>
+						</div>
+						<div id="help-sleep" class="help-item help-leftup" data-help-id="8">
+							<div class="help-arrow">
+							</div>
+							<div class="help-text">
+							移动游标，选择睡眠习惯
+							</div>
+						</div>
+						<div id="help-sunBlock" class="help-item help-leftup" data-help-id="9">
+							<div class="help-arrow">
+							</div>
+							<div class="help-text">
+							移动游标，选择防晒习惯
+							</div>
+						</div>
 					</div>
         		</div>
         	</div><!--/scene-health-->
@@ -585,7 +611,7 @@
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
-							多次点击，选择您更换品牌的频率
+							多次点击，<br/>选择您更换品牌的频率
 							</div>
 						</div>
 						
@@ -593,15 +619,21 @@
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
-							点击选择您使用的洗护、造型用品
+							点击选择您使用的<br/>洗护、造型用品
 							</div>
 						</div>
 						<div id="help-showerfreq" class="help-item help-leftdown ">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
-							点击 +、- 按钮，选择您洗发的频率<br />
-							点击日、月图标，选择您洗发的时间
+							点击 +、- 按钮，选择洗发频率
+							</div>
+						</div>
+						<div id="help-showertime" class="help-item help-rightup ">
+							<div class="help-arrow">
+							</div>
+							<div class="help-text">
+							点击日、月图标，选择洗发时间
 							</div>
 						</div>
 						
@@ -802,21 +834,21 @@
 					</div>
 					
 					<div id="hairquality-help" class="help">
-						<div id="help-quality" class="help-item help-leftup ">
+						<div id="help-quality" class="help-item help-leftup " data-help-id="18">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
 							移动红点，选择发质
 							</div>
 						</div>
-						<div id="help-thickness" class="help-item help-leftup ">
+						<div id="help-thickness" class="help-item help-leftup"  data-help-id="19">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
 							移动红点，选择粗细
 							</div>
 						</div>
-						<div id="help-volume" class="help-item help-leftup ">
+						<div id="help-volume" class="help-item help-leftup"  data-help-id="20">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
@@ -824,11 +856,11 @@
 							</div>
 						</div>
 						
-						<div id="help-problem" class="help-item help-rightdown ">
+						<div id="help-problem" class="help-item help-rightdown"  data-help-id="21">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
-							点击选择头发的问题
+							点击小树，选择头发的问题
 							</div>
 						</div>
 					</div>
@@ -901,19 +933,19 @@
 					</div>
 					
 					<div id="basicinfo-help" class="help">
-						<div id="help-age" class="help-item help-leftdown ">
+						<div id="help-age" class="help-item help-rightup" data-help-id="23">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
-							点击照片选择年龄
+							点击照片，选择年龄范围
 							</div>
 						</div>
 						
-						<div id="help-career" class="help-item help-rightdown ">
+						<div id="help-career" class="help-item help-rightdown " data-help-id="24">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
-							点击服装选择职业
+							点击服装，选择职业
 							</div>
 						</div>
 					</div>

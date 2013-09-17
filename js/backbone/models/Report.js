@@ -125,13 +125,9 @@ var Report = Backbone.Model.extend({
                 window.location.reload();
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-<<<<<<< HEAD
+
                 alert("很抱歉，生成请求失败了");
                 window.location.reload();
-=======
-            },
-            complete: function (e) {
->>>>>>> 2ebeb72c556267d075128c9e3ec7c7313d3d83c3
             }
         });
     },

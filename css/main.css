@@ -2403,6 +2403,15 @@ Cleaning
 	display: block;
 }
 /******** help ************/
+#darkMask {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background-color: rgba(0,0,0,0.5);
+}
 .help {
 	position: absolute;
 	left: 0;
@@ -2413,71 +2422,61 @@ Cleaning
 }
 .help-item {
 	position: absolute;
-	color: #fff;
+	color: #dd2b66;
 	font-size: 14px;
 	line-height: 20px;
+	width: 300px;
+	height: 134px;
+	background: url(../img/helppopup.png) no-repeat left bottom;
 }
 .help-arrow {
-	background: url(../img/helpicon.png) no-repeat left top;
-}
-.help-text {
+	background: url(../img/helppopup.png) no-repeat;
+	width: 113px;
+	height: 46px;
 	position: absolute;
-	width: 150px;
-	text-align: left;
-	text-shadow: 1px 1px 1px #936400;
-}
-.help-rightup .help-text {
-	left: 30px;
-	top: 50px;
-}
-.help-rightup .help-arrow{
-	height: 65px;
-	width: 40px;
-	background-position: -40px -70px;
-}
-.help-leftdown .help-text {
-	left: 40px;
-	top: 0px;
-}
-.help-leftdown .help-arrow{
-	height: 65px;
-	width: 40px;
-	background-position: -85px -70px;
-}
-.help-rightdown .help-text {
-	left: -140px;
-	top: 10px;
-	text-align: right;
+	bottom: -14px;
+	left: 50%;
+	margin-left: -56px;
 }
 .help-rightdown .help-arrow{
-	height: 65px;
-	width: 40px;
-	background-position: 0px -130px;
+	background-position: right -89px;
 }
-.help-leftup .help-text {
-	left: 20px;
-	top: 50px;
-	text-align: left;
+.help-rightup .help-arrow{
+	background-position: right -175px;
+	bottom: auto;
+	top:0;
+}
+.help-leftdown .help-arrow{
+	background-position: -377px -241px;
 }
 .help-leftup .help-arrow{
-	height: 65px;
-	width: 40px;
-	background-position: -40px -70px;
+	background-position: right -25px;
+	bottom: auto;
+	top:0;
 }
+.help-text {
+	width: 100%;
+	text-align: left;
+	text-align: center;
+	padding: 70px 15px 40px;
+	font-size: 16px;
+	line-height: 20px;
+}
+
 #help-age {
-	left: 10px;
-	top:40px;
+	left: 5%;
+	bottom:10px;
 }
 #help-career {
-	right: 20px;
-	top: 40px;
+	right: 10%;
+	top: 0px;
 }
 #help-switch {
 	width: 45px;
 	height: 45px;
 	position: absolute;
-	right: 100px;
-	top: 500px;
+	left: 25px;
+	top: 100px;
 	border-radius: 50%;
 	background:#2470a4 url(../img/helpicon.png) no-repeat right bottom;
 	cursor: pointer;
@@ -2492,79 +2491,116 @@ Cleaning
 
 #help-length {
 	left: 15%;
-	top: 0;
+	top: -60px;
 }
 #help-curl {
 	right: 15%;
-	top: 0%;
+	top: -60px;
 }
 #help-hairstate {
-	left: 18%;
-	top:45%;
+	left: 15%;
+	top:35%;
 }
 #help-haircolor {
-	right: 18%;
-	top:45%;
+	right: 15%;
+	top:35%;
 }
 #help-quality {
 	left: 5%;
-	top:8%;
+	top:15%;
 }
 #help-thickness {
 	left: 5%;
-	top:35%;
+	top:42%;
 }
 #help-volume {
 	left: 5%;
-	top:60%;
+	top:67%;
 }
 #help-problem {
 	left: 60%;
-	top:70%;
+	top:55%;
 }
-#help-life {
-	left: 10%;
-	top: 60%;
+#help-mealCount {
+	left: -5%;
+	top: 45%;
+}
+#help-drinkDegree {
+	left: 15%;
+	top: 45%;
+}
+#help-smoke {
+	left: 35%;
+	top: 45%;
+}
+#help-sunBlock {
+	left: 55%;
+	top: 45%;
+}
+#help-sleep {
+	left: 75%;
+	top: 45%;
+}
+#help-life .help-text {
+	padding-top: 60px;
 }
 #help-stress {
-	left: 55%;
-	top: 15%;
+	left: 45%;
+	top: 10%;
+}
+#help-stress .help-text {
+	padding-top: 60px;
 }
 #help-health {
-	left: 30%;
-	top: 42%;
+	left: 10%;
+	top: 20%;
+	
 }
+
 #help-taste {
-	left: 2%;
-	top: 5%;
+	left: 7%;
+	top: -5%;
 }
 #help-drink {
 	left: 25%;
 	top: 60%;
 }
 #help-fruit {
-	left: 25%;
-	top: 15%;
+	left: 27%;
+	top: -6%;
 }
 #help-cook {
 	left: 60%;
 	top: 30%;
 }
 #help-trash {
-	left: 2%;
-	top: 60%;
+	left: 5%;
+	top: 42%;
+}
+#help-trash .help-text {
+	padding-top: 60px;
 }
 #help-showerfreq {
 	left: 65%;
-	top: 40%;
+	top: 29%;
+}
+#help-showertime {
+	left: 65%;
+	bottom: -5%;
 }
 #help-haircare {
 	left: 25%;
 	top: 26%;
 }
+#help-haircare .help-text {
+	padding-top: 60px;
+}
 #help-salon {
 	left: 25%;
 	top: 0;
+}
+#about .darkLink {
+	color: #ccc;
 }
 /******** character ************/
 .character {
@@ -4032,6 +4068,18 @@ Cleaning
     }
     .navigator {
 	    z-index: 99;
+    }
+    #cleaning-care {
+	    left: 25%;
+    }
+    #cleaning-style {
+	    left: 36%;
+    }
+    #cleaning-tool {
+	    left: 30%;
+    }
+    #cleaning-trash {
+	    left: 15%;
     }
 }
 @media only screen and (max-width: 1180px){
