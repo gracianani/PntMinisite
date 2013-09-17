@@ -12,7 +12,7 @@ var Report = Backbone.Model.extend({
     HairProblems: [],
     ProductSuggestions: [],
     ShareText: "",
-    level:"medium",
+    level: "medium",
     clearSuggestions: function () {
         this.LifeStyleSuggestions = [];
         this.HairCareSuggestions = [];
@@ -24,31 +24,14 @@ var Report = Backbone.Model.extend({
         this.HairProblems = [];
         this.ProductSuggestions = [];
         this.ShareText = "";
-        this.level="medium";
+        this.level = "medium";
     },
     loadSuggestions: function (suggestions) {
         this.clearSuggestions();
-        var lifestyleIds = suggestions.lifestyle_suggestions.split(",");
-        for (var i = 0; i < lifestyleIds.length; i++) {
-            var suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(lifestyleIds[i]) });
-            if (typeof suggestion !== 'undefined') {
-                this.LifeStyleSuggestions.push(suggestion.toJSON());
-            }
-        }
-        var hairCareIds = suggestions.haircare_suggestions.split(",");
-        for (var i = 0; i < hairCareIds.length; i++) {
-            var suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(hairCareIds[i]) });
-            if (typeof suggestion !== 'undefined') {
-                this.HairCareSuggestions.push(suggestion.toJSON());
-            }
-        }
-        var hairSituationIds = suggestions.hairsituation_suggestions.split(",");
-        for (var i = 0; i < hairSituationIds.length; i++) {
-            var suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(hairSituationIds[i]) });
-            if (typeof suggestion !== 'undefined') {
-                this.HairSituationSuggestions.push(suggestion.toJSON());
-            }
-        }
+        this.LifeStyleSuggestions = suggestions.lifestyle_suggestions;
+        this.HairCareSuggestions = suggestions.haircare_suggestions;
+        this.HairSituationSuggestions = suggestions.hairsituation_suggestions;
+
         this.Score = suggestions.score;
         var gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 1 });
 
@@ -63,12 +46,6 @@ var Report = Backbone.Model.extend({
         this.ScoreTitle = gSuggestion.get("suggestion_title");
         this.ScoreSuggestions.push(gSuggestion.get("suggestion_text"));
         this.QuizId = suggestions.quizId;
-        var problem = app.Views.HairQualityView.model.getMultipleAnswerText(21);
-        if (problem.length > 0) {
-            this.HairProblems.push(problem);
-        }
-
-        this.HairProblems.push(app.Views.HairStyleView.model.getAnswerText(14));
 
         var productIds = suggestions.suggested_products.split(",");
         for (var i = 0; i < productIds.length; i++) {
@@ -80,15 +57,16 @@ var Report = Backbone.Model.extend({
             }
         }
 
-
-
         AppFacade.setCurrentView(app.Views.ReportView);
         app.Router.navigate("Report/" + this.QuizId);
         app.ReportId = this.QuizId;
         app.Views.ReportView.trigger("finishloading");
 
     },
-
+    getSuggestionText: function () {
+        var suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(this) });
+        return suggestion.get("suggestion_text");
+    },
     getReport: function () {
         var requestData = '{ user_answers : \"' + JSON.stringify(AppFacade.getUserAnswers()).replace(/"/g, '\'') + '\", quizId : 0, str_user : \"' + JSON.stringify(app.User).replace(/"/g, '\'') + ' \" }';
         var self = this;
@@ -125,13 +103,10 @@ var Report = Backbone.Model.extend({
                 window.location.reload();
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-<<<<<<< HEAD
                 alert("很抱歉，生成请求失败了");
                 window.location.reload();
-=======
             },
             complete: function (e) {
->>>>>>> 2ebeb72c556267d075128c9e3ec7c7313d3d83c3
             }
         });
     },

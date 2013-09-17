@@ -142,10 +142,20 @@
               <div class="modal-body">
                     <a id="wb_connect_btn" class="weibologin" ></a>
         	        <a id="qqlogin" class="qqlogin"></a>
-        	        
         	        <a id="nologin">我不想登陆，直接查看报告</a>
               </div>
         </div>
+        <div id="inquiz-login" role="dialog" class="hidden" >
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <p>登录以后，可以保存你的报告结果哦！</p>
+              </div>
+              <div class="modal-body">
+                    <a id="inquiz_wb_connection_btn" class="weibologin" ></a>
+        	        <a id="inquiz_qqlogin" class="qqlogin"></a>
+              </div>
+        </div>
+
         <div id="report-share">
 				<div class="jiathis_style_32x32">
 					<span>分享到</span>
@@ -170,7 +180,7 @@
 				<a class="jiathis_button_cqq"></a>
 				<a class="jiathis_button_qzone"></a>
 				<a class="jiathis_button_douban"></a>
-				
+				<a id="social_login" href="#">登陆</a>
 				</div>
 				<!-- JiaThis Button END -->
 				
@@ -1013,10 +1023,14 @@
 						<div class="report-result-icon">
 						</div>
 						<div class="report-result-body">
-							<div id="hair-advice-tag">{{#HairProblems}} {{.}} {{/HairProblems}}</div>
 							<ul id="hair-advice">
                                 {{#HairSituationSuggestions}}
-                                <li>{{suggestion_text}}</li>
+                                <div id="hair-advice-tag">{{answer_text}}</div>
+                                <ul>
+                                    {{#suggestion_ids}}
+                                        <li>{{getSuggestionText}} </li>
+                                    {{/suggestion_ids}}
+                                </ul>
                                 {{/HairSituationSuggestions}}
 							</ul>
 						</div>
@@ -1026,8 +1040,13 @@
 						</div>
 						<div class="report-result-body">
 							<ul id="cleaning-advice">
-								{{#HairCareSuggestions}}
-                                <li>{{suggestion_text}}</li>
+                                {{#HairCareSuggestions}}
+                                <div id="hair-advice-tag">{{scene_text}}</div>
+                                <ul>
+                                    {{#suggestion_ids}}
+                                        <li>{{getSuggestionText}} </li>
+                                    {{/suggestion_ids}}
+                                </ul>
                                 {{/HairCareSuggestions}}
 							</ul>
 						</div>
@@ -1037,8 +1056,13 @@
 						</div>
 						<div class="report-result-body">
 							<ul id="life-advice">
-								{{#LifeStyleSuggestions}}
-                                <li>{{suggestion_text}}</li>
+                                {{#LifeStyleSuggestions}}
+                                <div id="hair-advice-tag">{{scene_text}}</div>
+                                <ul>
+                                    {{#suggestion_ids}}
+                                        <li>{{getSuggestionText}} </li>
+                                    {{/suggestion_ids}}
+                                </ul>
                                 {{/LifeStyleSuggestions}}
 							</ul>
 						</div>

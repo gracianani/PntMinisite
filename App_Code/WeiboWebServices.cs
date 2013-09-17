@@ -69,12 +69,18 @@ public class WeiboWebServices : System.Web.Services.WebService {
     }
     public static class QuestionHelper
     {
-        public static  int Gender = 22;
-        public static  int HairLength = 13;
-        public static  int HairColor = 15;
-        public static  int HairCurly = 14;
-        public static  int HairState = 16;
-        public static  int Career = 24;
+        public static int Gender = 22;
+        public static int HairLength = 13;
+        public static int HairColor = 15;
+        public static int HairCurly = 14;
+        public static int HairState = 16;
+        public static int Career = 24;
+    }
+    public static class SuggestionGroupHelper
+    {
+        public static int LifeStyle = 1;
+        public static int HairCare = 2;
+        public static int HairSituation = 3;
     }
     public class WebsiteToImage
     {
@@ -109,43 +115,40 @@ public class WeiboWebServices : System.Web.Services.WebService {
         private void _Generate()
         {
             var browser = new WebBrowser();
-	    browser.ScrollBarsEnabled = false;
-	    browser.ScriptErrorsSuppressed = true;
+	        browser.ScrollBarsEnabled = false;
+	        browser.ScriptErrorsSuppressed = true;
             browser.Navigate(m_Url );
-	    //browser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(WebBrowser_DocumentCompleted);
+	        //browser.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(WebBrowser_DocumentCompleted);
             while (browser.IsBusy ||
-		   browser.ReadyState != WebBrowserReadyState.Complete || 
-		   browser.Document == null || 
-		   browser.Document.GetElementById("report") == null ||
-               	   string.IsNullOrEmpty(browser.Document.GetElementById("report").InnerHtml) )
+                browser.ReadyState != WebBrowserReadyState.Complete || 
+                browser.Document == null || 
+                browser.Document.GetElementById("report") == null ||
+                        string.IsNullOrEmpty(browser.Document.GetElementById("report").InnerHtml) )
             {
                 System.Windows.Forms.Application.DoEvents();
             }
-            System.Threading.Thread.Sleep(5000);
             SaveImage(browser);
             browser.Dispose();
         }
 
-	private void WebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
-	{
-	    WebBrowser browser = (WebBrowser)sender;
-	    SaveImage(browser);
-	}
+	    private void WebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+	    {
+	        WebBrowser browser = (WebBrowser)sender;
+	        SaveImage(browser);
+	    }
 
-	private void SaveImage(WebBrowser browser)
-	{
+	    private void SaveImage(WebBrowser browser)
+	    {
             browser.ClientSize = new Size(browser.Document.Body.ScrollRectangle.Width, browser.Document.Body.ScrollRectangle.Bottom);
             m_Bitmap = new Bitmap(browser.Document.Body.ScrollRectangle.Width, browser.Document.Body.ScrollRectangle.Bottom);
             browser.BringToFront();
-	    Rectangle rec = browser.Bounds;
-	    rec.Width -= 18;
-	    rec.Height -= 18;
+	        Rectangle rec = browser.Bounds;
             browser.DrawToBitmap(m_Bitmap, rec);
             if (m_FileName.Length > 0)
             {
-		m_Bitmap.SavePng(m_FileName);
+		    m_Bitmap.SavePng(m_FileName);
             }
-	}
+	    }
     }
 
     class SceneUserAnswer
@@ -160,14 +163,23 @@ public class WeiboWebServices : System.Web.Services.WebService {
         public List<int> answer_ids;
     }
 
+    class Suggestion
+    {
+        public int answer_id;
+        public string answer_text;
+        public int scene_id;
+        public string scene_text;
+        public List<int> suggestion_ids;
+    }
+
     class QuizResponse
     {
         public int quizId;
         public int score;
         public string suggested_products;
-        public string hairsituation_suggestions;
-        public string haircare_suggestions;
-        public string lifestyle_suggestions;
+        public List<Suggestion> hairsituation_suggestions;
+        public List<Suggestion> haircare_suggestions;
+        public List<Suggestion> lifestyle_suggestions;
     
     }
     class Avatar {
@@ -192,10 +204,10 @@ public class WeiboWebServices : System.Web.Services.WebService {
         var sceneUserAnswers = serializer.Deserialize<SceneUserAnswer[]>(user_answers);
         var user = serializer.Deserialize<User>(str_user);
         var userAnswerIds = new List<int>();
-        var suggestionIds = new Dictionary<int, List<int>>() { 
-            {1, new List<int>()}, 
-            {2, new List<int>()},
-            {3, new List<int>()}
+        var suggestionIds = new Dictionary<int, List<Suggestion>>() { 
+            {SuggestionGroupHelper.HairSituation, new List<Suggestion>()}, 
+            {SuggestionGroupHelper.LifeStyle, new List<Suggestion>()},
+            {SuggestionGroupHelper.HairCare, new List<Suggestion>()}
         };
         var productIds = new List<int>();
         var score = 0.0m;
@@ -210,7 +222,6 @@ public class WeiboWebServices : System.Web.Services.WebService {
         }
 
         DataTable answerIdTable = new DataTable("AnswersTableType");
-        // Create a DataColumn and set various properties. 
         DataColumn column = new DataColumn();
         column.DataType = System.Type.GetType("System.Int32");
         column.AllowDBNull = false;
@@ -237,7 +248,12 @@ public class WeiboWebServices : System.Web.Services.WebService {
                     while (reader.Read())
                     {
                         var groupId = reader.GetInt32(reader.GetOrdinal("suggestionGroupId"));
-                        suggestionIds[groupId].Add(reader.GetInt32(reader.GetOrdinal("suggestionId")));
+                        var suggestionId = reader.GetInt32(reader.GetOrdinal("suggestionId"));
+                        var answerId = reader.GetInt32(reader.GetOrdinal("answerId"));
+                        var answerText = reader.GetString(reader.GetOrdinal("answerText"));
+                        var sceneId = reader.GetInt32(reader.GetOrdinal("sceneId"));
+                        var sceneText = reader.GetString(reader.GetOrdinal("sceneName"));
+                        suggestionIds[groupId].Add(new Suggestion{ answer_text = answerText, answer_id = answerId, scene_text = sceneText,scene_id= sceneId, suggestion_ids = new List<int>() {suggestionId } } );
                     }
 
                     if (reader.NextResult())
@@ -274,7 +290,23 @@ public class WeiboWebServices : System.Web.Services.WebService {
                 }
             }
         }
-        return string.Format("{{ \"lifestyle_suggestions\": \"{0}\" , \"haircare_suggestions\" : \"{2}\", \"hairsituation_suggestions\" : \"{3}\",  \"suggested_products\" : \"{1}\", \"score\" : {4}, \"quizId\" : \"{5}\" }}", string.Join(",", suggestionIds[1]), string.Join(",", productIds), string.Join(",", suggestionIds[2]), string.Join(",", suggestionIds[3]), Convert.ToInt32(score/3) , quizId);
+        var quizResponse = new QuizResponse()
+        {
+            quizId = quizId,
+            haircare_suggestions = (from suggestion in suggestionIds[SuggestionGroupHelper.HairCare]
+                                    group suggestion by new { sceneId = suggestion.scene_id, sceneText = suggestion.scene_text } into scene
+                                    select new Suggestion { scene_id = scene.Key.sceneId, scene_text = scene.Key.sceneText, suggestion_ids = scene.Select(i => i.suggestion_ids[0]).ToList() }).ToList(),
+            suggested_products = string.Join(",", productIds),
+            lifestyle_suggestions = (from suggestion in suggestionIds[SuggestionGroupHelper.LifeStyle]
+                                     group suggestion by new { sceneId = suggestion.scene_id, sceneText = suggestion.scene_text } into scene
+                                     select new Suggestion { scene_id = scene.Key.sceneId, scene_text = scene.Key.sceneText, suggestion_ids = scene.Select(i => i.suggestion_ids[0]).ToList() }).ToList(),
+            hairsituation_suggestions = ( from suggestion in suggestionIds[SuggestionGroupHelper.HairSituation]
+                                          group suggestion by new { ansId = suggestion.answer_id, ansText = suggestion.answer_text } into ans
+                                          select new Suggestion { answer_id = ans.Key.ansId, answer_text = ans.Key.ansText, suggestion_ids = ans.Select(i => i.suggestion_ids[0]).ToList() }).ToList(),
+            score = Convert.ToInt32( score/3 )
+        };
+        return serializer.Serialize(quizResponse);
+       // return string.Format("{{ \"lifestyle_suggestions\": \"{0}\" , \"haircare_suggestions\" : \"{2}\", \"hairsituation_suggestions\" : \"{3}\",  \"suggested_products\" : \"{1}\", \"score\" : {4}, \"quizId\" : \"{5}\" }}", string.Join(",", suggestionIds[1]), string.Join(",", productIds), string.Join(",", suggestionIds[2]), string.Join(",", suggestionIds[3]), Convert.ToInt32(score/3) , quizId);
     }
 
     [WebMethod]

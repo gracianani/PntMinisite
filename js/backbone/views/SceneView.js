@@ -13,7 +13,9 @@ var MainView = Backbone.View.extend({
         "click .step": "onCLickStep",
         "click #logo,#siteTitle" : "onClickLogo",
         "click .help" : "onClickHelpLayer",
-        "click #help-switch" : "onClickHelpSwitch"
+        "click #help-switch" : "onClickHelpSwitch",
+        "click #social_login" : "showInQuizLogin",
+        "click #inquiz-login .close" : "closeInQuizLogin"
     },
     initialize: function () {
         this.$el = $('body');
@@ -42,6 +44,12 @@ var MainView = Backbone.View.extend({
 	  	AppFacade.gotoScene(step);
 	  	this.setProgressBar();
 	  	
+    },
+    showInQuizLogin : function() {
+        $("#inquiz-login").removeClass("hidden");
+    },
+    closeInQuizLogin : function() {
+        $("#inquiz-login").addClass("hidden");
     },
     showLogin : function() {
         $("#login").removeClass("hidden");
