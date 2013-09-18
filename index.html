@@ -1045,9 +1045,12 @@
         	</div>
         	<div id="report-opt">
         		<a id="restartQuiz" href="javascript:void(0)"><i class="icon-refresh"></i> 重新测试</a>
+        		<div id="defeat">您的秀发迷倒了<span id="defeat-percent">0%</span>的人</div>
+        		
         		<div id="progressbar"><div class="progress-label">正在生成报告图片，请耐心等待...</div></div>
         		 <span id="downloadQuizText">生成以后，可以带图分享哦！</span>
         		<a id="downloadQuizImg" href="javascript:void(0)" target="_blank"><i class="icon-download-alt"></i> 下载报告图片</a>
+        		 
         	</div>
         	<div id="report-body">
 				<ul id="report-result">
@@ -1060,7 +1063,7 @@
                                 <div class="hair-advice-tag">{{answer_text}}</div>
                                 <ul class="advice-subList">
                                     {{#suggestion_ids}}
-                                        <li class="{{getSuggestionType}}"><i></i> {{getSuggestionText}} </li>
+                                        <li class="{{getSuggestionType}}"><i></i> {{{getSuggestionText}}} </li>
                                     {{/suggestion_ids}}
                                 </ul>
                                 {{/HairSituationSuggestions}}
@@ -1076,7 +1079,7 @@
                                 <div class="hair-advice-tag">{{scene_text}}</div>
                                 <ul class="advice-subList">
                                     {{#suggestion_ids}}
-                                        <li class="{{getSuggestionType}}"><i></i> {{getSuggestionText}} </li>
+                                        <li class="{{getSuggestionType}}"><i></i> {{{getSuggestionText}}} </li>
                                     {{/suggestion_ids}}
                                 </ul>
                                 {{/HairCareSuggestions}}
@@ -1092,7 +1095,7 @@
                                 <div class="hair-advice-tag">{{scene_text}}</div>
                                 <ul class="advice-subList">
                                     {{#suggestion_ids}}
-                                        <li class="{{getSuggestionType}}"><i></i> {{getSuggestionText}} </li>
+                                        <li class="{{getSuggestionType}}"><i></i> {{{getSuggestionText}}} </li>
                                     {{/suggestion_ids}}
                                 </ul>
                                 {{/LifeStyleSuggestions}}
@@ -1106,19 +1109,16 @@
         			最适合您的潘婷系列
         		</div>
 				<div id="report-product-basic">
-					<ul id="report-product-list">
+					<ul id="report-product-list" class="clearfix">
 						{{#ProductSuggestions}}
 						<li class="report-product-item">
-							<a href="{{url}}">
+							<a target="_blank" href="{{url}}">
 							<img src="img/product/{{img}}" title="{{product_name}}" />
 							</a>
 						</li>
 						{{/ProductSuggestions}}
 					</ul>
 				</div>
-				<div id="report-product-more">
-        			看看其他推荐
-        		</div>
         	</div>
         	<div id="report-avatar">
         		<div id="character" class="character fm character-large-size">

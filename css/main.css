@@ -118,7 +118,7 @@ body {
 
 }
 
-#logo,#siteTitle,#navigation,#footer {
+#navigation,#footer {
 	display: none;
 }
 /*=====================
@@ -217,6 +217,8 @@ header
 	position: absolute;
 	width: 166px;
 	height: 54px;
+	top: 5px;
+	left: 30px;
 }
 #logo img{
 	height: 100%;
@@ -225,7 +227,7 @@ header
 #siteTitle {
 	position: absolute;
 	left: 210px;
-	top:-200px;
+	top:15px;
 	font-size: 22px;
 	letter-spacing: 1px;
 	font-weight: normal;
@@ -2198,7 +2200,7 @@ Cleaning
 	background-image: url(../img/character/career-fm.png)!important;
 	cursor: pointer;
 	margin-left: -53px;
-	margin-top:-50px;
+	margin-top:0;
 }
 #basicinfo-career .m .clothes {
 	background-image: url(../img/character/career-m.png)!important;
@@ -3140,13 +3142,13 @@ Cleaning
 	width: 106px;
 	height: 304px;
 }
-#basicinfo-career .fm.character-small-size .clothes-fm-0{ background-position: 0 0; width: 106px; height: 304px; } 
-#basicinfo-career .fm.character-small-size .clothes-fm-1{ background-position: 0 -305px; width: 106px; height: 304px; } 
-#basicinfo-career .fm.character-small-size .clothes-fm-2{ background-position: 0 -610px; width: 106px; height: 304px; } 
-#basicinfo-career .fm.character-small-size .clothes-fm-3{ background-position: 0 -915px; width: 106px; height: 304px; } 
-#basicinfo-career .fm.character-small-size .clothes-fm-4{ background-position: 0 -1220px; width: 106px; height: 304px; } 
-#basicinfo-career .fm.character-small-size .clothes-fm-5{ background-position: 0 -1525px; width: 106px; height: 304px; } 
-#basicinfo-career .fm.character-small-size .clothes-fm-6{ background-position: 0 -1830px; width: 106px; height: 304px; } 
+#basicinfo-career .fm.character-small-size .clothes-fm-0{ background-position: 0 -45px; width: 106px; height: 304px; } 
+#basicinfo-career .fm.character-small-size .clothes-fm-1{ background-position: 0 -350px; width: 106px; height: 304px; } 
+#basicinfo-career .fm.character-small-size .clothes-fm-2{ background-position: 0 -655px; width: 106px; height: 304px; } 
+#basicinfo-career .fm.character-small-size .clothes-fm-3{ background-position: 0 -960px; width: 106px; height: 304px; } 
+#basicinfo-career .fm.character-small-size .clothes-fm-4{ background-position: 0 -1265px; width: 106px; height: 304px; } 
+#basicinfo-career .fm.character-small-size .clothes-fm-5{ background-position: 0 -1570px; width: 106px; height: 304px; } 
+#basicinfo-career .fm.character-small-size .clothes-fm-6{ background-position: 0 -1875px; width: 106px; height: 304px; } 
 
 
 .quality-scene {
@@ -3479,7 +3481,7 @@ Cleaning
 	zoom: 1;
 	clear: both;
 	float: none;
-	height: 200px;
+	height: 180px;
 	width: 720px;
 }
 #report-body {
@@ -3488,7 +3490,7 @@ Cleaning
 #report-share {
 	position: absolute;
 	top:360px;
-	left: 55%;
+	left: 52%;
 	display: none;
 }
 #downloadQuizText {
@@ -3564,9 +3566,24 @@ Cleaning
 	margin-left: -36px;
 }
 #report-header p {
-	font-size: 14px;
-	line-height: 24px;
+	font-size: 16px;
+	line-height: 28px;
 	margin-top: 20px;
+	color: #ae6a10;
+}
+#defeat {
+	font-size: 20px;
+	margin: 0 0 30px;
+	color: #ae6a10;
+
+}
+#defeat-percent {
+	color: #d55b1c;
+	font-size: 36px;
+	text-shadow: 2px 2px 0 rgba(255,255,255,0.3);
+	padding-right: 5px;
+	display: inline-block;
+	font-style: italic;
 }
 #report h2.score-high {
 	color: #d55b1c;
@@ -3595,8 +3612,8 @@ Cleaning
 	text-shadow:2px 2px 0 rgba(255,255,255,0.3);
 }
 #report-opt {
-	margin-left: 220px;
-	height: 80px;
+	margin-left: 210px;
+	height: 120px;
 	margin-bottom: 30px;
 }
 #restartQuiz,#saveQuiz,#downloadQuizImg {
@@ -3645,17 +3662,17 @@ Cleaning
 
 }
 .report-result-icon {
-	width: 180px;
-	min-height: 140px;
+	width: 100px;
+	min-height: 160px;
 	padding-bottom: 20px;
 	float: left;
-	background: url(../img/scene/reporthairicon.png) no-repeat left top;
+	background: url(../img/scene/reporthairicon.png) no-repeat left 20px;
 	margin-bottom: -999px;
 	padding-bottom: 999px;
 }
 .report-result-body {
 	float: left;
-	width: 490px;
+	width: 570px;
 	background: #FFF;
 	border-radius: 10px;
 	min-height: 100px;
@@ -3670,11 +3687,11 @@ Cleaning
 	top:20px;
 }
 #report-result-cleaning .report-result-icon {
-	background: url(../img/scene/reportcareicon.png) no-repeat left top;
+	background: url(../img/scene/reportcareicon.png) no-repeat left 20px;
 }
 
 #report-result-life .report-result-icon {
-	background: url(../img/scene/reportlifeicon.png) no-repeat left top;
+	background: url(../img/scene/reportlifeicon.png) no-repeat left 20px;
 	margin-bottom: 0;
 	padding-bottom: 10px;
 }
@@ -3701,20 +3718,17 @@ Cleaning
 	list-style: none;
 }
 .report-result-body li {
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 	list-style: disc;
-	margin-left: 40px;
+	margin-left: 50px;
 	color: #666;
 	font-size: 16px;
-	line-height: 26px;
+	line-height: 30px;
 }
 #report-product-basic {
-	height: 327px;
 	border-radius: 10px;
-	overflow: hidden;
 	width: 708px;
-	border: 5px dashed #ffe579;
-	border-radius: 10px;
+	
 	position: relative;
 	margin-left: 25px;
 }
@@ -3724,30 +3738,60 @@ Cleaning
 	list-style: none;
 }
 .advice-subList {
-	margin: 10px 0;
+	margin: 15px 0;
 	padding: 0;
+}
+.advice-subList a {
+	background-color: #2a82a6;
+	padding: 2px 5px;
+	color: #FFF;
+	text-shadow: 2px 1px 0 rgba(0,0,0,.4);
+	border-radius: 5px;
+	text-decoration: none;
+}
+.advice-subList em {
+	color: #ae6a10;
 }
 .advice-subList i {
 	width: 26px;
 	height: 18px;
 	display: inline-block;
 	background:url(../img/reporticon.png) no-repeat center top;
+	position: relative;
+	top: 2px;
+}
+.positive i {
+	background-position: center -21px;
+}
+.negtive i {
+	background-position: center -42px;
 }
 .advice-subList li {
 	list-style: none;
 	text-indent: -30px;
 }
 .report-product-item {
-	height: 327px;
-	width: 100%;
+	width: 335px;
 	border-radius: 10px;
-	position: absolute;
-	left: 0;
-	top: 0;
-	display: none;
+	float: left;
+	display: inline-block;
+	margin: 10px 0;
+	border: 5px dashed #ffe579;
+}
+.report-product-item img{
+	width: 100%;
+	height: auto;
 }
 #report-product-list .current {
 	display: block;
+	float: none;
+	clear: both;
+	width: 100%;
+	border-radius: 10px;
+}
+#report-product-list .current  img {
+	width: 100%;
+	height: auto;
 }
 #report-products {
 	position: relative;
