@@ -185,6 +185,7 @@ public class WeiboWebServices : System.Web.Services.WebService
     {
         public int quizId;
         public int score;
+        public decimal ranking;
         public string suggested_products;
         public List<Suggestion> hairsituation_suggestions;
         public List<Suggestion> haircare_suggestions;
@@ -382,6 +383,7 @@ public class WeiboWebServices : System.Web.Services.WebService
         };
         var productIds = new List<int>();
         var score = 0.0m;
+        var ranking = 0.0m;
         foreach (SceneUserAnswer sceneUserAnswer in sceneUserAnswers)
         {
             var answer_ids = sceneUserAnswer.user_answers.Select(i => i.answer_ids).ToList();
@@ -438,7 +440,14 @@ public class WeiboWebServices : System.Web.Services.WebService
                     {
                         if (reader.Read())
                         {
-                            score = reader.GetDecimal(0);
+                            score = reader.GetInt32(0);
+                        }
+                    }
+                    if (reader.NextResult())
+                    {
+                        if (reader.Read())
+                        {
+                            ranking = reader.GetInt32(0);
                         }
                     }
                 }
@@ -457,7 +466,8 @@ public class WeiboWebServices : System.Web.Services.WebService
             hairsituation_suggestions = (from suggestion in suggestionIds[SuggestionGroupHelper.HairSituation]
                                          group suggestion by new { ansId = suggestion.answer_id, ansText = suggestion.answer_text } into ans
                                          select new Suggestion { answer_id = ans.Key.ansId, answer_text = ans.Key.ansText, suggestion_ids = ans.Select(i => i.suggestion_ids[0]).Distinct().ToList() }).ToList(),
-            score = Convert.ToInt32(score / 3)
+            score = Convert.ToInt32(score / 3),
+            ranking = ranking
         };
         return serializer.Serialize(quizResponse);
     }

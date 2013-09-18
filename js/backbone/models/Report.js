@@ -33,6 +33,7 @@ var Report = Backbone.Model.extend({
         this.HairSituationSuggestions = suggestions.hairsituation_suggestions;
 
         this.Score = suggestions.score;
+        this.Ranking = suggestions.ranking;
         var gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 1 });
 
         if (suggestions.score > 50 && suggestions.score < 80) {
