@@ -43,16 +43,15 @@ requirejs(['../backbone/utils/plugins', '../backbone/models/Avatar', '../backbon
                 return suggestion.get("suggestion_text");
             },
             getSuggestionType: function () {
-		        var suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(this) });
-		        return suggestion.get("type");
-		    },
+                var suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(this) });
+                return suggestion.get("type");
+            },
             fillSuggestions: function (suggestions) {
-                console.log(suggestions);
                 this.LifeStyleSuggestions = suggestions.lifestyle_suggestions;
                 this.HairCareSuggestions = suggestions.haircare_suggestions;
                 this.HairSituationSuggestions = suggestions.hairsituation_suggestions;
-
                 this.Score = suggestions.score;
+                this.Ranking = suggestions.ranking;
                 var gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 1 });
 
                 if (suggestions.score > 50 && suggestions.score < 80) {
@@ -112,7 +111,7 @@ requirejs(['../backbone/utils/plugins', '../backbone/models/Avatar', '../backbon
         app.GeneralSuggestionRepo = new GeneralSuggestionsCollection;
 
         app.SuggestionRepo.fetch().done(function () {
-            app.ProductRepo.fetch().done(function() {
+            app.ProductRepo.fetch().done(function () {
                 app.GeneralSuggestionRepo.fetch().done(function () {
                     app.PlainReport = new PlainReport;
                     var reportId = getParameterByName("reportId");
@@ -121,10 +120,10 @@ requirejs(['../backbone/utils/plugins', '../backbone/models/Avatar', '../backbon
                     }
                 });
             });
-            
-        }); 
 
-        
+        });
+
+
     });
 
    
