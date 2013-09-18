@@ -49,7 +49,7 @@ var ReportView = Backbone.View.extend({
             });
         });
         //this.model.shareReport();
-        //this.showProgress();
+        this.showProgress();
     },
     onexit: function () {
         this.resetShareConfig();

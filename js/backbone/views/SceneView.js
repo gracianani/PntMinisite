@@ -97,7 +97,8 @@ var LifeView = Backbone.View.extend({
     className: "scene",
     template: $("#scene-life-template").html(),
     events : {
-        "click .life-icon" : "toggleLife"
+        "click .life-icon" : "toggleLife",
+        "click .life-stress" : "onClickStress"
     },
     linesEl : '#life-lines',
 	lines : [],
@@ -168,6 +169,11 @@ var LifeView = Backbone.View.extend({
 	   }
 	   
    },
+   onClickStress: function(e) {
+	 var item = $(e.currentTarget);
+	 var stress = item.attr('data-stress');
+	 this.setStressPin(stress);
+   },
     initStress : function() {
         var lifeCenter = Raphael("life-center", 250, 250);
 		lifeCenter.customAttributes.arc = function (xloc, yloc,start, value, total, R) {
@@ -215,9 +221,10 @@ var LifeView = Backbone.View.extend({
 		
         
 		stressHigh = lifeCenter.path().attr({
-		    "stroke": "#da442c",
+		    "stroke": "#0d4876",
 		    "stroke-width": 40,
 		    "cursor":"pointer",
+		    "fill":"#0d4876",
 		    arc: [125, 125, -2, 1, 6, 105]
 		}).click(function () {
             self.setStressPin('high');
@@ -234,7 +241,7 @@ var LifeView = Backbone.View.extend({
             self.setStressPin('medium');
          });
 		stressLow = lifeCenter.path().attr({
-		    "stroke": "#8cd03c",
+		    "stroke": "#42c8bb",
 		    "stroke-width": 40,
 		    "cursor":"pointer",
 		    arc: [125, 125, 0, 1, 6, 105]
