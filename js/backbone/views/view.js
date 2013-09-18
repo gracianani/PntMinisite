@@ -8,32 +8,16 @@ BasicFrameView.prototype = {
         this.step = 1;
 
         $('#loading').fadeOut();
-        $('#logo').show().animate({ path: new $.path.bezier({
-            start: {
-                x: -300,
-                y: 20,
-                angle: 0
-            },
-            end: {
-                x: 30,
-                y: 5,
-                angle: 0,
-                length: 0.25,
-                easing: "easeOutQuint"
-            }
-        })
-        }, 800, "easeOutQuint", function () {
+       
             if ( AppFacade.getCurrentView() != app.Views.ReportView ) {
                 window.AppFacade.getCurrentView().render();
                 self.showControls();
                 app.Views.MainView.setProgressBar();
             }
-            
-        });
+
     },
     showControls: function () {
         //$('#profile').show().animate({ top: 10 }, 500);
-        $('#siteTitle').show().animate({ top: 15 }, 500, function () { });
         $('#footer').show().animate({ bottom: '0' }, 500);
         $('#progress,#main,#navigation,#help-switch').fadeIn();
     },

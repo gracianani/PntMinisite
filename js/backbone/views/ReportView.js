@@ -36,13 +36,13 @@ var ReportView = Backbone.View.extend({
     },
     postRender: function () {
         AnimationHandler.animateOut("report", function () {
+        	$('#share').hide();
             $("#main").fadeOut(function () {
                 $("#splash").fadeOut(function () {
                     $('#report').fadeIn(
             	    function () {
-            	        $('#report-share').show();
-            	        $('.report-product-item:first').addClass('current');
             	        
+            	        $('.report-product-item:first').addClass('current');
             	        
             	    });
                 });
@@ -58,6 +58,7 @@ var ReportView = Backbone.View.extend({
             $('#main').fadeIn(function () {
                 $('#progress,#main,#navigation,#footer,#help-switch').fadeIn();
                 AppFacade.getCurrentView().render();
+                $('#share').show();
             });
 
         }
@@ -93,6 +94,7 @@ var ReportView = Backbone.View.extend({
     onSaveReportComplete: function() {
 	    $('#progressbar').hide();
 	    $('#downloadQuizImg').show();
+	    $('#report-share').show();
 	    $('#downloadQuizText').hide();
 	    var shareImg = "http://pantene.app.social-touch.com/reports/report_" + app.ReportId + ".png";
 	    $('#downloadQuizImg').attr('href',shareImg);
