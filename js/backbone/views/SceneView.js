@@ -47,15 +47,19 @@ var MainView = Backbone.View.extend({
     },
     showInQuizLogin : function() {
         $("#inquiz-login").removeClass("hidden");
+        app.LoginFrom = "middle";
     },
     closeInQuizLogin : function() {
         $("#inquiz-login").addClass("hidden");
+        app.LoginFrom = "";
     },
     showLogin : function() {
         $("#login").removeClass("hidden");
+        app.LoginFrom = "end";
     },
     closeLogin : function() {
         $("#login").addClass("hidden");
+        app.LoginFrom = "";
     },
     authorize : function() {
         if(typeof app.User.uid == 'undefined') {
