@@ -67,7 +67,7 @@ var ReportView = Backbone.View.extend({
     onClickRestart: function () {
         AppFacade.gotoScene(1);
         app.ReportLogged = false;
-        app.ReportId = 0;
+        app.ReportId = undefined;
     },
     showProgress: function () {
         var progressbar = $('#progressbar');
