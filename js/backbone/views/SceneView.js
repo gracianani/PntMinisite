@@ -136,7 +136,7 @@ var LifeView = Backbone.View.extend({
             this.model.setAnswer(28,135);
 	   } else if ( stress == 'high' ) {
 		   this.stressPin.animate({
-            	transform:"r-60 100 100"
+            	transform:"r-60 125 125"
             }, 500, 'back-out')
             .attr({
             	"stroke":"#e4600d",
@@ -149,7 +149,7 @@ var LifeView = Backbone.View.extend({
             this.model.setAnswer(28,134);
 	   } else {
 		   this.stressPin.animate({
-            	"transform":"r60 100 100"
+            	"transform":"r60 125 125"
             }, 500, 'back-out')
             .attr({
             	"stroke":"#e4600d",
@@ -165,7 +165,7 @@ var LifeView = Backbone.View.extend({
 	   
    },
     initStress : function() {
-        var lifeCenter = Raphael("life-center", 200, 200);
+        var lifeCenter = Raphael("life-center", 250, 250);
 		lifeCenter.customAttributes.arc = function (xloc, yloc,start, value, total, R) {
 		    	var alpha = 360 / total * start,
 		    	beta = 360/total * value,
@@ -195,15 +195,16 @@ var LifeView = Backbone.View.extend({
         var self = this;
 		lifeCenter.path().attr({
 		    "fill": "#FFF",
-		    arc: [100, 100, -2, 3, 6, 90]
+		    "stroke-width":0,
+		    arc: [125, 125, -2, 3, 6, 110]
 		});
 		lifeCenter.path().attr({
 		    "fill": "#fad949",
 		    "stroke":"#e4600d",
-		    "stroke-width": 20,
-		    arc: [100, 100, 1, 3, 6, 90]
+		    "stroke-width": 30,
+		    arc: [125, 125, 1, 3, 6, 110]
 		});
-		lifeCenter.path("M0 102L200 102").attr({
+		lifeCenter.path("M0 127L250 127").attr({
 			"stroke":"#e4600d",
 			"stroke-width": 4
 		});
@@ -211,9 +212,9 @@ var LifeView = Backbone.View.extend({
         
 		stressHigh = lifeCenter.path().attr({
 		    "stroke": "#da442c",
-		    "stroke-width": 30,
+		    "stroke-width": 40,
 		    "cursor":"pointer",
-		    arc: [100, 100, -2, 1, 6, 85]
+		    arc: [125, 125, -2, 1, 6, 105]
 		}).click(function () {
             self.setStressPin('high');
          });
@@ -222,22 +223,22 @@ var LifeView = Backbone.View.extend({
         
 		stressMedium = lifeCenter.path().attr({
 		    "stroke": "#248fe0",
-		    "stroke-width": 30,
+		    "stroke-width": 40,
 		    "cursor":"pointer",
-		    arc: [100, 100, -1, 1, 6, 85]
+		    arc: [125, 125, -1, 1, 6, 105]
 		}).click(function () {
             self.setStressPin('medium');
          });
 		stressLow = lifeCenter.path().attr({
 		    "stroke": "#8cd03c",
-		    "stroke-width": 30,
+		    "stroke-width": 40,
 		    "cursor":"pointer",
-		    arc: [100, 100, 0, 1, 6, 85]
+		    arc: [125, 125, 0, 1, 6, 105]
 		}).click(function () {
             self.setStressPin('low');
          });
 		
-		
+		/*
 		stressHighText = lifeCenter.text(32,50,"压力山大")
         .attr({
 	        "font-size":"10px",
@@ -247,7 +248,7 @@ var LifeView = Backbone.View.extend({
         }).click(function () {
             self.setStressPin('high');
          });
-        stressMediumText = lifeCenter.text(100,10,"压力适中")
+        stressMediumText = lifeCenter.text(125,10,"压力适中")
         .attr({
 	        "font-size":"10px",
 	        "cursor":"pointer",
@@ -264,14 +265,14 @@ var LifeView = Backbone.View.extend({
         }).click(function () {
             self.setStressPin('low');
          });
-        
-		this.stressPin = lifeCenter.path("M100 100L100 20").attr({
+        */
+		this.stressPin = lifeCenter.path("M125 125L125 20").attr({
 			 "stroke": "#ccc",
-			 "stroke-width": 5,
+			 "stroke-width": 8,
 			 "stroke-dasharray":"-",
 			 "arrow-end":"classic"
 		});
-		this.stressPinRoot = lifeCenter.circle(100,100,6).attr({
+		this.stressPinRoot = lifeCenter.circle(125,125,10).attr({
 			"fill": "#ccc",
 			"stroke-width":0
 		});
@@ -303,16 +304,16 @@ var LifeView = Backbone.View.extend({
 		var deltaX = linesEndX - linesStartX;
 		var deltaY = linesEndY - linesStartY;
 		if ( deltaX > 0 ) {
-			deltaX = deltaX +100;
+			deltaX = deltaX +125;
 		} else {
-			deltaX = deltaX - 100;
+			deltaX = deltaX - 125;
 		}
 			
 		if ( deltaY > 0 ) {
-			deltaY += 100;
+			deltaY += 125;
 		} else {
 				
-			deltaY -= 100;
+			deltaY -= 125;
 		}
 			
 		breakPoint1X = linesStartX + Math.floor(deltaX * (Math.random() * 0.4 + 0.1));
