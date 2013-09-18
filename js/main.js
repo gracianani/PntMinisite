@@ -243,8 +243,8 @@ window.AppFacade = {
         QC.Login.getMe(function (openId, accessToken) {
             app.User.qq_uid = openId;
             app.User.qq_token = accessToken;
-            if (app.LoginFrom == "end" && AppFacade.getCurrentView().id == 'scene-salon' && typeof (app.ReportId) == 'undefined') {
-                app.ReportId = 0;
+            if (app.LoginFrom == "end" && AppFacade.getCurrentView().id == 'scene-salon' && typeof (app.ReportId) != 'undefined') {
+                app.LoginFrom = "";
                 AppFacade.askForReport();
             }
         });
@@ -395,8 +395,8 @@ window.AppFacade = {
             var token = param[0].split("%3D")[1];
             app.User.weibo_token = token;
         }
-        if (AppFacade.getCurrentView().id == 'scene-salon' && typeof (app.ReportId) == 'undefined') {
-            app.ReportId = 0;
+        if (app.LoginFrom == "end" && AppFacade.getCurrentView().id == 'scene-salon' && typeof (app.ReportId) != 'undefined') {
+            app.LoginFrom = "";
             AppFacade.askForReport();
         }
     },
@@ -425,9 +425,17 @@ window.AppFacade = {
     },
     submitAnswer: function () {
         if (this.getCurrentSceneId() == "8" && !app.ReportLogged) {
-            app.Report.saveAnswer();
+            app.Report.saveAnswer(function () {
+                if (!AppFacade.isLogin()) {
+                    $("#login").removeClass("hidden");
+                    app.LoginFrom = "end";
+                } else {
+                    AppFacade.askForReport();
+                }
+            });
             app.ReportLogged = true;
         }
+
     },
     showHelp: function (unfinishedQuestions) {
         alert("您还没有回答完全部问题哦");
@@ -438,7 +446,7 @@ window.AppFacade = {
             var currentView = this.getCurrentView();
             app.Router.navigate("Survey/" + step, { "trigger": true });
             currentView.onexit();
-            
+
         } else {
             alert("您还没有答完前面的题目哦");
         }

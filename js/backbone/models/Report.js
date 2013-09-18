@@ -73,7 +73,7 @@ var Report = Backbone.Model.extend({
         var suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(this) });
         return suggestion.get("type");
     },
-    saveAnswer: function () {
+    saveAnswer: function (callback) {
         var requestData = '{ user_answers : \"' + JSON.stringify(AppFacade.getUserAnswers()).replace(/"/g, '\'') + '\", quizId : 0 , str_user : \"' + JSON.stringify(app.User).replace(/"/g, '\'') + ' \" }';
         var self = this;
 
@@ -86,16 +86,17 @@ var Report = Backbone.Model.extend({
             contentType: "application/json;charset=utf-8",
             success: function (data) {
                 app.ReportId = $.parseJSON(data.d).quizId;
+                callback();
             }
         });
     },
     getReport: function () {
         var userAnswers = AppFacade.getUserAnswers();
         var stringyfied = JSON.stringify(userAnswers).replace(/"/g, '\'');
-        if (typeof (app.ReportId) == 'undefined') {
-            app.ReportId = 0;
-        }
         var requestData = '{ user_answers : \"' + stringyfied + '\", quizId : ' + app.ReportId + ', str_user : \"' + JSON.stringify(app.User).replace(/"/g, '\'') + ' \" }';
+        if (typeof (app.ReportId) == 'undefined') {
+            requestData = '{ user_answers : \"' + stringyfied + '\", quizId : 0 , str_user : \"' + JSON.stringify(app.User).replace(/"/g, '\'') + ' \" }';
+        }
         var self = this;
 
         $.ajax({

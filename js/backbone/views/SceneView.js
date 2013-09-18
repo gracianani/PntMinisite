@@ -1590,11 +1590,7 @@ var SalonView = Backbone.View.extend( {
 
     	AppFacade.saveToCookie();
         AppFacade.submitAnswer();
-    	if ( AppFacade.isLogin() ) {
-			AppFacade.askForReport();
-		} else {
-			$("#login").removeClass("hidden");
-		}
+    	
         
     },
     onClickChatIcon: function(event) {
