@@ -80,7 +80,7 @@ $.prototype.tooltip = function() {
 	$(this).on(startEv, function(e) {
 		tooltipDiv.show();
 		tooltipDiv.find('.content').html($(this).attr('title'));
-		var offset = $(this).offset();
+		var offset = $(e.currentTarget).offset();
 		tooltipDiv.css('left',offset.left).css('top',offset.top - tooltipDiv.height()-20);
 		e.stopPropagation();
 	});
