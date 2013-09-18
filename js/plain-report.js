@@ -42,6 +42,10 @@ requirejs(['../backbone/utils/plugins', '../backbone/models/Avatar', '../backbon
                 var suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(this) });
                 return suggestion.get("suggestion_text");
             },
+            getSuggestionType: function () {
+		        var suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(this) });
+		        return suggestion.get("type");
+		    },
             fillSuggestions: function (suggestions) {
                 console.log(suggestions);
                 this.LifeStyleSuggestions = suggestions.lifestyle_suggestions;

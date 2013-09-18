@@ -63,11 +63,14 @@
         			<div class="score-inside"></div>
         			<div id="report-score-title">秀发健康指数</div>
         			<div id="report-score-number">{{Score}}</div>
+        			<img id="report-score-underline" src="img/scoreunderline.png" />
         		</div>
         		<h2 class="score-{{level}}">{{ScoreTitle}}</h2>
         		<p>{{#ScoreSuggestions}}{{.}}{{/ScoreSuggestions}}</p>
         	</div>
-
+			<div id="report-opt">
+        		<div id="defeat">您的秀发迷倒了<span id="defeat-percent">0%</span>的人</div>        
+        	</div>
         	<div id="report-body">
 				<ul id="report-result">
 					<li id="report-result-hair" class="clearfix">
@@ -76,10 +79,10 @@
 						<div class="report-result-body">
 							<ul id="hair-advice">
                                 {{#HairSituationSuggestions}}
-                                <div id="hair-advice-tag">{{answer_text}}</div>
-                                <ul>
+                                <div class="hair-advice-tag">{{answer_text}}</div>
+                                <ul class="advice-subList">
                                     {{#suggestion_ids}}
-                                        <li>{{getSuggestionText}} </li>
+                                        <li class="{{getSuggestionType}}"><i></i> {{{getSuggestionText}}} </li>
                                     {{/suggestion_ids}}
                                 </ul>
                                 {{/HairSituationSuggestions}}
@@ -92,10 +95,10 @@
 						<div class="report-result-body">
 							<ul id="cleaning-advice">
 								{{#HairCareSuggestions}}
-                                <div id="hair-advice-tag">{{scene_text}}</div>
-                                <ul>
+                                <div class="hair-advice-tag">{{scene_text}}</div>
+                                <ul class="advice-subList">
                                     {{#suggestion_ids}}
-                                        <li>{{getSuggestionText}} </li>
+                                        <li class="{{getSuggestionType}}"><i></i> {{{getSuggestionText}}} </li>
                                     {{/suggestion_ids}}
                                 </ul>
                                 {{/HairCareSuggestions}}
@@ -108,10 +111,10 @@
 						<div class="report-result-body">
 							<ul id="life-advice">
                                 {{#LifeStyleSuggestions}}
-                                <div id="hair-advice-tag">{{scene_text}}</div>
-                                <ul>
+                                <div class="hair-advice-tag">{{scene_text}}</div>
+                                <ul class="advice-subList">
                                     {{#suggestion_ids}}
-                                        <li>{{getSuggestionText}} </li>
+                                        <li class="{{getSuggestionType}}"><i></i> {{{getSuggestionText}}}  </li>
                                     {{/suggestion_ids}}
                                 </ul>
                                 {{/LifeStyleSuggestions}}

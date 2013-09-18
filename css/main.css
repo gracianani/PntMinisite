@@ -1134,12 +1134,13 @@ scenes
 	position: absolute;
 	left: 50%;
 	top:50%;
-	width: 120px;
+	width: 160px;
 	height: 60px;
 	margin-left: -100px;
 	text-align: center;
-	padding: 20px 40px;
+	padding: 20px 20px;
 	color: #e4600d;
+	font-size: 24px;
 }
 .life-icon {
 	position: absolute;
@@ -1204,11 +1205,11 @@ scenes
 	background-size:100% auto;
 }
 #life-center {
-	width: 200px;
-	height: 200px;
+	width: 250px;
+	height: 250px;
 	position: absolute;
-	margin-left: -100px;
-	margin-top: -100px;
+	margin-left: -125px;
+	margin-top: -125px;
 	left: 50%;
 	top:50%;
 	border-radius: 50%;
@@ -3831,15 +3832,19 @@ Cleaning
 	top:15px;
 }
 .plain-report #report-score-title {
-	top: 35px;
+	top: 25px;
 	font-size: 18px;
 	line-height: 24px;
 }
 .plain-report #report-score-number {
-	top:50px;
+	top:35px;
 }
 .plain-report #report h2 {
 	padding-top: 10px;
+}
+.plain-report #report-opt {
+	height: 60px;
+	padding-top: 20px;
 }
 .plain-report #report {
 	width: 800px;
