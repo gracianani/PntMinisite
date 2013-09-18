@@ -41,8 +41,8 @@ SplashView.prototype = {
 			self.splash.find('.item').css('visibility','visible');
 			AnimationHandler.animateIn();
 		});
-		
-		
+
+        app.LoginFrom = "begin";
 		this.splash.find('.splash-gender-female,.splash-gender-male').on("click",function(){
 			var answerId = parseInt($(this).attr('data-answer-id'));
 			app.Views.BasicInfoView.model.setAnswer(22, answerId, true);
@@ -61,6 +61,7 @@ SplashView.prototype = {
 		$('#main').show();
 		this.splash.fadeOut();
 		window.AppFacade.initBasicFrame();
+		app.LoginFrom = "";
 	}
 };
 var LoadingView = function(){

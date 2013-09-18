@@ -198,7 +198,7 @@ window.AppFacade = {
         QC.Login.getMe(function (openId, accessToken) {
             app.User.qq_uid = openId;
             app.User.qq_token = accessToken;
-            if (opts.btnId == "splash-qq" && typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
+            if (app.LoginFrom == "begin" && typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
                 // 在开始页面 login by qq
                 app.Report.getReportByUserId();
             }
@@ -243,7 +243,7 @@ window.AppFacade = {
         QC.Login.getMe(function (openId, accessToken) {
             app.User.qq_uid = openId;
             app.User.qq_token = accessToken;
-            if (opts.btnId == "qqlogin" && AppFacade.getCurrentView().id == 'scene-salon' && typeof (app.ReportId) == 'undefined') {
+            if (app.LoginFrom == "end" && AppFacade.getCurrentView().id == 'scene-salon' && typeof (app.ReportId) == 'undefined') {
                 app.ReportId = 0;
                 AppFacade.askForReport();
             }

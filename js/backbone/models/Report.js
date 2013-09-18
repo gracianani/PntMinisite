@@ -33,12 +33,14 @@ var Report = Backbone.Model.extend({
         this.HairSituationSuggestions = suggestions.hairsituation_suggestions;
 
         this.Score = suggestions.score;
+        this.Ranking = suggestions.ranking;
+
         var gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 1 });
 
         if (suggestions.score > 50 && suggestions.score < 80) {
             gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 2 });
         }
-        else if (suggestions.score > 80) {
+        else if (suggestions.score >= 80) {
             gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 3 });
         }
         this.ShareText = gSuggestion.get("share_text_begin_with");
@@ -88,7 +90,12 @@ var Report = Backbone.Model.extend({
         });
     },
     getReport: function () {
-        var requestData = '{ user_answers : \"' + JSON.stringify(AppFacade.getUserAnswers()).replace(/"/g, '\'') + '\", quizId : ' + app.ReportId + ', str_user : \"' + JSON.stringify(app.User).replace(/"/g, '\'') + ' \" }';
+        var userAnswers = AppFacade.getUserAnswers();
+        var stringyfied = JSON.stringify(userAnswers).replace(/"/g, '\'');
+        if (typeof (app.ReportId) == 'undefined') {
+            app.ReportId = 0;
+        }
+        var requestData = '{ user_answers : \"' + stringyfied + '\", quizId : ' + app.ReportId + ', str_user : \"' + JSON.stringify(app.User).replace(/"/g, '\'') + ' \" }';
         var self = this;
 
         $.ajax({
