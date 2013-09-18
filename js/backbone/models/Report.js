@@ -67,6 +67,10 @@ var Report = Backbone.Model.extend({
         var suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(this) });
         return suggestion.get("suggestion_text");
     },
+    getSuggestionType: function() {
+	    var suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(this) });
+        return suggestion.get("type");
+    },
     getReport: function () {
         var requestData = '{ user_answers : \"' + JSON.stringify(AppFacade.getUserAnswers()).replace(/"/g, '\'') + '\", quizId : 0, str_user : \"' + JSON.stringify(app.User).replace(/"/g, '\'') + ' \" }';
         var self = this;
@@ -88,6 +92,7 @@ var Report = Backbone.Model.extend({
         var avatar = app.Views.AvatarView.model;
         gender = avatar.gender;
         color = avatar.hairColor;
+        console.log(app.ReportId);
         $.ajax({
             type: "POST",
             url: 'WeiboWebServices.asmx/Share',

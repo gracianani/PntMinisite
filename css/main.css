@@ -3424,7 +3424,6 @@ Cleaning
 	-moz-border-radius:  50%;
 	border-radius:  50%;
 	margin-right: 30px;	
-	box-shadow:5px 5px 0 rgba(0,0,0,0.3);
 }
 .score-inside {
 	width: 160px;
@@ -3437,8 +3436,8 @@ Cleaning
 #report-score-title {
 	position: absolute;
 	width: 100%;
-	top:30px;
-	font-size: 18px;
+	top:25px;
+	font-size: 16px;
 	line-height: 30px;
 	text-align: center;
 	color: #fff;
@@ -3446,32 +3445,34 @@ Cleaning
 #report-score-number {
 	width: 100%;
 	position: absolute;
-	top:45px;
+	top:33px;
 	text-align: center;
 	font-size: 80px;
 	color: #FFF;
-	text-shadow:2px 2px 0 rgba(0,0,0,0.3);
+	font-weight: bold;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+	letter-spacing: -10px;
 }
-/*
+
 .score-low #report-score-number {
-	color: #d55b1c;
+	color: #cbaa66;
 }
 .score-medium #report-score-number {
-	color: #3cb893;
+	color: #ffe96c;
 }
 .score-high #report-score-number {
-	color: #ae6a10;
+	color: #ffc600;
 }
-*/
+
 #report-score.score-low {
-	background: #d55b1c;
+	background: #385561;
 }
 #report-score.score-high {
-	background: #3cb893;
+	background: #d55b1c;
 
 }
 #report-score.score-medium {
-	background: #ae6a10;
+	background: #2a82a6;
 
 }
 #report-header {
@@ -3556,21 +3557,27 @@ Cleaning
 	background-color:#f4b23c;
 	
 }
+#report-score-underline {
+	position: absolute;
+	bottom: 16px;
+	left: 50%;
+	margin-left: -36px;
+}
 #report-header p {
 	font-size: 14px;
 	line-height: 24px;
 	margin-top: 20px;
 }
 #report h2.score-high {
-	color: #3cb893;
+	color: #d55b1c;
 
 }
 #report h2.score-medium {
-	color: #ae6a10;
+	color: #2a82a6;
 
 }
 #report h2.score-low {
-	color: #d55b1c;
+	color: #385561;
 
 }
 #report h2 {
@@ -3612,7 +3619,6 @@ Cleaning
 	width: 500px;
 	margin-left: 0px;
 	border-radius: 5px;
-	display: none;
 	position: relative;
 }
 .ui-progressbar-value {
@@ -3672,11 +3678,11 @@ Cleaning
 	margin-bottom: 0;
 	padding-bottom: 10px;
 }
-#hair-advice-tag {
+.hair-advice-tag {
 	color: #ae6a10;
 	font-size: 24px;
 }
-#hair-advice-tag span {
+.hair-advice-tag span {
 	background: #dfb65e;
 	color: #FFF;
 	font-size: 14px;
@@ -3697,8 +3703,10 @@ Cleaning
 .report-result-body li {
 	margin-bottom: 10px;
 	list-style: disc;
-	margin-left: 20px;
+	margin-left: 40px;
 	color: #666;
+	font-size: 16px;
+	line-height: 26px;
 }
 #report-product-basic {
 	height: 327px;
@@ -3714,6 +3722,20 @@ Cleaning
 	margin: 0;
 	padding: 0;
 	list-style: none;
+}
+.advice-subList {
+	margin: 10px 0;
+	padding: 0;
+}
+.advice-subList i {
+	width: 26px;
+	height: 18px;
+	display: inline-block;
+	background:url(../img/reporticon.png) no-repeat center top;
+}
+.advice-subList li {
+	list-style: none;
+	text-indent: -30px;
 }
 .report-product-item {
 	height: 327px;

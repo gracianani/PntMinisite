@@ -10,8 +10,7 @@ var ReportView = Backbone.View.extend({
 
     events: {
         "click #restartQuiz": "onClickRestart",
-        "click #report-product-more": "onClickMoreProduct",
-        "click #saveQuiz": "onClickSaveQuiz"
+        "click #report-product-more": "onClickMoreProduct"
     },
 
     initialize: function () {
@@ -19,6 +18,8 @@ var ReportView = Backbone.View.extend({
         this.on("finishloading", this.render);
         this.on("saveReportComplete", this.onSaveReportComplete);
         this.on("render", this.postRender);
+        
+        
 
     },
 
@@ -30,6 +31,7 @@ var ReportView = Backbone.View.extend({
         this.trigger("render");
         this.setShareConfig();
         _hmt.push(['_trackPageview', '/Report']);
+        
         return this;
     },
     postRender: function () {
@@ -46,6 +48,8 @@ var ReportView = Backbone.View.extend({
                 });
             });
         });
+        this.model.shareReport();
+        this.showProgress();
     },
     onexit: function () {
         this.resetShareConfig();
@@ -62,9 +66,7 @@ var ReportView = Backbone.View.extend({
     onClickRestart: function () {
         AppFacade.gotoScene(1);
     },
-    onClickSaveQuiz: function (e) {
-    	this.model.shareReport();
-        $(e.currentTarget).hide();
+    showProgress: function () {
         var progressbar = $('#progressbar');
         var progressLabel = $('#progressbar .progress-label');
         progressbar.show();
@@ -112,7 +114,7 @@ var ReportView = Backbone.View.extend({
         });
     },
     setShareConfig: function () {
-
+		
         var summary = this.model.ShareText + " 我的“秀发健康指数”是 " + this.model.Score +
     	"，" + this.model.ScoreTitle +
     	"！" + "你的头发能得几分？";
