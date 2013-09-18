@@ -1582,7 +1582,9 @@ var SalonView = Backbone.View.extend( {
     		AppFacade.showHelp(unfinishedQuestion);
 	    	return;
     	}
+
     	AppFacade.saveToCookie();
+        AppFacade.submitAnswer();
     	if ( AppFacade.isLogin() ) {
 			AppFacade.askForReport();
 		} else {

@@ -61,23 +61,39 @@ var Report = Backbone.Model.extend({
         app.Router.navigate("Report/" + this.QuizId);
         app.ReportId = this.QuizId;
         app.Views.ReportView.trigger("finishloading");
-        
+
     },
     getSuggestionText: function () {
         var suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(this) });
         return suggestion.get("suggestion_text");
     },
-    getSuggestionType: function() {
-	    var suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(this) });
+    getSuggestionType: function () {
+        var suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(this) });
         return suggestion.get("type");
     },
-    getReport: function () {
-        var requestData = '{ user_answers : \"' + JSON.stringify(AppFacade.getUserAnswers()).replace(/"/g, '\'') + '\", quizId : 0, str_user : \"' + JSON.stringify(app.User).replace(/"/g, '\'') + ' \" }';
+    saveAnswer: function () {
+        var requestData = '{ user_answers : \"' + JSON.stringify(AppFacade.getUserAnswers()).replace(/"/g, '\'') + '\", quizId : 0 , str_user : \"' + JSON.stringify(app.User).replace(/"/g, '\'') + ' \" }';
         var self = this;
 
         $.ajax({
             type: "POST",
-            url: 'WeiboWebServices.asmx/SubmitAnswer',
+            url: 'WeiboWebServices.asmx/LogAnswer',
+            timeout: 5000,
+            data: requestData,
+            datatType: "json",
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+                app.ReportId = $.parseJSON(data.d).quizId;
+            }
+        });
+    },
+    getReport: function () {
+        var requestData = '{ user_answers : \"' + JSON.stringify(AppFacade.getUserAnswers()).replace(/"/g, '\'') + '\", quizId : ' + app.ReportId + ', str_user : \"' + JSON.stringify(app.User).replace(/"/g, '\'') + ' \" }';
+        var self = this;
+
+        $.ajax({
+            type: "POST",
+            url: 'WeiboWebServices.asmx/GetSuggestions',
             timeout: 5000,
             data: requestData,
             datatType: "json",
@@ -88,14 +104,13 @@ var Report = Backbone.Model.extend({
             }
         });
 
-        
+
     },
 
     shareReport: function () {
         var avatar = app.Views.AvatarView.model;
         gender = avatar.gender;
         color = avatar.hairColor;
-        console.log(app.ReportId);
         $.ajax({
             type: "POST",
             url: 'WeiboWebServices.asmx/Share',
@@ -133,7 +148,9 @@ var Report = Backbone.Model.extend({
                 var response = $.parseJSON(data.d);
                 AppFacade.setUserAnswers($.parseJSON(data.d).user_answers);
                 AppFacade.saveToCookie();
+                app.ReportId = reportId;
                 self.loadSuggestions(response.suggestions);
+                self.shareReport();
             },
             timeout: function () {
                 alert("请求超时，请稍后再试");
@@ -159,11 +176,11 @@ var Report = Backbone.Model.extend({
             datatType: "json",
             contentType: "application/json;charset=utf-8",
             success: function (data) {
-                var response = $.parseJSON(data.d);
-                app.ReportId = response.report_id;
+                app.ReportId = $.parseJSON(data.d).report_id;
+                self.shareReport();
                 AppFacade.setUserAnswers($.parseJSON(data.d).user_answers);
                 AppFacade.saveToCookie();
-                self.loadSuggestions(response.suggestions);
+                self.loadSuggestions($.parseJSON(data.d).suggestions);
             },
             timeout: function () {
                 alert("请求超时，请稍后再试");

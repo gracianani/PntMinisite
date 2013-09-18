@@ -30,6 +30,7 @@ window.AppFacade = {
         }
 
     },
+
     setStartView: function () {
         var isStartFromSplash = false;
         if (this.currentView == undefined) {
@@ -422,6 +423,12 @@ window.AppFacade = {
             alert("您还有未完成的题目，请仔细检查一下哦！");
         }
     },
+    submitAnswer: function () {
+        if (this.getCurrentSceneId() == "8" && !app.ReportLogged) {
+            app.Report.saveAnswer();
+            app.ReportLogged = true;
+        }
+    },
     showHelp: function (unfinishedQuestions) {
         alert("您还没有回答完全部问题哦");
         $('.help').show();
@@ -431,6 +438,7 @@ window.AppFacade = {
             var currentView = this.getCurrentView();
             app.Router.navigate("Survey/" + step, { "trigger": true });
             currentView.onexit();
+            
         } else {
             alert("您还没有答完前面的题目哦");
         }
