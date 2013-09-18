@@ -287,6 +287,7 @@ public class WeiboWebServices : System.Web.Services.WebService {
                         command.Parameters.AddWithValue("WeiboUID", user.weibo_uid);
                     }
                     quizId = Convert.ToInt32(command.ExecuteScalar());
+                   
                 }
             }
         }
@@ -295,14 +296,14 @@ public class WeiboWebServices : System.Web.Services.WebService {
             quizId = quizId,
             haircare_suggestions = (from suggestion in suggestionIds[SuggestionGroupHelper.HairCare]
                                     group suggestion by new { sceneId = suggestion.scene_id, sceneText = suggestion.scene_text } into scene
-                                    select new Suggestion { scene_id = scene.Key.sceneId, scene_text = scene.Key.sceneText, suggestion_ids = scene.Select(i => i.suggestion_ids[0]).ToList() }).ToList(),
+                                    select new Suggestion { scene_id = scene.Key.sceneId, scene_text = scene.Key.sceneText, suggestion_ids = scene.Select(i => i.suggestion_ids[0]).Distinct().ToList() }).ToList(),
             suggested_products = string.Join(",", productIds),
             lifestyle_suggestions = (from suggestion in suggestionIds[SuggestionGroupHelper.LifeStyle]
                                      group suggestion by new { sceneId = suggestion.scene_id, sceneText = suggestion.scene_text } into scene
-                                     select new Suggestion { scene_id = scene.Key.sceneId, scene_text = scene.Key.sceneText, suggestion_ids = scene.Select(i => i.suggestion_ids[0]).ToList() }).ToList(),
+                                     select new Suggestion { scene_id = scene.Key.sceneId, scene_text = scene.Key.sceneText, suggestion_ids = scene.Select(i => i.suggestion_ids[0]).Distinct().ToList() }).ToList(),
             hairsituation_suggestions = ( from suggestion in suggestionIds[SuggestionGroupHelper.HairSituation]
                                           group suggestion by new { ansId = suggestion.answer_id, ansText = suggestion.answer_text } into ans
-                                          select new Suggestion { answer_id = ans.Key.ansId, answer_text = ans.Key.ansText, suggestion_ids = ans.Select(i => i.suggestion_ids[0]).ToList() }).ToList(),
+                                          select new Suggestion { answer_id = ans.Key.ansId, answer_text = ans.Key.ansText, suggestion_ids = ans.Select(i => i.suggestion_ids[0]).Distinct().ToList() }).ToList(),
             score = Convert.ToInt32( score/3 )
         };
         return serializer.Serialize(quizResponse);
@@ -344,8 +345,13 @@ public class WeiboWebServices : System.Web.Services.WebService {
     [WebMethod]
     public bool Share(int report_id)
     {
-        WebsiteToImage websiteToImage = new WebsiteToImage( ConfigurationManager.AppSettings["BaseUrl"] + "report.html?reportId=" + report_id, string.Format( Server.MapPath("reports")+"\\report_{0}.png", report_id));
-        websiteToImage.Generate();
+        var imageUrl = string.Format( Server.MapPath("reports")+"\\report_{0}.png", report_id);
+        if (!File.Exists(imageUrl))
+        {
+            var pageUrl = ConfigurationManager.AppSettings["BaseUrl"] + "report.html?reportId=" + report_id;
+            WebsiteToImage websiteToImage = new WebsiteToImage(pageUrl, imageUrl);
+            websiteToImage.Generate();
+        }
         return true;
     }
 

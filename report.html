@@ -74,10 +74,14 @@
 						<div class="report-result-icon">
 						</div>
 						<div class="report-result-body">
-							<div id="hair-advice-tag">{{#HairProblems}} {{.}} {{/HairProblems}}</div>
 							<ul id="hair-advice">
                                 {{#HairSituationSuggestions}}
-                                <li>{{suggestion_text}}</li>
+                                <div id="hair-advice-tag">{{answer_text}}</div>
+                                <ul>
+                                    {{#suggestion_ids}}
+                                        <li>{{getSuggestionText}} </li>
+                                    {{/suggestion_ids}}
+                                </ul>
                                 {{/HairSituationSuggestions}}
 							</ul>
 						</div>
@@ -88,7 +92,12 @@
 						<div class="report-result-body">
 							<ul id="cleaning-advice">
 								{{#HairCareSuggestions}}
-                                <li>{{suggestion_text}}</li>
+                                <div id="hair-advice-tag">{{scene_text}}</div>
+                                <ul>
+                                    {{#suggestion_ids}}
+                                        <li>{{getSuggestionText}} </li>
+                                    {{/suggestion_ids}}
+                                </ul>
                                 {{/HairCareSuggestions}}
 							</ul>
 						</div>
@@ -98,8 +107,13 @@
 						</div>
 						<div class="report-result-body">
 							<ul id="life-advice">
-								{{#LifeStyleSuggestions}}
-                                <li>{{suggestion_text}}</li>
+                                {{#LifeStyleSuggestions}}
+                                <div id="hair-advice-tag">{{scene_text}}</div>
+                                <ul>
+                                    {{#suggestion_ids}}
+                                        <li>{{getSuggestionText}} </li>
+                                    {{/suggestion_ids}}
+                                </ul>
                                 {{/LifeStyleSuggestions}}
 							</ul>
 						</div>
@@ -142,12 +156,10 @@
         </script>
 
 		<script src="js/vendor/jquery-1.10.2.min.js"></script>
-        
-         <script src="js/backbone/utils/plugins.js" type="text/javascript"></script>
+        <script src="js/backbone/utils/plugins.js" type="text/javascript"></script>
         <script src="js/vendor/underscore.js" type="text/javascript"></script>
         <script src="js/vendor/backbone.js" type="text/javascript"></script>
         <script src="js/vendor/mustache.js" type="text/javascript"></script>
-        
         <script src="js/vendor/require.min.js" data-main="js/plain-report.js"></script>
 
     </body>

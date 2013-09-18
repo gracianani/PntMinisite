@@ -61,7 +61,7 @@ var Report = Backbone.Model.extend({
         app.Router.navigate("Report/" + this.QuizId);
         app.ReportId = this.QuizId;
         app.Views.ReportView.trigger("finishloading");
-
+        
     },
     getSuggestionText: function () {
         var suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(this) });
@@ -80,8 +80,11 @@ var Report = Backbone.Model.extend({
             contentType: "application/json;charset=utf-8",
             success: function (data) {
                 self.loadSuggestions($.parseJSON(data.d));
+                self.shareReport();
             }
         });
+
+        
     },
 
     shareReport: function () {
