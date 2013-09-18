@@ -1215,6 +1215,22 @@ scenes
 	border-radius: 50%;
 	background-color: #fad949;
 }
+.life-stress {
+	position: absolute;
+	cursor: pointer;
+}
+#life-stress-high {
+	top:42px;
+	left: 15px;
+}
+#life-stress-medium {
+	top: 10px;
+	left: 90px;
+}
+#life-stress-low {
+	right: 15px;
+	top: 34px;
+}
 
 /**** hint and tooltips *******/
 .hint {
