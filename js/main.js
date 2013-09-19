@@ -163,22 +163,59 @@ window.AppFacade = {
         }
 
     },
-    initQQLogin: function () {
-        QC.Login({//按默认样式插入QQ登录按钮
-            btnId: "qqlogin",
-            size: "A_XL"
-        },
-			window.AppFacade.onQQReportLoginSuccess, window.AppFacade.onQQLogoutSuccess);
+    initSplashLogin: function () {
+        
         QC.Login({//按默认样式插入QQ登录按钮
             btnId: "splash-qq",
             size: "A_L"
         },
 			window.AppFacade.onQQLoginSuccess, window.AppFacade.onQQLogoutSuccess);
-        QC.Login({//按默认样式插入QQ登录按钮
+		WB2.anyWhere(function (W) {
+            W.widget.connectButton({
+                id: "splash-weibo",
+                type: '2,2',
+                callback: {
+                    login: window.AppFacade.onWbLoginSuccess,
+                    logout: window.AppFacade.onWbLooutSuccess
+                }
+            });
+        });
+
+        
+    },
+    initInQuizLogin: function() {
+	    QC.Login({//按默认样式插入QQ登录按钮
             btnId: "inquiz_qqlogin",
-            size: "A_L"
+            size: "A_XL"
         },
 		window.AppFacade.onInQuizQQLoginSuccess, window.AppFacade.onQQLogoutSuccess);
+		WB2.anyWhere(function (W) {
+            W.widget.connectButton({
+                id: "inquiz_wb_connection_btn",
+                type: '1,1',
+                callback: {
+                    login: window.AppFacade.onWbInQuizLoginSuccess,
+                    logout: window.AppFacade.onWbLooutSuccess
+                }
+            });
+        });
+    },
+    initFinishLogin: function() {
+	    QC.Login({//按默认样式插入QQ登录按钮
+            btnId: "qqlogin",
+            size: "A_XL"
+        },
+			window.AppFacade.onQQReportLoginSuccess, window.AppFacade.onQQLogoutSuccess);
+		WB2.anyWhere(function (W) {
+            W.widget.connectButton({
+                id: "wb_connect_btn",
+                type: '1,1',
+                callback: {
+                    login: window.AppFacade.onWbReportLoginSuccess,
+                    logout: window.AppFacade.onWbLooutSuccess
+                }
+            });
+        });
     },
     onQQLoginSuccess: function (reqData, opts) {
         _logoutTemplate = [
@@ -192,7 +229,7 @@ window.AppFacade = {
 				    figureurl: reqData.figureurl
 				})
 		);
-        $("#social_login").hide();
+        //$("#social_login").hide();
         $("#splash-login").hide();
         var self = this;
         QC.Login.getMe(function (openId, accessToken) {
@@ -216,7 +253,7 @@ window.AppFacade = {
 				    figureurl: reqData.figureurl
 				})
 		);
-        $("#social_login").hide();
+        //$("#social_login").hide();
         $("#inquiz-login").hide();
         var self = this;
         QC.Login.getMe(function (openId, accessToken) {
@@ -236,7 +273,7 @@ window.AppFacade = {
 				           figureurl: reqData.figureurl
 				       })
 		);
-        $("#social_login").hide();
+        //$("#social_login").hide();
         $("#login").addClass("hidden");
 
         var self = this;
@@ -256,53 +293,12 @@ window.AppFacade = {
         window.location.href = 'http://pantene.app.social-touch.com/';
     },
     initWbLogin: function () {
-        WB2.anyWhere(function (W) {
-            W.widget.connectButton({
-                id: "splash-weibo",
-                type: '2,2',
-                callback: {
-                    login: window.AppFacade.onWbLoginSuccess,
-                    logout: window.AppFacade.onWbLooutSuccess
-                }
-            });
-        });
-
-
-        WB2.anyWhere(function (W) {
-            W.widget.connectButton({
-                id: "wb_connect_btn",
-                type: '1,1',
-                callback: {
-                    login: window.AppFacade.onWbReportLoginSuccess,
-                    logout: window.AppFacade.onWbLooutSuccess
-                }
-            });
-        });
-
-        WB2.anyWhere(function (W) {
-            W.widget.connectButton({
-                id: "inquiz_wb_connection_btn",
-                type: '1,1',
-                callback: {
-                    login: window.AppFacade.onWbInQuizLoginSuccess,
-                    logout: window.AppFacade.onWbLooutSuccess
-                }
-            });
-        });
+        
     },
     weiboLogout: function () {
         WB2.logout(function () {
             window.AppFacade.onWbLogoutSuccess();
-            WB2.anyWhere(function (W) {
-                W.widget.connectButton({
-                    id: "wb_connect_btn",
-                    type: '1,1',
-                    callback: {
-                        login: window.AppFacade.onWbLoginSuccess,
-                        logout: window.AppFacade.onWbLooutSuccess
-                    }
-                });
-            });
+            
         });
 
     },
@@ -354,7 +350,7 @@ window.AppFacade = {
 		);
 
         $("#inquiz-login").addClass("hidden");
-        $("#social_login").hide();
+        //$("#social_login").hide();
 
         app.User.weibo_uid = o.id;
 
@@ -427,6 +423,7 @@ window.AppFacade = {
         if (this.getCurrentSceneId() == "8" && !app.ReportLogged) {
             app.Report.saveAnswer(function () {
                 if (!AppFacade.isLogin()) {
+                	AppFacade.initFinishLogin();
                     $("#login").removeClass("hidden");
                     app.LoginFrom = "end";
                 } else {
@@ -522,7 +519,7 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
 
                         app.Router = new Router();
                         Backbone.history.start();
-
+						console.log("router start");
                         var isTrigger = typeof (app.ReportId) == 'undefined';
                         if (isTrigger) {
                             AppFacade.loadFromCookie(true);

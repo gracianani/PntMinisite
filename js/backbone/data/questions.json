@@ -284,7 +284,7 @@
 		"question_id" : 9,
 		"text" : "出门是否注意防晒?",
 		"question_type" : "single",
-		"name" : "drinking",
+		"name" : "sun",
 		"answers" : [
 			{
                 "answer_id": 36,

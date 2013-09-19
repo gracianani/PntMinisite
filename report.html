@@ -128,12 +128,14 @@
         			最适合您的潘婷系列
         		</div>
 				<div id="report-product-basic">
-					<ul id="report-product-list">
-						{{#BestProduct}}
-						<li class="report-product-item current">
-							<img src="img/product/{{img}}" width="708" height="327" />
+					<ul id="report-product-list" class="clearfix">
+						{{#ProductSuggestions}}
+						<li class="report-product-item">
+							<a target="_blank" href="{{url}}">
+							<img src="img/product/{{img}}" title="{{product_name}}" />
+							</a>
 						</li>
-						{{/BestProduct}}
+						{{/ProductSuggestions}}
 					</ul>
 				</div>
         	</div>

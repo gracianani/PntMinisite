@@ -88,7 +88,6 @@ LoadingView.prototype = {
 	    $('body').removeClass('loading');
 	   
 		window.AppFacade.setStartView();
-		window.AppFacade.initQQLogin();
-        window.AppFacade.initWbLogin();
+		window.AppFacade.initSplashLogin();
 	}
 };

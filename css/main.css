@@ -280,7 +280,7 @@ login
 	margin: 0;
 	font-size: 12px;
 }
-#login a {
+#inquiz-login a,#login a {
 	
 	margin-bottom: 10px;
 	display: inline-block;
@@ -288,15 +288,12 @@ login
 
 }
 #noLogin {
-	background: #d55b1c;
-	color: #FFF;
+	color: #2470a4;
 	padding: 10px 15px;
-	border-radius: 5px;
-	width: 200px;
+	font-size: 12px;
+
 }
-#noLogin:hover {
-	background-color: #2470a4;
-}
+
 /*=====================
 profile 
 =====================*/
@@ -361,6 +358,10 @@ profile
 }
 #prifile-login {
 	float: right;
+}
+#social_login {
+	color: #fad949;
+	line-height: 34px;
 }
 #share {
 	float: right;
@@ -3792,12 +3793,15 @@ Cleaning
 	border-radius: 10px;
 	float: left;
 	display: inline-block;
-	margin: 10px 0;
+	margin: 10px 15px 10px 0;
 	border: 5px dashed #ffe579;
 }
 .report-product-item img{
 	width: 100%;
 	height: auto;
+}
+.report-product-item:last-child {
+	margin-right: 0;
 }
 #report-product-list .current {
 	display: block;
@@ -3805,6 +3809,7 @@ Cleaning
 	clear: both;
 	width: 100%;
 	border-radius: 10px;
+	margin-right: 0;
 }
 #report-product-list .current  img {
 	width: 100%;

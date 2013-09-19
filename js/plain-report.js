@@ -67,16 +67,15 @@ requirejs(['../backbone/utils/plugins', '../backbone/models/Avatar', '../backbon
                 this.QuizId = suggestions.quizId;
 
                 var productIds = suggestions.suggested_products.split(",");
-                for (var i = 0; i < productIds.length; i++) {
-                    var suggestion = app.ProductRepo.findWhere({
-                        product_id: parseInt(productIds[i])
-                    });
-                    if (typeof suggestion !== 'undefined') {
-                        this.ProductSuggestions.push(suggestion.toJSON());
-                    }
-                }
+                for (var i = 0; i< 3 && i < productIds.length; i++) {
+		            var suggestion = app.ProductRepo.findWhere({
+		                product_id: parseInt(productIds[i])
+		            });
+		            if (typeof suggestion !== 'undefined') {
+		                this.ProductSuggestions.push(suggestion.toJSON());
+		            }
+		        }
 
-                this.BestProduct.push(this.ProductSuggestions[0]);
             },
             fillAvatar: function (options) {
                 this.gender = options.gender;
@@ -100,6 +99,7 @@ requirejs(['../backbone/utils/plugins', '../backbone/models/Avatar', '../backbon
                         self.fillSuggestions($.parseJSON(data.d).suggestions);
                         self.fillAvatar($.parseJSON(data.d).avatar);
                         $("#report").html(Mustache.render($('#report-template').html(), self));
+                        $('.report-product-item:first').addClass('current');
                         $("#report").append("<div id='loadCompleteFlag'></div>");
                     }
                 });

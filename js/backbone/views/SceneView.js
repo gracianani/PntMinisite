@@ -46,6 +46,7 @@ var MainView = Backbone.View.extend({
 	  	
     },
     showInQuizLogin : function() {
+    	AppFacade.initInQuizLogin();
         $("#inquiz-login").removeClass("hidden");
         app.LoginFrom = "middle";
     },
@@ -54,6 +55,7 @@ var MainView = Backbone.View.extend({
         app.LoginFrom = "";
     },
     showLogin : function() {
+    	AppFacade.initFinishLogin();
         $("#login").removeClass("hidden");
         app.LoginFrom = "end";
     },
@@ -80,7 +82,7 @@ var MainView = Backbone.View.extend({
 	    
     },
     onClickLogo : function() {
-	    window.location.href="";
+	    AppFacade.gotoScene(1);
     },
     onClickHelpLayer : function(e){
 	    $(e.currentTarget).hide();
@@ -1523,7 +1525,7 @@ var BasicInfoView = Backbone.View.extend( {
 
     },
     initAnswerTooltip: function () {
-        this.$el.find('.clothes').tooltip();
+        this.$el.find('#career-clothes .clothes').tooltip();
     }
 });
 
