@@ -25,14 +25,14 @@ var AvatarView = Backbone.View.extend({
         else {
             this.$el.prepend(Mustache.render(this.template, this.model));
         }
-        if (!this.blinkTimer) {
+        
             this.startBlink();
-        }
 
         return this;
     },
     sad: function () {
         this.$el.find('.face').attr('class', 'face face-' + this.model.gender + '-3');
+        this.stopBlink();
     },
     smile: function () {
         this.$el.find('.face').attr('class', 'face');
@@ -47,14 +47,17 @@ var AvatarView = Backbone.View.extend({
 
     },
     startBlink: function () {
-        var self = this;
-        this.blinkTimer = setInterval(function () {
-            self.blink();
-        }, 3000);
+    	if (!this.blinkTimer) {
+	        var self = this;
+	        this.blinkTimer = setInterval(function () {
+	            self.blink();
+	        }, 3000);
+        }
     },
     stopBlink: function () {
         if (this.blinkTimer) {
             clearInterval(this.blinkTimer);
+            this.blinkTimer = null;
         }
     }
 

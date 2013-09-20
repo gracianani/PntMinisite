@@ -24,11 +24,12 @@ var MainView = Backbone.View.extend({
     },
     processToNextQuestion: function () {
         AppFacade.getCurrentView().next();
-        this.setProgressBar();
+        
         var currentSceneId = AppFacade.getCurrentSceneId();
         if ( currentSceneId > AppFacade.getMaxFinishedSceneId() ) {
 	        AppFacade.maxSceneId = currentSceneId;
         }
+        this.setProgressBar();
     },
     processToPrevQuestion: function() {
         AppFacade.getCurrentView().prev();
@@ -36,13 +37,14 @@ var MainView = Backbone.View.extend({
     },
     setProgressBar: function() {
 	    var stepid = AppFacade.getMaxFinishedSceneId();
-	    $('#progress').attr('class','step'+stepid);
+	    var currentSceneId = AppFacade.getCurrentSceneId();
+	    $('#progress').attr('class','step'+stepid + ' onstep' + currentSceneId);
     },
     onCLickStep: function(e) {
 	  	var item = $(e.currentTarget);
 	  	var step = parseInt(item.attr("data-step"));
 	  	AppFacade.gotoScene(step);
-	  	this.setProgressBar();
+	  	
 	  	
     },
     showInQuizLogin : function() {
@@ -1389,10 +1391,21 @@ var HairQualityView = Backbone.View.extend( {
 				    count++;
 			    }
 		    }, 150);
-		    app.Views.AvatarView.sad();
+		    
+		    
 		}
-	    
+	    this.setFacialExpression();
 
+    },
+    setFacialExpression : function() {
+	    
+	    var problemCount = this.$el.find('.hairproblem-1-selected,.hairproblem-2-selected,.hairproblem-3-selected,.hairproblem-4-selected,.hairproblem-5-selected').size();
+	    if ( problemCount > 2 ) {
+		    app.Views.AvatarView.sad();
+	    } else {
+	    	app.Views.AvatarView.smile();
+		    app.Views.AvatarView.startBlink();
+	    }
     },
     setDegree : function(barEl, degree) {
 	    var draggable = barEl.find(".quality-progree-draggable");

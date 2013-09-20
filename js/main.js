@@ -444,9 +444,8 @@ window.AppFacade = {
             app.Router.navigate("Survey/" + step, { "trigger": true });
             currentView.onexit();
 
-        } else {
-            alert("您还没有答完前面的题目哦");
         }
+        app.Views.MainView.setProgressBar();
     },
     handleError: function (type) {
         window.location.href = "/";

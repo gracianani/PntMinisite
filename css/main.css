@@ -130,7 +130,7 @@ footer
 	min-height: 180px;
 	position: relative;
 	background: url(../img/bottom.png) center top no-repeat;
-	padding-bottom: 85px;
+	padding-bottom: 105px;
 }
 
 #progress {
@@ -138,43 +138,137 @@ footer
 	height: 60px;
 	background: url(../img/progress.png) center top no-repeat;
 	position: absolute;
-	bottom: 105px;
+	bottom: 125px;
 	left: 50%;
 	margin-left: -136px;
 }
-#progress.step2 {
-	background-position: center -60px;
+
+.step2 #progress-content{
+	width:25%;
 }
-#progress.step3 {
-	background-position: center -120px;
+.step3 #progress-content{
+	width:37.5%;
 }
-#progress.step4 {
-	background-position: center -180px;
+.step4 #progress-content{
+	width:50%;
 }
-#progress.step5 {
-	background-position: center -240px;
+.step5 #progress-content{
+	width:62.5%;
 }
-#progress.step6 {
-	background-position: center -300px;
+.step6 #progress-content{
+	width:75%;
 }
-#progress.step7 {
-	background-position: center -360px;
+.step7 #progress-content{
+	width:87.5%;
 }
-#progress.step8 {
-	background-position: center -420px;
+.step8 #progress-content{
+	width:100%;
 }
-#progress.step9 {
-	background-position: center -480px;
+
+.onstep2 #progress-current-pin{
+	left:25%;
+}
+.onstep3 #progress-current-pin{
+	left:37.5%;
+}
+.onstep4 #progress-current-pin{
+	left:50%;
+}
+.onstep5 #progress-current-pin{
+	left:62.5%;
+}
+.onstep6 #progress-current-pin{
+	left:75%;
+}
+.onstep7 #progress-current-pin{
+	left:87.5%;
+}
+.onstep8 #progress-current-pin{
+	left:100%;
 }
 .step {
-	width: 11.1111%;
+	width: 12.5%;
 	height: 60px;
-	
+	position: relative;
 	float: left;
 	display: inline-block;
 	
 	cursor: pointer;
 }
+#progress-content {
+	position: absolute;
+	height: 100%;
+	width: 12.5%;
+	background:url(../img/progress.png) no-repeat left bottom;
+}
+#progress-current-pin {
+	position: absolute;
+	background:url(../img/progress-current-pin.png) no-repeat center bottom;
+	width: 21px;
+	height: 25px;
+	margin-left: -20px;
+	top:-5px;
+	left: 12.5%;
+}
+.steptext {
+	position: absolute;
+	bottom: -30px;
+	line-height: 26px;
+	height: 26px;
+	display: none;
+	margin-left: -50px;
+	width: 100px;
+	text-align: center;
+
+	color: #de5f1c;
+	font-size: 14px;
+
+}
+.steptext span {
+	
+	color: #ddd;
+	font-size: 12px;
+	border-radius: 5px;
+	font-family:  "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+}
+.steptext span em {
+	color: #de5f1c;
+	font-size: 16px;
+	font-style: normal;
+}
+.onstep1 #steptext1{
+	left:6.25%;
+	display: block;
+}
+.onstep2 #steptext2{
+	left:18.75%;
+	display: block;
+}
+.onstep3 #steptext3{
+	left:31.25%;
+	display: block;
+}
+.onstep4 #steptext4{
+	left:43.75%;
+	display: block;
+}
+.onstep5 #steptext5{
+	left:56.25%;
+	display: block;
+}
+.onstep6 #steptext6{
+	left:68.75%;
+	display: block;
+}
+.onstep7 #steptext7{
+	left:81.25%;
+	display: block;
+}
+.onstep8 #steptext8{
+	left:93.75%;
+	display: block;
+}
+
 /*=====================
 main 
 =====================*/
@@ -1145,66 +1239,68 @@ scenes
 }
 .life-icon {
 	position: absolute;
-	width: 130px;
-	height: 130px;
+	background: url(../img/scene/life-icons.png) no-repeat;
 	cursor: pointer;
 	
 	margin-left: -65px;
 	margin-top: -65px;
 }
-.life-icon:hover {
-	transform: scale(1.2);
-	-ms-transform: scale(1.2); /* IE 9 */
-	-webkit-transform: scale(1.2); /* Safari and Chrome */
-}
+#life-work-1.selected{ background-position: 0 0; width: 130px; height: 130px; } 
+#life-work-1{ background-position: 0 -132px; width: 130px; height: 130px; } 
+#life-work-2.selected{ background-position: 0 -264px; width: 130px; height: 130px; } 
+#life-work-2{ background-position: 0 -396px; width: 130px; height: 130px; } 
+#life-work-4.selected{ background-position: 0 -528px; width: 130px; height: 130px; } 
+#life-work-4{ background-position: 0 -660px; width: 130px; height: 130px; } 
+#life-play-5.selected{ background-position: 0 -792px; width: 130px; height: 130px; } 
+#life-play-5{ background-position: 0 -924px; width: 130px; height: 130px; } 
+#life-play-1.selected{ background-position: 0 -1056px; width: 130px; height: 130px; } 
+#life-play-1{ background-position: 0 -1188px; width: 130px; height: 130px; } 
+#life-play-2.selected{ background-position: 0 -1320px; width: 130px; height: 130px; } 
+#life-play-2{ background-position: 0 -1452px; width: 130px; height: 130px; } 
+#life-play-3.selected{ background-position: 0 -1584px; width: 130px; height: 130px; } 
+#life-play-3{ background-position: 0 -1716px; width: 130px; height: 130px; } 
+#life-work-3.selected{ background-position: 0 -1848px; width: 130px; height: 130px; } 
+#life-work-3{ background-position: 0 -1980px; width: 130px; height: 130px; } 
+#life-play-4.selected{ background-position: -131px 0; width: 130px; height: 130px; } 
+#life-play-4{ background-position: -131px -132px; width: 130px; height: 130px; } 
+
 #life-work-1 {
-	background: url(../img/scene/life-air.png) left top no-repeat;
 	left:35%;
 	top:5%;
 }
 #life-work-2 {
-	background: url(../img/scene/life-books.png) left top no-repeat;
 	left:5%;
 	top:25%;
 }
 #life-work-3 {
-	background: url(../img/scene/life-phone.png) left top no-repeat;
 	left: 0%;
 	top:55%;
 }
 #life-work-4 {
-	background: url(../img/scene/life-desktop.png) left top no-repeat;
 	left:10%;
 	top:80%;
 }
 #life-play-1 {
-	background: url(../img/scene/life-game.png) left top no-repeat;
 	left:65%;
 	top:5%;
 }
 #life-play-2 {
-	background: url(../img/scene/life-movie.png) left top no-repeat;
 	left:92%;
 	top:24%;
 }
 #life-play-3 {
-	background: url(../img/scene/life-party.png) left top no-repeat;
 	left:100%;
 	top:50%;
 }
 #life-play-4 {
-	background: url(../img/scene/life-sport.png) left top no-repeat;
 	left: 90%;
 	top:80%;
 }
 #life-play-5 {
-	background: url(../img/scene/life-food.png) left top no-repeat;
 	left:50%;
 	top:95%;
 }
-#life-icons .life-icon {
-	background-size:100% auto;
-}
+
 #life-center {
 	width: 250px;
 	height: 250px;
@@ -1245,13 +1341,13 @@ scenes
 	display: none;
 }
 #tooltip {
-	background-color: #fad949;
+	background-color: #e1471c;
 	border-radius: 60px;
 	border:5px solid #FFF;
-	color: #d83d14;
+	color: #FFF;
 	text-align: center;
-	padding: 5px 10px;
-	font-size: 14px;
+	padding: 10px 15px;
+	font-size: 16px;
 	width: auto;
 	min-width: 40px;
 	position: absolute;
@@ -1276,6 +1372,7 @@ Cleaning
 	height: 115px;
 	position: relative;
 	padding: 0 20px;
+	z-index: 2;
 }
 .cleaning-shelf {
 	height: 12px;
@@ -1509,6 +1606,7 @@ Cleaning
 	top: 5%;
 	width: 40%;
 	right: 5%;
+	z-index: 1;
 }
 #shower-head {
 	background:url(../img/scene/shower-head.png) no-repeat center top;
