@@ -9,7 +9,7 @@ var ReportView = Backbone.View.extend({
     template: $('#report-template').html(),
 
     events: {
-        "click #restartQuiz": "onClickRestart",
+        "click .restartQuiz": "onClickRestart",
         "click #report-product-more": "onClickMoreProduct"
     },
 
@@ -95,11 +95,11 @@ var ReportView = Backbone.View.extend({
     },
     onSaveReportComplete: function() {
 	    $('#progressbar').hide();
-	    $('#downloadQuizImg').show();
+	    $('.downloadQuizImg').show();
 	    $('#report-share').show();
 	    $('#downloadQuizText').hide();
 	    var shareImg = "http://pantene.app.social-touch.com/reports/report_" + app.ReportId + ".png";
-	    $('#downloadQuizImg').attr('href',shareImg);
+	    $('.downloadQuizImg').attr('href',shareImg);
 	    jiathis_config.pic = shareImg;
     },
     onClickDownload: function(e) {

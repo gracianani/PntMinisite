@@ -685,6 +685,9 @@ var CleaningView = Backbone.View.extend({
         
         //set shower freq
         this.initShowerFreq();
+        if ( $('#cleaning-trash-text').text().length < 1 ) {
+	        $('#cleaning-trash-text').text("更换品牌的频率");
+        }
     },
     prev : function() {
         var prevView = app.Views.DietView;
@@ -1551,9 +1554,9 @@ var SalonView = Backbone.View.extend( {
     // Cache the template function for a single item.
     template: $('#scene-salon-template').html(),
     events: {
-       "click #character-chat-1 .chat-icon" : "onClickChatIcon",
-       "click #character-chat-2 .chat-icon" : "onClickChatDegree",
-       "click #counselor-chat-3" : "next"
+       "click #hairStyleRef .chat-icon" : "onClickChatIcon",
+       "click #chat-icon-perm .chat-icon,#chat-icon-care .chat-icon" : "onClickChatDegree",
+       "click #counselor-chat-4" : "next"
     },
     initialize: function () {
         this.$el = $('#main');
@@ -1621,9 +1624,15 @@ var SalonView = Backbone.View.extend( {
 	    icon.toggleClass('selected');
 	    this.model.setAnswer( parseInt(icon.parent().attr('data-question-id')), parseInt(icon.attr('data-answer-id')),!isSelected);
 	    if ( $('#counselor-chat-2').is(':hidden') ) {
-		    $('#counselor-chat-2').delay(1000).fadeIn(function(){
-				$('#character-chat-2').fadeIn();
-			});
+		    $('#counselor-chat-2').delay(1000).fadeIn();
+	    } else {
+		    if ( $('#counselor-chat-3').is(':hidden') ) {
+		    	$('#counselor-chat-3').delay(1000).fadeIn();
+			} else {
+				if ( $('#counselor-chat-4').is(':hidden') ){
+					$('#counselor-chat-4').delay(1000).fadeIn();
+				}
+			}
 	    }
     },
     onClickChatDegree: function(event) {

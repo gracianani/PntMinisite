@@ -181,7 +181,7 @@
               </div>
         </div>
 
-        <div id="report-share">
+        <div id="report-share" class="report-share">
 				<div class="jiathis_style_32x32">
 					<span>分享到</span>
 					<a class="jiathis_button_tsina"></a>
@@ -362,7 +362,7 @@
         		<div id="scene-health-content" class="scene-content">
         			<div id="mealCount" class="health-degree item">
         				<div class="health-degree-content {{#getUnselectedClass}}5{{/getUnselectedClass}} onDegree-{{#getDataDegree}}5{{/getDataDegree}}" data-question-id="5" data-degrees="4">
-	        				<div id="mealCount-degree4" title="还有夜宵和加餐" data-answer-id="21" class="meal health-degree-item" data-degree="4">
+	        				<div id="mealCount-degree4" title="还有夜宵" data-answer-id="21" class="meal health-degree-item" data-degree="4">
 	        					<img src="img/scene/meal-4.png" />
 	        				</div>
 	        				<div id="mealCount-degree3" title="一日三餐" data-answer-id="22" class="meal health-degree-item" data-degree="3">
@@ -392,7 +392,7 @@
 	        					<img src="img/scene/drinking-1.png" />
 	        				</div>
 	        				<div class="health-degree-pin"></div>
-	        				<div class="health-degree-hint">饮酒习惯</div>
+	        				<div class="health-degree-hint">您喝酒么</div>
         				</div>        				
         			</div>
         			<div id="smoke" class="health-degree item">
@@ -427,7 +427,7 @@
 	        					<img src="img/scene/sunBlock-1.png" />
 	        				</div>
 	        				<div class="health-degree-pin"></div>
-	        				<div class="health-degree-hint">您会防晒么？</div>
+	        				<div class="health-degree-hint">您防晒么</div>
         				</div>        				
         			</div>
         			<div id="sleep" class="health-degree item">
@@ -445,7 +445,7 @@
 	        					<img src="img/scene/sleep-1.png" />
 	        				</div>
 	        				<div class="health-degree-pin"></div>
-	        				<div class="health-degree-hint">每天和枕头亲密接触的时间</div>
+	        				<div class="health-degree-hint">睡眠时间</div>
         				</div>
         				
         				
@@ -856,7 +856,7 @@
 						</div>
 						
 						<div class="problem-item hairproblem-2-{{#getSelectedClass}}21,100{{/getSelectedClass}}" id="problem-item-2"  data-answer-id="100">
-							<div class="problem-text">头发干枯,分叉,无光泽</div>
+							<div class="problem-text">干枯分叉</div>
 						</div>
 						
 						<div class="problem-item hairproblem-3-{{#getSelectedClass}}21,101{{/getSelectedClass}}" id="problem-item-3"  data-answer-id="101">
@@ -1002,44 +1002,48 @@
                     </div>
                     <div id="salon-chat" class="item">
                     	<div id="counselor-chat-1" class="counselor-chat">
-	                    	您的秀发健康报告就快完成了:)<br />
 	                    	当您选择新发型时，会参考哪些方式呢？
+	                    	
+	                    	<div id="hairStyleRef"  data-question-id="25">
+		                    	<div id="chat-icon-magzine" class="chat-icon {{#getSelectedClass}}25,117{{/getSelectedClass}}" data-answer-id="117">
+		                    		<div class="chat-icon-text">杂志/网站</div>
+		                    	</div>
+		                    	<div id="chat-icon-star" class="chat-icon {{#getSelectedClass}}25,118{{/getSelectedClass}}" data-answer-id="118">
+		                    		<div class="chat-icon-text">参考名人明星</div>
+		                    	</div>
+		                    	<div id="chat-icon-friend" class="chat-icon {{#getSelectedClass}}25,119{{/getSelectedClass}}" data-answer-id="119">
+		                    		<div class="chat-icon-text">朋友建议</div>
+		                    	</div>
+		                    	<div id="chat-icon-cut" class="chat-icon {{#getSelectedClass}}25,120{{/getSelectedClass}}" data-answer-id="120">
+		                    		<div class="chat-icon-text">美发师指导</div>
+		                    	</div>
+		                    	<div id="chat-icon-self" class="chat-icon {{#getSelectedClass}}25,121{{/getSelectedClass}}" data-answer-id="121">
+		                    		<div class="chat-icon-text">自己创意</div>
+		                    	</div>
+	                    	</div>
 	                    	<div class="chat-caret"></div>
                     	</div>
-                    	<div id="character-chat-1" class="character-chat" data-question-id="25">
-	                    	<div id="chat-icon-magzine" class="chat-icon {{#getSelectedClass}}25,117{{/getSelectedClass}}" data-answer-id="117">
-	                    		<div class="chat-icon-text">杂志/网站</div>
-	                    	</div>
-	                    	<div id="chat-icon-star" class="chat-icon {{#getSelectedClass}}25,118{{/getSelectedClass}}" data-answer-id="118">
-	                    		<div class="chat-icon-text">参考名人明星</div>
-	                    	</div>
-	                    	<div id="chat-icon-friend" class="chat-icon {{#getSelectedClass}}25,119{{/getSelectedClass}}" data-answer-id="119">
-	                    		<div class="chat-icon-text">朋友建议</div>
-	                    	</div>
-	                    	<div id="chat-icon-cut" class="chat-icon {{#getSelectedClass}}25,120{{/getSelectedClass}}" data-answer-id="120">
-	                    		<div class="chat-icon-text">美发师指导</div>
-	                    	</div>
-	                    	<div id="chat-icon-self" class="chat-icon {{#getSelectedClass}}25,121{{/getSelectedClass}}" data-answer-id="121">
-	                    		<div class="chat-icon-text">自己创意</div>
-	                    	</div>
-                    	</div>
-                    	<div id="counselor-chat-2" class="counselor-chat">
-	                    	您在沙龙做染烫、护理的频率？
-	                    	<div class="chat-caret"></div>
-                    	</div>
-                    	<div id="character-chat-2" class="character-chat">
-	                    	<div id="chat-icon-perm" class="on-degree-{{#getDataDegree}}26{{/getDataDegree}}" data-question-id="26">
-		                    	<div class="chat-icon-degree-mask"></div>
-		                    	<div class="chat-icon"></div>
-	                    		<div class="chat-icon-text">染烫频率</div>
-	                    	</div>
+
+                    	
+                    	<div id="counselor-chat-3" class="counselor-chat">
+	                    	您会经常去沙龙做头发护理么？
 	                    	<div id="chat-icon-care" class="on-degree-{{#getDataDegree}}27{{/getDataDegree}}" data-question-id="27">
 	                    		<div class="chat-icon-degree-mask"></div>
 	                    		<div class="chat-icon"></div>
 	                    		<div class="chat-icon-text">护理频率</div>
 	                    	</div>
+	                    	<div class="chat-caret"></div>
                     	</div>
-                    	<div id="counselor-chat-3" class="counselor-chat">
+                    	<div id="counselor-chat-2" class="counselor-chat">
+	                    	您每次染烫头发会间隔多久呢？
+	                    	<div id="chat-icon-perm" class="on-degree-{{#getDataDegree}}26{{/getDataDegree}}" data-question-id="26">
+		                    	<div class="chat-icon-degree-mask"></div>
+		                    	<div class="chat-icon"></div>
+	                    		<div class="chat-icon-text">染烫频率</div>
+	                    	</div>
+	                    	<div class="chat-caret"></div>
+                    	</div>
+                    	<div id="counselor-chat-4" class="counselor-chat">
 	                    	非常感谢您的耐心，<br />报告已经准备好了！快去看看吧！
 	                    	<div class="chat-caret"></div>
                     	</div>
@@ -1073,12 +1077,12 @@
         		<p>{{#ScoreSuggestions}}{{.}}{{/ScoreSuggestions}}</p>
         	</div>
         	<div id="report-opt">
-        		<a id="restartQuiz" href="javascript:void(0)"><i class="icon-refresh"></i> 重新测试</a>
+        		<a class="restartQuiz" href="javascript:void(0)"><i class="icon-refresh"></i> 重新测试</a>
         		<div id="defeat">您的秀发迷倒了<span id="defeat-percent">{{Ranking}}%</span>的人</div>
         		
         		<div id="progressbar"><div class="progress-label">正在生成报告图片，请耐心等待...</div></div>
         		 <span id="downloadQuizText">生成以后，可以带图分享哦！</span>
-        		<a id="downloadQuizImg" href="javascript:void(0)" target="_blank"><i class="icon-download-alt"></i> 下载报告图片</a>
+        		<a class="downloadQuizImg" href="javascript:void(0)" target="_blank"><i class="icon-download-alt"></i> 下载报告图片</a>
         		 
         	</div>
         	<div id="report-body">
@@ -1149,6 +1153,11 @@
 					</ul>
 				</div>
         	</div>
+        	<div id="report-bottom-share">
+        		<a class="downloadQuizImg" href="javascript:void(0)" target="_blank"><i class="icon-download-alt"></i> 下载报告图片</a> <a class="restartQuiz" href="javascript:void(0)"><i class="icon-refresh"></i> 重新测试</a>
+        		
+
+        	</div>
         	<div id="report-avatar">
         		<div id="character" class="character fm character-large-size">
         			<div class="hair hair-fm-l-1  hair-red">
@@ -1191,7 +1200,7 @@
 				var jiathis_config;
 				var defaultShareConfig = jiathis_config={
 					data_track_clickback:true,
-					summary:"家庭主妇？",
+					summary:"你的头发能得几分？快来潘婷护发实验室测看看！",
 					title:"#Pantene护发实验室#",
 					pic:"http://pantene.app.sociail-touch.com/img/logo.png",
 					ralateuid:{

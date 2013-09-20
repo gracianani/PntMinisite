@@ -152,15 +152,19 @@ window.AppFacade = {
             if (user_info) {
                 app.User = user_info;
             }
+            
             var startScene = this.getCurrentSceneId();
             this.maxScene = this.getMaxFinishedSceneId();
             if (startScene > this.maxScene) {
-                app.Router.navigate("Survey/" + current_scene_id, { trigger: isTrigger });
+                app.Router.navigate("Survey/" + this.maxScene, { trigger: isTrigger });
             }
+            
 
-        } else {
+        }
+        else {
             app.Router.navigate("", { trigger: isTrigger });
         }
+        
 
     },
     initSplashLogin: function () {
@@ -518,7 +522,6 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
 
                         app.Router = new Router();
                         Backbone.history.start();
-						console.log("router start");
                         var isTrigger = typeof (app.ReportId) == 'undefined';
                         if (isTrigger) {
                             AppFacade.loadFromCookie(true);

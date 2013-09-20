@@ -81,7 +81,7 @@ $.prototype.tooltip = function() {
 		tooltipDiv.show();
 		tooltipDiv.find('.content').html($(this).attr('title'));
 		var offset = $(e.currentTarget).offset();
-		tooltipDiv.css('left',offset.left).css('top',offset.top - tooltipDiv.height()-20);
+		tooltipDiv.css('left',offset.left - tooltipDiv.width()/2).css('top',offset.top - tooltipDiv.height()-20);
 		e.stopPropagation();
 	});
 	if ( !isMob ) {
@@ -259,3 +259,18 @@ jQuery.fn.enableTextSelect = function() {
 		}).attr('unselectable','off').unbind('selectstart');
 	});
 };
+function unique(data){  
+    data = data || [];  
+        var a = {};  
+    for (var i=0; i<data.length; i++) {  
+        var v = data[i];  
+        if (typeof(a[v]) == 'undefined'){  
+            a[v] = 1;  
+        }  
+    };  
+    data.length=0;  
+    for (var i in a){  
+        data[data.length] = i;  
+    }  
+    return data;  
+}  

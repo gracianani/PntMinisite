@@ -50,6 +50,7 @@ var Report = Backbone.Model.extend({
         this.QuizId = suggestions.quizId;
 
         var productIds = suggestions.suggested_products.split(",");
+        productIds = unique(productIds);
         for (var i = 0; i< 3 && i < productIds.length; i++) {
             var suggestion = app.ProductRepo.findWhere({
                 product_id: parseInt(productIds[i])

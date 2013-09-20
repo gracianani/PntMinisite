@@ -1119,17 +1119,23 @@ scenes
 	top: 50%;
 	margin-top: -30px;
 	cursor: pointer;
-	
+		
 }
 .onDegree- .health-degree-pin {
 	background-position: center top;
 }
 .health-degree-hint {
 	position: absolute;
-	top: 110%;
+	top: 105%;
+	left: -5%;
 	text-align: center;
-	color: #da6025;
-	width: 80%;
+	background-color: #da6025;
+	color: #fff;
+	border-radius: 5px;
+	width: 100%;
+	padding: 5px 5%;
+	font-size: 18px;
+
 }
 #mealCount .onDegree-4 .health-degree-pin{
 	top:20%;
@@ -1566,31 +1572,32 @@ Cleaning
 	background-position: center -540px;
 }
 #cleaning-trash-adjust {
-	width: 100%;
+	width: 130%;
 	height: 30px;
 	line-height: 30px;
 	position: absolute;
-	left: 0;
-	bottom: -30px;
-	font-size: 12px;
-	color: #333;
+	left: -15%;
+	bottom: -35px;
+	
+}
+#cleaning-trash-text {
+	font-size: 18px;
+	color: #FFF;
+	background-color: #de5f1c;
+	border-radius: 5px;	
 }
 .addButton,.removeButton {
-	width: 20px;
-	height: 20px;
-	line-height: 20px;
-	font-size: 14px;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 16px;
 	color: #FFF;
-	border-radius: 15px;
+	border-radius: 50%;
 	border:5px solid #FFFFFF;
 	position: absolute;
 	cursor: pointer;
 }
-.addButton:hover,.removeButton:hover {
-	transform: scale(1.5);
-	-ms-transform: scale(1.5); /* IE 9 */
-	-webkit-transform: scale(1.5); /* Safari and Chrome */
-}
+
 .addButton {
 	left: -30px;
 	top: 0;
@@ -1617,11 +1624,11 @@ Cleaning
 }
 #shower-frequency {
 	position: relative;
-	width:160px;
-	height: 30px;
-	line-height: 30px;
+	width:180px;
+	height: 40px;
+	line-height: 40px;
 	border-radius: 15px;
-	font-size: 14px;
+	font-size: 18px;
 	background: #FFF;
 	text-align: center;
 	margin: 0 auto;
@@ -1759,7 +1766,7 @@ Cleaning
 	text-align: center;
 	width: 100%;
 	line-height: 20px;
-	font-size: 14px;
+	font-size: 16px;
 	
 }
 #hairstyle-length .hairstyle-text {
@@ -2185,20 +2192,19 @@ Cleaning
 	background: url(../img/scene/hairproblem.png) no-repeat top left;
 	cursor: pointer;
 }
-.problem-item:hover .problem-text{
-	background: #d55b1c;
-	color: #fff;
-}
+
 .problem-text {
 	position: absolute;
 	top: 105%;
 	border-radius: 5px;
 	padding: 5px 10%;
-	font-size: 12px;
+	font-size: 16px;
 	line-height: 18px;
 	text-align: center;
-	width: 80%;
-	color: #666;
+	width: 100%;
+	margin-left: -20%;
+	background: #d55b1c;
+	color: #fff;
 	
 }
 #problem-item-1 {
@@ -2322,7 +2328,7 @@ Cleaning
 	background-image: url(../img/character/career-m.png)!important;
 	cursor: pointer;
 	margin-left: -44px;
-	margin-top:-43px;
+	margin-top:0;
 }
 #basicinfo-career .selected {
 	display: none;
@@ -3088,12 +3094,12 @@ Cleaning
 	width: 87px;
 	height: 321px;
 }
-#basicinfo-career .m.character-small-size .clothes-m-1{ background-position: 0 0; width: 87px; height: 321px; } 
-#basicinfo-career .m.character-small-size .clothes-m-2{ background-position: 0 -322px; width: 87px; height: 321px; } 
-#basicinfo-career .m.character-small-size .clothes-m-3{ background-position: 0 -644px; width: 87px; height: 321px; } 
-#basicinfo-career .m.character-small-size .clothes-m-4{ background-position: 0 -966px; width: 87px; height: 321px; } 
-#basicinfo-career .m.character-small-size .clothes-m-5{ background-position: 0 -1288px; width: 87px; height: 321px; } 
-#basicinfo-career .m.character-small-size .clothes-m-6{ background-position: 0 -1610px; width: 87px; height: 321px; }
+#basicinfo-career .m.character-small-size .clothes-m-1{ background-position: 0 -38px; width: 87px; height: 321px; } 
+#basicinfo-career .m.character-small-size .clothes-m-2{ background-position: 0 -360px; width: 87px; height: 321px; } 
+#basicinfo-career .m.character-small-size .clothes-m-3{ background-position: 0 -682px; width: 87px; height: 321px; } 
+#basicinfo-career .m.character-small-size .clothes-m-4{ background-position: 0 -1004px; width: 87px; height: 321px; } 
+#basicinfo-career .m.character-small-size .clothes-m-5{ background-position: 0 -1326px; width: 87px; height: 321px; } 
+#basicinfo-career .m.character-small-size .clothes-m-6{ background-position: 0 -1648px; width: 87px; height: 321px; }
 
 .mirror-show {
 	border-radius: 20px;
@@ -3267,6 +3273,7 @@ Cleaning
 #basicinfo-career .fm.character-small-size .clothes-fm-6{ background-position: 0 -1875px; width: 106px; height: 304px; } 
 
 
+ 
 .quality-scene {
 	left: 80%;
 	top:0;
@@ -3332,12 +3339,17 @@ Cleaning
 	background-color: #f7f2e4;
 	color: #333;
 	border-radius: 5px;
-	width: 280px;
+	width: 400px;
 	text-align: center;
-	padding: 10px;
+	padding: 20px 10px;
+	line-height: 22px;
 	right: 0;
 	position: absolute;
 	display: none;
+}
+#hairStyleRef {
+	height: 50px;
+	margin-top: 5px;
 }
 .character-chat {
 	position: absolute;
@@ -3372,14 +3384,14 @@ Cleaning
 	border-bottom: 10px solid transparent;
 }
 .chat-icon {
-	width: 75px;
-	height: 75px;
-	background: url(../img/scene/chat-icon.png) no-repeat;
+	width: 50px;
+	height: 50px;
+	background: url(../img/scene/chat-icons-small.png) no-repeat;
 	font-size: 12px;
 	cursor: pointer;
 	float: left;
 	display: block;
-	margin: 0 10px;
+	margin: 0 15px;
 	border-radius: 50%;
 	position: relative;
 
@@ -3394,31 +3406,41 @@ Cleaning
 	text-align: center;
 	position: absolute;
 	top:70%;
+	left: -25%;
 	margin-top: -10px;
-	width: 100%;
+	width: 150%;
 	padding: 2px 0;
 }
-#character-chat-2 .chat-icon {
-	background-color: #f7f2e4;
-		margin-right: 30px;
+#chat-icon-perm .chat-icon,#chat-icon-care .chat-icon {
+	background:url(../img/scene/chat-icon.png) no-repeat;
 }
-#character-chat-2 .on-degree-1 .chat-icon-degree-mask {
+.on-degree-1 .chat-icon-degree-mask {
 	height: 20%;
 }
-#character-chat-2 .on-degree-2 .chat-icon-degree-mask {
+.on-degree-2 .chat-icon-degree-mask {
 	height: 40%;
 }
-#character-chat-2 .on-degree-3 .chat-icon-degree-mask {
+.on-degree-3 .chat-icon-degree-mask {
 	height: 60%;
 }
-#character-chat-2 .on-degree-4 .chat-icon-degree-mask {
+.on-degree-4 .chat-icon-degree-mask {
 	height: 80%;
 }
-#character-chat-2 .on-degree-5 .chat-icon-degree-mask {
+.on-degree-5 .chat-icon-degree-mask {
 	height: 100%;
-	border-radius: 10px 10px 0 0;
+	border-radius: 10px;
 }
-
+#counselor-chat-4 {
+	top:380px;
+	padding: 10px 0;
+	background-color: #d55b1c;
+	color: #FFF;
+	width: 250px;
+	cursor: pointer;
+}
+#counselor-chat-4 .chat-caret {
+	border-left-color: #d55b1c;
+}
 .chat-icon-degree-mask {
 	background-color: #2470a4;
 	height: 0;
@@ -3427,7 +3449,7 @@ Cleaning
 	width: 100%;
 	bottom: 0;
 	left: 0;
-	border-radius: 2px 2px 0 0;
+	border-radius: 2px 2px 10px 10px;
 }
 #character-chat-2 .chat-icon-text {
 	top:110%;
@@ -3445,56 +3467,82 @@ Cleaning
 	background-color: #a8998b;
 }
 #counselor-chat-1 {
-	right: -40px;
+	right: -30px;
+	font-size: 12px;
+	color: #d55b1c;
+	line-height: 20px;
 }
 #counselor-chat-2 {
-	top:180px;
-	width: 240px;
+	top:170px;
+	width: 200px;
+	right: 220px;
+	background-color: #ffe579;
+}
+#counselor-chat-2 .chat-caret {
+	border-left-color: #ffe579;
+	border-width: 20px 0 20px 30px;
+	right: -30px;
+	top:30%;
 }
 #counselor-chat-3 {
-	top:320px;
+	top:170px;
+	width: 200px;
 	background-color: #d55b1c;
 	color: #FFF;
 	cursor: pointer;
 }
 #counselor-chat-3 .chat-caret {
 	border-left-color: #d55b1c;
+	border-width: 20px 0 20px 30px;
+	right: -30px;
+	top:30%;
 }
 #chat-icon-care,#chat-icon-perm{
-	width: 75px;
-	height: 75px;
-	float: left;
+	width: 100px;
+	height: 100px;
+	float: none;
 	display: block;
-	margin: 0 10px;
-	border-radius: 10px 10px 0 0;
+	margin: 10px auto 0;
+	border-radius: 10px;
 	position: relative;
 	background-color: #f7f2e4;
 	position: relative;
 }
+.chat-icon-perm{ background-position: 0 -408px; width: 50px; height: 50px; } 
+.chat-icon-perm.selected{ background-position: 0 -459px; width: 50px; height: 50px; } 
+.chat-icon-care{ background-position: 0 0; width: 50px; height: 50px; } 
+.chat-icon-care.selected{ background-position: 0 -51px; width: 50px; height: 50px; } 
 
-#chat-icon-care .chat-icon{ background-position: 0 -76px; } 
-#chat-icon-perm .chat-icon{ background-position: 0 -684px; } 
+#chat-icon-cut{ background-position: 0 -102px; width: 50px; height: 50px; } 
+#chat-icon-cut.selected{ background-position: 0 -153px; width: 50px; height: 50px; } 
+#chat-icon-friend.selected{ background-position: 0 -204px; width: 50px; height: 50px; } 
+#chat-icon-friend{ background-position: 0 -255px; width: 50px; height: 50px; } 
+#chat-icon-magzine{ background-position: 0 -306px; width: 50px; height: 50px; } 
+#chat-icon-magzine.selected{ background-position: 0 -357px; width: 50px; height: 50px; } 
+
+#chat-icon-salon{ background-position: 0 -510px; width: 50px; height: 50px; } 
+#chat-icon-salon.selected{ background-position: 0 -561px; width: 50px; height: 50px; } 
+#chat-icon-self{ background-position: 0 -612px; width: 50px; height: 50px; } 
+#chat-icon-self.selected{ background-position: 0 -663px; width: 50px; height: 50px; } 
+#chat-icon-star{ background-position: 0 -712px; width: 50px; height: 50px; } 
+#chat-icon-star.selected{ background-position: 0 -765px; width: 50px; height: 50px; } 
+
+#chat-icon-care .chat-icon{ background-position: center -76px; } 
+#chat-icon-perm .chat-icon{ background-position: center -228px; } 
 #chat-icon-care .chat-icon,#chat-icon-perm .chat-icon{
-	width: 75px; height: 75px;background-color: transparent;margin:0;
+	width: 100px; height: 75px;background-color: transparent;margin:0;
+	border-radius: 10px;
 	overflow: hidden;
 }
 #chat-icon-care .chat-icon-text,#chat-icon-perm .chat-icon-text{
 	background-color: #2470a4;
 	font-size: 12px;
+	width: 100%;
+	left: 0;
+	top: 85%;
+	border-radius: 0px 0px 10px 10px;
 	}
-#chat-icon-cut{ background-position: 0 -152px; width: 75px; height: 75px; } 
-#chat-icon-cut.selected,#chat-icon-cut:hover{ background-position: 0 -228px; width: 75px; height: 75px; } 
-#chat-icon-friend.selected,#chat-icon-friend:hover{ background-position: 0 -304px; width: 75px; height: 75px; } 
-#chat-icon-friend{ background-position: 0 -380px; width: 75px; height: 75px; } 
-#chat-icon-magzine{ background-position: 0 -456px; width: 75px; height: 75px; } 
-#chat-icon-magzine.selected,#chat-icon-magzine:hover{ background-position: 0 -532px; width: 75px; height: 75px; } 
 
-#chat-icon-salon{ background-position: 0 -760px; width: 75px; height: 75px; } 
-#chat-icon-salon.selected,#chat-icon-salon:hover{ background-position: 0 -836px; width: 75px; height: 75px; } 
-#chat-icon-self{ background-position: 0 -912px; width: 75px; height: 75px; } 
-#chat-icon-self.selected,#chat-icon-self:hover{ background-position: 0 -988px; width: 75px; height: 75px; } 
-#chat-icon-star{ background-position: 0 -1064px; width: 75px; height: 75px; } 
-#chat-icon-star.selected,#chat-icon-star:hover{ background-position: 0 -1140px; width: 75px; height: 75px; } 
 /* ==========================================================================
    report
    ========================================================================== */
@@ -3624,17 +3672,17 @@ Cleaning
 	font-size: 12px;
 	line-height: 30px;
 }
-#report-share a {
+.report-share a {
 	color: #cc9336;
 	
 }
-#report-share span{
+.report-share span{
 	float: left;
 	display: inline-block;
 	color: #a16908;
 	line-height: 32px;
 }
-#report-share .jiathis_style_32x32 .jtico {
+.report-share .jiathis_style_32x32 .jtico {
 	background: url(../img/share.png) no-repeat left top;
 	margin-left: 10px;
 	border-radius: 50%;
@@ -3643,35 +3691,35 @@ Cleaning
 	padding-left: 0!important;
 	background-color: #2a82a6;
 }
-#report-share .jiathis_style_32x32 .jtico:hover {
+.report-share .jiathis_style_32x32 .jtico:hover {
 	opacity: 1;
 	background-color: #2f94e1;
 }
-#report-share .jiathis_style_32x32 .jtico_weixin {
+.report-share .jiathis_style_32x32 .jtico_weixin {
 	background-position: center -32px;
 }
-#report-share .jiathis_style_32x32 .jtico_weixin:hover {
+.report-share .jiathis_style_32x32 .jtico_weixin:hover {
 	background-color:#0bcb27;
 	
 }
-#report-share .jiathis_style_32x32 .jtico_tsina {
+.report-share .jiathis_style_32x32 .jtico_tsina {
 	background-position: center -64px;
 }
-#report-share .jiathis_style_32x32 .jtico_tsina:hover {
+.report-share .jiathis_style_32x32 .jtico_tsina:hover {
 	background-color:#cc1600;
 	
 }
-#report-share .jiathis_style_32x32 .jtico_douban {
+.report-share .jiathis_style_32x32 .jtico_douban {
 	background-position: center -96px;
 }
-#report-share .jiathis_style_32x32 .jtico_douban:hover {
+.report-share .jiathis_style_32x32 .jtico_douban:hover {
 	background-color:#148825;
 	
 }
-#report-share .jiathis_style_32x32 .jtico_qzone {
+.report-share .jiathis_style_32x32 .jtico_qzone {
 	background-position: center -128px;
 }
-#report-share .jiathis_style_32x32 .jtico_qzone:hover {
+.report-share .jiathis_style_32x32 .jtico_qzone:hover {
 	background-color:#f4b23c;
 	
 }
@@ -3732,7 +3780,7 @@ Cleaning
 	height: 120px;
 	margin-bottom: 30px;
 }
-#restartQuiz,#saveQuiz,#downloadQuizImg {
+.restartQuiz,.downloadQuizImg {
 	display: inline-block;
 	padding: 10px 20px;
 	margin-right: 10px;
@@ -3743,7 +3791,13 @@ Cleaning
 	font-size: 16px;	
 	text-decoration: none;
 }
-#downloadQuizImg {
+#report-opt .restartQuiz{
+	
+}
+#report-opt .downloadQuizImg {
+	
+}
+.downloadQuizImg {
 	display: none;
 }
 #progressbar {
@@ -3759,11 +3813,14 @@ Cleaning
 	background-color: #2a82a6;
 	border-radius: 5px;
 }
-#restartQuiz {
+.restartQuiz {
+	background: #d55b1c;
+}
+#report-opt .restartQuiz {
 	position: absolute;
 	top:30px;
 	right: 215px;
-	background: #d55b1c;
+	
 }
 
 #report-result>li {
