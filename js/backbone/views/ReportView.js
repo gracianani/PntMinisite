@@ -50,10 +50,26 @@ var ReportView = Backbone.View.extend({
         });
         //this.model.shareReport();
         this.showProgress();
+        
+        $(window).bind('scroll',function(){
+        	var scrollTop = $(window).scrollTop();
+        	var btn = $('#report-flyToTop');
+        	if ( scrollTop > 870 && btn.is(':hidden') ) {
+	        	btn.fadeIn();
+        	} else {
+        		if ( scrollTop < 870 && btn.is(':visible') )  {
+	        		btn.fadeOut();
+        		}
+	        	
+        	}
+	        //$('#report-flyToTop').fadeIn();
+        });
     },
     onexit: function () {
         this.resetShareConfig();
         $('#report-share').hide();
+        $('#report-flyToTop').hide();
+	    $(window).unbind('scroll');
         $('#report').fadeOut(function () {
             $('#main').fadeIn(function () {
                 $('#progress,#main,#navigation,#footer,#help-switch').fadeIn();
@@ -63,6 +79,7 @@ var ReportView = Backbone.View.extend({
 
         }
 	    );
+	    
     },
     onClickRestart: function () {
         AppFacade.gotoScene(1);

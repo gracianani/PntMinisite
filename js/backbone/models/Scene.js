@@ -292,7 +292,7 @@ var Scene = Backbone.Model.extend({
             if (this.isQuestionFinished(scene_questions[question_id])) {
             }
             else {
-                unfinishedQuestion.push("unfinished");
+                unfinishedQuestion.push(scene_questions[question_id]);
             }
         }
 

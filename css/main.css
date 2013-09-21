@@ -134,73 +134,46 @@ footer
 }
 
 #progress {
-	width: 273px;
-	height: 60px;
-	background: url(../img/progress.png) center top no-repeat;
+	width: 288px;
+	height: 36px;
 	position: absolute;
-	bottom: 140px;
-	right:5%;
+	bottom: 170px;
+	right:150px;
 	margin-left: -136px;
 }
 
-.step2 #progress-content{
-	width:25%;
-}
-.step3 #progress-content{
-	width:37.5%;
-}
-.step4 #progress-content{
-	width:50%;
-}
-.step5 #progress-content{
-	width:62.5%;
-}
-.step6 #progress-content{
-	width:75%;
-}
-.step7 #progress-content{
-	width:87.5%;
-}
-.step8 #progress-content{
-	width:100%;
-}
-
-.onstep2 #progress-current-pin{
-	left:25%;
-}
-.onstep3 #progress-current-pin{
-	left:37.5%;
-}
-.onstep4 #progress-current-pin{
-	left:50%;
-}
-.onstep5 #progress-current-pin{
-	left:62.5%;
-}
-.onstep6 #progress-current-pin{
-	left:75%;
-}
-.onstep7 #progress-current-pin{
-	left:87.5%;
-}
-.onstep8 #progress-current-pin{
-	left:100%;
-}
 .step {
-	width: 12.5%;
-	height: 60px;
+	width: 36px;
+	height: 27px;
 	position: relative;
 	float: left;
 	display: inline-block;
-	
+	background: url(../img/catball.png) no-repeat left -27px;
 	cursor: pointer;
 }
-#progress-content {
-	position: absolute;
-	height: 100%;
-	width: 12.5%;
-	background:url(../img/progress.png) no-repeat left bottom;
+.step1 #step1,
+.step2 #step1,.step2 #step2,
+.step3 #step1,.step3 #step2,.step3 #step3,
+.step4 #step1,.step4 #step2,.step4 #step3,.step4 #step4, 
+.step5 #step1,.step5 #step2,.step5 #step3,.step5 #step4,.step5 #step5, 
+.step6 #step1,.step6 #step2,.step6 #step3,.step6 #step4,.step6 #step5, .step6 #step6, 
+.step7 #step1,.step7 #step2,.step7 #step3,.step7 #step4,.step7 #step5, .step7 #step6, .step7 #step7, 
+.step8 #step1,.step8 #step2,.step8 #step3,.step8 #step4,.step8 #step5, .step8 #step6, .step8 #step7, .step8 #step8
+{
+	background-position: left bottom;
 }
+.onstep1 #step1,
+.onstep2 #step2,
+.onstep3 #step3,
+.onstep4 #step4,
+.onstep5 #step5,
+.onstep6 #step6,
+.onstep7 #step7,
+.onstep8 #step8{
+	background-position: left top;
+}
+
+
 #progress-current-pin {
 	position: absolute;
 	background:url(../img/progress-current-pin.png) no-repeat center bottom;
@@ -212,7 +185,7 @@ footer
 }
 .steptext {
 	position: absolute;
-	bottom: -30px;
+	bottom: -20px;
 	line-height: 26px;
 	height: 26px;
 	display: none;
@@ -327,6 +300,13 @@ header
 	font-weight: normal;
 	color: #FFF;
 	margin: 0;
+}
+#ie-warning {
+	font-size: 16px;
+	line-height: 24px;
+}
+#ie-warning a {
+	color: #d55b1c;
 }
 /*=====================
 login 
@@ -2178,7 +2158,7 @@ Cleaning
 #quality-problem {
 	position: absolute;
 	width: 700px;
-	bottom:10px;
+	bottom:35px;
 	left: 50%;
 	height: 90px;
 	margin-left: -350px;
@@ -2310,6 +2290,7 @@ Cleaning
 	position: absolute;
 	left: 20%;
 	top: -20%;
+	height: 200px;
 
 }
 .career-clothes-item {
@@ -2554,6 +2535,12 @@ Cleaning
 	height: 134px;
 	background: url(../img/helppopup.png) no-repeat left -42px;
 }
+.showUnfinished .help-item {
+	display: none;
+}
+.showUnfinished .unfinished {
+	display: block;
+}
 .help-item.help-multiline {
 	background-position: left bottom;
 }
@@ -2606,8 +2593,8 @@ Cleaning
 	width: 116px;
 	height: 106px;
 	position: absolute;
-	left: 30px;
-	bottom:20%;
+	right: 30px;
+	bottom:180px;
 	background:url(../img/helpcat.png) no-repeat right top;
 	cursor: pointer;
 
@@ -3674,6 +3661,37 @@ Cleaning
 	left: 52%;
 	display: none;
 }
+#report-flyToTop {
+	position: fixed;
+	top:100px;
+	left: 50%;
+	margin-left: 260px;
+	width: 153px;
+	height: 274px;
+	background: url(../img/reporttop.png) no-repeat center top;
+	display: none;
+}
+#flyToTop {
+	width: 100%;
+	height: 60px;
+	cursor: pointer;
+}
+#report-flyToTop .report-share {
+	padding-left: 70px;
+	padding-top: 10px;
+	
+}
+#report-bottom-share {
+	margin: 15px 0 0 30px;
+}
+#report-flyToTop .report-share a {
+	float: none;
+	display: block;
+	clear: both;
+	margin-bottom: 10px;
+	height: 32px;
+	width: 32px;
+}
 #downloadQuizText {
 	color: #a16908;
 	font-size: 12px;
@@ -4443,13 +4461,27 @@ Cleaning
 	    z-index: 99;
     }
     #counselor-chat-1 {
-	    right: -30px;
+	    right: 0px;
     }
-    #character-chat-2 {
-	    top:230px;
+    #counselor-chat-2 {
+	    top:150px;
     }
     #counselor-chat-3 {
-	    top: 340px;
+	    top: 150px;
+    }
+    #help-drinkDegree {
+	    left: 6%;
+    }
+    #help-smoke {
+	    left: 26%;
+	    top: 32%;
+    }
+    #help-sunBlock {
+	    left: 46%;
+    }
+    #help-sleep {
+	    left: 66%;
+	    top: 33%;
     }
 }
 @media only screen and (min-width: 35em) {

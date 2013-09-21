@@ -15,7 +15,8 @@ var MainView = Backbone.View.extend({
         "click .help" : "onClickHelpLayer",
         "click #help-switch" : "onClickHelpSwitch",
         "click #social_login" : "showInQuizLogin",
-        "click #inquiz-login .close" : "closeInQuizLogin"
+        "click #inquiz-login .close" : "closeInQuizLogin",
+        "click #flyToTop":"scrollTop"
     },
     initialize: function () {
         this.$el = $('body');
@@ -87,13 +88,23 @@ var MainView = Backbone.View.extend({
 	    AppFacade.gotoScene(1);
     },
     onClickHelpLayer : function(e){
-	     $('#help-switch').removeClass('opened');
-	     $(e.currentTarget).hide();
+    	var help = $(e.currentTarget);
+    	help.removeClass('showUnfinished');
+    	help.find('.unfinished').removeClass('unfinished');
+	    $('#help-switch').removeClass('opened');
+	    help.hide();
     },
     onClickHelpSwitch : function(e) {
+    	var help = $('.help');
+    	help.removeClass('showUnfinished');
+    	help.find('.unfinished').removeClass('unfinished');
 	    $('.help').toggle();
 	    $(e.currentTarget).toggleClass('opened');
-    }	
+    },
+    scrollTop : function() {
+	    $(document).scrollTop(0);
+	    $('#report-flyToTop').hide();
+    }
 });
 
 var LifeView = Backbone.View.extend({

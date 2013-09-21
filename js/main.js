@@ -18,6 +18,12 @@ var app = {
 	    app_id:'100516646',
 	    app_key:'6b346735b25a53425c4eda8e41553e96',
 	    redirect_uri: 'http://pantene.app.social-touch.com/qc_callback.html'
+    },
+    Settings: {
+	    isMobile: false,
+	    click: "click",
+	    mouseenter : "mouseenter",
+	    mouseleave : "mouseleave"
     }
 };
 
@@ -28,7 +34,12 @@ window.AppFacade = {
             this.initLoading();
 
         }
-
+		if ( isMobile() ) {
+			app.Settings.isMobile = true;
+			app.Settings.click = "touchstart";
+			app.Settings.mouseenter = "touchstart";
+			app.Settings.mouseleave = "touchend";
+		}
     },
 
     setStartView: function () {
@@ -439,8 +450,11 @@ window.AppFacade = {
 
     },
     showHelp: function (unfinishedQuestions) {
-        alert("您还没有回答完全部问题哦");
-        $('.help').show();
+    	for ( var i in unfinishedQuestions ) {
+	    	$('.help [data-help-id="'+ unfinishedQuestions[i] + '"]').addClass('unfinished');
+    	}
+        $('.help').addClass('showUnfinished').show();
+        $('#help-switch').addClass('opened');
     },
     gotoScene: function (step) {
         if (step < (this.getMaxFinishedSceneId() + 1)) {

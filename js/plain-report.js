@@ -57,7 +57,7 @@ requirejs(['../backbone/utils/plugins', '../backbone/models/Avatar', '../backbon
                 if (suggestions.score > 50 && suggestions.score < 80) {
                     gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 2 });
                 }
-                else if (suggestions.score > 80) {
+                else if (suggestions.score >= 80) {
                     gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 3 });
                 }
                 this.ShareText = gSuggestion.get("share_text_begin_with");

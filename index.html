@@ -90,23 +90,21 @@
         
         <div id="footer">
         	<div id="progress">
-        		<div id="progress-content"></div>
-        		<div id="progress-current-pin"></div>
-        		<div class="step" data-step="1" title="基本信息" >
+        		<div class="step" id="step1" data-step="1" title="基本信息" >
         		</div>
-        		<div class="step" data-step="2" title="发型" >
+        		<div class="step" id="step2" data-step="2" title="发型" >
         		</div>
-        		<div class="step" data-step="3" title="发质" >
+        		<div class="step" id="step3" data-step="3" title="发质" >
         		</div>
-        		<div class="step" data-step="4" title="生活组成">
+        		<div class="step" id="step4" data-step="4" title="生活组成">
         		</div>
-        		<div class="step" data-step="5" title="健康养生">
+        		<div class="step" id="step5" data-step="5" title="健康养生">
         		</div>
-        		<div class="step" data-step="6" title="饮食习惯">
+        		<div class="step" id="step6" data-step="6" title="饮食习惯">
         		</div>
-        		<div class="step" data-step="7" title="洗护">
+        		<div class="step" id="step7" data-step="7" title="洗护">
         		</div>
-        		<div class="step" data-step="8" title="沙龙">
+        		<div class="step" id="step8" data-step="8" title="沙龙">
         		</div>
         		
         		<div class="steptext" id="steptext1">
@@ -191,6 +189,18 @@
 				</div>
 
         </div>
+        <div id="report-flyToTop">
+        		<div id="flyToTop"></div>
+        		<div class="report-share">
+				<div class="jiathis_style_32x32">
+					<a class="jiathis_button_tsina"></a>
+					<a class="jiathis_button_weixin"></a>
+					<a class="jiathis_button_cqq"></a>
+					<a class="jiathis_button_qzone"></a>
+				</div>
+
+				</div>
+        </div>
         <div id="profile">
         	<div id="prifile-login">
         	<a id="social_login" href="#">登陆</a>
@@ -214,6 +224,11 @@
         	<div id="loading-content">
         	</div>
         </div>
+<!--[if lt IE 8]>
+<div id="ie-warning" style="background-color:#ffe579;padding:15px;color:#333;margin-bottom:15px;position:absolute;top:90px;left:0;width:400px;z-index:9999;"><p>我们的网站使用了HTML5，您正在使用较低版本的浏览器，浏览效果会有很大差异。<br />
+建议您升级到 <a href="http://windows.microsoft.com/zh-cn/internet-explorer/ie-9-worldwide-languages" target="_blank">Internet Explorer 9</a> <br />或以下浏览器：
+<a href="http://www.mozillaonline.com/" target="_blank">Firefox</a> / <a href="http://www.google.com/chrome/?hl=zh-CN" target="_blank">Chrome</a> / <a href="http://www.apple.com.cn/safari/" target="_blank">Safari</a> / <a href="http://www.operachina.com/" target="_blank">Opera</a></p></div>
+<![endif]-->
         <script type="text/template" id="me-template">
             <div id="character-container" class="{{#getAvatarScene}}{{/getAvatarScene}}">
         		<div id="character-inScene" class="character {{gender}} character-{{#getAvatarSize}}{{/getAvatarSize}}-size">
@@ -527,7 +542,7 @@
 	        		</div>
 	        		
 	        		<div id="life-help" class="help">
-						<div id="help-life" class="help-item help-leftdown  help-multiline">
+						<div id="help-life" class="help-item help-leftdown  help-multiline" data-help-id="11">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
@@ -535,7 +550,7 @@
 							</div>
 						</div>
 						
-						<div id="help-stress" class="help-item help-rightdown  help-multiline">
+						<div id="help-stress" class="help-item help-rightdown  help-multiline" data-help-id="28">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
@@ -646,7 +661,7 @@
         			</div>
                     
                     <div id="cleaning-help" class="help">
-						<div id="help-trash" class="help-item help-leftdown  help-multiline">
+						<div id="help-trash" class="help-item help-leftdown  help-multiline" data-help-id="12" >
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
@@ -654,21 +669,21 @@
 							</div>
 						</div>
 						
-						<div id="help-haircare" class="help-item help-leftup help-multiline ">
+						<div id="help-haircare" class="help-item help-leftup help-multiline " data-help-id="10">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
 							点击选择您使用的<br/>洗护、造型用品
 							</div>
 						</div>
-						<div id="help-showerfreq" class="help-item help-leftdown ">
+						<div id="help-showerfreq" class="help-item help-leftdown " data-help-id="17">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
 							点击 +、- 按钮，选择洗发频率
 							</div>
 						</div>
-						<div id="help-showertime" class="help-item help-rightup ">
+						<div id="help-showertime" class="help-item help-rightup " data-help-id="29">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
@@ -741,7 +756,7 @@
 					</div>
 					
 					<div id="hairstyle-help" class="help">
-						<div id="help-length" class="help-item help-leftdown ">
+						<div id="help-length" class="help-item help-leftdown " data-help-id="13">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
@@ -749,14 +764,14 @@
 							</div>
 						</div>
 						
-						<div id="help-curl" class="help-item help-rightdown ">
+						<div id="help-curl" class="help-item help-rightdown " data-help-id="14">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
 							移动游标选择卷发类型
 							</div>
 						</div>
-						<div id="help-hairstate" class="help-item help-leftup ">
+						<div id="help-hairstate" class="help-item help-leftup " data-help-id="16">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
@@ -764,7 +779,7 @@
 							</div>
 						</div>
 						
-						<div id="help-haircolor" class="help-item help-rightup ">
+						<div id="help-haircolor" class="help-item help-rightup " data-help-id="15">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
@@ -1025,7 +1040,7 @@
                     	</div>
 
                     	
-                    	<div id="counselor-chat-3" class="counselor-chat">
+                    	<div id="counselor-chat-3" class="counselor-chat" >
 	                    	您会经常去沙龙做头发护理么？
 	                    	<div id="chat-icon-care" class="on-degree-{{#getDataDegree}}27{{/getDataDegree}}" data-question-id="27">
 	                    		<div class="chat-icon-degree-mask"></div>
@@ -1051,7 +1066,7 @@
                     <div id="salon-counselor" class="item counselor-{{gender}}">
                     </div>
                      <div id="salon-help" class="help">
-						<div id="help-salon-1" class="help-item help-leftdown">
+						<div id="help-salon-1" class="help-item help-leftdown"  data-help-id="25">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
@@ -1059,14 +1074,14 @@
 							</div>
 						</div>
 						
-						<div id="help-salon-2" class="help-item help-leftdown">
+						<div id="help-salon-2" class="help-item help-leftdown"  data-help-id="26">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
 							多次点击，选择染烫频率
 							</div>
 						</div>
-						<div id="help-salon-3" class="help-item help-rightup">
+						<div id="help-salon-3" class="help-item help-rightup"  data-help-id="27">
 							<div class="help-arrow">
 							</div>
 							<div class="help-text">
@@ -1202,7 +1217,6 @@
 		<script src="js/vendor/jquery.ui.touch-punch.min.js"></script>
         <script src="js/vendor/underscore.js"></script>
         <script src="js/vendor/backbone.js"></script>
-        <script src="js/vendor/backbone.touch.min.js"></script>
         <script src="js/vendor/mustache.js"></script>
         <script src="js/backbone/utils/plugins.js"></script>
         <script src="js/backbone/views/view.js"></script>
