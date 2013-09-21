@@ -5,7 +5,10 @@ var AnimationHandler = {
         self.animateObjects();
     },
     animateObjects: function () {
-
+		if ( isMobile() ) {
+			jQuery(this.contentID).hide();
+			return;
+		}
         var self = this;
         self.el = jQuery(self.contentID);
         self.DISTANCE = 500;
@@ -96,6 +99,11 @@ var AnimationHandler = {
 
     },
     animateIn: function () {
+    	if ( isMobile() ) {
+    		jQuery(this.contentID).show();
+    		this.callBack();
+			return;
+		}
         var self = this,
     			count = 0;
     	jQuery('body').css('overflow', 'hidden');
@@ -115,6 +123,19 @@ var AnimationHandler = {
         });
     },
     animateOut: function (type, postAnimateOut) {
+    	if ( isMobile() ) {
+    		jQuery(this.contentID).hide();
+    		if (type == "next") {
+                            postAnimateOut();
+            }
+            else if (type == "report") {
+                 app.Views.BasicFrameView.showReport();
+                 postAnimateOut();
+             }
+            else {
+            }
+			return;
+		}
         var self = this;
         var count = 0;
         jQuery('body').css('overflow', 'hidden');

@@ -21,6 +21,22 @@
     }
 }());
 
+//add indexOf in IE8 
+(function() {
+if (!Array.prototype.indexOf) {
+    Array.prototype.indexOf = function (elt /*, from*/) {
+        var len = this.length >>> 0;
+        var from = Number(arguments[1]) || 0;
+        from = (from < 0) ? Math.ceil(from) : Math.floor(from);
+        if (from < 0) from += len;
+
+        for (; from < len; from++) {
+            if (from in this && this[from] === elt) return from;
+        }
+        return -1;
+    };
+}	
+}());
 // Place any jQuery/helper plugins in here.
 function spinner(holderid, R1, R2, count, stroke_width, colour) {
 var sectorsCount = count || 12,
@@ -75,6 +91,7 @@ $.prototype.tooltip = function() {
 	
 	if ( isMob ) {
 		startEv = 'touchstart';
+		endEv = 'touchend';
 	}
 	
 	$(this).on(startEv, function(e) {
@@ -82,7 +99,8 @@ $.prototype.tooltip = function() {
 		tooltipDiv.find('.content').html($(this).attr('title'));
 		var offset = $(e.currentTarget).offset();
 		tooltipDiv.css('left',offset.left  - tooltipDiv.width()/2).css('top',offset.top - tooltipDiv.height()-30);
-		e.stopPropagation();
+		//tooltipDiv.delay(1000).fadeOut('fast');
+		//e.stopPropagation();
 	});
 	if ( !isMob ) {
 		$(this).on(endEv, function() {
@@ -90,10 +108,7 @@ $.prototype.tooltip = function() {
 			tooltipDiv.find('.content').html("");
 		});
 	} else {
-		$('body').on(startEv, function() {
-			tooltipDiv.hide();
-			tooltipDiv.find('.content').html("");
-		});
+		
 	}
 	
 }

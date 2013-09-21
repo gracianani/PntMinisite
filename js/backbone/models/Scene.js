@@ -10,8 +10,8 @@ var Scene = Backbone.Model.extend({
     initialize: function () {
         var question_ids = this.get("question_ids");
         var user_answers = [];
-        for (var index in question_ids) {
-            user_answers.push({ "question_id": question_ids[index], "answer_ids": [] });
+        for ( var index = 0 ; index < question_ids.length ; index++ ) {
+	        user_answers.push({ "question_id": question_ids[index], "answer_ids": [] });
         }
         this.set({ user_answers: user_answers });
     },
@@ -252,7 +252,7 @@ var Scene = Backbone.Model.extend({
             var answers = user_question.answer_ids;
             var textStr = '';
             if (answers.length > 0) {
-                for (index in answers) {
+                for (var index = 0 ; index < answers.length; index++) {
                     var answer_id = answers[index];
                     textStr += ' ' + $.grep(question.get("answers"), function (e) { return e.answer_id == answer_id })[0].text;
                 }
@@ -288,13 +288,14 @@ var Scene = Backbone.Model.extend({
     isSceneFinished: function () {
         var scene_questions = this.get("question_ids");
         var unfinishedQuestion = [];
-        for (var question_id in scene_questions) {
+        for (var question_id = 0 ; question_id<scene_questions.length; question_id++) {
             if (this.isQuestionFinished(scene_questions[question_id])) {
             }
             else {
                 unfinishedQuestion.push(scene_questions[question_id]);
             }
         }
+        console.log(unfinishedQuestion[0]);
 
         return unfinishedQuestion;
     }
