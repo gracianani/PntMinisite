@@ -87,11 +87,12 @@ var MainView = Backbone.View.extend({
 	    AppFacade.gotoScene(1);
     },
     onClickHelpLayer : function(e){
-	    $(e.currentTarget).hide();
-	    $('#help-switch').show();
+	     $('#help-switch').removeClass('opened');
+	     $(e.currentTarget).hide();
     },
     onClickHelpSwitch : function(e) {
 	    $('.help').toggle();
+	    $(e.currentTarget).toggleClass('opened');
     }	
 });
 

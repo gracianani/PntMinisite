@@ -81,7 +81,7 @@ $.prototype.tooltip = function() {
 		tooltipDiv.show();
 		tooltipDiv.find('.content').html($(this).attr('title'));
 		var offset = $(e.currentTarget).offset();
-		tooltipDiv.css('left',offset.left - tooltipDiv.width()/2).css('top',offset.top - tooltipDiv.height()-20);
+		tooltipDiv.css('left',offset.left  - tooltipDiv.width()/2).css('top',offset.top - tooltipDiv.height()-20);
 		e.stopPropagation();
 	});
 	if ( !isMob ) {
