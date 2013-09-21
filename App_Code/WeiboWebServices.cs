@@ -152,6 +152,8 @@ public class WeiboWebServices : System.Web.Services.WebService
             m_Bitmap = new Bitmap(browser.Document.Body.ScrollRectangle.Width, browser.Document.Body.ScrollRectangle.Bottom);
             browser.BringToFront();
             Rectangle rec = browser.Bounds;
+	    rec.Width -= 15;
+	    rec.Height -= 15;
             browser.DrawToBitmap(m_Bitmap, rec);
             if (m_FileName.Length > 0)
             {
