@@ -68,6 +68,7 @@ var MainView = Backbone.View.extend({
     },
     closeLogin : function() {
         $("#login").addClass("hidden");
+        
         app.LoginFrom = "";
     },
     authorize : function() {

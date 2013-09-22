@@ -34,12 +34,12 @@ window.AppFacade = {
             this.initLoading();
 
         }
-		if ( isMobile() ) {
-			app.Settings.isMobile = true;
-			app.Settings.click = "touchstart";
-			app.Settings.mouseenter = "touchstart";
-			app.Settings.mouseleave = "touchend";
-		}
+        if (isMobile()) {
+            app.Settings.isMobile = true;
+            app.Settings.click = "touchstart";
+            app.Settings.mouseenter = "touchstart";
+            app.Settings.mouseleave = "touchend";
+        }
     },
 
     setStartView: function () {
@@ -163,29 +163,28 @@ window.AppFacade = {
             if (user_info) {
                 app.User = user_info;
             }
-            
+
             var startScene = this.getCurrentSceneId();
             this.maxScene = this.getMaxFinishedSceneId();
             if (startScene > this.maxScene) {
                 app.Router.navigate("Survey/" + this.maxScene, { trigger: isTrigger });
             }
-            
-			
+
         }
         else {
             app.Router.navigate("", { trigger: isTrigger });
         }
-        
+
 
     },
     initSplashLogin: function () {
-        
+
         QC.Login({//按默认样式插入QQ登录按钮
             btnId: "splash-qq",
             size: "A_L"
         },
 			window.AppFacade.onQQLoginSuccess, window.AppFacade.onQQLogoutSuccess);
-		WB2.anyWhere(function (W) {
+        WB2.anyWhere(function (W) {
             W.widget.connectButton({
                 id: "splash-weibo",
                 type: '2,2',
@@ -196,15 +195,15 @@ window.AppFacade = {
             });
         });
 
-        
+
     },
-    initInQuizLogin: function() {
-	    QC.Login({//按默认样式插入QQ登录按钮
+    initInQuizLogin: function () {
+        QC.Login({//按默认样式插入QQ登录按钮
             btnId: "inquiz_qqlogin",
             size: "A_XL"
         },
 		window.AppFacade.onInQuizQQLoginSuccess, window.AppFacade.onQQLogoutSuccess);
-		WB2.anyWhere(function (W) {
+        WB2.anyWhere(function (W) {
             W.widget.connectButton({
                 id: "inquiz_wb_connection_btn",
                 type: '1,1',
@@ -215,13 +214,13 @@ window.AppFacade = {
             });
         });
     },
-    initFinishLogin: function() {
-	    QC.Login({//按默认样式插入QQ登录按钮
+    initFinishLogin: function () {
+        QC.Login({//按默认样式插入QQ登录按钮
             btnId: "qqlogin",
             size: "A_XL"
         },
 			window.AppFacade.onQQReportLoginSuccess, window.AppFacade.onQQLogoutSuccess);
-		WB2.anyWhere(function (W) {
+        WB2.anyWhere(function (W) {
             W.widget.connectButton({
                 id: "wb_connect_btn",
                 type: '1,1',
@@ -308,12 +307,12 @@ window.AppFacade = {
         window.location.href = 'http://pantene.app.social-touch.com/';
     },
     initWbLogin: function () {
-        
+
     },
     weiboLogout: function () {
         WB2.logout(function () {
             window.AppFacade.onWbLogoutSuccess();
-            
+
         });
 
     },
@@ -435,24 +434,35 @@ window.AppFacade = {
         }
     },
     submitAnswer: function () {
-        if (this.getCurrentSceneId() == "8" && !app.ReportLogged) {
-            app.Report.saveAnswer(function () {
+        if (this.getCurrentSceneId() == "8") {
+            if (!app.ReportLogged) {
+                app.Report.saveAnswer(function () {
+                    if (!AppFacade.isLogin()) {
+                        AppFacade.initFinishLogin();
+                        $("#login").removeClass("hidden");
+                        app.LoginFrom = "end";
+                    } else {
+                        AppFacade.askForReport();
+                    }
+                });
+                app.ReportLogged = true;
+            }
+            else {
                 if (!AppFacade.isLogin()) {
-                	AppFacade.initFinishLogin();
+                    AppFacade.initFinishLogin();
                     $("#login").removeClass("hidden");
                     app.LoginFrom = "end";
                 } else {
                     AppFacade.askForReport();
                 }
-            });
-            app.ReportLogged = true;
+            }
         }
 
     },
     showHelp: function (unfinishedQuestions) {
-    	for ( var i in unfinishedQuestions ) {
-	    	$('.help [data-help-id="'+ unfinishedQuestions[i] + '"]').addClass('unfinished');
-    	}
+        for (var i in unfinishedQuestions) {
+            $('.help [data-help-id="' + unfinishedQuestions[i] + '"]').addClass('unfinished');
+        }
         $('.help').addClass('showUnfinished').show();
         $('#help-switch').addClass('opened');
     },
