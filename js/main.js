@@ -170,7 +170,7 @@ window.AppFacade = {
                 app.Router.navigate("Survey/" + this.maxScene, { trigger: isTrigger });
             }
             
-
+			
         }
         else {
             app.Router.navigate("", { trigger: isTrigger });

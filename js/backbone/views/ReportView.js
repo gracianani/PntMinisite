@@ -17,9 +17,7 @@ var ReportView = Backbone.View.extend({
         this.$el = $('#report');
         this.on("finishloading", this.render);
         this.on("saveReportComplete", this.onSaveReportComplete);
-        this.on("render", this.postRender);
-        
-        
+        this.on("render", this.postRender);        
 
     },
 

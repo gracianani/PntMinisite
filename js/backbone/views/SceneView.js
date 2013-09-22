@@ -16,7 +16,8 @@ var MainView = Backbone.View.extend({
         "click #help-switch" : "onClickHelpSwitch",
         "click #social_login" : "showInQuizLogin",
         "click #inquiz-login .close" : "closeInQuizLogin",
-        "click #flyToTop":"scrollTop"
+        "click #flyToTop":"scrollTop",
+        "click #init-help":"onClickInitHelp"
     },
     initialize: function () {
         this.$el = $('body');
@@ -31,22 +32,25 @@ var MainView = Backbone.View.extend({
 	        AppFacade.maxSceneId = currentSceneId;
         }
         this.setProgressBar();
+        this.setHelpSwitch();
     },
     processToPrevQuestion: function() {
         AppFacade.getCurrentView().prev();
         this.setProgressBar();
+        this.setHelpSwitch();
     },
     setProgressBar: function() {
 	    var stepid = AppFacade.getMaxFinishedSceneId();
 	    var currentSceneId = AppFacade.getCurrentSceneId();
 	    $('#progress').attr('class','step'+stepid + ' onstep' + currentSceneId);
     },
+    setHelpSwitch: function() {
+	    $('#help-switch').removeClass('opened');
+    },
     onCLickStep: function(e) {
 	  	var item = $(e.currentTarget);
 	  	var step = parseInt(item.attr("data-step"));
 	  	AppFacade.gotoScene(step);
-	  	
-	  	
     },
     showInQuizLogin : function() {
     	AppFacade.initInQuizLogin();
@@ -100,10 +104,14 @@ var MainView = Backbone.View.extend({
     	help.find('.unfinished').removeClass('unfinished');
 	    $('.help').toggle();
 	    $(e.currentTarget).toggleClass('opened');
+	    $('#init-help').hide();
     },
     scrollTop : function() {
 	    $(document).scrollTop(0);
 	    $('#report-flyToTop').hide();
+    },
+    onClickInitHelp: function(e) {
+	    $(e.currentTarget).hide();
     }
 });
 
@@ -1507,6 +1515,7 @@ var BasicInfoView = Backbone.View.extend( {
     	$('.help').hide();
 	    $("#character-container").fadeOut();
 	    $('#prev').fadeIn();
+	    $('#init-help').hide();
 	    AnimationHandler.animateOut("next", function () { AppFacade.getCurrentView().render(); });
 	    AppFacade.saveToCookie();
     },

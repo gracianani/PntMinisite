@@ -2586,7 +2586,17 @@ Cleaning
 	font-size: 16px;
 	line-height: 20px;
 }
-
+#help-item {
+	left: 2%;
+	bottom: 10px;
+}
+#help-cat {
+	right: -10%;
+	top: 52%;
+}
+#help-cat .help-text {
+	padding-top: 60px;
+}
 #help-age {
 	left: 2%;
 	bottom:10px;
