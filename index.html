@@ -19,7 +19,10 @@
 		<!--[if IE 7]>
 		  <link rel="stylesheet" href="css/font-awesome-ie7.min.css">
 		<![endif]-->
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+		<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+		<!--[if lt IE 9]>
+		  <link rel="stylesheet" href="css/ie.css">
+		<![endif]-->
 		<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=3695496477" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="100516646" data-redirecturi="http://pantene.app.social-touch.com/qc_callback.html" charset="utf-8"></script>
         <style>
@@ -72,10 +75,10 @@
         			<div class="splash-subtitle">已经测试过？</div>
         			<div class="splash-subtitle">登陆查看专属报告</div>
         			<div id="splash-loginBtn">
-        				<a id="splash-weibo" class="splash-weibo" title="微博登陆">
-        				</a>
-        				<a id="splash-qq" class="splash-qq" title="QQ登陆">
-        				</a>
+        				<div id="splash-weibo" class="splash-weibo" title="微博登陆">
+        				</div>
+        				<div id="splash-qq" class="splash-qq" title="QQ登陆">
+        				</div>
         			</div>
         	</div>
         </div>
@@ -162,8 +165,8 @@
                 <p>登录以后，可以保存你的报告结果哦！</p>
               </div>
               <div class="modal-body">
-                    <a id="wb_connect_btn" class="weibologin" ></a>
-        	        <a id="qqlogin" class="qqlogin"></a>
+                    <div id="wb_connect_btn" class="weibologin" ></div>
+        	        <div id="qqlogin" class="qqlogin"></div>
         	        <a id="nologin">我不想登陆，直接查看报告</a>
               </div>
         </div>
@@ -174,8 +177,8 @@
                 <p>登录以后，可以保存你的报告结果哦！</p>
               </div>
               <div class="modal-body">
-                    <a id="inquiz_wb_connection_btn" class="weibologin" ></a>
-        	        <a id="inquiz_qqlogin" class="qqlogin"></a>
+                    <div id="inquiz_wb_connection_btn" class="weibologin" ></div>
+        	        <div id="inquiz_qqlogin" class="qqlogin"></div>
               </div>
         </div>
 
@@ -295,7 +298,7 @@
         				</div><!-/refrigerator-left-->
         				<div id="refrigerator-right">
         					<div id="refrigerator-right-content">
-        						<div id="fruit" class="fruit refrigerator-cell width-large height-medium {{#getSelectedClass}}3{{/getSelectedClass}} fruit-degree-{{#getDataDegree}}3{{/getDataDegree}}" data-question-id="3" style="top:2%;" data-degree="{{#getDataDegree}}3{{/getDataDegree}}">
+        						<div id="fruit" class="fruit refrigerator-cell width-large height-medium {{#getSelectedClass}}3{{/getSelectedClass}} fruit-degree-{{#getDataDegree}}3{{/getDataDegree}}" data-question-id="3" style="top:2%;" data-degree="{{#getDataDegree}}3{{/getDataDegree}}" title="点击可以切换答案">
         						</div>
                                 <div data-question-id="4">
         						    <div id="drink-coke" class="drink refrigerator-cell width-half height-medium {{#getSelectedClass}}4,14{{/getSelectedClass}}" style="top:21.6%;" data-answer-id="14" data-selected="{{#getDataSelected}}4,14{{/getDataSelected}}"  title="碳酸饮料">
@@ -978,16 +981,16 @@
 							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-2 {{#getSelectedClass}}24,111{{/getSelectedClass}}" data-id="2" data-answer-id="111" title="学生">
 							</div>
 							
-							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-1 {{#getSelectedClass}}24,112{{/getSelectedClass}}" data-id="1" style="left:20%" data-answer-id="112" title="格子间上班族">
+							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-1 {{#getSelectedClass}}24,112{{/getSelectedClass}}" data-id="1" style="left:40%" data-answer-id="112" title="格子间上班族">
 							</div>
 							
-							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-4 {{#getSelectedClass}}24,113{{/getSelectedClass}}" data-id="4" style="left:40%" data-answer-id="113" title="劳动人民">
+							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-4 {{#getSelectedClass}}24,113{{/getSelectedClass}}" data-id="4" style="left:60%" data-answer-id="113" title="劳动人民">
 							</div>
 							
-							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-6 {{#getSelectedClass}}24,114{{/getSelectedClass}}" data-id="6" style="left:60%" data-answer-id="114" title="自由职业">
+							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-6 {{#getSelectedClass}}24,114{{/getSelectedClass}}" data-id="6" style="left:80%" data-answer-id="114" title="自由职业">
 							</div>
 							
-							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-3 {{#getSelectedClass}}24,116{{/getSelectedClass}}" data-id="3" style="left:80%" data-answer-id="116"  title="赋闲在家">
+							<div id="" class="clothes clothes-{{#getUserAnswerName}}22{{/getUserAnswerName}}-3 {{#getSelectedClass}}24,116{{/getSelectedClass}}" data-id="3" style="left:20%" data-answer-id="116"  title="赋闲在家">
 								
 							</div>
 							

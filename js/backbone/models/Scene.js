@@ -295,7 +295,6 @@ var Scene = Backbone.Model.extend({
                 unfinishedQuestion.push(scene_questions[question_id]);
             }
         }
-        console.log(unfinishedQuestion[0]);
 
         return unfinishedQuestion;
     }

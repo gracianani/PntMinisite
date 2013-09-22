@@ -99,7 +99,9 @@ $.prototype.tooltip = function() {
 		tooltipDiv.find('.content').html($(this).attr('title'));
 		var offset = $(e.currentTarget).offset();
 		tooltipDiv.css('left',offset.left  - tooltipDiv.width()/2).css('top',offset.top - tooltipDiv.height()-30);
-		//tooltipDiv.delay(1000).fadeOut('fast');
+		if ( isMob ) {
+		tooltipDiv.delay(1000).fadeOut('fast');
+		}
 		//e.stopPropagation();
 	});
 	if ( !isMob ) {
@@ -117,6 +119,10 @@ $.prototype.hint = function(id) {
 	var self = this;
 	var hintDiv = $(id);
 	var isMob = isMobile();
+	if ( isMob ) {
+		hintDiv.show();
+		return;
+	} 
 	$(this).on('mouseenter', function() {
 		hintDiv.show();
 	});

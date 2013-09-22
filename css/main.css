@@ -203,7 +203,7 @@ footer
 	font-size: 12px;
 	border-radius: 5px;
 	font-family:  "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
-	behavior: url(/pie/PIE.htc);
+	behavior: url(js/vendor/PIE.htc);
 }
 .steptext span em {
 	color: #de5f1c;
@@ -325,6 +325,7 @@ login
 	z-index: 999;
 	border-radius: 15px;
 	border:10px solid #FFF;
+	behavior: url(js/vendor/PIE.htc);
 }
 
 .modal-header,.modal-body {
@@ -350,6 +351,7 @@ login
 	top:-20px;
 	border:none;
 	color: #fff;
+	behavior: url(js/vendor/PIE.htc);
 }
 .modal-header p {
 	margin: 0;
@@ -394,6 +396,7 @@ profile
 	border:5px solid #fff;
 	background-color: #fad949;
 	border-radius: 50%;
+	behavior: url(js/vendor/PIE.htc);
 }
 #profile-avatar .avatar {
 	width: 60px;
@@ -412,6 +415,7 @@ profile
 	float: left;
 	border:2px solid #fff;
 	margin-right: 5px;
+	behavior: url(js/vendor/PIE.htc);
 }
 #profile .profile-nickname {
 	color: #FFF;
@@ -463,16 +467,12 @@ profile
 	color: #cc9336;
 	
 }
-#share #wechat:hover {
-	background-position: left -48px;
-}
+
 #share #weibo {
 	background-position: left -96px;
 }
 
-#share #weibo:hover {
-	background-position: left -144px;
-}
+
 #share .jiathis_style_32x32 .jtico {
 	background: url(../img/share.png) no-repeat left top;
 	margin-left: 10px;
@@ -480,40 +480,25 @@ profile
 	width: 32px;
 	height: 32px;
 	padding-left: 0!important;
+	behavior: url(js/vendor/PIE.htc);
 }
-#share .jiathis_style_32x32 .jtico:hover {
-	opacity: 1;
-	filter: alpha(opacity=100);
-	background-color: #2f94e1;
-}
+
 #share .jiathis_style_32x32 .jtico_weixin {
 	background-position: center -32px;
 }
-#share .jiathis_style_32x32 .jtico_weixin:hover {
-	background-color:#0bcb27;
-	
-}
+
 #share .jiathis_style_32x32 .jtico_tsina {
 	background-position: center -64px;
 }
-#share .jiathis_style_32x32 .jtico_tsina:hover {
-	background-color:#cc1600;
-	
-}
+
 #share .jiathis_style_32x32 .jtico_douban {
 	background-position: center -96px;
 }
-#share .jiathis_style_32x32 .jtico_douban:hover {
-	background-color:#148825;
-	
-}
+
 #share .jiathis_style_32x32 .jtico_qzone {
 	background-position: center -128px;
 }
-#share .jiathis_style_32x32 .jtico_qzone:hover {
-	background-color:#f4b23c;
-	
-}
+
 /*=====================
 navigation 
 =====================*/
@@ -534,9 +519,7 @@ navigation
 	top:35%;
 	left: 20px;
 }
-.navigator:hover {
-	background-position: left bottom;
-}
+
 .noPrev #prev {
 	display: none;
 }
@@ -548,9 +531,7 @@ navigation
 	right: 20px;
 	left: auto;
 }
-#next:hover {
-	background-position: right bottom;
-}
+
 
 
 
@@ -584,6 +565,7 @@ loading
 	margin-top: -120px;
 	background: url(../img/loading-logo.png) no-repeat center center;
 	z-index: 4;
+	behavior: url(js/vendor/PIE.htc);
 	
 }
 
@@ -676,7 +658,7 @@ splash
 	background: url(../img/character/gender-male.png) no-repeat left bottom;
 	
 }
-.splash-gender-male:hover,.splash-gender-male:active {
+.splash-gender-male:active {
 	background-position: -118px bottom;
 }
 .splash-gender-female {
@@ -686,7 +668,7 @@ splash
 	background: url(../img/character/gender-female.png) no-repeat left bottom;
 	margin-right: 50px;
 }
-.splash-gender-female:hover,.splash-gender-female:active {
+.splash-gender-female:active {
 	background-position: -142px bottom;
 }
 /*=====================
@@ -708,9 +690,9 @@ scenes
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
-	behavior: url(/js/verdor/PIE.htc);
 	position: absolute;
 	top: 0;
+	behavior: url(js/vendor/PIE.htc);
 }
 #refrigerator-left {
 	left: 0;
@@ -726,7 +708,7 @@ scenes
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
-	behavior: url(/js/verdor/PIE.htc);
+	behavior: url(js/vendor/PIE.htc);
 }
 #refrigerator-fitting1,#refrigerator-fitting2{
 	width: 2%;
@@ -747,22 +729,20 @@ scenes
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
-	behavior: url(/js/verdor/PIE.htc);
 	background-color: #f0f0f0;
 	overflow: hidden;
 	position: absolute;
 	left: 2%;
 	cursor: pointer;
 	border:1px dashed #e49b02;
+	behavior: url(js/vendor/PIE.htc);
 }
-.refrigerator-cell:hover img,.refrigerator-cell.selected img{
+.refrigerator-cell.selected img{
 	opacity: 1;
 	filter: alpha(opacity=100);
 	
 }
-.refrigerator-cell:hover {
-	background-image: none;
-}
+
 .refrigerator-cell.selected{
 	border-color:#FFF;
 	border-style:solid;
@@ -821,19 +801,19 @@ scenes
 	background-color: #c9f2ed;
 }
 
-#fruit:hover,#fruit.selected {
+#fruit.selected {
 	background-color: #fcf0bb;
 }
-#fruit.fruit-degree-0 {
+#fruit.fruit-degree-1 {
 	background-position: 0 0;
 }
-#fruit.fruit-degree-1 {
+#fruit.fruit-degree-2 {
 	background-position: 0 -72px;
 }
-#fruit.fruit-degree-2 {
+#fruit.fruit-degree-3 {
 	background-position: 0 -144px;
 }
-#fruit.fruit-degree-3 {
+#fruit.fruit-degree-4 {
 	background-position: 0 -216px;
 }
 .drink {
@@ -869,8 +849,8 @@ scenes
 	left: 5%;
 }
 #hint-fruit {
-	right: 5%;
-	top: 22%;
+	right: -15%;
+	top: 0%;
 }
 #hint-drink {
 	right: 5%;
@@ -913,6 +893,7 @@ scenes
 	border-radius: 5px;
 	position: absolute;
 	top: -10px;
+	behavior: url(js/vendor/PIE.htc);
 
 }
 #cooking-pole-left {
@@ -929,6 +910,7 @@ scenes
 	position: absolute;
 	top:-3px;
 	margin-left: -8px;
+	behavior: url(js/vendor/PIE.htc);
 }
 .cooking {
 	position: absolute;
@@ -936,9 +918,7 @@ scenes
 	background: url(../img/scene/diet-cooking.png) no-repeat;
 	cursor: pointer;
 }
-.cooking:hover {
-	top:-10px;
-}
+
 #cooking-hat {
 	width: 62px;
 	height: 134px;
@@ -1071,6 +1051,7 @@ scenes
 	border:8px solid #6994b2;
 	height: 100%;
 	cursor: pointer;
+	behavior: url(js/vendor/PIE.htc);
 }
 .meal ,.smoke,.sleep{
 	height: 25%;
@@ -1121,6 +1102,7 @@ scenes
 	width: 100%;
 	padding: 5px 5%;
 	font-size: 18px;
+	behavior: url(js/vendor/PIE.htc);
 
 }
 #mealCount .onDegree-4 .health-degree-pin{
@@ -1303,6 +1285,7 @@ scenes
 	top:50%;
 	border-radius: 50%;
 	background-color: #fad949;
+	behavior: url(js/vendor/PIE.htc);
 }
 .life-stress {
 	position: absolute;
@@ -1331,6 +1314,7 @@ scenes
 	position: absolute;
 	min-width: 60px;
 	display: none;
+	behavior: url(js/vendor/PIE.htc);
 }
 #tooltip {
 	background-color: #e1471c;
@@ -1345,6 +1329,7 @@ scenes
 	position: absolute;
 	z-index: 999;
 	display: none;
+	behavior: url(js/vendor/PIE.htc);
 }
 #tooltip .caret{
 	position: absolute;
@@ -1384,6 +1369,7 @@ Cleaning
 	border:8px solid #c8c9ba;
 	position: absolute;
 	bottom: -15px;
+	behavior: url(js/vendor/PIE.htc);
 }
 .cleaning-shelfSupport-left {
 	left:20%;
@@ -1571,6 +1557,7 @@ Cleaning
 	color: #FFF;
 	background-color: #de5f1c;
 	border-radius: 5px;	
+	behavior: url(js/vendor/PIE.htc);
 }
 .addButton,.removeButton {
 	width: 30px;
@@ -1582,6 +1569,7 @@ Cleaning
 	border:5px solid #FFFFFF;
 	position: absolute;
 	cursor: pointer;
+	behavior: url(js/vendor/PIE.htc);
 }
 
 .addButton {
@@ -1619,6 +1607,7 @@ Cleaning
 	text-align: center;
 	margin: 0 auto;
 	text-align: center;
+	behavior: url(js/vendor/PIE.htc);
 }
 #shower-frequency .addButton {
 	left: 0;
@@ -1639,6 +1628,7 @@ Cleaning
 	background: #FFF;
 	margin: 20px auto 0;
 	position: relative;
+	behavior: url(js/vendor/PIE.htc);
 }
 .shower-time-icon {
 	width: 40px;
@@ -1650,6 +1640,7 @@ Cleaning
 	margin-top: -20px;
 	display: block;
 	background-color: #efefef;
+	behavior: url(js/vendor/PIE.htc);
 
 }
 
@@ -1677,11 +1668,7 @@ Cleaning
 	background-position: center center;
 	cursor: pointer;
 }
-.shower-time-icon:hover {
-	transform: scale(1.2);
-	-ms-transform: scale(1.2); /* IE 9 */
-	-webkit-transform: scale(1.2); /* Safari and Chrome */
-}
+
 .water-item {
 	position: absolute;
 	margin-left: -25px;
@@ -1769,6 +1756,7 @@ Cleaning
 	position: absolute;
 	left: 0;
 	top: 0;
+	behavior: url(js/vendor/PIE.htc);
 }
 #hairstyle-length-control,
 #hairstyle-curl-control {
@@ -1821,11 +1809,9 @@ Cleaning
 	margin-right: 10px;
 	margin-bottom: 10px;
 	cursor: pointer;
+	behavior: url(js/vendor/PIE.htc);
 }
-.hairtype-icon:hover {
-	background-color: #d55b1c;
-	border-color: #ffe579;
-}
+
 .hairtype-icon.selected {
 	background-color: #d55b1c;
 	border-color: #d55b1c;
@@ -1859,11 +1845,10 @@ Cleaning
 	background-color: #fde7b8;
 	border: 2px #ffbd32 solid;
 	cursor: pointer;
+	behavior: url(js/vendor/PIE.htc);
+	z-index: 1;
 }
-.haircolor:hover {
-	z-index: 3;
-	border-color:#d55b1c;
-}
+
 .haircolor.selected {
 	z-index: 2;
 	background-color: #FFF;
@@ -1900,6 +1885,7 @@ Cleaning
 	border: 1px #f39800 solid;
 	background: #ffbd32;
 	border-radius: 5px;
+	behavior: url(js/vendor/PIE.htc);
 }
 .haircolor-content {
 	width: 67%;
@@ -1907,6 +1893,9 @@ Cleaning
 	float: right;
 	border-radius: 0 10px 10px 0;
 	background: url(../img/scene/colorcard.png) no-repeat left top;
+	behavior: url(js/vendor/PIE.htc);
+	position: relative;
+	z-index: 1;
 }
 #haircolor-mix .haircolor-content{
 	background-color: #602016;
@@ -1927,6 +1916,7 @@ Cleaning
 	position: absolute;
 	left: 63%;
 	top: -5%;
+	z-index: 3;
 }
 #magnifier-glass {
 	width: 100px;
@@ -1935,6 +1925,7 @@ Cleaning
 	background-color: #42c8bb;
 	border:10px solid #4d3d2e;
 	overflow: hidden;
+	behavior: url(js/vendor/PIE.htc);
 }
 #magnifier-glass-content {
 	width: 100%;
@@ -1942,6 +1933,7 @@ Cleaning
 	overflow: hidden;
 	position: relative;
 	border-radius: 50%;
+	behavior: url(js/vendor/PIE.htc);
 }
 #magnifier-handler {
 	width: 80px;
@@ -1954,6 +1946,9 @@ Cleaning
 	position: absolute;
 	top: 120px;
 	left: -40px;
+	behavior: url(js/vendor/PIE.htc);
+	
+	
 }
 #magnifier-oil,#magnifier-dry,#magnifier-skin,#magnifier-less,#magnifier-normal,#magnifier-more {
 	background:url(../img/scene/magnifier.png) no-repeat center top;
@@ -1963,6 +1958,7 @@ Cleaning
 	left: 0px;
 	top: 0px;
 	border-radius: 50%;
+	behavior: url(js/vendor/PIE.htc);
 }
 #magnifier-less {
 	background-position:  center top;
@@ -2051,7 +2047,7 @@ Cleaning
 	position: absolute;
 	right: 45%;
 	left: auto;
-	
+	behavior: url(js/vendor/PIE.htc);
 }
 #quality-thickness {
 	top:120px;
@@ -2068,6 +2064,8 @@ Cleaning
 	font-size: 16px;
 	text-align: center;
 	padding-right: 7%;
+	behavior: url(js/vendor/PIE.htc);
+	position: relative;
 }
 .quality-progress-bar {
 	background-color: #ffffff;
@@ -2078,6 +2076,7 @@ Cleaning
 	top: 50%;
 	margin-top:-8px;
 	height: 16px;
+	behavior: url(js/vendor/PIE.htc);
 }
 .quality-progress-dot {
 	width: 10px;
@@ -2092,15 +2091,9 @@ Cleaning
 	margin-left: -15px;
 	background-color: #ffbd32;
 	cursor: pointer;
+	behavior: url(js/vendor/PIE.htc);
 }
-.quality-progress-dot:hover {
-	background-color: #d55b1c;
-	width: 20px;
-	height: 20px;
-	border-radius: 20px;
-	margin-top:-20px;
-	margin-left: -20px;
-}
+
 .progress-degree-1{
 	left: 0;
 }
@@ -2133,6 +2126,7 @@ Cleaning
 	line-height: 50px;
 	cursor: pointer;
 	font-size: 12px;
+	behavior: url(js/vendor/PIE.htc);
 	
 }
 .quality-progress .on-degree-,.quality-progress .on-degree-0 {
@@ -2177,6 +2171,7 @@ Cleaning
 	
 	background: url(../img/scene/hairproblem.png) no-repeat top left;
 	cursor: pointer;
+	behavior: url(js/vendor/PIE.htc);
 }
 
 .problem-text {
@@ -2191,6 +2186,7 @@ Cleaning
 	margin-left: -20%;
 	background: #d55b1c;
 	color: #fff;
+	behavior: url(js/vendor/PIE.htc);
 	
 }
 #problem-item-1 {
@@ -2284,6 +2280,8 @@ Cleaning
 	position: absolute;
 	top:50%;
 	margin-top: -10px;
+	behavior: url(js/vendor/PIE.htc);
+	
 }
 #pole-cover-left {
 	left: -10px;
@@ -2320,11 +2318,7 @@ Cleaning
 #basicinfo-career .selected {
 	display: none;
 }
-#basicinfo-career .clothes:hover {
-	transform: rotate(-10deg);
-	-webkit-transform: rotate(-10deg);
-	-ms-transform: rotate(-10deg);
-}
+
 #basicinfo-age {
 	width: 200px;
 	height: 300px;
@@ -2351,6 +2345,7 @@ Cleaning
 	color: #d55b1c;
 	cursor: pointer;
 	background-position: center 100px;
+	behavior: url(js/vendor/PIE.htc);
 	
 }
 .age-item-text {
@@ -2395,9 +2390,7 @@ Cleaning
 .on-degree-2 #age-item-1,
 .on-degree-3 #age-item-1,
 .on-degree-4 #age-item-1,
-.on-degree-5 #age-item-1,
-#age-item-1:hover,
-.mouseEnterAge #age-item-1:hover {
+.on-degree-5 #age-item-1 {
 	border-color: #fff;
 	border-width: 2px;
 	border-style: solid;
@@ -2408,18 +2401,14 @@ Cleaning
 .on-degree-2 #age-item-1 .age-item-text,
 .on-degree-3 #age-item-1 .age-item-text,
 .on-degree-4 #age-item-1 .age-item-text,
-.on-degree-5 #age-item-1 .age-item-text,
-#age-item-1:hover .age-item-text,
-.mouseEnterAge #age-item-1:hover .age-item-text
+.on-degree-5 #age-item-1 .age-item-text
 {
 	display: none;
 }
 .on-degree-2 #age-item-2,
 .on-degree-3 #age-item-2,
 .on-degree-4 #age-item-2,
-.on-degree-5 #age-item-2,
-#age-item-2:hover,
-.mouseEnterAge #age-item-2:hover {
+.on-degree-5 #age-item-2{
 	border-color: #FFF;
 	border-width: 2px;
 	border-style: solid;
@@ -2430,17 +2419,13 @@ Cleaning
 .on-degree-2 #age-item-2 .age-item-text,
 .on-degree-3 #age-item-2 .age-item-text,
 .on-degree-4 #age-item-2 .age-item-text,
-.on-degree-5 #age-item-2 .age-item-text,
-#age-item-2:hover .age-item-text,
-.mouseEnterAge #age-item-2:hover .age-item-text
+.on-degree-5 #age-item-2 .age-item-text
 {
 	display: none;
 }
 .on-degree-3 #age-item-3,
 .on-degree-4 #age-item-3,
-.on-degree-5 #age-item-3,
-#age-item-3:hover,
-.mouseEnterAge #age-item-3:hover {
+.on-degree-5 #age-item-3{
 	border-color: #FFF;
 	border-style: solid;
 	border-width: 2px;
@@ -2450,16 +2435,12 @@ Cleaning
 }
 .on-degree-3 #age-item-3 .age-item-text,
 .on-degree-4 #age-item-3 .age-item-text,
-.on-degree-5 #age-item-3 .age-item-text,
-#age-item-3:hover .age-item-text,
-.mouseEnterAge #age-item-3:hover .age-item-text
+.on-degree-5 #age-item-3 .age-item-text
 {
 	display: none;
 }
 .on-degree-4 #age-item-4,
-.on-degree-5 #age-item-4,
-#age-item-4:hover,
-.mouseEnterAge #age-item-4:hover {
+.on-degree-5 #age-item-4 {
 	border-color: #FFF;
 	border-style: solid;
 	border-width: 2px;
@@ -2467,15 +2448,11 @@ Cleaning
 	background-position: center -260px;
 }
 .on-degree-4 #age-item-4 .age-item-text,
-.on-degree-5 #age-item-4 .age-item-text,
-#age-item-4:hover .age-item-text,
-.mouseEnterAge #age-item-4:hover .age-item-text
+.on-degree-5 #age-item-4 .age-item-text
 {
 	display: none;
 }
-.on-degree-5 #age-item-5,
-#age-item-5:hover,
-.mouseEnterAge #age-item-5:hover
+.on-degree-5 #age-item-5
  {
 	border-color: #FFF;
 	border-style: solid;
@@ -2483,9 +2460,7 @@ Cleaning
 	background-color: #d55b1c;
 	background-position: center -340px;
 }
-.on-degree-5 #age-item-5 .age-item-text,
-#age-item-5:hover .age-item-text,
-.mouseEnterAge #age-item-5:hover .age-item-text
+.on-degree-5 #age-item-5 .age-item-text
 {
 	display: none;
 }
@@ -3133,6 +3108,7 @@ Cleaning
 	margin-left: -120px;
 	top:45%;
 	margin-top:-175px;
+	behavior: url(js/vendor/PIE.htc);
 }
 .mirror-show .fm{
 	position: absolute;
@@ -3366,6 +3342,7 @@ Cleaning
 	right: 0;
 	position: absolute;
 	display: none;
+	
 }
 #hairStyleRef {
 	height: 50px;
@@ -3414,11 +3391,10 @@ Cleaning
 	margin: 0 15px;
 	border-radius: 50%;
 	position: relative;
+	behavior: url(js/vendor/PIE.htc);
 
 }
-.chat-icon:hover {
-	background-color: #f7f2e4;
-}
+
 .chat-icon-text {
 	background: #d55b1c;
 	border-radius: 3px;
@@ -3430,6 +3406,7 @@ Cleaning
 	margin-top: -10px;
 	width: 150%;
 	padding: 2px 0;
+	behavior: url(js/vendor/PIE.htc);
 }
 #chat-icon-perm .chat-icon,#chat-icon-care .chat-icon {
 	background:url(../img/scene/chat-icon.png) no-repeat;
@@ -3449,6 +3426,7 @@ Cleaning
 .on-degree-5 .chat-icon-degree-mask {
 	height: 100%;
 	border-radius: 10px;
+	behavior: url(js/vendor/PIE.htc);
 }
 #counselor-chat-4 {
 	top:380px;
@@ -3470,13 +3448,12 @@ Cleaning
 	bottom: 0;
 	left: 0;
 	border-radius: 2px 2px 10px 10px;
+	behavior: url(js/vendor/PIE.htc);
 }
 #character-chat-2 .chat-icon-text {
 	top:110%;
 }
-#character-chat-1 .chat-icon:hover .chat-icon-text {
-	display: none;
-}
+
 .chat-icon.selected {
 	background-color: #d55b1c;
 }
@@ -3527,6 +3504,7 @@ Cleaning
 	position: relative;
 	background-color: #f7f2e4;
 	position: relative;
+	behavior: url(js/vendor/PIE.htc);
 }
 .chat-icon-perm{ background-position: 0 -408px; width: 50px; height: 50px; } 
 .chat-icon-perm.selected{ background-position: 0 -459px; width: 50px; height: 50px; } 
@@ -3553,6 +3531,7 @@ Cleaning
 	width: 100px; height: 75px;background-color: transparent;margin:0;
 	border-radius: 10px;
 	overflow: hidden;
+	behavior: url(js/vendor/PIE.htc);
 }
 #chat-icon-care .chat-icon-text,#chat-icon-perm .chat-icon-text{
 	background-color: #2470a4;
@@ -3561,6 +3540,7 @@ Cleaning
 	left: 0;
 	top: 85%;
 	border-radius: 0px 0px 10px 10px;
+	behavior: url(js/vendor/PIE.htc);
 	}
 
 /* ==========================================================================
@@ -3610,6 +3590,7 @@ Cleaning
 	-moz-border-radius:  50%;
 	border-radius:  50%;
 	margin-right: 30px;	
+	behavior: url(js/vendor/PIE.htc);
 }
 .score-inside {
 	width: 160px;
@@ -3618,6 +3599,7 @@ Cleaning
 	position: absolute;
 	top: 20px;
 	left: 20px;
+	behavior: url(js/vendor/PIE.htc);
 }
 #report-score-title {
 	position: absolute;
@@ -3741,40 +3723,25 @@ Cleaning
 	height: 32px;
 	padding-left: 0!important;
 	background-color: #2a82a6;
+	behavior: url(js/vendor/PIE.htc);
 }
-.report-share .jiathis_style_32x32 .jtico:hover {
-	opacity: 1;
-	filter: alpha(opacity=100);
-	background-color: #2f94e1;
-}
+
 .report-share .jiathis_style_32x32 .jtico_weixin {
 	background-position: center -32px;
 }
-.report-share .jiathis_style_32x32 .jtico_weixin:hover {
-	background-color:#0bcb27;
-	
-}
+
 .report-share .jiathis_style_32x32 .jtico_tsina {
 	background-position: center -64px;
 }
-.report-share .jiathis_style_32x32 .jtico_tsina:hover {
-	background-color:#cc1600;
-	
-}
+
 .report-share .jiathis_style_32x32 .jtico_douban {
 	background-position: center -96px;
 }
-.report-share .jiathis_style_32x32 .jtico_douban:hover {
-	background-color:#148825;
-	
-}
+
 .report-share .jiathis_style_32x32 .jtico_qzone {
 	background-position: center -128px;
 }
-.report-share .jiathis_style_32x32 .jtico_qzone:hover {
-	background-color:#f4b23c;
-	
-}
+
 #report-score-underline {
 	position: absolute;
 	bottom: 16px;
@@ -3842,6 +3809,7 @@ Cleaning
 	line-height: 20px;
 	font-size: 16px;	
 	text-decoration: none;
+	behavior: url(js/vendor/PIE.htc);
 }
 #report-opt .restartQuiz{
 	
@@ -3859,11 +3827,13 @@ Cleaning
 	margin-left: 0px;
 	border-radius: 5px;
 	position: relative;
+	behavior: url(js/vendor/PIE.htc);
 }
 .ui-progressbar-value {
 	height: 100%;
 	background-color: #2a82a6;
 	border-radius: 5px;
+	behavior: url(js/vendor/PIE.htc);
 }
 .restartQuiz {
 	background: #d55b1c;
@@ -3903,6 +3873,7 @@ Cleaning
 	min-height: 100px;
 	padding: 20px;
 	border: #de9a0a 2px solid;
+	behavior: url(js/vendor/PIE.htc);
 }
 
 #report-avatar {
@@ -4265,12 +4236,191 @@ Cleaning
    These examples override the primary ('mobile first') styles.
    Modify as content requires.
    ========================================================================== */
+@media only screen and (min-width: 1025px) {
+.navigator:hover {
+	background-position: left bottom;
+}
+#next:hover {
+	background-position: right bottom;
+}
+#share #wechat:hover {
+	background-position: left -48px;
+}
+#share #weibo:hover {
+	background-position: left -144px;
+}
+.report-share .jiathis_style_32x32 .jtico:hover {
+	opacity: 1;
+	filter: alpha(opacity=100);
+	background-color: #2f94e1;
+}
+.report-share .jiathis_style_32x32 .jtico_weixin:hover {
+	background-color:#0bcb27;
+	
+}
+.report-share .jiathis_style_32x32 .jtico_tsina:hover {
+	background-color:#cc1600;
+	
+}
+.report-share .jiathis_style_32x32 .jtico_douban:hover {
+	background-color:#148825;
+	
+}
+.report-share .jiathis_style_32x32 .jtico_qzone:hover {
+	background-color:#f4b23c;
+	
+}
+#character-chat-1 .chat-icon:hover .chat-icon-text {
+	display: none;
+}
+.chat-icon:hover {
+	background-color: #f7f2e4;
+}
+
+#age-item-1:hover,
+.mouseEnterAge #age-item-1:hover {
+	border-color: #fff;
+	border-width: 2px;
+	border-style: solid;
+	background-color: #d55b1c;
+	background-position: center top;
+}
+#age-item-1:hover .age-item-text,
+.mouseEnterAge #age-item-1:hover .age-item-text
+{
+	display: none;
+}
+#age-item-2:hover,
+.mouseEnterAge #age-item-2:hover {
+	border-color: #FFF;
+	border-width: 2px;
+	border-style: solid;
+	background-color: #94c2b4;
+	background-color: #ffbd32;
+	background-position: center -80px;
+}
+#age-item-2:hover .age-item-text,
+.mouseEnterAge #age-item-2:hover .age-item-text
+{
+	display: none;
+}
+#age-item-3:hover,
+.mouseEnterAge #age-item-3:hover {
+	border-color: #FFF;
+	border-style: solid;
+	border-width: 2px;
+	background-color: #6fc280;
+	background-color: #2470a5;
+	background-position: center -160px;
+}
+#age-item-3:hover .age-item-text,
+.mouseEnterAge #age-item-3:hover .age-item-text
+{
+	display: none;
+}
+#age-item-4:hover,
+.mouseEnterAge #age-item-4:hover {
+	border-color: #FFF;
+	border-style: solid;
+	border-width: 2px;
+	background-color: #ffbd32;
+	background-position: center -260px;
+}
+#age-item-4:hover .age-item-text,
+.mouseEnterAge #age-item-4:hover .age-item-text
+{
+	display: none;
+}
+#age-item-5:hover,
+.mouseEnterAge #age-item-5:hover
+ {
+	border-color: #FFF;
+	border-style: solid;
+	border-width: 2px;
+	background-color: #d55b1c;
+	background-position: center -340px;
+}
+#age-item-5:hover .age-item-text,
+.mouseEnterAge #age-item-5:hover .age-item-text
+{
+	display: none;
+}
+#basicinfo-career .clothes:hover {
+	transform: rotate(-10deg);
+	-webkit-transform: rotate(-10deg);
+	-ms-transform: rotate(-10deg);
+}
+.quality-progress-dot:hover {
+	background-color: #d55b1c;
+	width: 20px;
+	height: 20px;
+	border-radius: 20px;
+	margin-top:-20px;
+	margin-left: -20px;
+	behavior: url(js/vendor/PIE.htc);
+}
+.haircolor:hover {
+	z-index: 3;
+	border-color:#d55b1c;
+}
+.hairtype-icon:hover {
+	background-color: #d55b1c;
+	border-color: #ffe579;
+}
+.cooking:hover {
+	top:-10px;
+}
+.shower-time-icon:hover {
+	transform: scale(1.2);
+	-ms-transform: scale(1.2); /* IE 9 */
+	-webkit-transform: scale(1.2); /* Safari and Chrome */
+}
+#fruit:hover {
+	background-color: #fcf0bb;
+}
+.refrigerator-cell:hover img{
+	opacity: 1;
+	filter: alpha(opacity=100);
+	
+}
+.refrigerator-cell:hover {
+	background-image: none;
+}
+.splash-gender-female:hover{
+	background-position: -142px bottom;
+}
+.splash-gender-male:hover,.splash-gender-male:active {
+	background-position: -118px bottom;
+}
+#share .jiathis_style_32x32 .jtico:hover {
+	opacity: 1;
+	filter: alpha(opacity=100);
+	background-color: #2f94e1;
+}
+#share .jiathis_style_32x32 .jtico_weixin:hover {
+	background-color:#0bcb27;
+	
+}
+#share .jiathis_style_32x32 .jtico_tsina:hover {
+	background-color:#cc1600;
+	
+}
+#share .jiathis_style_32x32 .jtico_douban:hover {
+	background-color:#148825;
+	
+}
+#share .jiathis_style_32x32 .jtico_qzone:hover {
+	background-color:#f4b23c;
+	
+}
+}
 @media only screen and (min-width: 1570px) {
     /* Style adjustments for viewports that meet the condition */
     #main {
 	    width: 1440px;
 	    height: 500px;
-	    margin-top: 100px;
+	    margin-top: 50px;
+	    top: 0;
     }
     .basicinfo-scene {
 	    left: 30%;
@@ -4573,6 +4723,58 @@ Cleaning
     #help-sleep {
 	    left: 66%;
 	    top: 33%;
+    }
+}
+@media only screen and (max-width: 1023px){
+    /* Style adjustments for viewports that meet the condition */
+   
+    body {
+	    min-width: 480px;
+    }
+    #main {
+	    width: 80%;
+	    height: 550px;
+	    top:15px;
+    }
+
+   #share {
+	   display: none;
+   }
+   .basicinfo-scene {
+	   left: 0;
+   }
+   #basicinfo-age {
+	   left:220px;
+	   top:50px;
+	   width: 300px;
+   }
+   #basicinfo-career {
+	   top:45%;
+	   right: 2%;
+   }
+   #age-item-1 {
+	   left: 0;
+	   top:0;
+   }
+    #age-item-2 {
+	    left: 80px;
+	    top: 0;
+    }
+    #age-item-3 {
+	    top:0px;
+	    left: 160px;
+    }
+    #age-item-4 {
+	    top:100px;
+	    left: 15px;
+    }
+    #age-item-5 {
+	    top:100px;
+	    left: 115px;
+    }
+    #help-cat {
+	    right: -5%;
+	    top: 70%;
     }
 }
 @media only screen and (min-width: 35em) {

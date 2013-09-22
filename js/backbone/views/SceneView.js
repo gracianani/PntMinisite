@@ -183,7 +183,7 @@ var LifeView = Backbone.View.extend({
             }, 500, 'back-out')
             .attr({
             	"stroke":"#e4600d",
-            	"stroke-dasharray":"",
+            	"stroke-dasharray":""
             });
             
             this.stressPinRoot.attr({
@@ -868,12 +868,30 @@ var DietView = Backbone.View.extend({
     },
 
     answerFruitQuestion: function (event) {
-        var item = event.currentTarget;
+        var item = $(event.currentTarget);
+        var questionId = parseInt(item.attr("data-question-id"));
+        var degree = parseInt(this.model.getAnswerDegree(questionId));
+        console.log(degree);
+        if (degree) {
+	        degree = degree + 1;
+	        if ( degree > 4 ) {
+		        degree = 1;
+	        }
+	        
+        } else {
+	        degree = 1;
+        }
+        console.log(degree);
+        item.attr('class', 'fruit refrigerator-cell width-large height-medium selected fruit-degree-' + degree).attr('data-degree', degree);
+        /*
         var width = $(item).width();
         var degree = Math.max(Math.min(Math.floor((event.pageX - $(item).offset().left) / width * 4), 3), 0);
         $(item).attr('data-degree', degree);
         $(item).removeClass('fruit-degree-0').removeClass('fruit-degree-1').removeClass('fruit-degree-2').removeClass('fruit-degree-3').addClass('fruit-degree-' + degree).addClass('selected');
-        this.model.setAnswerByAnswerIndex(parseInt($(item).attr("data-question-id")), degree, true);
+        */
+        $('#hint-fruit').text(this.model.getAnswerTextByDegree(questionId,degree));
+        this.model.setAnswerByDegree(questionId, degree, true);
+
     },
 
     answerDrinkQuestion: function (event) {
@@ -936,6 +954,8 @@ var DietView = Backbone.View.extend({
     },
     initFruit: function () {
         var self = this;
+
+        /*
         this.$el.find('#fruit').on('mousemove', function (e) {
             //set background postion base on degree
             var width = $(this).width();
@@ -953,6 +973,7 @@ var DietView = Backbone.View.extend({
             $(this).removeClass('fruit-degree-0').removeClass('fruit-degree-1').removeClass('fruit-degree-2').removeClass('fruit-degree-3').addClass('fruit-degree-' + degree);
 
         })
+        */
     },
 
     initialize: function () {
