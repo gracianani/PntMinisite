@@ -4733,10 +4733,38 @@ Cleaning
     }
     #main {
 	    width: 80%;
-	    height: 550px;
+	    min-height: 550px;
+	    height: auto;
 	    top:15px;
     }
-
+    .scene {
+	    position: relative;
+	    height: auto;
+    }
+    #scene-basicinfo {
+	    height: 550px;
+	    margin-bottom: 100px;
+    }
+    #scene-life {
+	    height: 550px;
+		margin-bottom: 50px;
+    }
+    #scene-health {
+	    height: 600px;
+	    margin-bottom: 50px;
+    }
+    #scene-hairstyle {
+	    height: 500px;
+	    margin-bottom: 50px;
+    }
+    #scene-hairquality {
+	    height: 600px;
+	    margin-bottom: 50px;
+    }
+    #scene=diet {
+	    height: 450px;
+	    margin-bottom: 50px;
+    }
    #share {
 	   display: none;
    }
@@ -4744,13 +4772,14 @@ Cleaning
 	   left: 0;
    }
    #basicinfo-age {
-	   left:220px;
+	   left:250px;
 	   top:50px;
 	   width: 300px;
    }
    #basicinfo-career {
 	   top:45%;
 	   right: 2%;
+	   width: 70%;
    }
    #age-item-1 {
 	   left: 0;
@@ -4775,6 +4804,83 @@ Cleaning
     #help-cat {
 	    right: -5%;
 	    top: 70%;
+    }
+    .mirror-show {
+	    height: 500px;
+	    margin-left: -100px;
+	    left: 50%;
+	    top: 120px;
+    }
+
+    #hairstyle-length, #hairstyle-curl {
+	    top:50px;
+    }
+    .quality-scene {
+	    top:0px;
+	    width: 80%;
+	    height: 200px;
+	    margin-left: -40%;
+    }
+    #magnifier {
+	    right: 55%;
+    }
+    #hairstyle-type {
+	    height: 150px;
+    }
+    #hairstyle-color {
+	    height: 107px;
+    }
+    .quality-progress {
+	    width: 80%;
+	    right: 10%;
+    }
+    #quality-quality {
+	    top: 220px;
+    }
+    #quality-thickness {
+	    top: 310px;
+    }
+    #quality-volume {
+	    top:400px;
+    }
+    #life-icons, #life-lines {
+	    width: 480px;
+	    margin-left: -240px;
+    }
+    #life-work-1 {
+	    top: 0;
+    }
+    #life-play-1 {
+	    top: 0;
+    }
+    .health-degree {
+	    width: 90%;
+	    min-width: 376px;
+	    position: relative;
+	    height: 80px;
+	    min-height: 80px;
+	    position: relative;
+	    margin-bottom: 40px;
+	    left: 5%!important;
+    }
+    .health-degree-content {
+	    min-width: 360px;
+	    width: 90%;
+    }
+    .health-degree-hint {
+	    top:95%;
+	    left: 0;
+	    width: 33%;
+	    font-size: 16px;
+    }
+    .meal, .smoke, .sleep {
+	    height: 80px;
+	    float: left;
+	    display: inline-block;
+	    margin-right: 10px;
+    }
+    .meal:last-child, .smoke:last-child, .sleep:last-child {
+	    margin-right: 0;
     }
 }
 @media only screen and (min-width: 35em) {
