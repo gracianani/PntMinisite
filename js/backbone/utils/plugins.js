@@ -52,7 +52,7 @@ var sectorsCount = count || 12,
 			opacity = [],
 			beta = 2 * Math.PI / sectorsCount,
  
-			pathParams = {stroke: color, "stroke-width": width, "stroke-linecap": "round"};
+	pathParams = {stroke: color, "stroke-width": width, "stroke-linecap": "round"};
 	Raphael.getColor.reset();
 	for (var i = 0; i < sectorsCount; i++) {
 		var alpha = beta * i - Math.PI / 2,
@@ -295,3 +295,6 @@ function unique(data){
     }  
     return data;  
 }  
+function isSmallScreen() {
+	return !($(window).width() > 1023); 
+}

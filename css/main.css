@@ -1287,6 +1287,7 @@ scenes
 	background-color: #fad949;
 	behavior: url(js/vendor/PIE.htc);
 }
+
 .life-stress {
 	position: absolute;
 	cursor: pointer;
@@ -4765,6 +4766,16 @@ Cleaning
 	    height: 450px;
 	    margin-bottom: 50px;
     }
+    #life-center,#life-type {
+	-webkit-transform: scale(0.8);
+	-ms-transform: scale(0.8);
+	-moz-transform: scale(0.8);
+	transform: scale(0.8);
+	
+}
+	#life-type {
+		padding-top: 10px;
+	}
    #share {
 	   display: none;
    }
@@ -4861,27 +4872,165 @@ Cleaning
 	    min-height: 80px;
 	    position: relative;
 	    margin-bottom: 40px;
-	    left: 5%!important;
+	    left: 3%!important;
     }
     .health-degree-content {
 	    min-width: 360px;
-	    width: 90%;
+	    height: 80px;
+	    background: none;
+	    width: 100%;
+	    border: none;
     }
-    .health-degree-hint {
-	    top:95%;
-	    left: 0;
+    .health-degree-pin {
+	    width: 30px;
+	    height: 60px;
+	    margin-left: -15px;
+	    margin-top: -30px;
+	    top:0px!important;
+	    left: 50%;
+	    background: url(../img/scene/health-pin-v.png) right top no-repeat;
+    }
+.onDegree- .health-degree-pin {
+	background-position: left top;
+}
+#mealCount {
+	margin-top: 40px;
+}
+#mealCount .onDegree-4 .health-degree-pin{
+	left:20%;
+}
+#mealCount .onDegree-3 .health-degree-pin{
+	left:45%;
+}
+#mealCount .onDegree-2 .health-degree-pin{
+	left:70%;
+}
+#mealCount .onDegree-1 .health-degree-pin{
+	left:95%;
+}
+#drinking .onDegree-3 .health-degree-pin{
+	left:15%;
+}
+#drinking .onDegree-2 .health-degree-pin{
+	left:58%;
+}
+#drinking .onDegree-1 .health-degree-pin{
+	left:96%;
+}
+#drinking .health-degree-item {
+	display: none;
+}
+#drinking .unselected .defaultShow {
+	display: block;
+}
+#drinking .onDegree-3 #drinking-degree3{
+	display: block;
+}
+#drinking .onDegree-2 #drinking-degree2{
+	display: block;
+}
+#drinking .onDegree-1 #drinking-degree1{
+	display: block;
+}
+#smoke .onDegree-4 .health-degree-pin{
+	left:20%;
+}
+#smoke .onDegree-3 .health-degree-pin{
+	left:45%;
+}
+#smoke .onDegree-2 .health-degree-pin{
+	left:70%;
+}
+#smoke .onDegree-1 .health-degree-pin{
+	left:95%;
+}
+#sunBlock .onDegree-3 .health-degree-pin{
+	left:15%;
+}
+#sunBlock .onDegree-2 .health-degree-pin{
+	left:58%;
+}
+#sunBlock .onDegree-1 .health-degree-pin{
+	left:96%;
+}
+#sunBlock .health-degree-item {
+	display: none;
+}
+#sunBlock .unselected .defaultShow {
+	display: block;
+}
+#sunBlock .onDegree-3 #sunBlock-degree3{
+	display: block;
+}
+#sunBlock .onDegree-2 #sunBlock-degree2{
+	display: block;
+}
+#sunBlock .onDegree-1 #sunBlock-degree1{
+	display: block;
+}
+#sleep .onDegree-4 .health-degree-pin{
+	left:20%;
+}
+#sleep .onDegree-3 .health-degree-pin{
+	left:45%;
+}
+#sleep .onDegree-2 .health-degree-pin{
+	left:70%;
+}
+#sleep .onDegree-1 .health-degree-pin{
+	left:95%;
+}
+.health-degree-hint {
+	    top:90%;
+	    left: auto;
+	    right: 0;
 	    width: 33%;
 	    font-size: 16px;
-    }
-    .meal, .smoke, .sleep {
+}
+.meal, .smoke, .sleep {
 	    height: 80px;
 	    float: left;
 	    display: inline-block;
-	    margin-right: 10px;
-    }
-    .meal:last-child, .smoke:last-child, .sleep:last-child {
+	    width: 23.5%;
+	    margin-right: 2%;
+	    background-color: #FFF;
+	    border-radius: 3px;
+}
+.meal:active, .smoke:hover, .sleep:hover {
+	-webkit-transform: scale(0.8);
+	-moz-transform: scale(0.8);
+	-ms-transform: scale(0.8);
+	transform: scale(0.8);
+}
+.meal:last-child, .smoke:last-child, .sleep:last-child {
 	    margin-right: 0;
-    }
+}
+#mealCount-degree4,#sleep-degree4 {
+	background-color: #8bd0ff;
+}
+#mealCount-degree3,#sleep-degree3 {
+	background-color: #38a4ee;
+}
+#mealCount-degree2,#sleep-degree2 {
+	background-color: #2470a4;
+}
+#mealCount-degree1,#sleep-degree1 {
+	background-color: #0d4876;
+	margin-right:0;
+}
+#smoke-degree4 {
+	background-color: #e49b02;
+}
+#smoke-degree3 {
+	background-color: #e49b02;
+}
+#smoke-degree2 {
+	background-color: #e49b02;
+}
+#smoke-degree1 {
+	background-color: #e49b02;
+	margin-right: 0;
+}
 }
 @media only screen and (min-width: 35em) {
     /* Style adjustments for viewports that meet the condition */

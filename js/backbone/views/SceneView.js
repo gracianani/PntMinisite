@@ -763,8 +763,13 @@ var HealthView = Backbone.View.extend({
 
     initHealthQuestions: function () {
         var that = this;
+		var smallscreen = isSmallScreen();
+		var axis = "y";
+		if ( smallscreen ) {
+			axis = "x";
+		}
         this.$el.find('.health-degree-pin').draggable({
-            axis: "y",
+            axis: axis,
             containment: "parent",
             stop: function () {
 
@@ -772,7 +777,13 @@ var HealthView = Backbone.View.extend({
                 var degreeContent = $(this).parent();
 
                 var degreesCount = parseInt(degreeContent.find('.health-degree-item').size());
-                var degree = Math.ceil((degreeContent.offset().top + degreeContent.height() - $(this).offset().top) / degreeContent.height() * degreesCount);
+                var degree;
+                if ( smallscreen ) {
+	                degree = Math.ceil((degreeContent.offset().left + degreeContent.width() - $(this).offset().left) / degreeContent.width() * degreesCount);
+                } else {
+	               degree = Math.ceil((degreeContent.offset().top + degreeContent.height() - $(this).offset().top) / degreeContent.height() * degreesCount);
+                }
+                
 
                 degree = Math.min(degreesCount, degree);
                 degree = Math.max(1, degree);

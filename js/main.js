@@ -485,6 +485,7 @@ window.AppFacade = {
 requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone/models/Report', '../backbone/utils/Utils', '../backbone/views/AvatarView', '../backbone/views/ReportView', '../backbone/views/SceneView', '../backbone/Router'],
     function (avatar, scene, utils, avatarView, sceneView, router) {
         AppFacade.init();
+        
         app.QuestionRepo = new QuestionsCollection;
         app.QuestionRepo.fetch().done(
             function () {
@@ -543,7 +544,7 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
 				        ];
 
 
-
+						
                         app.Router = new Router();
                         Backbone.history.start();
                         var isTrigger = typeof (app.ReportId) == 'undefined';
