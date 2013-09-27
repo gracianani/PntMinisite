@@ -5019,17 +5019,21 @@ Cleaning
 	margin-right:0;
 }
 #smoke-degree4 {
-	background-color: #e49b02;
+	background-color: #0d4876;
 }
 #smoke-degree3 {
-	background-color: #e49b02;
+	background-color: #2470a4;
 }
 #smoke-degree2 {
-	background-color: #e49b02;
+	background-color: #38a4ee;
 }
 #smoke-degree1 {
-	background-color: #e49b02;
+	background-color: #8bd0ff;
 	margin-right: 0;
+}
+#drinking .health-degree-content,#sunBlock .health-degree-content {
+	background-color: #2470a4;
+	border-radius: 5px;
 }
 }
 @media only screen and (min-width: 35em) {
