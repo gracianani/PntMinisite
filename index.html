@@ -401,13 +401,16 @@
         			<div id="drinking" class="health-degree item">
         				<div class="health-degree-content  {{#getUnselectedClass}}6{{/getUnselectedClass}} onDegree-{{#getDataDegree}}6{{/getDataDegree}}" data-question-id="6" data-degrees="3">
 	        				<div id="drinking-degree3" title="经常喝" data-answer-id="25" class="drinking health-degree-item" data-degree="3">
-	        					<img src="img/scene/drinking-3.png" />
+	        					<img src="img/scene/drinking-3.png" class="onDesktop" />
+	        					<img src="img/scene/drinking-3h.png" class="onMobile" />
 	        				</div>
 	        				<div id="drinking-degree2" title="偶尔喝一点" data-answer-id="26" class="drinking health-degree-item defaultShow" data-degree="2">
-	        					<img src="img/scene/drinking-2.png" />
+	        					<img src="img/scene/drinking-2.png" class="onDesktop" />
+	        					<img src="img/scene/drinking-2h.png" class="onMobile" />
 	        				</div>
 	        				<div id="drinking-degree1" title="基本不喝" data-answer-id="27" class="drinking health-degree-item" data-degree="1">
-	        					<img src="img/scene/drinking-1.png" />
+	        					<img src="img/scene/drinking-1.png" class="onDesktop" />
+	        					<img src="img/scene/drinking-1h.png" class="onMobile" />
 	        				</div>
 	        				<div class="health-degree-pin"></div>
 	        				<div class="health-degree-hint">您喝酒么</div>
@@ -436,13 +439,16 @@
         			<div id="sunBlock" class="health-degree item">
         				<div class="health-degree-content {{#getUnselectedClass}}9{{/getUnselectedClass}} onDegree-{{#getDataDegree}}9{{/getDataDegree}}" data-question-id="9" data-degrees="3">
 	        				<div id="sunBlock-degree3" title="坚决不晒" data-answer-id="36" class="sunBlock health-degree-item" data-degree="3">
-	        					<img src="img/scene/sunBlock-3.png" />
+	        					<img src="img/scene/sunBlock-3.png" class="onDesktop" />
+	        					<img src="img/scene/sunBlock-3h.png"  class="onMobile" />
 	        				</div>
 	        				<div id="sunBlock-degree2" title="防晒一下也健康" data-answer-id="37" class="sunBlock health-degree-item defaultShow" data-degree="2">
-	        					<img src="img/scene/sunBlock-2.png" />
+	        					<img src="img/scene/sunBlock-2.png"  class="onDesktop" />
+	        					<img src="img/scene/sunBlock-2h.png" class="onMobile"  />
 	        				</div>
 	        				<div id="sunBlock-degree1" title="啥叫防晒" data-answer-id="38" class="sunBlock health-degree-item" data-degree="1">
-	        					<img src="img/scene/sunBlock-1.png" />
+	        					<img src="img/scene/sunBlock-1.png" class="onDesktop" />
+	        					<img src="img/scene/sunBlock-1h.png" class="onMobile"  />
 	        				</div>
 	        				<div class="health-degree-pin"></div>
 	        				<div class="health-degree-hint">您防晒么</div>
@@ -1023,9 +1029,9 @@
         <script id="scene-salon-template" type="text/template">
             <div id="scene-salon" class="scene">
                 <div id="scene-salon-content" class="scene-content">
-                    <div id="salon-mirror" class="item">
+                    <div id="salon-mirror" class="item  onDesktop">
                     </div>
-                    <div id="salon-character" class="item character-{{gender}}">
+                    <div id="salon-character" class="item character-{{gender}} onDesktop">
                     </div>
                     <div id="salon-chat" class="item">
                     	<div id="counselor-chat-1" class="counselor-chat">
@@ -1053,20 +1059,20 @@
 
                     	
                     	<div id="counselor-chat-3" class="counselor-chat" >
-	                    	您会经常去沙龙做头发护理么？
+	                    	<div class="counselor-chat-text">您多长时间做一次头发护理？</div>
 	                    	<div id="chat-icon-care" class="on-degree-{{#getDataDegree}}27{{/getDataDegree}}" data-question-id="27">
 	                    		<div class="chat-icon-degree-mask"></div>
 	                    		<div class="chat-icon"></div>
-	                    		<div class="chat-icon-text">护理频率</div>
+	                    		<div class="chat-icon-text">请点击选择</div>
 	                    	</div>
 	                    	<div class="chat-caret"></div>
                     	</div>
                     	<div id="counselor-chat-2" class="counselor-chat">
-	                    	您每次染烫头发会间隔多久呢？
+	                    	<div class="counselor-chat-text">您每次染烫头发会间隔多久呢？</div>
 	                    	<div id="chat-icon-perm" class="on-degree-{{#getDataDegree}}26{{/getDataDegree}}" data-question-id="26">
 		                    	<div class="chat-icon-degree-mask"></div>
 		                    	<div class="chat-icon"></div>
-	                    		<div class="chat-icon-text">染烫频率</div>
+	                    		<div class="chat-icon-text">请点击选择</div>
 	                    	</div>
 	                    	<div class="chat-caret"></div>
                     	</div>
@@ -1104,83 +1110,184 @@
                 </div>
             </div>
         </script>
+
         <script id="report-template" type="text/template">
 
-        	<div id="report-header">
-        		<div id="report-score" class="score-{{level}}">
-        			<div class="score-inside"></div>
-        			<div id="report-score-title">秀发健康指数</div>
-        			<div id="report-score-number">{{Score}}</div>
-        			<img id="report-score-underline" src="img/scoreunderline.png" />
-        		</div>
-        		<h2 class="score-{{level}}">{{ScoreTitle}}</h2>
-        		<p>{{#ScoreSuggestions}}{{.}}{{/ScoreSuggestions}}</p>
-        	</div>
-        	<div id="report-opt">
-        		<a class="restartQuiz" href="javascript:void(0)"><i class="icon-refresh"></i> 重新测试</a>
-        		<div id="defeat">您的秀发迷倒了<span id="defeat-percent">{{Ranking}}%</span>的人</div>
-        		
-        		<div id="progressbar"><div class="progress-label">正在生成报告图片，请耐心等待...</div></div>
-        		 <span id="downloadQuizText">生成以后，可以带图分享哦！</span>
-        		<a class="downloadQuizImg" href="javascript:void(0)" target="_blank"><i class="icon-download-alt"></i> 下载报告图片</a>
+        	<div id="report-header" class="level-{{level}}">
+        		<div class="report-container">
+	        		<div id="report-score">
+	        			<div id="report-score-title">秀发健康指数</div>
+	        			<div id="report-score-number">{{Score}}</div>
+	        			<h2 id="report-score-desc">{{ScoreTitle}}</h2>
+	        		</div>
+	        		<div id="defeat">打败了<br />
+	        		<span id="defeat-percent">{{Ranking}}<small>%</small></span> 的人</div>
+					<div id="keywords">
+						{{#keywords}}
+						<div class="keyword">
+						{{.}}
+						</div>
+						{{/keywords}}
+					</div>
+					<div id="report-opt">
+					<a class="restartQuiz" href="javascript:void(0)"><i class="icon-refresh"></i> 重新测试</a>
+					<div id="progressbar"><div class="progress-label">正在生成报告图片，请耐心等待...</div></div>
+					<span id="downloadQuizText">生成以后，可以带图分享哦！</span>
+					<a class="downloadQuizImg" href="javascript:void(0)" target="_blank"><i class="icon-download-alt"></i> 下载报告图片</a>
         		 
+				</div>
+        		</div>
         	</div>
-        	<div id="report-body">
-				<ul id="report-result">
-					<li id="report-result-hair" class="clearfix">
-						<div class="report-result-icon">
-						</div>
-						<div class="report-result-body">
-							<ul id="hair-advice">
-                                {{#HairSituationSuggestions}}
-                                <div class="hair-advice-tag">{{answer_text}}</div>
-                                <ul class="advice-subList">
-                                    {{#suggestion_ids}}
-                                        <li class="{{getSuggestionType}}"><i></i> {{{getSuggestionText}}} </li>
-                                    {{/suggestion_ids}}
-                                </ul>
-                                {{/HairSituationSuggestions}}
-							</ul>
-						</div>
-					</li>
-					<li id="report-result-cleaning" class="clearfix">
-						<div class="report-result-icon">
-						</div>
-						<div class="report-result-body">
-							<ul id="cleaning-advice">
-                                {{#HairCareSuggestions}}
-                                <div class="hair-advice-tag">{{scene_text}}</div>
-                                <ul class="advice-subList">
-                                    {{#suggestion_ids}}
-                                        <li class="{{getSuggestionType}}"><i></i> {{{getSuggestionText}}} </li>
-                                    {{/suggestion_ids}}
-                                </ul>
-                                {{/HairCareSuggestions}}
-							</ul>
-						</div>
-					</li>
-					<li id="report-result-life" class="clearfix">
-						<div class="report-result-icon">
-						</div>
-						<div class="report-result-body">
-							<ul id="life-advice">
-                                {{#LifeStyleSuggestions}}
-                                <div class="hair-advice-tag">{{scene_text}}</div>
-                                <ul class="advice-subList">
-                                    {{#suggestion_ids}}
-                                        <li class="{{getSuggestionType}}"><i></i> {{{getSuggestionText}}} </li>
-                                    {{/suggestion_ids}}
-                                </ul>
-                                {{/LifeStyleSuggestions}}
-							</ul>
-						</div>
-					</li>
-				</ul>
+        	<div id="report-hairproblem">
+        		<div class="report-container">
+        		<div class="reprot-section-arrow"></div>
+        		<div class="clearfix">
+        		<div class="report-section-title"><div class="title-caret"></div>解读发质现状</div>
+        		</div>
+        		{{#problem_bald}}
+        			<div class="hairproblem" id="report{{type}}">
+	        			<div class="hairproblem-icon">
+	        			<img src="img/report-p1.png"  />
+	        			</div>
+	        			<div class="hairproblem-tag">
+	        			头发稀疏、掉发
+	        			<div class="caret"></div>
+	        			</div>
+	        			<div class="hairproblem-title">
+	        			热闹的街道不长草
+	        			</div>
+	        			<div class="hairproblem-suggestion">
+	        					{{{suggestion_text}}}
+	        			</div>
+	        			<div class="hairproblem-suggestionTitle">
+	        				TIPS
+	        			</div>
+        			</div>
+        		{{/problem_bald}}
+        		{{#problem_dry}}
+        			<div class="hairproblem" id="report{{type}}">
+	        			<div class="hairproblem-icon">
+	        			<img src="img/report-p2.png"  />
+	        			</div>
+	        			<div class="hairproblem-tag">
+	        			干枯分叉、沙发难打理
+	        			<div class="caret"></div>
+	        			</div>
+	        			<div class="hairproblem-title">
+	        			爆炸头&发电机
+	        			</div>
+	        			<div class="hairproblem-suggestion">
+	        					{{{suggestion_text}}}
+	        			</div>
+	        			<div class="hairproblem-suggestionTitle">
+	        				TIPS
+	        			</div>
+        			</div>
+        		{{/problem_dry}}
+        		{{#problem_scurf}}
+        			<div class="hairproblem" id="report{{type}}">
+	        			<div class="hairproblem-icon">
+	        			<img src="img/report-p3.png"  />
+	        			</div>
+	        			<div class="hairproblem-tag">
+	        			头皮出油、头屑
+	        			<div class="caret"></div>
+	        			</div>
+	        			<div class="hairproblem-title">
+	        			喂，你的肩膀下雪了
+	        			</div>
+	        			<div class="hairproblem-suggestion">
+	        					{{{suggestion_text}}}
+	        			</div>
+	        			<div class="hairproblem-suggestionTitle">
+	        				TIPS
+	        			</div>
+        			</div>
+        		{{/problem_scurf}}
+        		</div>
+        	</div>
+        	<div id="report-haircare">
+        		<div class="report-container">
+        			<div id="report-cleaning">
+        				<img src="img/reportcleaning.png" />
+        			</div>
+        			<div id="report-cleaningSuggestion">
+	        			<div id="report-cleaningSuggestionContent">
+	        			{{#cleaning}}
+	        				<p>{{{suggestion_text}}}</p>
+	        			{{/cleaning}}
+	        			</div>
+	        			<div class="caret-top"></div>
+	        			<div class="caret-bottom"></div>
+        			</div>
+        			
+        			<div id="report-tool" class="clearfix">
+        				<div id="report-tool-content">
+        				{{#style}}
+	        				<p>{{{suggestion_text}}}</p>
+	        			{{/style}}
+	        			{{#salon}}
+	        				<p>{{{suggestion_text}}}</p>
+	        			{{/salon}}
+        				</div>
+        				<div id="report-tool-img">
+        				<img src="img/reporttools.png" />
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        	<div id="report-life">
+        		<div class="report-container">
+        			<div class="reprot-section-arrow"></div>
+        			<div id="report-life-img">
+        			<img src="img/report-life.png" />
+        			</div>
+        			<div id="report-life-content">
+        				<div id="report-life-1" class="report-life-item-left">
+        					<div class="report-life-caret"></div>
+        					{{#cook}}
+        						{{{suggestion_text}}}
+        					{{/cook}}
+        				</div>
+        				<div id="report-life-2" class="report-life-item-left">
+        					<div class="report-life-caret"></div>
+        					{{#sun}}
+        						{{{suggestion_text}}}
+        					{{/sun}}
+        				</div>
+        				<div id="report-life-3" class="report-life-item-left">
+        					<div class="report-life-caret"></div>
+        					{{#taste}}
+        						{{{suggestion_text}}}
+        					{{/taste}}
+        				</div>
+        				<div id="report-life-4" class="report-life-item-right">
+        					<div class="report-life-caret"></div>
+        					{{#mealcount}}
+        						{{{suggestion_text}}}
+        					{{/mealcount}}
+        				</div>
+        				<div id="report-life-5" class="report-life-item-right">
+        					<div class="report-life-caret"></div>
+        					{{#sleep}}
+        						{{{suggestion_text}}}
+        					{{/sleep}}
+        				</div>
+        				<div id="report-life-6" class="report-life-item-right">
+        					<div class="report-life-caret"></div>
+        					{{#stress}}
+        						{{{suggestion_text}}}
+        					{{/stress}}
+        				</div>
+        			</div>
+        		</div>
         	</div>
         	<div id="report-products">
-        		<div id="report-product-title">
-        			最适合您的潘婷系列
-        		</div>
+        		<div class="report-container">
+				<div class="reprot-section-arrow"></div>
+				<div id="report-product-img">
+					<img src="img/reportproduct.png" />
+				</div>
 				<div id="report-product-basic">
 					<ul id="report-product-list" class="clearfix">
 						{{#ProductSuggestions}}
@@ -1192,11 +1299,17 @@
 						{{/ProductSuggestions}}
 					</ul>
 				</div>
+        		</div>
         	</div>
+        	<div id="report-bottom-top"></div>
         	<div id="report-bottom-share">
+        		<div class="report-container">
+        		<div id="reportqr">
+        			<a href="http://e.weibo.com/panteneofficial" target="_blank" title="潘婷官方微博"><img src="img/reportqr.png" /></a>
+        		</div>
         		<a class="downloadQuizImg" href="javascript:void(0)" target="_blank"><i class="icon-download-alt"></i> 下载报告图片</a> <a class="restartQuiz" href="javascript:void(0)"><i class="icon-refresh"></i> 重新测试</a>
         		
-
+        		</div>
         	</div>
         	<div id="report-avatar">
         		<div id="character" class="character fm character-large-size">

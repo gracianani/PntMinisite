@@ -20,13 +20,17 @@ var AvatarView = Backbone.View.extend({
         this.model.setGender();
 
         if (AppFacade.getCurrentView().id == "report") {
-            $("#report-avatar").html(Mustache.render(this.template, this.model));
+        	this.$el =  $("#report-avatar");
+            this.$el.html(Mustache.render(this.template, this.model));
+            
         }
         else {
+        	 this.$el = $('#main');
             this.$el.prepend(Mustache.render(this.template, this.model));
+            this.startBlink();
         }
         
-            this.startBlink();
+           
 
         return this;
     },
