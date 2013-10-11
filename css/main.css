@@ -498,6 +498,27 @@ profile
 #share .jiathis_style_32x32 .jtico_qzone {
 	background-position: center -128px;
 }
+#share .jiathis_style_32x32 .jtico:hover {
+	opacity: 1;
+	filter: alpha(opacity=100);
+	background-color: #2f94e1;
+}
+#share .jiathis_style_32x32 .jtico_weixin:hover {
+	background-color:#0bcb27;
+	
+}
+#share .jiathis_style_32x32 .jtico_tsina:hover {
+	background-color:#cc1600;
+	
+}
+#share .jiathis_style_32x32 .jtico_douban:hover {
+	background-color:#148825;
+	
+}
+#share .jiathis_style_32x32 .jtico_qzone:hover {
+	background-color:#f4b23c;
+	
+}
 
 /*=====================
 navigation 
@@ -671,6 +692,11 @@ splash
 .splash-gender-female:active {
 	background-position: -142px bottom;
 }
+
+.splash-gender-male:hover,.splash-gender-male:active {
+	background-position: -118px bottom;
+}
+
 /*=====================
 scenes 
 =====================*/
@@ -4270,50 +4296,7 @@ behavior: url(js/vendor/PIE.htc);
 	position: relative;
 }
 
-/* plain report
 
-.plain-report #report-header {
-	margin-bottom: 0px;
-}
-.plain-report #report-score {
-	width: 180px;
-	height: 180px;
-}
-.plain-report .score-inside {
-	width: 150px;
-	height: 150px;
-	left: 15px;
-	top:15px;
-}
-.plain-report #report-score-title {
-	top: 25px;
-	font-size: 18px;
-	line-height: 24px;
-}
-.plain-report #report-score-number {
-	top:35px;
-}
-.plain-report #report h2 {
-	padding-top: 10px;
-}
-.plain-report #report-opt {
-	height: 60px;
-	padding-top: 20px;
-}
-.plain-report #report {
-	width: 800px;
-	padding-top: 20px;
-}
-.plain-report #report-avatar {
-	top:10px;
-	right: -10px;
-}
-
-.plain-report #hair-advice {
-	padding-right: 120px;
-	line-height: 24px;
-}
- */
 .plain-report {
 	min-width: 1024px;
 	font-family: "Microsoft Yahei","Yahei";
@@ -4659,33 +4642,7 @@ left: 0;
 .refrigerator-cell:hover {
 	background-image: none;
 }
-.splash-gender-female:hover{
-	background-position: -142px bottom;
-}
-.splash-gender-male:hover,.splash-gender-male:active {
-	background-position: -118px bottom;
-}
-#share .jiathis_style_32x32 .jtico:hover {
-	opacity: 1;
-	filter: alpha(opacity=100);
-	background-color: #2f94e1;
-}
-#share .jiathis_style_32x32 .jtico_weixin:hover {
-	background-color:#0bcb27;
-	
-}
-#share .jiathis_style_32x32 .jtico_tsina:hover {
-	background-color:#cc1600;
-	
-}
-#share .jiathis_style_32x32 .jtico_douban:hover {
-	background-color:#148825;
-	
-}
-#share .jiathis_style_32x32 .jtico_qzone:hover {
-	background-color:#f4b23c;
-	
-}
+
 }
 @media only screen and (min-width: 1570px) {
     /* Style adjustments for viewports that meet the condition */
@@ -5444,6 +5401,131 @@ left: 0;
 #scene-diet-content{
 	height: 660px;
 }
+}
+@media only screen and (max-width: 767px) {
+	body {
+		min-width: 319px;
+	}
+	#loading {
+		height: 320px;
+		position: static;
+	}
+	#loading-content {
+		margin-top:30px;
+		top:0;
+	}
+	#about-logo,#about-link,#about-support {
+		float: none;
+		display: block;
+		text-align: center;
+		margin-bottom: 10px;
+	}
+	#about-link {
+		font-size: 14px;
+		line-height: 22px;
+		color: #FFF;
+	}
+	#about {
+		position: relative;
+	}
+	.loading #splash,.loading #main, .loading #header,.loading #footer,.loading #profile {
+		display: none;
+	}
+	#splash {
+		overflow: scroll;
+	}
+	.splash-subtitle {
+		font-size: 14px;
+	}
+	#splash-begin,#splash-character,#splash-login {
+		position: relative;
+		margin: 0 auto;
+		text-align: center;
+		left: 0;
+		top: 0;
+		left: 0;
+		bottom: 0;
+	}
+	#splash-begin {
+		height: 210px;
+	}
+	#splash-logo img{
+		width: 50%;
+	}
+	#splash-logo {
+		text-align: center;
+		padding-top: 20px;
+	}
+	.splash-gender-female {
+		height: 255px;
+		width: 85px;
+		background-size:200% 250px;
+		margin-right: 20px;
+	}
+	.splash-gender-female:hover,.splash-gender-female:active {
+		background-position: -85px bottom;
+	}
+	.splash-gender-male {
+		width: 71px;
+		height: 255px;
+		background-size:200% 100%;
+	}
+	.splash-gender-male:hover,.splash-gender-male:active {
+		background-position: -71px bottom;
+	}
+	#splash-character {
+		width: 200px;
+		height: 280px;
+
+	}
+	#splash-weibo,#splash-qq {
+		float: none;
+		margin: 10px auto 10px;
+	}
+	#logo img{
+		width: 100px;
+		height: auto;
+	}
+	#logo {
+		width: 100px;
+		height: 33px;
+		left: 20px;
+	}
+	#siteTitle {
+		width: 115px;
+		height: 16px;
+		left: 125px;
+		top: 10px;
+
+	}
+	#siteTitle img {
+		width: 115px;
+		height: auto;
+	}
+	#header {
+		height: 40px;
+		background-position: left 50px;
+	}
+	#profile {
+		top: 0px;
+	}
+	.navigator {
+		width: 50px;
+		height: 58px;
+		background-size: 200% 200%;
+		font-size: 12px;
+		line-height: 58px;
+	}
+	#footer {
+		height: 100px;
+		padding-bottom: 0px;
+		min-height: auto;
+	}
+	#progress {
+		bottom: auto;
+		top: 70px;
+	}
+
 }
 @media only screen and (min-width: 35em) {
     /* Style adjustments for viewports that meet the condition */

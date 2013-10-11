@@ -253,6 +253,8 @@ var LifeView = Backbone.View.extend({
 		    arc: [125, 125, -2, 1, 6, 105]
 		}).click(function () {
             self.setStressPin('high');
+         }).touchstart(function() {
+         	self.setStressPin('high');
          });
          
         
@@ -264,6 +266,8 @@ var LifeView = Backbone.View.extend({
 		    arc: [125, 125, -1, 1, 6, 105]
 		}).click(function () {
             self.setStressPin('medium');
+         }).touchstart(function() {
+         	self.setStressPin('medium');
          });
 		stressLow = lifeCenter.path().attr({
 		    "stroke": "#42c8bb",
@@ -272,6 +276,8 @@ var LifeView = Backbone.View.extend({
 		    arc: [125, 125, 0, 1, 6, 105]
 		}).click(function () {
             self.setStressPin('low');
+         }).touchstart(function() {
+         	self.setStressPin('low');
          });
 		
 		/*
