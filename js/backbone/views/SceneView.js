@@ -253,6 +253,8 @@ var LifeView = Backbone.View.extend({
 		    arc: [125, 125, -2, 1, 6, 105]
 		}).click(function () {
             self.setStressPin('high');
+         }).touchstart(function() {
+         	self.setStressPin('high');
          });
          
         
@@ -264,6 +266,8 @@ var LifeView = Backbone.View.extend({
 		    arc: [125, 125, -1, 1, 6, 105]
 		}).click(function () {
             self.setStressPin('medium');
+         }).touchstart(function() {
+         	self.setStressPin('medium');
          });
 		stressLow = lifeCenter.path().attr({
 		    "stroke": "#42c8bb",
@@ -272,6 +276,8 @@ var LifeView = Backbone.View.extend({
 		    arc: [125, 125, 0, 1, 6, 105]
 		}).click(function () {
             self.setStressPin('low');
+         }).touchstart(function() {
+         	self.setStressPin('low');
          });
 		
 		/*
@@ -746,11 +752,17 @@ var HealthView = Backbone.View.extend({
 
     answerHealthQuestions: function (event) {
         //calculate the degree base on y position
+        var smallscreen = isSmallScreen();
         var item = event.currentTarget;
         var degreeContent = $(item);
-
+        var degree;
         var degreesCount = parseInt(degreeContent.find('.health-degree-item').size());
-        var degree = Math.ceil((degreeContent.offset().top + degreeContent.height() - event.pageY) / degreeContent.height() * degreesCount);
+        if ( smallscreen ) {
+        	degree = Math.ceil((degreeContent.offset().left + degreeContent.width() - event.pageX) / degreeContent.width() * degreesCount); 
+	       
+        } else {
+	        degree = Math.ceil((degreeContent.offset().top + degreeContent.height() - event.pageY) / degreeContent.height() * degreesCount); 
+        }
 
         degree = Math.min(degreesCount, degree);
         degree = Math.max(1, degree);
@@ -1063,41 +1075,33 @@ var HairStyleView = Backbone.View.extend( {
 		    "stroke-width": 20,
 		    "cursor":"pointer",
 		    arc: [100, 100, 0, 1, 5, 85]
-		}).click(function () {
-            
-         });
+		});
          lengthPaper.path().attr({
 		    "stroke": "#073351",
 		    "stroke-width": 20,
 		    "cursor":"pointer",
 		    arc: [100, 100, 1, 1, 5, 85]
-		}).click(function () {
-            
+		}).touchstart(function (x) {
+           
          });
          lengthPaper.path().attr({
 		    "stroke": "#0b4d7b",
 		    "stroke-width": 20,
 		    "cursor":"pointer",
 		    arc: [100, 100, 2, 1, 5, 85]
-		}).click(function () {
-            
-         });
+		});
          lengthPaper.path().attr({
 		    "stroke": "#165986",
 		    "stroke-width": 20,
 		    "cursor":"pointer",
 		    arc: [100, 100, 3, 1, 5, 85]
-		}).click(function () {
-            
-         });
+		});
          lengthPaper.path().attr({
 		    "stroke": "#2470a4",
 		    "stroke-width": 20,
 		    "cursor":"pointer",
 		    arc: [100, 100, 4, 1, 5, 85]
-		}).click(function () {
-            
-         });
+		});
          
          curlPaper.path().attr({
 		    "stroke": "#ffe579",

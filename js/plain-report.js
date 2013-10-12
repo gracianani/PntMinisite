@@ -47,6 +47,7 @@ requirejs(['../backbone/utils/plugins', '../backbone/models/Avatar', '../backbon
                 return suggestion.get("type");
             },
             fillSuggestions: function (suggestions) {
+            /*
                 this.LifeStyleSuggestions = suggestions.lifestyle_suggestions;
                 this.HairCareSuggestions = suggestions.haircare_suggestions;
                 this.HairSituationSuggestions = suggestions.hairsituation_suggestions;
@@ -75,8 +76,77 @@ requirejs(['../backbone/utils/plugins', '../backbone/models/Avatar', '../backbon
 		                this.ProductSuggestions.push(suggestion.toJSON());
 		            }
 		        }
+		       */
+		        this.problem_bald=[];
+		        this.problem_scurf=[];
+		        this.problem_dry=[];
+		        this.stress=[];
+		        this.cook=[];
+		        this.taste=[];
+		        this.mealcount=[];
+		        this.sleep=[];
+		        this.salon=[];
+		        this.cleaning=[];
+		        this.style=[];
+		        this.hair_color=[];
+		        this.hair_curl=[];
+		        this.sun=[];
+		        this.keywords=[];
+				this.LifeStyleSuggestions = suggestions.lifestyle_suggestions;
+		        this.HairCareSuggestions = suggestions.haircare_suggestions;
+		        this.HairSituationSuggestions = suggestions.hairsituation_suggestions;
+				this.fillSuggestionGroup(suggestions);
+		        this.Score = suggestions.score;
+		        this.Ranking = suggestions.ranking;
+		
+		        var gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 1 });
+				if (suggestions.score > 50 && suggestions.score < 60) {
+		            gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 2 });
+		        }
+		        if (suggestions.score >= 60 && suggestions.score < 80) {
+		            gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 3 });
+		        }
+		        else if (suggestions.score >= 80) {
+		            gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 4 });
+		        }
+		        this.level = gSuggestion.get("g_level");
+		        this.ScoreTitle = gSuggestion.get("suggestion_title");
+		        this.ScoreSuggestions.push(gSuggestion.get("suggestion_text"));
+		        this.QuizId = suggestions.quizId;
+		
+		        var productIds = suggestions.suggested_products.split(",");
+		        productIds = unique(productIds);
+		        for (var i = 0; i< 3 && i < productIds.length; i++) {
+		            var suggestion = app.ProductRepo.findWhere({
+		                product_id: parseInt(productIds[i])
+		            });
+		            if (typeof suggestion !== 'undefined') {
+		                this.ProductSuggestions.push(suggestion.toJSON());
+		            }
+		        }
 
             },
+		    fillSuggestionGroup: function(suggestions) {
+		    	var i, suggestion,key;
+		    	allSuggestions = [].concat(suggestions.lifestyle_suggestions).concat(suggestions.haircare_suggestions).concat(suggestions.hairsituation_suggestions);
+			    for ( i = 0; i < allSuggestions.length; i++ ) {
+			    
+			    	for ( var j = 0; j < allSuggestions[i].suggestion_ids.length; j++ ) {
+				    	suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(allSuggestions[i].suggestion_ids[j]) });
+				    	
+				    	if (! this[suggestion.get("type")] ) {
+							 this[suggestion.get("type")]  = [];
+						}
+						key = suggestion.get("keyword");
+						if (key ) {
+							 this["keywords"].push(key);
+						}
+						 this[suggestion.get("type")].push(suggestion.toJSON());
+					    }
+			    	}
+				    this.taste = this.taste.slice(0,2);
+				 
+		    },
             fillAvatar: function (options) {
                 this.gender = options.gender;
                 this.hairLength = options.hairLength;
@@ -101,6 +171,11 @@ requirejs(['../backbone/utils/plugins', '../backbone/models/Avatar', '../backbon
                         $("#report").html(Mustache.render($('#report-template').html(), self));
                         $('.report-product-item:first').addClass('current');
                         $("#report").append("<div id='loadCompleteFlag'></div>");
+
+                         
+                        if ( self.Score < 60 ) {
+	                       $("#report-avatar").find('.face').attr('class', 'face face-' + self.gender + '-3');
+                        }
                     }
                 });
             }
