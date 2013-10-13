@@ -5,7 +5,7 @@ var AnimationHandler = {
         self.animateObjects();
     },
     animateObjects: function () {
-		if ( true || isMobile() ) {
+		if ( isSmallScreen() ) {
 			jQuery(this.contentID + ' .item').hide();
 			return;
 		}
@@ -99,7 +99,7 @@ var AnimationHandler = {
 
     },
     animateIn: function () {
-    	if ( true || isMobile() ) {
+    	if ( isSmallScreen() ) {
     		var content = jQuery(this.contentID);
     		content.addClass('animated slideInDown');
     		content.find('.item:not(.onDesktop)').show();

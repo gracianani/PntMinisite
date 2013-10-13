@@ -1478,7 +1478,7 @@ Cleaning
 	background-size: 100px auto;
 }
 #cleaning-conditioner {
-	background-position: center -124px;
+	background-position: center -125px;
 	background-size: 100px auto;
 }
 #cleaning-mask {
@@ -4961,6 +4961,11 @@ left: 0;
 	    top: 33%;
     }
 }
+@media only screen and (max-height:600px) {
+	.navigator {
+		top: 150px;
+	}
+}
 @media only screen and (max-width: 1023px){
     /* Style adjustments for viewports that meet the condition */
    .onDesktop {
@@ -5133,25 +5138,25 @@ left: 0;
 
 }
 #mealCount .onDegree-4 .health-degree-pin{
-	left:20%;
+	left:12%;
 }
 #mealCount .onDegree-3 .health-degree-pin{
-	left:45%;
+	left:37%;
 }
 #mealCount .onDegree-2 .health-degree-pin{
-	left:70%;
+	left:63%;
 }
 #mealCount .onDegree-1 .health-degree-pin{
-	left:95%;
+	left:88%;
 }
 #drinking .onDegree-3 .health-degree-pin{
 	left:15%;
 }
 #drinking .onDegree-2 .health-degree-pin{
-	left:58%;
+	left:52%;
 }
 #drinking .onDegree-1 .health-degree-pin{
-	left:96%;
+	left:86%;
 }
 #drinking .health-degree-item {
 	display: none;
@@ -5169,25 +5174,25 @@ left: 0;
 	display: block;
 }
 #smoke .onDegree-4 .health-degree-pin{
-	left:20%;
+	left:12%;
 }
 #smoke .onDegree-3 .health-degree-pin{
-	left:45%;
+	left:37%;
 }
 #smoke .onDegree-2 .health-degree-pin{
-	left:70%;
+	left:63%;
 }
 #smoke .onDegree-1 .health-degree-pin{
-	left:95%;
+	left:88%;
 }
 #sunBlock .onDegree-3 .health-degree-pin{
 	left:15%;
 }
 #sunBlock .onDegree-2 .health-degree-pin{
-	left:58%;
+	left:52%;
 }
 #sunBlock .onDegree-1 .health-degree-pin{
-	left:96%;
+	left:91%;
 }
 #sunBlock .health-degree-item {
 	display: none;
@@ -5205,16 +5210,16 @@ left: 0;
 	display: block;
 }
 #sleep .onDegree-4 .health-degree-pin{
-	left:20%;
+	left:12%;
 }
 #sleep .onDegree-3 .health-degree-pin{
-	left:45%;
+	left:37%;
 }
 #sleep .onDegree-2 .health-degree-pin{
-	left:70%;
+	left:63%;
 }
 #sleep .onDegree-1 .health-degree-pin{
-	left:95%;
+	left:88%;
 }
 .health-degree-hint {
 	    top:0;
@@ -5407,6 +5412,82 @@ left: 0;
 #scene-diet-content{
 	height: 660px;
 }
+	.reportingame  .report-container {
+		width: 100%!important;
+	}
+	.reportingame  .hairproblem-icon {
+		left: 50%!important;
+		right: auto!important;
+		margin-left: -150px;
+	}
+	.reportingame .hairproblem-tag {
+		left: 50%!important;
+		right: auto!important;
+		margin-left: -100px;
+	}
+	.reportingame .hairproblem-title {
+		left: 50%!important;
+		right: auto!important;
+		margin-left:-130px;
+	}
+	.reportingame .hairproblem-suggestion {
+		top: 280px;
+		width: 64%;
+		padding: 20px 5%;
+		left: 13%!important;
+		right: auto!important;
+	}
+	.reportingame .hairproblem {
+		height: 420px;
+		
+	}
+	.reportingame .hairproblem-suggestionTitle {
+		display: none;
+	}
+	.reportingame #report-tool-content,.reportingame #report-tool-img {
+		float: none;
+		display: block;
+		margin: 0 auto;
+	}
+	.reportingame #report-life-content {
+		padding-bottom: 30px;
+	}
+	.reportingame .report-life-item-left,.reportingame  .report-life-item-right {
+		position: static;
+		-webkit-transform: none!important;
+		-moz-transform: none!important;
+		-o-transform: none!important;
+		-ms-transform: none!important;
+		transform:none!important;
+		margin: 10px auto;
+		width: 80%!important;
+		height: auto!important;
+	}
+	.reportingame #report-life-img {
+		padding: 10px 0;
+		max-width: 100%;
+	}
+	.reportingame #report-life-img img {
+		width: 100%;
+		height: auto;
+	}
+	.reportingame #report-hairproblem .report-container {
+		padding: 60px 0 40px;
+	}
+	.reportingame .report-life-item-left .report-life-caret,.reportingame  .report-life-item-right .report-life-caret {
+		display: none;
+	}
+	.reportingame #report-product-img {
+		position: static;
+		margin: 0 auto 10px;
+		padding-top: 20px;
+	}
+	.reportingame #report-product-list {
+		margin: 10px auto;
+	}
+	#report-flyToTop {
+		margin-left: 230px;
+	}
 }
 @media only screen and (max-width: 767px) {
 	body {
@@ -5556,6 +5637,10 @@ left: 0;
 		right: 0;
 		bottom: 180px;
 		-webkit-transform: scale(0.6);
+		-moz-transform: scale(0.6);
+		-o-transform: scale(0.6);
+		-ms-transform: scale(0.6);
+		transform:  scale(0.6);
 	}
 		#scene-hairstyle {
 		margin-bottom: 0;
@@ -5616,6 +5701,10 @@ left: 0;
 		left: -5%;
 		margin-left: 0;
 		-webkit-transform: scale(0.8);
+		-moz-transform: scale(0.8);
+		-o-transform: scale(0.8);
+		-ms-transform: scale(0.8);
+		transform:  scale(0.8);
 		bottom: auto;
 		top: 500px;
 	}
@@ -5655,16 +5744,75 @@ left: 0;
 	#life-play-2 {
 		top: 25%;
 	}
+	#login, #inquiz-login {
+		width: 260px;
+		margin-left: -140px;
+		top:280px;
+	}
+	.reportingame #report-cleaningSuggestion {
+		width: 90%
+	}
+	.reportingame #report-cleaningSuggestionContent {
+		padding: 10px 10%;
+	}
+	.reportingame #report-tool-img,.reportingame #report-tool-content {
+		max-width: 90%;
+	}
+	.reportingame #report-tool-img img {
+		max-width: 100%;
+	}
+	.reportingame .report-product-item {
+		float: none!important;
+		display: block!important;
+		width: 90%!important;
+		margin:10px auto!important;
+	}
+	.reportingame .report-product-item a {
+
+	}
+	.reportingame .report-product-item img {
+		width: 100%!important;
+		height: auto;
+	}
+	.reportingame #report-product-list {
+		width: 100%;
+	}
+	.reportingame .hairproblem {
+		margin-bottom: 40px;
+		height: auto;
+	}
+	.reportingame .hairproblem-icon {
+		position: relative;
+		top: 0;
+	}
+	.reportingame .hairproblem {
+		margin-top:0;
+	}
+	.reportingame .hairproblem-suggestion {
+		position: relative;
+		top: 0;
+	}
+	#takeaway,#homemade {
+		left: 70%;
+	}
+	
 	
 
 }
 @media only screen and (max-width:767px) and (min-width:460px) {
 	#main {
-		height: 500px;
-		min-height: 500px;
+		height: auto;
+		min-height: 450px;
 	}
 	#basicinfo-age {
 		top:10px;
+	}
+	#scene-basicinfo {
+		height: 450px;
+	}
+	#basicinfo-career {
+		width: 80%;
+		right: -5%;
 	}
 	#scene-health-content {
 		width: 100%;
@@ -5691,8 +5839,14 @@ left: 0;
 		top: -10px;
 	}
 	#scene-health {
-		height: 400px;
+		height: 500px;
 		margin-bottom: 0;
+	}
+	.diet-scene {
+		left: 20px;
+	}
+	#cooking-apron.fm, #cooking-hat.fm, #cooking-hat.m, #cooking-apron.m {
+		left: 60px;
 	}
 	.life-icon {
 		-webkit-transform:scale(0.8);
@@ -5701,11 +5855,97 @@ left: 0;
 		height: 500px;
 		margin-bottom: 0
 	}
+	.haircolor {
+		-webkit-transform: none!important;
+		-ms-transform: none!important;
+		-o-transform: none!important;
+		-moz-transform: none!important;
+		transform: none!important;
+		bottom: 10%;
+	}
+	#haircolor-red {
+		top: -50px;
+	}
+	#haircolor-black {
+		top: 50px;
+	}
+	#haircolor-mix {
+		top:100px;
+	}
+	#hairstyle-type {
+		bottom: 5%;
+	}
+	#cleaning-care,#cleaning-style,#cleaning-tool {
+		-webkit-transform: scale(0.75);
+		-moz-transform: scale(0.75);
+		-o-transform: scale(0.75);
+		-ms-transform: scale(0.75);
+		transform: scale(0.75);
+		
+	}
+	#cleaning-care {
+		width: 360px;
+		left: -40px;
+	}
+	#cleaning-style {
+		width: 320px;
+		left: -30px;
+	}
+	#cleaning-tool {
+		width: 280px;
+		left: -20px;
+	}
+	#shower {
+		right: -10%;
+		top:0;
+		width: 200px;
+		
+	}
+	#cleaning-trash {
+		top:400px;
+		left: 40px;
+	}
+
+	#scene-cleaning {
+		height: 520px;
+	}
+	#salon-counselor {
+		display: none!important;
+	}
+	#shower-frequency-text {
+		font-size: 14px;
+	}
+	#shower-frequency {
+		width: 140px;
+	}
+	#salon-chat {
+		width: 100%;
+		left: 0;
+		top: 20px;
+	}
+	#counselor-chat-1 {
+		width: 280px;
+		text-align: left;
+		font-size: 14px;
+	}
+	#counselor-chat-2 {
+		top: 160px;
+	}
+	#counselor-chat-3 {
+		top: 290px;
+		z-index: 100;
+	}
 } 
 @media only screen and (max-width:459px) {
+	body {
+		z-index: 1;
+	}
 	#main {
-		height: 400px;
-		min-height: 400px;
+		height: auto;
+		min-height: 350px;
+	}
+	#scene-basicinfo {
+		height: 380px;
 	}
 	#basicinfo-age {
 		top: -30px;
@@ -5730,18 +5970,21 @@ left: 0;
 		top:165px;
 	}
 	#basicinfo-career {
-		top: 240px;
-		right: -50%;
-		width: 150%;
-		-webkit-transform: scale(0.6);
+		top: 200px;
+		width: 80%;
+		right: -10%;
+
 	}
 	#pole {
-		display: none;
+		height: 6px;
 	}
 	#career-clothes .clothes {
-
-		float: none;
-		margin: 0;
+		-moz-transform: scale(0.8);
+		-o-transform: scale(0.8);
+		-ms-transform: scale(0.8);
+		-webkit-transform: scale(0.8);
+		transform: scale(0.8);
+		margin-top: -32px!important;
 	}
 	.style-scene{
 		width: 140px;
@@ -5843,6 +6086,141 @@ left: 0;
 		-moz-transform: scale(0.6);
 		transform: scale(0.6);
 	}
+	#life-center,#life-type {
+		top: 60%;
+	}
+	#life-work-3,#life-play-3 {
+		top:60%;
+	}
+	#life-type {
+		padding-top: 0;
+		margin-top: -10px;
+	}
+	#life-work-4,#life-play-4 {
+		top: 85%;
+	}
+	#life-work-4 {
+		left: 20%;
+	}
+	#life-play-4 {
+		right: 30%;
+	}
+	.diet-scene {
+		left: -20px;
+	}
+	#diet-cooking {
+		right: 5%;
+		width: 60%;
+		top:0;
+		-webkit-transform: scale(0.9);
+		-moz-transform: scale(0.9);
+		-o-transform: scale(0.9);
+		-ms-transform: scale(0.9);
+		transform: scale(0.9);
+	}
+	#cooking-apron.fm, #cooking-hat.fm, #cooking-hat.m, #cooking-apron.m {
+		left: 20px;
+	}
+	#refrigerator {
+		-webkit-transform: scale(0.75);
+		-moz-transform: scale(0.75);
+		-o-transform: scale(0.75);
+		-ms-transform: scale(0.75);
+		transform: scale(0.75);
+		top: 195px;
+	}
+	#hint-fruit {
+		right: 0;
+	}
+	#cleaning-care,#cleaning-style,#cleaning-tool {
+		-webkit-transform: scale(0.75);
+		-moz-transform: scale(0.75);
+		-o-transform: scale(0.75);
+		-ms-transform: scale(0.75);
+		transform: scale(0.75);
+		
+	}
+	#cleaning-care {
+		width: 360px;
+		left: -40px;
+	}
+	#cleaning-style {
+		width: 320px;
+		left: -30px;
+	}
+	#cleaning-tool {
+		width: 280px;
+		left: -20px;
+	}
+	#shower {
+		top:550px;
+		left: 50%;
+		right: auto;
+		margin-left: -120px;
+		
+	}
+	#cleaning-trash {
+		left: 50%;
+		top:400px;
+		margin-left: -52px;
+	}
+	#shower-head,#shower-water {
+		display: none;
+	}
+	#scene-cleaning {
+		height: 680px;
+	}
+	#salon-counselor {
+		display: none!important;
+	}
+	#salon-chat {
+		width: 100%;
+		left: 0;
+		top: 20px;
+	}
+	#counselor-chat-1 {
+		width: 200px;
+		text-align: left;
+		font-size: 14px;
+	}
+	#counselor-chat-2 {
+		top: 220px;
+		width: 220px;
+	}
+	#counselor-chat-3 {
+		top: 350px;
+		z-index: 100;
+		width: 240px;
+	}
+	.counselor-chat-text {
+		font-size: 16px;
+		width: 100px;
+		line-height: 20px;
+	}
+	.reportingame #report-avatar {
+		right: 0;
+		left: auto;
+	}
+	.reportingame #keywords {
+		left: 50px;
+		right: auto;
+		top: 450px;
+	}
+	.reportingame #report-header {
+		height: 880px;
+	}
+	.reportingame #report-header .report-container {
+		width: 100%;
+	}
+	.reportingame #report-opt {
+		height: 160px;
+	}
+	#report-share {
+		left: 0;
+		top: 860px;
+	}
+	
+	
 }
 @media only screen and (min-width: 35em) {
     /* Style adjustments for viewports that meet the condition */
