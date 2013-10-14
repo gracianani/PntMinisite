@@ -4636,6 +4636,7 @@ left: 0;
 	transform: scale(1.2);
 	-ms-transform: scale(1.2); /* IE 9 */
 	-webkit-transform: scale(1.2); /* Safari and Chrome */
+	-moz-transform: scale(1.2);
 }
 #fruit:hover {
 	background-color: #fcf0bb;
@@ -4971,7 +4972,7 @@ left: 0;
    .onDesktop {
 		display: none;
 	}
-	
+
     body {
 	    min-width: 480px;
     }
@@ -4998,7 +4999,7 @@ left: 0;
 	    margin-bottom: 50px;
     }
     #scene-hairstyle {
-	    height: 500px;
+	    height: 550px;
 	    margin-bottom: 50px;
     }
     #scene-hairquality {
@@ -5010,10 +5011,11 @@ left: 0;
 	    margin-bottom: 50px;
     }
     #life-center,#life-type {
+    transform: scale(0.8);
 	-webkit-transform: scale(0.8);
 	-ms-transform: scale(0.8);
 	-moz-transform: scale(0.8);
-	transform: scale(0.8);
+	
 	
 }
 	#life-type {
@@ -5240,10 +5242,11 @@ left: 0;
 	    border-radius: 3px;
 }
 .meal:active, .smoke:hover, .sleep:hover {
+	transform: scale(0.8);
 	-webkit-transform: scale(0.8);
 	-moz-transform: scale(0.8);
 	-ms-transform: scale(0.8);
-	transform: scale(0.8);
+	
 }
 .meal:last-child, .smoke:last-child, .sleep:last-child {
 	    margin-right: 0;
@@ -5410,7 +5413,7 @@ left: 0;
 	width: 40%;
 }
 #scene-diet-content{
-	height: 660px;
+	height: 650px;
 }
 	.reportingame  .report-container {
 		width: 100%!important;
@@ -5454,11 +5457,12 @@ left: 0;
 	}
 	.reportingame .report-life-item-left,.reportingame  .report-life-item-right {
 		position: static;
+		transform:none!important;
 		-webkit-transform: none!important;
 		-moz-transform: none!important;
 		-o-transform: none!important;
 		-ms-transform: none!important;
-		transform:none!important;
+		
 		margin: 10px auto;
 		width: 80%!important;
 		height: auto!important;
@@ -5488,6 +5492,91 @@ left: 0;
 	#report-flyToTop {
 		margin-left: 230px;
 	}
+	#help-showerfreq {
+		top:100px;
+	}
+}
+@media only screen and (max-width:1023px) and (min-width:768px) {
+	#help-cat {
+		top: 85%;
+	}
+	#help-career {
+		top:180px;
+		right: -10px;
+	}
+	#help-age {
+		left: 200px;
+		top: 90px;
+		bottom: auto;
+	}
+	#help-quality {
+		top: 200px;
+	}
+	#help-thickness {
+		top: 330px;
+	}
+	#help-volume {
+		top:440px;
+	}
+	#help-problem {
+		top: 400px;
+	}
+	#help-mealCount {
+		top: 50px;
+	}
+	#help-drinkDegree {
+		top: 170px;
+	}
+	#help-smoke {
+		top: 320px;
+	}
+	#help-sunBlock {
+		top: 450px;
+	}
+	#help-sleep {
+		top: 580px;
+		left: 20%;
+	}
+	#help-taste {
+		top:200px;
+		left: 0;
+	}
+	#help-fruit {
+		top:140px;
+		left: 40%;
+	}
+	#help-cook {
+		left: 50%;
+		top:50px;
+	}
+	#help-drink {
+		left: 45%;
+	}
+	#help-haircare {
+		top: 15%;
+	}
+	#help-trash {
+		left: -4%;
+		top: 47%;
+	}
+	#help-showerfreq {
+		top: 200px;
+		left: 56%;
+	}
+	#help-showertime {
+		bottom: 0;
+		left: 60%；
+	}
+	#help-salon-1 {
+		top: -20px;
+	}
+	#help-salon-2 {
+		top: 18%;
+	}
+	#help-salon-3 {
+		left:40%;
+	}
+	
 }
 @media only screen and (max-width: 767px) {
 	body {
@@ -5633,15 +5722,7 @@ left: 0;
 	#scene-basicinfo {
 		margin-bottom: 0;
 	}
-	#help-switch {
-		right: 0;
-		bottom: 180px;
-		-webkit-transform: scale(0.6);
-		-moz-transform: scale(0.6);
-		-o-transform: scale(0.6);
-		-ms-transform: scale(0.6);
-		transform:  scale(0.6);
-	}
+	
 		#scene-hairstyle {
 		margin-bottom: 0;
 	}
@@ -5700,11 +5781,12 @@ left: 0;
 		width: 110%;
 		left: -5%;
 		margin-left: 0;
+		transform:  scale(0.8);
 		-webkit-transform: scale(0.8);
 		-moz-transform: scale(0.8);
 		-o-transform: scale(0.8);
 		-ms-transform: scale(0.8);
-		transform:  scale(0.8);
+		
 		bottom: auto;
 		top: 500px;
 	}
@@ -5755,8 +5837,14 @@ left: 0;
 	.reportingame #report-cleaningSuggestionContent {
 		padding: 10px 10%;
 	}
+	.reportingame #report-tool {
+		margin:80px auto 0 auto;
+		width: 100%;
+	}
 	.reportingame #report-tool-img,.reportingame #report-tool-content {
 		max-width: 90%;
+		width: 90%;
+		margin:0 auto;
 	}
 	.reportingame #report-tool-img img {
 		max-width: 100%;
@@ -5795,9 +5883,106 @@ left: 0;
 	#takeaway,#homemade {
 		left: 70%;
 	}
+	#help-switch.opened {
+		background-position: left -106px;
+	}
 	
-	
+	#help-age {
+		bottom: auto;
+		top:30px;
 
+	}
+	#help-career {
+		top: 25%;
+	}
+	#help-switch {
+		right: 20px;
+		bottom: 200px;
+		width: 48px;
+		height: 46px;
+		background-position: left top;
+	}
+	#init-help {
+		z-index: 3;
+	}
+	#help-cat {
+		z-index: 3;
+		top:85%;
+		right: 0;
+	}
+	.help-text {
+		font-size: 14px;
+	}
+	#help-thickness {
+		top: 280px;
+		left: 0;
+	}
+	#help-quality {
+		top: 180px;
+		left: 0;
+	}
+	#help-problem {
+		top: 400px;
+		left: 20%;
+	}
+	.help-item {
+		background: none;
+		width: 200px;
+	}
+	.help-text {
+		background-color: #d55b1c;
+		color: #fff;
+		padding:10px 5px!important;
+		border-radius: 10px;
+		box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+		position: relative;
+	}
+	.help-leftup .help-text,.help-rightup .help-text {
+		top:40px;
+	}
+	.help-leftdown .help-text,.help-rightdown .help-text {
+		top:80px;
+	}
+	#help-life {
+		left: 0;
+		top:55%;
+	}
+	#help-stress {
+		top:0;
+		left: 15%;
+	}
+	#help-mealCount {
+		top:20px;
+	}
+	#help-drinkDegree {
+		top:100px;
+	}
+	#help-smoke {
+		top: 190px;
+	}
+	#help-sunBlock {
+		top:270px;
+	}
+	#help-sleep {
+		top:360px;
+		left: 20px;
+	}
+	#help-taste {
+		top:180px;
+	}
+	#help-fruit {
+		top:120px;
+	}
+	#help-cook {
+		left: 50%;
+		top:50px;
+	}
+	.help-rightdown .help-arrow {
+		background-position: -377px -233px;
+	}
+	.help-rightup .help-arrow {
+		background-position:right -15px;
+	}
 }
 @media only screen and (max-width:767px) and (min-width:460px) {
 	#main {
@@ -5849,18 +6034,22 @@ left: 0;
 		left: 60px;
 	}
 	.life-icon {
+		transform: scale(0.8);
 		-webkit-transform:scale(0.8);
+		-ms-transform: scale(0.8);
+		
 	}
 	#scene-life {
 		height: 500px;
 		margin-bottom: 0
 	}
 	.haircolor {
+		transform: none!important;
 		-webkit-transform: none!important;
 		-ms-transform: none!important;
 		-o-transform: none!important;
 		-moz-transform: none!important;
-		transform: none!important;
+		
 		bottom: 10%;
 	}
 	#haircolor-red {
@@ -5935,6 +6124,18 @@ left: 0;
 		top: 290px;
 		z-index: 100;
 	}
+	#help-haircare {
+		left:30px;
+		top:100px;
+	}
+	#help-trash {
+		top:250px;
+	}
+	#help-showertime {
+		left: 50%;
+		bottom: auto;
+		top:350px;
+	}
 } 
 @media only screen and (max-width:459px) {
 	body {
@@ -5952,7 +6153,9 @@ left: 0;
 		left: auto;
 		width: 200px;
 		right: -60px;
+		transform: scale(0.8);
 		-webkit-transform: scale(0.8);
+		-ms-transform: scale(0.8);
 	}
 	.basicinfo-scene {
 		left: -20px;
@@ -5979,11 +6182,12 @@ left: 0;
 		height: 6px;
 	}
 	#career-clothes .clothes {
+		transform: scale(0.8);
 		-moz-transform: scale(0.8);
 		-o-transform: scale(0.8);
 		-ms-transform: scale(0.8);
 		-webkit-transform: scale(0.8);
-		transform: scale(0.8);
+		
 		margin-top: -32px!important;
 	}
 	.style-scene{
@@ -5993,7 +6197,10 @@ left: 0;
 		margin-left: -20px;
 	}
 	#hairstyle-length, #hairstyle-curl {
+		transform: scale(0.7);
 		-webkit-transform: scale(0.7);
+		-moz-transform: scale(0.7);
+		-ms-transform: scale(0.7);
 		left:auto;
 		right: auto;
 		right: -30px;
@@ -6006,14 +6213,21 @@ left: 0;
 	}
 	
 	#hairstyle-color {
+		transform: scale(0.8);
 		-webkit-transform: scale(0.8);
+		-moz-transform: scale(0.8);
+		-ms-transform: scale(0.8);
 		bottom: auto;
 		top:340px;
 		right: -35px;
 		left: auto;
 	}
 	.haircolor {
+		transform: none!important;
+		-o-transform: none!important;
+		-moz-transform: none!important;
 		-webkit-transform: none!important;
+		-ms-transform: none!important;
 	}
 	#haircolor-red {
 		top: -50px;
@@ -6074,17 +6288,21 @@ left: 0;
 		margin-bottom: 0;
 	}
 	.life-icon {
-		-webkit-transform:scale(0.7);
+		transform:scale(0.7);
+		-webkit-transform: scale(0.7);
+		-ms-transform: scale(0.7);
+		-moz-transform: scale(0.7);
 	}
 	#scene-life {
 		height: 400px;
 		margin-bottom: 0
 	}
 	#life-center, #life-type {
+		transform: scale(0.6);
 		-webkit-transform: scale(0.6);
 		-ms-transform: scale(0.6);
 		-moz-transform: scale(0.6);
-		transform: scale(0.6);
+		
 	}
 	#life-center,#life-type {
 		top: 60%;
@@ -6200,6 +6418,11 @@ left: 0;
 	.reportingame #report-avatar {
 		right: 0;
 		left: auto;
+		-webkit-transform: scale(0.8);
+		-moz-transform: scale(0.8);
+		-o-transform: scale(0.8);
+		-ms-transform: scale(0.8);
+		transform: scale(0.8);
 	}
 	.reportingame #keywords {
 		left: 50px;
@@ -6218,8 +6441,36 @@ left: 0;
 	#report-share {
 		left: 0;
 		top: 860px;
+		margin-left: 10px;
 	}
-	
+	#help-curl {
+		top: 90px;
+	}
+	#help-haircolor {
+		right: 0;
+		bottom: 10%;
+	}
+	#help-hairstate {
+		left: 0;
+		bottom: -100px;
+	}
+	#help-showerfreq {
+		top:400px;
+		left:5%;
+	}
+	#help-showertime {
+		top:650px;
+		bottom: auto;
+		left: 5%;
+	}
+	#help-trash {
+		top:260px;
+		left: -6%;
+	}
+	#help-haircare {
+		left: 10px;
+		top: 100px;
+	}
 	
 }
 @media only screen and (min-width: 35em) {

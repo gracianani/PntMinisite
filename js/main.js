@@ -234,7 +234,7 @@ window.AppFacade = {
     onQQLoginSuccess: function (reqData, opts) {
         _logoutTemplate = [
 				            '<span class="profile-avatar"><img src="{figureurl}" class="{size_key}"/></span>',
-				            '<span class="profile-nickname">{nickname}</span>',
+				            '<span class="profile-nickname  onDesktop">{nickname}</span>',
 				            '<span class="profile-logout"><a href="javascript:QC.Login.signOut();">退出</a></span>'
 		].join("");
         $('#prifile-login').html(
@@ -258,7 +258,7 @@ window.AppFacade = {
     onInQuizQQLoginSuccess: function (reqData, opts) {
         _logoutTemplate = [
 				            '<span class="profile-avatar"><img src="{figureurl}" class="{size_key}"/></span>',
-				            '<span class="profile-nickname">{nickname}</span>',
+				            '<span class="profile-nickname  onDesktop">{nickname}</span>',
 				            '<span class="profile-logout"><a href="javascript:QC.Login.signOut();">退出</a></span>'
 		].join("");
         $('#prifile-login').html(
@@ -267,6 +267,7 @@ window.AppFacade = {
 				    figureurl: reqData.figureurl
 				})
 		);
+		console.log(reqData);
         //$("#social_login").hide();
         $("#inquiz-login").hide();
         var self = this;
@@ -278,7 +279,7 @@ window.AppFacade = {
     onQQReportLoginSuccess: function (reqData, opts) {
         _logoutTemplate = [
 				            '<span class="profile-avatar"><img src="{figureurl}" class="{size_key}"/></span>',
-				            '<span class="profile-nickname">{nickname}</span>',
+				            '<span class="profile-nickname  onDesktop">{nickname}</span>',
 				            '<span class="profile-logout"><a href="javascript:QC.Login.signOut();">退出</a></span>'
 		].join("");
         $('#prifile-login').html(
@@ -320,7 +321,7 @@ window.AppFacade = {
 
         _logoutTemplate = [
 				            '<span class="profile-avatar"><img src="{{figureurl}}" class="{size_key}"/></span>',
-				            '<span class="profile-nickname">{{nickname}}</span>',
+				            '<span class="profile-nickname  onDesktop">{{nickname}}</span>',
 				            '<span class="profile-logout"><a onclick="window.AppFacade.weiboLogout();">退出</a></span>'
 		].join("");
 
@@ -347,13 +348,14 @@ window.AppFacade = {
         if (typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
             app.Report.getReportByUserId();
         }
+        
 
     },
     onWbInQuizLoginSuccess: function (o) {
 
         _logoutTemplate = [
 				            '<span class="profile-avatar"><img src="{{figureurl}}" class="{size_key}"/></span>',
-				            '<span class="profile-nickname">{{nickname}}</span>',
+				            '<span class="profile-nickname  onDesktop">{{nickname}}</span>',
 				            '<span class="profile-logout"><a onclick="window.AppFacade.weiboLogout();">退出</a></span>'
 		].join("");
 
@@ -367,7 +369,7 @@ window.AppFacade = {
         //$("#social_login").hide();
 
         app.User.weibo_uid = o.id;
-
+		console.log(o);
         var tokencookiename = "weibojs_" + app.weiboApp.app_id;
         var tokencookie = readCookie(tokencookiename);
 
@@ -381,7 +383,7 @@ window.AppFacade = {
 
         _logoutTemplate = [
 				            '<span class="profile-avatar"><img src="{{figureurl}}" class="{size_key}"/></span>',
-				            '<span class="profile-nickname">{{nickname}}</span>',
+				            '<span class="profile-nickname onDesktop">{{nickname}}</span>',
 				            '<span class="profile-logout"><a onclick="window.AppFacade.weiboLogout();">退出</a></span>'
 		].join("");
 

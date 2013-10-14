@@ -757,16 +757,27 @@ var HealthView = Backbone.View.extend({
         var degreeContent = $(item);
         var degree;
         var degreesCount = parseInt(degreeContent.find('.health-degree-item').size());
+        
         if ( smallscreen ) {
-        	degree = Math.ceil((degreeContent.offset().left + degreeContent.width() - event.pageX) / degreeContent.width() * degreesCount); 
+        	var pageX;
+        	if ( event.pageX ) {
+	        	pageX = event.pageX;
+        	} else {
+	        	pageX = event.originalEvent.touches[0].pageX
+        	}
+        	
+        	degree = Math.ceil((degreeContent.offset().left + degreeContent.width() - pageX) / degreeContent.width() * degreesCount); 
+        	
 	       
         } else {
 	        degree = Math.ceil((degreeContent.offset().top + degreeContent.height() - event.pageY) / degreeContent.height() * degreesCount); 
         }
-
+		if (!degree) {
+			degree = 0;
+		}
         degree = Math.min(degreesCount, degree);
         degree = Math.max(1, degree);
-
+		
         degreeContent.attr('class', 'health-degree-content').addClass('onDegree-' + degree);
         degreeContent.find('.health-degree-hint').html(degreeContent.find('[data-degree="' + degree + '"]').attr('title'));
 
