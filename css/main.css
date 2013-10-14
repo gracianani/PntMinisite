@@ -3676,6 +3676,7 @@ Cleaning
 	font-family: "Arial Black", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
 	letter-spacing: -10px;
 	line-height: 90px;
+	vertical-align: bottom;
 }
 #defeat-percent small {
 	font-size: 50px;
@@ -4962,7 +4963,7 @@ left: 0;
 	    top: 33%;
     }
 }
-@media only screen and (max-height:600px) {
+@media only screen and (max-device-height:600px) {
 	.navigator {
 		top: 150px;
 	}
@@ -5576,6 +5577,7 @@ left: 0;
 	#help-salon-3 {
 		left:40%;
 	}
+
 	
 }
 @media only screen and (max-width: 767px) {
@@ -5808,7 +5810,7 @@ left: 0;
 	#life-icons, #life-lines {
 		width: 100%;
 		margin-left: -50%;
-		margin-top: -50%;
+		margin-top: -200px;
 	}
 	
 	#life-work-1 {
@@ -5983,6 +5985,9 @@ left: 0;
 	.help-rightup .help-arrow {
 		background-position:right -15px;
 	}
+	#defeat {
+		width: 150px;
+	}
 }
 @media only screen and (max-width:767px) and (min-width:460px) {
 	#main {
@@ -6136,6 +6141,30 @@ left: 0;
 		bottom: auto;
 		top:350px;
 	}
+	#keywords {
+		width: 140px;
+	}
+	.restartQuiz, .downloadQuizImg {
+		width: 120px;
+		padding: 5px;
+	}
+	#report-opt {
+		width: 140px;
+	}
+	#report-share {
+		margin-left: 100px;
+		top:420px;
+	}
+	
+	.report-share>.jiathis_style_32x32>span {
+		display: block;
+		float: none;
+	}
+	.report-share>.jiathis_style_32x32>a {
+		margin-bottom: 5px;
+	}
+	
+	
 } 
 @media only screen and (max-width:459px) {
 	body {
@@ -6305,10 +6334,10 @@ left: 0;
 		
 	}
 	#life-center,#life-type {
-		top: 60%;
+		top: 50%;
 	}
 	#life-work-3,#life-play-3 {
-		top:60%;
+		top:50%;
 	}
 	#life-type {
 		padding-top: 0;
@@ -6427,10 +6456,10 @@ left: 0;
 	.reportingame #keywords {
 		left: 50px;
 		right: auto;
-		top: 450px;
+		top: 480px;
 	}
 	.reportingame #report-header {
-		height: 880px;
+		height: 830px;
 	}
 	.reportingame #report-header .report-container {
 		width: 100%;
@@ -6439,8 +6468,10 @@ left: 0;
 		height: 160px;
 	}
 	#report-share {
-		left: 0;
-		top: 860px;
+		right: 0;
+		left: auto;
+		width: 260px;
+		top: 810px;
 		margin-left: 10px;
 	}
 	#help-curl {
@@ -6464,14 +6495,32 @@ left: 0;
 		left: 5%;
 	}
 	#help-trash {
-		top:260px;
+		top:250px;
 		left: -6%;
 	}
 	#help-haircare {
 		left: 10px;
 		top: 100px;
 	}
-	
+	#pole-cover-right, #pole-cover-left {
+		width: 10px;
+		height: 10px;
+		border-radius: 6px;
+		margin-top: -5px;
+	}
+	.keyword:nth-child(2) {
+		left:-40px;
+	}
+	#report-opt {
+		bottom: 50px;
+		right: 0;
+		width: 160px;
+	}
+	.restartQuiz, .downloadQuizImg {
+		margin-right: 0;
+		width: 120px;
+		padding: 10px 10px;
+	}
 }
 @media only screen and (min-width: 35em) {
     /* Style adjustments for viewports that meet the condition */

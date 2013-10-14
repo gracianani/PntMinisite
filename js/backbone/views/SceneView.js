@@ -1191,6 +1191,10 @@ var HairStyleView = Backbone.View.extend( {
 
 			},
 			drag: function(event,ui) {
+				if (!event.pageX ) {
+		        	event.pageX = event.originalEvent.touches[0].pageX;
+		        	event.pageY = event.originalEvent.touches[0].pageY;
+	        	}
 				var data = $( this ).data('dragcircle'),
                 angle = Math.atan2( event.pageX - data.centerX - data.startX, event.pageY - data.centerY - data.startY );
                 data.angle = angle;
@@ -1215,7 +1219,10 @@ var HairStyleView = Backbone.View.extend( {
     setHairCircle : function(event) {
         var $circle = $(event.currentTarget);
 		var data = $circle.find('.hairstyle-circle-dragable').data('dragcircle');
-			
+		if ( !event.pageX ) {
+		        	event.pageX = event.originalEvent.touches[0].pageX;
+		        	event.pageY = event.originalEvent.touches[0].pageY;
+	    }
 
         angle = Math.atan2( event.pageX - data.centerX - data.startX, event.pageY - data.centerY - data.startY );
         data.angle = angle;
@@ -1419,6 +1426,10 @@ var HairQualityView = Backbone.View.extend( {
     },
     onClickProgressBar : function(e) {
 	  var bar = $(e.currentTarget);
+	  if ( !e.pageX ) {
+		        	e.pageX = e.originalEvent.touches[0].pageX;
+		        	e.pageY = e.originalEvent.touches[0].pageY;
+	   }
 	  var left = e.pageX - bar.offset().left;
 	  var degree =   geDegreeByXPosition( left, bar.width() , parseInt(bar.attr("data-degree-count")) );
 	   this.setDegree( bar, degree);
@@ -1651,17 +1662,16 @@ var SalonView = Backbone.View.extend( {
         this.animateIn();
         
 		if ( this.model.isAnswered(25) ) {
-			 $('#counselor-chat-1,#character-chat-1').fadeIn();
+			 $('#counselor-chat-1').fadeIn();
 		 } else {
-			 $('#counselor-chat-1').delay(2000).fadeIn(function(){
-				$('#character-chat-1').fadeIn();
-			});
+			 $('#counselor-chat-1').fadeIn();
 		 }
 		 if ( this.model.isAnswered(26) ) {
-			 $('#counselor-chat-2,#character-chat-2').fadeIn();
+			 $('#counselor-chat-2').fadeIn();
 		 }
 		 if ( this.model.isAnswered(27) ) {
 			 $('#counselor-chat-3').fadeIn();
+			 $('#counselor-chat-4').fadeIn();
 		 }
     },
     prev: function () {
@@ -1692,17 +1702,10 @@ var SalonView = Backbone.View.extend( {
 	    var isSelected = icon.hasClass('selected');
 	    icon.toggleClass('selected');
 	    this.model.setAnswer( parseInt(icon.parent().attr('data-question-id')), parseInt(icon.attr('data-answer-id')),!isSelected);
-	    if ( $('#counselor-chat-2').is(':hidden') ) {
-		    $('#counselor-chat-2').delay(1000).fadeIn();
-	    } else {
-		    if ( $('#counselor-chat-3').is(':hidden') ) {
-		    	$('#counselor-chat-3').delay(1000).fadeIn();
-			} else {
-				if ( $('#counselor-chat-4').is(':hidden') ){
-					$('#counselor-chat-4').delay(1000).fadeIn();
-				}
-			}
-	    }
+		 $('#counselor-chat-2').fadeIn();
+
+		 
+
     },
     onClickChatDegree: function(event) {
     	var icon = $(event.currentTarget).parent();
@@ -1716,9 +1719,11 @@ var SalonView = Backbone.View.extend( {
        	this.model.setAnswerByDegree(question_id, degree, true);
     	icon.attr('class','on-degree-' + degree);
     	icon.find('.chat-icon-text').html(this.model.getAnswerTextByDegree(question_id,degree));
-	    if ( $('#counselor-chat-3').is(':hidden') ) {
-		    $('#counselor-chat-3').delay(2000).fadeIn(function(){
-			});
-	    }
+	    if ( this.model.isAnswered(26) ) {
+			 $('#counselor-chat-3').fadeIn();
+		 }
+		 if ( !isSmallScreen() && this.model.isAnswered(27) ) {
+			 $('#counselor-chat-4').fadeIn();
+		 }
     }
 });
