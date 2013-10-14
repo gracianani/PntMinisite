@@ -149,11 +149,13 @@ public class WeiboWebServices : System.Web.Services.WebService
         private void SaveImage(WebBrowser browser)
         {
             browser.ClientSize = new Size(browser.Document.Body.ScrollRectangle.Width, browser.Document.Body.ScrollRectangle.Bottom);
-            m_Bitmap = new Bitmap(browser.Document.Body.ScrollRectangle.Width, browser.Document.Body.ScrollRectangle.Bottom);
+            
             browser.BringToFront();
             Rectangle rec = browser.Bounds;
-	    rec.Width -= 15;
-	    rec.Height -= 15;
+			rec.Width -= 15;
+			rec.Height -= 15;
+            m_Bitmap = new Bitmap(rec.Width,rec.Height);
+            
             browser.DrawToBitmap(m_Bitmap, rec);
             if (m_FileName.Length > 0)
             {
