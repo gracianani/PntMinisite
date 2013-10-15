@@ -763,7 +763,7 @@ var HealthView = Backbone.View.extend({
         	if ( event.pageX ) {
 	        	pageX = event.pageX;
         	} else {
-	        	pageX = event.originalEvent.touches[0].pageX
+	        	pageX = event.originalEvent.changedTouches[0].pageX
         	}
         	
         	degree = Math.ceil((degreeContent.offset().left + degreeContent.width() - pageX) / degreeContent.width() * degreesCount); 
@@ -1072,7 +1072,7 @@ var HairStyleView = Backbone.View.extend( {
     events: {
         "click #haircolor-red,#haircolor-gold,#haircolor-black,#haircolor-mix" : "setHairColor",
         "click #hand,#pin,#band,#comb" : "setHairState",
-        "click .hairstyle-circle" : "setHairCircle"
+        "click .hairstyle-circle-overlay" : "setHairCircle"
     },
 	drawHairCircleArc: function() {
 		var lengthPaper = Raphael("hairstyle-length-control", 200, 200);
@@ -1192,8 +1192,8 @@ var HairStyleView = Backbone.View.extend( {
 			},
 			drag: function(event,ui) {
 				if (!event.pageX ) {
-		        	event.pageX = event.originalEvent.touches[0].pageX;
-		        	event.pageY = event.originalEvent.touches[0].pageY;
+		        	event.pageX = event.originalEvent.changedTouches[0].pageX;
+		        	event.pageY = event.originalEvent.changedTouches[0].pageY;
 	        	}
 				var data = $( this ).data('dragcircle'),
                 angle = Math.atan2( event.pageX - data.centerX - data.startX, event.pageY - data.centerY - data.startY );
@@ -1204,7 +1204,6 @@ var HairStyleView = Backbone.View.extend( {
 			},
 			stop: function(event,ui){
 				$(this).setDegree();
-				
 				var question_id = parseInt($(this).parent().parent().data("question-id"));
 				var degree = parseInt($(this).data('degree'));
 				
@@ -1217,14 +1216,17 @@ var HairStyleView = Backbone.View.extend( {
 		});
     },
     setHairCircle : function(event) {
-        var $circle = $(event.currentTarget);
+        var $circle = $(event.currentTarget).parent();
 		var data = $circle.find('.hairstyle-circle-dragable').data('dragcircle');
 		if ( !event.pageX ) {
-		        	event.pageX = event.originalEvent.touches[0].pageX;
-		        	event.pageY = event.originalEvent.touches[0].pageY;
+		        	event.pageX = event.originalEvent.changedTouches[0].pageX;
+		        	event.pageY = event.originalEvent.changedTouches[0].pageY;
+		        	 
 	    }
+	   
 
         angle = Math.atan2( event.pageX - data.centerX - data.startX, event.pageY - data.centerY - data.startY );
+        
         data.angle = angle;
 		$circle.find('.hairstyle-circle-dragable').data('dragcircle', data );
         $circle.find('.hairstyle-circle-dragable').setDegree();
@@ -1427,8 +1429,8 @@ var HairQualityView = Backbone.View.extend( {
     onClickProgressBar : function(e) {
 	  var bar = $(e.currentTarget);
 	  if ( !e.pageX ) {
-		        	e.pageX = e.originalEvent.touches[0].pageX;
-		        	e.pageY = e.originalEvent.touches[0].pageY;
+		        	e.pageX = e.originalEvent.changedTouches[0].pageX;
+		        	e.pageY = e.originalEvent.changedTouches[0].pageY;
 	   }
 	  var left = e.pageX - bar.offset().left;
 	  var degree =   geDegreeByXPosition( left, bar.width() , parseInt(bar.attr("data-degree-count")) );

@@ -150,27 +150,42 @@ $.prototype.setDegree = function (defaultDegree) {
             var angleDegree = defaultDegree - 1 - Math.ceil(data.degree / 2);
             angle = (angleDegree - 0.5) / data.degree * 2 * Math.PI;
         } else {
+         
             degree = Math.ceil(data.angle / (2 * Math.PI / data.degree)),
 			angle = (degree - 0.5) / data.degree * 2 * Math.PI;
             degree = degree + Math.ceil(data.degree / 2) + 1;
+
         }
         if (degree > data.degree) {
             degree = degree - data.degree;
         }
         $(this).data('degree', degree);
-
+		
         $(this).css({ top: data.centerY + Math.cos(angle) * data.radius,
             left: data.centerX + Math.sin(angle) * data.radius
         }).rotate(angle);
+        
     }
 }
 $.prototype.rotate = function(angle) {
-	var deg = 180 - angle * 180 / Math.PI + 'deg';
-	$(this).css({
-		'transform':'rotate('+deg+')',
-		'-webkit-transform':'rotate('+deg+')',
-		'-ms-transform':'rotate('+deg+')'
-	});
+	if ( isSmallScreen() ) {
+		var deg = 180 - angle * 180 / Math.PI + 'deg';
+		$(this).css({
+			'transform':'rotate('+deg+')',
+			'-webkit-transform':'rotate('+deg+')',
+			'-ms-transform':'rotate('+deg+')'
+		});
+
+	} else {
+		var deg = 180 - angle * 180 / Math.PI + 'deg';
+		$(this).css({
+			'transform':'rotate('+deg+')',
+			'-webkit-transform':'rotate('+deg+')',
+			'-ms-transform':'rotate('+deg+')'
+		});
+	}
+		
+	
 	
 }
 $.prototype.flyToAndHide = function(target, callback) {
@@ -296,5 +311,5 @@ function unique(data){
     return data;  
 }  
 function isSmallScreen() {
-	return !($(window).width() > 1023); 
+	return ($(window).width() < 1024); 
 }
