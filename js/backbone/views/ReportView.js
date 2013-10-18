@@ -84,6 +84,11 @@ var ReportView = Backbone.View.extend({
 	    
     },
     onClickRestart: function () {
+    	/*
+    	if ( app.originUserAnswers ) {
+			AppFacade.setUserAnswers(app.originUserAnswers);
+		}
+		*/
         AppFacade.gotoScene(1);
         app.ReportLogged = false;
         app.ReportId = undefined;

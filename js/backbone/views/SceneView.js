@@ -6,7 +6,6 @@ var MainView = Backbone.View.extend({
         "click #next": "processToNextQuestion",
         "click #prev" : "processToPrevQuestion",
         "click #saveReport" : "showLogin",
-        "click #weibologin" : "authorize",
         "click #login .close" : "closeLogin",
         "click #nologin" : "showReport",
         "click #eraseCookie" : "eraseCookie",

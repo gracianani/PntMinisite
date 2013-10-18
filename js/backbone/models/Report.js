@@ -189,9 +189,15 @@ var Report = Backbone.Model.extend({
             datatType: "json",
             contentType: "application/json;charset=utf-8",
             success: function (data) {
-				console.log($.parseJSON(data.d));
+				//console.log($.parseJSON(data.d));
+				/*
+				var originUserAnswers = AppFacade.getUserAnswers();
+				if ( originUserAnswers ) {
+					app.originUserAnswers = originUserAnswers;
+				}
+				*/
                 var response = $.parseJSON(data.d);
-	            AppFacade.setUserAnswers($.parseJSON(data.d).user_answers);
+	            AppFacade.setUserAnswers(response.user_answers);
 				AppFacade.saveToCookie();
                 
                 app.ReportId = reportId;
@@ -222,12 +228,13 @@ var Report = Backbone.Model.extend({
             datatType: "json",
             contentType: "application/json;charset=utf-8",
             success: function (data) {
-            	console.log($.parseJSON(data.d));
-                app.ReportId = $.parseJSON(data.d).report_id;
+            	//console.log($.parseJSON(data.d));
+            	var response = $.parseJSON(data.d);
+                app.ReportId = response.report_id;
                 
-                AppFacade.setUserAnswers($.parseJSON(data.d).user_answers);
+                AppFacade.setUserAnswers(response.user_answers);
                 AppFacade.saveToCookie();
-                self.loadSuggestions($.parseJSON(data.d).suggestions);
+                self.loadSuggestions(response.suggestions);
                 self.shareReport();
             },
             timeout: function () {

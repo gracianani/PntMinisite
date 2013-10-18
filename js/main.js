@@ -23,7 +23,8 @@ var app = {
 	    isMobile: false,
 	    click: "click",
 	    mouseenter : "mouseenter",
-	    mouseleave : "mouseleave"
+	    mouseleave : "mouseleave",
+	    clickSplashLogin : false
     }
 };
 
@@ -80,7 +81,7 @@ window.AppFacade = {
 
             if (app.SceneViews[index].model) {
                 if (app.SceneViews[index].model.isSceneFinished().length > 0) {
-                    this.maxSceneId = parseInt(index);
+                    this.maxSceneId = parseInt(index) + 1;
                     return this.maxSceneId;
                 }
             }
@@ -178,7 +179,7 @@ window.AppFacade = {
 
     },
     initSplashLogin: function () {
-
+		
         QC.Login({//按默认样式插入QQ登录按钮
             btnId: "splash-qq",
             size: "A_L"
@@ -194,6 +195,7 @@ window.AppFacade = {
                 }
             });
         });
+        
 
 
     },
@@ -249,10 +251,12 @@ window.AppFacade = {
         QC.Login.getMe(function (openId, accessToken) {
             app.User.qq_uid = openId;
             app.User.qq_token = accessToken;
-            if (app.LoginFrom == "begin" && typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
+
+				if (app.LoginFrom == "begin" && typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
                 // 在开始页面 login by qq
                 app.Report.getReportByUserId();
-            }
+				}
+			
         });
     },
     onInQuizQQLoginSuccess: function (reqData, opts) {
@@ -267,7 +271,7 @@ window.AppFacade = {
 				    figureurl: reqData.figureurl
 				})
 		);
-		console.log(reqData);
+
         //$("#social_login").hide();
         $("#inquiz-login").hide();
         var self = this;
@@ -345,9 +349,12 @@ window.AppFacade = {
             var token = param[0].split("%3D")[1];
             app.User.weibo_token = token;
         }
-        if (typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
-            app.Report.getReportByUserId();
-        }
+
+		if (app.LoginFrom == "begin" && typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
+                // 在开始页面 login by qq
+                app.Report.getReportByUserId();
+		}
+
         
 
     },
@@ -436,9 +443,9 @@ window.AppFacade = {
         }
     },
     submitAnswer: function () {
-        if (this.getCurrentSceneId() == "8") {
             if (!app.ReportLogged) {
                 app.Report.saveAnswer(function () {
+                	console.log('here');
                     if (!AppFacade.isLogin()) {
                         AppFacade.initFinishLogin();
                         $("#login").removeClass("hidden");
@@ -448,8 +455,7 @@ window.AppFacade = {
                     }
                 });
                 app.ReportLogged = true;
-            }
-            else {
+            } else {
                 if (!AppFacade.isLogin()) {
                     AppFacade.initFinishLogin();
                     $("#login").removeClass("hidden");
@@ -458,8 +464,6 @@ window.AppFacade = {
                     AppFacade.askForReport();
                 }
             }
-        }
-
     },
     showHelp: function (unfinishedQuestions) {
         for (var i in unfinishedQuestions) {
