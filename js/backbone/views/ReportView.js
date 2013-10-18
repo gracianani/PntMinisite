@@ -145,7 +145,7 @@ var ReportView = Backbone.View.extend({
 		
         var summary = this.model.ShareText + " 我的“秀发健康指数”是 " + this.model.Score +
     	"，" + this.model.ScoreTitle +
-    	"！" + "你的头发能得几分？";
+    	"！" + "你的头发能得几分？ @潘婷Pantene";
 
         var shareimg = "http://pantene.app.social-touch.com/reports/report_" + app.ReportId + ".png";
         jiathis_config = {

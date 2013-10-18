@@ -459,9 +459,6 @@ window.AppFacade = {
                         AppFacade.askForReport();
                     }
                 });
-                app.ReportLogged = true;
-            } else {
-
             app.ReportLogged = true;
         } else {
             if (!AppFacade.isLogin()) {
