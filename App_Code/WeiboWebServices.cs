@@ -493,6 +493,36 @@ public class WeiboWebServices : System.Web.Services.WebService
     }
 
     [WebMethod]
+    public bool Bind(string str_user, int quizId)
+    {
+        JavaScriptSerializer serializer = new JavaScriptSerializer();
+        var user = serializer.Deserialize<User>(str_user);
+        if (quizId != 0)
+        {
+            string connStr = ConfigurationManager.ConnectionStrings["pnt"].ConnectionString;
+            using (var conn = new SqlConnection(connStr))
+            {
+                conn.Open();
+                using (var command = new SqlCommand("BIND", conn))
+                {
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    if (!string.IsNullOrEmpty(user.weibo_uid))
+                    {
+                        command.Parameters.AddWithValue("WeiboUID", user.weibo_uid);
+                    }
+                    if (!string.IsNullOrEmpty(user.qq_uid))
+                    {
+                        command.Parameters.AddWithValue("QQUid", user.qq_uid);
+                    }
+                    command.Parameters.AddWithValue("quizId", quizId);
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        return true;
+    }
+
+    [WebMethod]
     public string FetchReportByUser(string str_user)
     {
         JavaScriptSerializer serializer = new JavaScriptSerializer();

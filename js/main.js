@@ -179,7 +179,7 @@ window.AppFacade = {
 
     },
     initSplashLogin: function () {
-		
+
         QC.Login({//按默认样式插入QQ登录按钮
             btnId: "splash-qq",
             size: "A_L"
@@ -195,7 +195,7 @@ window.AppFacade = {
                 }
             });
         });
-        
+
 
 
     },
@@ -252,11 +252,11 @@ window.AppFacade = {
             app.User.qq_uid = openId;
             app.User.qq_token = accessToken;
 
-				if (app.LoginFrom == "begin" && typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
+            if (app.LoginFrom == "begin" && typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
                 // 在开始页面 login by qq
                 app.Report.getReportByUserId();
-				}
-			
+            }
+
         });
     },
     onInQuizQQLoginSuccess: function (reqData, opts) {
@@ -280,6 +280,7 @@ window.AppFacade = {
             app.User.qq_token = accessToken;
         });
     },
+    
     onQQReportLoginSuccess: function (reqData, opts) {
         _logoutTemplate = [
 				            '<span class="profile-avatar"><img src="{figureurl}" class="{size_key}"/></span>',
@@ -301,6 +302,7 @@ window.AppFacade = {
             app.User.qq_token = accessToken;
             if (app.LoginFrom == "end" && AppFacade.getCurrentView().id == 'scene-salon' && typeof (app.ReportId) != 'undefined') {
                 app.LoginFrom = "";
+                app.Report.bind(app.ReportId);
                 AppFacade.askForReport();
             }
         });
@@ -350,12 +352,12 @@ window.AppFacade = {
             app.User.weibo_token = token;
         }
 
-		if (app.LoginFrom == "begin" && typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
-                // 在开始页面 login by qq
-                app.Report.getReportByUserId();
-		}
+        if (app.LoginFrom == "begin" && typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
+            // 在开始页面 login by qq
+            app.Report.getReportByUserId();
+        }
 
-        
+
 
     },
     onWbInQuizLoginSuccess: function (o) {
@@ -376,7 +378,7 @@ window.AppFacade = {
         //$("#social_login").hide();
 
         app.User.weibo_uid = o.id;
-		//console.log(o);
+        //console.log(o);
         var tokencookiename = "weibojs_" + app.weiboApp.app_id;
         var tokencookie = readCookie(tokencookiename);
 
