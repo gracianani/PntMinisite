@@ -487,7 +487,7 @@ window.AppFacade = {
         app.Views.MainView.setProgressBar();
     },
     handleError: function (type) {
-        window.location.href = "/";
+       //window.location.href = "/";
     }
 
 };
