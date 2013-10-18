@@ -252,7 +252,7 @@ window.AppFacade = {
             app.User.qq_uid = openId;
             app.User.qq_token = accessToken;
 
-				if (app.LoginFrom == "begin" && typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
+				if (AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
                 // 在开始页面 login by qq
                 app.Report.getReportByUserId();
 				}
@@ -299,7 +299,7 @@ window.AppFacade = {
         QC.Login.getMe(function (openId, accessToken) {
             app.User.qq_uid = openId;
             app.User.qq_token = accessToken;
-            if (app.LoginFrom == "end" && AppFacade.getCurrentView().id == 'scene-salon' && typeof (app.ReportId) != 'undefined') {
+            if (typeof (app.ReportId) != 'undefined') {
                 app.LoginFrom = "";
                 AppFacade.askForReport();
             }
@@ -350,7 +350,7 @@ window.AppFacade = {
             app.User.weibo_token = token;
         }
 
-		if (app.LoginFrom == "begin" && typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
+		if (AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
                 // 在开始页面 login by qq
                 app.Report.getReportByUserId();
 		}
@@ -414,7 +414,7 @@ window.AppFacade = {
             var token = param[0].split("%3D")[1];
             app.User.weibo_token = token;
         }
-        if (app.LoginFrom == "end" && AppFacade.getCurrentView().id == 'scene-salon' && typeof (app.ReportId) != 'undefined') {
+        if (typeof (app.ReportId) != 'undefined') {
             app.LoginFrom = "";
             AppFacade.askForReport();
         }
@@ -445,7 +445,6 @@ window.AppFacade = {
     submitAnswer: function () {
             if (!app.ReportLogged) {
                 app.Report.saveAnswer(function () {
-                	console.log('here');
                     if (!AppFacade.isLogin()) {
                         AppFacade.initFinishLogin();
                         $("#login").removeClass("hidden");
