@@ -559,7 +559,7 @@ public class WeiboWebServices : System.Web.Services.WebService
         {
             suggestions = GetSuggestions(sceneUserAnswers, reportId, "");
         }
-        return string.Format("{{ \"user_answers\" : {0}, \"suggestions\" : {1}, \"avatar\" : {2}, \"report_id\" : {3} }}", sceneUserAnswers, suggestions, str_avatar, reportId);
+        return string.Format("{{ \"user_answers\" : {0}, \"suggestions\" : {1}, \"avatar\" : {2}, \"report_id\" : {3} }}", sceneUserAnswers, string.IsNullOrEmpty(suggestions) ? "{}" : suggestions, str_avatar, reportId);
     }
 
     [WebMethod]
