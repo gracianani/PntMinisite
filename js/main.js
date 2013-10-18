@@ -252,7 +252,7 @@ window.AppFacade = {
             app.User.qq_uid = openId;
             app.User.qq_token = accessToken;
 
-				if (AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
+				if (AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined' && (app.ReportId > 0)) {
 
                 // 在开始页面 login by qq
                 app.Report.getReportByUserId();
@@ -354,7 +354,7 @@ window.AppFacade = {
         }
 
 
-		if (AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
+		if (AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined' && (app.ReportId > 0) ) {
                 // 在开始页面 login by qq
                 app.Report.getReportByUserId();
 		}

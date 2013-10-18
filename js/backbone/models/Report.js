@@ -59,6 +59,7 @@ var Report = Backbone.Model.extend({
             gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 4 });
         }
         this.ShareText = gSuggestion.get("share_text_begin_with");
+        this.ShareText2 = gSuggestion.get("share_text");
         this.level = gSuggestion.get("g_level");
         this.ScoreTitle = gSuggestion.get("suggestion_title");
         this.ScoreSuggestions.push(gSuggestion.get("suggestion_text"));

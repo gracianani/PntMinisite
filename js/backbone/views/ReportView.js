@@ -142,17 +142,21 @@ var ReportView = Backbone.View.extend({
         });
     },
     setShareConfig: function () {
-		
-        var summary = this.model.ShareText + " 我的“秀发健康指数”是 " + this.model.Score +
-    	"，" + this.model.ScoreTitle +
-    	"！" + "你的头发能得几分？ @潘婷Pantene";
 
+        var summary = "刚刚玩了@潘婷Pantene 的小测试" + this.model.ShareText + " 我的“秀发健康指数”是 " + this.model.Score +
+    	"，" + this.model.ScoreTitle + 
+    	"！" + this.model.ShareText2 + "你的头发能得多少分？快来跟我PK吧！";
+		
+		var title = "我的秀发分数是 " + this.model.Score + "！求击败 O(∩_∩)O~-潘婷护发实验室";
+    	
         var shareimg = "http://pantene.app.social-touch.com/reports/report_" + app.ReportId + ".png";
         jiathis_config = {
             data_track_clickback: true,
             summary: summary,
+            desc:summary,
             title: "#Pantene护发实验室#",
             pic: shareimg,
+            img: shareimg,
             ralateuid: {
                 "tsina": "潘婷Pantene"
             },
@@ -163,8 +167,10 @@ var ReportView = Backbone.View.extend({
             shortUrl: false,
             hideMore: true
         }
+        $('title').text(title);
     },
     resetShareConfig: function () {
         jiathis_config = defaultShareConfig;
+        $('title').text("潘婷护发实验室");
     }
 });
