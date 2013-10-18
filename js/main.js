@@ -436,7 +436,7 @@ window.AppFacade = {
     },
     submitAnswer: function () {
         if (this.getCurrentSceneId() == "8") {
-            if (!app.ReportLogged) {
+            if (typeof (app.ReportLogged) == 'undefined' || !app.ReportLogged) {
                 app.Report.saveAnswer(function () {
                     if (!AppFacade.isLogin()) {
                         AppFacade.initFinishLogin();
