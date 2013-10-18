@@ -135,7 +135,6 @@ var Report = Backbone.Model.extend({
             requestData = '{ user_answers : \"' + stringyfied + '\", quizId : 0 , str_user : \"' + JSON.stringify(app.User).replace(/"/g, '\'') + ' \" }';
         }
         var self = this;
-		//console.log(requestData);
         $.ajax({
             type: "POST",
             url: 'WeiboWebServices.asmx/GetSuggestions',
@@ -178,7 +177,18 @@ var Report = Backbone.Model.extend({
             }
         });
     },
-
+    bind:function( reportId) {
+        var requestData = '{ quizId : ' +reportId+ ', str_user : \"' + JSON.stringify(app.User).replace(/"/g, '\'') + ' \" }';
+        var self = this;
+        $.ajax({
+            type: "POST",
+            url: 'WeiboWebServices.asmx/Bind',
+            timeout: 5000,
+            data: requestData,
+            datatType: "json",
+            contentType: "application/json;charset=utf-8"
+        });
+    },
     getReportByReportId: function (reportId) {
         var self = this;
         $.ajax({
