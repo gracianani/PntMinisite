@@ -419,6 +419,7 @@ window.AppFacade = {
         if (app.LoginFrom == "end" && AppFacade.getCurrentView().id == 'scene-salon' && typeof (app.ReportId) != 'undefined') {
             app.LoginFrom = "";
             AppFacade.askForReport();
+            app.Report.bind(app.ReportId);
         }
     },
     onWbLogoutSuccess: function () {
