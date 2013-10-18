@@ -905,7 +905,6 @@ var DietView = Backbone.View.extend({
         var item = $(event.currentTarget);
         var questionId = parseInt(item.attr("data-question-id"));
         var degree = parseInt(this.model.getAnswerDegree(questionId));
-        console.log(degree);
         if (degree) {
 	        degree = degree + 1;
 	        if ( degree > 4 ) {
@@ -915,7 +914,6 @@ var DietView = Backbone.View.extend({
         } else {
 	        degree = 1;
         }
-        console.log(degree);
         item.attr('class', 'fruit refrigerator-cell width-large height-medium selected fruit-degree-' + degree).attr('data-degree', degree);
         /*
         var width = $(item).width();

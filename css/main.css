@@ -700,7 +700,7 @@ splash
 	background: url(../img/character/gender-female.png) no-repeat left bottom;
 	margin-right: 50px;
 }
-.splash-gender-female:active {
+.splash-gender-female:hover,.splash-gender-female:active {
 	background-position: -142px bottom;
 }
 
@@ -5694,8 +5694,8 @@ left: 0;
 		height: auto;
 	}
 	#header {
-		height: 40px;
-		background-position: left 50px;
+		height: 50px;
+		background-position: left bottom;
 	}
 	#profile {
 		top: 0px;

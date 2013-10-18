@@ -369,7 +369,7 @@ window.AppFacade = {
         //$("#social_login").hide();
 
         app.User.weibo_uid = o.id;
-		console.log(o);
+		//console.log(o);
         var tokencookiename = "weibojs_" + app.weiboApp.app_id;
         var tokencookie = readCookie(tokencookiename);
 

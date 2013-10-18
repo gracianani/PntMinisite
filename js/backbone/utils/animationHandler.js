@@ -14,7 +14,7 @@ var AnimationHandler = {
         self.DISTANCE = 500;
         self.containerWidth = (self.el.width() / 2 - 300);
         self.containerHeight = (self.el.height() / 2);
-        jQuery('body').css('overflow', 'hidden');
+        //jQuery('body').css('overflow', 'hidden');
 
         self.items = jQuery(self.contentID + " .item").length;
         var count = 0;
@@ -123,13 +123,13 @@ var AnimationHandler = {
                 count++;
                 if (count == self.items) {
                     self.callBack();
-                    jQuery('body').css('overflow', 'visible');
+                    //jQuery('body').css('overflow', 'visible');
                 }
             });
         });
     },
     animateOut: function (type, postAnimateOut) {
-    	if (true ||  isMobile() ) {
+    	if (isSmallScreen() ) {
     		var content = jQuery(this.contentID);
     		content.addClass('animated slideOutUp');
     		var timer = setTimeout(function(){
@@ -147,7 +147,7 @@ var AnimationHandler = {
 		}
         var self = this;
         var count = 0;
-        jQuery('body').css('overflow', 'hidden');
+        //jQuery('body').css('overflow', 'hidden');
         var items = jQuery(self.contentID + " .item");
         if (items.length > 0) {
             items.each(function (i) {

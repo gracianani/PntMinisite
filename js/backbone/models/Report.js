@@ -135,7 +135,7 @@ var Report = Backbone.Model.extend({
             requestData = '{ user_answers : \"' + stringyfied + '\", quizId : 0 , str_user : \"' + JSON.stringify(app.User).replace(/"/g, '\'') + ' \" }';
         }
         var self = this;
-
+		//console.log(requestData);
         $.ajax({
             type: "POST",
             url: 'WeiboWebServices.asmx/GetSuggestions',
@@ -189,7 +189,7 @@ var Report = Backbone.Model.extend({
             datatType: "json",
             contentType: "application/json;charset=utf-8",
             success: function (data) {
-
+				console.log($.parseJSON(data.d));
                 var response = $.parseJSON(data.d);
 	            AppFacade.setUserAnswers($.parseJSON(data.d).user_answers);
 				AppFacade.saveToCookie();
@@ -222,11 +222,13 @@ var Report = Backbone.Model.extend({
             datatType: "json",
             contentType: "application/json;charset=utf-8",
             success: function (data) {
+            	console.log($.parseJSON(data.d));
                 app.ReportId = $.parseJSON(data.d).report_id;
-                self.shareReport();
+                
                 AppFacade.setUserAnswers($.parseJSON(data.d).user_answers);
                 AppFacade.saveToCookie();
                 self.loadSuggestions($.parseJSON(data.d).suggestions);
+                self.shareReport();
             },
             timeout: function () {
                 alert("请求超时，请稍后再试");
