@@ -1,217 +1,223 @@
 ﻿[
     {
 		"suggestion_id" : 1,
-		"suggestion_text" : "工作量大、对工作要求高，或者突如其来的变故，都有可能令您感到“压力山大”。请适当降低对自己的要求，运动、冥想、按摩，可以适当缓解您的压力。",
-		"type":"negtive"
+		"suggestion_text" : "工作量大、要求高，突如其来的变故，都会令您感到“压力山大”。请适当降低对自己的要求，运动、冥想、按摩，可以适当缓解您的压力。",
+		"type":"stress"
 	},
 	{
 		"suggestion_id" : 2,
-		"suggestion_text" : "您可以积极寻找更多的挑战。",
-		"type":"negtive"
+		"suggestion_text" : "适度的压力会让生活更有动力，您可以积极寻找更多的挑战。娱乐的同时也要注意身体，不要经常熬夜、喝酒哦。",
+		"type":"stress"
 	},
 	{
 		"suggestion_id" : 3,
-		"suggestion_text" : "保持生活平衡很不容易，您可以抽出更多时间关心自己的身体。",
-		"type":"negtive"
+		"suggestion_text" : "生活平衡的状态非常棒！工作娱乐之余，可以多抽一些时间关心自己的身体健康。",
+		"type":"stress"
 	},
 	{
 		"suggestion_id" : 4,
 		"suggestion_text" : "在外就餐时，要注意营养组合和卫生。有条件的时候，多回家吃饭吧。",
-		"type":"negtive"
+		"type":"cook"
 	},
 	{
 		"suggestion_id" : 5,
-		"suggestion_text" : "辣椒、葱姜蒜都是很不错的食物和调味料，但要少油少盐才对路。享受食物原本的味道也是一种幸福。",
-		"type":"negtive"
+		"suggestion_text" : "香辣惹人谗，少油少盐才对路。享受食物原本的味道也是一种幸福。",
+		"type":"taste"
 	},
 	{
 		"suggestion_id" : 6,
 		"suggestion_text" : "甜食是生活中美好的点缀，吃多了可能会让您发胖。",
-		"type":"negtive"
+		"type":"taste"
 	},
 	{
 		"suggestion_id" : 7,
-		"suggestion_text" : "除了肉类以外，不要忽略了蔬菜水果中也有很多美味。荤素搭配滋味更丰富。",
-		"type":"negtive"
+		"suggestion_text" : "不要忽略了蔬菜水果中也有很多美味。荤素搭配滋味更丰富。",
+		"type":"taste"
 	},
 	{
 		"suggestion_id" : 8,
 		"suggestion_text" : "在肉食动物横行的时代，荤素搭配才是低调奢华有内涵，请继续坚持！",
-		"type":"positive"
+		"type":"taste"
 	},
 	{
 		"suggestion_id" : 9,
 		"suggestion_text" : "少食多餐是很好的习惯，但不规律的夜宵可能会让您发胖。",
-		"type":"negtive"
+		"type":"mealcount"
 	},
 	{
 		"suggestion_id" : 10,
 		"suggestion_text" : "有规律的一日三餐，身体和头发都会很满足:)",
-		"type":"positive"
+		"type":"mealcount"
 	},
 	{
 		"suggestion_id" : 11,
 		"suggestion_text" : "您是不是正在减肥呢？早餐对身体很重要，一日三餐更有利于身体吸收营养。",
-		"type":"negtive"
+		"type":"mealcount"
 	},
 	{
 		"suggestion_id" : 12,
-		"suggestion_text" : "您是不是正在减肥呢？总是处在饥饿的状态下，不但容易反弹，对健康的损伤很大，头发也会失去光泽！",
-		"type":"negtive"
+		"suggestion_text" : "总是处在饥饿状态下，减肥容易反弹，对健康的损伤很大，头发也会失去光泽！",
+		"type":"mealcount"
 	},
 	{
 		"suggestion_id" : 13,
-		"suggestion_text" : "您的睡眠时间很充足！如果有高质量的睡眠可以让身体神奇般地恢复力量。不过不要赖床哦！",
-		"type":"positive"
+		"suggestion_text" : "您的睡眠时间很充足！不过不要赖床哦！",
+		"type":"sleep"
 	},
 	{
 		"suggestion_id" : 14,
-		"suggestion_text" : "您的睡眠时间很正常，如果有高质量的睡眠可以让身体神奇般地恢复力量。",
-		"type":"positive"
+		"suggestion_text" : "您的睡眠时间很正常，高质量的睡眠可以让身体神奇般地恢复力量。",
+		"type":"sleep"
 	},
 	{
 		"suggestion_id" : 15,
-		"suggestion_text" : "调节好生物钟，保证每天正常睡眠时间，会让您精神百倍。除了睡眠时间有规律，避开咖啡因和酒精，每天适量运动等老生常谈的忠告，为了改善睡眠，我们还可以借鉴一下美国国家睡眠协会的小建议：跟着太阳同起落：尽可能地在太阳升起的时候起床，或在起床时点一盏很亮的灯。",
-		"type":"negtive"
+		"suggestion_text" : "调节好生物钟，保证每天正常睡眠时间，会让您精神百倍。",
+		"type":"sleep"
 	},
 	{
 		"suggestion_id" : 16,
 		"suggestion_text" : "每天清洁头皮，护理头发，保持秀发的含水度，值得鼓励呢！",
-		"type":"positive"
+		"type":"cleaning"
 	},
 	{
 		"suggestion_id" : 17,
-		"suggestion_text" : "一般情况下，3,4天的时间头皮就分泌了大量的油脂，这些油脂不仅堵塞毛囊，影响生发正常生长，还可能刺激毛囊，导致头油越来越多。不过也要根据具体情况来定。只要保证头发清洁就可以啦。",
-		"type":"negtive"
+		"suggestion_text" : "至少保证2天洗一次头发。3－4天的时间头皮就分泌了大量的油脂，这些油脂不仅堵塞毛囊，影响生发正常生长，还可能刺激毛囊，导致头油越来越多。",
+		"type":"cleaning"
 	},
 	{
 		"suggestion_id" : 18,
-		"suggestion_text" : "如果您的头发既不油腻，也不干枯，丰润柔软乌黑光亮，您只要做日常护理即可。但如果您的头发缺乏油脂和水分，建议配合干性专用洗发用品和护发用品。",
-		"type":"negtive"
+		"suggestion_text" : "单一的洗发清洁是无法应对现代环境对头发的损伤。使用同系列的护发素、发膜、免洗润发乳、精华，效果更好一些。",
+		"type":"cleaning"
 	},
 	{
 		"suggestion_id" : 19,
-		"suggestion_text" : "从风吹日晒、从每一次次吹干时的仓促，到一次次电发、烫发、漂白和染发，您的发质是否安然无恙？只有洗发清洁显然不足以面对那么多的秀发挑战。洗发露、护发素、发膜、免洗润发乳、精华，多一步滋养，效果更好一些。",
-		"type":"positive"
+		"suggestion_text" : "您已经懂得使用一些日常护发产品，坚持下去才能看到效果。",
+		"type":"cleaning"
 	},
 	{
 		"suggestion_id" : 20,
-		"suggestion_text" : "发蜡、定型啫喱等造型产品虽能够让发型更为持久定型，但这会增加头发的负担感，让头发感到粘腻厚重。因此在使用这类产品时，只需将产品在局部涂抹平时用量的一半即可，然后用吹风机稍微吹热，即可让定型效果加倍。",
-		"type":"negtive"
+		"suggestion_text" : "使用发蜡、定型啫喱这些造型用品时，<br />不妨只涂抹平时用量的一半，用吹风机稍微吹热，定型效果加倍！",
+		"type":"style"
 	},
 	{
 		"suggestion_id" : 21,
 		"suggestion_text" : "建议您继续保持",
-		"type":"positive"
+		"type":"style"
 	},
 	{
 		"suggestion_id" : 22,
-		"suggestion_text" : "每个人都爱美，头发不变个花样，心理就不踏实。可是频繁的造型却让头发遭受干枯、分叉等困扰。希望您在尽量减少造型产品使用量的同时，结合使用护理产品， 修复受损发质，提升秀发外界抵抗力，让受损的头发重现亮泽与润滑。",
-		"type":"negtive"
+		"suggestion_text" : "频繁的高温吹风、卷烫是头发干枯分叉的罪魁祸首。<br />自己造型时要控制温度、时间，同时要加强头发护理。",
+		"type":"style"
 	},
 	{
 		"suggestion_id" : 23,
-		"suggestion_text" : "您很爱惜自己的头发，可以适当使用一些免洗护发产品，增加头发的垂顺、亮泽程度，不用直发夹也很美。",
-		"type":"positive"
+		"suggestion_text" : "您很爱惜自己的头发，可以适当使用一些免洗护发产品，<br />增加头发的垂顺、亮泽程度，不用直发夹也很美。",
+		"type":"style"
 	},
 	{
 		"suggestion_id" : 24,
-		"suggestion_text" : "建议您继续保持",
-		"type":"positive"
+		"suggestion_text" : "风吹日晒会令头发失去光泽，不想打伞的话，可以喷一些日间护发喷雾。",
+		"type":"sun"
 	},
 	{
 		"suggestion_id" : 25,
-		"suggestion_text" : "建议您减少烫染频率",
-		"type":"positive"
+		"suggestion_text" : "风吹日晒会令头发失去光泽，除了给皮肤防晒外，别忘了给头发遮阳哦。",
+		"type":"sun"
 	},
 	{
 		"suggestion_id" : 26,
-		"suggestion_text" : "建议您继续保持",
-		"type":"positive"
+		"suggestion_text" : "您很注意防晒，非常好！日间护发喷雾可以给头发防晒哦。",
+		"type":"sun"
 	},
 	{
 		"suggestion_id" : 27,
 		"suggestion_text" : "建议您适当为头发做护理",
-		"type":"negtive"
+		"type":"salon"
 	},
 	{
 		"suggestion_id" : 28,
 		"suggestion_text" : "建议您可以适当按摩头皮，正确的头皮按摩可以刺激头皮，促进血液循球，调节脂肪分泌，解除头部疲劳，有助于头发的发育，保持头皮的健康，对于预防头皮过多和脱发是极好的措施。",
-		"type":"product"
+		"type":"problem-bald"
 	},
 	{
 		"suggestion_id" : 29,
 		"suggestion_text" : "建议您使用潘婷强韧防掉发系列，强韧+发根到发梢，显著减少掉发。",
-		"type":"product"
+		"type":"problem_bald"
 	},
 	{
 		"suggestion_id" : 30,
 		"suggestion_text" : "建议您应该更多地为头发补充水分和营养，使用营养丰富的修复型洗护产品。例如含有维他命原和蚕丝蛋白的<a href='http://pantene.com.cn/Pages/hair-care-products.aspx' target='_blank' title='潘婷乳液修复系列'>乳液修复</a>系列产品，能够有效预防分叉，强韧至发根。同时，您的头发比较脆弱，应避免暴晒在阳光下，可使用有<em>防晒成分</em>的免洗护发产品和保湿定型剂。最好不要染、烫发，以免发质受损。",
-		"type":"product"
+		"type":"problem_dry"
 	},
 	{
 		"suggestion_id" : 31,
-		"suggestion_text" : "良好的生活习惯也是摆脱头屑必做的功课之一。保持愉悦的心情，规律的睡眠和饮食对头发都很重要。各种坏习惯会导致内分泌失调，影响头皮正常的新陈代谢，最终致使头屑产生。<a href='hhttp://pantene.com.cn/hair-care-collections/silky-smooth-dandruff-series.aspx' target='_blank' title='潘婷丝质顺滑去屑系列'>去屑型</a>洗护产品肯定是您的首选，除了去屑功能之外，您还可以关注洗护产品能否解决您其他的头发问题。",
-		"type":"product"
+		"suggestion_text" : "熬夜、烟酒等坏习惯会导致内分泌失调，影响头皮新陈代谢，致使头皮出油、头屑产生。选择适合的洗发产品非常重要，不当的产品和脱脂性太强的洗发水也有可能造成头屑。",
+		"type":"problem_scurf"
 	},
 	{
 		"suggestion_id" : 32,
-		"suggestion_text" : "造成掉发的原因很多，您需要多管齐下：如果您正在减肥，别忘了头发和身体都需要营养，营养不良是脱发的原因之一。您可以使用<a href='http://pantene.com.cn/hair-care-collections/jiang-tough-anti-hair-series.aspx' target='_blank' title='潘婷乳液修复系列'>强韧防掉发</a>系列产品，能够从发根到发梢深入滋养头发，减少掉发。此外，尽量放松心情，调整身体节律，避免染烫等头皮刺激都有助于解决掉发问题。",
-		"type":"product"
+		"suggestion_text" : "造成掉发的原因往往很复杂——辐射、压力、缺少维生素、铁，营养不良都是潜在原因。您需要多管齐下：除了使用防掉发型洗发用品，还应当注意营养，放松心情，调整好身体节律。适当做一些头皮按摩。",
+		"type":"problem_bald"
 	},
 	{
 		"suggestion_id" : 33,
-		"suggestion_text" : "一头光亮柔顺的秀发能为您的形象加分不少。建议您可以选用针对头发干枯毛躁问题的“顺滑”型产品。此外，还有一个小秘诀：可以随身携带“免洗护发”的喷雾，随时待命，时时刻刻都能保持头发的顺滑。",
-		"type":"product"
+		"suggestion_text" : "您脆弱的头发需要补充水分和营养，提高顺滑度。同时，应避免暴晒在阳光下，可使用有<em>防晒成分</em>的免洗护发产品和保湿定型剂。短期内最好不要染、烫发。",
+		"type":"problem_dry"
 	},
 	{
 		"suggestion_id" : 34,
 		"suggestion_text" : "您是否有这样的困扰：起床的时候，头发被压得乱糟糟的？“垂顺直发”、“丝质顺滑”、“植物精粹”等系列的产品都能帮助您拥有一头健康的头发。",
-		"type":"product"
+		"type":"hair_curl",
+		"keyword":"直发"
 	},
 	{
 		"suggestion_id" : 35,
 		"suggestion_text" : "烫染发前2～3周就应该选择轻薄而利于吸收的滋润品开始护发，一周最少2次。烫染发后可使用含氨基酸等滋润成分的洗发露，在洗发时用指腹按摩头皮，刺激头皮血液循环，促进营养的吸收。在洗发后使用高保湿度的护发素不可缺少",
-		"type":"product"
+		"type":"hair_curl",
+		"keyword":"卷发"
 	},
 	{
 		"suggestion_id" : 36,
 		"suggestion_text" : "想拥有乌黑亮丽的健康头发，食物多样性是最好的办法。生发的食物主要是帮助补充头发所需要的微量元素、维生素和矿物质，在我们平日的饮食中要注意选择有益头发健康的食物，同时避免食用损伤头发的食物",
-		"type":"product"
+		"type":"hair_color",
+		"keyword":"黑发"
 	},
 	{
 		"suggestion_id" : 37,
 		"suggestion_text" : "秀发经过烫染之后，会变得比平常脆弱，因此更需要格外呵护。您可以在烫染一个月之后做一次焗油护理,不用太频繁就可以看到明显效果哦。同时也可以搭配使用发膜，为头发补充营养。",
-		"type":"product"
+		"type":"hair_color",
+		"keyword":"染发"
 	},
 	{
 		"suggestion_id" : 38,
 		"suggestion_text" : "油烟会让您的头发暗淡无光，经常下厨的您，需要额外进行头发养护。",
-		"type":"negtive"
+		"type":"cook"
 	},
 	{
 		"suggestion_id" : 39,
 		"suggestion_text" : "回家吃饭是检验幸福的唯一标准。希望您能继续坚持下去。",
-		"type":"positive"
+		"type":"cook"
 	},
 	{
 		"suggestion_id" : 40,
 		"suggestion_text" : "自然系的造型是永远不过时的流行，希望您能保持这样的态度。您还可以尝试一下“植物精粹”系列产品。",
-		"type":"product"
+		"type":"salon",
+		"keyword":"自然系"
 	},
 	{
 		"suggestion_id" : 41,
-		"suggestion_text" : "染烫太频繁，头发很受伤。您需要马上开始护理头发，“莹彩修护”、“乳液修护”系列都是很好的选择，也别忘了经常给头发做护理。其实，想要百变的形象，不一定要频繁染烫。通过简单的编发、盘发，调整头发长度，也能做出许多漂亮的造型。",
-		"type":"product"
+		"suggestion_text" : "百变造型未必要频繁染烫。<br />简单的编发、盘发，也能做出许多漂亮的造型。",
+		"type":"salon",
+		"keyword":"造型百变"
 	},
 	{
 		"suggestion_id" : 42,
-		"suggestion_text" : "您很重视头发护理，日常在家也可以使用一些“发膜”产品。",
-		"type":"positive"
+		"suggestion_text" : "您很重视头发护理，<br />日常在家也可以使用一些“发膜”产品。",
+		"type":"salon"
 	},
 	{
 		"suggestion_id" : 43,
-		"suggestion_text" : "适当的时候，为头发做护理很必要。日常在家也可以使用一些“发膜”产品。",
-		"type":"negtive"
+		"suggestion_text" : "适当的时候，为头发做护理很必要。<br />日常在家也可以使用一些“发膜”产品。",
+		"type":"salon"
 	}
 ]

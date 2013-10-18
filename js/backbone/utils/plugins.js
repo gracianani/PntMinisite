@@ -52,7 +52,7 @@ var sectorsCount = count || 12,
 			opacity = [],
 			beta = 2 * Math.PI / sectorsCount,
  
-			pathParams = {stroke: color, "stroke-width": width, "stroke-linecap": "round"};
+	pathParams = {stroke: color, "stroke-width": width, "stroke-linecap": "round"};
 	Raphael.getColor.reset();
 	for (var i = 0; i < sectorsCount; i++) {
 		var alpha = beta * i - Math.PI / 2,
@@ -99,7 +99,9 @@ $.prototype.tooltip = function() {
 		tooltipDiv.find('.content').html($(this).attr('title'));
 		var offset = $(e.currentTarget).offset();
 		tooltipDiv.css('left',offset.left  - tooltipDiv.width()/2).css('top',offset.top - tooltipDiv.height()-30);
-		//tooltipDiv.delay(1000).fadeOut('fast');
+		if ( isMob ) {
+		tooltipDiv.delay(1000).fadeOut('fast');
+		}
 		//e.stopPropagation();
 	});
 	if ( !isMob ) {
@@ -117,6 +119,10 @@ $.prototype.hint = function(id) {
 	var self = this;
 	var hintDiv = $(id);
 	var isMob = isMobile();
+	if ( isMob ) {
+		hintDiv.show();
+		return;
+	} 
 	$(this).on('mouseenter', function() {
 		hintDiv.show();
 	});
@@ -144,27 +150,42 @@ $.prototype.setDegree = function (defaultDegree) {
             var angleDegree = defaultDegree - 1 - Math.ceil(data.degree / 2);
             angle = (angleDegree - 0.5) / data.degree * 2 * Math.PI;
         } else {
+         
             degree = Math.ceil(data.angle / (2 * Math.PI / data.degree)),
 			angle = (degree - 0.5) / data.degree * 2 * Math.PI;
             degree = degree + Math.ceil(data.degree / 2) + 1;
+
         }
         if (degree > data.degree) {
             degree = degree - data.degree;
         }
         $(this).data('degree', degree);
-
+		
         $(this).css({ top: data.centerY + Math.cos(angle) * data.radius,
             left: data.centerX + Math.sin(angle) * data.radius
         }).rotate(angle);
+        
     }
 }
 $.prototype.rotate = function(angle) {
-	var deg = 180 - angle * 180 / Math.PI + 'deg';
-	$(this).css({
-		'transform':'rotate('+deg+')',
-		'-webkit-transform':'rotate('+deg+')',
-		'-ms-transform':'rotate('+deg+')'
-	});
+	if ( isSmallScreen() ) {
+		var deg = 180 - angle * 180 / Math.PI + 'deg';
+		$(this).css({
+			'transform':'rotate('+deg+')',
+			'-webkit-transform':'rotate('+deg+')',
+			'-ms-transform':'rotate('+deg+')'
+		});
+
+	} else {
+		var deg = 180 - angle * 180 / Math.PI + 'deg';
+		$(this).css({
+			'transform':'rotate('+deg+')',
+			'-webkit-transform':'rotate('+deg+')',
+			'-ms-transform':'rotate('+deg+')'
+		});
+	}
+		
+	
 	
 }
 $.prototype.flyToAndHide = function(target, callback) {
@@ -289,3 +310,6 @@ function unique(data){
     }  
     return data;  
 }  
+function isSmallScreen() {
+	return ($(window).width() < 1024); 
+}

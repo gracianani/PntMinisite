@@ -75,22 +75,22 @@
             {
                 "answer_id": 10,
                 "text": "不爱吃水果",
-				"degree" : 0
+				"degree" : 1
             },
             {
                 "answer_id": 11,
                 "text": "有时间才想起来吃",
-				"degree" : 1
+				"degree" : 2
             },
             {
                 "answer_id": 12,
                 "text": "只吃自己喜欢的那几种",
-				"degree" : 2
+				"degree" : 3
             },
             {
                 "answer_id": 13,
                 "text": "一天不吃水果会死星人",
-				"degree" : 3
+				"degree" : 4
             }
         ]
     },

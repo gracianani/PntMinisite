@@ -35,13 +35,16 @@ var Avatar = Backbone.Model.extend({
                 return "";
             }
             else {
-                return "mirror-show";
+                return "mirror-show style-scene";
             }
         }
     },
     getAvatarSize: function () {
         return function () {
-            if (AppFacade.getCurrentView().model.get("scene_id") == 6) {
+        	 if (AppFacade.getCurrentView().id == "report") {
+	        	  return "large";
+        	 }
+             else if ( $(window).width() < 768    || AppFacade.getCurrentView().model.get("scene_id") == 6) {
                 return "small";
             }
             else {

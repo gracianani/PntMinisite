@@ -5,8 +5,8 @@ var AnimationHandler = {
         self.animateObjects();
     },
     animateObjects: function () {
-		if ( isMobile() ) {
-			jQuery(this.contentID).hide();
+		if ( isSmallScreen() ) {
+			jQuery(this.contentID + ' .item').hide();
 			return;
 		}
         var self = this;
@@ -14,7 +14,7 @@ var AnimationHandler = {
         self.DISTANCE = 500;
         self.containerWidth = (self.el.width() / 2 - 300);
         self.containerHeight = (self.el.height() / 2);
-        jQuery('body').css('overflow', 'hidden');
+        //jQuery('body').css('overflow', 'hidden');
 
         self.items = jQuery(self.contentID + " .item").length;
         var count = 0;
@@ -99,9 +99,15 @@ var AnimationHandler = {
 
     },
     animateIn: function () {
-    	if ( isMobile() ) {
-    		jQuery(this.contentID).show();
-    		this.callBack();
+    	if ( isSmallScreen() ) {
+    		var content = jQuery(this.contentID);
+    		content.addClass('animated slideInDown');
+    		content.find('.item:not(.onDesktop)').show();
+    		var self = this;
+    		var timer = setTimeout(function(){
+	    		self.callBack();
+    		}, 1500);
+
 			return;
 		}
         var self = this,
@@ -117,28 +123,31 @@ var AnimationHandler = {
                 count++;
                 if (count == self.items) {
                     self.callBack();
-                    jQuery('body').css('overflow', 'visible');
+                    //jQuery('body').css('overflow', 'visible');
                 }
             });
         });
     },
     animateOut: function (type, postAnimateOut) {
-    	if ( isMobile() ) {
-    		jQuery(this.contentID).hide();
-    		if (type == "next") {
-                            postAnimateOut();
-            }
-            else if (type == "report") {
-                 app.Views.BasicFrameView.showReport();
-                 postAnimateOut();
-             }
-            else {
-            }
+    	if (isSmallScreen() ) {
+    		var content = jQuery(this.contentID);
+    		content.addClass('animated slideOutUp');
+    		var timer = setTimeout(function(){
+    			content.find('.item').hide();
+	    		if (type == "next") {
+	                 postAnimateOut();
+	            }
+	            else if (type == "report") {
+	                 app.Views.BasicFrameView.showReport();
+	                 postAnimateOut();
+	             }
+    		}, 1000);
+    		
 			return;
 		}
         var self = this;
         var count = 0;
-        jQuery('body').css('overflow', 'hidden');
+        //jQuery('body').css('overflow', 'hidden');
         var items = jQuery(self.contentID + " .item");
         if (items.length > 0) {
             items.each(function (i) {

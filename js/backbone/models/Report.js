@@ -9,7 +9,6 @@ var Report = Backbone.Model.extend({
     ScoreTitle: "",
     QuizId: 0,
     ScoreSuggestions: [],
-    HairProblems: [],
     ProductSuggestions: [],
     ShareText: "",
     level: "medium",
@@ -21,27 +20,43 @@ var Report = Backbone.Model.extend({
         this.ScoreTitle = "";
         this.QuizId = 0;
         this.ScoreSuggestions = [];
-        this.HairProblems = [];
         this.ProductSuggestions = [];
         this.ShareText = "";
         this.level = "medium";
+        this.problem_bald=[];
+        this.problem_scurf=[];
+        this.problem_dry=[];
+        this.stress=[];
+        this.cook=[];
+        this.taste=[];
+        this.mealcount=[];
+        this.sleep=[];
+        this.salon=[];
+        this.cleaning=[];
+        this.style=[];
+        this.hair_color=[];
+        this.hair_curl=[];
+        this.sun=[];
+        this.keywords=[];
     },
     loadSuggestions: function (suggestions) {
         this.clearSuggestions();
         this.LifeStyleSuggestions = suggestions.lifestyle_suggestions;
         this.HairCareSuggestions = suggestions.haircare_suggestions;
         this.HairSituationSuggestions = suggestions.hairsituation_suggestions;
-
+		this.fillSuggestionGroup(suggestions);
         this.Score = suggestions.score;
         this.Ranking = suggestions.ranking;
 
         var gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 1 });
-
-        if (suggestions.score > 50 && suggestions.score < 80) {
+		if (suggestions.score > 50 && suggestions.score < 60) {
             gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 2 });
         }
-        else if (suggestions.score >= 80) {
+        if (suggestions.score >= 60 && suggestions.score < 80) {
             gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 3 });
+        }
+        else if (suggestions.score >= 80) {
+            gSuggestion = app.GeneralSuggestionRepo.findWhere({ g_suggestion_id: 4 });
         }
         this.ShareText = gSuggestion.get("share_text_begin_with");
         this.level = gSuggestion.get("g_level");
@@ -65,6 +80,27 @@ var Report = Backbone.Model.extend({
         app.ReportId = this.QuizId;
         app.Views.ReportView.trigger("finishloading");
 
+    },
+    fillSuggestionGroup: function(suggestions) {
+    	var i, suggestion,key;
+    	allSuggestions = [].concat(suggestions.lifestyle_suggestions).concat(suggestions.haircare_suggestions).concat(suggestions.hairsituation_suggestions);
+	    for ( i = 0; i < allSuggestions.length; i++ ) {
+	    
+	    	for ( var j = 0; j < allSuggestions[i].suggestion_ids.length; j++ ) {
+		    	suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(allSuggestions[i].suggestion_ids[j]) });
+		    	
+		    	if (! this[suggestion.get("type")] ) {
+					 this[suggestion.get("type")]  = [];
+				}
+				key = suggestion.get("keyword");
+				if (key ) {
+					 this["keywords"].push(key);
+				}
+				 this[suggestion.get("type")].push(suggestion.toJSON());
+			}
+	    }
+	    this.taste = this.taste.slice(0,2);
+		    
     },
     getSuggestionText: function () {
         var suggestion = app.SuggestionRepo.findWhere({ suggestion_id: parseInt(this) });
@@ -99,7 +135,7 @@ var Report = Backbone.Model.extend({
             requestData = '{ user_answers : \"' + stringyfied + '\", quizId : 0 , str_user : \"' + JSON.stringify(app.User).replace(/"/g, '\'') + ' \" }';
         }
         var self = this;
-
+		//console.log(requestData);
         $.ajax({
             type: "POST",
             url: 'WeiboWebServices.asmx/GetSuggestions',
@@ -153,10 +189,17 @@ var Report = Backbone.Model.extend({
             datatType: "json",
             contentType: "application/json;charset=utf-8",
             success: function (data) {
-
+				//console.log($.parseJSON(data.d));
+				/*
+				var originUserAnswers = AppFacade.getUserAnswers();
+				if ( originUserAnswers ) {
+					app.originUserAnswers = originUserAnswers;
+				}
+				*/
                 var response = $.parseJSON(data.d);
-                AppFacade.setUserAnswers($.parseJSON(data.d).user_answers);
-                AppFacade.saveToCookie();
+	            AppFacade.setUserAnswers(response.user_answers);
+				AppFacade.saveToCookie();
+                
                 app.ReportId = reportId;
                 self.loadSuggestions(response.suggestions);
                 self.shareReport();
@@ -185,11 +228,14 @@ var Report = Backbone.Model.extend({
             datatType: "json",
             contentType: "application/json;charset=utf-8",
             success: function (data) {
-                app.ReportId = $.parseJSON(data.d).report_id;
-                self.shareReport();
-                AppFacade.setUserAnswers($.parseJSON(data.d).user_answers);
+            	//console.log($.parseJSON(data.d));
+            	var response = $.parseJSON(data.d);
+                app.ReportId = response.report_id;
+                
+                AppFacade.setUserAnswers(response.user_answers);
                 AppFacade.saveToCookie();
-                self.loadSuggestions($.parseJSON(data.d).suggestions);
+                self.loadSuggestions(response.suggestions);
+                self.shareReport();
             },
             timeout: function () {
                 alert("请求超时，请稍后再试");

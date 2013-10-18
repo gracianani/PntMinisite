@@ -1,26 +1,15 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
-		<meta property="wb:webmaster" content="c94c6c6e36324195" />
-		<meta property="qc:admins" content="24447220164565610063731145475306375" />
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
         <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/plainreport.css">
         
     </head>
     <body class="plain-report">
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-        <![endif]-->
         
         <!-- Add your site or application content here -->
         <div id="header">
@@ -29,104 +18,207 @@
         		<img src="img/logo.png" alt="潘婷 如此健康 焕发光彩" />
         	</div>
         	<h1 id="siteTitle">
-        	<img src="img/title.png" alt="潘婷护发实验室" />
+        	<img src="img/title-whitebg.png" alt="潘婷护发实验室" />
         	</h1>
         	</div>
         </div>
         <div id="report" ></div>
 		<div id="preloader">
-			<img src="img/scene/reportcareicon.png" width="1" height="1" />
-			<img src="img/scene/reporthairicon.png" width="1" height="1" />
-			<img src="img/scene/reportlifeicon.png" width="1" height="1" />
-			<img src="img/character/body-m-small.png" width="1" height="1" />
-			<img src="img/character/hair-m-small.png" width="1" height="1" />
-			<img src="img/character/face-m-small.png" width="1" height="1" />
-			<img src="img/character/hand-m-small.png" width="1" height="1" />
-			<img src="img/character/clothes-m-small.png" width="1" height="1" />
-			<img src="img/character/head-m-small.png" width="1" height="1" />
-			<img src="img/character/hand-m-small.png" width="1" height="1" />
-			<img src="img/character/body-fm-small.png" width="1" height="1" />
-			<img src="img/character/hair-fm-small.png" width="1" height="1" />
-			<img src="img/character/bang-fm-small.png" width="1" height="1" />
-			<img src="img/character/hair-fm-small-black.png" width="1" height="1" />
-			<img src="img/character/bang-fm-small-black.png" width="1" height="1" />
-			<img src="img/character/hair-fm-small-gold.png" width="1" height="1" />
-			<img src="img/character/bang-fm-small-gold.png" width="1" height="1" />
-			<img src="img/character/face-fm-small.png" width="1" height="1" />
-			<img src="img/character/hand-fm-small.png" width="1" height="1" />
-			<img src="img/character/clothes-fm-small.png" width="1" height="1" />
-			<img src="img/character/head-fm-small.png" width="1" height="1" />
+			<img src="img/character/body-m.png" width="1" height="1" />
+			<img src="img/character/hair-m.png" width="1" height="1" />
+			<img src="img/character/hair-m-gold.png" width="1" height="1" />
+			<img src="img/character/hair-m-red.png" width="1" height="1" />
+			<img src="img/character/hair-m-mix.png" width="1" height="1" />
+			<img src="img/character/face-m.png" width="1" height="1" />
+			<img src="img/character/hand-m.png" width="1" height="1" />
+			<img src="img/character/clothes-m.png" width="1" height="1" />
+			<img src="img/character/head-m.png" width="1" height="1" />
+			<img src="img/character/hand-m.png" width="1" height="1" />
+			<img src="img/character/body-fm.png" width="1" height="1" />
+			<img src="img/character/hair-fm.png" width="1" height="1" />
+			<img src="img/character/bang-fm.png" width="1" height="1" />
+			<img src="img/character/hair-fm-black.png" width="1" height="1" />
+			<img src="img/character/bang-fm-black.png" width="1" height="1" />
+			<img src="img/character/hair-fm-gold.png" width="1" height="1" />
+			<img src="img/character/bang-fm-gold.png" width="1" height="1" />
+			<img src="img/character/hair-fm-mix.png" width="1" height="1" />
+			<img src="img/character/bang-fm-mix.png" width="1" height="1" />
+			<img src="img/character/face-fm.png" width="1" height="1" />
+			<img src="img/character/hand-fm.png" width="1" height="1" />
+			<img src="img/character/clothes-fm.png" width="1" height="1" />
+			<img src="img/character/head-fm.png" width="1" height="1" />
 		</div>        
         <script id="report-template" type="text/template">
-            <div id="report-header">
-        		<div id="report-score" class="score-{{level}}">
-        			<div class="score-inside"></div>
-        			<div id="report-score-title">秀发健康指数</div>
-        			<div id="report-score-number">{{Score}}</div>
-        			<img id="report-score-underline" src="img/scoreunderline.png" />
+
+        	<div id="report-header" class="level-{{level}}">
+        		<div class="report-container">
+	        		<div id="report-score">
+	        			<div id="report-score-title">秀发健康指数</div>
+	        			<div id="report-score-number">{{Score}}</div>
+	        			<h2 id="report-score-desc">{{ScoreTitle}}</h2>
+	        		</div>
+	        		<div id="defeat">打败了<br />
+	        		<span id="defeat-percent">{{Ranking}}<small>%</small></span> 的人</div>
+					<div id="keywords">
+						{{#keywords}}
+						<div class="keyword">
+						{{.}}
+						</div>
+						{{/keywords}}
+					</div>
+	
         		</div>
-        		<h2 class="score-{{level}}">{{ScoreTitle}}</h2>
-        		<p>{{#ScoreSuggestions}}{{.}}{{/ScoreSuggestions}}</p>
         	</div>
-			<div id="report-opt">
-        		<div id="defeat">您的秀发迷倒了<span id="defeat-percent">{{Ranking}}%</span>的人</div>        
+        	<div id="report-hairproblem">
+        		<div class="report-container">
+        		<div class="reprot-section-arrow"></div>
+        		<div class="clearfix">
+        		<div class="report-section-title"><div class="title-caret"></div>解读发质现状</div>
+        		</div>
+        		{{#problem_bald}}
+        			<div class="hairproblem" id="report{{type}}">
+	        			<div class="hairproblem-icon">
+	        			<img src="img/report-p1.png"  />
+	        			</div>
+	        			<div class="hairproblem-tag">
+	        			头发稀疏、掉发
+	        			<div class="caret"></div>
+	        			</div>
+	        			<div class="hairproblem-title">
+	        			热闹的街道不长草
+	        			</div>
+	        			<div class="hairproblem-suggestion">
+	        					{{{suggestion_text}}}
+	        			</div>
+	        			<div class="hairproblem-suggestionTitle">
+	        				TIPS
+	        			</div>
+        			</div>
+        		{{/problem_bald}}
+        		{{#problem_dry}}
+        			<div class="hairproblem" id="report{{type}}">
+	        			<div class="hairproblem-icon">
+	        			<img src="img/report-p2.png"  />
+	        			</div>
+	        			<div class="hairproblem-tag">
+	        			干枯分叉、沙发难打理
+	        			<div class="caret"></div>
+	        			</div>
+	        			<div class="hairproblem-title">
+	        			爆炸头&发电机
+	        			</div>
+	        			<div class="hairproblem-suggestion">
+	        					{{{suggestion_text}}}
+	        			</div>
+	        			<div class="hairproblem-suggestionTitle">
+	        				TIPS
+	        			</div>
+        			</div>
+        		{{/problem_dry}}
+        		{{#problem_scurf}}
+        			<div class="hairproblem" id="report{{type}}">
+	        			<div class="hairproblem-icon">
+	        			<img src="img/report-p3.png"  />
+	        			</div>
+	        			<div class="hairproblem-tag">
+	        			头皮出油、头屑
+	        			<div class="caret"></div>
+	        			</div>
+	        			<div class="hairproblem-title">
+	        			喂，你的肩膀下雪了
+	        			</div>
+	        			<div class="hairproblem-suggestion">
+	        					{{{suggestion_text}}}
+	        			</div>
+	        			<div class="hairproblem-suggestionTitle">
+	        				TIPS
+	        			</div>
+        			</div>
+        		{{/problem_scurf}}
+        		</div>
         	</div>
-        	<div id="report-body">
-				<ul id="report-result">
-					<li id="report-result-hair" class="clearfix">
-						<div class="report-result-icon">
-						</div>
-						<div class="report-result-body">
-							<ul id="hair-advice">
-                                {{#HairSituationSuggestions}}
-                                <div class="hair-advice-tag">{{answer_text}}</div>
-                                <ul class="advice-subList">
-                                    {{#suggestion_ids}}
-                                        <li class="{{getSuggestionType}}"><i></i> {{{getSuggestionText}}} </li>
-                                    {{/suggestion_ids}}
-                                </ul>
-                                {{/HairSituationSuggestions}}
-							</ul>
-						</div>
-					</li>
-					<li id="report-result-cleaning" class="clearfix">
-						<div class="report-result-icon">
-						</div>
-						<div class="report-result-body">
-							<ul id="cleaning-advice">
-								{{#HairCareSuggestions}}
-                                <div class="hair-advice-tag">{{scene_text}}</div>
-                                <ul class="advice-subList">
-                                    {{#suggestion_ids}}
-                                        <li class="{{getSuggestionType}}"><i></i> {{{getSuggestionText}}} </li>
-                                    {{/suggestion_ids}}
-                                </ul>
-                                {{/HairCareSuggestions}}
-							</ul>
-						</div>
-					</li>
-					<li id="report-result-life" class="clearfix">
-						<div class="report-result-icon">
-						</div>
-						<div class="report-result-body">
-							<ul id="life-advice">
-                                {{#LifeStyleSuggestions}}
-                                <div class="hair-advice-tag">{{scene_text}}</div>
-                                <ul class="advice-subList">
-                                    {{#suggestion_ids}}
-                                        <li class="{{getSuggestionType}}"><i></i> {{{getSuggestionText}}}  </li>
-                                    {{/suggestion_ids}}
-                                </ul>
-                                {{/LifeStyleSuggestions}}
-							</ul>
-						</div>
-					</li>
-				</ul>
+        	<div id="report-haircare">
+        		<div class="report-container">
+        			<div id="report-cleaning">
+        				<img src="img/reportcleaning.png" />
+        			</div>
+        			<div id="report-cleaningSuggestion">
+	        			<div id="report-cleaningSuggestionContent">
+	        			{{#cleaning}}
+	        				<p>{{{suggestion_text}}}</p>
+	        			{{/cleaning}}
+	        			</div>
+	        			<div class="caret-top"></div>
+	        			<div class="caret-bottom"></div>
+        			</div>
+        			
+        			<div id="report-tool" class="clearfix">
+        				<div id="report-tool-content">
+        				{{#style}}
+	        				<p>{{{suggestion_text}}}</p>
+	        			{{/style}}
+	        			{{#salon}}
+	        				<p>{{{suggestion_text}}}</p>
+	        			{{/salon}}
+        				</div>
+        				<div id="report-tool-img">
+        				<img src="img/reporttools.png" />
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        	<div id="report-life">
+        		<div class="report-container">
+        			<div class="reprot-section-arrow"></div>
+        			<div id="report-life-img">
+        			<img src="img/report-life.png" />
+        			</div>
+        			<div id="report-life-content">
+        				<div id="report-life-1" class="report-life-item-left">
+        					<div class="report-life-caret"></div>
+        					{{#cook}}
+        						{{{suggestion_text}}}
+        					{{/cook}}
+        				</div>
+        				<div id="report-life-2" class="report-life-item-left">
+        					<div class="report-life-caret"></div>
+        					{{#sun}}
+        						{{{suggestion_text}}}
+        					{{/sun}}
+        				</div>
+        				<div id="report-life-3" class="report-life-item-left">
+        					<div class="report-life-caret"></div>
+        					{{#taste}}
+        						{{{suggestion_text}}}
+        					{{/taste}}
+        				</div>
+        				<div id="report-life-4" class="report-life-item-right">
+        					<div class="report-life-caret"></div>
+        					{{#mealcount}}
+        						{{{suggestion_text}}}
+        					{{/mealcount}}
+        				</div>
+        				<div id="report-life-5" class="report-life-item-right">
+        					<div class="report-life-caret"></div>
+        					{{#sleep}}
+        						{{{suggestion_text}}}
+        					{{/sleep}}
+        				</div>
+        				<div id="report-life-6" class="report-life-item-right">
+        					<div class="report-life-caret"></div>
+        					{{#stress}}
+        						{{{suggestion_text}}}
+        					{{/stress}}
+        				</div>
+        			</div>
+        		</div>
         	</div>
         	<div id="report-products">
-        		<div id="report-product-title">
-        			最适合您的潘婷系列
-        		</div>
+        		<div class="report-container">
+				<div class="reprot-section-arrow"></div>
+				<div id="report-product-img">
+					<img src="img/reportproduct.png" />
+				</div>
 				<div id="report-product-basic">
 					<ul id="report-product-list" class="clearfix">
 						{{#ProductSuggestions}}
@@ -138,9 +230,21 @@
 						{{/ProductSuggestions}}
 					</ul>
 				</div>
+        		</div>
+        	</div>
+        	<div id="report-bottom-top"></div>
+        	<div id="report-bottom-share">
+        		<div class="report-container">
+        		<div id="reportqr">
+        			<img src="img/reportqr.png" />
+        		</div>
+        		<br />
+				<center><img src="img/bottomlogo.png" /></center>
+        		
+        		</div>
         	</div>
         	<div id="report-avatar">
-        		<div id="character" class="character {{gender}} character-small-size">
+        		<div id="character" class="character {{gender}} character-large-size">
         			<div class="hair hair-{{gender}}-{{hairLength}}-{{hairCurly}} hair-{{gender}}-{{hairType}}  hair-{{hairColor}}">
         			</div>
         			<div class="body">

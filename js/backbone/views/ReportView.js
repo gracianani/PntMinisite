@@ -17,9 +17,7 @@ var ReportView = Backbone.View.extend({
         this.$el = $('#report');
         this.on("finishloading", this.render);
         this.on("saveReportComplete", this.onSaveReportComplete);
-        this.on("render", this.postRender);
-        
-        
+        this.on("render", this.postRender);        
 
     },
 
@@ -37,6 +35,7 @@ var ReportView = Backbone.View.extend({
     postRender: function () {
         AnimationHandler.animateOut("report", function () {
         	$('#share').hide();
+        	$('#profile').hide();
             $("#main").fadeOut(function () {
                 $("#splash").fadeOut(function () {
                     $('#report').fadeIn(
@@ -48,7 +47,6 @@ var ReportView = Backbone.View.extend({
                 });
             });
         });
-        //this.model.shareReport();
         this.showProgress();
         
         $(window).bind('scroll',function(){
@@ -62,11 +60,15 @@ var ReportView = Backbone.View.extend({
         		}
 	        	
         	}
-	        //$('#report-flyToTop').fadeIn();
         });
+        
+        if ( this.model.Score < 60 ) {
+	         $("#report-avatar").find('.face').attr('class', 'face face-' + app.Views.AvatarView.model.gender + '-3');
+        }
     },
     onexit: function () {
         this.resetShareConfig();
+        $('#profile').show();
         $('#report-share').hide();
         $('#report-flyToTop').hide();
 	    $(window).unbind('scroll');
@@ -82,6 +84,11 @@ var ReportView = Backbone.View.extend({
 	    
     },
     onClickRestart: function () {
+    	/*
+    	if ( app.originUserAnswers ) {
+			AppFacade.setUserAnswers(app.originUserAnswers);
+		}
+		*/
         AppFacade.gotoScene(1);
         app.ReportLogged = false;
         app.ReportId = undefined;
@@ -93,7 +100,7 @@ var ReportView = Backbone.View.extend({
         progressbar.progressbar({
 			value: 0,
 			change: function() {
-		        progressLabel.text('大约需要30秒时间，请耐心等待' );
+		        progressLabel.text('大约需要10秒时间，请耐心等待' );
 		     },
 		     complete: function() {
 			    progressLabel.text('服务器在努力中，请不要离开' ); 
@@ -106,13 +113,13 @@ var ReportView = Backbone.View.extend({
 			if (counter == 100 ) {
 				clearInterval(timer);
 			}
-		}, 300);
+		}, 100);
 		
         
     },
     onSaveReportComplete: function() {
 	    $('#progressbar').hide();
-	    $('.downloadQuizImg').show();
+	    $('.downloadQuizImg').css('display','block');
 	    $('#report-share').show();
 	    $('#downloadQuizText').hide();
 	    var shareImg = "http://pantene.app.social-touch.com/reports/report_" + app.ReportId + ".png";

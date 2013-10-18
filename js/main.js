@@ -23,7 +23,8 @@ var app = {
 	    isMobile: false,
 	    click: "click",
 	    mouseenter : "mouseenter",
-	    mouseleave : "mouseleave"
+	    mouseleave : "mouseleave",
+	    clickSplashLogin : false
     }
 };
 
@@ -80,7 +81,7 @@ window.AppFacade = {
 
             if (app.SceneViews[index].model) {
                 if (app.SceneViews[index].model.isSceneFinished().length > 0) {
-                    this.maxSceneId = parseInt(index);
+                    this.maxSceneId = parseInt(index) + 1;
                     return this.maxSceneId;
                 }
             }
@@ -170,7 +171,6 @@ window.AppFacade = {
                 app.Router.navigate("Survey/" + this.maxScene, { trigger: isTrigger });
             }
 
-
         }
         else {
             app.Router.navigate("", { trigger: isTrigger });
@@ -179,7 +179,7 @@ window.AppFacade = {
 
     },
     initSplashLogin: function () {
-
+		
         QC.Login({//按默认样式插入QQ登录按钮
             btnId: "splash-qq",
             size: "A_L"
@@ -195,6 +195,7 @@ window.AppFacade = {
                 }
             });
         });
+        
 
 
     },
@@ -235,7 +236,7 @@ window.AppFacade = {
     onQQLoginSuccess: function (reqData, opts) {
         _logoutTemplate = [
 				            '<span class="profile-avatar"><img src="{figureurl}" class="{size_key}"/></span>',
-				            '<span class="profile-nickname">{nickname}</span>',
+				            '<span class="profile-nickname  onDesktop">{nickname}</span>',
 				            '<span class="profile-logout"><a href="javascript:QC.Login.signOut();">退出</a></span>'
 		].join("");
         $('#prifile-login').html(
@@ -250,16 +251,18 @@ window.AppFacade = {
         QC.Login.getMe(function (openId, accessToken) {
             app.User.qq_uid = openId;
             app.User.qq_token = accessToken;
-            if (app.LoginFrom == "begin" && typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
+
+				if (app.LoginFrom == "begin" && typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
                 // 在开始页面 login by qq
                 app.Report.getReportByUserId();
-            }
+				}
+			
         });
     },
     onInQuizQQLoginSuccess: function (reqData, opts) {
         _logoutTemplate = [
 				            '<span class="profile-avatar"><img src="{figureurl}" class="{size_key}"/></span>',
-				            '<span class="profile-nickname">{nickname}</span>',
+				            '<span class="profile-nickname  onDesktop">{nickname}</span>',
 				            '<span class="profile-logout"><a href="javascript:QC.Login.signOut();">退出</a></span>'
 		].join("");
         $('#prifile-login').html(
@@ -268,6 +271,7 @@ window.AppFacade = {
 				    figureurl: reqData.figureurl
 				})
 		);
+
         //$("#social_login").hide();
         $("#inquiz-login").hide();
         var self = this;
@@ -279,7 +283,7 @@ window.AppFacade = {
     onQQReportLoginSuccess: function (reqData, opts) {
         _logoutTemplate = [
 				            '<span class="profile-avatar"><img src="{figureurl}" class="{size_key}"/></span>',
-				            '<span class="profile-nickname">{nickname}</span>',
+				            '<span class="profile-nickname  onDesktop">{nickname}</span>',
 				            '<span class="profile-logout"><a href="javascript:QC.Login.signOut();">退出</a></span>'
 		].join("");
         $('#prifile-login').html(
@@ -321,7 +325,7 @@ window.AppFacade = {
 
         _logoutTemplate = [
 				            '<span class="profile-avatar"><img src="{{figureurl}}" class="{size_key}"/></span>',
-				            '<span class="profile-nickname">{{nickname}}</span>',
+				            '<span class="profile-nickname  onDesktop">{{nickname}}</span>',
 				            '<span class="profile-logout"><a onclick="window.AppFacade.weiboLogout();">退出</a></span>'
 		].join("");
 
@@ -345,16 +349,20 @@ window.AppFacade = {
             var token = param[0].split("%3D")[1];
             app.User.weibo_token = token;
         }
-        if (typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
-            app.Report.getReportByUserId();
-        }
+
+		if (app.LoginFrom == "begin" && typeof (AppFacade.getCurrentView()) !== 'undefined' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
+                // 在开始页面 login by qq
+                app.Report.getReportByUserId();
+		}
+
+        
 
     },
     onWbInQuizLoginSuccess: function (o) {
 
         _logoutTemplate = [
 				            '<span class="profile-avatar"><img src="{{figureurl}}" class="{size_key}"/></span>',
-				            '<span class="profile-nickname">{{nickname}}</span>',
+				            '<span class="profile-nickname  onDesktop">{{nickname}}</span>',
 				            '<span class="profile-logout"><a onclick="window.AppFacade.weiboLogout();">退出</a></span>'
 		].join("");
 
@@ -368,7 +376,7 @@ window.AppFacade = {
         //$("#social_login").hide();
 
         app.User.weibo_uid = o.id;
-
+		//console.log(o);
         var tokencookiename = "weibojs_" + app.weiboApp.app_id;
         var tokencookie = readCookie(tokencookiename);
 
@@ -382,7 +390,7 @@ window.AppFacade = {
 
         _logoutTemplate = [
 				            '<span class="profile-avatar"><img src="{{figureurl}}" class="{size_key}"/></span>',
-				            '<span class="profile-nickname">{{nickname}}</span>',
+				            '<span class="profile-nickname onDesktop">{{nickname}}</span>',
 				            '<span class="profile-logout"><a onclick="window.AppFacade.weiboLogout();">退出</a></span>'
 		].join("");
 
@@ -435,20 +443,9 @@ window.AppFacade = {
         }
     },
     submitAnswer: function () {
-        if (this.getCurrentSceneId() == "8") {
-            if (typeof (app.ReportLogged) == 'undefined' || !app.ReportLogged) {
-                app.Report.saveAnswer(function () {
-                    if (!AppFacade.isLogin()) {
-                        AppFacade.initFinishLogin();
-                        $("#login").removeClass("hidden");
-                        app.LoginFrom = "end";
-                    } else {
-                        AppFacade.askForReport();
-                    }
-                });
-                app.ReportLogged = true;
-            }
-            else {
+        if (!app.ReportLogged) {
+            app.Report.saveAnswer(function () {
+                console.log('here');
                 if (!AppFacade.isLogin()) {
                     AppFacade.initFinishLogin();
                     $("#login").removeClass("hidden");
@@ -456,9 +453,17 @@ window.AppFacade = {
                 } else {
                     AppFacade.askForReport();
                 }
+            });
+            app.ReportLogged = true;
+        } else {
+            if (!AppFacade.isLogin()) {
+                AppFacade.initFinishLogin();
+                $("#login").removeClass("hidden");
+                app.LoginFrom = "end";
+            } else {
+                AppFacade.askForReport();
             }
         }
-
     },
     showHelp: function (unfinishedQuestions) {
         for (var i in unfinishedQuestions) {
@@ -486,6 +491,7 @@ window.AppFacade = {
 requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone/models/Report', '../backbone/utils/Utils', '../backbone/views/AvatarView', '../backbone/views/ReportView', '../backbone/views/SceneView', '../backbone/Router'],
     function (avatar, scene, utils, avatarView, sceneView, router) {
         AppFacade.init();
+        
         app.QuestionRepo = new QuestionsCollection;
         app.QuestionRepo.fetch().done(
             function () {
@@ -544,7 +550,7 @@ requirejs(['../backbone/models/Avatar', '../backbone/models/Scene', '../backbone
 				        ];
 
 
-
+						
                         app.Router = new Router();
                         Backbone.history.start();
                         var isTrigger = typeof (app.ReportId) == 'undefined';
