@@ -47,6 +47,14 @@ var ReportView = Backbone.View.extend({
                 });
             });
         });
+        
+        if ( app.ReportLogged ) {
+	        $('#restartQuiz,#report-mobile-restart').html('<i class="icon-refresh icon-white"></i>重新测试');
+	        $('#report-mobile-restart').html('<i class="icon-refresh icon-white"></i>重新测试');
+        } else {
+	        $('#restartQuiz,#report-mobile-restart').html('<i class="icon-beaker icon-white"></i>我来试试');
+	        $('#report-mobile-restart').html('<i class="icon-beaker icon-white"></i>我来试试');
+        }
         this.showProgress();
         
         $(window).bind('scroll',function(){
@@ -68,9 +76,16 @@ var ReportView = Backbone.View.extend({
     },
     onexit: function () {
         this.resetShareConfig();
+        /*
+        if ( app.originUserAnswers && !app.ReportLogged ) {
+	        //恢复原来的报告纪录
+	        AppFacade.revertCookieAnswer(app.originUserAnswers);
+        }
+        */
         $('#profile').show();
         $('#report-share').hide();
         $('#report-flyToTop').hide();
+        $('#report-mobile-bar').hide();
 	    $(window).unbind('scroll');
         $('#report').fadeOut(function () {
             $('#main').fadeIn(function () {
@@ -121,9 +136,13 @@ var ReportView = Backbone.View.extend({
 	    $('#progressbar').hide();
 	    $('.downloadQuizImg').css('display','block');
 	    $('#report-share').show();
+	    if (isSmallScreen() ) {
+		    $('#report-mobile-bar').show();
+	    }
 	    $('#downloadQuizText').hide();
 	    var shareImg = "http://pantene.app.social-touch.com/reports/report_" + app.ReportId + ".png";
 	    $('.downloadQuizImg').attr('href',shareImg);
+	    $('#report-mobile-download').attr('href',shareImg);
 	    jiathis_config.pic = shareImg;
     },
     onClickDownload: function(e) {

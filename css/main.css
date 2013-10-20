@@ -530,7 +530,98 @@ profile
 	background-color:#f4b23c;
 	
 }
+#report-mobile-bar {
+	position: fixed;
+	background: #000;
+	bottom: 0;
+	height: 50px;
+	line-height: 50px;
+	width: 100%;
+	z-index: 999;
+	display: none;
+}
+#report-mobile-bar,#report-mobile-bar>li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+#report-mobile-bar>li {
+	display: inline-block;
+	width: 33.333%;
+	height: 50px;
+	line-height: 50px;
+	color: #FFF;
+	float: left;
+	text-align: center;
+}
+#report-mobile-bar>li>a {
+	display: block;
+	border-left: 1px solid #333;
+	font-size: 14px;
+	color: #FFF;
+	cursor: pointer;
+	text-decoration: none;
+}
+#report-mobile-bar>li>a:hover,#report-mobile-bar>li>a:active,#report-mobile-share.opened {
+	background: #111;
+background: -webkit-gradient(linear, 0 0, 0 bottom, from(#111), to(#555));
+background: -webkit-linear-gradient(#111, #555);
+background: -moz-linear-gradient(#111, #555);
+background: -ms-linear-gradient(#111, #555);
+background: -o-linear-gradient(#111, #555);
+background: linear-gradient(#111, #555);
+color: #ffbd32;
 
+}
+#report-mobile-share-menu {
+	width: 33.33%;
+	background: #000;
+	position: fixed;
+	bottom: 50px;
+	right: 0;
+	display: none;
+}
+
+#report-mobile-share-menu .jiathis_style_32x32>a{
+	display: block!important;
+	float: none!important;
+	clear: both;
+	border-bottom: 1px solid #333;
+	padding: 5px 10px;
+	height: 32px;
+}
+#report-mobile-share-menu .jiathis_style_32x32>a:hover,#report-mobile-share-menu .jiathis_style_32x32>a:active {
+	background: #111;
+background: -webkit-gradient(linear, 0 0, 0 bottom, from(#555), to(#111));
+background: -webkit-linear-gradient(#555, #111);
+background: -moz-linear-gradient(#555, #111);
+background: -ms-linear-gradient(#555, #111);
+background: -o-linear-gradient(#555, #111);
+background: linear-gradient(#555, #111);	
+}
+#report-mobile-share-menu .jiathis_style_32x32  .jiathis_txt {
+	font-size: 16px;
+}
+#report-mobile-share-menu .jiathis_style_32x32 .jtico {
+	background: url(../img/share.png) no-repeat left top;
+
+}
+
+#report-mobile-share-menu .jiathis_style_32x32 .jtico_weixin {
+	background-position: left -32px;
+}
+
+#report-mobile-share-menu .jiathis_style_32x32 .jtico_tsina {
+	background-position: left -64px;
+}
+
+#report-mobile-share-menu .jiathis_style_32x32 .jtico_douban {
+	background-position: left -96px;
+}
+
+#report-mobile-share-menu .jiathis_style_32x32 .jtico_qzone {
+	background-position: left -128px;
+}
 /*=====================
 navigation 
 =====================*/
@@ -4986,7 +5077,9 @@ left: 0;
    .onDesktop {
 		display: none!important;
 	}
-
+	#about {
+		padding-bottom: 70px;
+	}
     body {
 	    min-width: 480px;
     }

@@ -202,6 +202,15 @@ var Report = Backbone.Model.extend({
             success: function (data) {
 				//console.log($.parseJSON(data.d));
 				/*
+				app.originUserAnswers;
+				if ( !app.ReportLogged ) {
+					//如果答案未纪录
+					app.originUserAnswers = readCookie("user_answers");
+				} else {
+					app.originUserAnswers = null;
+				}
+				*/
+				/*
 				var originUserAnswers = AppFacade.getUserAnswers();
 				if ( originUserAnswers ) {
 					app.originUserAnswers = originUserAnswers;
@@ -253,7 +262,7 @@ var Report = Backbone.Model.extend({
                 AppFacade.handleError("timeout");
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert("没有您想找的测试报告，现在带您进入实验室");
+                alert("没有您想找的测试报告");
                 AppFacade.handleError("notfound");
             }
         });

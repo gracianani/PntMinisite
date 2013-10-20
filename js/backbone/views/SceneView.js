@@ -16,7 +16,9 @@ var MainView = Backbone.View.extend({
         "click #social_login" : "showInQuizLogin",
         "click #inquiz-login .close" : "closeInQuizLogin",
         "click #flyToTop":"scrollTop",
-        "click #init-help":"onClickInitHelp"
+        "click #init-help":"onClickInitHelp",
+        "click #report-mobile-share": "onClickMobileShare",
+        "click #report-mobile-restart": "onClickRestartReport"
     },
     initialize: function () {
         this.$el = $('body');
@@ -24,6 +26,7 @@ var MainView = Backbone.View.extend({
         $('body').disableTextSelect();
     },
     processToNextQuestion: function () {
+    	$(document).scrollTop(0);
         AppFacade.getCurrentView().next();
         
         var currentSceneId = AppFacade.getCurrentSceneId();
@@ -34,6 +37,7 @@ var MainView = Backbone.View.extend({
         this.setHelpSwitch();
     },
     processToPrevQuestion: function() {
+    	$(document).scrollTop(0);
         AppFacade.getCurrentView().prev();
         this.setProgressBar();
         this.setHelpSwitch();
@@ -90,6 +94,8 @@ var MainView = Backbone.View.extend({
     },
     onClickLogo : function() {
 	    AppFacade.gotoScene(1);
+	    app.ReportLogged = false;
+        app.ReportId = undefined;
     },
     onClickHelpLayer : function(e){
     	var help = $(e.currentTarget);
@@ -112,6 +118,15 @@ var MainView = Backbone.View.extend({
     },
     onClickInitHelp: function(e) {
 	    $(e.currentTarget).hide();
+    },
+    onClickMobileShare: function(e) {
+	    $(e.currentTarget).toggleClass('opened');
+	    $('#report-mobile-share-menu').toggle();
+    },
+    onClickRestartReport: function(e) {
+	    AppFacade.gotoScene(1);
+        app.ReportLogged = false;
+        app.ReportId = undefined;
     }
 });
 
@@ -679,7 +694,7 @@ var CleaningView = Backbone.View.extend({
         this.on("beginRender", this.render);
     },
     initAnswerTooltip: function () {
-        this.$el.find('.cleaning-tool,.cleaning-style,.cleaning-care').tooltip();
+        this.$el.find('.cleaning-tool,.cleaning-style,.cleaning-care,#shower-time-day,#shower-time-night,#shower-frequency-add,#shower-frequency-remove').tooltip();
     },
     initShowerFreq: function() {
 	    var item = $('#shower-frequency');
