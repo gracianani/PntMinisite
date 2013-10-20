@@ -164,34 +164,42 @@ var LifeView = Backbone.View.extend({
     },
    setStressPin: function(stress) {
 	   if ( stress == 'medium' ) {
-		   this.stressPin.animate({
-            	transform:""
-            }, 500, 'back-out')
-            .attr({
+	   		if ( app.Settings.supportsSvg ) {
+
+			   this.stressPin.animate({
+	            	transform:""
+	            }, 500, 'back-out')
+	            .attr({
+		            
+	            	"stroke":"#e4600d",
+	            	"stroke-dasharray":""
+	            });
 	            
-            	"stroke":"#e4600d",
-            	"stroke-dasharray":""
-            });
-            
-            this.stressPinRoot.attr({
-            	"fill":"#e4600d"
-            });
-            
+	            this.stressPinRoot.attr({
+	            	"fill":"#e4600d"
+	            });
+		   		
+	   		}
             this.model.setAnswer(28,135);
 	   } else if ( stress == 'high' ) {
-		   this.stressPin.animate({
-            	transform:"r-60 125 125"
-            }, 500, 'back-out')
-            .attr({
-            	"stroke":"#e4600d",
-            	"stroke-dasharray":""
-            });
-            
-            this.stressPinRoot.attr({
-            	"fill":"#e4600d"
-            });
+	   		if ( app.Settings.supportsSvg ) {
+
+			   this.stressPin.animate({
+	            	transform:"r-60 125 125"
+	            }, 500, 'back-out')
+	            .attr({
+	            	"stroke":"#e4600d",
+	            	"stroke-dasharray":""
+	            });
+	            
+	            this.stressPinRoot.attr({
+	            	"fill":"#e4600d"
+	            });
+	           }
             this.model.setAnswer(28,134);
 	   } else {
+	   		if ( app.Settings.supportsSvg ) {
+
 		   this.stressPin.animate({
             	"transform":"r60 125 125"
             }, 500, 'back-out')
@@ -203,7 +211,7 @@ var LifeView = Backbone.View.extend({
             this.stressPinRoot.attr({
             	"fill":"#e4600d"
             });
-            
+            }
             this.model.setAnswer(28,136);
 	   }
 	   
@@ -214,6 +222,23 @@ var LifeView = Backbone.View.extend({
 	 this.setStressPin(stress);
    },
     initStress : function() {
+    	if ( !app.Settings.supportsSvg ) {
+    		if ( this.model.isAnswered(28) ) {
+			var stressAnswer = this.model.getAnswerDegree(28);
+			if ( stressAnswer == 1 ) {
+				this.setStressPin('high');
+			} else if ( stressAnswer == 2 ) {
+				this.setStressPin('medium');
+			} else {
+				this.setStressPin('low');
+			}
+			} else {
+				//if device not support svg, set a default answer
+				this.setStressPin('medium');
+			}
+
+	    	return;
+    	}
         var lifeCenter = Raphael("life-center", 250, 250);
 		lifeCenter.customAttributes.arc = function (xloc, yloc,start, value, total, R) {
 		    	var alpha = 360 / total * start,
@@ -468,6 +493,9 @@ var LifeView = Backbone.View.extend({
 		var isSelected = icon.data('isselected') == "1" ;
         this.model.setAnswer( icon.parent().data("question-id"), icon.data("answer-id"), !isSelected);
         icon.data("isselected", !isSelected ? "1" : "0" );
+        if ( ! app.Settings.supportsSvg ) {
+	        return;
+        }
         var line = this.lines[icon.index()];
 		if ( isSelected ) {
 			line.attr({"path":""});
@@ -508,18 +536,21 @@ var LifeView = Backbone.View.extend({
         this.initQuestionHint();
 		this.initAnswerTooltip();
         this.initStress();
-        var linesPaper = Raphael("life-lines", $(this.linesEl).width(), $(this.linesEl).height());
-        var linesCount = $('.life-icon').size();
-        this.lines = [];
-		for ( var i = 0 ; i < linesCount; i++ ) {
-			var line = linesPaper.path()
-			.attr({
-			"stroke":"#e4600d",
-			"stroke-width":4,
-			"stroke-linejoin":"round"
-			});
-			this.lines.push(line);
-		}
+        if ( app.Settings.supportsSvg) {
+	        var linesPaper = Raphael("life-lines", $(this.linesEl).width(), $(this.linesEl).height());
+	        var linesCount = $('.life-icon').size();
+	        this.lines = [];
+			for ( var i = 0 ; i < linesCount; i++ ) {
+				var line = linesPaper.path()
+				.attr({
+				"stroke":"#e4600d",
+				"stroke-width":4,
+				"stroke-linejoin":"round"
+				});
+				this.lines.push(line);
+			}
+        }
+        
 
         this.initLife();
     },
@@ -1087,6 +1118,9 @@ var HairStyleView = Backbone.View.extend( {
         "click .hairstyle-circle-overlay" : "setHairCircle"
     },
 	drawHairCircleArc: function() {
+		if ( !app.Settings.supportsSvg ) {
+			return;
+		}
 		var lengthPaper = Raphael("hairstyle-length-control", 200, 200);
 		lengthPaper.customAttributes.arc = drawArc;
 		var curlPaper = Raphael("hairstyle-curl-control", 200, 200);

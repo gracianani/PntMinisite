@@ -39,6 +39,9 @@ if (!Array.prototype.indexOf) {
 }());
 // Place any jQuery/helper plugins in here.
 function spinner(holderid, R1, R2, count, stroke_width, colour) {
+	if ( !supportsSvg()) {
+		return;
+	}
 var sectorsCount = count || 12,
 			color = colour || "#fff",
 			width = stroke_width || 15,
@@ -312,4 +315,7 @@ function unique(data){
 }  
 function isSmallScreen() {
 	return ($(window).width() < 1024); 
+}
+function supportsSvg() {
+    return document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Shape", "1.1")
 }

@@ -41,6 +41,11 @@ window.AppFacade = {
             app.Settings.mouseenter = "touchstart";
             app.Settings.mouseleave = "touchend";
         }
+        if ( supportsSvg()) {
+	        app.Settings.supportsSvg = true;
+        } else {
+	        app.Settings.supportsSvg = false;
+        }
     },
 
     setStartView: function () {
@@ -155,22 +160,25 @@ window.AppFacade = {
     },
     loadFromCookie: function (isTrigger) {
         var str_user_answers = readCookie("user_answers");
-
         if (str_user_answers) {
             this.setUserAnswers($.parseJSON(str_user_answers));
             var current_scene_id = readCookie("current_scene_id");
             var str_user_info = readCookie("user_info");
-            var user_info = $.parseJSON(str_user_info);
-            if (user_info) {
-                app.User = user_info;
+            if (str_user_info) {
+            	var user_info = $.parseJSON(str_user_info);
+            	if ( user_info ) {
+	            	app.User = user_info;
+
+            	}
             }
 
             var startScene = this.getCurrentSceneId();
             this.maxScene = this.getMaxFinishedSceneId();
+            
             if (startScene > this.maxScene) {
                 app.Router.navigate("Survey/" + this.maxScene, { trigger: isTrigger });
             }
-
+			
         }
         else {
             app.Router.navigate("", { trigger: isTrigger });
@@ -252,7 +260,7 @@ window.AppFacade = {
             app.User.qq_uid = openId;
             app.User.qq_token = accessToken;
 
-				if (AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined' && (app.ReportId > 0)) {
+				if (app.LoginFrom != 'end' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
 
                 // 在开始页面 login by qq
                 app.Report.getReportByUserId();
@@ -301,7 +309,7 @@ window.AppFacade = {
         QC.Login.getMe(function (openId, accessToken) {
             app.User.qq_uid = openId;
             app.User.qq_token = accessToken;
-            if (typeof (app.ReportId) != 'undefined') {
+            if (typeof (app.ReportId) != 'undefined' && app.ReportId > 0 && app.LoginFrom == 'end' ) {
                 app.LoginFrom = "";
                 app.Report.bind(app.ReportId);
                 AppFacade.askForReport();
@@ -354,7 +362,7 @@ window.AppFacade = {
         }
 
 
-		if (AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined' && (app.ReportId > 0) ) {
+		if (app.LoginFrom != 'end' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
                 // 在开始页面 login by qq
                 app.Report.getReportByUserId();
 		}
@@ -418,7 +426,7 @@ window.AppFacade = {
             var token = param[0].split("%3D")[1];
             app.User.weibo_token = token;
         }
-        if (typeof (app.ReportId) != 'undefined') {
+        if (typeof (app.ReportId) != 'undefined' && app.ReportId > 0 && app.LoginFrom == 'end' ) {
             app.LoginFrom = "";
             AppFacade.askForReport();
             app.Report.bind(app.ReportId);
