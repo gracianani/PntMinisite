@@ -366,6 +366,14 @@ public class WeiboWebServices : System.Web.Services.WebService
                 {
                     command.Parameters.AddWithValue("WeiboUID", user.weibo_uid);
                 }
+                if (!string.IsNullOrEmpty(user.weibo_token))
+                {
+                    command.Parameters.AddWithValue("WeiboToken", user.weibo_token);
+                }
+                if (!string.IsNullOrEmpty(user.qq_token))
+                {
+                    command.Parameters.AddWithValue("QQToken", user.qq_token);
+                }
                 quizId = Convert.ToInt32(command.ExecuteScalar());
             }
         }
@@ -513,6 +521,14 @@ public class WeiboWebServices : System.Web.Services.WebService
                     if (!string.IsNullOrEmpty(user.qq_uid))
                     {
                         command.Parameters.AddWithValue("QQUid", user.qq_uid);
+                    }
+                    if (!string.IsNullOrEmpty(user.weibo_token))
+                    {
+                        command.Parameters.AddWithValue("WeiboToken", user.weibo_token);
+                    }
+                    if (!string.IsNullOrEmpty(user.qq_token))
+                    {
+                        command.Parameters.AddWithValue("QQToken", user.qq_token);
                     }
                     command.Parameters.AddWithValue("quizId", quizId);
                     command.ExecuteNonQuery();
