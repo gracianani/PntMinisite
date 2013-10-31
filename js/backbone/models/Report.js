@@ -181,6 +181,7 @@ var Report = Backbone.Model.extend({
     bind:function( reportId) {
         var requestData = '{ quizId : ' +reportId+ ', str_user : \"' + JSON.stringify(app.User).replace(/"/g, '\'') + ' \" }';
         var self = this;
+        console.log('here');
         $.ajax({
             type: "POST",
             url: 'WeiboWebServices.asmx/Bind',
@@ -201,6 +202,15 @@ var Report = Backbone.Model.extend({
             contentType: "application/json;charset=utf-8",
             success: function (data) {
 				//console.log($.parseJSON(data.d));
+				/*
+				app.originUserAnswers;
+				if ( !app.ReportLogged ) {
+					//如果答案未纪录
+					app.originUserAnswers = readCookie("user_answers");
+				} else {
+					app.originUserAnswers = null;
+				}
+				*/
 				/*
 				var originUserAnswers = AppFacade.getUserAnswers();
 				if ( originUserAnswers ) {
@@ -242,7 +252,9 @@ var Report = Backbone.Model.extend({
             	//console.log($.parseJSON(data.d));
             	var response = $.parseJSON(data.d);
                 app.ReportId = response.report_id;
-                
+                if ( response.report_id < 1) {
+	                return;
+                }
                 AppFacade.setUserAnswers(response.user_answers);
                 AppFacade.saveToCookie();
                 self.loadSuggestions(response.suggestions);
@@ -253,7 +265,8 @@ var Report = Backbone.Model.extend({
                 AppFacade.handleError("timeout");
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert("没有您想找的测试报告，现在带您进入实验室");
+                alert("没有您想找的测试报告");
+                console.log(errorThrown);
                 AppFacade.handleError("notfound");
             }
         });

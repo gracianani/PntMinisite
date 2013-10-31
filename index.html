@@ -166,6 +166,20 @@
 
 				</div>
         </div>
+        <ul id="report-mobile-bar">
+        <li> <a id="report-mobile-restart"><i class="icon-beaker icon-white"></i> 我来试试</a></li>
+        <li> <a id="report-mobile-download" target="_blank"><i class="icon-download-alt icon-white"></i> 下载报告</a></li>
+		<li><a id="report-mobile-share"><i class="icon-share icon-white"></i> 分享</a>
+			<div id="report-mobile-share-menu">
+				<div class="jiathis_style_32x32">
+					<a class="jiathis_button_tsina">微博</a>
+					<a class="jiathis_button_weixin">微信</a>
+					<a class="jiathis_button_cqq">QQ</a>
+					<a class="jiathis_button_qzone">QZone</a>
+				</div>
+			</div>
+		</li>
+        </ul>
         <div id="profile">
         	<div id="prifile-login">
         	<a id="social_login" href="#">登录</a>
@@ -191,8 +205,10 @@
         </div>
         <div id="about">
         <div id="about-logo"><img src="img/logowhite.png" alt="潘婷 如此健康 焕发光彩" /></div>
+
         <div id="about-link"><a href="http://www.pantene.com.cn" target="_blank">潘婷官方主页</a><a href="http://weibo.com/panteneofficial" target="_blank">潘婷官方微博：@潘婷Pantene</a><div id="about-copyright">宝洁（中国）有限公司版权所有 2013</div></div>
         <div id="about-support">运营支持：<a class="darkLink" target="_blank" href="http://social-touch.com/">时趣科技</a>  京ICP备06006585号-2<br />技术支持：<a class="darkLink" target="_blank" href="http://seemeloo.com/">Seemeloo Studio</a>   <a href="javascript:void(0)" id="eraseCookie">清除答题记录</a></div>
+
         </div>
         <div id="tooltip">
         	<div class="content"></div>
@@ -652,20 +668,20 @@
         					
         				</div>
         				<div id="shower-frequency" data-question-id="17" data-degree="1">
-	        				<div id="shower-frequency-add" class="addButton">
+	        				<div id="shower-frequency-add" class="addButton"  title="洗发频率">
 	        					＋
 	        				</div>
 	        				<div id="shower-frequency-text">
         					洗发的频率
         					</div>
-	        				<div id="shower-frequency-remove" class="removeButton">
+	        				<div id="shower-frequency-remove" class="removeButton"  title="洗发频率">
         					    －
         					</div>
         				</div>
-        				<div id="shower-time" data-question-id="29">
-        					<a id="shower-time-day" class="shower-time-icon {{#getSelectedClass}}29,137{{/getSelectedClass}} {{#getSelectedClass}}29,139{{/getSelectedClass}}" title="白天洗头发">
+        				<div id="shower-time" data-question-id="29" title="洗发的时间">
+        					<a id="shower-time-day" class="shower-time-icon {{#getSelectedClass}}29,137{{/getSelectedClass}} {{#getSelectedClass}}29,139{{/getSelectedClass}}" title="白天洗发">
 	        				</a>
-	        				<a id="shower-time-night" class="shower-time-icon {{#getSelectedClass}}29,138{{/getSelectedClass}}  {{#getSelectedClass}}29,139{{/getSelectedClass}}" title="晚上洗头发">
+	        				<a id="shower-time-night" class="shower-time-icon {{#getSelectedClass}}29,138{{/getSelectedClass}}  {{#getSelectedClass}}29,139{{/getSelectedClass}}" title="晚上洗发">
         					</a>
         				</div>
         			</div>
@@ -1133,7 +1149,7 @@
 						{{/keywords}}
 					</div>
 					<div id="report-opt">
-					<a class="restartQuiz" href="javascript:void(0)"><i class="icon-refresh"></i> 重新测试</a>
+					<a class="restartQuiz" href="javascript:void(0)"><i class="icon-beaker"></i> 我来试试</a>
 					<div id="progressbar"><div class="progress-label">正在生成报告图片，请耐心等待...</div></div>
 					<span id="downloadQuizText">生成以后，可以带图分享哦！</span>
 					<a class="downloadQuizImg" href="javascript:void(0)" target="_blank"><i class="icon-download-alt"></i> 下载报告图片</a>
