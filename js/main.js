@@ -428,9 +428,8 @@ window.AppFacade = {
         }
         if (typeof (app.ReportId) != 'undefined' && app.ReportId > 0 && app.LoginFrom == 'end' ) {
             app.LoginFrom = "";
-            app.Report.bind(app.ReportId);
             AppFacade.askForReport();
-            
+            app.Report.bind(app.ReportId);
         }
     },
     onWbLogoutSuccess: function () {

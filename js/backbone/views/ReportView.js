@@ -173,7 +173,7 @@ var ReportView = Backbone.View.extend({
             data_track_clickback: true,
             summary: summary,
             desc:summary,
-            title: "#Pantene护发实验室#",
+            title: "#探索潘婷护发实验室#",
             pic: shareimg,
             img: shareimg,
             ralateuid: {
