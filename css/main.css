@@ -656,8 +656,30 @@ navigation
 }
 
 
-
-
+/*=====================
+report-promotion 
+=====================*/
+#report-promotion {
+	min-height: 500px;
+	background:#bc6e23 url(../img/report-promote-bg.jpg) no-repeat top center;
+}
+#report-promotion .reprot-section-arrow {
+	border-top-color:#ffbd32;
+}
+#report-promotion .report-container {
+	
+	height: 600px;
+}
+#report-promotion-video {
+	width: 442px;
+	height: 248px;
+	background: url(../img/report-promote-videobg.png) no-repeat top center;
+	padding-top:4px;
+	padding-left:0px;
+	position: relative;
+	left: 395px;
+	top:105px;
+}
 /*=====================
 loading 
 =====================*/

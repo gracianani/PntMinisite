@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        
+    </head>
+    <body class="plain-report">
+        
+        <!-- Add your site or application content here -->
+        <div id="header">
+        	<div class="container">
+        	<div id="logo">
+        		<img src="img/logo.png" alt="潘婷 如此健康 焕发光彩" />
+        	</div>
+        	<h1 id="siteTitle">
+        	<img src="img/title-whitebg.png" alt="潘婷护发实验室" />
+        	</h1>
+        	</div>
+        </div>
+        <div id="report" >
+        	<div id="report-header" class="level-{{level}}">
+        		<div class="report-container">
+	        		<div id="report-score">
+	        			<div id="report-score-title">秀发健康指数</div>
+	        			<div id="report-score-number">{{Score}}</div>
+	        			<h2 id="report-score-desc">{{ScoreTitle}}</h2>
+	        		</div>
+	        		<div id="defeat">打败了<br />
+	        		<span id="defeat-percent">{{Ranking}}<small>%</small></span> 的人</div>
+					<div id="keywords">
+						{{#keywords}}
+						<div class="keyword">
+						{{.}}
+						</div>
+						{{/keywords}}
+					</div>
+	
+        		</div>
+        	</div>
+        	<div id="report-hairproblem">
+        		<div class="report-container">
+        		<div class="reprot-section-arrow"></div>
+        		<div class="clearfix">
+        		<div class="report-section-title"><div class="title-caret"></div>解读发质现状</div>
+        		</div>
+        		{{#problem_bald}}
+        			<div class="hairproblem" id="report{{type}}">
+	        			<div class="hairproblem-icon">
+	        			<img src="img/report-p1.png"  />
+	        			</div>
+	        			<div class="hairproblem-tag">
+	        			头发稀疏、掉发
+	        			<div class="caret"></div>
+	        			</div>
+	        			<div class="hairproblem-title">
+	        			热闹的街道不长草
+	        			</div>
+	        			<div class="hairproblem-suggestion">
+	        					{{{suggestion_text}}}
+	        			</div>
+	        			<div class="hairproblem-suggestionTitle">
+	        				TIPS
+	        			</div>
+        			</div>
+        		{{/problem_bald}}
+        		{{#problem_dry}}
+        			<div class="hairproblem" id="report{{type}}">
+	        			<div class="hairproblem-icon">
+	        			<img src="img/report-p2.png"  />
+	        			</div>
+	        			<div class="hairproblem-tag">
+	        			干枯分叉、沙发难打理
+	        			<div class="caret"></div>
+	        			</div>
+	        			<div class="hairproblem-title">
+	        			爆炸头&发电机
+	        			</div>
+	        			<div class="hairproblem-suggestion">
+	        					{{{suggestion_text}}}
+	        			</div>
+	        			<div class="hairproblem-suggestionTitle">
+	        				TIPS
+	        			</div>
+        			</div>
+        		{{/problem_dry}}
+        		{{#problem_scurf}}
+        			<div class="hairproblem" id="report{{type}}">
+	        			<div class="hairproblem-icon">
+	        			<img src="img/report-p3.png"  />
+	        			</div>
+	        			<div class="hairproblem-tag">
+	        			头皮出油、头屑
+	        			<div class="caret"></div>
+	        			</div>
+	        			<div class="hairproblem-title">
+	        			喂，你的肩膀下雪了
+	        			</div>
+	        			<div class="hairproblem-suggestion">
+	        					{{{suggestion_text}}}
+	        			</div>
+	        			<div class="hairproblem-suggestionTitle">
+	        				TIPS
+	        			</div>
+        			</div>
+        		{{/problem_scurf}}
+        		</div>
+        	</div>
+        	<div id="report-haircare">
+        		<div class="report-container">
+        			<div id="report-cleaning">
+        				<img src="img/reportcleaning.png" />
+        			</div>
+        			<div id="report-cleaningSuggestion">
+	        			<div id="report-cleaningSuggestionContent">
+	        			{{#cleaning}}
+	        				<p>{{{suggestion_text}}}</p>
+	        			{{/cleaning}}
+	        			</div>
+	        			<div class="caret-top"></div>
+	        			<div class="caret-bottom"></div>
+        			</div>
+        			
+        			<div id="report-tool" class="clearfix">
+        				<div id="report-tool-content">
+        				{{#style}}
+	        				<p>{{{suggestion_text}}}</p>
+	        			{{/style}}
+	        			{{#salon}}
+	        				<p>{{{suggestion_text}}}</p>
+	        			{{/salon}}
+        				</div>
+        				<div id="report-tool-img">
+        				<img src="img/reporttools.png" />
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        	<div id="report-life">
+        		<div class="report-container">
+        			<div class="reprot-section-arrow"></div>
+        			<div id="report-life-img">
+        			<img src="img/report-life.png" />
+        			</div>
+        			<div id="report-life-content">
+        				<div id="report-life-1" class="report-life-item-left">
+        					<div class="report-life-caret"></div>
+        					{{#cook}}
+        						{{{suggestion_text}}}
+        					{{/cook}}
+        				</div>
+        				<div id="report-life-2" class="report-life-item-left">
+        					<div class="report-life-caret"></div>
+        					{{#sun}}
+        						{{{suggestion_text}}}
+        					{{/sun}}
+        				</div>
+        				<div id="report-life-3" class="report-life-item-left">
+        					<div class="report-life-caret"></div>
+        					{{#taste}}
+        						{{{suggestion_text}}}
+        					{{/taste}}
+        				</div>
+        				<div id="report-life-4" class="report-life-item-right">
+        					<div class="report-life-caret"></div>
+        					{{#mealcount}}
+        						{{{suggestion_text}}}
+        					{{/mealcount}}
+        				</div>
+        				<div id="report-life-5" class="report-life-item-right">
+        					<div class="report-life-caret"></div>
+        					{{#sleep}}
+        						{{{suggestion_text}}}
+        					{{/sleep}}
+        				</div>
+        				<div id="report-life-6" class="report-life-item-right">
+        					<div class="report-life-caret"></div>
+        					{{#stress}}
+        						{{{suggestion_text}}}
+        					{{/stress}}
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        	<div id="report-products">
+        		<div class="report-container">
+				<div class="reprot-section-arrow"></div>
+				<div id="report-product-img">
+					<img src="img/reportproduct.png" />
+				</div>
+				<div id="report-product-basic">
+					<ul id="report-product-list" class="clearfix">
+						{{#ProductSuggestions}}
+						<li class="report-product-item">
+							<a target="_blank" href="{{url}}">
+							<img src="img/product/{{img}}" title="{{product_name}}" />
+							</a>
+						</li>
+						{{/ProductSuggestions}}
+					</ul>
+				</div>
+        		</div>
+        	</div>
+        	<div id="report-promotion">
+        		<div class="report-container">
+					<div class="reprot-section-arrow"></div>
+					<div id="report-promotion-video">
+						<iframe height=240 width=435 src="http://player.youku.com/embed/XNTAwMzEzNTI4" frameborder=0 allowfullscreen></iframe>
+					</div>
+					
+        		</div>
+        	</div>
+        	<div id="report-bottom-top"></div>
+        	<div id="report-bottom-share">
+        		<div class="report-container">
+        		<div id="reportqr">
+        			<img src="img/reportqr.png" />
+        		</div>
+        		<br />
+				<center><img src="img/bottomlogo.png" /></center>
+        		
+        		</div>
+        	</div>
+        	<div id="report-avatar">
+        		<div id="character" class="character {{gender}} character-large-size">
+        			<div class="hair hair-{{gender}}-{{hairLength}}-{{hairCurly}} hair-{{gender}}-{{hairType}}  hair-{{hairColor}}">
+        			</div>
+        			<div class="body">
+        			</div>
+        			<div class="head">
+        			</div>
+        			<div class="face">
+        			</div>
+        					
+        			<div class="clothes clothes-{{gender}}-{{career_id}}">
+        			</div>
+        			<div class="hand">
+        			</div>
+        			<div class="bang bang-{{gender}}-{{hairType}} bang-{{gender}}-{{hairLength}}-{{hairCurly}} bang-{{hairColor}}">
+        			</div>
+        		</div>
+        	</div>
+        </div>
+		<div id="preloader">
+			<img src="img/character/body-m.png" width="1" height="1" />
+			<img src="img/character/hair-m.png" width="1" height="1" />
+			<img src="img/character/hair-m-gold.png" width="1" height="1" />
+			<img src="img/character/hair-m-red.png" width="1" height="1" />
+			<img src="img/character/hair-m-mix.png" width="1" height="1" />
+			<img src="img/character/face-m.png" width="1" height="1" />
+			<img src="img/character/hand-m.png" width="1" height="1" />
+			<img src="img/character/clothes-m.png" width="1" height="1" />
+			<img src="img/character/head-m.png" width="1" height="1" />
+			<img src="img/character/hand-m.png" width="1" height="1" />
+			<img src="img/character/body-fm.png" width="1" height="1" />
+			<img src="img/character/hair-fm.png" width="1" height="1" />
+			<img src="img/character/bang-fm.png" width="1" height="1" />
+			<img src="img/character/hair-fm-black.png" width="1" height="1" />
+			<img src="img/character/bang-fm-black.png" width="1" height="1" />
+			<img src="img/character/hair-fm-gold.png" width="1" height="1" />
+			<img src="img/character/bang-fm-gold.png" width="1" height="1" />
+			<img src="img/character/hair-fm-mix.png" width="1" height="1" />
+			<img src="img/character/bang-fm-mix.png" width="1" height="1" />
+			<img src="img/character/face-fm.png" width="1" height="1" />
+			<img src="img/character/hand-fm.png" width="1" height="1" />
+			<img src="img/character/clothes-fm.png" width="1" height="1" />
+			<img src="img/character/head-fm.png" width="1" height="1" />
+		</div>        
+        <script id="report-template" type="text/template">
+
+        	<div id="report-header" class="level-{{level}}">
+        		<div class="report-container">
+	        		<div id="report-score">
+	        			<div id="report-score-title">秀发健康指数</div>
+	        			<div id="report-score-number">{{Score}}</div>
+	        			<h2 id="report-score-desc">{{ScoreTitle}}</h2>
+	        		</div>
+	        		<div id="defeat">打败了<br />
+	        		<span id="defeat-percent">{{Ranking}}<small>%</small></span> 的人</div>
+					<div id="keywords">
+						{{#keywords}}
+						<div class="keyword">
+						{{.}}
+						</div>
+						{{/keywords}}
+					</div>
+	
+        		</div>
+        	</div>
+        	<div id="report-hairproblem">
+        		<div class="report-container">
+        		<div class="reprot-section-arrow"></div>
+        		<div class="clearfix">
+        		<div class="report-section-title"><div class="title-caret"></div>解读发质现状</div>
+        		</div>
+        		{{#problem_bald}}
+        			<div class="hairproblem" id="report{{type}}">
+	        			<div class="hairproblem-icon">
+	        			<img src="img/report-p1.png"  />
+	        			</div>
+	        			<div class="hairproblem-tag">
+	        			头发稀疏、掉发
+	        			<div class="caret"></div>
+	        			</div>
+	        			<div class="hairproblem-title">
+	        			热闹的街道不长草
+	        			</div>
+	        			<div class="hairproblem-suggestion">
+	        					{{{suggestion_text}}}
+	        			</div>
+	        			<div class="hairproblem-suggestionTitle">
+	        				TIPS
+	        			</div>
+        			</div>
+        		{{/problem_bald}}
+        		{{#problem_dry}}
+        			<div class="hairproblem" id="report{{type}}">
+	        			<div class="hairproblem-icon">
+	        			<img src="img/report-p2.png"  />
+	        			</div>
+	        			<div class="hairproblem-tag">
+	        			干枯分叉、沙发难打理
+	        			<div class="caret"></div>
+	        			</div>
+	        			<div class="hairproblem-title">
+	        			爆炸头&发电机
+	        			</div>
+	        			<div class="hairproblem-suggestion">
+	        					{{{suggestion_text}}}
+	        			</div>
+	        			<div class="hairproblem-suggestionTitle">
+	        				TIPS
+	        			</div>
+        			</div>
+        		{{/problem_dry}}
+        		{{#problem_scurf}}
+        			<div class="hairproblem" id="report{{type}}">
+	        			<div class="hairproblem-icon">
+	        			<img src="img/report-p3.png"  />
+	        			</div>
+	        			<div class="hairproblem-tag">
+	        			头皮出油、头屑
+	        			<div class="caret"></div>
+	        			</div>
+	        			<div class="hairproblem-title">
+	        			喂，你的肩膀下雪了
+	        			</div>
+	        			<div class="hairproblem-suggestion">
+	        					{{{suggestion_text}}}
+	        			</div>
+	        			<div class="hairproblem-suggestionTitle">
+	        				TIPS
+	        			</div>
+        			</div>
+        		{{/problem_scurf}}
+        		</div>
+        	</div>
+        	<div id="report-haircare">
+        		<div class="report-container">
+        			<div id="report-cleaning">
+        				<img src="img/reportcleaning.png" />
+        			</div>
+        			<div id="report-cleaningSuggestion">
+	        			<div id="report-cleaningSuggestionContent">
+	        			{{#cleaning}}
+	        				<p>{{{suggestion_text}}}</p>
+	        			{{/cleaning}}
+	        			</div>
+	        			<div class="caret-top"></div>
+	        			<div class="caret-bottom"></div>
+        			</div>
+        			
+        			<div id="report-tool" class="clearfix">
+        				<div id="report-tool-content">
+        				{{#style}}
+	        				<p>{{{suggestion_text}}}</p>
+	        			{{/style}}
+	        			{{#salon}}
+	        				<p>{{{suggestion_text}}}</p>
+	        			{{/salon}}
+        				</div>
+        				<div id="report-tool-img">
+        				<img src="img/reporttools.png" />
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        	<div id="report-life">
+        		<div class="report-container">
+        			<div class="reprot-section-arrow"></div>
+        			<div id="report-life-img">
+        			<img src="img/report-life.png" />
+        			</div>
+        			<div id="report-life-content">
+        				<div id="report-life-1" class="report-life-item-left">
+        					<div class="report-life-caret"></div>
+        					{{#cook}}
+        						{{{suggestion_text}}}
+        					{{/cook}}
+        				</div>
+        				<div id="report-life-2" class="report-life-item-left">
+        					<div class="report-life-caret"></div>
+        					{{#sun}}
+        						{{{suggestion_text}}}
+        					{{/sun}}
+        				</div>
+        				<div id="report-life-3" class="report-life-item-left">
+        					<div class="report-life-caret"></div>
+        					{{#taste}}
+        						{{{suggestion_text}}}
+        					{{/taste}}
+        				</div>
+        				<div id="report-life-4" class="report-life-item-right">
+        					<div class="report-life-caret"></div>
+        					{{#mealcount}}
+        						{{{suggestion_text}}}
+        					{{/mealcount}}
+        				</div>
+        				<div id="report-life-5" class="report-life-item-right">
+        					<div class="report-life-caret"></div>
+        					{{#sleep}}
+        						{{{suggestion_text}}}
+        					{{/sleep}}
+        				</div>
+        				<div id="report-life-6" class="report-life-item-right">
+        					<div class="report-life-caret"></div>
+        					{{#stress}}
+        						{{{suggestion_text}}}
+        					{{/stress}}
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        	<div id="report-products">
+        		<div class="report-container">
+				<div class="reprot-section-arrow"></div>
+				<div id="report-product-img">
+					<img src="img/reportproduct.png" />
+				</div>
+				<div id="report-product-basic">
+					<ul id="report-product-list" class="clearfix">
+						{{#ProductSuggestions}}
+						<li class="report-product-item">
+							<a target="_blank" href="{{url}}">
+							<img src="img/product/{{img}}" title="{{product_name}}" />
+							</a>
+						</li>
+						{{/ProductSuggestions}}
+					</ul>
+				</div>
+        		</div>
+        	</div>
+        	<div id="report-bottom-top"></div>
+        	<div id="report-bottom-share">
+        		<div class="report-container">
+        		<div id="reportqr">
+        			<img src="img/reportqr.png" />
+        		</div>
+        		<br />
+				<center><img src="img/bottomlogo.png" /></center>
+        		
+        		</div>
+        	</div>
+        	<div id="report-avatar">
+        		<div id="character" class="character {{gender}} character-large-size">
+        			<div class="hair hair-{{gender}}-{{hairLength}}-{{hairCurly}} hair-{{gender}}-{{hairType}}  hair-{{hairColor}}">
+        			</div>
+        			<div class="body">
+        			</div>
+        			<div class="head">
+        			</div>
+        			<div class="face">
+        			</div>
+        					
+        			<div class="clothes clothes-{{gender}}-{{career_id}}">
+        			</div>
+        			<div class="hand">
+        			</div>
+        			<div class="bang bang-{{gender}}-{{hairType}} bang-{{gender}}-{{hairLength}}-{{hairCurly}} bang-{{hairColor}}">
+        			</div>
+        		</div>
+        	</div>
+        </script>
+
+		<script src="js/vendor/jquery-1.10.2.min.js"></script>
+        <script src="js/backbone/utils/plugins.js" type="text/javascript"></script>
+        <script src="js/vendor/underscore.js" type="text/javascript"></script>
+        <script src="js/vendor/backbone.js" type="text/javascript"></script>
+        <script src="js/vendor/mustache.js" type="text/javascript"></script>
+        <script src="js/vendor/require.min.js" data-main="js/plain-report.js"></script>
+
+    </body>
+</html>
