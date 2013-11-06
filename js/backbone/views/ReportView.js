@@ -49,10 +49,10 @@ var ReportView = Backbone.View.extend({
         });
         
         if ( app.ReportLogged ) {
-	        $('#restartQuiz,#report-mobile-restart').html('<i class="icon-refresh icon-white"></i>重新测试');
+	        $('.restartQuiz,#report-mobile-restart').html('<i class="icon-refresh icon-white"></i>重新测试');
 	        $('#report-mobile-restart').html('<i class="icon-refresh icon-white"></i>重新测试');
         } else {
-	        $('#restartQuiz,#report-mobile-restart').html('<i class="icon-beaker icon-white"></i>我来试试');
+	        $('.restartQuiz,#report-mobile-restart').html('<i class="icon-beaker icon-white"></i>我来试试');
 	        $('#report-mobile-restart').html('<i class="icon-beaker icon-white"></i>我来试试');
         }
         this.showProgress();
