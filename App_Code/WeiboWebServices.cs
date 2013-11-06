@@ -211,6 +211,9 @@ public class WeiboWebServices : System.Web.Services.WebService
         public string qq_token;
         public string weibo_uid;
         public string weibo_token;
+        public string weibo_province;
+        public string weibo_city;
+        public string weibo_location;
     }
 
     private void GetUserAnswers(IDataReader reader, out List<SceneUserAnswer> userAnswers, out Avatar avatar, out int reportId)
@@ -374,6 +377,18 @@ public class WeiboWebServices : System.Web.Services.WebService
                 {
                     command.Parameters.AddWithValue("QQToken", user.qq_token);
                 }
+                if (!string.IsNullOrEmpty(user.weibo_province))
+                {
+                    command.Parameters.AddWithValue("WeiboProvince", user.weibo_province);
+                }
+                if (!string.IsNullOrEmpty(user.weibo_city))
+                {
+                    command.Parameters.AddWithValue("WeiboCity", user.weibo_city);
+                }
+                if (!string.IsNullOrEmpty(user.weibo_location))
+                {
+                    command.Parameters.AddWithValue("WeiboLocation", user.weibo_location);
+                }
                 quizId = Convert.ToInt32(command.ExecuteScalar());
             }
         }
@@ -530,6 +545,18 @@ public class WeiboWebServices : System.Web.Services.WebService
                     {
                         command.Parameters.AddWithValue("QQToken", user.qq_token);
                     }
+                    if (!string.IsNullOrEmpty(user.weibo_province))
+	                {
+	                    command.Parameters.AddWithValue("WeiboProvince", user.weibo_province);
+	                }
+	                if (!string.IsNullOrEmpty(user.weibo_city))
+	                {
+	                    command.Parameters.AddWithValue("WeiboCity", user.weibo_city);
+	                }
+	                if (!string.IsNullOrEmpty(user.weibo_location))
+	                {
+	                    command.Parameters.AddWithValue("WeiboLocation", user.weibo_location);
+	                }
                     command.Parameters.AddWithValue("quizId", quizId);
                     command.ExecuteNonQuery();
                 }

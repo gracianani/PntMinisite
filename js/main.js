@@ -259,12 +259,19 @@ window.AppFacade = {
         QC.Login.getMe(function (openId, accessToken) {
             app.User.qq_uid = openId;
             app.User.qq_token = accessToken;
-
-				if (app.LoginFrom != 'end' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
-
-                // 在开始页面 login by qq
-                app.Report.getReportByUserId();
-            }
+			QC.api("get_info",{}).success(function(res){
+	   		app.User.weibo_country = res.data.data.country_code;
+	   		app.User.weibo_province = res.data.data.province_code;
+	   		app.User.weibo_city = res.data.data.city_code;
+	   		app.User.weibo_location = res.data.data.location;
+	   		}).complete(function(c){
+			   if (app.LoginFrom != 'end' && AppFacade.getCurrentView().id != 'report' && typeof (app.ReportId) == 'undefined') {
+	
+	                // 在开始页面 login by qq
+	                app.Report.getReportByUserId();
+	            }
+			});
+				
 
         });
     },
@@ -287,6 +294,12 @@ window.AppFacade = {
         QC.Login.getMe(function (openId, accessToken) {
             app.User.qq_uid = openId;
             app.User.qq_token = accessToken;
+            QC.api("get_info",{}).success(function(res){
+	   		app.User.weibo_country = res.data.data.country_code;
+	   		app.User.weibo_province = res.data.data.province_code;
+	   		app.User.weibo_city = res.data.data.city_code;
+	   		app.User.weibo_location = res.data.data.location;
+	   		});
         });
     },
     
@@ -309,11 +322,20 @@ window.AppFacade = {
         QC.Login.getMe(function (openId, accessToken) {
             app.User.qq_uid = openId;
             app.User.qq_token = accessToken;
-            if (typeof (app.ReportId) != 'undefined' && app.ReportId > 0 && app.LoginFrom == 'end' ) {
+            
+            QC.api("get_info",{}).success(function(res){
+	   		app.User.weibo_country = res.data.data.country_code;
+	   		app.User.weibo_province = res.data.data.province_code;
+	   		app.User.weibo_city = res.data.data.city_code;
+	   		app.User.weibo_location = res.data.data.location;
+		   }).complete(function(c){
+			   if (typeof (app.ReportId) != 'undefined' && app.ReportId > 0 && app.LoginFrom == 'end' ) {
                 app.LoginFrom = "";
                 app.Report.bind(app.ReportId);
                 AppFacade.askForReport();
             }
+		   });
+            
         });
     },
     onQQLogoutSuccess: function (opts) {//注销成功
@@ -321,6 +343,18 @@ window.AppFacade = {
         $("#splash-login").show();
         eraseCookie("user_answers");
         window.location.href = 'http://pantene.app.social-touch.com/';
+    },
+    getQQUserInfo: function(openId, accessToken) {
+    
+	   QC.api("get_info",{}).success(function(res){
+	   		app.User.weibo_country = res.data.data.country_code;
+	   		app.User.weibo_province = res.data.data.province_code;
+	   		app.User.weibo.city = res.data.data.city_code;
+	   		app.User.weibo_location = res.data.data.location;
+	   }).complete(function(c){
+
+	   });
+
     },
     initWbLogin: function () {
 
@@ -349,8 +383,11 @@ window.AppFacade = {
         $("#login").addClass("hidden");
         $("#splash-login").hide();
         $("#login").addClass("hidden");
-
+	
         app.User.weibo_uid = o.id;
+        app.User.weibo_province = o.province;
+        app.User.weibo_city = o.city;
+        app.User.weibo_location = o.location;
 
         var tokencookiename = "weibojs_" + app.weiboApp.app_id;
         var tokencookie = readCookie(tokencookiename);
@@ -388,6 +425,9 @@ window.AppFacade = {
         //$("#social_login").hide();
 
         app.User.weibo_uid = o.id;
+        app.User.weibo_province = o.province;
+        app.User.weibo_city = o.city;
+        app.User.weibo_location = o.location;
         //console.log(o);
         var tokencookiename = "weibojs_" + app.weiboApp.app_id;
         var tokencookie = readCookie(tokencookiename);
@@ -417,7 +457,10 @@ window.AppFacade = {
         $("#login").addClass("hidden");
 
         app.User.weibo_uid = o.id;
-
+        app.User.weibo_province = o.province;
+        app.User.weibo_city = o.city;
+        app.User.weibo_location = o.location;
+        
         var tokencookiename = "weibojs_" + app.weiboApp.app_id;
         var tokencookie = readCookie(tokencookiename);
 

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<textarea></textarea>
+<a id="reportlink" href="" target="_blank">报告</a>
+</body>
+</html>
+<script src="js/vendor/jquery-1.10.2.min.js"></script>
+<script>
+function randomPickAnswer(answersArray) {
+	var index = Math.floor(Math.random()*(answersArray.length));
+	return answersArray[index];
+}
+function getRandomAnswer() {
+var testAnswer = [
+	{"scene_id":"1",
+	"user_answers":[
+	{"question_id":22,"answer_ids":randomPickAnswer([[104],[105],[105],[105]])},//性别
+	{"question_id":23,"answer_ids":randomPickAnswer([[106],[107],[107],[108],[108]])},//年龄
+	{"question_id":24,"answer_ids":randomPickAnswer([[111],[112],[113],[114],[115],[116]])}//职业
+	]
+	},
+	{"scene_id":"2",
+	"user_answers":[
+	{"question_id":13,"answer_ids":randomPickAnswer([[64],[65],[67],[68],[66]])},
+	{"question_id":14,"answer_ids":randomPickAnswer([[69],[70],[71],[72]])},
+	{"question_id":15,"answer_ids":randomPickAnswer([[73],[74],[74],[75],[76],[74]])},
+	{"question_id":16,"answer_ids":randomPickAnswer([[77],[78],[79],[80],[77],[78]])}
+	]},
+	{"scene_id":"3",
+	"user_answers":[
+	{"question_id":18,"answer_ids":randomPickAnswer([[86],[87],[88],[89],[89]])},
+	{"question_id":19,"answer_ids":randomPickAnswer([[90],[91],[91],[91],[92]])},
+	{"question_id":20,"answer_ids":randomPickAnswer([[95],[96],[97],[98],[96]])},
+	{"question_id":21,"answer_ids":randomPickAnswer([[99,100,101,102,103],
+	[103,100,101,102],[102,100,101],[99,100],[99],[100],[101],[102],[103],[102,103],[100,103],[100,102],[100,101]])}
+	]},
+	{"scene_id":"4",
+	"user_answers":[
+	{"question_id":11,"answer_ids":randomPickAnswer([[56,57,58,60],[56,57,58,60],[59,57,58,60],[58,57,61,60,63],[56,57,58,59,60,61,62,63]])},
+	{"question_id":28,"answer_ids":randomPickAnswer([[134],[135],[136],[134],[136]])}
+	]},
+	{"scene_id":"5",
+	"user_answers":[
+	{"question_id":5,"answer_ids":[22]},
+	{"question_id":6,"answer_ids":randomPickAnswer([[25],[26],[27],[26],[27],[26]])},
+	{"question_id":7,"answer_ids":randomPickAnswer([[29],[30],[30],[31],[31],[31]])},
+	{"question_id":8,"answer_ids":randomPickAnswer([[32],[33],[33],[33],[34],[34]])},
+	{"question_id":9,"answer_ids":randomPickAnswer([[36],[37],[38],[38],[38],[37]])}
+	]},
+	{"scene_id":"6",
+	"user_answers":
+	[{"question_id":1,"answer_ids":randomPickAnswer([[1],[2],[3],[4],[4],[3],[2]])},
+	{"question_id":2,"answer_ids":randomPickAnswer([[6,9],[5,6,7],[5,7],[6,8],[8],[6,9],[5,7],[8],[9],[5,6,7,8,9],[5,9]])},
+	{"question_id":3,"answer_ids":randomPickAnswer([[10],[12],[13],[11],[10],[11],[12],[11]])},
+	{"question_id":4,"answer_ids":randomPickAnswer([[14,17],[14,15],[15,16,17],[14,19,20],[14,15,16,17,18,20],[15,16,17,19],[14,15,16,17,18,19,20]])}
+	]},
+	{"scene_id":"7",
+	"user_answers":[
+	{"question_id":10,"answer_ids":randomPickAnswer([[39,40,44,50],[39,40],[39,40,41,50],[39,40,42,44],[39,40,43],[39,40,50]])},
+	{"question_id":12,"answer_ids":randomPickAnswer([[54],[51],[52],[53]])},
+	{"question_id":17,"answer_ids":randomPickAnswer([[84],[84],[84],[85],[83]])},
+	{"question_id":29,"answer_ids":randomPickAnswer([[137],[138],[139],[138],[138]])}
+	]},
+	{"scene_id":"8",
+	"user_answers":[{"question_id":25,"answer_ids":randomPickAnswer([[117],[118],[119],[120],[121]])},
+	{"question_id":26,"answer_ids":randomPickAnswer([[122],[123],[124],[125],[123],[122],[123],[124]])},
+	{"question_id":27,"answer_ids":randomPickAnswer([[127],[128],[129],[130],[128],[127],[128],[127]])}]
+	}];	
+	
+	return testAnswer;
+}
+function testSaveAnswerApi(testAnswer) {
+	var requestData = '{ user_answers : \"' + JSON.stringify(testAnswer).replace(/"/g, '\'') + '\", quizId : 0 , str_user : \"' + '{}' + ' \" }';
+        var self = this;
+
+        $.ajax({
+            type: "POST",
+            url: 'WeiboWebServices.asmx/LogAnswer',
+            timeout: 5000,
+            data: requestData,
+            datatType: "json",
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+            	var quizid = $.parseJSON(data.d).quizId;
+            	$('#reportlink').attr('href','http://pantene.app.social-touch.com/#Report/'+ quizid).text(quizid);
+
+            }
+        });
+}
+$(document).ready(function(){
+	var answer = getRandomAnswer();
+	$('textarea').val(JSON.stringify(answer));
+	testSaveAnswerApi(answer);
+})
+</script>
