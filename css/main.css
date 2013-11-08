@@ -4818,6 +4818,9 @@ left: 0;
 	.withPromotion #report-bottom-top {
 		position: relative;
 	}
+	#report-flyToTop {
+		margin-left: 480px;
+	}
 
 }
 @media only screen and (min-width: 1570px) {
